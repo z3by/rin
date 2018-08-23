@@ -1,0 +1,15 @@
+:root {
+    --color-1: #160F16;
+    --color-2: #F06841;
+    --color-3: #09A479;
+    --color-4: #008585;
+    --main-font: Calibri, 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+::selection {
+    background: transparent;
+}
