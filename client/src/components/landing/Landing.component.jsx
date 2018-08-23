@@ -6,22 +6,60 @@ export default class Landing extends Component {
     super(props);
 
     this.state = {
-      index: 1
+      index: 0
     };
   }
 
-  animateNext = () => {};
+  componentDidMount() {}
 
-  animatePrev = () => {};
+  animateNext = () => {
+    if (this.state.index < 4) {
+      this.setState(
+        {
+          index: this.state.index + 1
+        },
+        () => {
+          const divWidth = document.querySelector(".nav-item").offsetWidth;
+          const nav = document.querySelector(".nav");
+          nav.style.transform = `translate(${-this.state.index * divWidth}px)`;
+          this.toggleClassActive();
+        }
+      );
+    }
+  };
+
+  animatePrev = () => {
+    if (this.state.index > 0) {
+      this.setState(
+        {
+          index: this.state.index - 1
+        },
+        () => {
+          const divWidth = document.querySelector(".nav-item").offsetWidth;
+          const nav = document.querySelector(".nav");
+          nav.style.transform = `translate(${-this.state.index * divWidth}px)`;
+          this.toggleClassActive();
+        }
+      );
+    }
+  };
+
+  toggleClassActive = () => {
+    document.querySelector(".active").classList.remove("active");
+    document
+      .querySelector(".nav-group")
+      .childNodes[this.state.index].firstChild.classList.add("active");
+  };
 
   render() {
+    console.log(this.state);
     return (
       <div>
         <div className="landing">
           <div className="nav">
             <ul className="nav-group">
               <li className="nav-item">
-                <a className="nav-link">stories</a>
+                <a className="nav-link active">stories</a>
               </li>
               <li className="nav-item">
                 <a className="nav-link">map</a>
@@ -50,8 +88,8 @@ export default class Landing extends Component {
           <div className="down-rec-overlay" />
 
           <div className="arrows">
-            <img src="imgs/arrow.png" alt="" onClick={this.animateNext} />
             <img src="imgs/arrow.png" alt="" onClick={this.animatePrev} />
+            <img src="imgs/arrow.png" alt="" onClick={this.animateNext} />
           </div>
         </div>
       </div>

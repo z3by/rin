@@ -39,7 +39,7 @@
     color: var(--color-2);
 }
 
-.nav-text.active {
+.nav-link.active {
     color: var(--color-2);
 }
 
@@ -140,4 +140,6 @@
 
 .nav {
     z-index: 5;
+    transition: ease;
+    transition-duration: 1s;
 }
