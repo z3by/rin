@@ -1,0 +1,143 @@
+.landing {
+    font-family: var(--main-font);
+    height: 100vh;
+    background: var(--color-1);
+    display: flex;
+    align-items: center;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.nav-group {
+    display: flex;
+    flex-direction: row;
+    z-index: 10;
+    transform: translateX(20vw)
+}
+
+.nav-item {
+    text-align: center;
+    line-height: 100vh;
+    list-style: none;
+    width: 50vw;
+    height: 100vh;
+}
+
+.nav-link {
+    font-family: var(--main-font);
+    color: white;
+    font-size: 5rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: inline;
+    margin: 0 140px;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.nav-link:hover {
+    color: var(--color-2);
+}
+
+.nav-text.active {
+    color: var(--color-2);
+}
+
+.circle {
+    height: 500px;
+    width: 500px;
+    position: absolute;
+    border-radius: 50%;
+    left: 33%;
+    z-index: 0;
+    background: url(https://source.unsplash.com/random);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.up-rec,
+.down-rec {
+    height: 25vh;
+    width: 700px;
+    position: absolute;
+    z-index: 1;
+    background: url(https://source.unsplash.com/random);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.up-rec {
+    top: 20%;
+    left: 25%;
+    opacity: .6;
+}
+
+.down-rec {
+    bottom: 20%;
+    right: 20%;
+    opacity: .6;
+}
+
+.up-rec-overlay {
+    mix-blend-mode: overlay;
+    position: absolute;
+    height: 25vh;
+    width: 700px;
+    top: 20%;
+    left: 25%;
+    background: var(--color-4);
+    z-index: 5;
+}
+
+.down-rec-overlay {
+    mix-blend-mode: overlay;
+    position: absolute;
+    height: 25vh;
+    width: 700px;
+    z-index: 5;
+    bottom: 20%;
+    right: 20%;
+    background: var(--color-2);
+}
+
+.arrows {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    z-index: 11;
+}
+
+.arrows img {
+    width: 50px;
+    margin: 15px;
+}
+
+.arrows img:hover {
+    width: 53px;
+    cursor: pointer;
+}
+
+.arrows img:nth-child(2) {
+    transform: rotate(180deg);
+}
+
+.social {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    z-index: 11;
+}
+
+.social img {
+    width: 30px;
+    margin: 15px;
+}
+
+.social img:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.nav {
+    z-index: 5;
+}
