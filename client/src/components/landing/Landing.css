@@ -32,20 +32,21 @@
     display: inline;
     margin: 0 140px;
     z-index: 1;
-    cursor: pointer;
 }
 
 .nav-link:hover {
-    color: var(--color-2);
+    cursor: default;
 }
 
 .nav-link.active {
+    cursor: pointer;
     color: var(--color-2);
+    transition: var(--smooth);
 }
 
 .circle {
-    height: 500px;
-    width: 500px;
+    height: 70vh;
+    width: 70vh;
     position: absolute;
     border-radius: 50%;
     left: 33%;
@@ -57,59 +58,58 @@
 
 .up-rec,
 .down-rec {
-    height: 25vh;
+    height: 30vh;
     width: 700px;
     position: absolute;
     z-index: 1;
     background: url(https://source.unsplash.com/random);
     background-size: cover;
     background-attachment: fixed;
+    opacity: .6;
+    transition: var(--smooth);
 }
 
 .up-rec {
-    top: 20%;
-    left: 25%;
-    opacity: .6;
+    top: 10%;
+    left: 20%;
 }
 
 .down-rec {
-    bottom: 20%;
+    bottom: 10%;
     right: 20%;
-    opacity: .6;
 }
 
-.up-rec-overlay {
-    mix-blend-mode: overlay;
+.up-rec-overlay,
+.down-rec-overlay {
+    mix-blend-mode: screen;
     position: absolute;
-    height: 25vh;
+    height: 30vh;
     width: 700px;
-    top: 20%;
-    left: 25%;
-    background: var(--color-4);
     z-index: 5;
+    transition: var(--smooth);
 }
 
 .down-rec-overlay {
-    mix-blend-mode: overlay;
-    position: absolute;
-    height: 25vh;
-    width: 700px;
-    z-index: 5;
-    bottom: 20%;
-    right: 20%;
     background: var(--color-2);
+    bottom: 10%;
+    right: 20%;
+}
+
+.up-rec-overlay {
+    background: var(--color-4);
+    top: 10%;
+    left: 20%;
 }
 
 .arrows {
     position: absolute;
     bottom: 10px;
-    right: 20px;
+    right: 50px;
     z-index: 11;
 }
 
 .arrows img {
     width: 50px;
-    margin: 15px;
 }
 
 .arrows img:hover {
@@ -119,27 +119,29 @@
 
 .arrows img:nth-child(2) {
     transform: rotate(180deg);
+    margin-left: 20px;
 }
 
 .social {
     position: absolute;
     top: 10px;
-    right: 20px;
+    right: 40px;
     z-index: 11;
+    display: flex;
+    width: 150px;
+    justify-content: space-between;
 }
 
-.social img {
-    width: 30px;
-    margin: 15px;
+.social-item {
+    list-style: none;
 }
 
-.social img:hover {
-    transform: scale(1.1);
-    cursor: pointer;
+.social-icon {
+    font-size: 35px;
+    color: var(--color-2);
 }
 
 .nav {
     z-index: 5;
-    transition: ease;
-    transition-duration: 1s;
+    transition: var(--smooth);
 }

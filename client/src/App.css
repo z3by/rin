@@ -1,1 +1,4 @@
 @import './styles/shared.css';
+body {
+    overflow: hidden;
+}
