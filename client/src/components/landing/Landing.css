@@ -54,6 +54,7 @@
     background: url(https://source.unsplash.com/random);
     background-size: cover;
     background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
 .up-rec,
@@ -65,8 +66,9 @@
     background: url(https://source.unsplash.com/random);
     background-size: cover;
     background-attachment: fixed;
-    opacity: .6;
-    transition: var(--smooth);
+    opacity: .5;
+    transition: left ease 1s, right ease 1s;
+    background-repeat: no-repeat;
 }
 
 .up-rec {
@@ -82,11 +84,12 @@
 .up-rec-overlay,
 .down-rec-overlay {
     mix-blend-mode: screen;
+    opacity: .8;
     position: absolute;
     height: 30vh;
     width: 700px;
     z-index: 5;
-    transition: var(--smooth);
+    transition: ease 1s;
 }
 
 .down-rec-overlay {
