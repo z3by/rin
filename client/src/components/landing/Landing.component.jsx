@@ -10,7 +10,7 @@ export default class Landing extends Component {
     };
   }
 
-  componentDidMount() {}
+  componentDidMount() { }
 
   animateNext = () => {
     if (this.state.index < 4) {
@@ -58,15 +58,13 @@ export default class Landing extends Component {
   };
 
   changeBackground = () => {
-    document.querySelector(".circle").style.background = `url(imgs/backs(${
-      this.state.index
-    }).jpg)`;
-    document.querySelector(".up-rec").style.background = `url(imgs/backs(${
-      this.state.index
-    }).jpg)`;
-    document.querySelector(".down-rec").style.background = `url(imgs/backs(${
-      this.state.index
-    }).jpg)`;
+    document.querySelector(".circle").style.background = `url(imgs/backs${this.state.index + 1}.jpg)`;
+    document.querySelector(".circle").style.backgroundAttachment = 'fixed';
+    document.querySelector(".up-rec").style.background = `url(imgs/backs${this.state.index + 1}.jpg)`;
+    document.querySelector(".up-rec").style.backgroundAttachment = 'fixed';
+    document.querySelector(".down-rec").style.background = `url(imgs/backs${this.state.index + 1}.jpg)`;
+    document.querySelector(".down-rec").style.backgroundAttachment = 'fixed';
+
   };
 
   translateShapes = () => {
@@ -89,12 +87,12 @@ export default class Landing extends Component {
   toggleOverlayColor = () => {
     document.querySelector(".up-rec-overlay").style.background =
       document.querySelector(".up-rec-overlay").style.background ===
-      "var(--color-2)"
+        "var(--color-2)"
         ? "var(--color-4)"
         : "var(--color-2)";
     document.querySelector(".down-rec-overlay").style.background =
       document.querySelector(".down-rec-overlay").style.background ===
-      "var(--color-4)"
+        "var(--color-4)"
         ? "var(--color-2)"
         : "var(--color-4)";
   };
