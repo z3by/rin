@@ -1,0 +1,31 @@
+:root {
+    --color-1: #160F16;
+    --color-2: #F06841;
+    --color-3: #09A479;
+    --color-4: #008585;
+    --main-font: Calibri, 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+    --smooth: all 1300ms cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+body {
+    margin: 0;
+}
+
+::selection {
+    background: transparent;
+}
+
+.shrink {
+    animation-name: shrink;
+    animation-duration: 1s;
+    animation-timing-function: var(--smooth);
+}
+
+@keyframes shrink {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

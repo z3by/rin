@@ -1,0 +1,147 @@
+.landing {
+    font-family: var(--main-font);
+    height: 100vh;
+    background: var(--color-1);
+    display: flex;
+    align-items: center;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.nav-group {
+    display: flex;
+    flex-direction: row;
+    z-index: 10;
+    transform: translateX(20vw)
+}
+
+.nav-item {
+    text-align: center;
+    line-height: 100vh;
+    list-style: none;
+    width: 50vw;
+    height: 100vh;
+}
+
+.nav-link {
+    font-family: var(--main-font);
+    color: white;
+    font-size: 5rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: inline;
+    margin: 0 140px;
+    z-index: 1;
+}
+
+.nav-link:hover {
+    cursor: default;
+}
+
+.nav-link.active {
+    cursor: pointer;
+    color: var(--color-2);
+    transition: var(--smooth);
+}
+
+.circle {
+    height: 70vh;
+    width: 70vh;
+    position: absolute;
+    border-radius: 50%;
+    left: 33%;
+    z-index: 0;
+    background: url(https://source.unsplash.com/random);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.up-rec,
+.down-rec {
+    height: 30vh;
+    width: 700px;
+    position: absolute;
+    z-index: 1;
+    background: url(https://source.unsplash.com/random);
+    background-size: cover;
+    background-attachment: fixed;
+    opacity: .6;
+    transition: var(--smooth);
+}
+
+.up-rec {
+    top: 10%;
+    left: 20%;
+}
+
+.down-rec {
+    bottom: 10%;
+    right: 20%;
+}
+
+.up-rec-overlay,
+.down-rec-overlay {
+    mix-blend-mode: screen;
+    position: absolute;
+    height: 30vh;
+    width: 700px;
+    z-index: 5;
+    transition: var(--smooth);
+}
+
+.down-rec-overlay {
+    background: var(--color-2);
+    bottom: 10%;
+    right: 20%;
+}
+
+.up-rec-overlay {
+    background: var(--color-4);
+    top: 10%;
+    left: 20%;
+}
+
+.arrows {
+    position: absolute;
+    bottom: 10px;
+    right: 50px;
+    z-index: 11;
+}
+
+.arrows img {
+    width: 50px;
+}
+
+.arrows img:hover {
+    width: 53px;
+    cursor: pointer;
+}
+
+.arrows img:nth-child(2) {
+    transform: rotate(180deg);
+    margin-left: 20px;
+}
+
+.social {
+    position: absolute;
+    top: 10px;
+    right: 40px;
+    z-index: 11;
+    display: flex;
+    width: 150px;
+    justify-content: space-between;
+}
+
+.social-item {
+    list-style: none;
+}
+
+.social-icon {
+    font-size: 35px;
+    color: var(--color-2);
+}
+
+.nav {
+    z-index: 5;
+    transition: var(--smooth);
+}
