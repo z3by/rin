@@ -10,7 +10,10 @@ export default class Landing extends Component {
     };
   }
 
-  componentDidMount() { }
+  componentDidMount() {
+    window.onmousewheel = this.handleWheel;
+    window.onkeydown = this.handleArrowsInput;
+  }
 
   animateNext = () => {
     if (this.state.index < 4) {
@@ -28,6 +31,10 @@ export default class Landing extends Component {
           this.toggleOverlayColor();
         }
       );
+    } else {
+      this.setState({
+        index: 0
+      });
     }
   };
 
@@ -47,8 +54,34 @@ export default class Landing extends Component {
           this.toggleOverlayColor();
         }
       );
+    } else {
+      this.setState({
+        index: 5
+      });
     }
   };
+
+
+  handleWheel = (e) => {
+    if (e.deltaY === -100) {
+      this.animatePrev();
+    } else {
+      this.animateNext();
+    }
+  }
+
+
+
+  handleArrowsInput = (e) => {
+    if (e.key === "ArrowRight") {
+      this.animateNext();
+    }
+    else if (e.key === "ArrowLeft") {
+      this.animatePrev();
+    }
+
+  }
+
 
   toggleClassActive = () => {
     document.querySelector(".active").classList.remove("active");
@@ -98,7 +131,6 @@ export default class Landing extends Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <div>
         <div className="landing">
@@ -154,3 +186,8 @@ export default class Landing extends Component {
     );
   }
 }
+
+
+
+
+
