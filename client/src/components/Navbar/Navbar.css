@@ -1,0 +1,46 @@
+.v-line {
+    width: 10vh;
+    background-color: var(--color-3);
+    height: 2px;
+    display: inline-block;
+}
+
+.nav-circle {
+    height: 20px;
+    width: 20px;
+    border: 2px solid var(--color-3);
+    border-radius: 50%;
+}
+
+.nav-circle:hover {
+    border-color: var(--color-2);
+    background: var(--color-2);
+}
+
+.nav-item-part {
+    display: flex;
+    align-items: center;
+}
+
+.nav-rec {
+    height: 120px;
+    width: 60px;
+    border: 2px solid var(--color-3);
+    border-radius: 15px;
+}
+
+.nav-circle-logo {
+    height: 120px;
+    width: 120px;
+    border: 2px solid var(--color-3);
+    border-radius: 50%;
+}
+
+.navbar {
+    transform: rotate(90deg);
+    display: flex;
+    position: fixed;
+    top: 45vh;
+    left: -350px;
+    z-index: 120;
+}
