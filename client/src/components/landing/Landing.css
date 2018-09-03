@@ -32,6 +32,7 @@
     display: inline;
     margin: 0 140px;
     z-index: 1;
+    text-decoration: none;
 }
 
 .nav-link:hover {
@@ -51,7 +52,7 @@
     border-radius: 50%;
     left: 33%;
     z-index: 0;
-    background: url(https://source.unsplash.com/random);
+    background: url('https://source.unsplash.com/random');
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -63,7 +64,7 @@
     width: 700px;
     position: absolute;
     z-index: 1;
-    background: url(https://source.unsplash.com/random);
+    background: url('https://source.unsplash.com/random');
     background-size: cover;
     background-attachment: fixed;
     opacity: .5;
