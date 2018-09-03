@@ -25,7 +25,9 @@ body {
     from {
         transform: rotate(0);
     }
+
     to {
+        color: lightgoldenrodyellow;
         transform: rotate(360deg);
     }
 }
