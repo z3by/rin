@@ -1,0 +1,16 @@
+.data {
+    background: var(--color-1);
+    height: 100vh;
+}
+
+.page {
+    height: 100vh;
+    font-size: 100px;
+    color: white;
+    text-align: center;
+}
+
+.data-pages {
+    position: relative;
+    transition: var(--smooth);
+}
