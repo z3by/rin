@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Landing.css";
+import { Link } from "react-router-dom";
 
 export default class Landing extends Component {
   constructor(props) {
@@ -14,6 +15,10 @@ export default class Landing extends Component {
     window.onmousewheel = this.handleWheel;
     window.onkeydown = this.handleArrowsInput;
   }
+
+
+
+
 
   animateNext = () => {
     if (this.state.index < 4) {
@@ -131,25 +136,30 @@ export default class Landing extends Component {
   };
 
   render() {
+
     return (
       <div>
         <div className="landing">
           <div className="nav">
             <ul className="nav-group">
               <li className="nav-item">
-                <a className="nav-link active">stories</a>
+                <Link to={'/stories'} className="nav-link active">stories</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link">map</a>
+                <Link to={'/map'} className="nav-link">map</Link>
+
               </li>
               <li className="nav-item">
-                <a className="nav-link">data</a>
+                <Link to={'/data'} className="nav-link">data</Link>
+
               </li>
               <li className="nav-item">
-                <a className="nav-link">library</a>
+                <Link to={'/library'} className="nav-link">library</Link>
+
               </li>
               <li className="nav-item">
-                <a className="nav-link">about</a>
+                <Link to={'/about'} className="nav-link">about</Link>
+
               </li>
             </ul>
           </div>
@@ -171,11 +181,11 @@ export default class Landing extends Component {
               </a>
             </li>
           </ul>
-          <div className="circle shrink" />
-          <div className="up-rec" />
-          <div className="up-rec-overlay" />
-          <div className="down-rec" />
-          <div className="down-rec-overlay" />
+          <div className="circle fadeIn" />
+          <div className="up-rec slideInRight" />
+          <div className="up-rec-overlay slideInRight" />
+          <div className="down-rec slideInLeft" />
+          <div className="down-rec-overlay slideInLeft" />
 
           <div className="arrows">
             <img src="imgs/arrow.png" alt="" onClick={this.animatePrev} />
