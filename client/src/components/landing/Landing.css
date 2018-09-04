@@ -25,10 +25,10 @@
 
 .nav-link {
     font-family: var(--main-font);
-    color: white;
+    color: #99b;
     font-size: 5rem;
     text-transform: uppercase;
-    font-weight: 500;
+    font-weight: 300;
     display: inline;
     margin: 0 140px;
     z-index: 1;
@@ -43,9 +43,11 @@
     cursor: pointer;
     color: var(--color-2);
     transition: var(--smooth);
+    font-weight: 400;
 }
 
 .circle {
+    opacity: .2;
     height: 70vh;
     width: 70vh;
     position: absolute;
@@ -67,7 +69,7 @@
     background: url('https://source.unsplash.com/random');
     background-size: cover;
     background-attachment: fixed;
-    opacity: .5;
+    opacity: .3;
     transition: left ease 1s, right ease 1s;
     background-repeat: no-repeat;
 }
@@ -148,4 +150,82 @@
 .nav {
     z-index: 5;
     transition: var(--smooth);
+}
+
+@media (max-width: 1024px) {
+    .circle {
+        width: 60vw;
+        height: 60vw;
+        left: 23vw;
+    }
+
+    .navbar {
+        display: none;
+    }
+
+    .nav-group {
+        transform: translateX(25vw);
+    }
+
+    .up-rec,
+    .down-rec,
+    .down-rec-overlay,
+    .up-rec-overlay {
+        height: 20vh;
+    }
+
+    .up-rec,
+    .up-rec-overlay {
+        top: 20%;
+        left: 20%;
+    }
+
+    .down-rec,
+    .down-rec-overlay {
+        bottom: 20%;
+        right: 20%;
+    }
+}
+
+@media(max-width: 768px) {
+    .navbar {
+        display: none;
+    }
+
+    .nav-link {
+        font-size: 40px;
+    }
+
+    .nav-group {
+        transform: translateX(-4vw);
+    }
+}
+
+@media(max-width: 400px) {
+    .navbar {
+        display: none;
+    }
+
+    .up-rec,
+    .down-rec,
+    .down-rec-overlay,
+    .up-rec-overlay {
+        width: 250px;
+    }
+
+    .nav-link {
+        font-size: 30px;
+    }
+
+    .nav-group {
+        transform: translateX(-8vw);
+    }
+
+    .social {
+        right: 30vw;
+    }
+
+    .arrows {
+        right: 33vw;
+    }
 }
