@@ -14,6 +14,7 @@ export default class Landing extends Component {
   componentDidMount() {
     window.onmousewheel = this.handleWheel;
     window.onkeydown = this.handleArrowsInput;
+    document.querySelector('.arrows').style.transform = 'rotate(0)';
   }
 
 
@@ -89,11 +90,14 @@ export default class Landing extends Component {
 
 
   toggleClassActive = () => {
-    document.querySelector(".active").classList.remove("active");
+    document.querySelectorAll(".active").forEach(e => {
+      e.classList.remove("active");
+    })
     document
       .querySelector(".nav-group")
       .childNodes[this.state.index].firstChild.classList.add("active");
   };
+
 
   changeBackground = () => {
     document.querySelector(".circle").style.background = `url(imgs/backs${this.state.index + 1}.jpg)`;

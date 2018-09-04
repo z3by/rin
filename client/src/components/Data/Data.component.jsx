@@ -14,8 +14,7 @@ export default class Data extends Component {
             this.setState({
                 pageNumber: this.state.pageNumber + 1
             }, () => {
-                console.log(this.state);
-                document.querySelector('.data-pages').style.top = `${-this.state.pageNumber * 100}vh`;
+                document.querySelector('.pages').style.top = `${-this.state.pageNumber * 100}vh`;
 
             });
         }
@@ -28,8 +27,7 @@ export default class Data extends Component {
             this.setState({
                 pageNumber: this.state.pageNumber - 1
             }, () => {
-                console.log(this.state);
-                document.querySelector('.data-pages').style.top = `${-this.state.pageNumber * 100}vh`;
+                document.querySelector('.pages').style.top = `${-this.state.pageNumber * 100}vh`;
             });
         }
     }
@@ -38,7 +36,7 @@ export default class Data extends Component {
     render() {
         return (
             <div className="data fadeInFast">
-                <div className="data-pages">
+                <div className="pages">
                     <div className="page">this is page 1</div>
                     <div className="page">this is page 2</div>
                     <div className="page">this is page 3</div>

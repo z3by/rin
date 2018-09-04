@@ -1,8 +1,8 @@
 :root {
-    --color-1: #160F16;
-    --color-2: #F06841;
-    --color-3: #09A479;
-    --color-4: #008585;
+    --color-1: #200c22;
+    --color-2: #FF512F;
+    --color-3: #78ffd6;
+    --color-4: #007991;
     --main-font: Calibri, 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
     --smooth: all 1300ms cubic-bezier(0.215, 0.61, 0.355, 1);
 }
@@ -26,10 +26,12 @@ a {
 }
 
 .arrows {
+    transform: rotate(90deg) translateX(-40px);
     position: absolute;
     bottom: 10px;
     right: 50px;
     z-index: 11;
+    transition: var(--smooth);
 }
 
 .arrows img {
@@ -43,6 +45,20 @@ a {
 .arrows img:nth-child(2) {
     transform: rotate(180deg);
     margin-left: 20px;
+}
+
+.page {
+    height: 100vh;
+    font-size: 100px;
+    color: white;
+    text-align: center;
+    background: linear-gradient(var(--color-1), #221133)
+}
+
+.pages {
+    position: relative;
+    top: 0vh;
+    transition: var(--smooth);
 }
 
 @-webkit-keyframes fadeIn {
@@ -69,12 +85,7 @@ a {
     -webkit-animation-name: fadeIn;
     animation-name: fadeIn;
     animation-duration: 5s;
-}
-
-.fadeInFast {
-    -webkit-animation-name: fadeIn;
-    animation-name: fadeIn;
-    animation-duration: 1.5s;
+    animation-timing-function: ease;
 }
 
 @keyframes fadeInSlideRight {

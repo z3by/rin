@@ -28,7 +28,7 @@
     color: #99b;
     font-size: 5rem;
     text-transform: uppercase;
-    font-weight: 300;
+    font-weight: 100;
     display: inline;
     margin: 0 140px;
     z-index: 1;
@@ -43,7 +43,7 @@
     cursor: pointer;
     color: var(--color-2);
     transition: var(--smooth);
-    font-weight: 400;
+    font-weight: 500;
 }
 
 .circle {

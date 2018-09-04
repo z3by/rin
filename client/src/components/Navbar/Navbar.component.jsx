@@ -64,7 +64,7 @@ export default class Navbar extends Component {
                         </Link>
                         <div className="nav-line"></div>
                         <Link to={'/about'}>
-                            <div className="nav-circle" index="5" onClick={this.toggleClassActive}>
+                            <div className="nav-circle" index="5" onClick={this.onClickCircle}>
                                 <a className="nav-circle-text">
                                     about
                             </a>
