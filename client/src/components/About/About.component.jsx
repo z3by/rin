@@ -4,7 +4,7 @@ import './About.css';
 export default class About extends Component {
     render() {
         return (
-            <div>
+            <div className="fadeInFast">
                 About
             </div>
         )

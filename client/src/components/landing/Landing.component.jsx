@@ -16,6 +16,10 @@ export default class Landing extends Component {
     window.onkeydown = this.handleArrowsInput;
   }
 
+
+
+
+
   animateNext = () => {
     if (this.state.index < 4) {
       this.setState(
@@ -132,6 +136,7 @@ export default class Landing extends Component {
   };
 
   render() {
+
     return (
       <div>
         <div className="landing">
@@ -176,11 +181,11 @@ export default class Landing extends Component {
               </a>
             </li>
           </ul>
-          <div className="circle shrink" />
-          <div className="up-rec" />
-          <div className="up-rec-overlay" />
-          <div className="down-rec" />
-          <div className="down-rec-overlay" />
+          <div className="circle fadeIn" />
+          <div className="up-rec slideInRight" />
+          <div className="up-rec-overlay slideInRight" />
+          <div className="down-rec slideInLeft" />
+          <div className="down-rec-overlay slideInLeft" />
 
           <div className="arrows">
             <img src="imgs/arrow.png" alt="" onClick={this.animatePrev} />

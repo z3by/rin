@@ -4,7 +4,7 @@ import './Data.css';
 export default class Data extends Component {
     render() {
         return (
-            <div>
+            <div className="fadeInFast">
                 Data
             </div>
         )

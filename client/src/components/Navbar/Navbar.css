@@ -1,46 +1,98 @@
-.v-line {
-    width: 10vh;
-    background-color: var(--color-3);
-    height: 2px;
-    display: inline-block;
+.nav-line {
+    height: 9vh;
+    width: 2px;
+    background: var(--color-3);
+    position: relative;
 }
 
 .nav-circle {
+    position: relative;
     height: 20px;
     width: 20px;
-    border: 2px solid var(--color-3);
+    left: -10px;
+    border: solid var(--color-3) 2px;
     border-radius: 50%;
+}
+
+.nav-circle-text {
+    color: var(--color-2);
+    font-family: var(--main-font);
+    font-size: 25px;
+    text-transform: uppercase;
+    position: relative;
+    left: 30px;
+    top: -5px;
+    display: none;
 }
 
 .nav-circle:hover {
-    border-color: var(--color-2);
+    border: solid var(--color-2) 2px;
+    transition: var(--smooth);
     background: var(--color-2);
 }
 
-.nav-item-part {
-    display: flex;
-    align-items: center;
+.nav-circle:active {
+    background: var(--color-3);
 }
 
-.nav-rec {
-    height: 120px;
-    width: 60px;
-    border: 2px solid var(--color-3);
-    border-radius: 15px;
+.nav-circle:active a {
+    color: var(--color-3);
 }
 
-.nav-circle-logo {
-    height: 120px;
-    width: 120px;
-    border: 2px solid var(--color-3);
-    border-radius: 50%;
+.nav-circle.active {
+    border: solid var(--color-2) 2px;
+    background: var(--color-2);
+    transition: var(--smooth);
+}
+
+.nav-circle:hover a {
+    display: initial;
+    animation: fadeInSlideRight .5s ease;
 }
 
 .navbar {
-    transform: rotate(90deg);
-    display: flex;
     position: fixed;
-    top: 45vh;
-    left: -350px;
-    z-index: 120;
+    height: 90vh;
+    left: 3vw;
+    z-index: 100;
+    margin: 5vh auto;
+}
+
+.navbar-middle {
+    height: 80%;
+    position: relative;
+    left: 50px;
+}
+
+.logo {
+    height: 100px;
+    width: 100px;
+    border: solid var(--color-3) 2px;
+    border-radius: 50%;
+}
+
+.logo-img {
+    max-width: 95px;
+    margin-top: 28px;
+    margin-left: 3px;
+}
+
+.counter {
+    height: 60px;
+    width: 100px;
+    border: solid var(--color-3) 2px;
+    border-radius: 15px;
+    position: relative;
+    left: -50px;
+}
+
+.counter span {
+    color: var(--color-2);
+    margin-left: 6px;
+}
+
+.counter h4 {
+    text-align: center;
+    color: var(--color-3);
+    font-family: Arial, Helvetica, sans-serif;
 }

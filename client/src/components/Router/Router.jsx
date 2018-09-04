@@ -9,15 +9,16 @@ import Map from "../Map/Map.component";
 import Data from "../Data/Data.component";
 import Landing from "../Landing/Landing.component";
 import Library from "../Library/Library.component";
+import Navbar from '../Navbar/Navbar.component';
 
 
 export default class MyRouter extends Component {
     render() {
         return (
-
             <Router>
                 <div className="App">
-                    <Route exact path='/' component={Landing} />
+                    <Navbar />
+                    <Route exact path='/' component={Landing} x="190" />
                     <Route path='/stories' component={Stories} />
                     <Route path='/map' component={Map} />
                     <Route path='/data' component={Data} />

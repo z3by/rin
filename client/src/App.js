@@ -5,9 +5,13 @@ import MyRouter from './components/Router/Router'
 import Navbar from "./components/Navbar/Navbar.component";
 
 class App extends Component {
+
   render() {
     return (
-      <MyRouter />
+      <div>
+        {/* <Navbar /> */}
+        <MyRouter />
+      </div>
     );
   }
 }
