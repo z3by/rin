@@ -147,7 +147,11 @@
     height: 60vw;
     left: 23vw;
   }
-
+  .circle-overlay {
+    width: 60vw;
+    height: 60vw;
+    left: 23vw;
+  }
   .navbar {
     display: none;
   }
@@ -173,6 +177,8 @@
   .down-rec-overlay {
     bottom: 20%;
     right: 20%;
+  }
+  .social {
   }
 }
 
