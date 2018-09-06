@@ -1,8 +1,9 @@
 :root {
-    --color-1: #200c22;
-    --color-2: #FF512F;
+    --color-1: #160c16;
+    --color-2: #f06841;
     --color-3: #78ffd6;
     --color-4: #007991;
+    --color-5: #F2E4B1;
     --main-font: Calibri, 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
     --smooth: all 1300ms cubic-bezier(0.215, 0.61, 0.355, 1);
 }
@@ -67,7 +68,7 @@ a {
     }
 
     to {
-        opacity: 1;
+        opacity: .5;
     }
 }
 
@@ -77,7 +78,7 @@ a {
     }
 
     to {
-        opacity: .2;
+        opacity: .5;
     }
 }
 
