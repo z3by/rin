@@ -82,27 +82,24 @@ class Stories extends Component {
           </div>
         </div>
 
-        <ul>
+        <ul className="srories-items">
           <li>
             <Link
               to={"/stories/" + this.state.stories[0].id}
               className="story1"
             />
-            <div className="summary">{this.state.stories[0].text}</div>
           </li>
           <li>
             <Link
               to={"/stories/" + this.state.stories[1].id}
               className="story2"
             />
-            <div className="summary">{this.state.stories[1].text}</div>
           </li>
           <li>
             <Link
               to={"/stories/" + this.state.stories[2].id}
               className="story3"
             />
-            <div className="summary">{this.state.stories[2].text}</div>
           </li>
         </ul>
 

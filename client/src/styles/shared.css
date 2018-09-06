@@ -1,179 +1,179 @@
 :root {
-    --color-1: #160c16;
-    --color-2: #f06841;
-    --color-3: #78ffd6;
-    --color-4: #007991;
-    --color-5: #F2E4B1;
-    --main-font: Calibri, 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
-    --smooth: all 1300ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  --color-1: #160c16;
+  --color-2: #f06841;
+  --color-3: #78ffd6;
+  --color-4: #007991;
+  --color-5: #f2e4b1;
+  --main-font: Calibri, "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
+  --smooth: all 1300ms cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
 body {
-    margin: 0;
+  margin: 0;
 }
 
 ::selection {
-    background: transparent;
+  background: transparent;
 }
 
 .shrink {
-    animation-name: shrink;
-    animation-duration: 1s;
-    animation-timing-function: var(--smooth);
+  animation-name: shrink;
+  animation-duration: 1s;
+  animation-timing-function: var(--smooth);
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .arrows {
-    transform: rotate(90deg) translateX(-40px);
-    position: absolute;
-    bottom: 10px;
-    right: 50px;
-    z-index: 11;
-    transition: var(--smooth);
+  transform: rotate(90deg) translateX(-40px);
+  position: absolute;
+  bottom: 10px;
+  right: 50px;
+  z-index: 11;
+  transition: var(--smooth);
 }
 
 .arrows img {
-    width: 50px;
+  width: 50px;
 }
 
 .arrows img:hover {
-    filter: brightness(1.5);
+  filter: brightness(1.5);
 }
 
 .arrows img:nth-child(2) {
-    transform: rotate(180deg);
-    margin-left: 20px;
+  transform: rotate(180deg);
+  margin-left: 20px;
 }
 
 .page {
-    height: 100vh;
-    font-size: 100px;
-    color: white;
-    text-align: center;
-    background: linear-gradient(var(--color-1), #221133)
+  height: 100vh;
+  font-size: 100px;
+  color: white;
+  text-align: center;
+  background: linear-gradient(var(--color-1), #221133);
 }
 
 .pages {
-    position: relative;
-    top: 0vh;
-    transition: var(--smooth);
+  position: relative;
+  top: 0vh;
+  transition: var(--smooth);
 }
 
 @-webkit-keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
+  from {
+    opacity: 0;
+  }
 
-    to {
-        opacity: .5;
-    }
+  to {
+    opacity: 0.5;
+  }
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
+  from {
+    opacity: 0;
+  }
 
-    to {
-        opacity: .5;
-    }
+  to {
+    opacity: 0.5;
+  }
 }
 
 .fadeIn {
-    -webkit-animation-name: fadeIn;
-    animation-name: fadeIn;
-    animation-duration: 5s;
-    animation-timing-function: ease;
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  animation-duration: 5s;
+  animation-timing-function: ease;
 }
 
 @keyframes fadeInSlideRight {
-    from {
-        opacity: 0;
-        left: 0px;
-    }
+  from {
+    opacity: 0;
+    left: 0px;
+  }
 
-    to {
-        opacity: 1;
-        left: 30px;
-    }
+  to {
+    opacity: 1;
+    left: 30px;
+  }
 }
 
 @-webkit-keyframes slideInLeft {
-    from {
-        -webkit-transform: translate3d(-100%, 0, 0);
-        transform: translate3d(-100%, 0, 0);
-        visibility: visible;
-    }
+  from {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
 
-    to {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 @keyframes slideInLeft {
-    from {
-        -webkit-transform: translate3d(-100%, 0, 0);
-        transform: translate3d(-100%, 0, 0);
-        visibility: visible;
-    }
+  from {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
 
-    to {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 .slideInLeft {
-    -webkit-animation-name: slideInLeft;
-    animation-name: slideInLeft;
-    animation-duration: 1s;
-    animation-timing-function: ease;
+  -webkit-animation-name: slideInLeft;
+  animation-name: slideInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease;
 }
 
 @-webkit-keyframes slideInRight {
-    from {
-        -webkit-transform: translate3d(100%, 0, 0);
-        transform: translate3d(100%, 0, 0);
-        visibility: visible;
-    }
+  from {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+    visibility: visible;
+  }
 
-    to {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 @keyframes slideInRight {
-    from {
-        -webkit-transform: translate3d(100%, 0, 0);
-        transform: translate3d(100%, 0, 0);
-        visibility: visible;
-    }
+  from {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+    visibility: visible;
+  }
 
-    to {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 .slideInRight {
-    -webkit-animation-name: slideInRight;
-    animation-name: slideInRight;
-    animation-duration: 1s;
-    animation-timing-function: ease;
+  -webkit-animation-name: slideInRight;
+  animation-name: slideInRight;
+  animation-duration: 1s;
+  animation-timing-function: ease;
 }
 
 @keyframes shrink {
-    from {
-        transform: rotate(0);
-    }
+  from {
+    transform: rotate(0);
+  }
 
-    to {
-        color: lightgoldenrodyellow;
-        transform: rotate(360deg);
-    }
+  to {
+    color: lightgoldenrodyellow;
+    transform: rotate(360deg);
+  }
 }

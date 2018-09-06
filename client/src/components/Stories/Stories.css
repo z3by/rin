@@ -94,10 +94,12 @@ li:hover .summary {
 }
 
 .up-down {
-  height: 350px;
+  height: 450px;
 }
 
 .summary {
+  font-size: 19px;
+  font-family: var(--main-font);
   height: 400px;
   width: 50%;
   background: linear-gradient(
@@ -143,6 +145,7 @@ li:hover .summary {
   bottom: 20px;
 }
 
-ul {
+.srories-items {
+  list-style: none;
   padding: 50px 200px;
 }
