@@ -129,14 +129,14 @@ export default class Landing extends Component {
   toggleOverlayColor = () => {
     document.querySelector(".up-rec-overlay").style.background =
       document.querySelector(".up-rec-overlay").style.background ===
-        "var(--color-2)"
-        ? "var(--color-4)"
-        : "var(--color-2)";
+        "linear-gradient(45deg,var(--color-4), var(--color-2))"
+        ? "linear-gradient(45deg, var(--color-2), var(--color-4))"
+        : "linear-gradient(45deg,var(--color-4), var(--color-2))";
     document.querySelector(".down-rec-overlay").style.background =
       document.querySelector(".down-rec-overlay").style.background ===
-        "var(--color-4)"
-        ? "var(--color-2)"
-        : "var(--color-4)";
+        "linear-gradient(45deg, var(--color-2), var(--color-4))"
+        ? "linear-gradient(45deg,var(--color-4), var(--color-2))"
+        : "linear-gradient(45deg, var(--color-2), var(--color-4))";
   };
 
   render() {
@@ -186,6 +186,7 @@ export default class Landing extends Component {
             </li>
           </ul>
           <div className="circle fadeIn" />
+          <div className="circle-overlay fadeIn" />
           <div className="up-rec slideInRight" />
           <div className="up-rec-overlay slideInRight" />
           <div className="down-rec slideInLeft" />

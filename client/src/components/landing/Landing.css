@@ -1,7 +1,7 @@
 .landing {
     font-family: var(--main-font);
     height: 100vh;
-    background: var(--color-1);
+    background: radial-gradient(#414, var(--color-1));
     display: flex;
     align-items: center;
     z-index: -1;
@@ -47,7 +47,7 @@
 }
 
 .circle {
-    opacity: .2;
+    opacity: .5;
     height: 70vh;
     width: 70vh;
     position: absolute;
@@ -60,6 +60,16 @@
     background-repeat: no-repeat;
 }
 
+.circle-overlay {
+    opacity: .5;
+    height: 70vh;
+    width: 70vh;
+    position: absolute;
+    border-radius: 50%;
+    left: 33%;
+    z-index: 0;
+    background: linear-gradient(45deg, var(--color-2), var(--color-4));
+}
 .up-rec,
 .down-rec {
     height: 30vh;
@@ -87,22 +97,23 @@
 .up-rec-overlay,
 .down-rec-overlay {
     mix-blend-mode: screen;
-    opacity: .8;
+    opacity: .5;
     position: absolute;
     height: 30vh;
     width: 700px;
     z-index: 5;
-    transition: ease 1s;
+    transition:left ease 1s, right ease 1s;
+
 }
 
 .down-rec-overlay {
-    background: var(--color-2);
+    background: linear-gradient(45deg, var(--color-2), var(--color-4));
     bottom: 10%;
     right: 20%;
 }
 
 .up-rec-overlay {
-    background: var(--color-4);
+    background: linear-gradient(45deg, var(--color-2), var(--color-4));
     top: 10%;
     left: 20%;
 }
