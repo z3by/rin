@@ -14,12 +14,8 @@ export default class Landing extends Component {
   componentDidMount() {
     window.onmousewheel = this.handleWheel;
     window.onkeydown = this.handleArrowsInput;
-    document.querySelector('.arrows').style.transform = 'rotate(0)';
+    document.querySelector(".arrows").style.transform = "rotate(0)";
   }
-
-
-
-
 
   animateNext = () => {
     if (this.state.index < 4) {
@@ -67,46 +63,41 @@ export default class Landing extends Component {
     }
   };
 
-
-  handleWheel = (e) => {
+  handleWheel = e => {
     if (e.deltaY === -100) {
       this.animatePrev();
     } else {
       this.animateNext();
     }
-  }
+  };
 
-
-
-  handleArrowsInput = (e) => {
+  handleArrowsInput = e => {
     if (e.key === "ArrowRight") {
       this.animateNext();
-    }
-    else if (e.key === "ArrowLeft") {
+    } else if (e.key === "ArrowLeft") {
       this.animatePrev();
     }
-
-  }
-
+  };
 
   toggleClassActive = () => {
     document.querySelectorAll(".active").forEach(e => {
       e.classList.remove("active");
-    })
+    });
     document
       .querySelector(".nav-group")
       .childNodes[this.state.index].firstChild.classList.add("active");
   };
 
-
   changeBackground = () => {
-    document.querySelector(".circle").style.background = `url(imgs/backs${this.state.index + 1}.jpg)`;
-    document.querySelector(".circle").style.backgroundAttachment = 'fixed';
-    document.querySelector(".up-rec").style.background = `url(imgs/backs${this.state.index + 1}.jpg)`;
-    document.querySelector(".up-rec").style.backgroundAttachment = 'fixed';
-    document.querySelector(".down-rec").style.background = `url(imgs/backs${this.state.index + 1}.jpg)`;
-    document.querySelector(".down-rec").style.backgroundAttachment = 'fixed';
-
+    document.querySelector(".circle").style.background = `url(imgs/backs${this
+      .state.index + 1}.jpg)`;
+    document.querySelector(".circle").style.backgroundAttachment = "fixed";
+    document.querySelector(".up-rec").style.background = `url(imgs/backs${this
+      .state.index + 1}.jpg)`;
+    document.querySelector(".up-rec").style.backgroundAttachment = "fixed";
+    document.querySelector(".down-rec").style.background = `url(imgs/backs${this
+      .state.index + 1}.jpg)`;
+    document.querySelector(".down-rec").style.backgroundAttachment = "fixed";
   };
 
   translateShapes = () => {
@@ -129,41 +120,46 @@ export default class Landing extends Component {
   toggleOverlayColor = () => {
     document.querySelector(".up-rec-overlay").style.background =
       document.querySelector(".up-rec-overlay").style.background ===
-        "linear-gradient(45deg,var(--color-4), var(--color-2))"
+      "linear-gradient(45deg,var(--color-4), var(--color-2))"
         ? "linear-gradient(45deg, var(--color-2), var(--color-4))"
         : "linear-gradient(45deg,var(--color-4), var(--color-2))";
     document.querySelector(".down-rec-overlay").style.background =
       document.querySelector(".down-rec-overlay").style.background ===
-        "linear-gradient(45deg, var(--color-2), var(--color-4))"
+      "linear-gradient(45deg, var(--color-2), var(--color-4))"
         ? "linear-gradient(45deg,var(--color-4), var(--color-2))"
         : "linear-gradient(45deg, var(--color-2), var(--color-4))";
   };
 
   render() {
-
     return (
       <div>
         <div className="landing">
           <div className="nav">
             <ul className="nav-group">
               <li className="nav-item">
-                <Link to={'/stories'} className="nav-link active">stories</Link>
+                <Link to={"/stories"} className="nav-link active">
+                  stories
+                </Link>
               </li>
               <li className="nav-item">
-                <Link to={'/map'} className="nav-link">map</Link>
-
+                <Link to={"/map"} className="nav-link">
+                  map
+                </Link>
               </li>
               <li className="nav-item">
-                <Link to={'/data'} className="nav-link">data</Link>
-
+                <Link to={"/data"} className="nav-link">
+                  data
+                </Link>
               </li>
               <li className="nav-item">
-                <Link to={'/library'} className="nav-link">library</Link>
-
+                <Link to={"/library"} className="nav-link">
+                  library
+                </Link>
               </li>
               <li className="nav-item">
-                <Link to={'/about'} className="nav-link">about</Link>
-
+                <Link to={"/about"} className="nav-link">
+                  about
+                </Link>
               </li>
             </ul>
           </div>
@@ -201,8 +197,3 @@ export default class Landing extends Component {
     );
   }
 }
-
-
-
-
-
