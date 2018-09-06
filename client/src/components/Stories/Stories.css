@@ -1,0 +1,148 @@
+.stories {
+  background-image: url("/imgs/bg.png");
+  background-size: cover;
+}
+
+video {
+  height: auto;
+  vertical-align: middle;
+  width: 100%;
+  /* margin: 0 auto; */
+}
+
+.video-container {
+  position: relative;
+}
+
+.overlay-desc {
+  background: rgba(0, 0, 0, 0);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay-desc h1 {
+  color: var(--color-2);
+  margin: 0;
+  font-size: 700%;
+  text-transform: uppercase;
+  font-family: var(--main-font);
+  font-weight: 100;
+}
+
+h1 {
+  font-family: "Nobile", sans-serif;
+  font-size: 5vw;
+  text-align: center;
+}
+
+.story1 {
+  margin: 0 auto;
+  display: block;
+  padding: 40px;
+  opacity: 0;
+  transition: 1s;
+  width: 0;
+  height: 0;
+  background-image: url("/imgs/img1.jpg");
+  border-radius: 50%;
+  background-size: cover;
+}
+
+li:hover .summary {
+  display: block;
+}
+
+.story2 {
+  margin: 0 left;
+  display: block;
+  padding: 40px;
+  opacity: 0;
+  transition: 1s;
+  width: 0;
+  height: 0;
+  background-image: url("/imgs/img2.jpg");
+  border-radius: 50%;
+  background-size: cover;
+}
+
+.story3 {
+  margin: 0;
+  display: block;
+  padding: 40px;
+  opacity: 0;
+  transition: 1s;
+  width: 0;
+  height: 0;
+  background-image: url("/imgs/img3.jpg");
+  border-radius: 50%;
+  float: right;
+  background-size: cover;
+}
+
+.story1.show,
+.story2.show,
+.story3.show {
+  opacity: 1;
+  height: 100px;
+  width: 100px;
+}
+
+.up-down {
+  height: 350px;
+}
+
+.summary {
+  height: 400px;
+  width: 50%;
+  background: linear-gradient(
+    45deg,
+    rgba(54, 37, 54, 0.5),
+    rgba(80, 50, 80, 0.9)
+  );
+  display: none;
+  position: fixed;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  margin: 100px 25%;
+  top: 0;
+  left: 0;
+  text-align: left;
+  z-index: 300;
+  padding: 30px;
+}
+
+.scroll-prompt {
+  animation: bouncing-arrow 2s infinite;
+  animation-name: bouncing-arrow;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-fill-mode: none;
+  animation-play-state: running;
+  animation-timing-function: ease-in-out;
+  display: inline-block;
+  height: 4rem;
+  margin-bottom: -1.5rem;
+  position: relative;
+  width: 4rem;
+}
+
+.down-arrow {
+  width: 70px;
+  transform: rotate(-90deg);
+  position: absolute;
+  bottom: 20px;
+}
+
+ul {
+  padding: 50px 200px;
+}
