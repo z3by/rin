@@ -1,98 +1,98 @@
 .nav-line {
-    height: 9vh;
-    width: 2px;
-    background: var(--color-3);
-    position: relative;
+  height: 9vh;
+  width: 2px;
+  background: var(--color-3);
+  position: relative;
 }
 
 .nav-circle {
-    position: relative;
-    height: 20px;
-    width: 20px;
-    left: -10px;
-    border: solid var(--color-3) 2px;
-    border-radius: 50%;
+  position: relative;
+  height: 20px;
+  width: 20px;
+  left: -10px;
+  border: solid var(--color-3) 2px;
+  border-radius: 50%;
 }
 
 .nav-circle-text {
-    color: var(--color-2);
-    font-family: var(--main-font);
-    font-size: 25px;
-    text-transform: uppercase;
-    position: relative;
-    left: 30px;
-    top: -5px;
-    display: none;
+  color: var(--color-2);
+  font-family: var(--main-font);
+  font-size: 25px;
+  text-transform: uppercase;
+  position: relative;
+  left: 30px;
+  top: -5px;
+  display: none;
 }
 
 .nav-circle:hover {
-    border: solid var(--color-2) 2px;
-    transition: var(--smooth);
-    background: var(--color-2);
+  border: solid var(--color-2) 2px;
+  transition: var(--smooth);
+  background: var(--color-2);
 }
 
 .nav-circle:active {
-    background: var(--color-3);
+  background: var(--color-3);
 }
 
 .nav-circle:active a {
-    color: var(--color-3);
+  color: var(--color-3);
 }
 
 .nav-circle.active {
-    border: solid var(--color-2) 2px;
-    background: var(--color-2);
-    transition: var(--smooth);
+  border: solid var(--color-2) 2px;
+  background: var(--color-2);
+  transition: var(--smooth);
 }
 
 .nav-circle:hover a {
-    display: initial;
-    animation: fadeInSlideRight .5s ease;
+  display: initial;
+  animation: fadeInSlideRight 0.5s ease;
 }
 
 .navbar {
-    position: fixed;
-    height: 90vh;
-    left: 3vw;
-    z-index: 100;
-    margin: 5vh auto;
+  position: fixed;
+  height: 90vh;
+  left: 3vw;
+  z-index: 100;
+  margin: 5vh auto;
 }
 
 .navbar-middle {
-    height: 80%;
-    position: relative;
-    left: 50px;
+  height: 80%;
+  position: relative;
+  left: 50px;
 }
 
 .logo {
-    height: 100px;
-    width: 100px;
-    border: solid var(--color-3) 2px;
-    border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  border: solid var(--color-3) 2px;
+  border-radius: 50%;
 }
 
 .logo-img {
-    max-width: 95px;
-    margin-top: 28px;
-    margin-left: 3px;
+  max-width: 95px;
+  margin-top: 28px;
+  margin-left: 3px;
 }
 
 .counter {
-    height: 60px;
-    width: 100px;
-    border: solid var(--color-3) 2px;
-    border-radius: 15px;
-    position: relative;
-    left: -50px;
+  height: 60px;
+  width: 100px;
+  border: solid var(--color-3) 2px;
+  border-radius: 15px;
+  position: relative;
+  left: -50px;
 }
 
 .counter span {
-    color: var(--color-2);
-    margin-left: 6px;
+  color: var(--color-2);
+  margin-left: 6px;
 }
 
 .counter h4 {
-    text-align: center;
-    color: var(--color-3);
-    font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  color: var(--color-3);
+  font-family: Arial, Helvetica, sans-serif;
 }
