@@ -21,7 +21,7 @@ export default class Navbar extends Component {
         <div className="navbar">
           <div className="logo">
             <Link to={"/"}>
-              <img src="imgs/old-logo.png" alt="" className="logo-img" />
+              <img src="/imgs/old-logo.png" alt="" className="logo-img" />
             </Link>
           </div>
           <div className="navbar-middle">

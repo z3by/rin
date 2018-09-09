@@ -148,6 +148,11 @@
     left: 23vw;
   }
 
+  .circle-overlay {
+    width: 60vw;
+    height: 60vw;
+    left: 23vw;
+  }
   .navbar {
     display: none;
   }
@@ -174,6 +179,7 @@
     bottom: 20%;
     right: 20%;
   }
+
 }
 
 @media (max-width: 768px) {
