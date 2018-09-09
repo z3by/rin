@@ -25,7 +25,6 @@ export default class Navbar extends Component {
             </Link>
           </div>
           <div className="navbar-middle">
-            <div className="nav-line" />
             <Link to={"/stories"}>
               <div
                 className="nav-circle active"
@@ -35,7 +34,6 @@ export default class Navbar extends Component {
                 <a className="nav-circle-text">stories</a>
               </div>
             </Link>
-            <div className="nav-line" />
             <Link to={"/map"}>
               <div
                 className="nav-circle"
@@ -45,7 +43,6 @@ export default class Navbar extends Component {
                 <a className="nav-circle-text">map</a>
               </div>
             </Link>
-            <div className="nav-line" />
             <Link to={"/data"}>
               <div
                 className="nav-circle"
@@ -55,7 +52,6 @@ export default class Navbar extends Component {
                 <a className="nav-circle-text">data</a>
               </div>
             </Link>
-            <div className="nav-line" />
             <Link to={"/library"}>
               <div
                 className="nav-circle"
@@ -65,7 +61,6 @@ export default class Navbar extends Component {
                 <a className="nav-circle-text">library</a>
               </div>
             </Link>
-            <div className="nav-line" />
             <Link to={"/about"}>
               <div
                 className="nav-circle"
@@ -75,7 +70,6 @@ export default class Navbar extends Component {
                 <a className="nav-circle-text">about</a>
               </div>
             </Link>
-            <div className="nav-line" />
             <div className="counter">
               <h4>
                 {this.state.counter}

@@ -25,7 +25,7 @@
 
 .nav-link {
   font-family: var(--main-font);
-  color: #99b;
+  color: #99a;
   font-size: 5rem;
   text-transform: uppercase;
   font-weight: 100;
@@ -43,13 +43,12 @@
   cursor: pointer;
   color: var(--color-2);
   transition: var(--smooth);
-  font-weight: 500;
 }
 
 .circle {
-  opacity: 0.5;
-  height: 70vh;
-  width: 70vh;
+  opacity: 0.3;
+  height: 58vh;
+  width: 58vh;
   position: absolute;
   border-radius: 50%;
   left: 33%;
@@ -61,9 +60,9 @@
 }
 
 .circle-overlay {
-  opacity: 0.5;
-  height: 70vh;
-  width: 70vh;
+  opacity: 0.7;
+  height: 58vh;
+  width: 58vh;
   position: absolute;
   border-radius: 50%;
   left: 33%;
@@ -72,8 +71,8 @@
 }
 .up-rec,
 .down-rec {
-  height: 30vh;
-  width: 700px;
+  height: 20vh;
+  width: 58vh;
   position: absolute;
   z-index: 1;
   background: url("https://source.unsplash.com/random");
@@ -85,55 +84,36 @@
 }
 
 .up-rec {
-  top: 10%;
+  top: 20%;
   left: 20%;
 }
 
 .down-rec {
-  bottom: 10%;
+  bottom: 20%;
   right: 20%;
 }
 
 .up-rec-overlay,
 .down-rec-overlay {
   mix-blend-mode: screen;
-  opacity: 0.5;
+  opacity: 0.8;
   position: absolute;
-  height: 30vh;
-  width: 700px;
+  height: 20vh;
+  width: 58vh;
   z-index: 5;
   transition: left ease 1s, right ease 1s;
 }
 
 .down-rec-overlay {
   background: linear-gradient(45deg, var(--color-2), var(--color-4));
-  bottom: 10%;
+  bottom: 20%;
   right: 20%;
 }
 
 .up-rec-overlay {
   background: linear-gradient(45deg, var(--color-2), var(--color-4));
-  top: 10%;
+  top: 20%;
   left: 20%;
-}
-
-.social {
-  position: absolute;
-  top: 10px;
-  right: 40px;
-  z-index: 11;
-  display: flex;
-  width: 150px;
-  justify-content: space-between;
-}
-
-.social-item {
-  list-style: none;
-}
-
-.social-icon {
-  font-size: 35px;
-  color: var(--color-2);
 }
 
 .nav {
