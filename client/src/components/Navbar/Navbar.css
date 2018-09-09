@@ -1,51 +1,63 @@
-.nav-line {
-  height: 9vh;
-  width: 2px;
-  background: var(--color-3);
+.nav-rec {
   position: relative;
+  height: 10px;
+  width: 22px;
+  background: rgba(255, 255, 255, .3);
 }
 
-.nav-circle {
-  position: relative;
-  height: 20px;
-  width: 20px;
-  left: -10px;
-  border: solid var(--color-3) 2px;
+.rounded {
+  height: 22px;
+  width: 22px;
   border-radius: 50%;
 }
 
-.nav-circle-text {
+.nav-rec-text {
   color: var(--color-2);
   font-family: var(--main-font);
-  font-size: 25px;
+  font-size: 18px;
+  line-height: 10px;
   text-transform: uppercase;
   position: relative;
   left: 30px;
-  top: -5px;
   display: none;
 }
 
-.nav-circle:hover {
-  border: solid var(--color-2) 2px;
+.nav-rec:hover {
   transition: var(--smooth);
   background: var(--color-2);
 }
 
-.nav-circle:active {
+.nav-rec:active {
   background: var(--color-3);
+  /* border-radius: 50%; */
 }
 
-.nav-circle:active a {
+.nav-rec:active a {
   color: var(--color-3);
 }
 
-.nav-circle.active {
-  border: solid var(--color-2) 2px;
+.nav-rec.active {
+  height: 10px;
+  width: 22px;
+  /* border-radius: 50%; */
   background: var(--color-2);
   transition: var(--smooth);
 }
 
-.nav-circle:hover a {
+.nav-rec.active.rounded {
+  height: 22px;
+  width: 22px;
+}
+
+.nav-rec.active a {
+  line-height: 10px;
+}
+
+.nav-rec.active.rounded a {
+  line-height: 0px;
+}
+
+.nav-rec:hover a {
   display: initial;
   animation: fadeInSlideRight 0.5s ease;
 }
@@ -55,35 +67,37 @@
   height: 90vh;
   left: 3vw;
   z-index: 100;
-  margin: 5vh auto;
+  top: 5vh;
 }
 
 .navbar-middle {
-  height: 80%;
   position: relative;
-  left: 50px;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .logo {
-  height: 100px;
-  width: 100px;
-  border: solid var(--color-3) 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 14vh;
+  width: 14vh;
   border-radius: 50%;
+  background: rgba(255, 255, 255, .3);
 }
 
 .logo-img {
   max-width: 95px;
-  margin-top: 28px;
-  margin-left: 3px;
 }
 
 .counter {
-  height: 60px;
-  width: 100px;
-  border: solid var(--color-3) 2px;
-  border-radius: 15px;
+  height: 6vh;
+  width: 14vh;
   position: relative;
-  left: -50px;
+  background: rgba(255, 255, 255, .3);
 }
 
 .counter span {
@@ -93,6 +107,8 @@
 
 .counter h4 {
   text-align: center;
+  margin: 0;
   color: var(--color-3);
   font-family: Arial, Helvetica, sans-serif;
+  line-height: 6vh;
 }

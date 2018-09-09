@@ -181,6 +181,7 @@ export default class Landing extends Component {
               </a>
             </li>
           </ul>
+
           <div className="circle fadeIn" />
           <div className="circle-overlay fadeIn" />
           <div className="up-rec slideInRight" />

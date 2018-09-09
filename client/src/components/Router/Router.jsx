@@ -10,6 +10,7 @@ import Landing from "../Landing/Landing.component";
 import Library from "../Library/Library.component";
 import Navbar from "../Navbar/Navbar.component";
 import Story from "../Story/Story.component";
+import Members from "../Members/Members.component";
 
 export default class MyRouter extends Component {
   render() {
@@ -24,6 +25,7 @@ export default class MyRouter extends Component {
             <Route path="/data" component={Data} />
             <Route path="/library" component={Library} />
             <Route path="/about" component={About} />
+            <Route path="/members" component={Members} />
             <Route exact path="/" component={Landing} />
           </Switch>
         </div>
