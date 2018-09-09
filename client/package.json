@@ -4,10 +4,11 @@
   "private": true,
   "dependencies": {
     "font-awesome": "^4.7.0",
-    "fontawesome": "^4.7.2",
+    "google-map-react": "^1.0.6",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
-    "react-scripts": "^1.1.4"
+    "react-scripts": "^1.1.4",
+    "scrollmagic": "^2.0.5"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,0 +1,25 @@
+.about {
+  background: var(--color-1);
+  height: 100vh;
+}
+
+h1 {
+  font-size: 60px;
+  margin: 0;
+  padding: 10%;
+  font-family: var(--main-font);
+}
+
+.team li img {
+  height: 40vw;
+  width: 40vw;
+}
+
+.team li {
+  display: inline-block;
+  margin: 30px;
+}
+
+p {
+  font-size: 23px;
+}
