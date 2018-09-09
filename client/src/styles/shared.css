@@ -14,18 +14,55 @@ body {
   margin: 0;
 }
 
-::selection {
-  background: transparent;
-}
-
-.shrink {
-  animation-name: shrink;
-  animation-duration: 1s;
-  animation-timing-function: var(--smooth);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
 }
 
 a {
   text-decoration: none;
+}
+
+label {
+  font-family: var(--main-font);
+  display: block;
+  color: var(--color-2);
+  font-size: 3vw;
+  margin: 0;
+  justify-self: left;
+}
+
+input {
+  width: 80%;
+  height: 40px;
+  font-size: 30px;
+  margin: 0;
+  color: var(--color-1);
+  font-family: var(--main-font);
+}
+
+form {
+  width: 30vw;
+  padding: 50px 25px;
+  background: rgba(255, 255, 255, 0.3);
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title {
+  color: var(--color-2);
+  font-size: 3vw;
+  font-family: var(--main-font);
+  text-align: center;
+  padding-top: 100px;
 }
 
 .arrows {
