@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import "./Stories.css";
 import ScrollMagic from "scrollmagic";
 import { Link, NavLink } from "react-router-dom";
-import Story from "../Story/Story.component";
-//import TweenLite from "gsap";
-//import scrollTo from "../../node_modules/gsap/ScrollToPlugin";
 
 class Stories extends Component {
   state = {

@@ -147,6 +147,7 @@
     height: 60vw;
     left: 23vw;
   }
+
   .circle-overlay {
     width: 60vw;
     height: 60vw;
@@ -178,8 +179,7 @@
     bottom: 20%;
     right: 20%;
   }
-  .social {
-  }
+
 }
 
 @media (max-width: 768px) {
