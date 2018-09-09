@@ -69,6 +69,7 @@
   z-index: 0;
   background: linear-gradient(45deg, var(--color-2), var(--color-4));
 }
+
 .up-rec,
 .down-rec {
   height: 20vh;
@@ -133,6 +134,7 @@
     height: 60vw;
     left: 23vw;
   }
+
   .navbar {
     display: none;
   }
@@ -159,7 +161,6 @@
     bottom: 20%;
     right: 20%;
   }
-
 }
 
 @media (max-width: 768px) {

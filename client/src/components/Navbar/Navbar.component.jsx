@@ -61,21 +61,30 @@ export default class Navbar extends Component {
                 <a className="nav-circle-text">library</a>
               </div>
             </Link>
-            <Link to={"/about"}>
+            <Link to={"/members"}>
               <div
                 className="nav-circle"
                 index="5"
                 onClick={this.onClickCircle}
               >
+                <a className="nav-circle-text">members</a>
+              </div>
+            </Link>
+            <Link to={"/about"}>
+              <div
+                className="nav-circle"
+                index="6"
+                onClick={this.onClickCircle}
+              >
                 <a className="nav-circle-text">about</a>
               </div>
             </Link>
-            <div className="counter">
-              <h4>
-                {this.state.counter}
-                <span>$</span>
-              </h4>
-            </div>
+          </div>
+          <div className="counter">
+            <h4>
+              {this.state.counter}
+              <span>$</span>
+            </h4>
           </div>
         </div>
       </div>

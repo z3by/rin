@@ -1,9 +1,7 @@
 .nav-circle {
   position: relative;
-  margin: 12vh 0;
   height: 10px;
   width: 22px;
-  left: -10px;
   background: rgba(255, 255, 255, .3);
 }
 
@@ -40,6 +38,10 @@
   transition: var(--smooth);
 }
 
+.nav-circle.active a {
+  line-height: 22px;
+}
+
 .nav-circle:hover a {
   display: initial;
   animation: fadeInSlideRight 0.5s ease;
@@ -50,32 +52,37 @@
   height: 90vh;
   left: 3vw;
   z-index: 100;
-  margin: 5vh auto;
+  top: 5vh;
 }
 
 .navbar-middle {
-  height: 80%;
   position: relative;
-  left: 50px;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .logo {
-  height: 100px;
-  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 14vh;
+  width: 14vh;
   border-radius: 50%;
+  background: rgba(255, 255, 255, .3);
 }
 
 .logo-img {
   max-width: 95px;
-  margin-top: 28px;
-  margin-left: 3px;
 }
 
 .counter {
-  height: 60px;
-  width: 100px;
+  height: 6vh;
+  width: 14vh;
   position: relative;
-  left: -50px;
+  background: rgba(255, 255, 255, .3);
 }
 
 .counter span {
@@ -85,6 +92,8 @@
 
 .counter h4 {
   text-align: center;
+  margin: 0;
   color: var(--color-3);
   font-family: Arial, Helvetica, sans-serif;
+  line-height: 6vh;
 }
