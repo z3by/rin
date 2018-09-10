@@ -142,6 +142,7 @@ export default class Landing extends Component {
       <div>
         <div className="landing">
           <div className="nav">
+            <div className="partners" />
             <ul className="nav-group">
               <li className="nav-item">
                 <Link to={"/stories"} className="nav-link active">
