@@ -130,14 +130,64 @@
   transition: var(--smooth);
 }
 
+@keyframes prtnrsFadeInOut {
+  0% {
+    opacity: 1;
+  }
+  17% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+  92% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .partners {
   position: absolute;
   height: 6vh;
   width: 14vh;
-  background-color: blue;
-  top: 5vh;
+  background-color: rgba(255, 255, 255, 0.3);
+  top: 7vh;
   left: 88vw;
   margin: 0 auto;
+}
+
+.partners img {
+  position: absolute;
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+  height: 35px;
+  width: 35px;
+  left: 30%;
+  top: 3px;
+  animation-name: prtnrsFadeInOut;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 8s;
+}
+
+.i1 {
+  animation-delay: 6s;
+}
+
+.i2 {
+  animation-delay: 4s;
+}
+
+.i3 {
+  animation-delay: 2s;
+}
+
+.i4 {
+  animation-delay: 0;
 }
 
 @media (max-width: 1024px) {

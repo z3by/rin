@@ -141,8 +141,13 @@ export default class Landing extends Component {
     return (
       <div>
         <div className="landing">
+          <div className="partners">
+            <img className="i1" src="/imgs/img1.jpg" />
+            <img className="i2" src="/imgs/img2.jpg" />
+            <img className="i3" src="/imgs/img3.jpg" />
+            <img className="i4" src="/imgs/bg.png" />
+          </div>
           <div className="nav">
-            <div className="partners" />
             <ul className="nav-group">
               <li className="nav-item">
                 <Link to={"/stories"} className="nav-link active">
