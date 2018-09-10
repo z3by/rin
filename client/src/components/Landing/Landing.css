@@ -1,7 +1,7 @@
 .landing {
   font-family: var(--main-font);
   height: 100vh;
-  background: radial-gradient(#414, var(--color-1));
+  background: radial-gradient(#324, var(--color-1));
   display: flex;
   align-items: center;
   z-index: -1;
@@ -11,7 +11,7 @@
 .nav-group {
   display: flex;
   flex-direction: row;
-  z-index: 10;
+  z-index: 11;
   transform: translateX(20vw);
 }
 
@@ -26,12 +26,12 @@
 .nav-link {
   font-family: var(--main-font);
   color: #99a;
-  font-size: 5rem;
+  font-size: 4vw;
   text-transform: uppercase;
   font-weight: 100;
   display: inline;
   margin: 0 140px;
-  z-index: 1;
+  z-index: 12;
   text-decoration: none;
 }
 
@@ -45,30 +45,40 @@
   transition: var(--smooth);
 }
 
+.shapes {}
+
 .circle {
   opacity: 0.3;
-  height: 58vh;
-  width: 58vh;
+  height: 30vw;
+  width: 30vw;
+  left: 32%;
   position: absolute;
   border-radius: 50%;
-  left: 33%;
   z-index: 0;
-  background: url("https://source.unsplash.com/random");
-  background-size: cover;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
+  overflow: hidden;
 }
 
 .circle-overlay {
-  opacity: 0.7;
-  height: 58vh;
-  width: 58vh;
+  opacity: 0.3;
+  height: 30vw;
+  width: 30vw;
+  left: 32%;
   position: absolute;
   border-radius: 50%;
-  left: 33%;
-  z-index: 0;
+  z-index: 8;
+  mix-blend-mode: lighten;
   background: linear-gradient(45deg, var(--color-2), var(--color-4));
 }
+
+.circle video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100;
+  height: 100vh;
+
+}
+
 
 .up-rec,
 .down-rec {
@@ -76,10 +86,9 @@
   width: 58vh;
   position: absolute;
   z-index: 1;
-  background: url("https://source.unsplash.com/random");
   background-size: cover;
   background-attachment: fixed;
-  opacity: 0.3;
+  opacity: 0.2;
   transition: left ease 1s, right ease 1s;
   background-repeat: no-repeat;
 }
@@ -96,8 +105,8 @@
 
 .up-rec-overlay,
 .down-rec-overlay {
-  mix-blend-mode: screen;
-  opacity: 0.8;
+  mix-blend-mode: lighten;
+  opacity: 0.3;
   position: absolute;
   height: 20vh;
   width: 58vh;
@@ -122,33 +131,38 @@
   transition: var(--smooth);
 }
 
-@media (max-width: 1024px) {
-  .circle {
-    width: 60vw;
-    height: 60vw;
-    left: 23vw;
-  }
 
-  .circle-overlay {
-    width: 60vw;
-    height: 60vw;
-    left: 23vw;
-  }
+/* for ipad screen size */
+@media (max-width: 1024px) {
 
   .navbar {
     display: none;
   }
 
-  .nav-group {
-    transform: translateX(25vw);
+  .circle {
+    height: 50vw;
+    width: 50vw;
+    left: 25%;
+    position: absolute;
+    border-radius: 50%;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .circle-overlay {
+    width: 50vw;
+    height: 50vw;
+    left: 25%;
   }
 
   .up-rec,
   .down-rec,
   .down-rec-overlay,
   .up-rec-overlay {
-    height: 20vh;
+    height: 13vh;
+    width: 50vw;
   }
+
 
   .up-rec,
   .up-rec-overlay {
@@ -161,6 +175,10 @@
     bottom: 20%;
     right: 20%;
   }
+
+  .nav-link {
+    font-size: 6vw;
+  }
 }
 
 @media (max-width: 768px) {
@@ -168,40 +186,53 @@
     display: none;
   }
 
-  .nav-link {
-    font-size: 40px;
+  .circle {
+    left: 29%;
   }
 
-  .nav-group {
-    transform: translateX(-4vw);
+  .circle-overlay {
+    left: 29%;
   }
+
 }
 
-@media (max-width: 400px) {
+/* for small phones screen */
+@media (max-width: 414px) {
   .navbar {
     display: none;
   }
 
-  .up-rec,
-  .down-rec,
-  .down-rec-overlay,
-  .up-rec-overlay {
-    width: 250px;
+  .circle {
+    height: 50vw;
+    width: 50vw;
   }
 
-  .nav-link {
-    font-size: 30px;
+  .up-rec,
+  .up-rec-overlay {
+    top: 25%;
+  }
+
+
+  .down-rec,
+  .down-rec-overlay {
+    bottom: 25%;
   }
 
   .nav-group {
-    transform: translateX(-8vw);
+    margin-left: -80px;
+  }
+}
+
+/* for xsmall phones screens */
+
+@media (max-width: 414px) {
+
+  .nav-group {
+    margin-left: -115px;
   }
 
-  .social {
-    right: 30vw;
+  .nav-link {
+    font-size: 10vw;
   }
 
-  .arrows {
-    right: 33vw;
-  }
 }
