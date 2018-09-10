@@ -1,10 +1,14 @@
 .dot {
-    background: var(--color-2);
-    height: 10px;
-    width: 10px;
-    border-radius: 50%;
+  background: var(--color-2);
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
 }
 
 .dot:hover {
-    background: red;
+  background: red;
+}
+.map-img {
+  padding: 20px;
+  color: palevioletred;
 }
