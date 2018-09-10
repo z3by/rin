@@ -12,10 +12,21 @@ export default class Landing extends Component {
   }
 
   componentDidMount() {
+    // bind the events to the local functions.
     window.onmousewheel = this.handleWheel;
     window.onkeydown = this.handleArrowsInput;
+    window.onmousemove = this.onMouseMove;
+    // rotate the arrows for the landing page.
     document.querySelector(".arrows").style.transform = "rotate(0)";
   }
+
+  onMouseMove = e => {
+    // get the mouse axis
+    const circleX = e.clientX;
+    const circleY = e.clientY;
+    document.querySelector(".effect-circle").style.top = circleY - 50 + "px";
+    document.querySelector(".effect-circle").style.left = circleX - 50 + "px";
+  };
 
   animateNext = () => {
     if (this.state.index < 4) {
@@ -179,6 +190,7 @@ export default class Landing extends Component {
 
           <div className="circle-overlay fadeIn" />
           <div className="circle fadeIn">
+            <div className="effect-circle" />
             <video
               src="/videos/UNHCR's.mp4"
               autoPlay
