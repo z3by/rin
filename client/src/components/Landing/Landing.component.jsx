@@ -31,6 +31,7 @@ export default class Landing extends Component {
           this.changeBackground();
           this.translateShapes();
           this.toggleOverlayColor();
+          this.changeVideo();
         }
       );
     } else {
@@ -54,6 +55,7 @@ export default class Landing extends Component {
           this.changeBackground();
           this.translateShapes();
           this.toggleOverlayColor();
+          this.changeVideo();
         }
       );
     } else {
@@ -86,6 +88,11 @@ export default class Landing extends Component {
     document
       .querySelector(".nav-group")
       .childNodes[this.state.index].firstChild.classList.add("active");
+  };
+
+  changeVideo = () => {
+    let random = Math.floor(Math.random() * 100);
+    document.querySelector(".circle-video").currentTime = random;
   };
 
   changeBackground = () => {
@@ -164,30 +171,23 @@ export default class Landing extends Component {
             </ul>
           </div>
 
-          <ul className="social">
-            <li className="social-item">
-              <a href="" className="social-link">
-                <i className="fa fa-twitter social-icon" />
-              </a>
-            </li>
-            <li className="social-item">
-              <a href="" className="social-link">
-                <i className="fa fa-facebook social-icon" />
-              </a>
-            </li>
-            <li className="social-item">
-              <a href="" className="social-link">
-                <i className="fa fa-instagram social-icon" />
-              </a>
-            </li>
-          </ul>
-
-          <div className="circle fadeIn" />
           <div className="circle-overlay fadeIn" />
-          <div className="up-rec slideInRight" />
-          <div className="up-rec-overlay slideInRight" />
-          <div className="down-rec slideInLeft" />
-          <div className="down-rec-overlay slideInLeft" />
+          <div className="circle fadeIn">
+            <video
+              src="/videos/UNHCR's.mp4"
+              autoPlay
+              muted
+              loop
+              className="circle-video"
+            />
+          </div>
+
+          <div className="shapes">
+            <div className="up-rec slideInRight" />
+            <div className="up-rec-overlay slideInRight" />
+            <div className="down-rec slideInLeft" />
+            <div className="down-rec-overlay slideInLeft" />
+          </div>
 
           <div className="arrows">
             <img src="imgs/arrow.png" alt="" onClick={this.animatePrev} />
