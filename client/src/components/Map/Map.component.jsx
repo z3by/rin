@@ -1,18 +1,23 @@
 import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
+import { withRouter } from "react-router-dom";
 import "./Map.css";
 
+const Dot = () => <div className="dot" />;
 export default class Map extends Component {
   state = {
-    position: {},
+    position: {
+      first: {},
+      second: {}
+    },
     center: {
       lat: 31.95,
       lng: 35.99
     },
-    zoom: 10
+    zoom: 5
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this.getUserLocation();
   }
 
@@ -21,8 +26,10 @@ export default class Map extends Component {
     navigator.geolocation.getCurrentPosition(position => {
       this.setState({
         position: {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
+          first: {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          }
         }
       });
     });
@@ -36,7 +43,12 @@ export default class Map extends Component {
           defaultCenter={this.state.center}
           defaultZoom={this.state.zoom}
           options={options}
-        />
+        >
+          <Dot
+            lat={this.state.position.first.lat}
+            lng={this.state.position.first.lng}
+          />
+        </GoogleMapReact>
       </div>
     );
   }
