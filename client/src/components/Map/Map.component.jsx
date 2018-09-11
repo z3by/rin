@@ -4,6 +4,7 @@ import "./Map.css";
 
 export default class Map extends Component {
   state = {
+    position: {},
     center: {
       lat: 31.95,
       lng: 35.99
@@ -11,7 +12,7 @@ export default class Map extends Component {
     zoom: 10
   };
 
-  componentDidMount() {
+  componentWillMount() {
     this.getUserLocation();
   }
 
@@ -19,8 +20,10 @@ export default class Map extends Component {
   getUserLocation = () => {
     navigator.geolocation.getCurrentPosition(position => {
       this.setState({
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
+        position: {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        }
       });
     });
   };
@@ -32,6 +35,7 @@ export default class Map extends Component {
           bootstrapURLKeys={{ key: "AIzaSyAxYHlwX3Vu7-ygTF2wiB3sjSyFU7mAMJE" }}
           defaultCenter={this.state.center}
           defaultZoom={this.state.zoom}
+          options={options}
         />
       </div>
     );

@@ -14,9 +14,9 @@ export default class Members extends Component {
             <label>Password</label>
             <input type="password" placeholder="Enter Password" />
             <input type="submit" value="Login" />
-            <a href="#">Lost your password?</a>
+            <a>Lost your password?</a>
             <br />
-            <a href="#">Don't have an account?</a>
+            <a>Don't have an account?</a>
           </form>
         </div>
       </div>
