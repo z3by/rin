@@ -2,10 +2,48 @@ import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
 import "./Map.css";
 
+export default class Map extends Component {
+  state = {
+    center: {
+      lat: 31.95,
+      lng: 35.99
+    },
+    zoom: 10
+  };
+
+  componentDidMount() {
+    this.getUserLocation();
+  }
+
+  // get the user location;
+  getUserLocation = () => {
+    navigator.geolocation.getCurrentPosition(position => {
+      this.setState({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      });
+    });
+  };
+
+  render() {
+    return (
+      <div style={{ height: "100vh", width: "100%" }} className="map">
+        <GoogleMapReact
+          options={options}
+          bootstrapURLKeys={{ key: "AIzaSyAxYHlwX3Vu7-ygTF2wiB3sjSyFU7mAMJE" }}
+          defaultCenter={this.state.center}
+          defaultZoom={this.state.zoom}
+        >
+          <div className="dots">
+            <div className="dot" lat={this.state.lat} lng={this.state.lng} />
+          </div>
+        </GoogleMapReact>
+      </div>
+    );
+  }
+}
+
 const options = {
-  panControl: false,
-  mapTypeControl: false,
-  scrollwheel: false,
   styles: [
     {
       elementType: "geometry",
@@ -298,26 +336,3 @@ const options = {
     }
   ]
 };
-
-export default class Map extends Component {
-  state = {
-    center: {
-      lat: 31.95,
-      lng: 35.99
-    },
-    zoom: 1
-  };
-
-  render() {
-    return (
-      <div style={{ height: "100vh", width: "100%" }} className="map">
-        <GoogleMapReact
-          options={options}
-          bootstrapURLKeys={{ key: "AIzaSyAxYHlwX3Vu7-ygTF2wiB3sjSyFU7mAMJE" }}
-          defaultCenter={this.state.center}
-          defaultZoom={this.state.zoom}
-        />
-      </div>
-    );
-  }
-}
