@@ -27,6 +27,10 @@ export default class Landing extends Component {
     }
 
     // get the mouse axis
+    if (!document.querySelector(".effect-circle")) {
+      return;
+    }
+
     const circleX = e.clientX;
     const circleY = e.clientY;
     document.querySelector(".effect-circle").style.top = circleY - 50 + "px";
@@ -158,10 +162,10 @@ export default class Landing extends Component {
       <div>
         <div className="landing">
           <div className="partners">
-            <img className="i1" src="/imgs/img1.jpg" />
-            <img className="i2" src="/imgs/img2.jpg" />
-            <img className="i3" src="/imgs/img3.jpg" />
-            <img className="i4" src="/imgs/bg.png" />
+            <img className="i1" src="/imgs/ikea.png" />
+            <img className="i2" src="/imgs/ibm.png" />
+            <img className="i3" src="/imgs/citi.png" />
+            <img className="i4" src="/imgs/google.png" />
           </div>
           <div className="nav">
             <ul className="nav-group">

@@ -28,12 +28,11 @@ export default class Map extends Component {
   render() {
     return (
       <div style={{ height: "100vh", width: "100%" }} className="map">
-        {/* <GoogleMapReact
+        <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyAxYHlwX3Vu7-ygTF2wiB3sjSyFU7mAMJE" }}
           defaultCenter={this.state.center}
           defaultZoom={this.state.zoom}
-        /> */}
-        <img src="/imgs/map.svg" className="map-img" />
+        />
       </div>
     );
   }
