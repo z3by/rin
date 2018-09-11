@@ -21,6 +21,11 @@ export default class Landing extends Component {
   }
 
   onMouseMove = e => {
+    // exit if not on the landing page
+    if (!document.querySelector(".effect-circle")) {
+      return;
+    }
+
     // get the mouse axis
     const circleX = e.clientX;
     const circleY = e.clientY;
