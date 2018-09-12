@@ -52,6 +52,7 @@ label {
   bottom: 2.5vh;
   right: 50px;
   z-index: 11;
+  cursor: pointer;
   margin: 0;
   transition: var(--smooth);
 }
@@ -61,7 +62,7 @@ label {
 }
 
 .arrows img:hover {
-  filter: brightness(1.5);
+  filter: brightness(1.5) saturate(.4);
 }
 
 .arrows img:nth-child(2) {

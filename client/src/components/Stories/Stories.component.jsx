@@ -66,7 +66,6 @@ class Stories extends Component {
         <div className="video-container">
           <video loop autoPlay muted>
             <source src={this.state.videoURL} type="video/mp4" />
-            <source src={this.state.videoURL} type="video/ogg" />
             Your browser does not support the video tag.
           </video>
           <div className="overlay-desc">

@@ -36,7 +36,7 @@
 
 .nav-link {
   font-family: var(--main-font);
-  color: #99a;
+  color: rgba(255, 255, 255, 0.1);
   font-size: 4vw;
   text-transform: uppercase;
   font-weight: 100;

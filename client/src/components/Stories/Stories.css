@@ -6,8 +6,7 @@
 .video-container video {
   height: 100vh;
   width: 100%;
-  padding-top: 3px;
-  /* max-height: 100%; */
+  opacity: .4;
 }
 
 .video-container {
@@ -15,9 +14,9 @@
 }
 
 .overlay-desc {
-  background: rgba(0, 0, 0, 0);
+  background: linear-gradient(transparent, var(--color-1));
   position: absolute;
-  top: 0;
+  top: -200px;
   right: 0;
   bottom: 0;
   left: 0;
@@ -29,7 +28,7 @@
 .overlay-desc h1 {
   color: var(--color-2);
   margin: 0;
-  font-size: 700%;
+  font-size: 500%;
   text-transform: uppercase;
   font-family: var(--main-font);
   font-weight: 100;
@@ -102,11 +101,9 @@ li:hover .summary {
   font-family: var(--main-font);
   height: 400px;
   width: 50%;
-  background: linear-gradient(
-    45deg,
+  background: linear-gradient(45deg,
     rgba(54, 37, 54, 0.5),
-    rgba(80, 50, 80, 0.9)
-  );
+    rgba(80, 50, 80, 0.9));
   display: none;
   position: fixed;
   color: white;
@@ -139,6 +136,7 @@ li:hover .summary {
 } */
 
 @keyframes bouncing-arrow {
+
   0%,
   20%,
   50%,
@@ -155,6 +153,7 @@ li:hover .summary {
     transform: translate3d(0, -5px, 0);
   }
 }
+
 .down-arrow {
   position: absolute;
   bottom: 30px;
@@ -172,12 +171,13 @@ li:hover .summary {
 .down-arrow-img {
   width: 80px;
   transform: rotate(-90deg);
+  bottom: 20%;
+  cursor: pointer;
 }
 
 .srories-items {
   list-style: none;
   padding: 50px 200px;
-  /* z-index: 7; */
 }
 
 .vertical-line {
@@ -187,7 +187,6 @@ li:hover .summary {
   position: absolute;
   left: 673px;
   opacity: 0;
-  /* z-index: 0; */
 }
 
 .vertical-line.show {
