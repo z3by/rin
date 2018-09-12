@@ -28,12 +28,29 @@ export default class Map extends Component {
     });
   };
 
+  // mouse hover handler for the spectrum;
+  handleMouseHover = (e) => {
+    const index = e.target.dataset.index;
+    
+  }
+
   render() {
     return (
       <div
         style={{ height: "100vh", width: "100%" }}
         className="map fadeInFast"
       >
+      <div className="filter-spectrum">
+      <ul className="spectrum">
+        <li className="spectrum-item" data-index={0} onMouseEnter={this.handleMouseHover}></li>
+        <li className="spectrum-item" data-index={1} onMouseEnter={this.handleMouseHover}></li>
+        <li className="spectrum-item" data-index={2} onMouseEnter={this.handleMouseHover}></li>
+        <li className="spectrum-item" data-index={3} onMouseEnter={this.handleMouseHover}></li>
+        <li className="spectrum-item" data-index={4} onMouseEnter={this.handleMouseHover}></li>
+        <li className="spectrum-item" data-index={5} onMouseEnter={this.handleMouseHover}></li>
+        <li className="spectrum-item" data-index={6} onMouseEnter={this.handleMouseHover}></li>
+      </ul>
+      </div>
         <GoogleMapReact
           options={options}
           bootstrapURLKeys={{ key: "AIzaSyAxYHlwX3Vu7-ygTF2wiB3sjSyFU7mAMJE" }}
