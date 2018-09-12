@@ -37,10 +37,10 @@ class Stories extends Component {
 
     var controller = new ScrollMagic.Controller();
 
-    new ScrollMagic.Scene({
-      triggerElement: ".story1"
+    var scene = new ScrollMagic.Scene({
+      triggerElement: ".story1, .vertical-line, .globe-jordan"
     })
-      .setClassToggle(".story1", "show")
+      .setClassToggle(".story1, .vertical-line, .globe-jordan", "show")
       .addTo(controller);
 
     new ScrollMagic.Scene({
@@ -71,30 +71,36 @@ class Stories extends Component {
           </video>
           <div className="overlay-desc">
             <h1>Success Stories</h1>
-            <img src="/imgs/arrow.png" className="down-arrow" alt="" />
+            <a href="#page-content" className="down-arrow">
+              <img src="/imgs/arrow.png" className="down-arrow-img" />
+            </a>
           </div>
         </div>
 
-        <ul className="srories-items">
-          <li>
-            <Link
-              to={"/stories/" + this.state.stories[0].id}
-              className="story1"
-            />
-          </li>
-          <li>
-            <Link
-              to={"/stories/" + this.state.stories[1].id}
-              className="story2"
-            />
-          </li>
-          <li>
-            <Link
-              to={"/stories/" + this.state.stories[2].id}
-              className="story3"
-            />
-          </li>
-        </ul>
+        <div className="vertical-line" />
+        <div className="globe-jordan" />
+        <div id="page-content">
+          <ul className="srories-items">
+            <li>
+              <Link
+                to={"/stories/" + this.state.stories[0].id}
+                className="story1"
+              />
+            </li>
+            <li>
+              <Link
+                to={"/stories/" + this.state.stories[1].id}
+                className="story2"
+              />
+            </li>
+            <li>
+              <Link
+                to={"/stories/" + this.state.stories[2].id}
+                className="story3"
+              />
+            </li>
+          </ul>
+        </div>
 
         <div className="up-down" />
       </div>

@@ -3,11 +3,11 @@
   background-size: cover;
 }
 
-video {
-  height: auto;
-  vertical-align: middle;
+.video-container video {
+  height: 100vh;
   width: 100%;
-  /* margin: 0 auto; */
+  padding-top: 3px;
+  /* max-height: 100%; */
 }
 
 .video-container {
@@ -120,7 +120,7 @@ li:hover .summary {
   padding: 30px;
 }
 
-.scroll-prompt {
+/* .scroll-prompt {
   animation: bouncing-arrow 2s infinite;
   animation-name: bouncing-arrow;
   animation-duration: 2s;
@@ -136,16 +136,80 @@ li:hover .summary {
   margin-bottom: -1.5rem;
   position: relative;
   width: 4rem;
+} */
+
+@keyframes bouncing-arrow {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateZ(0);
+  }
+
+  40% {
+    transform: translate3d(0, -10px, 0);
+  }
+
+  60% {
+    transform: translate3d(0, -5px, 0);
+  }
+}
+.down-arrow {
+  position: absolute;
+  bottom: 30px;
+
+  animation-name: bouncing-arrow;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-fill-mode: none;
+  animation-play-state: running;
 }
 
-.down-arrow {
-  width: 70px;
+.down-arrow-img {
+  width: 80px;
   transform: rotate(-90deg);
-  position: absolute;
-  bottom: 20px;
 }
 
 .srories-items {
   list-style: none;
   padding: 50px 200px;
+  /* z-index: 7; */
+}
+
+.vertical-line {
+  background-color: var(--color-2);
+  height: 0px;
+  width: 0px;
+  position: absolute;
+  left: 673px;
+  opacity: 0;
+  /* z-index: 0; */
+}
+
+.vertical-line.show {
+  height: 300px;
+  width: 3px;
+  opacity: 1;
+}
+
+.globe-jordan {
+  position: absolute;
+  background-image: url("/imgs/globe.png");
+  background-size: cover;
+  transition: 1s;
+  width: 0%;
+  height: 0%;
+  left: 500px;
+  top: 950px;
+  opacity: 0;
+}
+
+.globe-jordan.show {
+  opacity: 1;
+  width: 25%;
+  height: 45%;
 }
