@@ -1,10 +1,12 @@
+@import url("https://fonts.googleapis.com/css?family=Baloo+Tammudu|Comfortaa|Dosis|Exo+2|Noto+Sans+JP|Nunito|Quicksand");
+
 :root {
   --color-1: #160c16;
   --color-2: #f06841;
   --color-3: #78ffd6;
   --color-4: #007991;
   --color-5: #f2e4b1;
-  --main-font: Calibri, "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
+  --main-font: "Nunito", "Comfortaa", "Baloo Tammudu";
   --smooth: all 1300ms cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
@@ -12,26 +14,46 @@ body {
   margin: 0;
 }
 
-::selection {
-  background: transparent;
-}
-
-.shrink {
-  animation-name: shrink;
-  animation-duration: 1s;
-  animation-timing-function: var(--smooth);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
 }
 
 a {
   text-decoration: none;
 }
 
+label {
+  font-family: var(--main-font);
+  display: block;
+  color: var(--color-2);
+  font-size: 3vw;
+  margin: 0;
+  justify-self: left;
+}
+
+.title {
+  color: var(--color-2);
+  font-size: 3vw;
+  font-family: var(--main-font);
+  text-align: center;
+  padding-top: 100px;
+}
+
 .arrows {
   transform: rotate(90deg) translateX(-40px);
   position: absolute;
-  bottom: 10px;
+  bottom: 2.5vh;
   right: 50px;
   z-index: 11;
+  cursor: pointer;
+  margin: 0;
   transition: var(--smooth);
 }
 
@@ -40,7 +62,7 @@ a {
 }
 
 .arrows img:hover {
-  filter: brightness(1.5);
+  filter: brightness(1.5) saturate(.4);
 }
 
 .arrows img:nth-child(2) {
@@ -62,13 +84,46 @@ a {
   transition: var(--smooth);
 }
 
+.slideInRight {
+  -webkit-animation-name: slideInRight;
+  animation-name: slideInRight;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  animation-duration: 5s;
+  animation-timing-function: ease;
+}
+
+.slideInLeft {
+  -webkit-animation-name: slideInLeft;
+  animation-name: slideInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+}
+
+.grow {
+  animation-name: grow;
+  animation-duration: 2s;
+  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.fadeInFast {
+  animation-name: fade-in;
+  animation-duration: 2s;
+  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
 @-webkit-keyframes fadeIn {
   from {
     opacity: 0;
   }
 
   to {
-    opacity: 0.5;
+    opacity: 0.3;
   }
 }
 
@@ -78,15 +133,18 @@ a {
   }
 
   to {
-    opacity: 0.5;
+    opacity: 0.3;
   }
 }
 
-.fadeIn {
-  -webkit-animation-name: fadeIn;
-  animation-name: fadeIn;
-  animation-duration: 5s;
-  animation-timing-function: ease;
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeInSlideRight {
@@ -127,12 +185,6 @@ a {
   }
 }
 
-.slideInLeft {
-  -webkit-animation-name: slideInLeft;
-  animation-name: slideInLeft;
-  animation-duration: 1s;
-  animation-timing-function: ease;
-}
 
 @-webkit-keyframes slideInRight {
   from {
@@ -160,20 +212,19 @@ a {
   }
 }
 
-.slideInRight {
-  -webkit-animation-name: slideInRight;
-  animation-name: slideInRight;
-  animation-duration: 1s;
-  animation-timing-function: ease;
-}
 
-@keyframes shrink {
+
+@keyframes grow {
   from {
-    transform: rotate(0);
+    height: 30vw;
+    width: 30vw;
   }
 
   to {
-    color: lightgoldenrodyellow;
-    transform: rotate(360deg);
+    height: 100vh;
+    width: 100vw;
+    border-radius: 0;
+    top: 0;
+    left: 0;
   }
 }

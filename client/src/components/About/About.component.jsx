@@ -44,38 +44,38 @@ export default class About extends Component {
       <div className="about fadeInFast">
         <div className="pages">
           <div className="page">
-            <h1>
+            <p>
               PROVING THAT REFUGEES ARE INVESTABLE The Refugee Investment
               Network is the first blended finance collaborative dedicated to
               creating long-term solutions to global forced migration.
-            </h1>
+            </p>
           </div>
           <div className="page">
-            <h1>
+            <p>
               INCREASED CAPITAL INVESTMENT CAN MAKE A BIG DIFFERENCE The RIN's
               blended finance collaborative will increase deal flow and help
               unlock private capital to spur economic growth and stability among
               refugees and their communities.
-            </h1>
+            </p>
           </div>
           <div className="page">
-            <h1>
+            <p>
               WHO WE ARE Key Partners RIN Members represent the full capital
               continuum: foundations and philanthropists, impact, institutional,
               and commercial investors – as well as international finance
               institutions, policymakers, and humanitarians. RIN members all
               share a commitment to courageous action, innovative economic
               solutions, and deep collaboration.
-            </h1>
+            </p>
           </div>
           <div className="page">
-            <h1>
+            <p>
               Operating Team Systems entrepreneurs John Kluge (Alight Fund &
               Toilet Hackers) and Tim Docking (IBM & Millennium Challenge
               Corporation) lead the RIN with support from the Global Development
               Incubator (GDI), a non-profit that builds startups and
               partnerships to address global development challenges.
-            </h1>
+            </p>
           </div>
           <div className="page">
             <ul className="team">

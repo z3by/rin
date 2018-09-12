@@ -12,11 +12,59 @@ export default class Landing extends Component {
   }
 
   componentDidMount() {
-    window.onmousewheel = this.handleWheel;
-    window.onkeydown = this.handleArrowsInput;
-    document.querySelector(".arrows").style.transform = "rotate(0)";
+    this.bindEvents();
+    this.rotateArrows();
   }
 
+  // bind the events to the local functions.
+  bindEvents = () => {
+    window.onmousewheel = this.handleWheel;
+    window.onkeydown = this.handleArrowsInput;
+    window.onmousemove = this.onMouseMove;
+  };
+
+  // rotate the arrows for the landing page.
+  rotateArrows = () => {
+    document.querySelector(".arrows").style.transform = "rotate(0)";
+  };
+
+  // mouse move effect on the landing page circle;
+  onMouseMove = e => {
+    // exit if not on the landing page
+    if (!document.querySelector(".effect-circle")) {
+      return;
+    }
+
+    // get the mouse axis
+    if (!document.querySelector(".effect-circle")) {
+      return;
+    }
+
+    const circleX = e.clientX;
+    const circleY = e.clientY;
+    document.querySelector(".effect-circle").style.top = circleY - 50 + "px";
+    document.querySelector(".effect-circle").style.left = circleX - 50 + "px";
+  };
+
+  // mouse wheel handler for the landing page
+  handleWheel = e => {
+    if (e.deltaY === -100) {
+      this.animatePrev();
+    } else {
+      this.animateNext();
+    }
+  };
+
+  // key press handler for the landing page
+  handleArrowsInput = e => {
+    if (e.key === "ArrowRight") {
+      this.animateNext();
+    } else if (e.key === "ArrowLeft") {
+      this.animatePrev();
+    }
+  };
+
+  // change current context on the landing page;
   animateNext = () => {
     if (this.state.index < 4) {
       this.setState(
@@ -31,6 +79,7 @@ export default class Landing extends Component {
           this.changeBackground();
           this.translateShapes();
           this.toggleOverlayColor();
+          this.changeVideo();
         }
       );
     } else {
@@ -40,6 +89,7 @@ export default class Landing extends Component {
     }
   };
 
+  // change current context on the landing page;
   animatePrev = () => {
     if (this.state.index > 0) {
       this.setState(
@@ -54,6 +104,7 @@ export default class Landing extends Component {
           this.changeBackground();
           this.translateShapes();
           this.toggleOverlayColor();
+          this.changeVideo();
         }
       );
     } else {
@@ -63,22 +114,7 @@ export default class Landing extends Component {
     }
   };
 
-  handleWheel = e => {
-    if (e.deltaY === -100) {
-      this.animatePrev();
-    } else {
-      this.animateNext();
-    }
-  };
-
-  handleArrowsInput = e => {
-    if (e.key === "ArrowRight") {
-      this.animateNext();
-    } else if (e.key === "ArrowLeft") {
-      this.animatePrev();
-    }
-  };
-
+  // toggle the 'active' class on
   toggleClassActive = () => {
     document.querySelectorAll(".active").forEach(e => {
       e.classList.remove("active");
@@ -86,6 +122,11 @@ export default class Landing extends Component {
     document
       .querySelector(".nav-group")
       .childNodes[this.state.index].firstChild.classList.add("active");
+  };
+
+  changeVideo = () => {
+    let random = Math.floor(Math.random() * 100);
+    document.querySelector(".circle-video").currentTime = random;
   };
 
   changeBackground = () => {
@@ -130,63 +171,74 @@ export default class Landing extends Component {
         : "linear-gradient(45deg, var(--color-2), var(--color-4))";
   };
 
+  // navigate to route after 2 seconds
+  navigate = () => {
+    const routes = ["stories", "map", "data", "library", "about"];
+    document.querySelector(".circle").classList.add("grow");
+    setTimeout(() => {
+      this.props.history.push(routes[this.state.index]);
+    }, 2000);
+  };
+
   render() {
     return (
       <div>
-        <div className="landing">
+        <div className="landing fadeInFast">
+          <div className="partners">
+            <img className="i1" src="/imgs/ikea.png" alt="" />
+            <img className="i2" src="/imgs/ibm.png" alt="" />
+            <img className="i3" src="/imgs/citi.png" alt="" />
+            <img className="i4" src="/imgs/google.png" alt="" />
+          </div>
+
           <div className="nav">
             <ul className="nav-group">
               <li className="nav-item">
-                <Link to={"/stories"} className="nav-link active">
+                <a onClick={this.navigate} className="nav-link active">
                   stories
-                </Link>
+                </a>
               </li>
               <li className="nav-item">
-                <Link to={"/map"} className="nav-link">
+                <a onClick={this.navigate} className="nav-link">
                   map
-                </Link>
+                </a>
               </li>
               <li className="nav-item">
-                <Link to={"/data"} className="nav-link">
+                <a onClick={this.navigate} className="nav-link">
                   data
-                </Link>
+                </a>
               </li>
               <li className="nav-item">
-                <Link to={"/library"} className="nav-link">
+                <a onClick={this.navigate} className="nav-link">
                   library
-                </Link>
+                </a>
               </li>
               <li className="nav-item">
-                <Link to={"/about"} className="nav-link">
+                <a onClick={this.navigate} className="nav-link">
                   about
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
 
-          <ul className="social">
-            <li className="social-item">
-              <a href="" className="social-link">
-                <i className="fa fa-twitter social-icon" />
-              </a>
-            </li>
-            <li className="social-item">
-              <a href="" className="social-link">
-                <i className="fa fa-facebook social-icon" />
-              </a>
-            </li>
-            <li className="social-item">
-              <a href="" className="social-link">
-                <i className="fa fa-instagram social-icon" />
-              </a>
-            </li>
-          </ul>
-          <div className="circle fadeIn" />
           <div className="circle-overlay fadeIn" />
-          <div className="up-rec slideInRight" />
-          <div className="up-rec-overlay slideInRight" />
-          <div className="down-rec slideInLeft" />
-          <div className="down-rec-overlay slideInLeft" />
+          <div className="circle fadeIn">
+            <div className="effect-circle" />
+            <video
+              src="/videos/UNHCR's.mp4"
+              autoPlay
+              muted
+              loop
+              className="circle-video"
+            />
+          </div>
+
+          <div className="shapes">
+            <div className="up-rec slideInRight" />
+            <div className="up-rec-overlay slideInRight" />
+            <div className="down-rec slideInLeft" />
+            <div className="down-rec-overlay slideInLeft" />
+          </div>
 
           <div className="arrows">
             <img src="imgs/arrow.png" alt="" onClick={this.animatePrev} />
