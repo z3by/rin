@@ -12,14 +12,23 @@ export default class Landing extends Component {
   }
 
   componentDidMount() {
-    // bind the events to the local functions.
+    this.bindEvents();
+    this.rotateArrows();
+  }
+
+  // bind the events to the local functions.
+  bindEvents = () => {
     window.onmousewheel = this.handleWheel;
     window.onkeydown = this.handleArrowsInput;
     window.onmousemove = this.onMouseMove;
-    // rotate the arrows for the landing page.
-    document.querySelector(".arrows").style.transform = "rotate(0)";
-  }
+  };
 
+  // rotate the arrows for the landing page.
+  rotateArrows = () => {
+    document.querySelector(".arrows").style.transform = "rotate(0)";
+  };
+
+  // mouse move effect on the landing page circle;
   onMouseMove = e => {
     // exit if not on the landing page
     if (!document.querySelector(".effect-circle")) {
@@ -37,6 +46,25 @@ export default class Landing extends Component {
     document.querySelector(".effect-circle").style.left = circleX - 50 + "px";
   };
 
+  // mouse wheel handler for the landing page
+  handleWheel = e => {
+    if (e.deltaY === -100) {
+      this.animatePrev();
+    } else {
+      this.animateNext();
+    }
+  };
+
+  // key press handler for the landing page
+  handleArrowsInput = e => {
+    if (e.key === "ArrowRight") {
+      this.animateNext();
+    } else if (e.key === "ArrowLeft") {
+      this.animatePrev();
+    }
+  };
+
+  // change current context on the landing page;
   animateNext = () => {
     if (this.state.index < 4) {
       this.setState(
@@ -61,6 +89,7 @@ export default class Landing extends Component {
     }
   };
 
+  // change current context on the landing page;
   animatePrev = () => {
     if (this.state.index > 0) {
       this.setState(
@@ -85,22 +114,7 @@ export default class Landing extends Component {
     }
   };
 
-  handleWheel = e => {
-    if (e.deltaY === -100) {
-      this.animatePrev();
-    } else {
-      this.animateNext();
-    }
-  };
-
-  handleArrowsInput = e => {
-    if (e.key === "ArrowRight") {
-      this.animateNext();
-    } else if (e.key === "ArrowLeft") {
-      this.animatePrev();
-    }
-  };
-
+  // toggle the 'active' class on
   toggleClassActive = () => {
     document.querySelectorAll(".active").forEach(e => {
       e.classList.remove("active");
@@ -167,6 +181,7 @@ export default class Landing extends Component {
             <img className="i3" src="/imgs/citi.png" alt="" />
             <img className="i4" src="/imgs/google.png" alt="" />
           </div>
+
           <div className="nav">
             <ul className="nav-group">
               <li className="nav-item">
