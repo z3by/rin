@@ -3,10 +3,10 @@
   height: 100vh;
 }
 
-h1 {
-  font-size: 60px;
+p {
+  font-size: 20px;
   margin: 0;
-  padding: 10%;
+  padding: 30%;
   font-family: var(--main-font);
 }
 
@@ -18,8 +18,4 @@ h1 {
 .team li {
   display: inline-block;
   margin: 30px;
-}
-
-p {
-  font-size: 23px;
 }
