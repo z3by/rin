@@ -171,17 +171,13 @@ export default class Landing extends Component {
         : "linear-gradient(45deg, var(--color-2), var(--color-4))";
   };
 
-  circleGrow = () => {
-    document.querySelector(".circle").classList.add("grow");
-  };
-
+  // navigate to route after 2 seconds
   navigate = () => {
-    if (this.state.index === 0) {
-      this.circleGrow();
-      setTimeout(() => {
-        this.props.history.push("stories");
-      }, 2000);
-    }
+    const routes = ["stories", "map", "data", "library", "about"];
+    document.querySelector(".circle").classList.add("grow");
+    setTimeout(() => {
+      this.props.history.push(routes[this.state.index]);
+    }, 2000);
   };
 
   render() {
@@ -198,29 +194,29 @@ export default class Landing extends Component {
           <div className="nav">
             <ul className="nav-group">
               <li className="nav-item">
-                <h2 className="nav-link active" onClick={this.navigate}>
+                <a onClick={this.navigate} className="nav-link active">
                   stories
-                </h2>
+                </a>
               </li>
               <li className="nav-item">
-                <Link to={"/map"} className="nav-link">
+                <a onClick={this.navigate} className="nav-link">
                   map
-                </Link>
+                </a>
               </li>
               <li className="nav-item">
-                <Link to={"/data"} className="nav-link">
+                <a onClick={this.navigate} className="nav-link">
                   data
-                </Link>
+                </a>
               </li>
               <li className="nav-item">
-                <Link to={"/library"} className="nav-link">
+                <a onClick={this.navigate} className="nav-link">
                   library
-                </Link>
+                </a>
               </li>
               <li className="nav-item">
-                <Link to={"/about"} className="nav-link">
+                <a onClick={this.navigate} className="nav-link">
                   about
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
