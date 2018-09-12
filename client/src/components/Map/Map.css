@@ -3,12 +3,38 @@
   height: 10px;
   width: 10px;
   border-radius: 50%;
+  animation-name: pulse;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .dot:hover {
-  background: red;
+  background: white;
+  width: 30px;
+  height: 30px;
+  cursor: default;
 }
+
 .map-img {
   padding: 20px;
   color: palevioletred;
+}
+
+
+@keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(2.05, 2.05, 2.05);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
 }
