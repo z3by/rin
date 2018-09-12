@@ -52,6 +52,7 @@ label {
   bottom: 2.5vh;
   right: 50px;
   z-index: 11;
+  cursor: pointer;
   margin: 0;
   transition: var(--smooth);
 }
@@ -61,7 +62,7 @@ label {
 }
 
 .arrows img:hover {
-  filter: brightness(1.5);
+  filter: brightness(1.5) saturate(.4);
 }
 
 .arrows img:nth-child(2) {
@@ -83,13 +84,46 @@ label {
   transition: var(--smooth);
 }
 
+.slideInRight {
+  -webkit-animation-name: slideInRight;
+  animation-name: slideInRight;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  animation-duration: 5s;
+  animation-timing-function: ease;
+}
+
+.slideInLeft {
+  -webkit-animation-name: slideInLeft;
+  animation-name: slideInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+}
+
+.grow {
+  animation-name: grow;
+  animation-duration: 2s;
+  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.fadeInFast {
+  animation-name: fade-in;
+  animation-duration: 2s;
+  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
 @-webkit-keyframes fadeIn {
   from {
     opacity: 0;
   }
 
   to {
-    opacity: 0.5;
+    opacity: 0.3;
   }
 }
 
@@ -103,11 +137,14 @@ label {
   }
 }
 
-.fadeIn {
-  -webkit-animation-name: fadeIn;
-  animation-name: fadeIn;
-  animation-duration: 5s;
-  animation-timing-function: ease;
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeInSlideRight {
@@ -148,12 +185,6 @@ label {
   }
 }
 
-.slideInLeft {
-  -webkit-animation-name: slideInLeft;
-  animation-name: slideInLeft;
-  animation-duration: 1s;
-  animation-timing-function: ease;
-}
 
 @-webkit-keyframes slideInRight {
   from {
@@ -181,20 +212,19 @@ label {
   }
 }
 
-.slideInRight {
-  -webkit-animation-name: slideInRight;
-  animation-name: slideInRight;
-  animation-duration: 1s;
-  animation-timing-function: ease;
-}
 
-@keyframes shrink {
+
+@keyframes grow {
   from {
-    transform: rotate(0);
+    height: 30vw;
+    width: 30vw;
   }
 
   to {
-    color: lightgoldenrodyellow;
-    transform: rotate(360deg);
+    height: 100vh;
+    width: 100vw;
+    border-radius: 0;
+    top: 0;
+    left: 0;
   }
 }

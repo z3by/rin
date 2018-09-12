@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "npm install && cd ./client && npm install && npm run build && cd .. && node ./bin/www",
+    "postinstall": "cd ./client && npm run build",
+    "start": "node ./bin/www",
     "dev": "cd ./client/ && npm start"
   },
   "dependencies": {

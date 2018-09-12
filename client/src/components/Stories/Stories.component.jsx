@@ -44,6 +44,12 @@ class Stories extends Component {
       .addTo(controller);
 
     new ScrollMagic.Scene({
+      triggerElement: ".vertical-line"
+    })
+      .setClassToggle(".vertical-line", "animate-line")
+      .addTo(controller);
+
+    new ScrollMagic.Scene({
       triggerElement: ".story2"
     })
       .setClassToggle(".story2", "show")
@@ -62,39 +68,43 @@ class Stories extends Component {
 
   render() {
     return (
-      <div className="stories">
+      <div className="stories fadeInFast">
         <div className="video-container">
           <video loop autoPlay muted>
             <source src={this.state.videoURL} type="video/mp4" />
-            <source src={this.state.videoURL} type="video/ogg" />
             Your browser does not support the video tag.
           </video>
           <div className="overlay-desc">
             <h1>Success Stories</h1>
-            <img src="/imgs/arrow.png" className="down-arrow" alt="" />
+            <a href="#page-content" className="down-arrow">
+              <img src="/imgs/arrow.png" className="down-arrow-img" />
+            </a>
           </div>
         </div>
 
-        <ul className="srories-items">
-          <li>
-            <Link
-              to={"/stories/" + this.state.stories[0].id}
-              className="story1"
-            />
-          </li>
-          <li>
-            <Link
-              to={"/stories/" + this.state.stories[1].id}
-              className="story2"
-            />
-          </li>
-          <li>
-            <Link
-              to={"/stories/" + this.state.stories[2].id}
-              className="story3"
-            />
-          </li>
-        </ul>
+        <div className="vertical-line" />
+        <div id="page-content">
+          <ul className="stories-items">
+            <li>
+              <Link
+                to={"/stories/" + this.state.stories[0].id}
+                className="story-circle story1"
+              />
+            </li>
+            <li>
+              <Link
+                to={"/stories/" + this.state.stories[1].id}
+                className="story-circle story2"
+              />
+            </li>
+            <li>
+              <Link
+                to={"/stories/" + this.state.stories[2].id}
+                className="story-circle story3"
+              />
+            </li>
+          </ul>
+        </div>
 
         <div className="up-down" />
       </div>

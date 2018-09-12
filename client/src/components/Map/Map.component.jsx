@@ -1,23 +1,18 @@
 import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
-import { withRouter } from "react-router-dom";
 import "./Map.css";
 
 const Dot = () => <div className="dot" />;
 export default class Map extends Component {
   state = {
     position: {
-      first: {},
-      second: {}
-    },
-    center: {
       lat: 31.95,
       lng: 35.99
     },
     zoom: 5
   };
 
-  componentDidMount() {
+  componentWillMount() {
     this.getUserLocation();
   }
 
@@ -26,10 +21,8 @@ export default class Map extends Component {
     navigator.geolocation.getCurrentPosition(position => {
       this.setState({
         position: {
-          first: {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          }
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
         }
       });
     });
@@ -37,16 +30,63 @@ export default class Map extends Component {
 
   render() {
     return (
-      <div style={{ height: "100vh", width: "100%" }} className="map">
+      <div
+        style={{ height: "100vh", width: "100%" }}
+        className="map fadeInFast"
+      >
         <GoogleMapReact
-          bootstrapURLKeys={{ key: "AIzaSyAxYHlwX3Vu7-ygTF2wiB3sjSyFU7mAMJE" }}
-          defaultCenter={this.state.center}
-          defaultZoom={this.state.zoom}
           options={options}
+          bootstrapURLKeys={{ key: "AIzaSyAxYHlwX3Vu7-ygTF2wiB3sjSyFU7mAMJE" }}
+          defaultCenter={this.state.position}
+          defaultZoom={this.state.zoom}
         >
           <Dot
-            lat={this.state.position.first.lat}
-            lng={this.state.position.first.lng}
+            lat={this.state.position.lat + 5}
+            lng={this.state.position.lng + 5}
+          />
+          <Dot
+            lat={this.state.position.lat + 3}
+            lng={this.state.position.lng + 8}
+          />
+          <Dot
+            lat={this.state.position.lat + 10}
+            lng={this.state.position.lng + 6}
+          />
+          <Dot
+            lat={this.state.position.lat + 6}
+            lng={this.state.position.lng + 4}
+          />
+          <Dot
+            lat={this.state.position.lat + 7}
+            lng={this.state.position.lng + 12}
+          />
+          <Dot
+            lat={this.state.position.lat - 5}
+            lng={this.state.position.lng + 22}
+          />
+          <Dot
+            lat={this.state.position.lat - 9}
+            lng={this.state.position.lng - 20}
+          />
+          <Dot
+            lat={this.state.position.lat - 39}
+            lng={this.state.position.lng + 38}
+          />
+          <Dot
+            lat={this.state.position.lat + 35}
+            lng={this.state.position.lng - 8}
+          />
+          <Dot
+            lat={this.state.position.lat + 19}
+            lng={this.state.position.lng - 28}
+          />
+          <Dot
+            lat={this.state.position.lat + 16}
+            lng={this.state.position.lng - 16}
+          />
+          <Dot
+            lat={this.state.position.lat - 9}
+            lng={this.state.position.lng - 8}
           />
         </GoogleMapReact>
       </div>
