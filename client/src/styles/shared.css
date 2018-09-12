@@ -111,13 +111,19 @@ label {
   animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
+.fadeInFast {
+  animation-name: fade-in;
+  animation-duration: 2s;
+  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
 @-webkit-keyframes fadeIn {
   from {
     opacity: 0;
   }
 
   to {
-    opacity: 0.5;
+    opacity: 0.3;
   }
 }
 
@@ -128,6 +134,16 @@ label {
 
   to {
     opacity: 0.3;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }
 

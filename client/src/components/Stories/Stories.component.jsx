@@ -68,7 +68,7 @@ class Stories extends Component {
 
   render() {
     return (
-      <div className="stories">
+      <div className="stories fadeInFast">
         <div className="video-container">
           <video loop autoPlay muted>
             <source src={this.state.videoURL} type="video/mp4" />

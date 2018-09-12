@@ -30,7 +30,10 @@ export default class Map extends Component {
 
   render() {
     return (
-      <div style={{ height: "100vh", width: "100%" }} className="map">
+      <div
+        style={{ height: "100vh", width: "100%" }}
+        className="map fadeInFast"
+      >
         <GoogleMapReact
           options={options}
           bootstrapURLKeys={{ key: "AIzaSyAxYHlwX3Vu7-ygTF2wiB3sjSyFU7mAMJE" }}
