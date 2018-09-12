@@ -171,6 +171,19 @@ export default class Landing extends Component {
         : "linear-gradient(45deg, var(--color-2), var(--color-4))";
   };
 
+  circleGrow = () => {
+    document.querySelector(".circle").classList.add("grow");
+  };
+
+  navigate = () => {
+    if (this.state.index === 0) {
+      this.circleGrow();
+      setTimeout(() => {
+        this.props.history.push("stories");
+      }, 2000);
+    }
+  };
+
   render() {
     return (
       <div>
@@ -185,9 +198,9 @@ export default class Landing extends Component {
           <div className="nav">
             <ul className="nav-group">
               <li className="nav-item">
-                <Link to={"/stories"} className="nav-link active">
+                <h2 className="nav-link active" onClick={this.navigate}>
                   stories
-                </Link>
+                </h2>
               </li>
               <li className="nav-item">
                 <Link to={"/map"} className="nav-link">

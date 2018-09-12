@@ -37,10 +37,16 @@ class Stories extends Component {
 
     var controller = new ScrollMagic.Controller();
 
-    var scene = new ScrollMagic.Scene({
-      triggerElement: ".story1, .vertical-line, .globe-jordan"
+    new ScrollMagic.Scene({
+      triggerElement: ".story1"
     })
-      .setClassToggle(".story1, .vertical-line, .globe-jordan", "show")
+      .setClassToggle(".story1", "show")
+      .addTo(controller);
+
+    new ScrollMagic.Scene({
+      triggerElement: ".vertical-line"
+    })
+      .setClassToggle(".vertical-line", "animate-line")
       .addTo(controller);
 
     new ScrollMagic.Scene({
@@ -77,25 +83,24 @@ class Stories extends Component {
         </div>
 
         <div className="vertical-line" />
-        <div className="globe-jordan" />
         <div id="page-content">
-          <ul className="srories-items">
+          <ul className="stories-items">
             <li>
               <Link
                 to={"/stories/" + this.state.stories[0].id}
-                className="story1"
+                className="story-circle story1"
               />
             </li>
             <li>
               <Link
                 to={"/stories/" + this.state.stories[1].id}
-                className="story2"
+                className="story-circle story2"
               />
             </li>
             <li>
               <Link
                 to={"/stories/" + this.state.stories[2].id}
-                className="story3"
+                className="story-circle story3"
               />
             </li>
           </ul>

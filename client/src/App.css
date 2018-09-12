@@ -1,4 +1,6 @@
 @import "./styles/shared.css";
+
 body {
   overflow: hidden;
+  background-color: var(--color-1);
 }
