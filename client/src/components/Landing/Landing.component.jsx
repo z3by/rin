@@ -21,7 +21,16 @@ export default class Landing extends Component {
   }
 
   onMouseMove = e => {
+    // exit if not on the landing page
+    if (!document.querySelector(".effect-circle")) {
+      return;
+    }
+
     // get the mouse axis
+    if (!document.querySelector(".effect-circle")) {
+      return;
+    }
+
     const circleX = e.clientX;
     const circleY = e.clientY;
     document.querySelector(".effect-circle").style.top = circleY - 50 + "px";
@@ -153,10 +162,10 @@ export default class Landing extends Component {
       <div>
         <div className="landing">
           <div className="partners">
-            <img className="i1" src="/imgs/img1.jpg" />
-            <img className="i2" src="/imgs/img2.jpg" />
-            <img className="i3" src="/imgs/img3.jpg" />
-            <img className="i4" src="/imgs/bg.png" />
+            <img className="i1" src="/imgs/ikea.png" alt="" />
+            <img className="i2" src="/imgs/ibm.png" alt="" />
+            <img className="i3" src="/imgs/citi.png" alt="" />
+            <img className="i4" src="/imgs/google.png" alt="" />
           </div>
           <div className="nav">
             <ul className="nav-group">
