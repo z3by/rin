@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Stories from "../Stories/Stories.component";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 
@@ -10,7 +9,7 @@ export default class Navbar extends Component {
   };
 
   onClickCircle = e => {
-    const index = parseInt(e.target.getAttribute("index")) - 1;
+    const index = parseInt(e.target.getAttribute("index"), 10) - 1;
     document.querySelector(".active").classList.remove("active");
     document.querySelectorAll(".nav-rec")[index].classList.add("active");
   };
@@ -31,22 +30,22 @@ export default class Navbar extends Component {
                 index="1"
                 onClick={this.onClickCircle}
               >
-                <a className="nav-rec-text">stories</a>
+                <p className="nav-rec-text">stories</p>
               </div>
             </Link>
             <Link to={"/map"}>
               <div className="nav-rec" index="2" onClick={this.onClickCircle}>
-                <a className="nav-rec-text">map</a>
+                <p className="nav-rec-text">map</p>
               </div>
             </Link>
             <Link to={"/data"}>
               <div className="nav-rec" index="3" onClick={this.onClickCircle}>
-                <a className="nav-rec-text">data</a>
+                <p className="nav-rec-text">data</p>
               </div>
             </Link>
             <Link to={"/library"}>
               <div className="nav-rec" index="4" onClick={this.onClickCircle}>
-                <a className="nav-rec-text">library</a>
+                <p className="nav-rec-text">library</p>
               </div>
             </Link>
             <Link to={"/members"}>
@@ -55,12 +54,12 @@ export default class Navbar extends Component {
                 index="5"
                 onClick={this.onClickCircle}
               >
-                <a className="nav-rec-text">members</a>
+                <p className="nav-rec-text">members</p>
               </div>
             </Link>
             <Link to={"/about"}>
               <div className="nav-rec" index="6" onClick={this.onClickCircle}>
-                <a className="nav-rec-text">about</a>
+                <p className="nav-rec-text">about</p>
               </div>
             </Link>
           </div>

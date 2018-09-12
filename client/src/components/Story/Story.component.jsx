@@ -29,10 +29,6 @@ export default class Story extends Component {
     ]
   };
 
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     document.body.style.overflow = "auto";
   }
@@ -43,7 +39,7 @@ export default class Story extends Component {
     return (
       <div className="story">
         <h1 className="title">{this.state.stories[id].title}</h1>
-        <img className="img1" src={this.state.stories[id].img} />
+        <img className="img1" src={this.state.stories[id].img} alt="" />
         <p className="text">{this.state.stories[id].text}</p>
       </div>
     );

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Stories.css";
 import ScrollMagic from "scrollmagic";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class Stories extends Component {
   state = {
@@ -32,28 +32,24 @@ class Stories extends Component {
     ]
   };
 
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     document.body.style.overflow = "auto";
 
     var controller = new ScrollMagic.Controller();
 
-    var scene = new ScrollMagic.Scene({
+    new ScrollMagic.Scene({
       triggerElement: ".story1"
     })
       .setClassToggle(".story1", "show")
       .addTo(controller);
 
-    var scene = new ScrollMagic.Scene({
+    new ScrollMagic.Scene({
       triggerElement: ".story2"
     })
       .setClassToggle(".story2", "show")
       .addTo(controller);
 
-    var scene = new ScrollMagic.Scene({
+    new ScrollMagic.Scene({
       triggerElement: ".story3"
     })
       .setClassToggle(".story3", "show")
@@ -75,7 +71,7 @@ class Stories extends Component {
           </video>
           <div className="overlay-desc">
             <h1>Success Stories</h1>
-            <img src="/imgs/arrow.png" className="down-arrow" />
+            <img src="/imgs/arrow.png" className="down-arrow" alt="" />
           </div>
         </div>
 
