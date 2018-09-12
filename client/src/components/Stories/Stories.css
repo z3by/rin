@@ -1,13 +1,11 @@
 .stories {
-  background-image: url("/imgs/bg.png");
   background-size: cover;
 }
 
 .video-container video {
-  height: 100vh;
+  height: auto;
   width: 100%;
-  padding-top: 3px;
-  /* max-height: 100%; */
+  opacity: .4;
 }
 
 .video-container {
@@ -15,9 +13,9 @@
 }
 
 .overlay-desc {
-  background: rgba(0, 0, 0, 0);
+  background: linear-gradient(transparent, var(--color-1));
   position: absolute;
-  top: 0;
+  top: -200px;
   right: 0;
   bottom: 0;
   left: 0;
@@ -29,7 +27,7 @@
 .overlay-desc h1 {
   color: var(--color-2);
   margin: 0;
-  font-size: 700%;
+  font-size: 500%;
   text-transform: uppercase;
   font-family: var(--main-font);
   font-weight: 100;
@@ -41,53 +39,41 @@ h1 {
   text-align: center;
 }
 
-.story1 {
-  margin: 0 auto;
-  display: block;
-  padding: 40px;
-  opacity: 0;
-  transition: 1s;
-  width: 0;
-  height: 0;
-  background-image: url("/imgs/img1.jpg");
-  border-radius: 50%;
-  background-size: cover;
-}
 
 li:hover .summary {
   display: block;
 }
 
-.story2 {
-  margin: 0 left;
+.story-circle {
+  position: relative;
+  z-index: 110;
+  margin: 100px auto;
   display: block;
   padding: 40px;
   opacity: 0;
   transition: 1s;
   width: 0;
   height: 0;
+  border-radius: 50%;
+  background-size: cover;
+
+}
+
+.story-circle:nth-child(1) {
+  background-image: url("/imgs/img1.jpg");
+}
+
+
+.story-circle:nth-child(2) {
   background-image: url("/imgs/img2.jpg");
-  border-radius: 50%;
-  background-size: cover;
 }
 
-.story3 {
-  margin: 0;
-  display: block;
-  padding: 40px;
-  opacity: 0;
-  transition: 1s;
-  width: 0;
-  height: 0;
+
+.story-circle:nth-child(3) {
   background-image: url("/imgs/img3.jpg");
-  border-radius: 50%;
-  float: right;
-  background-size: cover;
 }
 
-.story1.show,
-.story2.show,
-.story3.show {
+.story-circle.show {
   opacity: 1;
   height: 100px;
   width: 100px;
@@ -102,11 +88,7 @@ li:hover .summary {
   font-family: var(--main-font);
   height: 400px;
   width: 50%;
-  background: linear-gradient(
-    45deg,
-    rgba(54, 37, 54, 0.5),
-    rgba(80, 50, 80, 0.9)
-  );
+  background: linear-gradient(45deg, rgba(54, 37, 54, 0.5), rgba(80, 50, 80, 0.9));
   display: none;
   position: fixed;
   color: white;
@@ -120,25 +102,8 @@ li:hover .summary {
   padding: 30px;
 }
 
-/* .scroll-prompt {
-  animation: bouncing-arrow 2s infinite;
-  animation-name: bouncing-arrow;
-  animation-duration: 2s;
-  animation-timing-function: ease-in-out;
-  animation-delay: 0s;
-  animation-iteration-count: infinite;
-  animation-direction: normal;
-  animation-fill-mode: none;
-  animation-play-state: running;
-  animation-timing-function: ease-in-out;
-  display: inline-block;
-  height: 4rem;
-  margin-bottom: -1.5rem;
-  position: relative;
-  width: 4rem;
-} */
-
 @keyframes bouncing-arrow {
+
   0%,
   20%,
   50%,
@@ -155,10 +120,10 @@ li:hover .summary {
     transform: translate3d(0, -5px, 0);
   }
 }
+
 .down-arrow {
   position: absolute;
-  bottom: 30px;
-
+  bottom: 30%;
   animation-name: bouncing-arrow;
   animation-duration: 2s;
   animation-timing-function: ease-in-out;
@@ -172,44 +137,39 @@ li:hover .summary {
 .down-arrow-img {
   width: 80px;
   transform: rotate(-90deg);
+  cursor: pointer;
 }
 
-.srories-items {
+.stories-items {
   list-style: none;
   padding: 50px 200px;
-  /* z-index: 7; */
 }
 
 .vertical-line {
   background-color: var(--color-2);
   height: 0px;
-  width: 0px;
+  width: 2px;
   position: absolute;
-  left: 673px;
-  opacity: 0;
-  /* z-index: 0; */
-}
-
-.vertical-line.show {
-  height: 300px;
-  width: 3px;
+  left: 50%;
+  z-index: 100;
   opacity: 1;
 }
 
-.globe-jordan {
-  position: absolute;
-  background-image: url("/imgs/globe.png");
-  background-size: cover;
-  transition: 1s;
-  width: 0%;
-  height: 0%;
-  left: 500px;
-  top: 950px;
-  opacity: 0;
+@keyframes grow-line {
+  from {
+    height: 0px;
+
+  }
+
+  to {
+    height: 700px;
+  }
 }
 
-.globe-jordan.show {
-  opacity: 1;
-  width: 25%;
-  height: 45%;
+
+.animate-line {
+  animation-name: grow-line;
+  animation-duration: 3s;
+  animation-timing-function: ease;
+  height: 1000px;
 }
