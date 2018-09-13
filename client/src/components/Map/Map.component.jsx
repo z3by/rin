@@ -2,8 +2,24 @@ import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
 import "./Map.css";
 import * as options from './map-options';
+import * as projects from './projects-data.json';
 
-const Dot = () => <div className="dot" />;
+
+const Dot = (props) => {
+  const colors = {
+    'health': '#8DC26F',
+    'education': '#ff9068',
+    'nutrition': '#6441A5',
+    'water': '#64b3f4',
+    'agriculture': '#FFB75E',
+    'infancy': '#FFB75E',
+    'housing': '#E83338'
+  }
+  return (
+    <div className="dot" style={{ background: colors[props.project.type] }} />
+  )
+};
+
 export default class Map extends Component {
   state = {
     position: {
@@ -15,6 +31,7 @@ export default class Map extends Component {
 
   componentWillMount() {
     this.getUserLocation();
+
   }
 
   // get the user location;
@@ -37,6 +54,15 @@ export default class Map extends Component {
   }
 
   render() {
+
+    const dots = projects.map((project, key) => {
+      return (
+        <Dot lng={project.position.lng} lat={project.position.lat} key={key} project={project} key={key} />
+      );
+    })
+
+
+
     return (
       <div
         style={{ height: "100vh", width: "100%" }}
@@ -59,8 +85,16 @@ export default class Map extends Component {
           defaultCenter={this.state.position}
           defaultZoom={this.state.zoom}
         >
+          {[dots]}
         </GoogleMapReact>
       </div>
     );
   }
 }
+
+
+
+
+
+
+
