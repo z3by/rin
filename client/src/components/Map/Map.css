@@ -21,7 +21,54 @@
   color: palevioletred;
 }
 
+.spectrum {
+  position: absolute;
+  z-index: 100;
+  margin: 50px 0;
+}
 
+.spectrum:hover li {
+  transition: all .5s ease;
+  height: 25px;
+}
+
+.filter-spectrum {
+  display: flex;
+  justify-content: center;
+}
+
+.spectrum-item {
+  background: white;
+  height: 10px;
+  width: 100px;
+  transition: all .5s ease;
+  display: inline-block;
+}
+.spectrum-item:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background: linear-gradient(90deg, #de6161, #ff9068)
+}
+.spectrum-item:nth-child(2) {
+  background: linear-gradient(90deg, #ff9068, #FFB75E);
+}
+.spectrum-item:nth-child(3) {
+  background: linear-gradient(90deg, #FFB75E, #8DC26F);
+}
+.spectrum-item:nth-child(4) {
+  background: linear-gradient(90deg, #8DC26F, #64b3f4);
+}
+.spectrum-item:nth-child(5) {
+  background: linear-gradient(90deg, #64b3f4, #6441A5);
+}
+.spectrum-item:nth-child(6) {
+  background: linear-gradient(90deg, #6441A5, #fc67fa);
+}
+.spectrum-item:last-child {
+  border-top-right-radius: 10px;
+  background: linear-gradient(90deg, #fc67fa, #f4c4f3);
+  border-bottom-right-radius: 10px;
+}
 @keyframes pulse {
   from {
     -webkit-transform: scale3d(1, 1, 1);
