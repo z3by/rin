@@ -298,12 +298,12 @@
 
 /* for xsmall phones screens */
 
-@media (max-width: 414px) {
+@media (max-width: 375px) {
   .nav-group {
-    margin-left: -115px;
+    margin-left: -110px;
   }
 
   .nav-link {
-    font-size: 10vw;
+    font-size: 8vw;
   }
 }
