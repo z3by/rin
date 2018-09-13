@@ -1,3 +1,7 @@
+.map {
+  background: var(--color-1);
+}
+
 .dot {
   background: var(--color-2);
   height: 10px;
@@ -11,9 +15,9 @@
 
 .dot:hover {
   background: white;
-  width: 13px;
-  height: 13px;
+  transform: scale(5);
   cursor: default;
+  animation: unset;
 }
 
 .map-img {
@@ -45,6 +49,12 @@
   display: inline-block;
   cursor: pointer;
 }
+
+.spectrum-item:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1; 
+}
+
 .spectrum-item:first-child {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
@@ -70,6 +80,58 @@
   background: linear-gradient(90deg, #fc67fa, #f4c4f3);
   border-bottom-right-radius: 10px;
 }
+
+
+.tooltip {
+  height: 15px;
+  width: 15px;
+}
+
+.tooltip .tooltiptext {
+  font-family: var(--main-font);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  visibility: hidden;
+  width: 6vw;
+  background-color: rgba(0, 0, 0, .3);
+  color: #fff;
+  text-align: center;
+  position: absolute;
+  z-index: 1;
+  top: 125%;
+  left: 50%;
+  font-family: var(--main-font);
+  margin-left: -60px;
+  opacity: 0;
+  font-size: 18px;
+  transition: opacity 1s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -10px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent rgba(0, 0, 0, .3) transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+  font-size: 4px;
+  padding: 5px;
+}
+
+
+
+.tooltiptext img {
+  height: 50px;
+  margin: 0 1px;
+}
+
 @keyframes pulse {
   from {
     -webkit-transform: scale3d(1, 1, 1);

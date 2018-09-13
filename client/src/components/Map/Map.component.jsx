@@ -16,7 +16,15 @@ const Dot = (props) => {
     'infancy': '#fc67fa',
   }
   return (
-    <div className="dot" style={{ background: colors[props.project.type] }} />
+    <div className="dot" style={{ background: colors[props.project.type] }}>
+      <div class="tooltip">
+
+        <div class="tooltiptext spec">
+          <img src="https://source.unsplash.com/random" />
+          {props.project.title}
+        </div>
+      </div>
+    </div>
   )
 };
 
@@ -83,13 +91,43 @@ export default class Map extends Component {
       >
         <div className="filter-spectrum">
           <ul className="spectrum">
-            <li className="spectrum-item" data-index={0} onMouseEnter={this.handleMouseHover}></li>
-            <li className="spectrum-item" data-index={1} onMouseEnter={this.handleMouseHover}></li>
-            <li className="spectrum-item" data-index={2} onMouseEnter={this.handleMouseHover}></li>
-            <li className="spectrum-item" data-index={3} onMouseEnter={this.handleMouseHover}></li>
-            <li className="spectrum-item" data-index={4} onMouseEnter={this.handleMouseHover}></li>
-            <li className="spectrum-item" data-index={5} onMouseEnter={this.handleMouseHover}></li>
-            <li className="spectrum-item" data-index={6} onMouseEnter={this.handleMouseHover}></li>
+            <li className="spectrum-item" data-index={0} onMouseEnter={this.handleMouseHover}>
+              <div class="tooltip">
+                <div class="tooltiptext spec">housing projects</div>
+              </div>
+            </li>
+            <li className="spectrum-item" data-index={1} onMouseEnter={this.handleMouseHover}>
+              <div class="tooltip">
+                <div class="tooltiptext spec">
+                  education projects
+                </div>
+              </div>
+            </li>
+            <li className="spectrum-item" data-index={2} onMouseEnter={this.handleMouseHover}>
+              <div class="tooltip">
+                <div class="tooltiptext spec">agriculture projects</div>
+              </div>
+            </li>
+            <li className="spectrum-item" data-index={3} onMouseEnter={this.handleMouseHover}>
+              <div class="tooltip">
+                <div class="tooltiptext spec">health projects</div>
+              </div>
+            </li>
+            <li className="spectrum-item" data-index={4} onMouseEnter={this.handleMouseHover}>
+              <div class="tooltip">
+                <div class="tooltiptext spec">water projects</div>
+              </div>
+            </li>
+            <li className="spectrum-item" data-index={5} onMouseEnter={this.handleMouseHover}>
+              <div class="tooltip">
+                <div class="tooltiptext spec">nutrition projects</div>
+              </div>
+            </li>
+            <li className="spectrum-item" data-index={6} onMouseEnter={this.handleMouseHover}>
+              <div class="tooltip">
+                <div class="tooltiptext spec">infancy projects</div>
+              </div>
+            </li>
           </ul>
         </div>
         <GoogleMapReact
