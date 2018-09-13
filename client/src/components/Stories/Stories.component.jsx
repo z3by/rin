@@ -88,19 +88,19 @@ class Stories extends Component {
             <li>
               <Link
                 to={"/stories/" + this.state.stories[0].id}
-                className="story-circle story1"
+                className="story1"
               />
             </li>
             <li>
               <Link
                 to={"/stories/" + this.state.stories[1].id}
-                className="story-circle story2"
+                className="story2"
               />
             </li>
             <li>
               <Link
                 to={"/stories/" + this.state.stories[2].id}
-                className="story-circle story3"
+                className="story3"
               />
             </li>
           </ul>
