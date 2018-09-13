@@ -11,8 +11,8 @@
 
 /* ------------------------------------ navigation group----------------------------------- */
 .effect-circle {
-  height: 150px;
-  width: 150px;
+  height: 250px;
+  width: 250px;
   background: rgba(255, 255, 255, 0.3);
   position: fixed;
   z-index: 3;
@@ -171,12 +171,12 @@
 }
 
 .up-rec {
-  top: 20%;
+  top: 15%;
   left: 20%;
 }
 
 .down-rec {
-  bottom: 20%;
+  bottom: 15%;
   right: 20%;
 }
 
@@ -193,13 +193,13 @@
 
 .down-rec-overlay {
   background: linear-gradient(45deg, var(--color-2), var(--color-4));
-  bottom: 20%;
+  bottom: 15%;
   right: 20%;
 }
 
 .up-rec-overlay {
   background: linear-gradient(45deg, var(--color-2), var(--color-4));
-  top: 20%;
+  top: 15%;
   left: 20%;
 }
 

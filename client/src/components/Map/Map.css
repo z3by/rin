@@ -11,8 +11,8 @@
 
 .dot:hover {
   background: white;
-  width: 30px;
-  height: 30px;
+  width: 13px;
+  height: 13px;
   cursor: default;
 }
 
@@ -43,11 +43,12 @@
   width: 100px;
   transition: all .5s ease;
   display: inline-block;
+  cursor: pointer;
 }
 .spectrum-item:first-child {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
-  background: linear-gradient(90deg, #de6161, #ff9068)
+  background: linear-gradient(90deg, #E83338, #ff9068)
 }
 .spectrum-item:nth-child(2) {
   background: linear-gradient(90deg, #ff9068, #FFB75E);
