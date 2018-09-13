@@ -43,7 +43,9 @@ export default class About extends Component {
     return (
       <div className="about fadeInFast">
         <div className="pages">
+
           <div className="page">
+            <img src="/imgs/about.jpg" alt="" />
             <p>
               PROVING THAT REFUGEES ARE INVESTABLE The Refugee Investment
               Network is the first blended finance collaborative dedicated to
@@ -51,6 +53,7 @@ export default class About extends Component {
             </p>
           </div>
           <div className="page">
+            <img src="/imgs/about4.jpg" alt="" />
             <p>
               INCREASED CAPITAL INVESTMENT CAN MAKE A BIG DIFFERENCE The RIN's
               blended finance collaborative will increase deal flow and help
@@ -59,6 +62,7 @@ export default class About extends Component {
             </p>
           </div>
           <div className="page">
+            <img src="/imgs/about1.jpg" alt="" />
             <p>
               WHO WE ARE Key Partners RIN Members represent the full capital
               continuum: foundations and philanthropists, impact, institutional,
@@ -69,6 +73,7 @@ export default class About extends Component {
             </p>
           </div>
           <div className="page">
+            <img src="/imgs/about2.jpg" alt="" />
             <p>
               Operating Team Systems entrepreneurs John Kluge (Alight Fund &
               Toilet Hackers) and Tim Docking (IBM & Millennium Challenge

@@ -54,6 +54,7 @@ h1 {
   background-size: cover;
 }
 
+
 li:hover .summary {
   display: block;
 }
@@ -160,7 +161,8 @@ li:hover .summary {
 }
 
 
-.srories-items {
+.stories-items {
   list-style: none;
   padding: 50px 400px;
 }
+
