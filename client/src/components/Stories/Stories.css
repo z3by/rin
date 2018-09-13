@@ -1,11 +1,13 @@
 .stories {
+  background-image: url("/imgs/bg.png");
   background-size: cover;
 }
 
-.video-container video {
+video {
   height: auto;
+  vertical-align: middle;
   width: 100%;
-  opacity: .4;
+  opacity: 0.3;
 }
 
 .video-container {
@@ -13,7 +15,7 @@
 }
 
 .overlay-desc {
-  background: linear-gradient(transparent, var(--color-1));
+  background: rgba(0, 0, 0, 0);
   position: absolute;
   top: -200px;
   right: 0;
@@ -39,41 +41,53 @@ h1 {
   text-align: center;
 }
 
-
-li:hover .summary {
-  display: block;
-}
-
-.story-circle {
-  position: relative;
-  z-index: 110;
-  margin: 100px auto;
+.story1 {
+  margin: 0 auto;
   display: block;
   padding: 40px;
   opacity: 0;
   transition: 1s;
   width: 0;
   height: 0;
+  background-image: url("/imgs/img1.jpg");
   border-radius: 50%;
   background-size: cover;
-
 }
 
-.story-circle:nth-child(1) {
-  background-image: url("/imgs/img1.jpg");
+li:hover .summary {
+  display: block;
 }
 
-
-.story-circle:nth-child(2) {
+.story2 {
+  margin: 0 left;
+  display: block;
+  padding: 40px;
+  opacity: 0;
+  transition: 1s;
+  width: 0;
+  height: 0;
   background-image: url("/imgs/img2.jpg");
+  border-radius: 50%;
+  background-size: cover;
 }
 
-
-.story-circle:nth-child(3) {
+.story3 {
+  margin: 0;
+  display: block;
+  padding: 40px;
+  opacity: 0;
+  transition: 1s;
+  width: 0;
+  height: 0;
   background-image: url("/imgs/img3.jpg");
+  border-radius: 50%;
+  float: right;
+  background-size: cover;
 }
 
-.story-circle.show {
+.story1.show,
+.story2.show,
+.story3.show {
   opacity: 1;
   height: 100px;
   width: 100px;
@@ -88,7 +102,11 @@ li:hover .summary {
   font-family: var(--main-font);
   height: 400px;
   width: 50%;
-  background: linear-gradient(45deg, rgba(54, 37, 54, 0.5), rgba(80, 50, 80, 0.9));
+  background: linear-gradient(
+    45deg,
+    rgba(54, 37, 54, 0.5),
+    rgba(80, 50, 80, 0.9)
+  );
   display: none;
   position: fixed;
   color: white;
@@ -121,9 +139,10 @@ li:hover .summary {
   }
 }
 
+
 .down-arrow {
   position: absolute;
-  bottom: 30%;
+  bottom: 20%;
   animation-name: bouncing-arrow;
   animation-duration: 2s;
   animation-timing-function: ease-in-out;
@@ -140,36 +159,8 @@ li:hover .summary {
   cursor: pointer;
 }
 
-.stories-items {
+
+.srories-items {
   list-style: none;
-  padding: 50px 200px;
-}
-
-.vertical-line {
-  background-color: var(--color-2);
-  height: 0px;
-  width: 2px;
-  position: absolute;
-  left: 50%;
-  z-index: 100;
-  opacity: 1;
-}
-
-@keyframes grow-line {
-  from {
-    height: 0px;
-
-  }
-
-  to {
-    height: 700px;
-  }
-}
-
-
-.animate-line {
-  animation-name: grow-line;
-  animation-duration: 3s;
-  animation-timing-function: ease;
-  height: 1000px;
+  padding: 50px 400px;
 }
