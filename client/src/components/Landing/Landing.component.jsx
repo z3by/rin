@@ -76,7 +76,7 @@ export default class Landing extends Component {
           const nav = document.querySelector(".nav");
           nav.style.transform = `translate(${-this.state.index * divWidth}px)`;
           this.toggleClassActive();
-          this.changeBackground();
+          // this.changeBackground();
           this.translateShapes();
           this.toggleOverlayColor();
           this.changeVideo();
@@ -101,7 +101,7 @@ export default class Landing extends Component {
           const nav = document.querySelector(".nav");
           nav.style.transform = `translate(${-this.state.index * divWidth}px)`;
           this.toggleClassActive();
-          this.changeBackground();
+          // this.changeBackground();
           this.translateShapes();
           this.toggleOverlayColor();
           this.changeVideo();
@@ -161,12 +161,12 @@ export default class Landing extends Component {
   toggleOverlayColor = () => {
     document.querySelector(".up-rec-overlay").style.background =
       document.querySelector(".up-rec-overlay").style.background ===
-      "linear-gradient(45deg,var(--color-4), var(--color-2))"
+        "linear-gradient(45deg,var(--color-4), var(--color-2))"
         ? "linear-gradient(45deg, var(--color-2), var(--color-4))"
         : "linear-gradient(45deg,var(--color-4), var(--color-2))";
     document.querySelector(".down-rec-overlay").style.background =
       document.querySelector(".down-rec-overlay").style.background ===
-      "linear-gradient(45deg, var(--color-2), var(--color-4))"
+        "linear-gradient(45deg, var(--color-2), var(--color-4))"
         ? "linear-gradient(45deg,var(--color-4), var(--color-2))"
         : "linear-gradient(45deg, var(--color-2), var(--color-4))";
   };
