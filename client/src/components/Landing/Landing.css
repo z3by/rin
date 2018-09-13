@@ -2,7 +2,7 @@
 .landing {
   font-family: var(--main-font);
   height: 100vh;
-  background: radial-gradient(#324, var(--color-1));
+  background: var(--color-1);
   display: flex;
   align-items: center;
   z-index: -1;
@@ -127,7 +127,7 @@
 /* --------------------------------------- partners end---------------------------------- */
 
 .circle {
-  opacity: 0.3;
+  opacity: 0.2;
   height: 30vw;
   width: 30vw;
   left: 32%;
@@ -138,14 +138,15 @@
 }
 
 .circle-overlay {
-  opacity: 0.3;
+  opacity: 0.6;
   height: 30vw;
   width: 30vw;
   left: 32%;
   position: absolute;
   border-radius: 50%;
   z-index: 3;
-  mix-blend-mode: lighten;
+  mix-blend-mode: screen;
+  background-color: white;
   background: linear-gradient(45deg, var(--color-2), var(--color-4));
 }
 
@@ -182,7 +183,7 @@
 
 .up-rec-overlay,
 .down-rec-overlay {
-  mix-blend-mode: lighten;
+  mix-blend-mode: screen;
   opacity: 0.3;
   position: absolute;
   height: 20vh;

@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Baloo+Tammudu|Comfortaa|Dosis|Exo+2|Noto+Sans+JP|Nunito|Quicksand");
 
 :root {
-  --color-1: #160c16;
-  --color-2: #f06841;
-  --color-3: #78ffd6;
-  --color-4: #007991;
+  --color-1: #291827;
+  --color-2: #FF6138;
+  --color-3: #00A388;
+  --color-4: #05848D;
   --color-5: #f2e4b1;
   --main-font: "Nunito", "Comfortaa", "Baloo Tammudu";
   --smooth: all 1300ms cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -113,8 +113,8 @@ label {
 
 .fadeInFast {
   animation-name: fade-in;
-  animation-duration: 2s;
-  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  animation-duration: 3s;
+  animation-timing-function: ease;
 }
 
 @-webkit-keyframes fadeIn {
