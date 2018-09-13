@@ -7,13 +7,13 @@ import * as projects from './projects-data.json';
 
 const Dot = (props) => {
   const colors = {
-    'health': '#8DC26F',
+    'housing': '#E83338',
     'education': '#ff9068',
-    'nutrition': '#6441A5',
-    'water': '#64b3f4',
     'agriculture': '#FFB75E',
-    'infancy': '#FFB75E',
-    'housing': '#E83338'
+    'health': '#8DC26F',
+    'water': '#64b3f4',
+    'nutrition': '#6441A5',
+    'infancy': '#fc67fa',
   }
   return (
     <div className="dot" style={{ background: colors[props.project.type] }} />
@@ -26,7 +26,8 @@ export default class Map extends Component {
       lat: 31.95,
       lng: 35.99
     },
-    zoom: 5
+    zoom: 5,
+    currentType: 'agriculture'
   };
 
   componentWillMount() {
@@ -49,7 +50,19 @@ export default class Map extends Component {
   // mouse hover handler for the spectrum;
   handleMouseHover = (e) => {
     const index = e.target.dataset.index;
+    const types = [
+      'housing',
+      'education',
+      'agriculture',
+      'health',
+      'water',
+      'nutrition',
+      'infancy'
+    ]
 
+    this.setState({
+      currentType: types[index]
+    });
 
   }
 
@@ -57,7 +70,7 @@ export default class Map extends Component {
 
     const dots = projects.map((project, key) => {
       return (
-        <Dot lng={project.position.lng} lat={project.position.lat} key={key} project={project} key={key} />
+        this.state.currentType === project.type && <Dot lng={project.position.lng} lat={project.position.lat} key={key} project={project} key={key} />
       );
     })
 
@@ -87,7 +100,7 @@ export default class Map extends Component {
         >
           {[dots]}
         </GoogleMapReact>
-      </div>
+      </div >
     );
   }
 }
