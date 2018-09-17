@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./Landing.css";
-import { Link } from "react-router-dom";
 
 export default class Landing extends Component {
   constructor(props) {
@@ -9,6 +8,8 @@ export default class Landing extends Component {
     this.state = {
       index: 0
     };
+
+    
   }
 
   componentDidMount() {
@@ -42,8 +43,8 @@ export default class Landing extends Component {
 
     const circleX = e.clientX;
     const circleY = e.clientY;
-    document.querySelector(".effect-circle").style.top = circleY - 50 + "px";
-    document.querySelector(".effect-circle").style.left = circleX - 50 + "px";
+    document.querySelector(".effect-circle").style.top = circleY - 100 + "px";
+    document.querySelector(".effect-circle").style.left = circleX - 100 + "px";
   };
 
   // mouse wheel handler for the landing page
@@ -161,14 +162,14 @@ export default class Landing extends Component {
   toggleOverlayColor = () => {
     document.querySelector(".up-rec-overlay").style.background =
       document.querySelector(".up-rec-overlay").style.background ===
-        "linear-gradient(45deg,var(--color-4), var(--color-2))"
-        ? "linear-gradient(45deg, var(--color-2), var(--color-4))"
-        : "linear-gradient(45deg,var(--color-4), var(--color-2))";
+        "linear-gradient(45deg,var(--color-2), var(--color-2))"
+        ? "linear-gradient(45deg, var(--color-4), var(--color-4))"
+        : "linear-gradient(45deg,var(--color-2), var(--color-2))";
     document.querySelector(".down-rec-overlay").style.background =
       document.querySelector(".down-rec-overlay").style.background ===
-        "linear-gradient(45deg, var(--color-2), var(--color-4))"
-        ? "linear-gradient(45deg,var(--color-4), var(--color-2))"
-        : "linear-gradient(45deg, var(--color-2), var(--color-4))";
+        "linear-gradient(45deg, var(--color-4), var(--color-4))"
+        ? "linear-gradient(45deg,var(--color-2), var(--color-2))"
+        : "linear-gradient(45deg, var(--color-4), var(--color-4))";
   };
 
   // navigate to route after 2 seconds
@@ -221,7 +222,7 @@ export default class Landing extends Component {
             </ul>
           </div>
 
-          <div className="circle-overlay fadeIn" />
+          <div className="circle-overlay" />
           <div className="circle fadeIn">
             <div className="effect-circle" />
             <video
@@ -229,6 +230,7 @@ export default class Landing extends Component {
               autoPlay
               muted
               loop
+              height="100"
               className="circle-video"
             />
           </div>
