@@ -1,8 +1,8 @@
 import React from "react";
 
-import "./Filter.css";
+import "./Spectrum.css";
 
-class Filter extends React.Component {
+class Spectrum extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -96,4 +96,4 @@ class Filter extends React.Component {
   }
 }
 
-export default Filter;
+export default Spectrum;

@@ -1,0 +1,92 @@
+.spectrum {
+  position: absolute;
+  z-index: 100;
+  margin: 50px 0;
+}
+
+.spectrum:hover li {
+  transition: all 0.5s ease;
+  height: 25px;
+}
+
+.filter-spectrum {
+  display: flex;
+  justify-content: center;
+}
+
+.spectrum-item {
+  background: white;
+  height: 10px;
+  width: 100px;
+  transition: all 0.5s ease;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.spectrum-item:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.spectrum-item:hover .tooltiptext {
+  font-size: 18px;
+}
+
+.spectrum-item:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background: linear-gradient(90deg, #e83338, #ff9068);
+}
+.spectrum-item:nth-child(2) {
+  background: linear-gradient(90deg, #ff9068, #ffb75e);
+}
+.spectrum-item:nth-child(3) {
+  background: linear-gradient(90deg, #ffb75e, #8dc26f);
+}
+.spectrum-item:nth-child(4) {
+  background: linear-gradient(90deg, #8dc26f, #64b3f4);
+}
+.spectrum-item:nth-child(5) {
+  background: linear-gradient(90deg, #64b3f4, #6441a5);
+}
+.spectrum-item:nth-child(6) {
+  background: linear-gradient(90deg, #6441a5, #fc67fa);
+}
+.spectrum-item:last-child {
+  border-top-right-radius: 10px;
+  background: linear-gradient(90deg, #fc67fa, #f4c4f3);
+  border-bottom-right-radius: 10px;
+}
+
+.tooltip {
+  text-align: center;
+  width: fit-content;
+  visibility: hidden;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 6vw;
+  z-index: 1;
+  position: absolute;
+  top: 30px;
+  padding: 10px 20px;
+  opacity: 0;
+  transition: opacity 1s;
+  margin-left: -58px;
+}
+
+.tooltip .tooltiptext {
+  font-family: var(--main-font);
+  color: #fff;
+  font-family: var(--main-font);
+  font-size: 6px;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -10px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent rgba(0, 0, 0, 0.3) transparent;
+}

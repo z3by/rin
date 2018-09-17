@@ -3,8 +3,9 @@ import GoogleMapReact from "google-map-react";
 import "./Map.css";
 import * as options from "./map-options";
 import * as projects from "./projects-data.json";
-import Dot from "./Dot/Dot.react.jsx";
-import Filter from "./Filter/Filter.react.jsx";
+import Dot from "./Dot/Dot.component";
+import Spectrum from "./Spectrum/Spectrum.component";
+import Filter from "./Filter/Filter.component";
 
 export default class Map extends Component {
   state = {
@@ -59,7 +60,8 @@ export default class Map extends Component {
         style={{ height: "100vh", width: "100%" }}
         className="map fadeInFast"
       >
-        <Filter setCurrentType={this.setCurrentType} />
+        <Spectrum setCurrentType={this.setCurrentType} />
+        <Filter />
         <GoogleMapReact
           options={options}
           bootstrapURLKeys={{ key: "AIzaSyAxYHlwX3Vu7-ygTF2wiB3sjSyFU7mAMJE" }}
