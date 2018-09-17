@@ -8,13 +8,12 @@ export default class Landing extends Component {
     this.state = {
       index: 0
     };
-
-    
   }
 
   componentDidMount() {
     this.bindEvents();
     this.rotateArrows();
+    this.changeVideo();
   }
 
   // bind the events to the local functions.
@@ -67,7 +66,8 @@ export default class Landing extends Component {
 
   // change current context on the landing page;
   animateNext = () => {
-    if (this.state.index < 4) {
+    // if (this.state.index < 4) {
+    if (this.state.index < 2) {
       this.setState(
         {
           index: this.state.index + 1
@@ -127,7 +127,21 @@ export default class Landing extends Component {
 
   changeVideo = () => {
     let random = Math.floor(Math.random() * 100);
-    document.querySelector(".circle-video").currentTime = random;
+    switch (this.state.index) {
+      case 0:
+        document.querySelector(".circle-video").currentTime = 46;
+        break;
+      case 1:
+        document.querySelector(".circle-video").currentTime = 95;
+
+        break;
+      case 2:
+        document.querySelector(".circle-video").currentTime = 40;
+        break;
+      default:
+        document.querySelector(".circle-video").currentTime = 10;
+        break;
+    }
   };
 
   changeBackground = () => {
@@ -162,12 +176,12 @@ export default class Landing extends Component {
   toggleOverlayColor = () => {
     document.querySelector(".up-rec-overlay").style.background =
       document.querySelector(".up-rec-overlay").style.background ===
-        "linear-gradient(45deg,var(--color-2), var(--color-2))"
+      "linear-gradient(45deg,var(--color-2), var(--color-2))"
         ? "linear-gradient(45deg, var(--color-4), var(--color-4))"
         : "linear-gradient(45deg,var(--color-2), var(--color-2))";
     document.querySelector(".down-rec-overlay").style.background =
       document.querySelector(".down-rec-overlay").style.background ===
-        "linear-gradient(45deg, var(--color-4), var(--color-4))"
+      "linear-gradient(45deg, var(--color-4), var(--color-4))"
         ? "linear-gradient(45deg,var(--color-2), var(--color-2))"
         : "linear-gradient(45deg, var(--color-4), var(--color-4))";
   };
@@ -176,6 +190,7 @@ export default class Landing extends Component {
   navigate = () => {
     const routes = ["stories", "map", "data", "library", "about"];
     document.querySelector(".circle").classList.add("grow");
+    document.querySelector(".circle-overlay").classList.add("grow");
     setTimeout(() => {
       this.props.history.push(routes[this.state.index]);
     }, 2000);
@@ -209,7 +224,7 @@ export default class Landing extends Component {
                   data
                 </a>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <a onClick={this.navigate} className="nav-link">
                   library
                 </a>
@@ -218,7 +233,7 @@ export default class Landing extends Component {
                 <a onClick={this.navigate} className="nav-link">
                   about
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
 
