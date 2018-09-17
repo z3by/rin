@@ -14,7 +14,7 @@
     "intensity": "500700",
     "position": {
       "lat": "55",
-      "lng": "70"
+      "lng": "10"
     }
   },
   {
@@ -22,8 +22,8 @@
     "title": "Critical Analysis of Patients in IPD",
     "intensity": "10000",
     "position": {
-      "lat": "-70",
-      "lng": "60"
+      "lat": "-20",
+      "lng": "41"
     }
   },
   {
@@ -32,7 +32,7 @@
     "intensity": "896000",
     "position": {
       "lat": "-10",
-      "lng": "188"
+      "lng": "8"
     }
   },
   {
@@ -40,8 +40,8 @@
     "title": "PatientandtheirProblems",
     "intensity": "70000",
     "position": {
-      "lat": "70",
-      "lng": "10"
+      "lat": "50",
+      "lng": "15"
     }
   },
   {
@@ -50,7 +50,7 @@
     "intensity": "760700",
     "position": {
       "lat": "33",
-      "lng": "77"
+      "lng": "24"
     }
   },
   {
@@ -58,8 +58,8 @@
     "title": "Awareness of Radiation Hazards Among Radiology Technicians",
     "intensity": "430100",
     "position": {
-      "lat": "80",
-      "lng": "100"
+      "lat": "14",
+      "lng": "63"
     }
   },
   {
@@ -77,7 +77,7 @@
     "intensity": "500700",
     "position": {
       "lat": "20",
-      "lng": "70"
+      "lng": "33"
     }
   },
   {
@@ -85,7 +85,7 @@
     "title": "Access and Quality in Higher Education Project",
     "intensity": "10000",
     "position": {
-      "lat": "35",
+      "lat": "37",
       "lng": "30"
     }
   },
@@ -94,7 +94,7 @@
     "title": "Improving the Quality of Initial and Primary",
     "intensity": "896000",
     "position": {
-      "lat": "40",
+      "lat": "44",
       "lng": "33"
     }
   },
@@ -112,8 +112,8 @@
     "title": "Youth Employment and Opportunities Project",
     "intensity": "760700",
     "position": {
-      "lat": "61",
-      "lng": "89"
+      "lat": "23",
+      "lng": "0"
     }
   },
   {
@@ -121,8 +121,8 @@
     "title": "Early Childhood Development Project",
     "intensity": "430100",
     "position": {
-      "lat": "69",
-      "lng": "37"
+      "lat": "-13",
+      "lng": "-29"
     }
   },
   {
@@ -130,7 +130,7 @@
     "title": "Food Safety",
     "intensity": "100000",
     "position": {
-      "lat": "73",
+      "lat": "-22",
       "lng": "39"
     }
   },
@@ -139,8 +139,8 @@
     "title": "Organic Food",
     "intensity": "500700",
     "position": {
-      "lat": "81",
-      "lng": "70"
+      "lat": "43",
+      "lng": "-20"
     }
   },
   {
@@ -148,8 +148,8 @@
     "title": "Tracking Investment on Nutrition",
     "intensity": "10000",
     "position": {
-      "lat": "89",
-      "lng": "40"
+      "lat": "-20",
+      "lng": "-16"
     }
   },
   {
@@ -176,7 +176,7 @@
     "intensity": "760700",
     "position": {
       "lat": "-27",
-      "lng": "57"
+      "lng": "16"
     }
   },
   {
@@ -185,7 +185,7 @@
     "intensity": "430100",
     "position": {
       "lat": "-38",
-      "lng": "66"
+      "lng": "21"
     }
   },
   {
@@ -194,7 +194,7 @@
     "intensity": "100000",
     "position": {
       "lat": "-46",
-      "lng": "16"
+      "lng": "17"
     }
   },
   {
@@ -211,8 +211,8 @@
     "title": "Challenges for sustainable agricultural water management",
     "intensity": "10000",
     "position": {
-      "lat": "-69",
-      "lng": "81"
+      "lat": "12",
+      "lng": "25"
     }
   },
   {
@@ -220,8 +220,8 @@
     "title": "Food Security and the Water Futures",
     "intensity": "896000",
     "position": {
-      "lat": "-56",
-      "lng": "95"
+      "lat": "11",
+      "lng": "25"
     }
   },
   {
@@ -229,8 +229,8 @@
     "title": "Reforms for Agricultural Water Managemen",
     "intensity": "70000",
     "position": {
-      "lat": "-30",
-      "lng": "94"
+      "lat": "16",
+      "lng": "11"
     }
   },
   {
@@ -238,8 +238,8 @@
     "title": "Assessing and reporting the impacts of agriculture on freshwater ecosystems",
     "intensity": "760700",
     "position": {
-      "lat": "-33",
-      "lng": "77"
+      "lat": "18",
+      "lng": "22"
     }
   },
   {
@@ -247,8 +247,8 @@
     "title": "Charging Farmers for Irrigation Water",
     "intensity": "430100",
     "position": {
-      "lat": "-28",
-      "lng": "110"
+      "lat": "8",
+      "lng": "44"
     }
   },
   {
@@ -256,8 +256,8 @@
     "title": "Early Growth of Selected Indigenous Tree Species in Response to Water Quality",
     "intensity": "100000",
     "position": {
-      "lat": "-67",
-      "lng": "170"
+      "lat": "34",
+      "lng": "31"
     }
   },
   {
@@ -265,8 +265,8 @@
     "title": "The Determinants of Household Demand for Maize",
     "intensity": "500700",
     "position": {
-      "lat": "-79",
-      "lng": "117"
+      "lat": "31",
+      "lng": "35"
     }
   },
   {
@@ -274,8 +274,8 @@
     "title": "Enhancing Food Supply Through Genetic Engineering",
     "intensity": "10000",
     "position": {
-      "lat": "70",
-      "lng": "129"
+      "lat": "43",
+      "lng": "22"
     }
   },
   {
@@ -283,8 +283,8 @@
     "title": "IMPORTANCE OF AGRICULTURAL JOURNALISM",
     "intensity": "896000",
     "position": {
-      "lat": "-87",
-      "lng": "188"
+      "lat": "24",
+      "lng": "16"
     }
   },
   {
@@ -301,8 +301,8 @@
     "title": "Abundance and distibution of squirrel",
     "intensity": "760700",
     "position": {
-      "lat": "52",
-      "lng": "135"
+      "lat": "9",
+      "lng": "2"
     }
   },
   {
@@ -310,8 +310,8 @@
     "title": "Prevalence of Gastrointestinal Parasites on Some Common Vegetables sold",
     "intensity": "430100",
     "position": {
-      "lat": "79",
-      "lng": "141"
+      "lat": "26",
+      "lng": "64"
     }
   },
   {
@@ -329,7 +329,7 @@
     "intensity": "500700",
     "position": {
       "lat": "49",
-      "lng": "155"
+      "lng": "15"
     }
   },
   {
@@ -338,7 +338,7 @@
     "intensity": "10000",
     "position": {
       "lat": "-19",
-      "lng": "156"
+      "lng": "56"
     }
   },
   {
@@ -347,7 +347,7 @@
     "intensity": "896000",
     "position": {
       "lat": "0",
-      "lng": "176"
+      "lng": "16"
     }
   },
   {
@@ -355,8 +355,8 @@
     "title": "Infant social cognition",
     "intensity": "70000",
     "position": {
-      "lat": "80",
-      "lng": "163"
+      "lat": "50",
+      "lng": "3"
     }
   },
   {
@@ -364,8 +364,8 @@
     "title": "Early brain development",
     "intensity": "760700",
     "position": {
-      "lat": "50",
-      "lng": "178"
+      "lat": "40",
+      "lng": "18"
     }
   },
   {
@@ -374,7 +374,7 @@
     "intensity": "430100",
     "position": {
       "lat": "39",
-      "lng": "187"
+      "lng": "45"
     }
   },
   {
@@ -383,7 +383,7 @@
     "intensity": "100000",
     "position": {
       "lat": "37",
-      "lng": "35"
+      "lng": "45"
     }
   },
   {
@@ -391,7 +391,7 @@
     "title": "Fixing Shelters Infrastructure",
     "intensity": "500700",
     "position": {
-      "lat": "34",
+      "lat": "38",
       "lng": "-10"
     }
   },
@@ -401,7 +401,7 @@
     "intensity": "10000",
     "position": {
       "lat": "30",
-      "lng": "-140"
+      "lng": "40"
     }
   },
   {
@@ -410,7 +410,7 @@
     "intensity": "896000",
     "position": {
       "lat": "32",
-      "lng": "-188"
+      "lng": "-8"
     }
   },
   {
@@ -419,7 +419,7 @@
     "intensity": "70000",
     "position": {
       "lat": "29",
-      "lng": "-47"
+      "lng": "47"
     }
   },
   {
@@ -436,8 +436,8 @@
     "title": "Clinics Services Enhancement",
     "intensity": "430100",
     "position": {
-      "lat": "71",
-      "lng": "-175"
+      "lat": "31",
+      "lng": "-15"
     }
   }
 ]

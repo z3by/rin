@@ -2,7 +2,7 @@
   position: relative;
   height: 10px;
   width: 22px;
-  background: rgba(255, 255, 255, .1);
+  background: rgba(255, 255, 255, .5);
 }
 
 .rounded {
@@ -85,7 +85,7 @@
   height: 14vh;
   width: 14vh;
   border-radius: 50%;
-  background: linear-gradient(60deg, rgba(255, 255, 255, 0.0), rgba(244, 233, 255, 0.2));
+  background: linear-gradient(60deg, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.3));
 }
 
 .logo-img {
@@ -96,7 +96,7 @@
   height: 6vh;
   width: 14vh;
   position: relative;
-  background: linear-gradient(60deg, rgba(255, 255, 255, 0.0), rgba(244, 233, 255, 0.2));
+  background: linear-gradient(60deg, rgba(255, 255, 255, 0.0), rgba(0, 0, 0, 0.3));
 }
 
 .counter span {
@@ -114,8 +114,8 @@
 
 .back-gredient {
   position: fixed;
-  z-index: 99;
-  background: linear-gradient(-90deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, .8));
+  z-index: 0;
+  background: linear-gradient(-90deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
   height: 100vh;
   width: 15%;
 }
