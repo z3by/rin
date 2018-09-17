@@ -3,27 +3,7 @@ import GoogleMapReact from "google-map-react";
 import "./Map.css";
 import * as options from "./map-options";
 import * as projects from "./projects-data.json";
-
-const Dot = props => {
-  const colors = {
-    housing: "#E83338",
-    education: "#ff9068",
-    agriculture: "#FFB75E",
-    health: "#8DC26F",
-    water: "#64b3f4",
-    nutrition: "#6441A5",
-    infancy: "#fc67fa"
-  };
-  return (
-    <div className="dot" style={{ background: colors[props.project.type] }}>
-      <div class="tooltip">
-        <div class="tooltiptext">{props.project.title}</div>
-        <img src="https://source.unsplash.com/random" />
-        <p className="tooltip-money">{props.project.intensity}$</p>
-      </div>
-    </div>
-  );
-};
+import Dot from "./Dot/Dot.react";
 
 export default class Map extends Component {
   state = {
