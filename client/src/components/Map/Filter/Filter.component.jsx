@@ -55,8 +55,8 @@ class Filter extends React.Component {
             type="text"
             placeholder="organization name"
             className="filter-input-text"
+            onInput={this.props.filterProjectsByOrgName}
           />
-          <button className="filter-btn">Filter</button>
         </div>
 
         <div className="filter-input">
@@ -68,8 +68,8 @@ class Filter extends React.Component {
             type="text"
             placeholder="project name"
             className="filter-input-text"
+            onInput={this.props.filterProjectsByProjectName}
           />
-          <button className="filter-btn">Filter</button>
         </div>
 
         <div className="filter-input">

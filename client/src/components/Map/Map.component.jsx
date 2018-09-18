@@ -40,6 +40,32 @@ export default class Map extends Component {
     });
   };
 
+  // filter projects by organization name
+  filterProjectsByOrgName = e => {
+    const name = e.target.value;
+    const filteredProjects = projects.filter(project => {
+      return project.organizationName.includes(name.toLowerCase());
+    });
+
+    // set the state to the filtered projects
+    this.setState({
+      projects: filteredProjects
+    });
+  };
+
+  // filter projects by organization name
+  filterProjectsByProjectName = e => {
+    const name = e.target.value;
+    const filteredProjects = projects.filter(project => {
+      return project.projectName.includes(name.toLowerCase());
+    });
+
+    // set the state to the filtered projects
+    this.setState({
+      projects: filteredProjects
+    });
+  };
+
   // filter projects by type;
   filterProjectsByType = type => {
     // filter the projects based on it own type
@@ -71,7 +97,10 @@ export default class Map extends Component {
         style={{ height: "100vh", width: "100%" }}
         className="map fadeInFast"
       >
-        <Filter filterProjectsByType={this.filterProjectsByType} />
+        <Filter
+          filterProjectsByType={this.filterProjectsByType}
+          filterProjectsByOrgName={this.filterProjectsByOrgName}
+        />
         <GoogleMapReact
           options={options}
           bootstrapURLKeys={{ key: "AIzaSyAxYHlwX3Vu7-ygTF2wiB3sjSyFU7mAMJE" }}

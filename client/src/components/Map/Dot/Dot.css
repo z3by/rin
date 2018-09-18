@@ -11,28 +11,29 @@
 
 .dot:hover {
   background: white;
-  transform: scale(5);
+  transform: scale(2);
   cursor: default;
   animation: unset;
 }
 
 .map-img {
   padding: 20px;
-  color: palevioletred;
 }
 
 .dot:hover .tooltip {
   visibility: visible;
   opacity: 1;
-  font-size: 4px;
+}
+.dot:hover .tooltiptext {
+  font-size: 10px;
 }
 
 .dot:hover .tooltip img {
   visibility: visible;
 }
 .tooltip img {
-  height: 50px;
-  margin: 0 auto;
+  height: 70px;
+  margin: 10px auto;
   visibility: hidden;
   display: block;
 }
@@ -43,8 +44,8 @@
 }
 
 p.tooltip-money {
-  font-size: 4px;
-  color: white;
+  font-size: 8px;
+  color: var(--color-2);
   margin: 0;
   float: left;
 }
