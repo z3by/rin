@@ -27,9 +27,15 @@
 
 .filter:hover .filter-input {
   visibility: visible;
+  transition-delay: 1s;
   opacity: 1;
 }
 
+.filter:hover .spectrum {
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 1s;
+}
 .filter-input {
   text-align: left;
   visibility: hidden;

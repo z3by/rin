@@ -4,7 +4,6 @@ import "./Map.css";
 import * as options from "./map-options";
 import * as projects from "./projects-data.json";
 import Dot from "./Dot/Dot.component";
-import Spectrum from "./Spectrum/Spectrum.component";
 import Filter from "./Filter/Filter.component";
 
 export default class Map extends Component {
@@ -13,8 +12,7 @@ export default class Map extends Component {
       lat: 31.95,
       lng: 35.99
     },
-    zoom: 5,
-    currentType: "agriculture"
+    zoom: 5
   };
 
   componentWillMount() {
@@ -30,13 +28,6 @@ export default class Map extends Component {
           lng: position.coords.longitude
         }
       });
-    });
-  };
-
-  // get the current type from the filter component and set it to the state;
-  setCurrentType = type => {
-    this.setState({
-      currentType: type
     });
   };
 
@@ -60,7 +51,6 @@ export default class Map extends Component {
         style={{ height: "100vh", width: "100%" }}
         className="map fadeInFast"
       >
-        <Spectrum setCurrentType={this.setCurrentType} />
         <Filter />
         <GoogleMapReact
           options={options}

@@ -25,7 +25,6 @@
   visibility: visible;
   opacity: 1;
   font-size: 4px;
-  padding: 5px;
 }
 
 .dot:hover .tooltip img {
