@@ -7,21 +7,13 @@ class Filter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      countries: [],
-      currentType: "agriculture"
+      countries: []
     };
   }
 
   componentWillMount() {
     this.fetchAllCountries();
   }
-
-  // get the current type from the filter component and set it to the state;
-  setCurrentType = type => {
-    this.setState({
-      currentType: type
-    });
-  };
 
   fetchAllCountries = () => {
     axios
@@ -51,7 +43,7 @@ class Filter extends React.Component {
           <label htmlFor="project-type" className="filter-label">
             Filter by project type
           </label>
-          <Spectrum setCurrentType={this.setCurrentType} />
+          <Spectrum setCurrentType={this.props.filterProjectsByType} />
         </div>
 
         <div className="filter-input">
