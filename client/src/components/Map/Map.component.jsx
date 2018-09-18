@@ -79,6 +79,64 @@ export default class Map extends Component {
     });
   };
 
+  onSlide = e => {
+    if (e.target.id === "starting-year") {
+      this.filterByYear(e.target.value);
+    }
+    if (e.target.id === "benefits") {
+      this.filterByBenefits(e.target.value);
+    }
+    if (e.target.id === "capacity") {
+      this.filterByCapacity(e.target.value);
+    }
+  };
+
+  filterByYear = year => {
+    const filteredProjects = projects.filter(project => {
+      return project.year > year;
+    });
+
+    // set the state to the filtered projects
+    this.setState({
+      projects: filteredProjects
+    });
+  };
+
+  filterByBenefits = benefits => {
+    const filteredProjects = projects.filter(project => {
+      return parseInt(project.benefits) > parseInt(benefits);
+    });
+
+    // set the state to the filtered projects
+    this.setState({
+      projects: filteredProjects
+    });
+  };
+
+  filterByCapacity = capacity => {
+    const filteredProjects = projects.filter(project => {
+      return parseInt(project.capacity) > parseInt(capacity);
+    });
+
+    // set the state to the filtered projects
+    this.setState({
+      projects: filteredProjects
+    });
+  };
+
+  filterByCountry = e => {
+    const country = e.target.value;
+
+    const filteredProjects = projects.filter(project => {
+      return project.country.toLowerCase() === country.toLowerCase();
+    });
+
+    // set the state to the filtered projects
+    this.setState({
+      projects: filteredProjects
+    });
+  };
+
   render() {
     const dots = this.state.projects.map((project, key) => {
       return (
@@ -100,6 +158,8 @@ export default class Map extends Component {
         <Filter
           filterProjectsByType={this.filterProjectsByType}
           filterProjectsByOrgName={this.filterProjectsByOrgName}
+          onSlide={this.onSlide}
+          filterByCountry={this.filterByCountry}
         />
         <GoogleMapReact
           options={options}

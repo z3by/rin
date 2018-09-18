@@ -23,7 +23,17 @@ class Filter extends React.Component {
 
   onSlide = e => {
     const paragraph = document.querySelector(`#${e.target.id}-range`);
-    paragraph.innerText = parseInt(e.target.value) + paragraph.dataset.sympol;
+
+    if (e.target.id == "starting-year") {
+      paragraph.innerText =
+        "after:  " + parseInt(e.target.value) + paragraph.dataset.sympol;
+    } else {
+      paragraph.innerText =
+        "more than:  " + parseInt(e.target.value) + paragraph.dataset.sympol;
+    }
+
+    // pass the event to the parent component;
+    this.props.onSlide(e);
   };
 
   render() {
@@ -110,7 +120,7 @@ class Filter extends React.Component {
           <input
             id="starting-year"
             type="range"
-            placeholder="project starting-year"
+            placeholder="project starting year"
             className="slider"
             onChange={this.onSlide}
             max={new Date().getFullYear()}
@@ -123,7 +133,12 @@ class Filter extends React.Component {
           <label htmlFor="countries" className="filter-label">
             Filter by countries
           </label>
-          <select name="countries" id="countries">
+          <select
+            name="countries"
+            id="countries"
+            onChange={this.props.filterByCountry}
+          >
+            <option value="choose one ">choose country</option>
             {countries}
           </select>
         </div>
