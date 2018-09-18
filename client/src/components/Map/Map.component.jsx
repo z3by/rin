@@ -12,12 +12,21 @@ export default class Map extends Component {
       lat: 31.95,
       lng: 35.99
     },
-    zoom: 5
+    zoom: 5,
+    projects: []
   };
 
   componentWillMount() {
     this.getUserLocation();
+    this.setTheProjects();
   }
+
+  // ser all the projects to the state;
+  setTheProjects = () => {
+    this.setState({
+      projects: projects
+    });
+  };
 
   // get the user location;
   getUserLocation = () => {
@@ -31,18 +40,113 @@ export default class Map extends Component {
     });
   };
 
+  // filter projects by organization name
+  filterProjectsByOrgName = e => {
+    const name = e.target.value;
+    const filteredProjects = projects.filter(project => {
+      return project.organizationName.includes(name.toLowerCase());
+    });
+
+    // set the state to the filtered projects
+    this.setState({
+      projects: filteredProjects
+    });
+  };
+
+  // filter projects by organization name
+  filterProjectsByProjectName = e => {
+    const name = e.target.value;
+    const filteredProjects = projects.filter(project => {
+      return project.projectName.includes(name.toLowerCase());
+    });
+
+    // set the state to the filtered projects
+    this.setState({
+      projects: filteredProjects
+    });
+  };
+
+  // filter projects by type;
+  filterProjectsByType = type => {
+    // filter the projects based on it own type
+    const filteredProjects = projects.filter(project => {
+      return project.type === type;
+    });
+
+    // set the state to the filtered projects
+    this.setState({
+      projects: filteredProjects
+    });
+  };
+
+  onSlide = e => {
+    if (e.target.id === "starting-year") {
+      this.filterByYear(e.target.value);
+    }
+    if (e.target.id === "benefits") {
+      this.filterByBenefits(e.target.value);
+    }
+    if (e.target.id === "capacity") {
+      this.filterByCapacity(e.target.value);
+    }
+  };
+
+  filterByYear = year => {
+    const filteredProjects = projects.filter(project => {
+      return project.year > year;
+    });
+
+    // set the state to the filtered projects
+    this.setState({
+      projects: filteredProjects
+    });
+  };
+
+  filterByBenefits = benefits => {
+    const filteredProjects = projects.filter(project => {
+      return parseInt(project.benefits) > parseInt(benefits);
+    });
+
+    // set the state to the filtered projects
+    this.setState({
+      projects: filteredProjects
+    });
+  };
+
+  filterByCapacity = capacity => {
+    const filteredProjects = projects.filter(project => {
+      return parseInt(project.capacity) > parseInt(capacity);
+    });
+
+    // set the state to the filtered projects
+    this.setState({
+      projects: filteredProjects
+    });
+  };
+
+  filterByCountry = e => {
+    const country = e.target.value;
+
+    const filteredProjects = projects.filter(project => {
+      return project.country.toLowerCase() === country.toLowerCase();
+    });
+
+    // set the state to the filtered projects
+    this.setState({
+      projects: filteredProjects
+    });
+  };
+
   render() {
-    const dots = projects.map((project, key) => {
+    const dots = this.state.projects.map((project, key) => {
       return (
-        this.state.currentType === project.type && (
-          <Dot
-            lng={project.position.lng}
-            lat={project.position.lat}
-            key={key}
-            project={project}
-            key={key}
-          />
-        )
+        <Dot
+          lng={project.position.lng}
+          lat={project.position.lat}
+          key={key}
+          project={project}
+          key={key}
+        />
       );
     });
 
@@ -51,7 +155,12 @@ export default class Map extends Component {
         style={{ height: "100vh", width: "100%" }}
         className="map fadeInFast"
       >
-        <Filter />
+        <Filter
+          filterProjectsByType={this.filterProjectsByType}
+          filterProjectsByOrgName={this.filterProjectsByOrgName}
+          onSlide={this.onSlide}
+          filterByCountry={this.filterByCountry}
+        />
         <GoogleMapReact
           options={options}
           bootstrapURLKeys={{ key: "AIzaSyAxYHlwX3Vu7-ygTF2wiB3sjSyFU7mAMJE" }}

@@ -7,21 +7,13 @@ class Filter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      countries: [],
-      currentType: "agriculture"
+      countries: []
     };
   }
 
   componentWillMount() {
     this.fetchAllCountries();
   }
-
-  // get the current type from the filter component and set it to the state;
-  setCurrentType = type => {
-    this.setState({
-      currentType: type
-    });
-  };
 
   fetchAllCountries = () => {
     axios
@@ -31,7 +23,17 @@ class Filter extends React.Component {
 
   onSlide = e => {
     const paragraph = document.querySelector(`#${e.target.id}-range`);
-    paragraph.innerText = parseInt(e.target.value) + paragraph.dataset.sympol;
+
+    if (e.target.id == "starting-year") {
+      paragraph.innerText =
+        "after:  " + parseInt(e.target.value) + paragraph.dataset.sympol;
+    } else {
+      paragraph.innerText =
+        "more than:  " + parseInt(e.target.value) + paragraph.dataset.sympol;
+    }
+
+    // pass the event to the parent component;
+    this.props.onSlide(e);
   };
 
   render() {
@@ -51,7 +53,7 @@ class Filter extends React.Component {
           <label htmlFor="project-type" className="filter-label">
             Filter by project type
           </label>
-          <Spectrum setCurrentType={this.setCurrentType} />
+          <Spectrum setCurrentType={this.props.filterProjectsByType} />
         </div>
 
         <div className="filter-input">
@@ -63,8 +65,8 @@ class Filter extends React.Component {
             type="text"
             placeholder="organization name"
             className="filter-input-text"
+            onInput={this.props.filterProjectsByOrgName}
           />
-          <button className="filter-btn">Filter</button>
         </div>
 
         <div className="filter-input">
@@ -76,8 +78,8 @@ class Filter extends React.Component {
             type="text"
             placeholder="project name"
             className="filter-input-text"
+            onInput={this.props.filterProjectsByProjectName}
           />
-          <button className="filter-btn">Filter</button>
         </div>
 
         <div className="filter-input">
@@ -118,7 +120,7 @@ class Filter extends React.Component {
           <input
             id="starting-year"
             type="range"
-            placeholder="project starting-year"
+            placeholder="project starting year"
             className="slider"
             onChange={this.onSlide}
             max={new Date().getFullYear()}
@@ -131,7 +133,12 @@ class Filter extends React.Component {
           <label htmlFor="countries" className="filter-label">
             Filter by countries
           </label>
-          <select name="countries" id="countries">
+          <select
+            name="countries"
+            id="countries"
+            onChange={this.props.filterByCountry}
+          >
+            <option value="choose one ">choose country</option>
             {countries}
           </select>
         </div>
