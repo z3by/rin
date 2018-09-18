@@ -110,7 +110,7 @@ export default class Landing extends Component {
       );
     } else {
       this.setState({
-        index: 5
+        index: 3
       });
     }
   };
