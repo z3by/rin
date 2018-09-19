@@ -16,7 +16,7 @@ const Dot = props => {
     <div className="dot" style={{ background: colors[props.project.type] }}>
       <div className="tooltip">
         <div className="tooltiptext">{props.project.title}</div>
-        <img src={props.project.imgUrl} />
+        <img src={props.project.imgUrl} alt="" />
         <p className="tooltip-money">{props.project.intensity}$</p>
       </div>
     </div>

@@ -3,10 +3,6 @@ import React from "react";
 import "./Spectrum.css";
 
 class Spectrum extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   // mouse hover handler for the spectrum;
   handleMouseHover = e => {
     const index = e.target.dataset.index;

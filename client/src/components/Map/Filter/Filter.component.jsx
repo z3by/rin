@@ -24,12 +24,14 @@ class Filter extends React.Component {
   onSlide = e => {
     const paragraph = document.querySelector(`#${e.target.id}-range`);
 
-    if (e.target.id == "starting-year") {
+    if (e.target.id === "starting-year") {
       paragraph.innerText =
-        "after:  " + parseInt(e.target.value) + paragraph.dataset.sympol;
+        "after:  " + parseInt(e.target.value, 10) + paragraph.dataset.sympol;
     } else {
       paragraph.innerText =
-        "more than:  " + parseInt(e.target.value) + paragraph.dataset.sympol;
+        "more than:  " +
+        parseInt(e.target.value, 10) +
+        paragraph.dataset.sympol;
     }
 
     // pass the event to the parent component;

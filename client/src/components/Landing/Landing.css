@@ -156,6 +156,7 @@
   max-width: 8vw;
   max-height: 5vw;
   top: 20%;
+  opacity: 0;
   -webkit-animation-name: prtnrsFadeInOut;
   animation-name: prtnrsFadeInOut;
   -webkit-animation-timing-function: ease-in-out;
@@ -192,6 +193,7 @@
 .circle {
   opacity: 1;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
   height: 30vw;
   width: 30vw;
   left: 32%;
@@ -204,6 +206,7 @@
 .circle-overlay {
   opacity: 0.2;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+  filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   height: 30vw;
   width: 30vw;
   left: 32%;
@@ -236,6 +239,7 @@
   background-attachment: fixed;
   opacity: 0.2;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+  filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   -webkit-transition: left ease 1s, right ease 1s;
   transition: left ease 1s, right ease 1s;
   background-repeat: no-repeat;
@@ -259,6 +263,7 @@
   mix-blend-mode: screen;
   opacity: 0.2;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+  filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   position: absolute;
   height: 20vh;
   width: 58vh;
@@ -288,7 +293,17 @@
 }
 
 /* <<<<<<<<<<<<<<<<<<<<<<<<<< for the other screens >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+@media (min-width: 1024px) {
+  .partners {
+    height: 3vw;
+    width: 8vw;
+  }
 
+  .partners img {
+    max-width: 6vw;
+    max-height: 2vw;
+  }
+}
 /* for ipad screen size */
 @media (max-width: 1024px) {
   .navbar {
