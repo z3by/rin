@@ -9,8 +9,14 @@
   vertical-align: middle;
   height: 50%;
   width: 50%;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   text-align: center;
   margin: 40px auto;
@@ -20,7 +26,11 @@
   width: 50%;
   text-align: left;
   color: aliceblue;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   font-family: var(--main-font);
   margin: 0 auto;

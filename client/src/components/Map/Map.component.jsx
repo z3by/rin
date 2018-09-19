@@ -104,7 +104,7 @@ export default class Map extends Component {
 
   filterByBenefits = benefits => {
     const filteredProjects = projects.filter(project => {
-      return parseInt(project.benefits) > parseInt(benefits);
+      return parseInt(project.benefits, 10) > parseInt(benefits, 10);
     });
 
     // set the state to the filtered projects
@@ -115,7 +115,7 @@ export default class Map extends Component {
 
   filterByCapacity = capacity => {
     const filteredProjects = projects.filter(project => {
-      return parseInt(project.capacity) > parseInt(capacity);
+      return parseInt(project.capacity, 10) > parseInt(capacity, 10);
     });
 
     // set the state to the filtered projects
@@ -145,7 +145,6 @@ export default class Map extends Component {
           lat={project.position.lat}
           key={key}
           project={project}
-          key={key}
         />
       );
     });

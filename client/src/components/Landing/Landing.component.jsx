@@ -126,7 +126,6 @@ export default class Landing extends Component {
   };
 
   changeVideo = () => {
-    let random = Math.floor(Math.random() * 100);
     switch (this.state.index) {
       case 0:
         document.querySelector(".circle-video").currentTime = 46;

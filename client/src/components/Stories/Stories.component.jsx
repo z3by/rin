@@ -56,24 +56,6 @@ class Stories extends Component {
     })
       .setClassToggle(".link1, .link2, .link3, .link4, .link5", "show")
       .addTo(controller);
-
-    new ScrollMagic.Scene({
-      triggerElement: ".vertical-line"
-    })
-      .setClassToggle(".vertical-line", "animate-line")
-      .addTo(controller);
-
-    // new ScrollMagic.Scene({
-    //   triggerElement: ".link2"
-    // })
-    //   .setClassToggle(".link2", "show")
-    //   .addTo(controller);
-
-    // new ScrollMagic.Scene({
-    //   triggerElement: ".link3"
-    // })
-    //   .setClassToggle(".link3", "show")
-    //   .addTo(controller);
   }
 
   onClickStory = e => {
@@ -84,7 +66,7 @@ class Stories extends Component {
     window.scroll({
       top: 850,
       left: 0,
-      behavior: 'smooth'
+      behavior: "smooth"
     });
   };
 
@@ -108,32 +90,42 @@ class Stories extends Component {
 
         <ul className="stories-items">
           <li className="story-item">
-            <Link to={"/stories/" + this.state.stories[0].id}
-              className="link1 links">
+            <Link
+              to={"/stories/" + this.state.stories[0].id}
+              className="link1 links"
+            >
               <span className="story-title">{this.state.stories[0].title}</span>
             </Link>
           </li>
           <li className="story-item">
-            <Link to={"/stories/" + this.state.stories[1].id}
-              className="link2 links">
+            <Link
+              to={"/stories/" + this.state.stories[1].id}
+              className="link2 links"
+            >
               <span className="story-title">{this.state.stories[1].title}</span>
             </Link>
           </li>
           <li className="story-item">
-            <Link to={"/stories/" + this.state.stories[2].id}
-              className="link3 links">
+            <Link
+              to={"/stories/" + this.state.stories[2].id}
+              className="link3 links"
+            >
               <span className="story-title">{this.state.stories[2].title}</span>
             </Link>
           </li>
           <li className="story-item">
-            <Link to={"/stories/" + this.state.stories[3].id}
-              className="link4 links">
+            <Link
+              to={"/stories/" + this.state.stories[3].id}
+              className="link4 links"
+            >
               <span className="story-title">{this.state.stories[3].title}</span>
             </Link>
           </li>
           <li className="story-item">
-            <Link to={"/stories/" + this.state.stories[4].id}
-              className="link5 links">
+            <Link
+              to={"/stories/" + this.state.stories[4].id}
+              className="link5 links"
+            >
               <span className="story-title">{this.state.stories[4].title}</span>
             </Link>
           </li>
@@ -141,11 +133,8 @@ class Stories extends Component {
 
         <div className="up" />
 
-        <div className="spinner-wrapper" id="page-content">
-          <span>Success Journies</span>
-          <div className="spinner"></div>
-        </div>
-
+        <span className="spinner-text">Success Journies</span>
+        <div className="spinner" />
         <div className="down" />
       </div>
     );
