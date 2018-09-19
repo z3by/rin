@@ -3,7 +3,11 @@
   font-family: var(--main-font);
   height: 100vh;
   background: var(--color-1);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   z-index: -1;
   overflow: hidden;
@@ -20,9 +24,15 @@
 }
 
 .nav-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
   z-index: 11;
+  -webkit-transform: translateX(20vw);
   transform: translateX(20vw);
 }
 
@@ -53,31 +63,63 @@
 .nav-link.active {
   cursor: pointer;
   color: var(--color-2);
+  -webkit-transition: var(--smooth);
   transition: var(--smooth);
 }
 
 /* ------------------------------- navigation group end ------------------------- */
 
 /* ---------------------------------- partners ----------------------------------- */
-@keyframes prtnrsFadeInOut {
+@-webkit-keyframes prtnrsFadeInOut {
   0% {
     opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
   }
 
   17% {
     opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
   }
 
   25% {
     opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   }
 
   92% {
     opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   }
 
   100% {
     opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  }
+}
+@keyframes prtnrsFadeInOut {
+  0% {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  }
+
+  17% {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  }
+
+  25% {
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  }
+
+  92% {
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  }
+
+  100% {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
   }
 }
 
@@ -85,42 +127,61 @@
   position: absolute;
   height: 6vh;
   width: 14vh;
-  background: linear-gradient(60deg, rgba(255, 255, 255, 0.0), rgba(0, 0, 0, 0.3));
+  background: -webkit-linear-gradient(
+    30deg,
+    rgba(255, 255, 255, 0),
+    rgba(0, 0, 0, 0.3)
+  );
+  background: linear-gradient(
+    60deg,
+    rgba(255, 255, 255, 0),
+    rgba(0, 0, 0, 0.3)
+  );
   top: 5vh;
   right: 5vh;
   margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 
 .partners img {
   position: absolute;
   -webkit-transition: opacity 1s ease-in-out;
-  -moz-transition: opacity 1s ease-in-out;
-  -o-transition: opacity 1s ease-in-out;
   transition: opacity 1s ease-in-out;
   max-width: 8vh;
   max-height: 5vh;
   top: 20%;
+  -webkit-animation-name: prtnrsFadeInOut;
   animation-name: prtnrsFadeInOut;
+  -webkit-animation-timing-function: ease-in-out;
   animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
+  -webkit-animation-duration: 8s;
   animation-duration: 8s;
 }
 
 .i1 {
+  -webkit-animation-delay: 6s;
   animation-delay: 6s;
 }
 
 .i2 {
+  -webkit-animation-delay: 4s;
   animation-delay: 4s;
 }
 
 .i3 {
+  -webkit-animation-delay: 2s;
   animation-delay: 2s;
 }
 
 .i4 {
+  -webkit-animation-delay: 0;
   animation-delay: 0;
 }
 
@@ -128,6 +189,7 @@
 
 .circle {
   opacity: 1;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
   height: 30vw;
   width: 30vw;
   left: 32%;
@@ -139,6 +201,7 @@
 
 .circle-overlay {
   opacity: 0.2;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   height: 30vw;
   width: 30vw;
   left: 32%;
@@ -147,6 +210,7 @@
   z-index: 3;
   mix-blend-mode: screen;
   background-color: white;
+  background: -webkit-linear-gradient(45deg, var(--color-2), var(--color-4));
   background: linear-gradient(45deg, var(--color-2), var(--color-4));
 }
 
@@ -167,6 +231,8 @@
   background-size: cover;
   background-attachment: fixed;
   opacity: 0.2;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+  -webkit-transition: left ease 1s, right ease 1s;
   transition: left ease 1s, right ease 1s;
   background-repeat: no-repeat;
 }
@@ -185,20 +251,24 @@
 .down-rec-overlay {
   mix-blend-mode: screen;
   opacity: 0.2;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   position: absolute;
   height: 20vh;
   width: 58vh;
   z-index: 5;
+  -webkit-transition: left ease 1s, right ease 1s;
   transition: left ease 1s, right ease 1s;
 }
 
 .down-rec-overlay {
+  background: -webkit-linear-gradient(45deg, var(--color-4), var(--color-4));
   background: linear-gradient(45deg, var(--color-4), var(--color-4));
   bottom: 15%;
   right: 20%;
 }
 
 .up-rec-overlay {
+  background: -webkit-linear-gradient(45deg, var(--color-2), var(--color-2));
   background: linear-gradient(45deg, var(--color-2), var(--color-2));
   top: 15%;
   left: 20%;
@@ -206,6 +276,7 @@
 
 .nav {
   z-index: 5;
+  -webkit-transition: var(--smooth);
   transition: var(--smooth);
 }
 
