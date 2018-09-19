@@ -56,24 +56,6 @@ class Stories extends Component {
     })
       .setClassToggle(".link1, .link2, .link3, .link4, .link5", "show")
       .addTo(controller);
-
-    new ScrollMagic.Scene({
-      triggerElement: ".vertical-line"
-    })
-      .setClassToggle(".vertical-line", "animate-line")
-      .addTo(controller);
-
-    // new ScrollMagic.Scene({
-    //   triggerElement: ".link2"
-    // })
-    //   .setClassToggle(".link2", "show")
-    //   .addTo(controller);
-
-    // new ScrollMagic.Scene({
-    //   triggerElement: ".link3"
-    // })
-    //   .setClassToggle(".link3", "show")
-    //   .addTo(controller);
   }
 
   onClickStory = e => {
@@ -151,11 +133,8 @@ class Stories extends Component {
 
         <div className="up" />
 
-        <div className="spinner-wrapper" id="page-content">
-          <span>Success Journies</span>
-          <div className="spinner" />
-        </div>
-
+        <span className="spinner-text">Success Journies</span>
+        <div className="spinner" />
         <div className="down" />
       </div>
     );

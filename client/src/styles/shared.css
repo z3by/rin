@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Baloo+Tammudu|Comfortaa|Dosis|Exo+2|Noto+Sans+JP|Nunito|Quicksand");
 
 :root {
-  --color-1: linear-gradient(#3c1053, #0f0c29);
+  --color-1: linear-gradient(#201053, #0f0c29);
   --color-2: #ef8e38;
-  --color-3: #06beb6;
-  --color-4: #00b4db;
+  --color-3: #068e86;
+  --color-4: #0094ab;
   --color-5: #f2e4b1;
   --light-transparent: rgba(255, 255, 255, 0.3);
   --light-border: solid 1px var(--color-2);
@@ -234,6 +234,10 @@ input[type="range"].slider:focus::-ms-fill-upper {
   background: rgba(249, 223, 189, 0.5);
 }
 
+video {
+  width: 100vw;
+  height: 120vh;
+}
 select {
   background: transparent;
   color: var(--color-2);
