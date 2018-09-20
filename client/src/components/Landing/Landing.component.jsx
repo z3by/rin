@@ -14,6 +14,7 @@ export default class Landing extends Component {
     this.bindEvents();
     this.rotateArrows();
     this.showVideo();
+
   }
 
   // bind the events to the local functions.
@@ -42,8 +43,8 @@ export default class Landing extends Component {
 
     const circleX = e.clientX;
     const circleY = e.clientY;
-    document.querySelector(".effect-circle").style.top = circleY - 100 + "px";
-    document.querySelector(".effect-circle").style.left = circleX - 100 + "px";
+    document.querySelector(".effect-circle").style.top = circleY - 300 + "px";
+    document.querySelector(".effect-circle").style.left = circleX - 700 + "px";
   };
 
   // mouse wheel handler for the landing page
@@ -212,7 +213,9 @@ export default class Landing extends Component {
   render() {
     return (
       <div>
-
+        {/* <div className="splash-screen">
+          <img src="/imgs/old-logo.png" alt="" />
+        </div> */}
         <div className="landing fadeInFast">
           <div className="partners">
             <img className="i1" src="/imgs/ikea.png" alt="" />
