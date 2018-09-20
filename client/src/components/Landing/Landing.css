@@ -310,17 +310,15 @@
 }
 
 /* <<<<<<<<<<<<<<<<<<<<<<<<<< for the other screens >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
-@media (min-width: 1024px) {
-  
-}
-/* for ipad screen size */
-@media (max-width: 1024px) {
+
+/* for big screen size */
+@media (min-width: 1440px) {
 
 
   .circle {
-    height: 50vw;
-    width: 50vw;
-    left: 25%;
+    height: 30vw;
+    width: 30vw;
+    left: 35vw;
     position: absolute;
     border-radius: 50%;
     z-index: 0;
@@ -332,9 +330,9 @@
   }
 
   .circle-overlay {
-    width: 50vw;
-    height: 50vw;
-    left: 25%;
+    width: 30vw;
+    height: 30vw;
+    left: 35%;
   }
 
   .effect-circle {
@@ -344,8 +342,125 @@
   .down-rec,
   .down-rec-overlay,
   .up-rec-overlay {
-    height: 13vh;
-    width: 50vw;
+    height: 20vh;
+    width: 30vw;
+  }
+
+  .up-rec,
+  .up-rec-overlay {
+    top: 15%;
+    left: 15%;
+  }
+
+  .down-rec,
+  .down-rec-overlay {
+    bottom: 15%;
+    right: 15%;
+  }
+
+  .nav-link.active {
+    font-size: 5vw;
+  }
+
+  .circle video {
+    width: 150vw;
+  }
+  
+}
+
+
+
+/* <<<<<<<<<<<<<<< for laptops >>>>>>>>>>>>>>>>>>>>>>>>> */
+@media (min-width: 1024px) {
+
+
+  .circle {
+    height: 30vw;
+    width: 30vw;
+    left: 35vw;
+    position: absolute;
+    border-radius: 50%;
+    z-index: 0;
+    overflow: hidden;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+  }
+
+  .circle-overlay {
+    height: 30vw;
+    width: 30vw;
+    left: 35vw;
+  }
+
+  .effect-circle {
+    display: none;
+  }
+  .up-rec,
+  .down-rec,
+  .down-rec-overlay,
+  .up-rec-overlay {
+    height: 20vh;
+    width: 35vw;
+  }
+
+  .up-rec,
+  .up-rec-overlay {
+    top: 15%;
+    left: 15%;
+  }
+
+  .down-rec,
+  .down-rec-overlay {
+    bottom: 15%;
+    right: 15%;
+  }
+
+  .nav-link.active {
+    font-size: 4vw;
+  }
+
+  .circle video {
+    width: 100vw;
+    top: -250px;
+  }
+  
+}
+
+
+
+@media (max-width: 768px) {
+
+  .circle {
+    height: 40vw;
+    width: 40vw;
+    left: 35vw;
+    position: absolute;
+    border-radius: 50%;
+    z-index: 0;
+    overflow: hidden;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+  }
+
+  .circle-overlay {
+    height: 40vw;
+    width: 40vw;
+    left: 35vw;
+  }
+
+  .effect-circle {
+    display: none;
+  }
+  .up-rec,
+  .down-rec,
+  .down-rec-overlay,
+  .up-rec-overlay {
+    height: 15vh;
+    width: 35vw;
   }
 
   .up-rec,
@@ -360,54 +475,85 @@
     right: 20%;
   }
 
-  .nav-link {
+  .nav-link.active {
     font-size: 6vw;
   }
 
+  .circle video {
+    width: 150vw;
+    top: 0;
+  }
   
-}
-
-@media (max-width: 768px) {
-
-  .circle {
-    left: 29%;
+  .navbar-middle {
+    opacity: 0;
   }
 
-  .circle-overlay {
-    left: 29%;
+  .nav-group {
+    margin-left: -70px;
+  }
+
+  .partners {
+    opacity: 0;
   }
 }
 
 /* for small phones screen */
-@media (max-width: 414px) {
-
+@media (max-width: 425px) {
 
   .circle {
-    height: 50vw;
+    height: 60vw;
+    width: 60vw;
+    left: 30vw;
+    position: absolute;
+    border-radius: 50%;
+    z-index: 0;
+    overflow: hidden;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+  }
+
+  .circle-overlay {
+    height: 60vw;
+    width: 60vw;
+    left: 30vw;
+  }
+
+  .effect-circle {
+    display: none;
+  }
+  .up-rec,
+  .down-rec,
+  .down-rec-overlay,
+  .up-rec-overlay {
+    height: 12vh;
     width: 50vw;
   }
 
   .up-rec,
   .up-rec-overlay {
-    top: 25%;
+    top: 30%;
+    left: 20%;
   }
 
   .down-rec,
   .down-rec-overlay {
-    bottom: 25%;
+    bottom: 30%;
+    right: 20%;
   }
 
-  .nav-group {
-    margin-left: -80px;
+  .nav-link.active {
+    font-size: 8vw;
   }
 
-  .nav-link {
-    font-size: 35px;
+  .circle video {
+    width: 100vw;
+    top: -450px;
   }
 
-  .arrows {
-    right: 5vw;
-    bottom: 5vw;
+  .navbar-middle {
+    opacity: 0;
   }
 }
 
