@@ -372,8 +372,6 @@
 
 /* <<<<<<<<<<<<<<< for laptops >>>>>>>>>>>>>>>>>>>>>>>>> */
 @media (min-width: 1024px) {
-
-
   .circle {
     height: 30vw;
     width: 30vw;
@@ -433,9 +431,9 @@
 @media (max-width: 768px) {
 
   .circle {
-    height: 40vw;
-    width: 40vw;
-    left: 35vw;
+    height: 50vw;
+    width: 50vw;
+    left: 30vw;
     position: absolute;
     border-radius: 50%;
     z-index: 0;
@@ -447,9 +445,9 @@
   }
 
   .circle-overlay {
-    height: 40vw;
-    width: 40vw;
-    left: 35vw;
+    height: 50vw;
+    width: 50vw;
+    left: 30vw;
   }
 
   .effect-circle {
@@ -489,7 +487,7 @@
   }
 
   .nav-group {
-    margin-left: -70px;
+    /* margin-left: -70px; */
   }
 
   .partners {
@@ -555,33 +553,16 @@
   .navbar-middle {
     opacity: 0;
   }
+  .nav-group {
+    margin-left: -70px;
+  }
 }
 
 /* for xsmall phones screens */
 
-@media (max-width: 375px) and (max-height: 812px) {
-  .nav-group {
-    margin-left: -110px;
-  }
-
-  .nav-link {
-    font-size: 8vw;
-  }
-
-  .circle,
-  .circle-overlay {
-    height: 60vw;
-    width: 60vw;
-    left: 20%;
-  }
-
-  .effect-circle {
-    display: none;
-  }
-
-  
-  .arrows {
-    bottom: 5vw;
-    right: 5vw;
+@media (max-height: 1024px) {
+  .circle video {
+    width: 200vh;
+    top: -450px;
   }
 }
