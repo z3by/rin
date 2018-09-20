@@ -7,6 +7,9 @@ class App extends Component {
   render() {
     return (
       <div>
+        <div className="splash-screen">
+          <img src="/imgs/old-logo.png" alt="" />
+        </div>
         <MyRouter />
       </div>
     );

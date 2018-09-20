@@ -212,9 +212,7 @@ export default class Landing extends Component {
   render() {
     return (
       <div>
-        <div className="splash-screen">
-          <img src="/imgs/old-logo.png" alt="" />
-        </div>
+
         <div className="landing fadeInFast">
           <div className="partners">
             <img className="i1" src="/imgs/ikea.png" alt="" />
