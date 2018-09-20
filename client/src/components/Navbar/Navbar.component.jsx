@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default class Navbar extends Component {
   state = {
-    counter: 10034623,
+    counter: "10,034,623",
     index: -1
   };
 
@@ -71,8 +71,8 @@ export default class Navbar extends Component {
           </div>
           <div className="counter">
             <h4>
-              {this.state.counter}
               <span>$</span>
+              {this.state.counter}
             </h4>
           </div>
         </div>

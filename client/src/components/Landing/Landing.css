@@ -65,6 +65,10 @@
   color: var(--color-2);
   -webkit-transition: var(--smooth);
   transition: var(--smooth);
+  font-weight: 300;
+  font-size: 5rem;
+  opacity: .8;
+  letter-spacing: .3rem;
 }
 
 /* ------------------------------- navigation group end ------------------------- */
