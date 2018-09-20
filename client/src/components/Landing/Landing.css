@@ -205,7 +205,7 @@
   border-radius: 50%;
   z-index: 3;
   mix-blend-mode: overlay;
-  background: -webkit-linear-gradient(90deg, var(--color-2), var(--color-4));
+  background: -webkit-gradient(linear, left top, right top, from(var(--color-2)), to(var(--color-4)));
   background: linear-gradient(90deg, var(--color-2), var(--color-4));
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -228,7 +228,7 @@
   width: 58vh;
   position: absolute;
   z-index: 1;
-  background-size: cover;
+  background-size: 100vh 100vw;
   background-attachment: fixed;
   opacity: 0.2;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
@@ -266,14 +266,12 @@
 }
 
 .down-rec-overlay {
-  background: -webkit-linear-gradient(45deg, var(--color-4), var(--color-4));
   background: linear-gradient(45deg, var(--color-4), var(--color-4));
   bottom: 15%;
   right: 20%;
 }
 
 .up-rec-overlay {
-  background: -webkit-linear-gradient(45deg, var(--color-2), var(--color-2));
   background: linear-gradient(45deg, var(--color-2), var(--color-2));
   top: 15%;
   left: 20%;

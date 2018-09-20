@@ -65,6 +65,7 @@ label {
 
 .arrows img {
   width: 50px;
+  filter: saturate(0)
 }
 
 .arrows img:hover {
