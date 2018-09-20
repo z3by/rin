@@ -7,7 +7,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "1203993",
     "organizationName": "UNHCR",
-    "capacity": "5600000",
+    "capacity": "5000",
     "country": "Syrian Arab Republic",
     "position": {
       "lat": "31.95",
@@ -22,7 +22,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "103993",
     "organizationName": "UNRWA",
-    "capacity": "500700",
+    "capacity": "500",
     "country": "Jordan",
     "position": {
       "lat": "31",
@@ -37,7 +37,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "903993",
     "organizationName": "Unisafe",
-    "capacity": "560000",
+    "capacity": "500",
     "country": "Lebanon",
     "position": {
       "lat": "-20",
@@ -52,7 +52,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "7003993",
     "organizationName": "Unisafe",
-    "capacity": "896000",
+    "capacity": "800",
     "country": "Tunisia",
     "position": {
       "lat": "-10",
@@ -67,7 +67,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "103993",
     "organizationName": "UNRWA",
-    "capacity": "70000",
+    "capacity": "70",
     "country": "Libya",
     "position": {
       "lat": "50",
@@ -82,7 +82,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "2203993",
     "organizationName": "UNRWA",
-    "capacity": "760700",
+    "capacity": "700",
     "country": "Egypt",
     "position": {
       "lat": "33",
@@ -97,7 +97,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "1703993",
     "organizationName": "UNHCR",
-    "capacity": "4305600",
+    "capacity": "4600",
     "country": "Turkey",
     "position": {
       "lat": "14",
@@ -112,7 +112,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "1203993",
     "organizationName": "Unisafe",
-    "capacity": "5600000",
+    "capacity": "5000",
     "country": "Kuwait",
     "position": {
       "lat": "11",
@@ -127,7 +127,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "103993",
     "organizationName": "Unisafe",
-    "capacity": "500700",
+    "capacity": "500",
     "country": "Algeria",
     "position": {
       "lat": "20",
@@ -142,7 +142,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "1203993",
     "organizationName": "UNHCR",
-    "capacity": "560000",
+    "capacity": "500",
     "country": "Sudan",
     "position": {
       "lat": "37",
@@ -157,7 +157,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "903993",
     "organizationName": "UNRWA",
-    "capacity": "896000",
+    "capacity": "800",
     "country": "Niger",
     "position": {
       "lat": "44",
@@ -172,7 +172,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "7003993",
     "organizationName": "UNRWA",
-    "capacity": "70000",
+    "capacity": "70",
     "country": "Nigeria",
     "position": {
       "lat": "57",
@@ -187,7 +187,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "103993",
     "organizationName": "UNHCR",
-    "capacity": "760700",
+    "capacity": "700",
     "country": "Saudi Arabia",
     "position": {
       "lat": "23",
@@ -202,7 +202,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "4305600",
     "organizationName": "UNRWA",
-    "capacity": "4305600",
+    "capacity": "4600",
     "country": "Ethiopia",
     "position": {
       "lat": "-13",
@@ -217,7 +217,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "1203993",
     "organizationName": "UNHCR",
-    "capacity": "5600000",
+    "capacity": "5000",
     "country": "Pakistan",
     "position": {
       "lat": "-22",
@@ -232,7 +232,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "103993",
     "organizationName": "Unisafe",
-    "capacity": "500700",
+    "capacity": "500",
     "country": "France",
     "position": {
       "lat": "43",
@@ -247,7 +247,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "1203993",
     "organizationName": "UNHCR",
-    "capacity": "560000",
+    "capacity": "500",
     "country": "Germany",
     "position": {
       "lat": "-20",
@@ -262,7 +262,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "903993",
     "organizationName": "Unisafe",
-    "capacity": "896000",
+    "capacity": "800",
     "country": "Chad",
     "position": {
       "lat": "-15",
@@ -277,7 +277,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "7003993",
     "organizationName": "UNRWA",
-    "capacity": "70000",
+    "capacity": "70",
     "country": "Morocco",
     "position": {
       "lat": "-32",
@@ -292,7 +292,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "103993",
     "organizationName": "UNRWA",
-    "capacity": "760700",
+    "capacity": "700",
     "country": "Romania",
     "position": {
       "lat": "-27",
@@ -307,7 +307,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "1703993",
     "organizationName": "UNRWA",
-    "capacity": "4305600",
+    "capacity": "4600",
     "country": "Greece",
     "position": {
       "lat": "-38",
@@ -322,7 +322,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "1203993",
     "organizationName": "Unisafe",
-    "capacity": "5600000",
+    "capacity": "5000",
     "country": "Iraq",
     "position": {
       "lat": "-46",
@@ -337,7 +337,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "103993",
     "organizationName": "Unisafe",
-    "capacity": "500700",
+    "capacity": "500",
     "country": "Azerbaijan",
     "position": {
       "lat": "-50",
@@ -352,7 +352,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "903993",
     "organizationName": "UNRWA",
-    "capacity": "560000",
+    "capacity": "500",
     "country": "Jordan",
     "position": {
       "lat": "12",
@@ -367,7 +367,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "1203993",
     "organizationName": "UNRWA",
-    "capacity": "896000",
+    "capacity": "800",
     "country": "Lebanon",
     "position": {
       "lat": "11",
@@ -382,7 +382,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "1203993",
     "organizationName": "UNHCR",
-    "capacity": "70000",
+    "capacity": "70",
     "country": "Turkey",
     "position": {
       "lat": "16",
@@ -397,7 +397,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "7003993",
     "organizationName": "UNHCR",
-    "capacity": "760700",
+    "capacity": "700",
     "country": "Iraq",
     "position": {
       "lat": "18",
@@ -412,7 +412,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "1703993",
     "organizationName": "UNHCR",
-    "capacity": "4305600",
+    "capacity": "4600",
     "country": "Jordan",
     "position": {
       "lat": "8",
@@ -427,7 +427,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "103993",
     "organizationName": "Unisafe",
-    "capacity": "5600000",
+    "capacity": "5000",
     "country": "Jordan",
     "position": {
       "lat": "34",
@@ -442,7 +442,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "103993",
     "organizationName": "Unisafe",
-    "capacity": "500700",
+    "capacity": "500",
     "country": "Lebanon",
     "position": {
       "lat": "31",
@@ -457,7 +457,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "903993",
     "organizationName": "UNRWA",
-    "capacity": "560000",
+    "capacity": "500",
     "country": "Turkey",
     "position": {
       "lat": "43",
@@ -472,7 +472,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "1203993",
     "organizationName": "UNRWA",
-    "capacity": "896000",
+    "capacity": "800",
     "country": "Egypt",
     "position": {
       "lat": "24",
@@ -487,7 +487,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "7003993",
     "organizationName": "UNRWA",
-    "capacity": "70000",
+    "capacity": "70",
     "country": "Syrian Arab Republic",
     "position": {
       "lat": "13",
@@ -502,7 +502,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "1203993",
     "organizationName": "UNHCR",
-    "capacity": "760700",
+    "capacity": "700",
     "country": "Syrian Arab Republic",
     "position": {
       "lat": "9",
@@ -517,7 +517,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "1203993",
     "organizationName": "UNHCR",
-    "capacity": "4305600",
+    "capacity": "4600",
     "country": "Turkey",
     "position": {
       "lat": "26",
@@ -532,7 +532,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "1703993",
     "organizationName": "Unisafe",
-    "capacity": "5600000",
+    "capacity": "5000",
     "country": "Lebanon",
     "position": {
       "lat": "37",
@@ -547,7 +547,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "103993",
     "organizationName": "Unisafe",
-    "capacity": "500700",
+    "capacity": "500",
     "country": "Egypt",
     "position": {
       "lat": "49",
@@ -562,7 +562,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "903993",
     "organizationName": "Unisafe",
-    "capacity": "560000",
+    "capacity": "500",
     "country": "Iraq",
     "position": {
       "lat": "-19",
@@ -577,7 +577,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "1203993",
     "organizationName": "UNRWA",
-    "capacity": "896000",
+    "capacity": "800",
     "country": "Syrian Arab Republic",
     "position": {
       "lat": "0",
@@ -592,7 +592,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "7003993",
     "organizationName": "UNRWA",
-    "capacity": "70000",
+    "capacity": "70",
     "country": "Turkey",
     "position": {
       "lat": "50",
@@ -607,7 +607,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "1203993",
     "organizationName": "UNHCR",
-    "capacity": "760700",
+    "capacity": "700",
     "country": "Lebanon",
     "position": {
       "lat": "40",
@@ -622,7 +622,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "1703993",
     "organizationName": "UNHCR",
-    "capacity": "4305600",
+    "capacity": "4600",
     "country": "Egypt",
     "position": {
       "lat": "39",
@@ -637,7 +637,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "1203993",
     "organizationName": "Unisafe",
-    "capacity": "5600000",
+    "capacity": "5000",
     "country": "Jordan",
     "position": {
       "lat": "37",
@@ -652,7 +652,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "103993",
     "organizationName": "Unisafe",
-    "capacity": "500700",
+    "capacity": "500",
     "country": "Egypt",
     "position": {
       "lat": "38",
@@ -667,7 +667,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "903993",
     "organizationName": "UNRWA",
-    "capacity": "560000",
+    "capacity": "500",
     "country": "Lebanon",
     "position": {
       "lat": "30",
@@ -682,7 +682,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "1203993",
     "organizationName": "UNRWA",
-    "capacity": "896000",
+    "capacity": "800",
     "country": "Jordan",
     "position": {
       "lat": "32",
@@ -697,7 +697,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "7003993",
     "organizationName": "UNRWA",
-    "capacity": "70000",
+    "capacity": "70",
     "country": "Iraq",
     "position": {
       "lat": "29",
@@ -712,7 +712,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "1203993",
     "organizationName": "UNHCR",
-    "capacity": "760700",
+    "capacity": "700",
     "country": "Lebanon",
     "position": {
       "lat": "17",
@@ -727,7 +727,7 @@
     "imgUrl": "https://source.unsplash.com/random",
     "benefits": "103993",
     "organizationName": "UNHCR",
-    "capacity": "4305600",
+    "capacity": "4600",
     "country": "Egypt",
     "position": {
       "lat": "31",

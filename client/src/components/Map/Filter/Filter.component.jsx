@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 import "./Filter.css";
-import Spectrum from "../Spectrum/Spectrum.component";
 
 class Filter extends React.Component {
   constructor(props) {
@@ -50,13 +49,6 @@ class Filter extends React.Component {
     return (
       <div className="filter">
         <a>Filter</a>
-
-        <div className="filter-input">
-          <label htmlFor="project-type" className="filter-label">
-            Filter by project type
-          </label>
-          <Spectrum setCurrentType={this.props.filterProjectsByType} />
-        </div>
 
         <div className="filter-input">
           <label htmlFor="org-name" className="filter-label">

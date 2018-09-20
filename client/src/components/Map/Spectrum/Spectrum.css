@@ -1,8 +1,6 @@
 .spectrum {
-  position: relative;
-  z-index: 100;
-  visibility: hidden;
-  opacity: 0;
+  position: absolute;
+  z-index: 1000;
 }
 
 .spectrum:hover li {

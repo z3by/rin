@@ -16,7 +16,7 @@ class Spectrum extends React.Component {
       "infancy"
     ];
 
-    this.props.setCurrentType(types[index]);
+    this.props.filterByType(types[index]);
   };
 
   render() {

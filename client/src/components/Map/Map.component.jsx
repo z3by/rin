@@ -5,6 +5,8 @@ import * as options from "./map-options";
 import * as projects from "./projects-data.json";
 import Dot from "./Dot/Dot.component";
 import Filter from "./Filter/Filter.component";
+import Spectrum from "./Spectrum/Spectrum.component";
+
 
 export default class Map extends Component {
   state = {
@@ -155,11 +157,13 @@ export default class Map extends Component {
         className="map fadeInFast"
       >
         <Filter
-          filterProjectsByType={this.filterProjectsByType}
           filterProjectsByOrgName={this.filterProjectsByOrgName}
           onSlide={this.onSlide}
           filterByCountry={this.filterByCountry}
         />
+        <div className="spectrum-container">
+          <Spectrum className="" filterByType={this.filterProjectsByType} />
+        </div>
         <GoogleMapReact
           options={options}
           bootstrapURLKeys={{ key: "AIzaSyAxYHlwX3Vu7-ygTF2wiB3sjSyFU7mAMJE" }}
