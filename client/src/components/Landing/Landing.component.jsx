@@ -13,7 +13,7 @@ export default class Landing extends Component {
   componentDidMount() {
     this.bindEvents();
     this.rotateArrows();
-    this.changeVideo();
+    this.showVideo();
   }
 
   // bind the events to the local functions.
@@ -64,6 +64,14 @@ export default class Landing extends Component {
     }
   };
 
+
+  // show the video only on stories tab
+  showVideo = () => {
+    if (this.state.index !== 0) {
+      document.querySelector('.circle-video').style.display = 'none';
+    }
+  }
+
   // change current context on the landing page;
   animateNext = () => {
     // if (this.state.index < 4) {
@@ -77,10 +85,10 @@ export default class Landing extends Component {
           const nav = document.querySelector(".nav");
           nav.style.transform = `translate(${-this.state.index * divWidth}px)`;
           this.toggleClassActive();
-          // this.changeBackground();
+          this.changeBackground();
           this.translateShapes();
           this.toggleOverlayColor();
-          this.changeVideo();
+          this.showVideo();
         }
       );
     } else {
@@ -102,10 +110,10 @@ export default class Landing extends Component {
           const nav = document.querySelector(".nav");
           nav.style.transform = `translate(${-this.state.index * divWidth}px)`;
           this.toggleClassActive();
-          // this.changeBackground();
+          this.changeBackground();
           this.translateShapes();
           this.toggleOverlayColor();
-          this.changeVideo();
+          this.showVideo();
         }
       );
     } else {
@@ -123,24 +131,6 @@ export default class Landing extends Component {
     document
       .querySelector(".nav-group")
       .childNodes[this.state.index].firstChild.classList.add("active");
-  };
-
-  changeVideo = () => {
-    switch (this.state.index) {
-      case 0:
-        document.querySelector(".circle-video").currentTime = 46;
-        break;
-      case 1:
-        document.querySelector(".circle-video").currentTime = 95;
-
-        break;
-      case 2:
-        document.querySelector(".circle-video").currentTime = 40;
-        break;
-      default:
-        document.querySelector(".circle-video").currentTime = 10;
-        break;
-    }
   };
 
   changeBackground = () => {
@@ -240,7 +230,7 @@ export default class Landing extends Component {
           <div className="circle fadeIn">
             <div className="effect-circle" />
             <video
-              src="/videos/UNHCR's.mp4"
+              src="/videos/stories.mp4"
               autoPlay
               muted
               loop
