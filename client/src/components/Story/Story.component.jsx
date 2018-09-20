@@ -52,9 +52,14 @@ export default class Story extends Component {
 
     return (
       <div className="story">
-        <h1 className="title">{this.state.stories[id].title}</h1>
-        <img className="img1" src={this.state.stories[id].img} alt="" />
-        <p className="text">{this.state.stories[id].text}</p>
+        <div className="story-img1">
+          <img className="img1" src={this.state.stories[id].img} />
+          <div className="story-title1">
+            <h1>{this.state.stories[id].title}</h1>
+          </div>
+        </div>
+        <p className="story-text">{this.state.stories[id].text}</p>
+        <div className="extra-space"></div>
       </div>
     );
   }
