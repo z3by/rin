@@ -75,7 +75,7 @@ export default class Landing extends Component {
   // change current context on the landing page;
   animateNext = () => {
     // if (this.state.index < 4) {
-    if (this.state.index < 2) {
+    if (this.state.index < 3) {
       this.setState(
         {
           index: this.state.index + 1
@@ -94,7 +94,18 @@ export default class Landing extends Component {
     } else {
       this.setState({
         index: 0
-      });
+      },
+        () => {
+          const divWidth = document.querySelector(".nav-item").offsetWidth;
+          const nav = document.querySelector(".nav");
+          nav.style.transform = `translate(${-this.state.index * divWidth}px)`;
+          this.toggleClassActive();
+          this.changeBackground();
+          this.translateShapes();
+          this.toggleOverlayColor();
+          this.showVideo();
+        }
+      );
     }
   };
 
@@ -119,7 +130,18 @@ export default class Landing extends Component {
     } else {
       this.setState({
         index: 3
-      });
+      },
+        () => {
+          const divWidth = document.querySelector(".nav-item").offsetWidth;
+          const nav = document.querySelector(".nav");
+          nav.style.transform = `translate(${-this.state.index * divWidth}px)`;
+          this.toggleClassActive();
+          this.changeBackground();
+          this.translateShapes();
+          this.toggleOverlayColor();
+          this.showVideo();
+        }
+      );
     }
   };
 
@@ -211,6 +233,11 @@ export default class Landing extends Component {
               <li className="nav-item">
                 <a onClick={this.navigate} className="nav-link">
                   data
+                </a>
+              </li>
+              <li className="nav-item">
+                <a onClick={this.navigate} className="nav-link">
+                  about
                 </a>
               </li>
               {/* <li className="nav-item">
