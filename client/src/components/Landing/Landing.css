@@ -13,6 +13,33 @@
   overflow: hidden;
 }
 
+.splash-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-1);
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  position: fixed;
+  z-index: 1500;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;
+  animation-name: splash;
+  animation-delay: 3s;
+  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+@keyframes splash {
+  from {
+    top: 0;
+    left: 0;
+  }
+  to {
+    top: -100vh;
+  }
+}
+
 /* ------------------------------------ navigation group----------------------------------- */
 .effect-circle {
   height: 250px;
