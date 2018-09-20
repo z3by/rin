@@ -1,32 +1,10 @@
 import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
 import "./Map.css";
-import * as options from './map-options';
-import * as projects from './projects-data.json';
-
-
-const Dot = (props) => {
-  const colors = {
-    'housing': '#E83338',
-    'education': '#ff9068',
-    'agriculture': '#FFB75E',
-    'health': '#8DC26F',
-    'water': '#64b3f4',
-    'nutrition': '#6441A5',
-    'infancy': '#fc67fa',
-  }
-  return (
-    <div className="dot" style={{ background: colors[props.project.type] }}>
-      <div class="tooltip">
-
-        <div class="tooltiptext spec">
-          <img src="https://source.unsplash.com/random" />
-          {props.project.title}
-        </div>
-      </div>
-    </div>
-  )
-};
+import * as options from "./map-options";
+import * as projects from "./projects-data.json";
+import Dot from "./Dot/Dot.component";
+import Filter from "./Filter/Filter.component";
 
 export default class Map extends Component {
   state = {
@@ -35,13 +13,20 @@ export default class Map extends Component {
       lng: 35.99
     },
     zoom: 5,
-    currentType: 'agriculture'
+    projects: []
   };
 
   componentWillMount() {
     this.getUserLocation();
-
+    this.setTheProjects();
   }
+
+  // ser all the projects to the state;
+  setTheProjects = () => {
+    this.setState({
+      projects: projects
+    });
+  };
 
   // get the user location;
   getUserLocation = () => {
@@ -55,81 +40,126 @@ export default class Map extends Component {
     });
   };
 
-  // mouse hover handler for the spectrum;
-  handleMouseHover = (e) => {
-    const index = e.target.dataset.index;
-    const types = [
-      'housing',
-      'education',
-      'agriculture',
-      'health',
-      'water',
-      'nutrition',
-      'infancy'
-    ]
-
-    this.setState({
-      currentType: types[index]
+  // filter projects by organization name
+  filterProjectsByOrgName = e => {
+    const name = e.target.value;
+    const filteredProjects = projects.filter(project => {
+      return project.organizationName.includes(name.toLowerCase());
     });
 
-  }
+    // set the state to the filtered projects
+    this.setState({
+      projects: filteredProjects
+    });
+  };
+
+  // filter projects by organization name
+  filterProjectsByProjectName = e => {
+    const name = e.target.value;
+    const filteredProjects = projects.filter(project => {
+      return project.projectName.includes(name.toLowerCase());
+    });
+
+    // set the state to the filtered projects
+    this.setState({
+      projects: filteredProjects
+    });
+  };
+
+  // filter projects by type;
+  filterProjectsByType = type => {
+    // filter the projects based on it own type
+    const filteredProjects = projects.filter(project => {
+      return project.type === type;
+    });
+
+    // set the state to the filtered projects
+    this.setState({
+      projects: filteredProjects
+    });
+  };
+
+  onSlide = e => {
+    if (e.target.id === "starting-year") {
+      this.filterByYear(e.target.value);
+    }
+    if (e.target.id === "benefits") {
+      this.filterByBenefits(e.target.value);
+    }
+    if (e.target.id === "capacity") {
+      this.filterByCapacity(e.target.value);
+    }
+  };
+
+  filterByYear = year => {
+    const filteredProjects = projects.filter(project => {
+      return project.year > year;
+    });
+
+    // set the state to the filtered projects
+    this.setState({
+      projects: filteredProjects
+    });
+  };
+
+  filterByBenefits = benefits => {
+    const filteredProjects = projects.filter(project => {
+      return parseInt(project.benefits, 10) > parseInt(benefits, 10);
+    });
+
+    // set the state to the filtered projects
+    this.setState({
+      projects: filteredProjects
+    });
+  };
+
+  filterByCapacity = capacity => {
+    const filteredProjects = projects.filter(project => {
+      return parseInt(project.capacity, 10) > parseInt(capacity, 10);
+    });
+
+    // set the state to the filtered projects
+    this.setState({
+      projects: filteredProjects
+    });
+  };
+
+  filterByCountry = e => {
+    const country = e.target.value;
+
+    const filteredProjects = projects.filter(project => {
+      return project.country.toLowerCase() === country.toLowerCase();
+    });
+
+    // set the state to the filtered projects
+    this.setState({
+      projects: filteredProjects
+    });
+  };
 
   render() {
-
-    const dots = projects.map((project, key) => {
+    const dots = this.state.projects.map((project, key) => {
       return (
-        this.state.currentType === project.type && <Dot lng={project.position.lng} lat={project.position.lat} key={key} project={project} key={key} />
+        <Dot
+          lng={project.position.lng}
+          lat={project.position.lat}
+          key={key}
+          project={project}
+        />
       );
-    })
-
-
+    });
 
     return (
       <div
         style={{ height: "100vh", width: "100%" }}
         className="map fadeInFast"
       >
-        <div className="filter-spectrum">
-          <ul className="spectrum">
-            <li className="spectrum-item" data-index={0} onMouseEnter={this.handleMouseHover}>
-              <div class="tooltip">
-                <div class="tooltiptext spec">housing projects</div>
-              </div>
-            </li>
-            <li className="spectrum-item" data-index={1} onMouseEnter={this.handleMouseHover}>
-              <div class="tooltip">
-                <div class="tooltiptext spec">
-                  education projects
-                </div>
-              </div>
-            </li>
-            <li className="spectrum-item" data-index={2} onMouseEnter={this.handleMouseHover}>
-              <div class="tooltip">
-                <div class="tooltiptext spec">agriculture projects</div>
-              </div>
-            </li>
-            <li className="spectrum-item" data-index={3} onMouseEnter={this.handleMouseHover}>
-              <div class="tooltip">
-                <div class="tooltiptext spec">health projects</div>
-              </div>
-            </li>
-            <li className="spectrum-item" data-index={4} onMouseEnter={this.handleMouseHover}>
-              <div class="tooltip">
-                <div class="tooltiptext spec">water projects</div>
-              </div>
-            </li>
-            <li className="spectrum-item" data-index={5} onMouseEnter={this.handleMouseHover}>
-              <div class="tooltip">
-                <div class="tooltiptext spec">nutrition projects</div>
-              </div>
-            </li>
-            <li className="spectrum-item" data-index={6} onMouseEnter={this.handleMouseHover}>
-              <div class="tooltip">
-                <div class="tooltiptext spec">infancy projects</div>
-              </div>
-            </li>
-          </ul>
-        </div>
+        <Filter
+          filterProjectsByType={this.filterProjectsByType}
+          filterProjectsByOrgName={this.filterProjectsByOrgName}
+          onSlide={this.onSlide}
+          filterByCountry={this.filterByCountry}
+        />
         <GoogleMapReact
           options={options}
           bootstrapURLKeys={{ key: "AIzaSyAxYHlwX3Vu7-ygTF2wiB3sjSyFU7mAMJE" }}
@@ -138,14 +168,7 @@ export default class Map extends Component {
         >
           {[dots]}
         </GoogleMapReact>
-      </div >
+      </div>
     );
   }
 }
-
-
-
-
-
-
-

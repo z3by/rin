@@ -44,7 +44,7 @@ export default class Navbar extends Component {
                 <p className="nav-rec-text">data</p>
               </div>
             </Link>
-            <Link to={"/library"}>
+            {/* <Link to={"/library"}>
               <div className="nav-rec" index="4" onClick={this.onClickCircle}>
                 <p className="nav-rec-text">library</p>
               </div>
@@ -62,7 +62,7 @@ export default class Navbar extends Component {
               <div className="nav-rec" index="6" onClick={this.onClickCircle}>
                 <p className="nav-rec-text">about</p>
               </div>
-            </Link>
+            </Link> */}
           </div>
           <div className="counter">
             <h4>

@@ -1,5 +1,9 @@
 .data {
-    background: var(--color-1);
-    height: 100vh;
-    overflow: hidden;
+  background: var(--color-1);
+  height: 100vh;
+  overflow: hidden;
+}
+
+.data-img {
+  width: 50%;
 }
