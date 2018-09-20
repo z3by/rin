@@ -69,6 +69,8 @@ export default class Landing extends Component {
   showVideo = () => {
     if (this.state.index !== 0) {
       document.querySelector('.circle-video').style.display = 'none';
+    } else {
+      document.querySelector('.circle-video').style.display = 'initial';
     }
   }
 
