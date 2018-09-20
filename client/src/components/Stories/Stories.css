@@ -58,7 +58,7 @@ h1 {
 
 .story-title {
   position: absolute;
-  top: 11rem;
+  top: 9rem;
   right: 0;
   bottom: 0;
   left: 0;
@@ -66,7 +66,7 @@ h1 {
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  color: #fff;
+  color: var(--color-2);
   text-transform: capitalize;
   text-align: center;
   font-family: var(--main-font);
@@ -83,7 +83,7 @@ h1 {
 
   to {
     opacity: 1;
-    top: 11rem;
+    top: 9rem;
   }
 }
 
@@ -250,13 +250,14 @@ li:hover .summary {
   color: var(--color-2);
   font-family: var(--main-font);
   position: relative;
-  left: 39vw;
+  left: 38vw;
   top: 26vw;
   z-index: 1000;
   font-size: 2vw;
   margin: 0;
   height: 20vw;
   width: 20vw;
+  font-weight: 800;
 }
 
 .spinner {

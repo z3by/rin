@@ -9,7 +9,7 @@ export default class About extends Component {
 
   // handle the onclick event on the down button
   onPageDown = () => {
-    if (this.state.pageNumber < 5) {
+    if (this.state.pageNumber < 1) {
       this.setState(
         {
           pageNumber: this.state.pageNumber + 1
@@ -44,76 +44,56 @@ export default class About extends Component {
       <div className="about fadeInFast">
         <div className="pages">
 
-          <div className="page">
-            <img src="/imgs/about.jpg" alt="" />
-            <p>
-              PROVING THAT REFUGEES ARE INVESTABLE The Refugee Investment
-              Network is the first blended finance collaborative dedicated to
-              creating long-term solutions to global forced migration.
+          <div className="page1">
+            <img src="/imgs/about1.jpg" className="about1-img" />
+            <div className="about1-text">
+              <h2>About</h2>
+              <p>
+                The RIN moves private capital from commitment to active investment by sourcing,
+                structuring, and supporting the financing of projects and companies that benefit
+                refugees and host communities. Ultimately, the RIN aims to bridge the gap between
+                the untapped entrepreneurial potential of refugees and capital markets to spur economic
+                growth, create jobs, and increase socio-economic stability among displaced people.
             </p>
+            </div>
           </div>
-          <div className="page">
-            <img src="/imgs/about4.jpg" alt="" />
-            <p>
-              INCREASED CAPITAL INVESTMENT CAN MAKE A BIG DIFFERENCE The RIN's
-              blended finance collaborative will increase deal flow and help
-              unlock private capital to spur economic growth and stability among
-              refugees and their communities.
-            </p>
+          <div className="page2">
+            <div className="row">
+              <div className="column">
+                <div className="card">
+                  <img src="/imgs/John.jpg" alt="Jane" style={{ width: "100%" }} />
+                  <div className="container">
+                    <h2 className="team-member-name">JOHN W. KLUGE</h2>
+                    <p className="team-member-title">Founder + Managing Director</p>
+                    <p className="team-member-data">John W. Kluge is a systems entrepreneur and committed social justice activist. He is the Co-Founder and Managing Partner of the Alight Fund, an investment and financing company for refugee and host country entrepreneurs. Previously, he co-founded Eirene, a multi-family-office impact investing fund, Toilet Hackers, a social enterprise dedicated to scaling access to dignified sanitation for the 2.5 billion people without a toilet</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="column">
+                <div className="card">
+                  <img src="/imgs/Tim.jpeg" alt="Mike" style={{ width: "100%" }} />
+                  <div className="container">
+                    <h2 className="team-member-name">TIMOTHY W. DOCKING, Ph.D</h2>
+                    <p className="team-member-title">Managing Director</p>
+                    <p className="team-member-data">Timothy W. Docking, Ph.D. is a Washington, D.C.-based business executive with twenty years of emerging market and public sector experience. As an intrapreneur, he worked at the intersection of business, technology and development and built a new $100M revenue stream at IBM; as a public sector executive and manager, he helped start up the MCC (U.S. government agency); and as a scholar, he directed Africa research at a D.C. think tank. Docking has testified before Congress.</p>
+                  </div>
+                </div>
+              </div>
+              <div className="column">
+                <div className="card">
+                  <img src="/imgs/Andrew.jpg" alt="John" style={{ width: "100%" }} />
+                  <div className="container">
+                    <h2 className="team-member-name">ANDREW STERN</h2>
+                    <p className="team-member-title">Strategic Advisor</p>
+                    <p className="team-member-data">Andrew Stern is the Founder, President and Executive Director of the Global Development Incubator (GDI) and a member of the GDI U.S. and Hong Kong boards. He leads the team across focus areas and crafts unconventional perspectives to drive the global development sector forward. Stern has played many roles within GDI initiatives, including Interim CEO of Convergence, the global network for Blended Finance</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
-          <div className="page">
-            <img src="/imgs/about1.jpg" alt="" />
-            <p>
-              WHO WE ARE Key Partners RIN Members represent the full capital
-              continuum: foundations and philanthropists, impact, institutional,
-              and commercial investors – as well as international finance
-              institutions, policymakers, and humanitarians. RIN members all
-              share a commitment to courageous action, innovative economic
-              solutions, and deep collaboration.
-            </p>
-          </div>
-          <div className="page">
-            <img src="/imgs/about2.jpg" alt="" />
-            <p>
-              Operating Team Systems entrepreneurs John Kluge (Alight Fund &
-              Toilet Hackers) and Tim Docking (IBM & Millennium Challenge
-              Corporation) lead the RIN with support from the Global Development
-              Incubator (GDI), a non-profit that builds startups and
-              partnerships to address global development challenges.
-            </p>
-          </div>
-          <div className="page">
-            <ul className="team">
-              <li>
-                <img
-                  src="https://static1.squarespace.com/static/5b280d6a620b85faae73af1a/t/5b2d7f516d2a73e5fb52df55/1529708531716/JohnKlugeRIN.jpg?format=500w"
-                  alt=""
-                />
-              </li>
-              <li>
-                <img
-                  src="https://static1.squarespace.com/static/5b280d6a620b85faae73af1a/t/5b2d80b0f950b74c6ebeb479/1529708729154/Tim+Docking+RIN.jpeg?format=500w"
-                  alt=""
-                />
-              </li>
-            </ul>
-          </div>
-          <div className="page">
-            <ul className="team">
-              <li>
-                <img
-                  src="https://static1.squarespace.com/static/5b280d6a620b85faae73af1a/t/5b2bd3be562fa71d2ca43d39/1529598912445/Andrew+headshot.jpg?format=500w"
-                  alt=""
-                />
-              </li>
-              <li>
-                <img
-                  src="https://static1.squarespace.com/static/5b280d6a620b85faae73af1a/t/5b340d646d2a73ddf97a359c/1530137958581/Sara+Beatty+headshot.jpg?format=500w"
-                  alt=""
-                />
-              </li>
-            </ul>
-          </div>
+
         </div>
 
         <div className="arrows">
