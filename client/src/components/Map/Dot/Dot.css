@@ -1,0 +1,92 @@
+.dot {
+  background: var(--color-2);
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  -webkit-animation-name: pulse;
+  animation-name: pulse;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.dot:hover {
+  background: white;
+  -webkit-transform: scale(2);
+  -ms-transform: scale(2);
+  transform: scale(2);
+  cursor: default;
+  -webkit-animation: unset;
+  animation: unset;
+}
+
+.map-img {
+  padding: 20px;
+}
+
+.dot:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+.dot:hover .tooltiptext {
+  font-size: 10px;
+}
+
+.dot:hover .tooltip img {
+  visibility: visible;
+}
+.tooltip img {
+  height: 70px;
+  margin: 10px auto;
+  visibility: hidden;
+  display: block;
+}
+
+.tooltiptext.spec {
+  display: initial;
+  top: 25px;
+}
+
+p.tooltip-money {
+  font-size: 8px;
+  color: var(--color-2);
+  margin: 0;
+  float: left;
+}
+
+@-webkit-keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(2.05, 2.05, 2.05);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(2.05, 2.05, 2.05);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}

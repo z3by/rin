@@ -1,17 +1,20 @@
 @import url("https://fonts.googleapis.com/css?family=Baloo+Tammudu|Comfortaa|Dosis|Exo+2|Noto+Sans+JP|Nunito|Quicksand");
 
 :root {
-  --color-1: #160c16;
-  --color-2: #f06841;
-  --color-3: #78ffd6;
-  --color-4: #007991;
+  --color-1: linear-gradient(#201053, #0f0c29);
+  --color-2: #ef8e38;
+  --color-3: #068e86;
+  --color-4: #0094ab;
   --color-5: #f2e4b1;
+  --light-transparent: rgba(255, 255, 255, 0.3);
+  --light-border: solid 1px var(--color-2);
   --main-font: "Nunito", "Comfortaa", "Baloo Tammudu";
   --smooth: all 1300ms cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
 body {
   margin: 0;
+  background: var(--color-1);
 }
 
 h1,
@@ -35,6 +38,7 @@ label {
   color: var(--color-2);
   font-size: 3vw;
   margin: 0;
+  -ms-grid-column-align: left;
   justify-self: left;
 }
 
@@ -47,6 +51,7 @@ label {
 }
 
 .arrows {
+  -webkit-transform: rotate(90deg) translateX(-40px);
   transform: rotate(90deg) translateX(-40px);
   position: absolute;
   bottom: 2.5vh;
@@ -54,6 +59,7 @@ label {
   z-index: 11;
   cursor: pointer;
   margin: 0;
+  -webkit-transition: var(--smooth);
   transition: var(--smooth);
 }
 
@@ -62,10 +68,13 @@ label {
 }
 
 .arrows img:hover {
-  filter: brightness(1.5) saturate(.4);
+  -webkit-filter: brightness(1.5) saturate(0.4);
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="linear" slope="1.5" /><feFuncG type="linear" slope="1.5" /><feFuncB type="linear" slope="1.5" /></feComponentTransfer><feColorMatrix type="matrix" color-interpolation-filters="sRGB" values="0.5278 0.429 0.043199999999999995 0 0 0.1278 0.833 0.043199999999999995 0 0 0.1278 0.429 0.44320000000000004 0 0 0 0 0 1 0" /></filter></svg>#filter');
+  filter: brightness(1.5) saturate(0.4);
 }
 
 .arrows img:nth-child(2) {
+  -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
   margin-left: 20px;
 }
@@ -75,86 +84,247 @@ label {
   font-size: 100px;
   color: white;
   text-align: center;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(var(--color-1)),
+    to(#221133)
+  );
+  background: -webkit-linear-gradient(var(--color-1), #221133);
   background: linear-gradient(var(--color-1), #221133);
 }
 
 .pages {
   position: relative;
   top: 0vh;
+  -webkit-transition: var(--smooth);
   transition: var(--smooth);
 }
 
 .slideInRight {
   -webkit-animation-name: slideInRight;
   animation-name: slideInRight;
+  -webkit-animation-duration: 1s;
   animation-duration: 1s;
+  -webkit-animation-timing-function: ease;
   animation-timing-function: ease;
 }
 
 .fadeIn {
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn;
-  animation-duration: 5s;
+  -webkit-animation-duration: 3s;
+  animation-duration: 3s;
+  -webkit-animation-timing-function: ease;
   animation-timing-function: ease;
 }
 
 .slideInLeft {
   -webkit-animation-name: slideInLeft;
   animation-name: slideInLeft;
+  -webkit-animation-duration: 1s;
   animation-duration: 1s;
+  -webkit-animation-timing-function: ease;
   animation-timing-function: ease;
 }
 
 .grow {
+  -webkit-animation-name: grow;
   animation-name: grow;
+  -webkit-animation-duration: 2s;
   animation-duration: 2s;
+  -webkit-animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
   animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .fadeInFast {
+  -webkit-animation-name: fade-in;
   animation-name: fade-in;
-  animation-duration: 2s;
-  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  -webkit-animation-duration: 3s;
+  animation-duration: 3s;
+  -webkit-animation-timing-function: ease;
+  animation-timing-function: ease;
+}
+
+input[type="range"].slider {
+  -webkit-appearance: none;
+  width: 100%;
+  margin: 12.75px 0;
+  background: transparent;
+}
+input[type="range"].slider:focus {
+  outline: none;
+}
+input[type="range"].slider::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 5.5px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #fff, 0px 0px 1px #fff;
+  background: rgba(248, 218, 180, 0);
+  border-radius: 0px;
+  border: 0px solid #fff;
+}
+input[type="range"].slider::-webkit-slider-thumb {
+  box-shadow: 0px 0px 1px #670000, 0px 0px 0px #810000;
+  border: 0px solid #ff1e00;
+  height: 31px;
+  width: 24px;
+  border-radius: 0px;
+  background: var(--color-2);
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -12.75px;
+}
+input[type="range"].slider:focus::-webkit-slider-runnable-track {
+  background: rgba(249, 223, 189, 0);
+}
+input[type="range"].slider::-moz-range-track {
+  width: 100%;
+  height: 5.5px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #fff, 0px 0px 1px #fff;
+  background: rgba(248, 218, 180, 0.5);
+  border-radius: 0px;
+  border: 0px solid #fff;
+}
+input[type="range"].slider::-moz-range-thumb {
+  box-shadow: 0px 0px 1px #670000, 0px 0px 0px #810000;
+  border: 0px solid #ff1e00;
+  height: 31px;
+  width: 24px;
+  border-radius: 0px;
+  background: var(--color-2);
+  cursor: pointer;
+}
+input[type="range"].slider::-ms-track {
+  width: 100%;
+  height: 5.5px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type="range"].slider::-ms-fill-lower {
+  background: rgba(247, 213, 171, 0.5);
+  border: 0px solid #fff;
+  border-radius: 0px;
+  box-shadow: 1px 1px 1px #fff, 0px 0px 1px #fff;
+}
+input[type="range"].slider::-ms-fill-upper {
+  background: rgba(248, 218, 180, 0.5);
+  border: 0px solid #fff;
+  border-radius: 0px;
+  box-shadow: 1px 1px 1px #fff, 0px 0px 1px #fff;
+}
+input[type="range"].slider::-ms-thumb {
+  box-shadow: 0px 0px 1px #670000, 0px 0px 0px #810000;
+  border: 0px solid #ff1e00;
+  height: 31px;
+  width: 24px;
+  border-radius: 0px;
+  background: var(--color-2);
+  cursor: pointer;
+  height: 5.5px;
+}
+input[type="range"].slider:focus::-ms-fill-lower {
+  background: rgba(248, 218, 180, 0.5);
+}
+input[type="range"].slider:focus::-ms-fill-upper {
+  background: rgba(249, 223, 189, 0.5);
+}
+
+video {
+  width: 100vw;
+  height: 120vh;
+}
+select {
+  background: transparent;
+  color: var(--color-2);
+  outline: none;
+  border: solid 1px var(--color-2);
+  font-size: 16px;
+  text-align: center;
+  height: 46px;
+  margin: 0;
+}
+
+option {
+  font-size: 16px;
 }
 
 @-webkit-keyframes fadeIn {
   from {
     opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   }
 
   to {
-    opacity: 0.3;
+    opacity: 0.8;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
   }
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   }
 
   to {
     opacity: 0.3;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+  }
+}
+
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  }
+
+  to {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
   }
 }
 
 @keyframes fade-in {
   from {
     opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   }
 
   to {
     opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  }
+}
+
+@-webkit-keyframes fadeInSlideRight {
+  from {
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    left: 0px;
+  }
+
+  to {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    left: 30px;
   }
 }
 
 @keyframes fadeInSlideRight {
   from {
     opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     left: 0px;
   }
 
   to {
     opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     left: 30px;
   }
 }
@@ -185,7 +355,6 @@ label {
   }
 }
 
-
 @-webkit-keyframes slideInRight {
   from {
     -webkit-transform: translate3d(100%, 0, 0);
@@ -212,7 +381,20 @@ label {
   }
 }
 
+@-webkit-keyframes grow {
+  from {
+    height: 30vw;
+    width: 30vw;
+  }
 
+  to {
+    height: 100vh;
+    width: 100vw;
+    border-radius: 0;
+    top: 0;
+    left: 0;
+  }
+}
 
 @keyframes grow {
   from {

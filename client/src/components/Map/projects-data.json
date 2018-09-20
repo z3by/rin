@@ -1,0 +1,737 @@
+[
+  {
+    "type": "health",
+    "title": "Patient Satisfaction Survey",
+    "projectName": "Patient Satisfaction",
+    "year": "2018",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "1203993",
+    "organizationName": "UNHCR",
+    "capacity": "5000",
+    "country": "Syrian Arab Republic",
+    "position": {
+      "lat": "31.95",
+      "lng": "35.99"
+    }
+  },
+  {
+    "type": "health",
+    "title": "An Ideal Emergency Unit",
+    "projectName": "Emergency Unit",
+    "year": "2011",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "103993",
+    "organizationName": "UNRWA",
+    "capacity": "500",
+    "country": "Jordan",
+    "position": {
+      "lat": "31",
+      "lng": "32"
+    }
+  },
+  {
+    "type": "health",
+    "title": "Critical Analysis of Patients in IPD",
+    "projectName": "Patients in IPD",
+    "year": "2017",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "903993",
+    "organizationName": "Unisafe",
+    "capacity": "500",
+    "country": "Lebanon",
+    "position": {
+      "lat": "-20",
+      "lng": "41"
+    }
+  },
+  {
+    "type": "health",
+    "title": "A Study of Laundry Services in Hospital",
+    "projectName": "Services in Hospital",
+    "year": "2016",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "7003993",
+    "organizationName": "Unisafe",
+    "capacity": "800",
+    "country": "Tunisia",
+    "position": {
+      "lat": "-10",
+      "lng": "8"
+    }
+  },
+  {
+    "type": "health",
+    "title": "Patient and their Problems",
+    "projectName": "Patient Problems",
+    "year": "2015",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "103993",
+    "organizationName": "UNRWA",
+    "capacity": "70",
+    "country": "Libya",
+    "position": {
+      "lat": "50",
+      "lng": "15"
+    }
+  },
+  {
+    "type": "health",
+    "title": "A Closer Look at Nursing Profession",
+    "projectName": "Nursing Profession",
+    "year": "2014",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "2203993",
+    "organizationName": "UNRWA",
+    "capacity": "700",
+    "country": "Egypt",
+    "position": {
+      "lat": "33",
+      "lng": "24"
+    }
+  },
+  {
+    "type": "health",
+    "title": "Awareness of Radiation Hazards Among Radiology Technicians",
+    "projectName": "Radiation Hazards",
+    "year": "2013",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "1703993",
+    "organizationName": "UNHCR",
+    "capacity": "4600",
+    "country": "Turkey",
+    "position": {
+      "lat": "14",
+      "lng": "63"
+    }
+  },
+  {
+    "type": "education",
+    "title": "Education Sector Support Project",
+    "projectName": "Education Support",
+    "year": "2017",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "1203993",
+    "organizationName": "Unisafe",
+    "capacity": "5000",
+    "country": "Kuwait",
+    "position": {
+      "lat": "11",
+      "lng": "35.99"
+    }
+  },
+  {
+    "type": "education",
+    "title": "School Sector Development Program",
+    "projectName": "Development Program",
+    "year": "2016",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "103993",
+    "organizationName": "Unisafe",
+    "capacity": "500",
+    "country": "Algeria",
+    "position": {
+      "lat": "20",
+      "lng": "33"
+    }
+  },
+  {
+    "type": "education",
+    "title": "Access and Quality in Higher Education Project",
+    "projectName": "Higher Education",
+    "year": "2015",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "1203993",
+    "organizationName": "UNHCR",
+    "capacity": "500",
+    "country": "Sudan",
+    "position": {
+      "lat": "37",
+      "lng": "30"
+    }
+  },
+  {
+    "type": "education",
+    "title": "Improving the Quality of Initial and Primary",
+    "projectName": "Quality Improvement",
+    "year": "2014",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "903993",
+    "organizationName": "UNRWA",
+    "capacity": "800",
+    "country": "Niger",
+    "position": {
+      "lat": "44",
+      "lng": "33"
+    }
+  },
+  {
+    "type": "education",
+    "title": "Education Modernization Project",
+    "projectName": "Modernization",
+    "year": "2013",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "7003993",
+    "organizationName": "UNRWA",
+    "capacity": "70",
+    "country": "Nigeria",
+    "position": {
+      "lat": "57",
+      "lng": "27"
+    }
+  },
+  {
+    "type": "education",
+    "title": "Youth Employment and Opportunities Project",
+    "projectName": "Youth Employmen",
+    "year": "2012",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "103993",
+    "organizationName": "UNHCR",
+    "capacity": "700",
+    "country": "Saudi Arabia",
+    "position": {
+      "lat": "23",
+      "lng": "0"
+    }
+  },
+  {
+    "type": "education",
+    "title": "Early Childhood Development Project",
+    "projectName": "Early Childhood",
+    "year": "2018",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "4305600",
+    "organizationName": "UNRWA",
+    "capacity": "4600",
+    "country": "Ethiopia",
+    "position": {
+      "lat": "-13",
+      "lng": "-29"
+    }
+  },
+  {
+    "type": "nutrition",
+    "title": "Food Safety",
+    "projectName": "Safe Food",
+    "year": "2011",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "1203993",
+    "organizationName": "UNHCR",
+    "capacity": "5000",
+    "country": "Pakistan",
+    "position": {
+      "lat": "-22",
+      "lng": "39"
+    }
+  },
+  {
+    "type": "nutrition",
+    "title": "Organic Food",
+    "projectName": "Food",
+    "year": "2012",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "103993",
+    "organizationName": "Unisafe",
+    "capacity": "500",
+    "country": "France",
+    "position": {
+      "lat": "43",
+      "lng": "-20"
+    }
+  },
+  {
+    "type": "nutrition",
+    "title": "Tracking Investment on Nutrition",
+    "projectName": "Nutrition Tracking",
+    "year": "2013",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "1203993",
+    "organizationName": "UNHCR",
+    "capacity": "500",
+    "country": "Germany",
+    "position": {
+      "lat": "-20",
+      "lng": "-16"
+    }
+  },
+  {
+    "type": "nutrition",
+    "title": "THE PHYSICOCHEMICAL PROPERTIES OF HONEY",
+    "projectName": "PROPERTIES OF HONEY",
+    "year": "2014",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "903993",
+    "organizationName": "Unisafe",
+    "capacity": "800",
+    "country": "Chad",
+    "position": {
+      "lat": "-15",
+      "lng": "43"
+    }
+  },
+  {
+    "type": "nutrition",
+    "title": "PRODUCTION OF PALM OIL AND THE EFFECT OF HEAT ON IT",
+    "projectName": "Heat Effect",
+    "year": "2015",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "7003993",
+    "organizationName": "UNRWA",
+    "capacity": "70",
+    "country": "Morocco",
+    "position": {
+      "lat": "-32",
+      "lng": "50"
+    }
+  },
+  {
+    "type": "nutrition",
+    "title": "PRODUCTION AND CHARACTERISATION OF COCONUT OIL",
+    "projectName": "COCONUT OIL",
+    "year": "2016",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "103993",
+    "organizationName": "UNRWA",
+    "capacity": "700",
+    "country": "Romania",
+    "position": {
+      "lat": "-27",
+      "lng": "16"
+    }
+  },
+  {
+    "type": "nutrition",
+    "title": "EFFECT OF DIFFERENTS OIL IN HIGH PROTEIN SALAD CREAM",
+    "projectName": "SALAD CREAM",
+    "year": "2017",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "1703993",
+    "organizationName": "UNRWA",
+    "capacity": "4600",
+    "country": "Greece",
+    "position": {
+      "lat": "-38",
+      "lng": "21"
+    }
+  },
+  {
+    "type": "water",
+    "title": "Water management for food security under uncertainty",
+    "projectName": "Water management",
+    "year": "2012",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "1203993",
+    "organizationName": "Unisafe",
+    "capacity": "5000",
+    "country": "Iraq",
+    "position": {
+      "lat": "-46",
+      "lng": "17"
+    }
+  },
+  {
+    "type": "water",
+    "title": "Challenges and Future Needs for Irrigation Management",
+    "projectName": "Water Challenges",
+    "year": "2011",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "103993",
+    "organizationName": "Unisafe",
+    "capacity": "500",
+    "country": "Azerbaijan",
+    "position": {
+      "lat": "-50",
+      "lng": "70"
+    }
+  },
+  {
+    "type": "water",
+    "title": "Challenges for sustainable agricultural water management",
+    "projectName": "Water Challenges Management",
+    "year": "2013",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "903993",
+    "organizationName": "UNRWA",
+    "capacity": "500",
+    "country": "Jordan",
+    "position": {
+      "lat": "12",
+      "lng": "25"
+    }
+  },
+  {
+    "type": "water",
+    "title": "Food Security and the Water Futures",
+    "projectName": "Secure Food",
+    "year": "2014",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "1203993",
+    "organizationName": "UNRWA",
+    "capacity": "800",
+    "country": "Lebanon",
+    "position": {
+      "lat": "11",
+      "lng": "25"
+    }
+  },
+  {
+    "type": "water",
+    "title": "Reforms for Agricultural Water Managemen",
+    "projectName": "Agricultural Water",
+    "year": "2015",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "1203993",
+    "organizationName": "UNHCR",
+    "capacity": "70",
+    "country": "Turkey",
+    "position": {
+      "lat": "16",
+      "lng": "11"
+    }
+  },
+  {
+    "type": "water",
+    "title": "Assessing and reporting the impacts of agriculture on freshwater ecosystems",
+    "projectName": "freshwater ecosystems",
+    "year": "2016",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "7003993",
+    "organizationName": "UNHCR",
+    "capacity": "700",
+    "country": "Iraq",
+    "position": {
+      "lat": "18",
+      "lng": "22"
+    }
+  },
+  {
+    "type": "water",
+    "title": "Charging Farmers for Irrigation Water",
+    "projectName": "Irrigation Water",
+    "year": "2017",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "1703993",
+    "organizationName": "UNHCR",
+    "capacity": "4600",
+    "country": "Jordan",
+    "position": {
+      "lat": "8",
+      "lng": "44"
+    }
+  },
+  {
+    "type": "agriculture",
+    "title": "Early Growth of Selected Indigenous Tree Species in Response to Water Quality",
+    "projectName": "Water Quality",
+    "year": "2017",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "103993",
+    "organizationName": "Unisafe",
+    "capacity": "5000",
+    "country": "Jordan",
+    "position": {
+      "lat": "34",
+      "lng": "31"
+    }
+  },
+  {
+    "type": "agriculture",
+    "title": "The Determinants of Household Demand for Maize",
+    "projectName": "The Maize Determinants",
+    "year": "2018",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "103993",
+    "organizationName": "Unisafe",
+    "capacity": "500",
+    "country": "Lebanon",
+    "position": {
+      "lat": "31",
+      "lng": "35"
+    }
+  },
+  {
+    "type": "agriculture",
+    "title": "Enhancing Food Supply Through Genetic Engineering",
+    "projectName": "Food Supplement",
+    "year": "2011",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "903993",
+    "organizationName": "UNRWA",
+    "capacity": "500",
+    "country": "Turkey",
+    "position": {
+      "lat": "43",
+      "lng": "22"
+    }
+  },
+  {
+    "type": "agriculture",
+    "title": "IMPORTANCE OF AGRICULTURAL JOURNALISM",
+    "projectName": "AGRICULTURAL Land",
+    "year": "2012",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "1203993",
+    "organizationName": "UNRWA",
+    "capacity": "800",
+    "country": "Egypt",
+    "position": {
+      "lat": "24",
+      "lng": "16"
+    }
+  },
+  {
+    "type": "agriculture",
+    "title": "ASSESSMENT OF SOIL CHEMICAL DEGRADATION UNDER KOLANUT PRODUCTION",
+    "projectName": "SOIL CHEMICAL DEGRADATION",
+    "year": "2013",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "7003993",
+    "organizationName": "UNRWA",
+    "capacity": "70",
+    "country": "Syrian Arab Republic",
+    "position": {
+      "lat": "13",
+      "lng": "10"
+    }
+  },
+  {
+    "type": "agriculture",
+    "title": "Abundance and distibution of squirrel",
+    "projectName": "squirrel distibution",
+    "year": "2014",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "1203993",
+    "organizationName": "UNHCR",
+    "capacity": "700",
+    "country": "Syrian Arab Republic",
+    "position": {
+      "lat": "9",
+      "lng": "2"
+    }
+  },
+  {
+    "type": "agriculture",
+    "title": "Prevalence of Gastrointestinal Parasites on Some Common Vegetables sold",
+    "projectName": "Gastrointestinal Parasites",
+    "year": "2015",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "1203993",
+    "organizationName": "UNHCR",
+    "capacity": "4600",
+    "country": "Turkey",
+    "position": {
+      "lat": "26",
+      "lng": "64"
+    }
+  },
+  {
+    "type": "infancy",
+    "title": "Methodological challenges and directions for child development",
+    "projectName": "challenges and directions",
+    "year": "2018",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "1703993",
+    "organizationName": "Unisafe",
+    "capacity": "5000",
+    "country": "Lebanon",
+    "position": {
+      "lat": "37",
+      "lng": "19"
+    }
+  },
+  {
+    "type": "infancy",
+    "title": "Ecology of the family as a context for human development",
+    "projectName": "Family Ecology",
+    "year": "2017",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "103993",
+    "organizationName": "Unisafe",
+    "capacity": "500",
+    "country": "Egypt",
+    "position": {
+      "lat": "49",
+      "lng": "15"
+    }
+  },
+  {
+    "type": "infancy",
+    "title": "Child development and education",
+    "projectName": "Primary Needs",
+    "year": "2016",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "903993",
+    "organizationName": "Unisafe",
+    "capacity": "500",
+    "country": "Iraq",
+    "position": {
+      "lat": "-19",
+      "lng": "56"
+    }
+  },
+  {
+    "type": "infancy",
+    "title": "The ecology of cognitive development: Research models and fugitive findings",
+    "projectName": "cognitive development",
+    "year": "2015",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "1203993",
+    "organizationName": "UNRWA",
+    "capacity": "800",
+    "country": "Syrian Arab Republic",
+    "position": {
+      "lat": "0",
+      "lng": "16"
+    }
+  },
+  {
+    "type": "infancy",
+    "title": "Infant social cognition",
+    "projectName": "sociale",
+    "year": "2014",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "7003993",
+    "organizationName": "UNRWA",
+    "capacity": "70",
+    "country": "Turkey",
+    "position": {
+      "lat": "50",
+      "lng": "3"
+    }
+  },
+  {
+    "type": "infancy",
+    "title": "Early brain development",
+    "projectName": "brain growth",
+    "year": "2013",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "1203993",
+    "organizationName": "UNHCR",
+    "capacity": "700",
+    "country": "Lebanon",
+    "position": {
+      "lat": "40",
+      "lng": "18"
+    }
+  },
+  {
+    "type": "infancy",
+    "title": "The development of competence in favorable and unfavorable environments",
+    "projectName": "competence development",
+    "year": "2011",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "1703993",
+    "organizationName": "UNHCR",
+    "capacity": "4600",
+    "country": "Egypt",
+    "position": {
+      "lat": "39",
+      "lng": "45"
+    }
+  },
+  {
+    "type": "housing",
+    "title": "Provision of Shelter Solutions to Refugees",
+    "projectName": "Shelter Solutions",
+    "year": "2011",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "1203993",
+    "organizationName": "Unisafe",
+    "capacity": "5000",
+    "country": "Jordan",
+    "position": {
+      "lat": "37",
+      "lng": "45"
+    }
+  },
+  {
+    "type": "housing",
+    "title": "Fixing Shelters Infrastructure",
+    "projectName": "Shelters",
+    "year": "2012",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "103993",
+    "organizationName": "Unisafe",
+    "capacity": "500",
+    "country": "Egypt",
+    "position": {
+      "lat": "38",
+      "lng": "-10"
+    }
+  },
+  {
+    "type": "housing",
+    "title": "Buildings Enhancement",
+    "projectName": "Buildings",
+    "year": "2013",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "903993",
+    "organizationName": "UNRWA",
+    "capacity": "500",
+    "country": "Lebanon",
+    "position": {
+      "lat": "30",
+      "lng": "40"
+    }
+  },
+  {
+    "type": "housing",
+    "title": "Provide high level Service",
+    "projectName": "Good Services",
+    "year": "2014",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "1203993",
+    "organizationName": "UNRWA",
+    "capacity": "800",
+    "country": "Jordan",
+    "position": {
+      "lat": "32",
+      "lng": "-8"
+    }
+  },
+  {
+    "type": "housing",
+    "title": "Environment Effects on Shelters",
+    "projectName": "Environment Effects",
+    "year": "2015",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "7003993",
+    "organizationName": "UNRWA",
+    "capacity": "70",
+    "country": "Iraq",
+    "position": {
+      "lat": "29",
+      "lng": "47"
+    }
+  },
+  {
+    "type": "housing",
+    "title": "Protection against sand storms and continuous raining",
+    "projectName": "Shelters Protection",
+    "year": "2016",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "1203993",
+    "organizationName": "UNHCR",
+    "capacity": "700",
+    "country": "Lebanon",
+    "position": {
+      "lat": "17",
+      "lng": "-77"
+    }
+  },
+  {
+    "type": "housing",
+    "title": "Clinics Services Enhancement",
+    "projectName": "Clinics",
+    "year": "2017",
+    "imgUrl": "https://source.unsplash.com/random",
+    "benefits": "103993",
+    "organizationName": "UNHCR",
+    "capacity": "4600",
+    "country": "Egypt",
+    "position": {
+      "lat": "31",
+      "lng": "-15"
+    }
+  }
+]

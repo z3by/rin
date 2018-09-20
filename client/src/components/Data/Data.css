@@ -1,5 +1,49 @@
 .data {
-    background: var(--color-1);
-    height: 100vh;
-    overflow: hidden;
+  background: var(--color-1);
+  height: 100vh;
+  overflow: hidden;
+}
+
+.page {
+  position: relative;
+}
+
+.data-img {
+  position: absolute;
+  top: 10%;
+  left: 35%;
+  height: 50%;
+  vertical-align: text-bottom;
+  max-width: 50%;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+}
+.data-text {
+  width: 65%;
+  background: rgba(0, 0, 0, 0);
+  position: absolute;
+  top: 50vh;
+  right: 0;
+  bottom: 0;
+  left: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.data-text p {
+  color: var(--color-2);
+  margin: 0;
+  font-size: 22%;
+  font-family: var(--main-font);
+  font-weight: 100;
+  text-align: justify;
 }

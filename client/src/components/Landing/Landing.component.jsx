@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./Landing.css";
-import { Link } from "react-router-dom";
 
 export default class Landing extends Component {
   constructor(props) {
@@ -14,6 +13,7 @@ export default class Landing extends Component {
   componentDidMount() {
     this.bindEvents();
     this.rotateArrows();
+    this.showVideo();
   }
 
   // bind the events to the local functions.
@@ -42,8 +42,8 @@ export default class Landing extends Component {
 
     const circleX = e.clientX;
     const circleY = e.clientY;
-    document.querySelector(".effect-circle").style.top = circleY - 50 + "px";
-    document.querySelector(".effect-circle").style.left = circleX - 50 + "px";
+    document.querySelector(".effect-circle").style.top = circleY - 100 + "px";
+    document.querySelector(".effect-circle").style.left = circleX - 100 + "px";
   };
 
   // mouse wheel handler for the landing page
@@ -64,9 +64,20 @@ export default class Landing extends Component {
     }
   };
 
+
+  // show the video only on stories tab
+  showVideo = () => {
+    if (this.state.index !== 0) {
+      document.querySelector('.circle-video').style.display = 'none';
+    } else {
+      document.querySelector('.circle-video').style.display = 'initial';
+    }
+  }
+
   // change current context on the landing page;
   animateNext = () => {
-    if (this.state.index < 4) {
+    // if (this.state.index < 4) {
+    if (this.state.index < 3) {
       this.setState(
         {
           index: this.state.index + 1
@@ -79,13 +90,24 @@ export default class Landing extends Component {
           this.changeBackground();
           this.translateShapes();
           this.toggleOverlayColor();
-          this.changeVideo();
+          this.showVideo();
         }
       );
     } else {
       this.setState({
         index: 0
-      });
+      },
+        () => {
+          const divWidth = document.querySelector(".nav-item").offsetWidth;
+          const nav = document.querySelector(".nav");
+          nav.style.transform = `translate(${-this.state.index * divWidth}px)`;
+          this.toggleClassActive();
+          this.changeBackground();
+          this.translateShapes();
+          this.toggleOverlayColor();
+          this.showVideo();
+        }
+      );
     }
   };
 
@@ -104,13 +126,24 @@ export default class Landing extends Component {
           this.changeBackground();
           this.translateShapes();
           this.toggleOverlayColor();
-          this.changeVideo();
+          this.showVideo();
         }
       );
     } else {
       this.setState({
-        index: 5
-      });
+        index: 3
+      },
+        () => {
+          const divWidth = document.querySelector(".nav-item").offsetWidth;
+          const nav = document.querySelector(".nav");
+          nav.style.transform = `translate(${-this.state.index * divWidth}px)`;
+          this.toggleClassActive();
+          this.changeBackground();
+          this.translateShapes();
+          this.toggleOverlayColor();
+          this.showVideo();
+        }
+      );
     }
   };
 
@@ -122,11 +155,6 @@ export default class Landing extends Component {
     document
       .querySelector(".nav-group")
       .childNodes[this.state.index].firstChild.classList.add("active");
-  };
-
-  changeVideo = () => {
-    let random = Math.floor(Math.random() * 100);
-    document.querySelector(".circle-video").currentTime = random;
   };
 
   changeBackground = () => {
@@ -161,20 +189,21 @@ export default class Landing extends Component {
   toggleOverlayColor = () => {
     document.querySelector(".up-rec-overlay").style.background =
       document.querySelector(".up-rec-overlay").style.background ===
-      "linear-gradient(45deg,var(--color-4), var(--color-2))"
-        ? "linear-gradient(45deg, var(--color-2), var(--color-4))"
-        : "linear-gradient(45deg,var(--color-4), var(--color-2))";
+        "linear-gradient(45deg,var(--color-2), var(--color-2))"
+        ? "linear-gradient(45deg, var(--color-4), var(--color-4))"
+        : "linear-gradient(45deg,var(--color-2), var(--color-2))";
     document.querySelector(".down-rec-overlay").style.background =
       document.querySelector(".down-rec-overlay").style.background ===
-      "linear-gradient(45deg, var(--color-2), var(--color-4))"
-        ? "linear-gradient(45deg,var(--color-4), var(--color-2))"
-        : "linear-gradient(45deg, var(--color-2), var(--color-4))";
+        "linear-gradient(45deg, var(--color-4), var(--color-4))"
+        ? "linear-gradient(45deg,var(--color-2), var(--color-2))"
+        : "linear-gradient(45deg, var(--color-4), var(--color-4))";
   };
 
   // navigate to route after 2 seconds
   navigate = () => {
     const routes = ["stories", "map", "data", "library", "about"];
     document.querySelector(".circle").classList.add("grow");
+    document.querySelector(".circle-overlay").classList.add("grow");
     setTimeout(() => {
       this.props.history.push(routes[this.state.index]);
     }, 2000);
@@ -210,6 +239,11 @@ export default class Landing extends Component {
               </li>
               <li className="nav-item">
                 <a onClick={this.navigate} className="nav-link">
+                  about
+                </a>
+              </li>
+              {/* <li className="nav-item">
+                <a onClick={this.navigate} className="nav-link">
                   library
                 </a>
               </li>
@@ -217,18 +251,19 @@ export default class Landing extends Component {
                 <a onClick={this.navigate} className="nav-link">
                   about
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
 
-          <div className="circle-overlay fadeIn" />
+          <div className="circle-overlay" />
           <div className="circle fadeIn">
             <div className="effect-circle" />
             <video
-              src="/videos/UNHCR's.mp4"
+              src="/videos/stories.mp4"
               autoPlay
               muted
               loop
+              height="100"
               className="circle-video"
             />
           </div>
