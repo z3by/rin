@@ -1,3 +1,10 @@
 .map {
   background: var(--color-1);
 }
+
+.spectrum-container {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  top: 5%;
+}

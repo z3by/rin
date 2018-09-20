@@ -81,7 +81,7 @@ class Stories extends Component {
           <div className="overlay-desc">
             <h1>Success Stories</h1>
             <a onClick={this.goDown} className="down-arrow">
-              <img src="/imgs/arrow.png" className="down-arrow-img" />
+              <img src="/imgs/arrow.png" className="down-arrow-img" alt="" />
             </a>
           </div>
         </div>
