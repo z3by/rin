@@ -1,5 +1,6 @@
 .map {
   background: var(--color-1);
+  overflow: hidden;
 }
 
 .spectrum-container {

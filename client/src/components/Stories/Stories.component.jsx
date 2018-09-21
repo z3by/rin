@@ -47,8 +47,6 @@ class Stories extends Component {
   };
 
   componentDidMount() {
-    document.body.style.overflow = "auto";
-
     var controller = new ScrollMagic.Controller();
 
     new ScrollMagic.Scene({
@@ -69,8 +67,8 @@ class Stories extends Component {
   };
 
   goDown = () => {
-    document.querySelector('.spinner').scrollIntoView({
-      behavior: 'smooth'
+    document.querySelector(".spinner").scrollIntoView({
+      behavior: "smooth"
     });
   };
 

@@ -12,6 +12,7 @@
   -webkit-transition: var(--smooth);
   -o-transition: var(--smooth);
   transition: var(--smooth);
+  overflow: hidden;
 }
 
 .filter a {
