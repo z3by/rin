@@ -70,12 +70,11 @@
 
 .nav-link {
   font-family: var(--main-font);
-  color: rgba(255, 255, 255, 0.1);
-  font-size: 4vw;
+  color: var(--color-5);
+  font-size: 5vw;
   text-transform: uppercase;
-  font-weight: 100;
-  display: inline;
-  margin: 0 140px;
+  font-weight: bolder;
+  margin: 0 auto;
   z-index: 15;
   text-decoration: none;
 }
@@ -85,12 +84,11 @@
 }
 
 .nav-link.active {
+  font-size: 6vw;
   cursor: pointer;
   color: var(--color-2);
   -webkit-transition: var(--smooth);
   transition: var(--smooth);
-  font-weight: 300;
-  font-size: 5rem;
   opacity: .8;
   letter-spacing: .3rem;
 }
@@ -155,7 +153,7 @@
   position: absolute;
   height: 7vh;
   width: 14vh;
-  background: linear-gradient(60deg, rgba(0, 0, 0, 0), rgba(180, 120, 255, 0.3));
+  /* background: var(--color-5); */
   border: var(--light-border);
   top: 5vh;
   right: 5vh;
@@ -211,9 +209,9 @@
 
 .circle {
   opacity: 0.5;
-  height: 30vw;
-  width: 30vw;
-  left: 32%;
+  height: 35vw;
+  width: 35vw;
+  left: 30vw;
   position: absolute;
   border-radius: 50%;
   z-index: 0;
@@ -225,7 +223,7 @@
 }
 
 .circle-overlay {
-  opacity: 0.5;
+  opacity: 0;
   height: 30vw;
   width: 30vw;
   left: 32%;
@@ -244,15 +242,15 @@
 .circle video {
   position: absolute;
   width: 100vw;
-  top: -100px;
-  left: -100px;
+  top: -10vw;
+  left: -10vw;
   z-index: 0;
 }
 
 .up-rec,
 .down-rec {
-  height: 20vh;
-  width: 58vh;
+  height: 25vh;
+  width: 35vw;
   position: absolute;
   z-index: 1;
   background-size: 100vh 100vw;
@@ -268,12 +266,12 @@
 }
 
 .up-rec {
-  top: 15%;
+  top: 10%;
   left: 20%;
 }
 
 .down-rec {
-  bottom: 15%;
+  bottom: 10%;
   right: 20%;
 }
 
@@ -284,8 +282,8 @@
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   position: absolute;
-  height: 20vh;
-  width: 58vh;
+  height: 25vh;
+  width: 35vw;
   z-index: 5;
   -webkit-transition: left ease 1s, right ease 1s;
   transition: left ease 1s, right ease 1s;
@@ -293,13 +291,13 @@
 
 .down-rec-overlay {
   background: linear-gradient(45deg, var(--color-4), var(--color-4));
-  bottom: 15%;
+  bottom: 10%;
   right: 20%;
 }
 
 .up-rec-overlay {
   background: linear-gradient(45deg, var(--color-2), var(--color-2));
-  top: 15%;
+  top: 10%;
   left: 20%;
 }
 
@@ -309,260 +307,3 @@
   transition: var(--smooth);
 }
 
-/* <<<<<<<<<<<<<<<<<<<<<<<<<< for the other screens >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
-
-/* for big screen size */
-@media (min-width: 1440px) {
-
-
-  .circle {
-    height: 30vw;
-    width: 30vw;
-    left: 35vw;
-    position: absolute;
-    border-radius: 50%;
-    z-index: 0;
-    overflow: hidden;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    -o-border-radius: 50%;
-  }
-
-  .circle-overlay {
-    width: 30vw;
-    height: 30vw;
-    left: 35%;
-  }
-
-  .effect-circle {
-    display: none;
-  }
-  .up-rec,
-  .down-rec,
-  .down-rec-overlay,
-  .up-rec-overlay {
-    height: 20vh;
-    width: 30vw;
-  }
-
-  .up-rec,
-  .up-rec-overlay {
-    top: 15%;
-    left: 15%;
-  }
-
-  .down-rec,
-  .down-rec-overlay {
-    bottom: 15%;
-    right: 15%;
-  }
-
-  .nav-link.active {
-    font-size: 5vw;
-  }
-
-  .circle video {
-    width: 150vw;
-  }
-  
-}
-
-
-
-/* <<<<<<<<<<<<<<< for laptops >>>>>>>>>>>>>>>>>>>>>>>>> */
-@media (min-width: 1024px) {
-  .circle {
-    height: 30vw;
-    width: 30vw;
-    left: 35vw;
-    position: absolute;
-    border-radius: 50%;
-    z-index: 0;
-    overflow: hidden;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    -o-border-radius: 50%;
-  }
-
-  .circle-overlay {
-    height: 30vw;
-    width: 30vw;
-    left: 35vw;
-  }
-
-  .effect-circle {
-    display: none;
-  }
-  .up-rec,
-  .down-rec,
-  .down-rec-overlay,
-  .up-rec-overlay {
-    height: 20vh;
-    width: 35vw;
-  }
-
-  .up-rec,
-  .up-rec-overlay {
-    top: 15%;
-    left: 15%;
-  }
-
-  .down-rec,
-  .down-rec-overlay {
-    bottom: 15%;
-    right: 15%;
-  }
-
-  .nav-link.active {
-    font-size: 4vw;
-  }
-
-  .circle video {
-    width: 100vw;
-    top: -250px;
-  }
-  
-}
-
-
-
-@media (max-width: 768px) {
-
-  .circle {
-    height: 50vw;
-    width: 50vw;
-    left: 30vw;
-    position: absolute;
-    border-radius: 50%;
-    z-index: 0;
-    overflow: hidden;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    -o-border-radius: 50%;
-  }
-
-  .circle-overlay {
-    height: 50vw;
-    width: 50vw;
-    left: 30vw;
-  }
-
-  .effect-circle {
-    display: none;
-  }
-  .up-rec,
-  .down-rec,
-  .down-rec-overlay,
-  .up-rec-overlay {
-    height: 15vh;
-    width: 35vw;
-  }
-
-  .up-rec,
-  .up-rec-overlay {
-    top: 20%;
-    left: 20%;
-  }
-
-  .down-rec,
-  .down-rec-overlay {
-    bottom: 20%;
-    right: 20%;
-  }
-
-  .nav-link.active {
-    font-size: 6vw;
-  }
-
-  .circle video {
-    width: 150vw;
-    top: 0;
-  }
-  
-  .navbar-middle {
-    opacity: 0;
-  }
-
-  .nav-group {
-    /* margin-left: -70px; */
-  }
-
-  .partners {
-    opacity: 0;
-  }
-}
-
-/* for small phones screen */
-@media (max-width: 425px) {
-
-  .circle {
-    height: 60vw;
-    width: 60vw;
-    left: 30vw;
-    position: absolute;
-    border-radius: 50%;
-    z-index: 0;
-    overflow: hidden;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    -o-border-radius: 50%;
-  }
-
-  .circle-overlay {
-    height: 60vw;
-    width: 60vw;
-    left: 30vw;
-  }
-
-  .effect-circle {
-    display: none;
-  }
-  .up-rec,
-  .down-rec,
-  .down-rec-overlay,
-  .up-rec-overlay {
-    height: 12vh;
-    width: 50vw;
-  }
-
-  .up-rec,
-  .up-rec-overlay {
-    top: 30%;
-    left: 20%;
-  }
-
-  .down-rec,
-  .down-rec-overlay {
-    bottom: 30%;
-    right: 20%;
-  }
-
-  .nav-link.active {
-    font-size: 8vw;
-  }
-
-  .circle video {
-    width: 100vw;
-    top: -450px;
-  }
-
-  .navbar-middle {
-    opacity: 0;
-  }
-  .nav-group {
-    margin-left: -70px;
-  }
-}
-
-/* for xsmall phones screens */
-
-@media (max-height: 1024px) {
-  .circle video {
-    width: 200vh;
-    top: -450px;
-  }
-}

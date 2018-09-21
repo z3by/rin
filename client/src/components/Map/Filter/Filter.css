@@ -5,7 +5,7 @@
   z-index: 100;
   bottom: 5%;
   left: calc(50% - 50px);
-  border: solid 1px var(--color-2);
+  border: solid 1px var(--color-5);
   text-align: center;
   background: rgba(0, 0, 0, 0.4);
   cursor: pointer;
@@ -16,7 +16,7 @@
 
 .filter a {
   font-family: var(--main-font);
-  color: var(--color-2);
+  color: var(--color-5);
   font-size: 20px;
   line-height: 2;
 }
