@@ -20,12 +20,11 @@
 }
 
 .data-img {
-  position: absolute;
-  top: 10%;
+  position: relative;
   left: 0;
   right: 0;
-  height: 50%;
-  margin: 0 auto;
+  max-height: 50%;
+  margin: 5vh auto;
   vertical-align: text-bottom;
   max-width: 50%;
   -webkit-box-align: center;
@@ -42,14 +41,12 @@
 .data-text {
   width: 65%;
   background: rgba(0, 0, 0, 0);
-  position: absolute;
-  top: 50vh;
+  position: relative;
   right: 0;
   bottom: 0;
   left: 20%;
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 
 .data-text p {
@@ -59,4 +56,12 @@
   font-family: var(--main-font);
   font-weight: 100;
   text-align: justify;
+}
+
+@media (max-width: 768px) {
+  .data .arrows {
+    bottom: -120px;
+    right: 0;
+    margin-right: -140px;
+  }
 }
