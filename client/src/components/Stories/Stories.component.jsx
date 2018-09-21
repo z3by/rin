@@ -47,6 +47,7 @@ class Stories extends Component {
   };
 
   componentDidMount() {
+    document.body.style.overflow = "auto";
     var controller = new ScrollMagic.Controller();
 
     new ScrollMagic.Scene({
@@ -72,6 +73,9 @@ class Stories extends Component {
     });
   };
 
+  componentWillUnmount() {
+    document.body.style.overflow = "hidden";
+  }
   render() {
     return (
       <div className="stories fadeInFast">
@@ -136,7 +140,7 @@ class Stories extends Component {
 
         <div className="up" />
 
-        <span className="spinner-text">Success <br /> Journeys</span>
+        <span className="spinner-text">Success Journies</span>
         <div className="spinner" />
         <div className="down" />
       </div>

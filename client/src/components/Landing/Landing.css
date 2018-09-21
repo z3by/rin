@@ -67,7 +67,7 @@
 .nav-link {
   font-family: var(--main-font);
   color: var(--color-5);
-  font-size: 3vw;
+  font-size: 4vw;
   text-transform: uppercase;
   font-weight: bolder;
   margin: 0 auto;
@@ -80,7 +80,7 @@
 }
 
 .nav-link.active {
-  font-size: 3vw;
+  font-size: 4vw;
   cursor: pointer;
   color: var(--color-2);
   -webkit-transition: var(--smooth);
@@ -252,7 +252,7 @@
 
 .up-rec,
 .down-rec {
-  height: 25vh;
+  height: 20vh;
   width: 35vw;
   position: absolute;
   z-index: 1;
@@ -285,7 +285,7 @@
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   position: absolute;
-  height: 25vh;
+  height: 20vh;
   width: 35vw;
   z-index: 5;
   -webkit-transition: left ease 1s, right ease 1s;
@@ -346,8 +346,6 @@
     opacity: 0.5;
   }
 
-  .up-rec-overlay,
-  .down-rec-overlay,
   .effect-circle,
   .partners {
     opacity: 0;
@@ -356,7 +354,7 @@
 
   .nav-link,
   .nav-link.active {
-    font-size: 6vw;
+    font-size: 8vw;
   }
   .nav-item {
     width: 100vw;
@@ -371,7 +369,9 @@
   }
 
   .up-rec,
-  .down-rec {
+  .down-rec,
+  .down-rec-overlay,
+  .up-rec-overlay {
     height: 20vw;
   }
 }
@@ -390,6 +390,6 @@
   }
   .nav-link,
   .nav-link.active {
-    font-size: 5vw;
+    font-size: 8vw;
   }
 }

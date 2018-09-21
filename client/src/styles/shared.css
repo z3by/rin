@@ -3,23 +3,23 @@
 
 :root {
   /* <<<<< theme number 1 >>>>>>> */
-  --color-1: #363636;
+  /* --color-1: #363636;
   --color-2: #ef8e38;
   --color-3: #181818;
   --color-4: #0094ab;
-  --color-5: #c1b5a1;
+  --color-5: #c1b5a1; */
   /* <<<<< theme number 2 >>>>>>> */
-  /* --color-1: #3C3C3B;
-  --color-2: #F3573B;
-  --color-3: #D2E5ED;
-  --color-4: #F2B705;
-  --color-5: #8C8C8A; */
+  /* --color-1: #3c3c3b;
+  --color-2: #f3573b;
+  --color-3: #d2e5ed;
+  --color-4: #f2b705;
+  --color-5: #8c8c8a; */
   /* <<<<< theme number 3 >>>>>>> */
-  /* --color-1: #414C53;
+  --color-1: #414c53;
   --color-2: #ef8e38;
-  --color-3: #414C53;
-  --color-4: #FAF9F9;
-  --color-5: #8C8C8A; */
+  --color-3: #414c53;
+  --color-4: #faf9f9;
+  --color-5: #8c8c8a;
 
   --light-transparent: rgba(255, 255, 255, 0.3);
   --light-border: solid 1px var(--light-transparent);
@@ -29,7 +29,7 @@
 
 body {
   margin: 0;
-  background: var(--color-5);
+  background: var(--color-1);
   height: 100vh;
   width: 100vw;
   padding: 0;

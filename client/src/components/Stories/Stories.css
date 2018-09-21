@@ -82,7 +82,7 @@
   font-weight: 1000;
   letter-spacing: 2px;
   opacity: 0;
-  background-color: rgba(20, 20, 20, .6);
+  background-color: rgba(20, 20, 20, 0.6);
 }
 
 @keyframes fadeInTitleButtom {
@@ -260,8 +260,8 @@ li:hover .summary {
   color: var(--color-2);
   font-family: var(--main-font);
   position: relative;
-  left: 40vw;
-  top: 23vw;
+  left: 38vw;
+  top: 25vw;
   z-index: 1000;
   font-size: 2vw;
   margin: 0;
@@ -288,11 +288,11 @@ li:hover .summary {
 .spinner:before {
   content: "";
   position: absolute;
-  top: 5px;
-  left: 5px;
-  right: 5px;
-  bottom: 5px;
-  border: 7px solid transparent;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 5px solid transparent;
   border-top-color: var(--color-2);
   border-radius: 50%;
   transform: rotate(40deg);
@@ -307,12 +307,11 @@ li:hover .summary {
 .spinner:after {
   content: "";
   position: absolute;
-  top: 15px;
-  left: 15px;
-  right: 15px;
-  bottom: 15px;
-
-  border: 7px solid transparent;
+  top: 25px;
+  left: 25px;
+  right: 25px;
+  bottom: 25px;
+  border: 5px solid transparent;
   border-top-color: var(--color-5);
   border-radius: 50%;
   transform: rotate(-40deg);
@@ -343,5 +342,16 @@ li:hover .summary {
     -webkit-transform: rotate(360deg); /* Chrome, Opera 15+, Safari 3.1+ */
     -ms-transform: rotate(360deg); /* IE 9 */
     transform: rotate(360deg); /* Firefox 16+, IE 10+, Opera */
+  }
+}
+
+@media (max-width: 1024px) {
+  .spinner,
+  .spinner-text {
+    display: none;
+  }
+
+  .links {
+    height: 100%;
   }
 }
