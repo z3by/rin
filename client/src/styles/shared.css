@@ -29,7 +29,7 @@
 
 body {
   margin: 0;
-  background: var(--color-1);
+  background: var(--color-5);
   height: 100vh;
   width: 100vw;
   padding: 0;
@@ -144,10 +144,10 @@ label {
     linear,
     left top,
     left bottom,
-    from(var(--color-1)),
+    from(var(--color-5)),
     to(#221133)
   );
-  background: linear-gradient(var(--color-1), #221133);
+  background: linear-gradient(var(--color-5), #221133);
 }
 
 .pages {
@@ -201,96 +201,96 @@ label {
   -webkit-animation-timing-function: ease;
   animation-timing-function: ease;
 }
-
-input[type="range"].slider {
+input[type="range"] {
+  height: 25px;
   -webkit-appearance: none;
+  margin: 10px 0;
   width: 100%;
-  margin: 12.75px 0;
   background: transparent;
 }
-input[type="range"].slider:focus {
+input[type="range"]:focus {
   outline: none;
 }
-input[type="range"].slider::-webkit-slider-runnable-track {
+input[type="range"]::-webkit-slider-runnable-track {
   width: 100%;
-  height: 5.5px;
+  height: 5px;
   cursor: pointer;
-  -webkit-box-shadow: 1px 1px 1px #fff, 0px 0px 1px #fff;
-  box-shadow: 1px 1px 1px #fff, 0px 0px 1px #fff;
-  background: rgba(248, 218, 180, 0);
-  border-radius: 0px;
-  border: 0px solid #fff;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #000000;
+  background: var(--color-5);
+  border-radius: 1px;
+  border: 0px solid #000000;
 }
-input[type="range"].slider::-webkit-slider-thumb {
-  -webkit-box-shadow: 0px 0px 1px #670000, 0px 0px 0px #810000;
-  box-shadow: 0px 0px 1px #670000, 0px 0px 0px #810000;
-  border: 0px solid #ff1e00;
-  height: 31px;
-  width: 24px;
-  border-radius: 0px;
+input[type="range"]::-webkit-slider-thumb {
+  box-shadow: 0px 0px 0px #000000;
+  border: 1px solid var(--color-5);
+  height: 18px;
+  width: 18px;
+  border-radius: 25px;
   background: var(--color-2);
   cursor: pointer;
   -webkit-appearance: none;
-  margin-top: -12.75px;
+  margin-top: -7px;
 }
-input[type="range"].slider:focus::-webkit-slider-runnable-track {
-  background: rgba(249, 223, 189, 0);
+input[type="range"]:focus::-webkit-slider-runnable-track {
+  background: var(--color-5);
 }
-input[type="range"].slider::-moz-range-track {
+input[type="range"]::-moz-range-track {
   width: 100%;
-  height: 5.5px;
+  height: 5px;
   cursor: pointer;
-  box-shadow: 1px 1px 1px #fff, 0px 0px 1px #fff;
-  background: rgba(248, 218, 180, 0.5);
-  border-radius: 0px;
-  border: 0px solid #fff;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #000000;
+  background: var(--color-5);
+  border-radius: 1px;
+  border: 0px solid #000000;
 }
-input[type="range"].slider::-moz-range-thumb {
-  box-shadow: 0px 0px 1px #670000, 0px 0px 0px #810000;
-  border: 0px solid #ff1e00;
-  height: 31px;
-  width: 24px;
-  border-radius: 0px;
+input[type="range"]::-moz-range-thumb {
+  box-shadow: 0px 0px 0px #000000;
+  border: 1px solid var(--color-5);
+  height: 18px;
+  width: 18px;
+  border-radius: 25px;
   background: var(--color-2);
   cursor: pointer;
 }
-input[type="range"].slider::-ms-track {
+input[type="range"]::-ms-track {
   width: 100%;
-  height: 5.5px;
+  height: 5px;
   cursor: pointer;
+  animate: 0.2s;
   background: transparent;
   border-color: transparent;
   color: transparent;
 }
-input[type="range"].slider::-ms-fill-lower {
-  background: rgba(247, 213, 171, 0.5);
-  border: 0px solid #fff;
-  border-radius: 0px;
-  box-shadow: 1px 1px 1px #fff, 0px 0px 1px #fff;
+input[type="range"]::-ms-fill-lower {
+  background: var(--color-5);
+  border: 0px solid #000000;
+  border-radius: 2px;
+  box-shadow: 0px 0px 0px #000000;
 }
-input[type="range"].slider::-ms-fill-upper {
-  background: rgba(248, 218, 180, 0.5);
-  border: 0px solid #fff;
-  border-radius: 0px;
-  box-shadow: 1px 1px 1px #fff, 0px 0px 1px #fff;
+input[type="range"]::-ms-fill-upper {
+  background: var(--color-5);
+  border: 0px solid #000000;
+  border-radius: 2px;
+  box-shadow: 0px 0px 0px #000000;
 }
-input[type="range"].slider::-ms-thumb {
-  box-shadow: 0px 0px 1px #670000, 0px 0px 0px #810000;
-  border: 0px solid #ff1e00;
-  height: 31px;
-  width: 24px;
-  border-radius: 0px;
+input[type="range"]::-ms-thumb {
+  margin-top: 1px;
+  box-shadow: 0px 0px 0px #000000;
+  border: 1px solid var(--color-5);
+  height: 18px;
+  width: 18px;
+  border-radius: 25px;
   background: var(--color-2);
   cursor: pointer;
-  height: 5.5px;
 }
-input[type="range"].slider:focus::-ms-fill-lower {
-  background: rgba(248, 218, 180, 0.5);
+input[type="range"]:focus::-ms-fill-lower {
+  background: var(--color-5);
 }
-input[type="range"].slider:focus::-ms-fill-upper {
-  background: rgba(249, 223, 189, 0.5);
+input[type="range"]:focus::-ms-fill-upper {
+  background: var(--color-5);
 }
-
 video {
   width: 100vw;
   height: 120vh;

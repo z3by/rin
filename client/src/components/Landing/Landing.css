@@ -375,3 +375,21 @@
     height: 20vw;
   }
 }
+
+@media (max-width: 450px) {
+  .down-rec,
+  .down-rec-overlay {
+    bottom: 22%;
+    width: 50%;
+  }
+
+  .up-rec,
+  .up-rec-overlay {
+    top: 22%;
+    width: 50%;
+  }
+  .nav-link,
+  .nav-link.active {
+    font-size: 5vw;
+  }
+}
