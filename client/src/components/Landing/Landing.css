@@ -13,8 +13,6 @@
   overflow: hidden;
 }
 
-
-
 @-webkit-keyframes splash {
   from {
     top: 0;
@@ -24,8 +22,6 @@
     top: -100vh;
   }
 }
-
-
 
 @keyframes splash {
   from {
@@ -89,8 +85,8 @@
   color: var(--color-2);
   -webkit-transition: var(--smooth);
   transition: var(--smooth);
-  opacity: .8;
-  letter-spacing: .3rem;
+  opacity: 0.8;
+  letter-spacing: 0.3rem;
 }
 
 /* ------------------------------- navigation group end ------------------------- */
@@ -231,7 +227,13 @@
   border-radius: 50%;
   z-index: 3;
   mix-blend-mode: overlay;
-  background: -webkit-gradient(linear, left top, right top, from(var(--color-2)), to(var(--color-4)));
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(var(--color-2)),
+    to(var(--color-4))
+  );
   background: linear-gradient(90deg, var(--color-2), var(--color-4));
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -310,7 +312,7 @@
 .counter {
   height: 6vh;
   width: 16vh;
-  position: absolute ;
+  position: absolute;
   /* background: var(--color-5); */
   border: var(--light-border);
   left: 2.5%;
@@ -330,3 +332,45 @@
   line-height: 6vh;
 }
 
+@media (max-width: 769px) {
+  .circle video {
+    display: none;
+    opacity: 0;
+  }
+  .circle {
+    position: absolute;
+    height: 70vw;
+    width: 70vw;
+    left: 15vw;
+    opacity: 0.5;
+  }
+
+  .up-rec-overlay,
+  .down-rec-overlay,
+  .effect-circle,
+  .partners {
+    opacity: 0;
+    display: none;
+  }
+
+  .nav-link,
+  .nav-link.active {
+    font-size: 6vw;
+  }
+  .nav-item {
+    width: 100vw;
+  }
+  .nav-group {
+    margin-left: -25vw;
+  }
+
+  .fadeInFast {
+    animation: unset;
+    transition: unset;
+  }
+
+  .up-rec,
+  .down-rec {
+    height: 20vw;
+  }
+}

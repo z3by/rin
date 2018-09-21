@@ -121,3 +121,11 @@
   height: 100vh;
   width: 15%;
 }
+
+
+@media (max-width: 768px) {
+  .counter, .navbar-middle {
+    display: none;
+  }
+
+}
