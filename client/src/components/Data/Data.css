@@ -6,6 +6,17 @@
 
 .page {
   position: relative;
+  height: 100vh;
+  font-size: 100px;
+  color: white;
+  text-align: center;
+}
+
+.pages {
+  position: relative;
+  top: 0vh;
+  -webkit-transition: var(--smooth);
+  transition: var(--smooth);
 }
 
 .data-img {

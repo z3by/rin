@@ -47,19 +47,13 @@ class Stories extends Component {
   };
 
   componentDidMount() {
-    document.body.style.overflow = "auto";
+    document.body.style.overflowY = "auto";
     var controller = new ScrollMagic.Controller();
 
     new ScrollMagic.Scene({
       triggerElement: ".link1, .link2, .link3, .link4, .link5"
     })
       .setClassToggle(".link1, .link2, .link3, .link4, .link5", "show")
-      .addTo(controller);
-
-    new ScrollMagic.Scene({
-      triggerElement: ".down"
-    })
-      .setClassToggle(".down", "show-balls")
       .addTo(controller);
   }
 
@@ -74,7 +68,7 @@ class Stories extends Component {
   };
 
   componentWillUnmount() {
-    document.body.style.overflow = "hidden";
+    document.body.style.overflowY = "hidden";
   }
   render() {
     return (
@@ -139,10 +133,6 @@ class Stories extends Component {
         </ul>
 
         <div className="up" />
-
-        <span className="spinner-text">Success Journies</span>
-        <div className="spinner" />
-        <div className="down" />
       </div>
     );
   }
