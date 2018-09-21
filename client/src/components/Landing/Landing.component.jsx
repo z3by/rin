@@ -126,7 +126,7 @@ export default class Landing extends Component {
           this.toggleClassActive();
           this.changeBackground();
           this.translateShapes();
-          this.toggleOverlayColor();
+          // this.toggleOverlayColor();
           this.showVideo();
         }
       );
@@ -141,7 +141,7 @@ export default class Landing extends Component {
           this.toggleClassActive();
           this.changeBackground();
           this.translateShapes();
-          this.toggleOverlayColor();
+          // this.toggleOverlayColor();
           this.showVideo();
         }
       );
@@ -162,11 +162,14 @@ export default class Landing extends Component {
     document.querySelector(".circle").style.background = `url(imgs/backs${this
       .state.index + 1}.jpg)`;
     document.querySelector(".circle").style.backgroundAttachment = "fixed";
+    document.querySelector(".circle").style.backgroundSize = "100%";
     document.querySelector(".up-rec").style.background = `url(imgs/backs${this
       .state.index + 1}.jpg)`;
+    document.querySelector(".up-rec").style.backgroundSize = "100%";
     document.querySelector(".up-rec").style.backgroundAttachment = "fixed";
     document.querySelector(".down-rec").style.background = `url(imgs/backs${this
       .state.index + 1}.jpg)`;
+    document.querySelector(".down-rec").style.backgroundSize = "100%";
     document.querySelector(".down-rec").style.backgroundAttachment = "fixed";
   };
 
@@ -202,7 +205,7 @@ export default class Landing extends Component {
 
   // navigate to route after 2 seconds
   navigate = () => {
-    const routes = ["stories", "map", "data", "library", "about"];
+    const routes = ["stories", "map", "data", "about", "library"];
     document.querySelector(".circle").classList.add("grow");
     document.querySelector(".circle-overlay").classList.add("grow");
     setTimeout(() => {
@@ -228,12 +231,12 @@ export default class Landing extends Component {
             <ul className="nav-group">
               <li className="nav-item">
                 <a onClick={this.navigate} className="nav-link active">
-                  stories
+                  success stories
                 </a>
               </li>
               <li className="nav-item">
                 <a onClick={this.navigate} className="nav-link">
-                  map
+                  projects map
                 </a>
               </li>
               <li className="nav-item">
@@ -243,7 +246,7 @@ export default class Landing extends Component {
               </li>
               <li className="nav-item">
                 <a onClick={this.navigate} className="nav-link">
-                  about
+                  about us
                 </a>
               </li>
               {/* <li className="nav-item">

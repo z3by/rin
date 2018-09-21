@@ -17,7 +17,7 @@ export default class Navbar extends Component {
   render() {
     return (
       <div>
-        <div className="back-gredient"></div>
+        {/* <div className="back-gredient"></div> */}
         <div className="navbar">
           <div className="logo">
             <Link to={"/"}>
