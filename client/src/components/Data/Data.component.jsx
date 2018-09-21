@@ -42,7 +42,7 @@ export default class Data extends Component {
       <div className="data fadeInFast">
         <div className="pages">
           <div className="page">
-            <img src="/imgs/data/chart2.png" className="data-img" />
+            <img src="/imgs/data/chart1.png" className="data-img" />
             <div className="data-text">
               <p>
                 INCREASED CAPITAL INVESTMENT CAN MAKE A BIG DIFFERENCE The RIN's
@@ -54,7 +54,7 @@ export default class Data extends Component {
           </div>
 
           <div className="page">
-            <img src="/imgs/data/chart3.png" className="data-img" />
+            <img src="/imgs/data/chart4.png" className="data-img" />
             <div className="data-text">
               <p>
                 Today, nearly 70 million people have been forcibly displaced
@@ -65,7 +65,7 @@ export default class Data extends Component {
           </div>
 
           <div className="page">
-            <img src="/imgs/data/chart1.png" className="data-img" />
+            <img src="/imgs/data/chart7.png" className="data-img" />
             <div className="data-text">
               <p>
                 The RIN moves private capital from commitment to active investment
@@ -76,7 +76,7 @@ export default class Data extends Component {
           </div>
 
           <div className="page">
-            <img src="/imgs/data/chart4.png" className="data-img" />
+            <img src="/imgs/data/chart9.png" className="data-img" />
             <div className="data-text">
               <p>
                 Ultimately, the RIN aims to bridge the gap between the untapped

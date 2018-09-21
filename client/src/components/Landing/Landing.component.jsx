@@ -6,6 +6,7 @@ export default class Landing extends Component {
     super(props);
 
     this.state = {
+      counter: "10,034,623",
       index: 0
     };
   }
@@ -227,6 +228,13 @@ export default class Landing extends Component {
             <img className="i4" src="/imgs/google.png" alt="" />
           </div>
 
+          <div className="counter">
+            <h4>
+              <span>$</span>
+              {this.state.counter}
+            </h4>
+          </div>
+
           <div className="nav">
             <ul className="nav-group">
               <li className="nav-item">
@@ -280,6 +288,13 @@ export default class Landing extends Component {
             <div className="up-rec-overlay slideInRight" />
             <div className="down-rec slideInLeft" />
             <div className="down-rec-overlay slideInLeft" />
+          </div>
+
+          <div className="counter">
+            <h4>
+              <span>$</span>
+              {this.state.counter}
+            </h4>
           </div>
 
           <div className="arrows">

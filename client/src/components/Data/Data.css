@@ -11,8 +11,10 @@
 .data-img {
   position: absolute;
   top: 10%;
-  left: 35%;
+  left: 0;
+  right: 0;
   height: 50%;
+  margin: 0 auto;
   vertical-align: text-bottom;
   max-width: 50%;
   -webkit-box-align: center;
