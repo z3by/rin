@@ -231,12 +231,12 @@ export default class Landing extends Component {
             <ul className="nav-group">
               <li className="nav-item">
                 <a onClick={this.navigate} className="nav-link active">
-                  stories
+                  success stories
                 </a>
               </li>
               <li className="nav-item">
                 <a onClick={this.navigate} className="nav-link">
-                  map
+                  projects map
                 </a>
               </li>
               <li className="nav-item">
@@ -246,7 +246,7 @@ export default class Landing extends Component {
               </li>
               <li className="nav-item">
                 <a onClick={this.navigate} className="nav-link">
-                  about
+                  about us
                 </a>
               </li>
               {/* <li className="nav-item">

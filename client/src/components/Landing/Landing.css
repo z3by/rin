@@ -71,7 +71,7 @@
 .nav-link {
   font-family: var(--main-font);
   color: var(--color-5);
-  font-size: 5vw;
+  font-size: 3vw;
   text-transform: uppercase;
   font-weight: bolder;
   margin: 0 auto;
@@ -84,7 +84,7 @@
 }
 
 .nav-link.active {
-  font-size: 6vw;
+  font-size: 3vw;
   cursor: pointer;
   color: var(--color-2);
   -webkit-transition: var(--smooth);
