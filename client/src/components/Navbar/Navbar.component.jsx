@@ -47,14 +47,14 @@ export default class Navbar extends Component {
             <Link to={"/members"}>
               <div
                 className="nav-rec rounded"
-                index="5"
+                index="4"
                 onClick={this.onClickCircle}
               >
                 <p className="nav-rec-text">members</p>
               </div>
             </Link>
             <Link to={"/about"}>
-              <div className="nav-rec" index="4" onClick={this.onClickCircle}>
+              <div className="nav-rec" index="5" onClick={this.onClickCircle}>
                 <p className="nav-rec-text">about</p>
               </div>
             </Link>

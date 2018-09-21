@@ -16,7 +16,6 @@
 .dot:hover {
   background: white;
   -webkit-transform: scale(2);
-  -ms-transform: scale(2);
   transform: scale(2);
   cursor: default;
   -webkit-animation: unset;
@@ -30,6 +29,9 @@
 .dot:hover .tooltip {
   visibility: visible;
   opacity: 1;
+  width: 10vw;
+  top: 20px;
+  left: calc(-5vw + 7px);
 }
 .dot:hover .tooltiptext {
   font-size: 10px;
@@ -38,7 +40,7 @@
 .dot:hover .tooltip img {
   visibility: visible;
 }
-.tooltip img {
+.dot .tooltip img {
   height: 70px;
   margin: 10px auto;
   visibility: hidden;

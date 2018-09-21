@@ -15,7 +15,7 @@ export default class Landing extends Component {
     this.bindEvents();
     this.rotateArrows();
     this.showVideo();
-
+    this.changeBackground();
   }
 
   // bind the events to the local functions.
@@ -66,15 +66,14 @@ export default class Landing extends Component {
     }
   };
 
-
   // show the video only on stories tab
   showVideo = () => {
     if (this.state.index !== 0) {
-      document.querySelector('.circle-video').style.display = 'none';
+      document.querySelector(".circle-video").style.display = "none";
     } else {
-      document.querySelector('.circle-video').style.display = 'initial';
+      document.querySelector(".circle-video").style.display = "initial";
     }
-  }
+  };
 
   // change current context on the landing page;
   animateNext = () => {
@@ -96,9 +95,10 @@ export default class Landing extends Component {
         }
       );
     } else {
-      this.setState({
-        index: 0
-      },
+      this.setState(
+        {
+          index: 0
+        },
         () => {
           const divWidth = document.querySelector(".nav-item").offsetWidth;
           const nav = document.querySelector(".nav");
@@ -132,9 +132,10 @@ export default class Landing extends Component {
         }
       );
     } else {
-      this.setState({
-        index: 3
-      },
+      this.setState(
+        {
+          index: 3
+        },
         () => {
           const divWidth = document.querySelector(".nav-item").offsetWidth;
           const nav = document.querySelector(".nav");
@@ -194,12 +195,12 @@ export default class Landing extends Component {
   toggleOverlayColor = () => {
     document.querySelector(".up-rec-overlay").style.background =
       document.querySelector(".up-rec-overlay").style.background ===
-        "linear-gradient(45deg,var(--color-2), var(--color-2))"
+      "linear-gradient(45deg,var(--color-2), var(--color-2))"
         ? "linear-gradient(45deg, var(--color-4), var(--color-4))"
         : "linear-gradient(45deg,var(--color-2), var(--color-2))";
     document.querySelector(".down-rec-overlay").style.background =
       document.querySelector(".down-rec-overlay").style.background ===
-        "linear-gradient(45deg, var(--color-4), var(--color-4))"
+      "linear-gradient(45deg, var(--color-4), var(--color-4))"
         ? "linear-gradient(45deg,var(--color-2), var(--color-2))"
         : "linear-gradient(45deg, var(--color-4), var(--color-4))";
   };
@@ -209,6 +210,7 @@ export default class Landing extends Component {
     const routes = ["stories", "map", "data", "about", "library"];
     document.querySelector(".circle").classList.add("grow");
     document.querySelector(".circle-overlay").classList.add("grow");
+
     setTimeout(() => {
       this.props.history.push(routes[this.state.index]);
     }, 2000);

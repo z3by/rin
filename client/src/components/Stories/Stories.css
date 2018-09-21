@@ -15,7 +15,7 @@
   height: auto;
   vertical-align: middle;
   width: 100%;
-  opacity: 0.8;
+  opacity: 0.3;
 }
 
 .video-container {
@@ -25,10 +25,10 @@
 .overlay-desc {
   background: rgba(0, 0, 0, 0);
   position: absolute;
-  top: -100px;
   right: 0;
   bottom: 0;
   left: 0;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,7 +37,7 @@
 .overlay-desc h1 {
   color: var(--color-2);
   margin: 0;
-  font-size: 650%;
+  font-size: 7vw;
   text-transform: capitalize;
   font-family: var(--main-font);
   font-weight: 100;
@@ -65,15 +65,12 @@
 
 .story-title {
   position: absolute;
-  top: 3rem;
-  right: 0;
-  bottom: 0;
-  left: 5px;
-  height: 2.5rem;
-  width: 7.5rem;
+  height: 20vh;
+  width: 20vh;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  border-radius: 50%;
   text-decoration: none;
   color: var(--color-2);
   text-transform: capitalize;
@@ -82,7 +79,8 @@
   font-weight: 1000;
   letter-spacing: 2px;
   opacity: 0;
-  background-color: rgba(20, 20, 20, .6);
+  transition: var(--smooth);
+  background-color: rgba(20, 20, 20, 0.6);
 }
 
 @keyframes fadeInTitleButtom {
@@ -109,6 +107,7 @@
 
 .links {
   position: absolute;
+  display: flex;
   vertical-align: middle;
   height: 0px;
   width: 0px;
@@ -260,8 +259,8 @@ li:hover .summary {
   color: var(--color-2);
   font-family: var(--main-font);
   position: relative;
-  left: 40vw;
-  top: 23vw;
+  left: 38vw;
+  top: 25vw;
   z-index: 1000;
   font-size: 2vw;
   margin: 0;
@@ -288,11 +287,11 @@ li:hover .summary {
 .spinner:before {
   content: "";
   position: absolute;
-  top: 5px;
-  left: 5px;
-  right: 5px;
-  bottom: 5px;
-  border: 7px solid transparent;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 5px solid transparent;
   border-top-color: var(--color-2);
   border-radius: 50%;
   transform: rotate(40deg);
@@ -307,12 +306,11 @@ li:hover .summary {
 .spinner:after {
   content: "";
   position: absolute;
-  top: 15px;
-  left: 15px;
-  right: 15px;
-  bottom: 15px;
-
-  border: 7px solid transparent;
+  top: 25px;
+  left: 25px;
+  right: 25px;
+  bottom: 25px;
+  border: 5px solid transparent;
   border-top-color: var(--color-5);
   border-radius: 50%;
   transform: rotate(-40deg);
@@ -343,5 +341,48 @@ li:hover .summary {
     -webkit-transform: rotate(360deg); /* Chrome, Opera 15+, Safari 3.1+ */
     -ms-transform: rotate(360deg); /* IE 9 */
     transform: rotate(360deg); /* Firefox 16+, IE 10+, Opera */
+  }
+}
+
+@media (max-width: 1024px) {
+  .spinner,
+  .spinner-text {
+    display: none;
+  }
+
+  .links {
+    height: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .spinner,
+  .spinner-text {
+    display: none;
+  }
+
+  .links.show {
+    height: 30vh;
+    width: 100vw;
+    position: relative;
+    top: 0;
+    left: 0;
+    border-radius: 0;
+    margin: 0;
+    justify-content: center;
+  }
+  .down-arrow {
+    display: none;
+  }
+
+  .stories-items {
+    margin: 0;
+    padding: 0;
+  }
+
+  .story-title {
+    opacity: 1;
+    align-self: center;
+    transition-delay: 2s;
   }
 }

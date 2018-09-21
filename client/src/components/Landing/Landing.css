@@ -13,8 +13,6 @@
   overflow: hidden;
 }
 
-
-
 @-webkit-keyframes splash {
   from {
     top: 0;
@@ -24,8 +22,6 @@
     top: -100vh;
   }
 }
-
-
 
 @keyframes splash {
   from {
@@ -71,7 +67,7 @@
 .nav-link {
   font-family: var(--main-font);
   color: var(--color-5);
-  font-size: 3vw;
+  font-size: 4vw;
   text-transform: uppercase;
   font-weight: bolder;
   margin: 0 auto;
@@ -84,13 +80,13 @@
 }
 
 .nav-link.active {
-  font-size: 3vw;
+  font-size: 4vw;
   cursor: pointer;
   color: var(--color-2);
   -webkit-transition: var(--smooth);
   transition: var(--smooth);
-  opacity: .8;
-  letter-spacing: .3rem;
+  opacity: 0.8;
+  letter-spacing: 0.3rem;
 }
 
 /* ------------------------------- navigation group end ------------------------- */
@@ -231,7 +227,13 @@
   border-radius: 50%;
   z-index: 3;
   mix-blend-mode: overlay;
-  background: -webkit-gradient(linear, left top, right top, from(var(--color-2)), to(var(--color-4)));
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(var(--color-2)),
+    to(var(--color-4))
+  );
   background: linear-gradient(90deg, var(--color-2), var(--color-4));
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -245,11 +247,12 @@
   top: -10vw;
   left: -10vw;
   z-index: 0;
+  opacity: 0;
 }
 
 .up-rec,
 .down-rec {
-  height: 25vh;
+  height: 20vh;
   width: 35vw;
   position: absolute;
   z-index: 1;
@@ -282,7 +285,7 @@
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   position: absolute;
-  height: 25vh;
+  height: 20vh;
   width: 35vw;
   z-index: 5;
   -webkit-transition: left ease 1s, right ease 1s;
@@ -310,7 +313,7 @@
 .counter {
   height: 6vh;
   width: 16vh;
-  position: absolute ;
+  position: absolute;
   /* background: var(--color-5); */
   border: var(--light-border);
   left: 2.5%;
@@ -330,3 +333,63 @@
   line-height: 6vh;
 }
 
+@media (max-width: 769px) {
+  .circle video {
+    display: none;
+    opacity: 0;
+  }
+  .circle {
+    position: absolute;
+    height: 70vw;
+    width: 70vw;
+    left: 15vw;
+    opacity: 0.5;
+  }
+
+  .effect-circle,
+  .partners {
+    opacity: 0;
+    display: none;
+  }
+
+  .nav-link,
+  .nav-link.active {
+    font-size: 8vw;
+  }
+  .nav-item {
+    width: 100vw;
+  }
+  .nav-group {
+    margin-left: -25vw;
+  }
+
+  .fadeInFast {
+    animation: unset;
+    transition: unset;
+  }
+
+  .up-rec,
+  .down-rec,
+  .down-rec-overlay,
+  .up-rec-overlay {
+    height: 20vw;
+  }
+}
+
+@media (max-width: 450px) {
+  .down-rec,
+  .down-rec-overlay {
+    bottom: 22%;
+    width: 50%;
+  }
+
+  .up-rec,
+  .up-rec-overlay {
+    top: 22%;
+    width: 50%;
+  }
+  .nav-link,
+  .nav-link.active {
+    font-size: 8vw;
+  }
+}

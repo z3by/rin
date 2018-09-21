@@ -44,7 +44,11 @@ export default class Story extends Component {
   };
 
   componentDidMount() {
-    document.body.style.overflow = "auto";
+    document.body.style.overflowY = "auto";
+  }
+
+  componentWillUnmount() {
+    document.body.style.overflowY = "hidden";
   }
 
   render() {
@@ -59,7 +63,7 @@ export default class Story extends Component {
           </div>
         </div>
         <p className="story-text">{this.state.stories[id].text}</p>
-        <div className="extra-space"></div>
+        <div className="extra-space" />
       </div>
     );
   }
