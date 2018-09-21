@@ -37,7 +37,7 @@
 .overlay-desc h1 {
   color: var(--color-2);
   margin: 0;
-  font-size: 10vw;
+  font-size: 7vw;
   text-transform: capitalize;
   font-family: var(--main-font);
   font-weight: 100;
@@ -68,6 +68,7 @@
   height: 20vh;
   width: 20vh;
   display: flex;
+  justify-content: center;
   align-items: center;
   border-radius: 50%;
   text-decoration: none;
@@ -79,7 +80,6 @@
   letter-spacing: 2px;
   opacity: 0;
   transition: var(--smooth);
-  transition-delay: 2s;
   background-color: rgba(20, 20, 20, 0.6);
 }
 
@@ -383,6 +383,6 @@ li:hover .summary {
   .story-title {
     opacity: 1;
     align-self: center;
-    transition-delay: 1s;
+    transition-delay: 2s;
   }
 }

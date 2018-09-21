@@ -62,7 +62,7 @@ class Stories extends Component {
   };
 
   goDown = () => {
-    document.querySelector(".spinner").scrollIntoView({
+    document.querySelector(".link5").scrollIntoView({
       behavior: "smooth"
     });
   };
