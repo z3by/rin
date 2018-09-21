@@ -47,7 +47,7 @@ export default class About extends Component {
           <div className="page1">
             <img src="/imgs/about1.jpg" className="about1-img" />
             <div className="about1-text">
-              <h2>About</h2>
+              <h2>About</h2><br />
               <p>
                 The RIN moves private capital from commitment to active investment by sourcing,
                 structuring, and supporting the financing of projects and companies that benefit

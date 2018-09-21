@@ -78,10 +78,11 @@ class Stories extends Component {
     return (
       <div className="stories fadeInFast">
         <div className="video-container">
-          <video loop autoPlay muted>
+          {/* <video loop autoPlay muted>
             <source src={this.state.videoURL} type="video/mp4" />
             Your browser does not support the video tag.
-          </video>
+          </video> */}
+          <img src="/imgs/success.jpg" className="img-container" />
           <div className="overlay-desc">
             <h1>Success Stories</h1>
             <a onClick={this.goDown} className="down-arrow">
@@ -137,7 +138,7 @@ class Stories extends Component {
 
         <div className="up" />
 
-        <span className="spinner-text">Success Journeys</span>
+        <span className="spinner-text">Success <br /> Journeys</span>
         <div className="spinner" />
         <div className="down" />
       </div>
