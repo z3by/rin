@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default class Navbar extends Component {
   state = {
-    counter: "10,034,623",
+    // counter: "10,034,623",
     index: -1
   };
 
@@ -44,6 +44,15 @@ export default class Navbar extends Component {
                 <p className="nav-rec-text">data</p>
               </div>
             </Link>
+            <Link to={"/members"}>
+              <div
+                className="nav-rec rounded"
+                index="5"
+                onClick={this.onClickCircle}
+              >
+                <p className="nav-rec-text">members</p>
+              </div>
+            </Link>
             <Link to={"/about"}>
               <div className="nav-rec" index="4" onClick={this.onClickCircle}>
                 <p className="nav-rec-text">about</p>
@@ -68,12 +77,6 @@ export default class Navbar extends Component {
                 <p className="nav-rec-text">about</p>
               </div>
             </Link> */}
-          </div>
-          <div className="counter">
-            <h4>
-              <span>$</span>
-              {this.state.counter}
-            </h4>
           </div>
         </div>
       </div>

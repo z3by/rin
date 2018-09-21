@@ -43,18 +43,15 @@ export default class About extends Component {
     return (
       <div className="about fadeInFast">
         <div className="pages">
-
           <div className="page1">
             <img src="/imgs/about1.jpg" className="about1-img" />
             <div className="about1-text">
-              <h2>About</h2>
+              <h2>About</h2><br />
               <p>
                 The RIN moves private capital from commitment to active investment by sourcing,
                 structuring, and supporting the financing of projects and companies that benefit
-                refugees and host communities. Ultimately, the RIN aims to bridge the gap between
-                the untapped entrepreneurial potential of refugees and capital markets to spur economic
-                growth, create jobs, and increase socio-economic stability among displaced people.
-            </p>
+                refugees and host communities.
+              </p>
             </div>
           </div>
           <div className="page2">
@@ -76,7 +73,7 @@ export default class About extends Component {
                   <div className="container">
                     <h2 className="team-member-name">TIMOTHY W. DOCKING, Ph.D</h2>
                     <p className="team-member-title">Managing Director</p>
-                    <p className="team-member-data">Timothy W. Docking, Ph.D. is a Washington, D.C.-based business executive with twenty years of emerging market and public sector experience. As an intrapreneur, he worked at the intersection of business, technology and development and built a new $100M revenue stream at IBM; as a public sector executive and manager, he helped start up the MCC (U.S. government agency); and as a scholar, he directed Africa research at a D.C. think tank. Docking has testified before Congress.</p>
+                    <p className="team-member-data">Timothy W. Docking, Ph.D. is a Washington, D.C.-based business executive with twenty years of emerging market and public sector experience. As an intrapreneur, he worked at the intersection of business, technology and development and built a new $100M revenue stream at IBM; as a public sector executive and manager, he helped start up the MCC.</p>
                   </div>
                 </div>
               </div>
@@ -91,9 +88,18 @@ export default class About extends Component {
                 </div>
               </div>
             </div>
-
           </div>
-
+          {/* <div className="page3">
+            <img src="/imgs/about2.jpg" className="about2-img" />
+            <div className="about2-text">
+              <h2>The RIN strategy has three pillars:</h2>
+              <p>
+                <b>Research:</b> Create the first investor-centered knowledge hub targeting business opportunities that support refugee self-reliance <br />
+                <b>Facilitation:</b> Build a pipeline of bankable deals that will speed and scale private investment in communities of displaced people <br />
+                <b>Policy and Advocacy:</b> Articulate and bridge investor needs to funders, governments, and the development community to drive catalytic investments and policies <br />
+              </p>
+            </div>
+          </div> */}
         </div>
 
         <div className="arrows">

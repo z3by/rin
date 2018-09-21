@@ -4,11 +4,18 @@
   position: relative;
 }
 
-.video-container video {
+/* .video-container video {
   height: auto;
   vertical-align: middle;
   width: 100%;
   opacity: 0.3;
+} */
+
+.video-container .img-container {
+  height: auto;
+  vertical-align: middle;
+  width: 100%;
+  opacity: 0.8;
 }
 
 .video-container {
@@ -18,7 +25,7 @@
 .overlay-desc {
   background: rgba(0, 0, 0, 0);
   position: absolute;
-  top: -200px;
+  top: -100px;
   right: 0;
   bottom: 0;
   left: 0;
@@ -30,17 +37,17 @@
 .overlay-desc h1 {
   color: var(--color-2);
   margin: 0;
-  font-size: 500%;
-  text-transform: uppercase;
+  font-size: 650%;
+  text-transform: capitalize;
   font-family: var(--main-font);
   font-weight: 100;
 }
 
-h1 {
+/* h1 {
   font-family: "Nobile", sans-serif;
   font-size: 5vw;
   text-align: center;
-}
+} */
 
 .stories-items {
   list-style: none;
@@ -58,10 +65,12 @@ h1 {
 
 .story-title {
   position: absolute;
-  top: 9rem;
+  top: 3rem;
   right: 0;
   bottom: 0;
-  left: 0;
+  left: 5px;
+  height: 2.5rem;
+  width: 7.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -73,6 +82,7 @@ h1 {
   font-weight: 1000;
   letter-spacing: 2px;
   opacity: 0;
+  background-color: rgba(20, 20, 20, .6);
 }
 
 @keyframes fadeInTitleButtom {
@@ -88,8 +98,8 @@ h1 {
 }
 
 .links:hover span {
-  display: initial;
-  animation: fadeInTitleButtom 1s ease;
+  /* display: initial;
+  animation: fadeInTitleButtom 1s ease; */
   opacity: 1;
 }
 
@@ -116,7 +126,7 @@ h1 {
 }
 
 .link1 {
-  top: 10vw;
+  top: 7.8vw;
   left: 40vw;
   background: url("/imgs/img1.jpg");
   background-size: cover;
@@ -124,7 +134,7 @@ h1 {
 
 .link2 {
   top: 25vw;
-  left: 20vw;
+  left: 18.5vw;
   background: url("/imgs/img2.jpg");
   background-size: cover;
 }
@@ -137,14 +147,14 @@ h1 {
 }
 
 .link4 {
-  top: 45vw;
+  top: 48vw;
   left: 50vw;
   background: url("/imgs/img4.jpg");
   background-size: cover;
 }
 
 .link5 {
-  top: 45vw;
+  top: 48vw;
   left: 30vw;
   background: url("/imgs/img5.jpg");
   background-size: cover;
@@ -215,7 +225,7 @@ li:hover .summary {
 
 .down-arrow {
   position: absolute;
-  bottom: 20%;
+  bottom: 15%;
   animation-name: bouncing-arrow;
   animation-duration: 2s;
   animation-timing-function: ease-in-out;
@@ -250,23 +260,24 @@ li:hover .summary {
   color: var(--color-2);
   font-family: var(--main-font);
   position: relative;
-  left: 38vw;
-  top: 26vw;
+  left: 40vw;
+  top: 23vw;
   z-index: 1000;
   font-size: 2vw;
   margin: 0;
   height: 20vw;
   width: 20vw;
-  font-weight: 800;
+  font-size: 300%;
+  font-weight: 700;
 }
 
 .spinner {
   position: relative;
-  width: 20vw;
-  height: 20vw;
+  width: 30vw;
+  height: 30vw;
   z-index: 1500;
-  top: 15vw;
-  left: 36vw;
+  top: 4vw;
+  left: 32vw;
   border: 7px solid transparent;
   border-top-color: var(--color-3);
   border-radius: 50%;

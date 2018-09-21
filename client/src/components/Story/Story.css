@@ -14,9 +14,9 @@
 }
 
 .img1 {
-  height: auto;
+  height: 55vh;
   vertical-align: middle;
-  max-width: 90%;
+  width: 100%;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -29,7 +29,8 @@
   text-align: center;
   opacity: .5; 
   margin: auto;
-  padding: 3% 7% 2% 7%;
+  padding: 0% 0% 2% 0%;
+  background-size: cover;
 }
 
 .story-title1 {
@@ -54,6 +55,7 @@
 }
 
 .story-text {
+  position: absolute;
   width: 75%;
   text-align: justify;
   color: var(--color-2);
@@ -67,6 +69,7 @@
   margin: 0 auto;
   font-size: 1.3rem;
   line-height: 1.7rem;
+  left: 13rem;
 }
 
 .extra-space {

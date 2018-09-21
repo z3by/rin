@@ -307,3 +307,26 @@
   transition: var(--smooth);
 }
 
+.counter {
+  height: 6vh;
+  width: 16vh;
+  position: absolute ;
+  /* background: var(--color-5); */
+  border: var(--light-border);
+  left: 2.5%;
+  bottom: 5vh;
+}
+
+.counter span {
+  color: var(--color-5);
+  margin-left: 6px;
+}
+
+.counter h4 {
+  text-align: center;
+  margin: 0;
+  color: var(--color-2);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 6vh;
+}
+

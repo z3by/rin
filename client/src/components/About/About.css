@@ -28,13 +28,19 @@
   display: -ms-flexbox;
   display: flex;*/
   height: 100vh;
-  padding: 5rem 300px 0px 300px;
+  padding: 0rem 0px 0px 0px;
   position: relative;
 }
 
-.page1 .about1-img {
-  max-height: 50vh;
-  max-width: 100%;
+ .about1-img {
+  height: 55vh;
+  width: 100%;
+}
+
+.about1-text {
+  width: 65%;
+  margin-left: 17%;
+  margin-top: 4%;
 }
 
 .about1-text p {
@@ -44,6 +50,7 @@
   font-family: var(--main-font);
   margin: 0;
   color: var(--color-2);
+  line-height: 1.7rem;
 }
 
 .about1-text h2 {
@@ -123,3 +130,43 @@ html {
 
 }
 
+.page3 {
+  height: 100vh;
+  position: relative;
+  margin: 0 auto;
+}
+
+.about2-img {
+  position: absolute;
+  right: 0;
+  left: 0;
+  height: 55vh;
+  width: 80%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.about2-text {
+  width: 65%;
+  margin-left: 17%;
+  margin-top: 4%;
+}
+
+.about2-text p {
+  text-align: justify;
+  font-size: 20px;
+  margin: 30px;
+  font-family: var(--main-font);
+  margin: 0;
+  color: var(--color-2);
+  line-height: 1.7rem;
+}
+
+.about2-text h2 {
+  text-align: left;
+  font-size: 40px;
+  margin: 30px;
+  font-family: var(--main-font);
+  margin-bottom: 5;
+  color: var(--color-5);
+}
