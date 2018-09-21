@@ -58,10 +58,12 @@ h1 {
 
 .story-title {
   position: absolute;
-  top: 9rem;
+  top: 3rem;
   right: 0;
   bottom: 0;
-  left: 0;
+  left: 5px;
+  height: 2.5rem;
+  width: 7.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -73,6 +75,7 @@ h1 {
   font-weight: 1000;
   letter-spacing: 2px;
   opacity: 0;
+  background-color: rgba(20, 20, 20, .6);
 }
 
 @keyframes fadeInTitleButtom {
@@ -88,8 +91,8 @@ h1 {
 }
 
 .links:hover span {
-  display: initial;
-  animation: fadeInTitleButtom 1s ease;
+  /* display: initial;
+  animation: fadeInTitleButtom 1s ease; */
   opacity: 1;
 }
 
