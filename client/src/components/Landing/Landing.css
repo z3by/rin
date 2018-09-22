@@ -364,7 +364,9 @@
   }
 
   .fadeInFast {
+    -webkit-animation: unset;
     animation: unset;
+    -webkit-transition: unset;
     transition: unset;
   }
 

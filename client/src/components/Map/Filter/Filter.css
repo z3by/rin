@@ -10,7 +10,6 @@
   background: rgba(0, 0, 0, 0.4);
   cursor: pointer;
   -webkit-transition: var(--smooth);
-  -o-transition: var(--smooth);
   transition: var(--smooth);
   overflow: hidden;
 }
@@ -31,7 +30,6 @@
 .filter:hover .filter-input {
   visibility: visible;
   -webkit-transition-delay: 1s;
-  -o-transition-delay: 1s;
   transition-delay: 1s;
   opacity: 1;
 }
@@ -39,7 +37,6 @@
 .filter:hover a {
   font-size: 40px;
   -webkit-transition: var(--smooth);
-  -o-transition: var(--smooth);
   transition: var(--smooth);
 }
 
@@ -47,7 +44,6 @@
   visibility: visible;
   opacity: 1;
   -webkit-transition-delay: 1s;
-  -o-transition-delay: 1s;
   transition-delay: 1s;
 }
 .filter-input {

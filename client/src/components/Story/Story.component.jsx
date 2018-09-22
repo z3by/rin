@@ -57,7 +57,7 @@ export default class Story extends Component {
     return (
       <div className="story">
         <div className="story-img1">
-          <img className="img1" src={this.state.stories[id].img} />
+          <img className="img1" src={this.state.stories[id].img} alt="" />
           <div className="story-title1">
             <h1>{this.state.stories[id].title}</h1>
           </div>
