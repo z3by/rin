@@ -149,7 +149,6 @@
   position: absolute;
   height: 7vh;
   width: 14vh;
-  /* background: var(--color-5); */
   border: var(--light-border);
   top: 5vh;
   right: 5vh;
@@ -166,21 +165,13 @@
   position: absolute;
   -webkit-transition: opacity 1s ease-in-out;
   transition: opacity 1s ease-in-out;
-  max-width: 8vh;
-  max-height: 5vh;
+  max-width: 10vh;
+  height: 5vh;
   top: 1vh;
   bottom: 1vh;
   left: 2vh;
   right: 2vh;
-  opacity: 0;
-  -webkit-animation-name: prtnrsFadeInOut;
-  animation-name: prtnrsFadeInOut;
-  -webkit-animation-timing-function: ease-in-out;
-  animation-timing-function: ease-in-out;
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-  -webkit-animation-duration: 38s;
-  animation-duration: 38s;
+  opacity: 1;
 }
 
 .i1 {

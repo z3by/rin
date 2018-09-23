@@ -196,12 +196,12 @@ export default class Landing extends Component {
   toggleOverlayColor = () => {
     document.querySelector(".up-rec-overlay").style.background =
       document.querySelector(".up-rec-overlay").style.background ===
-        "linear-gradient(45deg,var(--color-2), var(--color-2))"
+      "linear-gradient(45deg,var(--color-2), var(--color-2))"
         ? "linear-gradient(45deg, var(--color-4), var(--color-4))"
         : "linear-gradient(45deg,var(--color-2), var(--color-2))";
     document.querySelector(".down-rec-overlay").style.background =
       document.querySelector(".down-rec-overlay").style.background ===
-        "linear-gradient(45deg, var(--color-4), var(--color-4))"
+      "linear-gradient(45deg, var(--color-4), var(--color-4))"
         ? "linear-gradient(45deg,var(--color-2), var(--color-2))"
         : "linear-gradient(45deg, var(--color-4), var(--color-4))";
   };
@@ -223,20 +223,16 @@ export default class Landing extends Component {
       return;
     }
 
-    if (!document.querySelector(".partners")) {
-      return;
-    }
-
     let i = 0;
-    setInterval(function () {
-      document.querySelector(".partners").style.background = 'url("/imgs/partners/i' + i + '.png")';
-      document.querySelector(".partners").style.backgroundSize = "cover";
+    setInterval(function() {
+      document.querySelector(".partners-img").src =
+        "/imgs/partners/i" + i + ".png";
       i++;
       if (i === 20) {
         i = 0;
       }
     }, 2000);
-  }
+  };
 
   render() {
     return (
@@ -245,7 +241,9 @@ export default class Landing extends Component {
           <img src="/imgs/old-logo.png" alt="" />
         </div> */}
         <div className="landing fadeInFast">
-          <div className="partners" />
+          <div className="partners">
+            <img src="" alt="" className="partners-img" />
+          </div>
 
           <div className="counter">
             <h4>
