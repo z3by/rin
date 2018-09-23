@@ -16,6 +16,7 @@ export default class Landing extends Component {
     this.rotateArrows();
     this.showVideo();
     this.changeBackground();
+    this.fadeInOutPartners();
   }
 
   // bind the events to the local functions.
@@ -216,6 +217,27 @@ export default class Landing extends Component {
     }, 2000);
   };
 
+  fadeInOutPartners = () => {
+    // exit if not on the landing page
+    if (!document.querySelector(".partners")) {
+      return;
+    }
+
+    if (!document.querySelector(".partners")) {
+      return;
+    }
+
+    let i = 0;
+    setInterval(function () {
+      document.querySelector(".partners").style.background = 'url("/imgs/partners/i' + i + '.png")';
+      document.querySelector(".partners").style.backgroundSize = "cover";
+      i++;
+      if (i === 20) {
+        i = 0;
+      }
+    }, 2000);
+  }
+
   render() {
     return (
       <div>
@@ -223,27 +245,7 @@ export default class Landing extends Component {
           <img src="/imgs/old-logo.png" alt="" />
         </div> */}
         <div className="landing fadeInFast">
-          <div className="partners">
-            <img className="i1" src="/imgs/partners/destiny.png" />
-            <img className="i2" src="/imgs/partners/9151.png" />
-            <img className="i3" src="/imgs/partners/aec.png" />
-            <img className="i4" src="/imgs/partners/aef.png" />
-            <img className="i5" src="/imgs/partners/ck.png" />
-            <img className="i6" src="/imgs/partners/dream.png" />
-            <img className="i7" src="/imgs/partners/Gomex.png" />
-            <img className="i8" src="/imgs/partners/kiva.png" />
-            <img className="i9" src="/imgs/partners/leaf.png" />
-            <img className="i10" src="/imgs/partners/MakersU.png" />
-            <img className="i11" src="/imgs/partners/Needslist.png" />
-            <img className="i12" src="/imgs/partners/oa.png" />
-            <img className="i13" src="/imgs/partners/pe.png" />
-            <img className="i14" src="/imgs/partners/regenesys.png" />
-            <img className="i15" src="/imgs/partners/rr.png" />
-            <img className="i16" src="/imgs/partners/sch.png" />
-            <img className="i17" src="/imgs/partners/tbb.png" />
-            <img className="i18" src="/imgs/partners/voxy.png" />
-            <img className="i19" src="/imgs/partners/wa.png" />
-          </div>
+          <div className="partners" />
 
           <div className="counter">
             <h4>
