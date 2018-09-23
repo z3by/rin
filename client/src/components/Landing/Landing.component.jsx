@@ -219,12 +219,11 @@ export default class Landing extends Component {
 
   fadeInOutPartners = () => {
     // exit if not on the landing page
-    if (!document.querySelector(".partners")) {
-      return;
-    }
-
     let i = 0;
     setInterval(function() {
+      if (!document.querySelector(".partners")) {
+        return;
+      }
       document.querySelector(".partners-img").src =
         "/imgs/partners/i" + i + ".png";
       i++;
