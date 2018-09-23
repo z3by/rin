@@ -7,7 +7,8 @@ export default class Story extends Component {
       {
         id: 0,
         title: "A Reason to Smile",
-        text: 'A Social enterprise Smarita and her friend Becky began one of Kolkata’s first social enterprises tackling sex trafficking by employing rescued victims of sex trafficking. Reflection was created to employ sex trafficking survivors to manufacture fashion accessories and Destiny Foundation was created to utilise the profits from Reflection for various non-profit projects focussed on empowering girls and women.',
+        text:
+          "A Social enterprise Smarita and her friend Becky began one of Kolkata’s first social enterprises tackling sex trafficking by employing rescued victims of sex trafficking. Reflection was created to employ sex trafficking survivors to manufacture fashion accessories and Destiny Foundation was created to utilise the profits from Reflection for various non-profit projects focussed on empowering girls and women.",
         img: "/imgs/story.jpeg"
       },
       {
@@ -61,11 +62,18 @@ export default class Story extends Component {
           </div>
         </div>
         <div className="story-images">
-          <img src="/imgs/RIN1.png" className="story-1" /><br />
-          <img src="/imgs/RIN2.jpg" />
+          <img src="/imgs/RIN1.png" className="story-1" />
+          <br />
+          <img src="/imgs/RIN2.jpg" className="w-100" />
         </div>
         <p className="story-text">
-          A Social enterprise Smarita and her friend Becky began one of Kolkata’s first social enterprises tackling sex trafficking by employing rescued victims of sex trafficking. Reflection was created to employ sex trafficking survivors to manufacture fashion accessories and Destiny Foundation was created to utilise the profits from Reflection for various non-profit projects focussed on empowering girls and women.',
+          A Social enterprise Smarita and her friend Becky began one of
+          Kolkata’s first social enterprises tackling sex trafficking by
+          employing rescued victims of sex trafficking. Reflection was created
+          to employ sex trafficking survivors to manufacture fashion accessories
+          and Destiny Foundation was created to utilise the profits from
+          Reflection for various non-profit projects focussed on empowering
+          girls and women.',
         </p>
       </div>
     );
