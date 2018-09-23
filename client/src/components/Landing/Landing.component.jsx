@@ -195,12 +195,12 @@ export default class Landing extends Component {
   toggleOverlayColor = () => {
     document.querySelector(".up-rec-overlay").style.background =
       document.querySelector(".up-rec-overlay").style.background ===
-      "linear-gradient(45deg,var(--color-2), var(--color-2))"
+        "linear-gradient(45deg,var(--color-2), var(--color-2))"
         ? "linear-gradient(45deg, var(--color-4), var(--color-4))"
         : "linear-gradient(45deg,var(--color-2), var(--color-2))";
     document.querySelector(".down-rec-overlay").style.background =
       document.querySelector(".down-rec-overlay").style.background ===
-      "linear-gradient(45deg, var(--color-4), var(--color-4))"
+        "linear-gradient(45deg, var(--color-4), var(--color-4))"
         ? "linear-gradient(45deg,var(--color-2), var(--color-2))"
         : "linear-gradient(45deg, var(--color-4), var(--color-4))";
   };
@@ -224,10 +224,25 @@ export default class Landing extends Component {
         </div> */}
         <div className="landing fadeInFast">
           <div className="partners">
-            <img className="i1" src="/imgs/ikea.png" alt="" />
-            <img className="i2" src="/imgs/ibm.png" alt="" />
-            <img className="i3" src="/imgs/citi.png" alt="" />
-            <img className="i4" src="/imgs/google.png" alt="" />
+            <img className="i1" src="/imgs/partners/destiny.png" />
+            <img className="i2" src="/imgs/partners/9151.png" />
+            <img className="i3" src="/imgs/partners/aec.png" />
+            <img className="i4" src="/imgs/partners/aef.png" />
+            <img className="i5" src="/imgs/partners/ck.png" />
+            <img className="i6" src="/imgs/partners/dream.png" />
+            <img className="i7" src="/imgs/partners/Gomex.png" />
+            <img className="i8" src="/imgs/partners/kiva.png" />
+            <img className="i9" src="/imgs/partners/leaf.png" />
+            <img className="i10" src="/imgs/partners/MakersU.png" />
+            <img className="i11" src="/imgs/partners/Needslist.png" />
+            <img className="i12" src="/imgs/partners/oa.png" />
+            <img className="i13" src="/imgs/partners/pe.png" />
+            <img className="i14" src="/imgs/partners/regenesys.png" />
+            <img className="i15" src="/imgs/partners/rr.png" />
+            <img className="i16" src="/imgs/partners/sch.png" />
+            <img className="i17" src="/imgs/partners/tbb.png" />
+            <img className="i18" src="/imgs/partners/voxy.png" />
+            <img className="i19" src="/imgs/partners/wa.png" />
           </div>
 
           <div className="counter">
