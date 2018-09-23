@@ -20,7 +20,6 @@
   margin-left: 0;
 }
 
-
 .heading-theme-3 {
   color: var(--color-5);
   font-size: 1.2rem;
@@ -52,9 +51,11 @@
   margin: 10% 0;
 }
 
+.banner-img {
+  width: 100%;
+}
 @media (max-width: 768px) {
   .team-members {
     grid-template-columns: 1fr;
   }
-    
 }

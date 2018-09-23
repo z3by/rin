@@ -15,7 +15,6 @@
 }
 
 .img1 {
-  max-height: 55vh;
   vertical-align: middle;
   width: 100%;
   -webkit-box-align: center;
@@ -31,6 +30,7 @@
   opacity: 0.5;
   margin: auto;
   padding: 0% 0% 2% 0%;
+  height: 100vh;
   background-size: cover;
 }
 
@@ -62,7 +62,7 @@
 }
 
 .story-text {
-  position: absolute;
+  position: relative;
   width: 50%;
   text-align: justify;
   color: var(--color-2);
@@ -76,7 +76,6 @@
   margin: 0 auto;
   font-size: 1.3rem;
   line-height: 1.7rem;
-  left: 25%;
 }
 
 .extra-space {
@@ -84,13 +83,16 @@
 }
 
 @media (max-width: 768px) {
+  .img1 {
+    height: 100%;
+  }
   .story-title1 {
     font-size: 2vw;
     text-align: center;
   }
   .story-text {
     width: 90%;
-    font-size: 6vw;
+    font-size: 5vw;
     line-height: 2;
     left: 0;
     margin: 0 10px;
