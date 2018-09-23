@@ -153,35 +153,35 @@
 
 .link1 {
   top: 7.8vw;
-  left: 40vw;
+  left: 50vw;
   background: url("/imgs/img1.jpg");
   background-size: cover;
 }
 
 .link2 {
-  top: 25vw;
-  left: 18.5vw;
+  top: 22vw;
+  left: 27vw;
   background: url("/imgs/img2.jpg");
   background-size: cover;
 }
 
 .link3 {
-  top: 25vw;
-  left: 60vw;
+  top: 28vw;
+  left: 70vw;
   background: url("/imgs/img3.jpg");
   background-size: cover;
 }
 
 .link4 {
-  top: 48vw;
-  left: 50vw;
+  top: 42vw;
+  left: 48vw;
   background: url("/imgs/img4.jpg");
   background-size: cover;
 }
 
 .link5 {
   top: 48vw;
-  left: 30vw;
+  left: 23vw;
   background: url("/imgs/img5.jpg");
   background-size: cover;
 }
@@ -307,13 +307,18 @@ li:hover .summary {
 }
 
 .up {
-  height: 100px;
+  position: absolute;
+  height: 500px;
+  width: 700px;
+  left: 300px;
+  top: 150vh;
+  background: url("/imgs/balls.png")
 }
 
 .down {
-  height: 550px;
+  height: 200px;
   background: url("/imgs/balls.png");
-  opacity: 0;
+  opacity: 1;
 }
 
 .down.show-balls {
