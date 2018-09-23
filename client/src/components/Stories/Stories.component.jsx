@@ -50,9 +50,33 @@ class Stories extends Component {
     var controller = new ScrollMagic.Controller();
 
     new ScrollMagic.Scene({
-      triggerElement: ".link1, .link2, .link3, .link4, .link5"
+      triggerElement: ".link1"
     })
-      .setClassToggle(".link1, .link2, .link3, .link4, .link5", "show")
+      .setClassToggle(".link1", "show")
+      .addTo(controller);
+
+    new ScrollMagic.Scene({
+      triggerElement: ".link2"
+    })
+      .setClassToggle(".link2", "show")
+      .addTo(controller);
+
+    new ScrollMagic.Scene({
+      triggerElement: ".link3"
+    })
+      .setClassToggle(".link3", "show")
+      .addTo(controller);
+
+    new ScrollMagic.Scene({
+      triggerElement: ".link4"
+    })
+      .setClassToggle(".link4", "show")
+      .addTo(controller);
+
+    new ScrollMagic.Scene({
+      triggerElement: ".link5"
+    })
+      .setClassToggle(".link5", "show")
       .addTo(controller);
   }
 
@@ -61,7 +85,7 @@ class Stories extends Component {
   };
 
   goDown = () => {
-    document.querySelector(".link5").scrollIntoView({
+    document.querySelector(".link3").scrollIntoView({
       behavior: "smooth"
     });
   };
@@ -87,6 +111,8 @@ class Stories extends Component {
         </div>
 
         {/* <div className="vertical-line" id="id1" /> */}
+
+        <div className="up" />
 
         <ul className="stories-items">
           <li className="story-item">
@@ -131,7 +157,7 @@ class Stories extends Component {
           </li>
         </ul>
 
-        <div className="up" />
+        <div className="down" />
       </div>
     );
   }
