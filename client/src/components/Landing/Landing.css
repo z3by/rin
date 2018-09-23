@@ -160,9 +160,124 @@
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  background-size: cover;
 }
 
+.partners > img {
+  position: absolute;
+  -webkit-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+  max-width: 8vh;
+  max-height: 5vh;
+  top: 1vh;
+  bottom: 1vh;
+  left: 2vh;
+  right: 2vh;
+  opacity: 0;
+  -webkit-animation-name: prtnrsFadeInOut;
+  animation-name: prtnrsFadeInOut;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-duration: 38s;
+  animation-duration: 38s;
+}
+
+.i1 {
+  -webkit-animation-delay: 36s;
+  animation-delay: 36s;
+}
+
+.i2 {
+  -webkit-animation-delay: 34s;
+  animation-delay: 34s;
+}
+
+.i3 {
+  -webkit-animation-delay: 32s;
+  animation-delay: 32s;
+  /* height: 4vw; */
+}
+
+.i4 {
+  -webkit-animation-delay: 30s;
+  animation-delay: 30s;
+}
+
+.i5 {
+  -webkit-animation-delay: 28s;
+  animation-delay: 28s;
+}
+
+.i6 {
+  -webkit-animation-delay: 26s;
+  animation-delay: 26s;
+}
+
+.i7 {
+  -webkit-animation-delay: 24s;
+  animation-delay: 24s;
+}
+
+.i8 {
+  -webkit-animation-delay: 22s;
+  animation-delay: 22s;
+}
+
+.i9 {
+  -webkit-animation-delay: 20s;
+  animation-delay: 20s;
+}
+
+.i10 {
+  -webkit-animation-delay: 18s;
+  animation-delay: 18s;
+}
+
+.i11 {
+  -webkit-animation-delay: 16s;
+  animation-delay: 16s;
+}
+
+.i12 {
+  -webkit-animation-delay: 14s;
+  animation-delay: 14s;
+}
+
+.i13 {
+  -webkit-animation-delay: 12s;
+  animation-delay: 12s;
+}
+
+.i14 {
+  -webkit-animation-delay: 10s;
+  animation-delay: 10s;
+}
+
+.i15 {
+  -webkit-animation-delay: 8s;
+  animation-delay: 8s;
+}
+
+.i16 {
+  -webkit-animation-delay: 6s;
+  animation-delay: 6s;
+}
+
+.i17 {
+  -webkit-animation-delay: 4s;
+  animation-delay: 4s;
+}
+
+.i18 {
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
+}
+
+.i19 {
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+}
 
 /* --------------------------------------- partners end---------------------------------- */
 
@@ -171,10 +286,13 @@
   height: 35vw;
   width: 35vw;
   left: 30vw;
+  bottom: 0;
+  top: 0;
   position: absolute;
   border-radius: 50%;
   z-index: 0;
   overflow: hidden;
+  margin: auto 0;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;

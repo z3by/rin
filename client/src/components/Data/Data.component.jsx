@@ -54,7 +54,7 @@ export default class Data extends Component {
           </div>
 
           <div className="page">
-            <img src="/imgs/data/chart2.png" className="data-img" alt="" />
+            <img src="/imgs/data/chart4.png" className="data-img" alt="" />
             <div className="data-text">
               <p>
                 Today, nearly 70 million people have been forcibly displaced
@@ -65,7 +65,7 @@ export default class Data extends Component {
           </div>
 
           <div className="page">
-            <img src="/imgs/data/chart3.png" className="data-img" alt="" />
+            <img src="/imgs/data/chart7.png" className="data-img" alt="" />
             <div className="data-text">
               <p>
                 The RIN moves private capital from commitment to active
@@ -77,7 +77,7 @@ export default class Data extends Component {
           </div>
 
           <div className="page">
-            <img src="/imgs/data/chart4.png" alt="chart" className="data-img" />
+            <img src="/imgs/data/chart9.png" alt="chart" className="data-img" />
             <div className="data-text">
               <p>
                 Ultimately, the RIN aims to bridge the gap between the untapped

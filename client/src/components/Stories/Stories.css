@@ -279,11 +279,12 @@ li:hover .summary {
 
 .down-arrow {
   position: absolute;
-  bottom: 15%;
+  bottom: 10%;
   -webkit-animation-name: bouncing-arrow;
   animation-name: bouncing-arrow;
   -webkit-animation-duration: 2s;
   animation-duration: 2s;
+  left: 50%;
   -webkit-animation-timing-function: ease-in-out;
   animation-timing-function: ease-in-out;
   -webkit-animation-delay: 0s;
