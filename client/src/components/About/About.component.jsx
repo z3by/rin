@@ -49,7 +49,7 @@ export default class About extends Component {
   render() {
     return (
       <div className="about fadeInFast">
-        <img src="/imgs/about1.jpg" className="banner-img" />
+        <img src="/imgs/about1.jpg" className="banner-img" alt="" />
         <div className="container">
           <div className="about-header">
             <h1 className="heading-theme-1">About</h1>
@@ -60,7 +60,7 @@ export default class About extends Component {
             </p>
           </div>
 
-          <img src="/imgs/about2.jpg" className="banner-img" />
+          <img src="/imgs/about2.jpg" className="banner-img" alt="" />
           <h2 className="heading-theme-2">
             The RIN strategy has three pillars:
           </h2>
