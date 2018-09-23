@@ -51,7 +51,7 @@ export default class About extends Component {
       <div className="about fadeInFast">
         <div className="pages">
           <div className="page1">
-            <img src="/imgs/about1.jpg" className="about1-img" />
+            <img src="/imgs/about1.jpg" className="about1-img" alt="" />
             <div className="about1-text">
               <h2>About</h2>
               <br />
