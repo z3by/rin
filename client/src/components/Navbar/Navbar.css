@@ -66,10 +66,10 @@
 
 .navbar {
   position: fixed;
-  height: 90vh;
-  left: 3vw;
+  height: 100vh;
   z-index: 100;
-  top: 5vh;
+  padding: 5vh;
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .navbar-middle {
@@ -103,7 +103,6 @@
   width: 14vh;
   border-radius: 50%;
   border: var(--light-border);
-  /* background: var(--color-5); */
 }
 
 .logo-img {
@@ -150,6 +149,9 @@
   .counter,
   .navbar-middle {
     display: none;
+  }
+  .navbar {
+    background: unset;
   }
 }
 

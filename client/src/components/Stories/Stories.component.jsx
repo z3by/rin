@@ -77,7 +77,7 @@ class Stories extends Component {
             <source src={this.state.videoURL} type="video/mp4" />
             Your browser does not support the video tag.
           </video> */}
-          <img src="/imgs/success.jpg" className="img-container" />
+          <img src="/imgs/success.jpg" className="img-container" alt="" />
           <div className="overlay-desc">
             <h1>Success Stories</h1>
             <a onClick={this.goDown} className="down-arrow">

@@ -5,9 +5,8 @@
   z-index: 100;
   bottom: 5%;
   left: calc(50% - 50px);
-  border: solid 1px var(--color-5);
   text-align: center;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.3);
   cursor: pointer;
   -webkit-transition: var(--smooth);
   transition: var(--smooth);
