@@ -19,8 +19,7 @@ class Stories extends Component {
         title: "Creating a family",
         text:
           "Mushaho has lived in Nakivale since 2016, when he fled violence in his native Democratic Republic of Congo. After receiving death threats, he crossed into Uganda and joined a friend in the 184-square-kilometer settlement that serves as home to 89,000 people. The soft-spoken 26-year-old, who has a university degree in information technology, runs a money transfer service out of a wooden storefront that doubles as his home. Business is booming because he offers his clients – other refugees from Congo, Burundi, Somalia, Ethiopia, Eritrea, Rwanda, and South Sudan – the ability to receive money via mobile phone from family and friends outside Uganda. He also exchanges currency, and his shop is so popular that he often runs out of cash. On this day, he’s waiting for a friend to return with more money from the nearest bank, two hours away in the town of Mbarara. Sitting behind a wooden desk, armed with his transactions ledger and seven cell phones, Mushaho grows anxious. He’s not worried about missing out on commission – he’s worried about leaving his clients without any money. “I don’t like making my customers wait,” he says, looking out onto the lively street of tin-roofed stores, women selling tomatoes and charcoal, a butcher shop displaying a leg of beef, and young men loitering on motorcycles. “There’s nobody else around who they can go to.”",
-        img:
-          "https://www.rotary.org/sites/default/files/styles/w_2160/public/Hero_FINAL.jpg?itok=A0f3NT6N"
+        img: "/imgs/img2.jpg"
       },
       {
         id: 2,
@@ -47,20 +46,37 @@ class Stories extends Component {
   };
 
   componentDidMount() {
-    document.body.style.overflow = "auto";
-
+    document.body.style.overflowY = "auto";
     var controller = new ScrollMagic.Controller();
 
     new ScrollMagic.Scene({
-      triggerElement: ".link1, .link2, .link3, .link4, .link5"
+      triggerElement: ".link1"
     })
-      .setClassToggle(".link1, .link2, .link3, .link4, .link5", "show")
+      .setClassToggle(".link1", "show")
       .addTo(controller);
 
     new ScrollMagic.Scene({
-      triggerElement: ".down"
+      triggerElement: ".link2"
     })
-      .setClassToggle(".down", "show-balls")
+      .setClassToggle(".link2", "show")
+      .addTo(controller);
+
+    new ScrollMagic.Scene({
+      triggerElement: ".link3"
+    })
+      .setClassToggle(".link3", "show")
+      .addTo(controller);
+
+    new ScrollMagic.Scene({
+      triggerElement: ".link4"
+    })
+      .setClassToggle(".link4", "show")
+      .addTo(controller);
+
+    new ScrollMagic.Scene({
+      triggerElement: ".link5"
+    })
+      .setClassToggle(".link5", "show")
       .addTo(controller);
   }
 
@@ -69,19 +85,23 @@ class Stories extends Component {
   };
 
   goDown = () => {
-    document.querySelector('.spinner').scrollIntoView({
-      behavior: 'smooth'
+    document.querySelector(".link3").scrollIntoView({
+      behavior: "smooth"
     });
   };
 
+  componentWillUnmount() {
+    document.body.style.overflowY = "hidden";
+  }
   render() {
     return (
       <div className="stories fadeInFast">
         <div className="video-container">
-          <video loop autoPlay muted>
+          {/* <video loop autoPlay muted>
             <source src={this.state.videoURL} type="video/mp4" />
             Your browser does not support the video tag.
-          </video>
+          </video> */}
+          <img src="/imgs/success.jpg" className="img-container" alt="" />
           <div className="overlay-desc">
             <h1>Success Stories</h1>
             <a onClick={this.goDown} className="down-arrow">
@@ -91,6 +111,8 @@ class Stories extends Component {
         </div>
 
         {/* <div className="vertical-line" id="id1" /> */}
+
+        <div className="up" />
 
         <ul className="stories-items">
           <li className="story-item">
@@ -135,10 +157,6 @@ class Stories extends Component {
           </li>
         </ul>
 
-        <div className="up" />
-
-        <span className="spinner-text">Success Journeys</span>
-        <div className="spinner" />
         <div className="down" />
       </div>
     );

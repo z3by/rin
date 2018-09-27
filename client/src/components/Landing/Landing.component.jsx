@@ -6,6 +6,7 @@ export default class Landing extends Component {
     super(props);
 
     this.state = {
+      counter: "10,034,623",
       index: 0
     };
   }
@@ -14,6 +15,8 @@ export default class Landing extends Component {
     this.bindEvents();
     this.rotateArrows();
     this.showVideo();
+    this.changeBackground();
+    this.fadeInOutPartners();
   }
 
   // bind the events to the local functions.
@@ -42,8 +45,8 @@ export default class Landing extends Component {
 
     const circleX = e.clientX;
     const circleY = e.clientY;
-    document.querySelector(".effect-circle").style.top = circleY - 100 + "px";
-    document.querySelector(".effect-circle").style.left = circleX - 100 + "px";
+    document.querySelector(".effect-circle").style.top = circleY - 300 + "px";
+    document.querySelector(".effect-circle").style.left = circleX - 700 + "px";
   };
 
   // mouse wheel handler for the landing page
@@ -64,15 +67,14 @@ export default class Landing extends Component {
     }
   };
 
-
   // show the video only on stories tab
   showVideo = () => {
     if (this.state.index !== 0) {
-      document.querySelector('.circle-video').style.display = 'none';
+      document.querySelector(".circle-video").style.display = "none";
     } else {
-      document.querySelector('.circle-video').style.display = 'initial';
+      document.querySelector(".circle-video").style.display = "initial";
     }
-  }
+  };
 
   // change current context on the landing page;
   animateNext = () => {
@@ -94,9 +96,10 @@ export default class Landing extends Component {
         }
       );
     } else {
-      this.setState({
-        index: 0
-      },
+      this.setState(
+        {
+          index: 0
+        },
         () => {
           const divWidth = document.querySelector(".nav-item").offsetWidth;
           const nav = document.querySelector(".nav");
@@ -125,14 +128,15 @@ export default class Landing extends Component {
           this.toggleClassActive();
           this.changeBackground();
           this.translateShapes();
-          this.toggleOverlayColor();
+          // this.toggleOverlayColor();
           this.showVideo();
         }
       );
     } else {
-      this.setState({
-        index: 3
-      },
+      this.setState(
+        {
+          index: 3
+        },
         () => {
           const divWidth = document.querySelector(".nav-item").offsetWidth;
           const nav = document.querySelector(".nav");
@@ -140,7 +144,7 @@ export default class Landing extends Component {
           this.toggleClassActive();
           this.changeBackground();
           this.translateShapes();
-          this.toggleOverlayColor();
+          // this.toggleOverlayColor();
           this.showVideo();
         }
       );
@@ -161,11 +165,14 @@ export default class Landing extends Component {
     document.querySelector(".circle").style.background = `url(imgs/backs${this
       .state.index + 1}.jpg)`;
     document.querySelector(".circle").style.backgroundAttachment = "fixed";
+    document.querySelector(".circle").style.backgroundSize = "100%";
     document.querySelector(".up-rec").style.background = `url(imgs/backs${this
       .state.index + 1}.jpg)`;
+    document.querySelector(".up-rec").style.backgroundSize = "100%";
     document.querySelector(".up-rec").style.backgroundAttachment = "fixed";
     document.querySelector(".down-rec").style.background = `url(imgs/backs${this
       .state.index + 1}.jpg)`;
+    document.querySelector(".down-rec").style.backgroundSize = "100%";
     document.querySelector(".down-rec").style.backgroundAttachment = "fixed";
   };
 
@@ -189,47 +196,71 @@ export default class Landing extends Component {
   toggleOverlayColor = () => {
     document.querySelector(".up-rec-overlay").style.background =
       document.querySelector(".up-rec-overlay").style.background ===
-        "linear-gradient(45deg,var(--color-2), var(--color-2))"
+      "linear-gradient(45deg,var(--color-2), var(--color-2))"
         ? "linear-gradient(45deg, var(--color-4), var(--color-4))"
         : "linear-gradient(45deg,var(--color-2), var(--color-2))";
     document.querySelector(".down-rec-overlay").style.background =
       document.querySelector(".down-rec-overlay").style.background ===
-        "linear-gradient(45deg, var(--color-4), var(--color-4))"
+      "linear-gradient(45deg, var(--color-4), var(--color-4))"
         ? "linear-gradient(45deg,var(--color-2), var(--color-2))"
         : "linear-gradient(45deg, var(--color-4), var(--color-4))";
   };
 
   // navigate to route after 2 seconds
   navigate = () => {
-    const routes = ["stories", "map", "data", "library", "about"];
+    const routes = ["stories", "map", "data", "about", "library"];
     document.querySelector(".circle").classList.add("grow");
     document.querySelector(".circle-overlay").classList.add("grow");
+
     setTimeout(() => {
       this.props.history.push(routes[this.state.index]);
+    }, 2000);
+  };
+
+  fadeInOutPartners = () => {
+    // exit if not on the landing page
+    let i = 0;
+    setInterval(function() {
+      if (!document.querySelector(".partners")) {
+        return;
+      }
+      document.querySelector(".partners-img").src =
+        "/imgs/partners/i" + i + ".png";
+      i++;
+      if (i === 20) {
+        i = 0;
+      }
     }, 2000);
   };
 
   render() {
     return (
       <div>
+        {/* <div className="splash-screen">
+          <img src="/imgs/old-logo.png" alt="" />
+        </div> */}
         <div className="landing fadeInFast">
           <div className="partners">
-            <img className="i1" src="/imgs/ikea.png" alt="" />
-            <img className="i2" src="/imgs/ibm.png" alt="" />
-            <img className="i3" src="/imgs/citi.png" alt="" />
-            <img className="i4" src="/imgs/google.png" alt="" />
+            <img src="" alt="" className="partners-img" />
+          </div>
+
+          <div className="counter">
+            <h4>
+              <span>$</span>
+              {this.state.counter}
+            </h4>
           </div>
 
           <div className="nav">
             <ul className="nav-group">
               <li className="nav-item">
                 <a onClick={this.navigate} className="nav-link active">
-                  stories
+                  success stories
                 </a>
               </li>
               <li className="nav-item">
                 <a onClick={this.navigate} className="nav-link">
-                  map
+                  projects map
                 </a>
               </li>
               <li className="nav-item">
@@ -239,7 +270,7 @@ export default class Landing extends Component {
               </li>
               <li className="nav-item">
                 <a onClick={this.navigate} className="nav-link">
-                  about
+                  about us
                 </a>
               </li>
               {/* <li className="nav-item">
@@ -273,6 +304,13 @@ export default class Landing extends Component {
             <div className="up-rec-overlay slideInRight" />
             <div className="down-rec slideInLeft" />
             <div className="down-rec-overlay slideInLeft" />
+          </div>
+
+          <div className="counter">
+            <h4>
+              <span>$</span>
+              {this.state.counter}
+            </h4>
           </div>
 
           <div className="arrows">

@@ -1,11 +1,11 @@
 .spectrum {
   position: absolute;
   z-index: 1000;
+  left: 20%;
 }
 
 .spectrum:hover li {
   -webkit-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
   height: 25px;
 }
@@ -22,7 +22,7 @@
 .spectrum-item {
   background: white;
   height: 10px;
-  width: 100px;
+  width: 9vw;
   transition: all 0.5s ease;
   display: inline-block;
   cursor: pointer;
@@ -35,6 +35,7 @@
 .spectrum-item:hover .tooltip {
   visibility: visible;
   opacity: 1;
+  width: 50%;
 }
 
 .spectrum-item:hover .tooltiptext {
@@ -51,8 +52,6 @@
     from(#e83338),
     to(#ff9068)
   );
-  background: -webkit-linear-gradient(left, #e83338, #ff9068);
-  background: -o-linear-gradient(left, #e83338, #ff9068);
   background: linear-gradient(90deg, #e83338, #ff9068);
 }
 .spectrum-item:nth-child(2) {
@@ -63,8 +62,6 @@
     from(#ff9068),
     to(#ffb75e)
   );
-  background: -webkit-linear-gradient(left, #ff9068, #ffb75e);
-  background: -o-linear-gradient(left, #ff9068, #ffb75e);
   background: linear-gradient(90deg, #ff9068, #ffb75e);
 }
 .spectrum-item:nth-child(3) {
@@ -75,8 +72,6 @@
     from(#ffb75e),
     to(#8dc26f)
   );
-  background: -webkit-linear-gradient(left, #ffb75e, #8dc26f);
-  background: -o-linear-gradient(left, #ffb75e, #8dc26f);
   background: linear-gradient(90deg, #ffb75e, #8dc26f);
 }
 .spectrum-item:nth-child(4) {
@@ -87,8 +82,6 @@
     from(#8dc26f),
     to(#64b3f4)
   );
-  background: -webkit-linear-gradient(left, #8dc26f, #64b3f4);
-  background: -o-linear-gradient(left, #8dc26f, #64b3f4);
   background: linear-gradient(90deg, #8dc26f, #64b3f4);
 }
 .spectrum-item:nth-child(5) {
@@ -99,8 +92,6 @@
     from(#64b3f4),
     to(#6441a5)
   );
-  background: -webkit-linear-gradient(left, #64b3f4, #6441a5);
-  background: -o-linear-gradient(left, #64b3f4, #6441a5);
   background: linear-gradient(90deg, #64b3f4, #6441a5);
 }
 .spectrum-item:nth-child(6) {
@@ -111,8 +102,6 @@
     from(#6441a5),
     to(#fc67fa)
   );
-  background: -webkit-linear-gradient(left, #6441a5, #fc67fa);
-  background: -o-linear-gradient(left, #6441a5, #fc67fa);
   background: linear-gradient(90deg, #6441a5, #fc67fa);
 }
 .spectrum-item:last-child {
@@ -124,8 +113,6 @@
     from(#fc67fa),
     to(#f4c4f3)
   );
-  background: -webkit-linear-gradient(left, #fc67fa, #f4c4f3);
-  background: -o-linear-gradient(left, #fc67fa, #f4c4f3);
   background: linear-gradient(90deg, #fc67fa, #f4c4f3);
   border-bottom-right-radius: 10px;
 }
@@ -144,9 +131,9 @@
   padding: 10px 20px;
   opacity: 0;
   -webkit-transition: opacity 1s;
-  -o-transition: opacity 1s;
   transition: opacity 1s;
-  margin-left: -58px;
+  margin-left: -25%;
+  text-transform: capitalize;
 }
 
 .tooltip .tooltiptext {

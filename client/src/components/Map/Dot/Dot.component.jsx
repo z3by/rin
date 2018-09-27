@@ -17,7 +17,7 @@ const Dot = props => {
       <div className="tooltip">
         <div className="tooltiptext">{props.project.title}</div>
         <img src={props.project.imgUrl} alt="" />
-        <p className="tooltip-money">{props.project.intensity}$</p>
+        <p className="tooltip-money">${props.project.benefits}</p>
       </div>
     </div>
   );
