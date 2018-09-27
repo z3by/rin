@@ -1,5 +1,71 @@
 .data {
-    background: var(--color-1);
-    height: 100vh;
-    overflow: hidden;
+  background: var(--color-1);
+  height: 100vh;
+  overflow: hidden;
+}
+
+.page {
+  position: relative;
+  height: 100vh;
+  font-size: 100px;
+  color: white;
+  text-align: center;
+}
+
+.pages {
+  position: relative;
+  top: 0vh;
+  -webkit-transition: var(--smooth);
+  transition: var(--smooth);
+}
+
+.data-img {
+  position: relative;
+  left: 0;
+  right: 0;
+  max-height: 50%;
+  margin: 5vh auto;
+  vertical-align: text-bottom;
+  max-width: 50%;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+}
+.data-text {
+  width: 65%;
+  background: rgba(0, 0, 0, 0);
+  position: relative;
+  right: 0;
+  bottom: 0;
+  left: 20%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.data-text p {
+  color: var(--color-2);
+  margin: 0;
+  font-size: 22%;
+  font-family: var(--main-font);
+  font-weight: 100;
+  text-align: justify;
+}
+
+@media (max-width: 768px) {
+  .data .arrows {
+    bottom: -120px;
+    right: 0;
+    margin-right: -140px;
+  }
 }

@@ -1,0 +1,113 @@
+.filter {
+  height: 40px;
+  width: 100px;
+  position: absolute;
+  z-index: 100;
+  bottom: 5%;
+  left: calc(50% - 50px);
+  text-align: center;
+  background: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  -webkit-transition: var(--smooth);
+  transition: var(--smooth);
+  overflow: hidden;
+}
+
+.filter a {
+  font-family: var(--main-font);
+  color: var(--color-5);
+  font-size: 20px;
+  line-height: 2;
+}
+
+.filter:hover {
+  height: 70%;
+  width: 70%;
+  left: 15%;
+}
+
+.filter:hover .filter-input {
+  visibility: visible;
+  -webkit-transition-delay: 1s;
+  transition-delay: 1s;
+  opacity: 1;
+}
+
+.filter:hover a {
+  font-size: 40px;
+  -webkit-transition: var(--smooth);
+  transition: var(--smooth);
+}
+
+.filter:hover .spectrum {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition-delay: 1s;
+  transition-delay: 1s;
+}
+.filter-input {
+  text-align: left;
+  visibility: hidden;
+  opacity: 0;
+  margin: 0 20px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+}
+
+.filter-label {
+  font-size: 16px;
+  display: inline;
+  margin: 20px;
+}
+.filter-input-text {
+  border: none;
+  border-bottom: 1px solid #fff;
+  background: transparent;
+  outline: none;
+  height: 40px;
+  color: #fff;
+  font-size: 16px;
+}
+
+.filter-btn {
+  height: 30px;
+  width: 120px;
+  background: transparent;
+  color: var(--color-2);
+  margin: 20px;
+  border: unset;
+  border: solid 1px var(--color-2);
+  outline: none;
+  cursor: pointer;
+}
+
+.filter-input p {
+  color: var(--color-2);
+}
+
+@media (max-width: 768px) {
+  .filter-input {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-input > input {
+    width: 100%;
+    margin: 0;
+  }
+
+  .filter:hover {
+    height: 90%;
+    width: 80%;
+    left: 5%;
+    z-index: 1002;
+  }
+
+  .filter:hover a {
+    display: none;
+  }
+  .filter select {
+    width: 100%;
+  }
+}
