@@ -51,7 +51,9 @@ export default class About extends Component {
       <div className="about fadeInFast">
         <header>
           <div className="header">
-            <h1 className="header-text">About</h1>
+            <h1 className="header-text">
+              About <i className="fas fa-binoculars" />
+            </h1>
             <img src="/imgs/about1.jpg" className="header-img" alt="" />
           </div>
         </header>
@@ -79,18 +81,36 @@ export default class About extends Component {
               alt=""
             />
             <h2 className="heading-theme-2">
+              <i class="fas fa-street-view" />
               The RIN strategy has three pillars:
             </h2>
             <p className="p-theme-1">
-              <b>Research:</b> Create the first investor-centered knowledge hub
-              targeting business opportunities that support refugee
-              self-reliance <br />
-              <b>Facilitation:</b> Build a pipeline of bankable deals that will
-              speed and scale private investment in communities of displaced
-              people <br />
-              <b>Policy and Advocacy:</b> Articulate and bridge investor needs
-              to funders, governments, and the development community to drive
-              catalytic investments and policies <br />
+              <b>
+                <i className="fab fa-searchengin" />
+                Research:
+              </b>
+              {"  "}
+              Create the first investor-centered knowledge hub targeting
+              business opportunities that support refugee self-reliance <br />
+            </p>
+            <p className="p-theme-1">
+              <b>
+                <i className="fab fa-leanpub" />
+                Facilitation:
+              </b>
+              {"  "}
+              Build a pipeline of bankable deals that will speed and scale
+              private investment in communities of displaced people <br />
+            </p>
+            <p className="p-theme-1">
+              <b>
+                <i className="fas fa-gavel" />
+                Policy and Advocacy:
+              </b>
+              {"  "}
+              Articulate and bridge investor needs to funders, governments, and
+              the development community to drive catalytic investments and
+              policies <br />
             </p>
             <img
               src="/imgs/Banners/8722766967_c125f17c97_o.jpg"
@@ -98,10 +118,12 @@ export default class About extends Component {
               className="banner-img"
             />
             <p className="p-theme-1">
-              <b> By 2030,</b> the RIN aims to unlock at least $1 billion in
-              investment deals that produce over one million new jobs and
-              measurably improve the livelihood opportunities for refugees and
-              their host communities.
+              <b>
+                <i className="far fa-calendar" /> By 2030,
+              </b>{" "}
+              the RIN aims to unlock at least $1 billion in investment deals
+              that produce over one million new jobs and measurably improve the
+              livelihood opportunities for refugees and their host communities.
             </p>
           </section>
 
@@ -112,7 +134,10 @@ export default class About extends Component {
                 alt=""
                 className="banner-img"
               />
-              <h1 className="heading-theme-2">How it works</h1>
+              <h1 className="heading-theme-2">
+                <i className="far fa-sun" />
+                How it works
+              </h1>
               <p className="p-theme-1">
                 Driving economic prosperity through improved investor networks
                 and increased capital investments. Drawing on deep domain
@@ -123,9 +148,13 @@ export default class About extends Component {
               </p>
 
               <p className="p-theme-1">
-                <b>Research </b> RIN creates the investment and impact proof
-                points that serve as the foundation of a vibrant refugee
-                investment market. RIN members benefit from:
+                <b>
+                  <i className="fab fa-searchengin" />
+                  Research{" "}
+                </b>{" "}
+                RIN creates the investment and impact proof points that serve as
+                the foundation of a vibrant refugee investment market. RIN
+                members benefit from:
               </p>
 
               <ul>
@@ -153,7 +182,10 @@ export default class About extends Component {
             </div>
             <div className="key-strategy">
               <p className="p-theme-1">
-                <b>Facilitation: </b>
+                <b>
+                  <i className="fab fa-leanpub" />
+                  Facilitation:{" "}
+                </b>
                 RIN helps investors put their capital to work supporting
                 displaced people and the communities hosting them. This support
                 includes:
@@ -186,9 +218,13 @@ export default class About extends Component {
             </div>
             <div className="key-strategy">
               <p className="p-theme-1">
-                <b> Policy and Advocacy:</b> RIN bridges the gap between private
-                investors, international donors, governments, and NGOs in the
-                broader global development community. These efforts focus on:
+                <b>
+                  <i className="fas fa-gavel" />
+                  Policy and Advocacy:
+                </b>{" "}
+                RIN bridges the gap between private investors, international
+                donors, governments, and NGOs in the broader global development
+                community. These efforts focus on:
               </p>
 
               <ul>
@@ -219,7 +255,10 @@ export default class About extends Component {
               alt=""
               className="banner-img"
             />
-            <h1 className="heading-theme-2">Why Refugees</h1>
+            <h1 className="heading-theme-2">
+              <i className="fab fa-accusoft" />
+              Why Refugees
+            </h1>
             <h3 className="heading-theme-3">
               Bridging the gap between the untapped potential of refugees and
               the capital markets.
@@ -262,14 +301,20 @@ export default class About extends Component {
             </p>
           </section>
           <section id="who-we-are">
-            <h1 className="heading-theme-2">Who We Are</h1>
-            <h3 className="heading-theme-3">
+            <h1 className="heading-theme-2">
+              <i className="fas fa-users" />
+              Who We Are
+            </h1>
+            <h3 className="heading-theme-4 color-5">
               A commitment to courageous action, innovative economic solutions,
               and deep collaboration.
             </h3>
             <div className="grid-2">
               <div>
-                <h1 className="heading-theme-4">Operating Team</h1>
+                <h1 className="heading-theme-4">
+                  <i className="fas fa-users-cog" />
+                  Operating Team
+                </h1>
                 <p className="p-theme-1">
                   RIN Members represent the full capital continuum: foundations
                   and philanthropists, impact, institutional, and commercial
@@ -280,7 +325,10 @@ export default class About extends Component {
                 </p>
               </div>
               <div>
-                <h1 className="heading-theme-4">Key Partners</h1>
+                <h1 className="heading-theme-4">
+                  <i className="fas fa-user-friends" />
+                  Key Partners
+                </h1>
                 <p className="p-theme-1">
                   Systems entrepreneurs John Kluge (Alight Fund & Toilet
                   Hackers) and Tim Docking (IBM & Millennium Challenge
@@ -293,8 +341,11 @@ export default class About extends Component {
               </div>
             </div>
           </section>
-          <section className="team">
-            <h1 className="heading-theme-2">meet the team</h1>
+          <section id="team">
+            <h1 className="heading-theme-2 capitalize">
+              <i className="fas fa-users" />
+              meet the team
+            </h1>
             <div className="team-members">
               <div className="team-member">
                 <img
@@ -401,6 +452,494 @@ export default class About extends Component {
                   including Media Matters for America, Philadelphia Magazine,
                   and the Olive Press in Andalucía, Spain. Sara holds a BA in
                   Sociology from Princeton University.
+                </p>
+              </div>
+            </div>
+          </section>
+          <section id="steering">
+            <div className="grid-2">
+              <div className="team-member">
+                <img
+                  src="/imgs/steering/carolyn-campbell-1-neiuert1jrmq7ofyth17p8zhssyo3i1smcd3mj8pmg.png"
+                  alt="John"
+                  style={{ width: "100%" }}
+                />
+                <h2 className="heading-theme-2">CAROLYN CAMPBELL</h2>
+                <h3 className="heading-theme-3">Managing Director, ECP </h3>
+                <p className="p-theme-1">
+                  Carolyn Campbell is a Managing Director and Founding Partner
+                  of Emerging Capital Partners (ECP), where she provides
+                  management oversight of the firm’s operations and investments.
+                  Carolyn is also a member of ECP’s Executive Committee and of
+                  the Funds’ investment committees. Prior to joining ECP in
+                  2000, Ms. Campbell was a Senior Associate at White & Case LLP
+                  in the firm’s Warsaw, London, and Washington, DC offices. She
+                  was also an Associate Professor at George Washington
+                  University National Law Center, lecturing on international
+                  negotiations. Dr. Campbell holds a JD from the University of
+                  Virginia School of Law and a Ph.D. in Politics from Oxford
+                  University.
+                </p>
+              </div>
+
+              <div className="team-member">
+                <img
+                  src="/imgs/steering/Lara+Driscoe.png"
+                  alt="John"
+                  style={{ width: "100%" }}
+                />
+                <h2 className="heading-theme-2">LARA DRISCOE</h2>
+                <h3 className="heading-theme-3">Managing Director, OPIC</h3>
+                <p className="p-theme-1">
+                  Lara Driscoe serves as Managing Director in the Office of
+                  External Affairs at the Overseas Private Investment
+                  Corporation, the U.S. Government’s Development Finance
+                  Institution. In this role, Lara is responsible for identifying
+                  emerging market investment opportunities, developing public
+                  and private sector partnerships and catalyzing private capital
+                  through innovative financial products to achieve development
+                  goals. Prior to OPIC, Lara was the Senior Director, Government
+                  Relations at the Managed Funds Association, an association
+                  representing the alternative investment industry. Lara
+                  received her J.D. from the Catholic University of America in
+                  Washington D.C. and B.A. from the University of Maryland.
+                </p>
+              </div>
+
+              <div className="team-member">
+                <img
+                  src="/imgs/steering/Humaira.png"
+                  alt="John"
+                  style={{ width: "100%" }}
+                />
+                <h2 className="heading-theme-2">HUMAIRA FAIZ</h2>
+                <h3 className="heading-theme-3">
+                  VP Global Sustainable Finance, Morgan Stanley
+                </h3>
+                <p className="p-theme-1">
+                  Humaira Faiz is a member of the Global Sustainable Finance
+                  team at Morgan Stanley where she works to bring sustainable
+                  investing products and solutions across the firm, and in
+                  particular for the Investing with Impact platform in the
+                  wealth management channel. Before Morgan Stanley, Humaira was
+                  at Arabella Advisors advising foundations, family offices, and
+                  individuals to develop and deploy customized impact investing
+                  strategies. She started her career at Bank of America Merrill
+                  Lynch alternative investments platform, where she originated
+                  hedge fund and private equity funds. Humaira holds an MBA from
+                  NYU Stern and an undergraduate degree from Rutgers University.
+                </p>
+              </div>
+
+              <div className="team-member">
+                <img
+                  src="/imgs/steering/CD.png"
+                  alt="John"
+                  style={{ width: "100%" }}
+                />
+                <h2 className="heading-theme-2">President and CEO</h2>
+                <h3 className="heading-theme-3">
+                  U.S. African Development Foundation C.D.{" "}
+                </h3>
+                <p className="p-theme-1">
+                  Glin is the President and CEO of the U.S. African Development
+                  Foundation (USADF) since September 2016. From 2011-2016 Glin
+                  was based in Nairobi, Kenya as the Associate Director for
+                  Africa for the Rockefeller Foundation. Prior to Rockefeller,
+                  Glin served as a White House appointee at the U.S. Peace Corps
+                  as the first Director of Intergovernmental Affairs and Global
+                  Partnerships, and was Vice President for Business Development
+                  at PYXERA Global. He is a life member of the Council on
+                  Foreign Relations and in 2011, was designated by the White
+                  House as a “Champion of Change” for his commitment and
+                  contributions to international service and civic
+                  participation.
+                </p>
+              </div>
+
+              <div className="team-member">
+                <img
+                  src="/imgs/steering/Rahul.png"
+                  alt="John"
+                  style={{ width: "100%" }}
+                />
+                <h2 className="heading-theme-2">RAHUL KESHAP</h2>
+                <h3 className="heading-theme-3">
+                  Head of Investments Foundations Program, CFA Institute
+                </h3>
+                <p className="p-theme-1">
+                  Rahul Keshap is Head of the Investment Foundations Program at
+                  CFA Institute, where he is helping deliver investment industry
+                  literacy. He joined CFA in 2002 as an Associate General
+                  Counsel and later spent more than two years based in Hong Kong
+                  as Director of Asia Pacific Strategy & Operations. Prior to
+                  his tenure at CFA, Mr. Keshap worked as an attorney at a
+                  business law firm in Virginia and a communications law firm in
+                  Washington, DC. He earned a Bachelor of Arts in Philosophy and
+                  Government as an Echols Scholar at the University of Virginia,
+                  and he also received a Juris Doctor from the University of
+                  Virginia.
+                </p>
+              </div>
+
+              <div className="team-member">
+                <img
+                  src="/imgs/steering/Michael+levett.png"
+                  alt="John"
+                  style={{ width: "100%" }}
+                />
+                <h2 className="heading-theme-2">MICHAEL LEVETT</h2>
+                <h3 className="heading-theme-3">Senior Associate, CSIS</h3>
+                <p className="p-theme-1">
+                  Michael Levett is an expert on international economic
+                  development and an experienced deal maker of public-private
+                  partnerships that promote local economic opportunity and
+                  economic growth while strengthening the building blocks of
+                  private sector development. He supports multinational
+                  corporations’ strategies in emerging markets by implementing
+                  programs and practices that increase local companies’ capacity
+                  to compete for and capture supply chain contracts, creating
+                  new national and family wealth, spreading prosperity, and
+                  increasing nation’s ability to participate in the global
+                  economy.
+                </p>
+              </div>
+
+              <div className="team-member">
+                <img
+                  src="/imgs/steering/Christine+Mahoney.png"
+                  alt="John"
+                  style={{ width: "100%" }}
+                />
+                <h2 className="heading-theme-2">DR. CHRISTINE MAHONEY</h2>
+                <h3 className="heading-theme-3">
+                  Professor of Politics & Public Policy and Director of Social
+                  Entrepreneurship, University of Virginia
+                </h3>
+                <p className="p-theme-1">
+                  Christine Mahoney is a Professor of Politics & Public Policy
+                  and Director of Social Entrepreneurship at the University of
+                  Virginia. Her landmark book Failure and Hope: Fighting for the
+                  Rights of the Forcibly Displaced, which examines the failures
+                  of global advocacy on behalf of the displaced and calls for a
+                  new, investment-based approach to forced migration solutions,
+                  inspired the design of the RIN. She has been a Fulbright
+                  Fellow, Visiting Scholar at Oxford, a National Science
+                  Foundation grant recipient, and recipient of the Emerging
+                  Scholar award from the American Political Science Association.
+                  Christine holds a B.A. in International Relations, an M.A. in
+                  Comparative Politics, and a Ph.D. in Political Science from
+                  Pennsylvania State University.
+                </p>
+              </div>
+
+              <div className="team-member">
+                <img
+                  src="/imgs/steering/Gideon.png"
+                  alt="John"
+                  style={{ width: "100%" }}
+                />
+                <h2 className="heading-theme-2">GIDEON MALTZ</h2>
+                <h3 className="heading-theme-3">
+                  Executive Director, Tent Foundation
+                </h3>
+                <p className="p-theme-1">
+                  Gideon Maltz is the Executive Director of the Tent Foundation.
+                  He previously served as Deputy Chief of Staff to Ambassador
+                  Samantha Power at the U.S. Mission to the United Nations, and
+                  Director of Human Rights and Multilateral Affairs on the
+                  National Security Council. Prior to government service, Gideon
+                  worked as an attorney in the International Trade practice of
+                  Hogan Lovells and a consultant at McKinsey & Company. He has
+                  also served as a Junior Fellow at the Carnegie Endowment for
+                  International Peace and a Pre-Doctoral Fellow at Stanford’s
+                  Center for Democracy, Development, and the Rule of Law.
+                </p>
+              </div>
+
+              <div className="team-member">
+                <img
+                  src="/imgs/steering/Michell+McMahon.png"
+                  alt="John"
+                  style={{ width: "100%" }}
+                />
+                <h2 className="heading-theme-2">MICHELLE MCMAHON </h2>
+                <h3 className="heading-theme-3">
+                  Legal Counsel, Innovest Advisory
+                </h3>
+                <p className="p-theme-1">
+                  Michelle McMahon is a US lawyer with 25 years of legal and
+                  corporate finance experience. She was Senior Partner of a US
+                  law firm, specializing in financial transactions, and Chief
+                  Executive of the Jersey, UK subsidiary of a global financial
+                  services firm for capital markets clients. Michelle has served
+                  as an advisor and fiduciary of non-profits and social finance
+                  initiatives, primarily focused on education and children. In
+                  2016 Michelle joined Innovest Advisory to draw on her
+                  experience to facilitate the strategic deployment of
+                  philanthropic and social investment capital to achieve social
+                  change.
+                </p>
+              </div>
+
+              <div className="team-member">
+                <img
+                  src="/imgs/steering/Montgomery.png"
+                  alt="John"
+                  style={{ width: "100%" }}
+                />
+                <h2 className="heading-theme-2">KATE MONTGOMERY </h2>
+                <h3 className="heading-theme-3">
+                  Associate Director Strategic Partnerships, Acumen
+                </h3>
+                <p className="p-theme-1">
+                  Kate Montgomery is Associate Director, Strategic Partnerships
+                  at Acumen. She leads business development and partner
+                  engagement for the Pioneer Energy Investment Initiative and
+                  Africa. Prior to joining Acumen, she was d.light’s Director of
+                  Global Partnerships for five years, developing d.light’s
+                  strategy for engaging with the public sector and other key
+                  partners globally. A key part of her work at d.light was to
+                  institutionalize strategy and to measure and communicate
+                  social impact across the enterprise. She holds a BA with
+                  honors in Political Science and East Asian Studies from
+                  Colgate University and a MS in Conflict Studies from the
+                  London School of Economics and Political Science.
+                </p>
+              </div>
+
+              <div className="team-member">
+                <img
+                  src="/imgs/steering/Ciyota.png"
+                  alt="John"
+                  style={{ width: "100%" }}
+                />
+                <h2 className="heading-theme-2">JOSEPH MUNYAMBANZA </h2>
+                <h3 className="heading-theme-3">Executive Director, CIYOTA</h3>
+                <p className="p-theme-1">
+                  Displaced from his home in the DRC at the age of six, Joseph
+                  grew up in the Kyangwali Refugee Camp in Uganda. At the age of
+                  14, Joseph founded COBURWAS International Youth Organization
+                  to Transform Africa (CIYOTA) an NGO empowering young leaders
+                  through education, and which he continues to lead. Based on
+                  these early accomplishments, Joseph was selected to attend the
+                  African Leadership Academy, a pan-African leadership school
+                  based in Johannesburg, where he graduated. He also holds a
+                  degree in biochemistry from Westminster College (2015) in the
+                  U.S., where he received the school’s highest honor, the
+                  Outstanding Senior Award.
+                </p>
+              </div>
+
+              <div className="team-member">
+                <img
+                  src="/imgs/steering/sandy_osborne_125_125_c1_c_c.jpg"
+                  alt="John"
+                  style={{ width: "100%" }}
+                />
+                <h2 className="heading-theme-2">SANDRA OSBORNE</h2>
+                <h3 className="heading-theme-3">
+                  Director of Investments, ImpactAssets
+                </h3>
+                <p className="p-theme-1">
+                  Sandra Osborne is the Director of Investments at ImpactAssets.
+                  She oversees investment management for the Giving Fund
+                  including sourcing, due diligence and investment selection.
+                  Prior to joining ImpactAssets, Sandra served as a Risk Officer
+                  at Developing World Markets, an impact investment asset
+                  manager focused on linking the capital markets and financial
+                  institutions serving the bottom of the pyramid in emerging and
+                  frontier economies. She also worked at Keefe Bruyette & Woods,
+                  a boutique investment bank.
+                </p>
+              </div>
+
+              <div className="team-member">
+                <img
+                  src="/imgs/steering/Lev2.JPG"
+                  alt="John"
+                  style={{ width: "100%" }}
+                />
+                <h2 className="heading-theme-2">LEV PLAVES </h2>
+                <h3 className="heading-theme-3">
+                  Senior Investment Manager for Refugees & Displaced
+                  Populations, Kiva
+                </h3>
+                <p className="p-theme-1">
+                  Lev Plaves is Kiva’s Senior Investment Manager for Refugees &
+                  Displaced Populations, leading Kiva’s efforts to provide
+                  economic opportunities to displaced populations around the
+                  world. In 2017, Lev spearheaded the launch of the World
+                  Refugee Fund, an innovative effort to utilize Kiva’s
+                  crowdfunding platform to extend access to financial services
+                  to forcibly displaced populations. Kiva, the world’s largest
+                  crowdfunding platform for social good, has facilitated over $8
+                  million in loans to refugees and IDPs in the Middle East,
+                  Latin America, and Africa since 2016.
+                </p>
+              </div>
+
+              <div className="team-member">
+                <img
+                  src="/imgs/steering/Amy+Slaughter+headshot.png"
+                  alt="John"
+                  style={{ width: "100%" }}
+                />
+                <h2 className="heading-theme-2">AMY SLAUGHTER </h2>
+                <h3 className="heading-theme-3">
+                  Chief Strategy Officer, RefugePoint
+                </h3>
+                <p className="p-theme-1">
+                  Amy Slaughter is Chief Strategy Officer of RefugePoint – an
+                  NGO with a dual mission of state- of-the-art direct services
+                  and systems change in the refugee solutions sector. Since the
+                  early 1990s, Amy has worked and consulted for a variety of
+                  refugee NGOs as well as UNHCR and the International
+                  Organization for Migration, working in refugee situations in
+                  the Balkans, Africa, and the Middle East. With a Master’s
+                  degree in human rights from Columbia University and a
+                  Bachelor’s in English from the University of Florida, Amy is a
+                  frequent panelist at refugee conferences and has published
+                  several articles on refugee protection.
+                </p>
+              </div>
+
+              <div className="team-member">
+                <img
+                  src="/imgs/steering/suma.png"
+                  alt="John"
+                  style={{ width: "100%" }}
+                />
+                <h2 className="heading-theme-2">SUMA SWAMINATHAN </h2>
+                <h3 className="heading-theme-3">
+                  Associate, Developing World Markets
+                </h3>
+                <p className="p-theme-1">
+                  Suma Swaminathan joined the DWM private equity team in 2017.
+                  Suma previously worked at Empire Valuation Consultants, a
+                  boutique consulting firm in New York City. Suma started her
+                  career in data analysis at Infosys Ltd where she worked with
+                  clients like Capital One Auto Finance on loss forecasting and
+                  data governance. She also has experience working with partner
+                  weaver cooperative societies in the handloom industry in India
+                  to promote strategies for financial self- sufficiency.
+                </p>
+              </div>
+
+              <div className="team-member">
+                <img
+                  src="/imgs/steering/Justin+Sykes.jpeg"
+                  alt="John"
+                  style={{ width: "100%" }}
+                />
+                <h2 className="heading-theme-2">JUSTIN SYKES</h2>
+                <h3 className="heading-theme-3">
+                  CEO & Founder, Innovest Advisory
+                </h3>
+                <p className="p-theme-1">
+                  Justin is a social investment specialist with over 15 years of
+                  experience in the structuring and implementation of innovative
+                  and large-scale impact investments, which have positively
+                  impacted hundreds of thousands of lives across a diverse range
+                  countries in Africa and the Middle East. He serves as a board
+                  member and adviser to several international charities, and
+                  local grassroots financial institutions, that are engaged in
+                  supporting the livelihoods of low-income communities.
+                </p>
+              </div>
+
+              <div className="team-member">
+                <img
+                  src="/imgs/steering/Warren+Valdmanis-0014+-+preferred-+square.jpg"
+                  alt="John"
+                  style={{ width: "100%" }}
+                />
+                <h2 className="heading-theme-2">WARREN VALDMANIS </h2>
+                <h3 className="heading-theme-3">
+                  Managing Director, Bain Capital Double Impact
+                </h3>
+                <p className="p-theme-1">
+                  Warren Valdmanis joined Bain Capital Double Impact in 2017
+                  after working for the firm’s private equity business for over
+                  11 years. During his tenure with Bain Capital Private Equity,
+                  Mr. Valdmanis spent five years in Asia and Australia where he
+                  helped to extend the Asia Fund’s capabilities and opened the
+                  Bain Capital Sydney office. Prior to joining Bain Capital, Mr.
+                  Valdmanis was a Manager at Bain & Company covering a wide
+                  variety of industries across Bain Capital’s North American,
+                  European and South African operations, with a particular focus
+                  on private equity clients.
+                </p>
+              </div>
+
+              <div className="team-member">
+                <img
+                  src="/imgs/steering/diana.png"
+                  alt="John"
+                  style={{ width: "100%" }}
+                />
+                <h2 className="heading-theme-2">DIANA WON</h2>
+                <h3 className="heading-theme-3">
+                  Program Manager, Pershing Square Foundation
+                </h3>
+                <p className="p-theme-1">
+                  Diana Won is the Program Manager for the Pershing Square
+                  Foundation, where she is responsible for program management,
+                  grant administration and communications. Diana joined the
+                  Foundation from Seoul, South Korea where she was a Henry Luce
+                  Foundation Scholar at MYSC, a social impact consulting
+                  company. At MYSC, she helped manage a program to train
+                  entrepreneurs in Southeast Asia, lectured at universities on
+                  Design Thinking, and helped adapt frameworks to measure social
+                  impact.
+                </p>
+              </div>
+
+              <div className="team-member">
+                <img
+                  src="/imgs/steering/david.jpeg"
+                  alt="John"
+                  style={{ width: "100%" }}
+                />
+                <h2 className="heading-theme-2">DAVID YOUNG</h2>
+                <h3 className="heading-theme-3">
+                  Senior Partner & Managing Director, BCG
+                </h3>
+                <p className="p-theme-1">
+                  David Young works closely with the leaders of BCG’s Social
+                  Impact Practice to help clients navigate opportunities and
+                  challenges at the intersection of social impact, the firm’s
+                  Public Sector Practice, and the private sector. He also
+                  engages with BCG’s Grow Africa Team, tapping the vast
+                  experience he gained in that region during his time at World
+                  Vision and his exposure to Africa since 1976. At World Vision,
+                  David served as COO, leading a comprehensive transformation
+                  effort and overseeing the organization’s global field
+                  operations, emergency response, technical support teams,
+                  microfinance, and strategic support functions.
+                </p>
+              </div>
+
+              <div className="team-member">
+                <img
+                  src="/imgs/steering/Zeiger.jpeg"
+                  alt="John"
+                  style={{ width: "100%" }}
+                />
+                <h2 className="heading-theme-2">MATTHEW ZIEGER </h2>
+                <h3 className="heading-theme-3">
+                  Senior Director Impact Investing, Catholic Charities
+                </h3>
+                <p className="p-theme-1">
+                  Matt Zieger joined Catholic Charities USA in August of 2016 as
+                  senior director of impact investing and social
+                  entrepreneurship. As a past foundation president, senior state
+                  policy official, early stage investor and small business
+                  owner, Zieger worked for more than 15 years to use market
+                  forces to drive positive social outcomes. Most recently, he
+                  served as vice president of The Forbes Funds, a regional
+                  philanthropy focused on social innovation and capacity
+                  building.
                 </p>
               </div>
             </div>

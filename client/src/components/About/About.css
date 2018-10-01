@@ -36,10 +36,6 @@
   margin-left: 0;
 }
 
-.team .heading-theme-2 {
-  font-size: 1.8rem;
-}
-
 .team .p-theme-1 {
   font-size: 1.5rem;
 }
@@ -48,7 +44,7 @@
   color: var(--color-2);
   font-size: 2rem;
   font-family: var(--main-font);
-  margin-bottom: 100px;
+  margin-bottom: 50px;
   margin-left: 0;
   text-align: justify;
 }
@@ -64,7 +60,7 @@
   grid-row-gap: 50px;
 }
 
-.team {
+#team {
   margin: 10% 0;
 }
 
@@ -86,7 +82,9 @@
 
 .header-text {
   text-align: center;
+
   position: absolute;
+
   left: 0;
   right: 0;
   top: 10%;
@@ -100,13 +98,20 @@
   font-size: 1.4rem;
   color: var(--color-2);
   font-family: var(--main-font);
-  margin: 0px 0 40px 50px;
+  margin: 0px 0 70px 50px;
 }
 
 .key-strategy {
   margin-bottom: 150px;
 }
 
+#team h2 {
+  font-size: 2.5rem;
+}
+
+#steering h2 {
+  font-size: 2.5rem;
+}
 @media (max-width: 768px) {
   .team-members {
     grid-template-columns: 1fr;

@@ -61,10 +61,21 @@ section {
   margin: 220px auto;
 }
 
+i {
+  margin: 20px;
+}
 .grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 50px;
+}
+
+.upper {
+  text-transform: uppercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
 }
 
 .splash-screen {
@@ -470,8 +481,31 @@ option {
   }
 }
 
+.color-1 {
+  color: var(--color-1) !important;
+}
+
+.color-2 {
+  color: var(--color-2) !important;
+}
+
+.color-3 {
+  color: var(--color-3) !important;
+}
+
+.color-4 {
+  color: var(--color-4) !important;
+}
+
+.color-5 {
+  color: var(--color-5) !important;
+}
 @media (max-width: 768px) {
   .arrows {
     left: calc(50% - 50px);
+  }
+
+  .grid-2 {
+    grid-template-columns: 1fr;
   }
 }
