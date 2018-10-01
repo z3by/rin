@@ -52,6 +52,21 @@ a {
   text-decoration: none;
 }
 
+b {
+  color: var(--color-3);
+  text-transform: capitalize;
+}
+
+section {
+  margin: 220px auto;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 50px;
+}
+
 .splash-screen {
   display: -webkit-box;
   display: -ms-flexbox;
