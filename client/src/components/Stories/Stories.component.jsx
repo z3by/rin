@@ -52,31 +52,91 @@ class Stories extends Component {
     new ScrollMagic.Scene({
       triggerElement: ".link1"
     })
-      .setClassToggle(".link1", "show")
+      .setClassToggle(".link1", "show1")
       .addTo(controller);
 
     new ScrollMagic.Scene({
       triggerElement: ".link2"
     })
-      .setClassToggle(".link2", "show")
+      .setClassToggle(".link2", "show2")
       .addTo(controller);
 
     new ScrollMagic.Scene({
       triggerElement: ".link3"
     })
-      .setClassToggle(".link3", "show")
+      .setClassToggle(".link3", "show3")
       .addTo(controller);
 
     new ScrollMagic.Scene({
       triggerElement: ".link4"
     })
-      .setClassToggle(".link4", "show")
+      .setClassToggle(".link4", "show4")
       .addTo(controller);
 
     new ScrollMagic.Scene({
       triggerElement: ".link5"
     })
-      .setClassToggle(".link5", "show")
+      .setClassToggle(".link5", "show5")
+      .addTo(controller);
+
+    new ScrollMagic.Scene({
+      triggerElement: ".link6"
+    })
+      .setClassToggle(".link6", "show6")
+      .addTo(controller);
+
+    new ScrollMagic.Scene({
+      triggerElement: ".link7"
+    })
+      .setClassToggle(".link7", "show7")
+      .addTo(controller);
+
+    new ScrollMagic.Scene({
+      triggerElement: ".link8"
+    })
+      .setClassToggle(".link8", "show8")
+      .addTo(controller);
+
+    new ScrollMagic.Scene({
+      triggerElement: ".link9"
+    })
+      .setClassToggle(".link9", "show9")
+      .addTo(controller);
+
+    new ScrollMagic.Scene({
+      triggerElement: ".link10"
+    })
+      .setClassToggle(".link10", "show10")
+      .addTo(controller);
+
+    new ScrollMagic.Scene({
+      triggerElement: ".link11"
+    })
+      .setClassToggle(".link11", "show11")
+      .addTo(controller);
+
+    new ScrollMagic.Scene({
+      triggerElement: ".link12"
+    })
+      .setClassToggle(".link12", "show12")
+      .addTo(controller);
+
+    new ScrollMagic.Scene({
+      triggerElement: ".link13"
+    })
+      .setClassToggle(".link13", "show13")
+      .addTo(controller);
+
+    new ScrollMagic.Scene({
+      triggerElement: ".link14"
+    })
+      .setClassToggle(".link14", "show14")
+      .addTo(controller);
+
+    new ScrollMagic.Scene({
+      triggerElement: ".link15"
+    })
+      .setClassToggle(".link15", "show15")
       .addTo(controller);
   }
 
@@ -85,8 +145,13 @@ class Stories extends Component {
   };
 
   goDown = () => {
-    document.querySelector(".link3").scrollIntoView({
-      behavior: "smooth"
+    // document.querySelector(".link3").scrollIntoView({
+    //   behavior: "smooth"
+    // });
+
+    window.scroll({
+      top: 400,
+      behavior: 'smooth'
     });
   };
 
@@ -151,6 +216,88 @@ class Stories extends Component {
             <Link
               to={"/stories/" + this.state.stories[4].id}
               className="link5 links"
+            >
+              <span className="story-title">{this.state.stories[4].title}</span>
+            </Link>
+          </li>
+
+          <li className="story-item">
+            <Link
+              to={"/stories/" + this.state.stories[4].id}
+              className="link6 links"
+            >
+              <span className="story-title">{this.state.stories[4].title}</span>
+            </Link>
+          </li>
+          <li className="story-item">
+            <Link
+              to={"/stories/" + this.state.stories[4].id}
+              className="link7 links"
+            >
+              <span className="story-title">{this.state.stories[4].title}</span>
+            </Link>
+          </li>
+          <li className="story-item">
+            <Link
+              to={"/stories/" + this.state.stories[4].id}
+              className="link8 links"
+            >
+              <span className="story-title">{this.state.stories[4].title}</span>
+            </Link>
+          </li>
+          <li className="story-item">
+            <Link
+              to={"/stories/" + this.state.stories[4].id}
+              className="link9 links"
+            >
+              <span className="story-title">{this.state.stories[4].title}</span>
+            </Link>
+          </li>
+          <li className="story-item">
+            <Link
+              to={"/stories/" + this.state.stories[4].id}
+              className="link10 links"
+            >
+              <span className="story-title">{this.state.stories[4].title}</span>
+            </Link>
+          </li>
+
+          <li className="story-item">
+            <Link
+              to={"/stories/" + this.state.stories[4].id}
+              className="link11 links"
+            >
+              <span className="story-title">{this.state.stories[4].title}</span>
+            </Link>
+          </li>
+          <li className="story-item">
+            <Link
+              to={"/stories/" + this.state.stories[4].id}
+              className="link12 links"
+            >
+              <span className="story-title">{this.state.stories[4].title}</span>
+            </Link>
+          </li>
+          <li className="story-item">
+            <Link
+              to={"/stories/" + this.state.stories[4].id}
+              className="link13 links"
+            >
+              <span className="story-title">{this.state.stories[4].title}</span>
+            </Link>
+          </li>
+          <li className="story-item">
+            <Link
+              to={"/stories/" + this.state.stories[4].id}
+              className="link14 links"
+            >
+              <span className="story-title">{this.state.stories[4].title}</span>
+            </Link>
+          </li>
+          <li className="story-item">
+            <Link
+              to={"/stories/" + this.state.stories[4].id}
+              className="link15 links"
             >
               <span className="story-title">{this.state.stories[4].title}</span>
             </Link>
