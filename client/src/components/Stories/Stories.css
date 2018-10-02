@@ -154,47 +154,47 @@
 }
 
 .link1 {
-  background: url("/imgs/img1.jpg");
+  background: url("/imgs/stories/imgs/img1.jpg");
   background-size: cover;
 }
 
 .link2 {
-  background: url("/imgs/img2.jpg");
+  background: url("/imgs/stories/imgs/img2.jpg");
   background-size: cover;
 }
 
 .link3 {
-  background: url("/imgs/img3.jpg");
+  background: url("/imgs/stories/imgs/img3.jpg");
   background-size: cover;
 }
 
 .link4 {
-  background: url("/imgs/img4.jpg");
+  background: url("/imgs/stories/imgs/img4.jpg");
   background-size: cover;
 }
 
 .link5 {
-  background: url("/imgs/img5.jpg");
+  background: url("/imgs/stories/imgs/img5.jpg");
   background-size: cover;
 }
 
 .link6 {
-  background: url("/imgs/img1.jpg");
+  background: url("/imgs/stories/imgs/img6.jpg");
   background-size: cover;
 }
 
 .link7 {
-  background: url("/imgs/img2.jpg");
+  background: url("/imgs/stories/imgs/img7.jpg");
   background-size: cover;
 }
 
 .link8 {
-  background: url("/imgs/img3.jpg");
+  background: url("/imgs/stories/imgs/img8.jpg");
   background-size: cover;
 }
 
 .link9 {
-  background: url("/imgs/img4.jpg");
+  background: url("/imgs/stories/imgs/img9.jpg");
   background-size: cover;
   transform: translate(3vw, 40vw);  
   height: 0;
