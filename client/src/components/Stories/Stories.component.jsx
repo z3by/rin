@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "./Stories.css";
 import ScrollMagic from "scrollmagic";
 import { Link } from "react-router-dom";
+import Particles from 'react-particles-js';
+import * as particleOpt from "./practiles-options";
 
 class Stories extends Component {
   state = {
@@ -77,95 +79,13 @@ class Stories extends Component {
     document.body.style.overflowY = "auto";
     var controller = new ScrollMagic.Controller();
 
-    new ScrollMagic.Scene({
-      triggerElement: ".link1"
-    })
-      .setClassToggle(".link1", "show1")
-      .addTo(controller);
-
-    new ScrollMagic.Scene({
-      triggerElement: ".link2"
-    })
-      .setClassToggle(".link2", "show2")
-      .addTo(controller);
-
-    new ScrollMagic.Scene({
-      triggerElement: ".link3"
-    })
-      .setClassToggle(".link3", "show3")
-      .addTo(controller);
-
-    new ScrollMagic.Scene({
-      triggerElement: ".link4"
-    })
-      .setClassToggle(".link4", "show4")
-      .addTo(controller);
-
-    new ScrollMagic.Scene({
-      triggerElement: ".link5"
-    })
-      .setClassToggle(".link5", "show5")
-      .addTo(controller);
-
-    new ScrollMagic.Scene({
-      triggerElement: ".link6"
-    })
-      .setClassToggle(".link6", "show6")
-      .addTo(controller);
-
-    new ScrollMagic.Scene({
-      triggerElement: ".link7"
-    })
-      .setClassToggle(".link7", "show7")
-      .addTo(controller);
-
-    new ScrollMagic.Scene({
-      triggerElement: ".link8"
-    })
-      .setClassToggle(".link8", "show8")
-      .addTo(controller);
-
-    new ScrollMagic.Scene({
-      triggerElement: ".link9"
-    })
-      .setClassToggle(".link9", "show9")
-      .addTo(controller);
-
-    new ScrollMagic.Scene({
-      triggerElement: ".link10"
-    })
-      .setClassToggle(".link10", "show10")
-      .addTo(controller);
-
-    new ScrollMagic.Scene({
-      triggerElement: ".link11"
-    })
-      .setClassToggle(".link11", "show11")
-      .addTo(controller);
-
-    new ScrollMagic.Scene({
-      triggerElement: ".link12"
-    })
-      .setClassToggle(".link12", "show12")
-      .addTo(controller);
-
-    new ScrollMagic.Scene({
-      triggerElement: ".link13"
-    })
-      .setClassToggle(".link13", "show13")
-      .addTo(controller);
-
-    new ScrollMagic.Scene({
-      triggerElement: ".link14"
-    })
-      .setClassToggle(".link14", "show14")
-      .addTo(controller);
-
-    new ScrollMagic.Scene({
-      triggerElement: ".link15"
-    })
-      .setClassToggle(".link15", "show15")
-      .addTo(controller);
+    for (let i = 1; i < 16; i++) {
+      new ScrollMagic.Scene({
+        triggerElement: ".link" + i
+      })
+        .setClassToggle(".link" + i, "show" + i)
+        .addTo(controller);
+    }
   }
 
   onClickStory = e => {
@@ -203,84 +123,26 @@ class Stories extends Component {
           </div>
         </div>
 
+        <div className="particles-js">
+          <Particles
+            params={particleOpt}
+          />
+        </div>
+
         {/* <div className="vertical-line" id="id1" /> */}
 
         <div className="up" />
 
         <ul className="stories-items">
-          <li className="story-item">
-            <Link
-              to={"/stories/" + this.state.stories[0].id}
-              className="link1 links"
-            >
-              <span className="story-title">{this.state.stories[0].title}</span>
-            </Link>
-          </li>
-          <li className="story-item">
-            <Link
-              to={"/stories/" + this.state.stories[1].id}
-              className="link2 links"
-            >
-              <span className="story-title">{this.state.stories[1].title}</span>
-            </Link>
-          </li>
-          <li className="story-item">
-            <Link
-              to={"/stories/" + this.state.stories[2].id}
-              className="link3 links"
-            >
-              <span className="story-title">{this.state.stories[2].title}</span>
-            </Link>
-          </li>
-          <li className="story-item">
-            <Link
-              to={"/stories/" + this.state.stories[3].id}
-              className="link4 links"
-            >
-              <span className="story-title">{this.state.stories[3].title}</span>
-            </Link>
-          </li>
-          <li className="story-item">
-            <Link
-              to={"/stories/" + this.state.stories[4].id}
-              className="link5 links"
-            >
-              <span className="story-title">{this.state.stories[4].title}</span>
-            </Link>
-          </li>
+          {this.state.stories.map((story, i) => (
+            <li className="story-item">
+              <Link to={"/stories/" + story.id}
+                className={"links link" + ++i}>
+                <span className="story-title">{story.title}</span>
+              </Link>
+            </li>
+          ))}
 
-          <li className="story-item">
-            <Link
-              to={"/stories/" + this.state.stories[5].id}
-              className="link6 links"
-            >
-              <span className="story-title">{this.state.stories[5].title}</span>
-            </Link>
-          </li>
-          <li className="story-item">
-            <Link
-              to={"/stories/" + this.state.stories[6].id}
-              className="link7 links"
-            >
-              <span className="story-title">{this.state.stories[6].title}</span>
-            </Link>
-          </li>
-          <li className="story-item">
-            <Link
-              to={"/stories/" + this.state.stories[7].id}
-              className="link8 links"
-            >
-              <span className="story-title">{this.state.stories[7].title}</span>
-            </Link>
-          </li>
-          <li className="story-item">
-            <Link
-              to={"/stories/" + this.state.stories[8].id}
-              className="link9 links"
-            >
-              <span className="story-title">{this.state.stories[8].title}</span>
-            </Link>
-          </li>
           <li className="story-item">
             <Link
               to={"/stories/" + this.state.stories[4].id}
@@ -331,6 +193,7 @@ class Stories extends Component {
             </Link>
           </li>
         </ul>
+
 
         <div className="down" />
       </div>
