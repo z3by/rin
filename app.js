@@ -8,6 +8,11 @@ const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const apiRouter = require("./routes/api");
 
+const migrateDB = require("./models/migrate.controller");
+
+// init the database
+migrateDB();
+
 const app = express();
 
 app.use(logger("dev"));
