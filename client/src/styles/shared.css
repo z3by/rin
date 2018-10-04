@@ -10,17 +10,17 @@
   --color-4: #0094ab;
   --color-5: #c1b5a1; */
   /* <<<<< theme number 2 >>>>>>> */
-  --color-1: #3c3c3b;
+  /* --color-1: #3c3c3b;
   --color-2: #ef8e38;
   --color-3: #d2e5ed;
   --color-4: #eee;
-  --color-5: #8c8c8a;
-  /* <<<<< theme number 3 >>>>>>> */
-  /* --color-1: #414c53;
-  --color-2: #ef8e38;
-  --color-3: #414c53;
-  --color-4: #faf9f9;
   --color-5: #8c8c8a; */
+  /* <<<<< theme number 3 >>>>>>> */
+  --color-1: #d5d5d3;
+  --color-2: #fcbc53;
+  --color-3: #008585;
+  --color-4: #2e2e2e;
+  --color-5: #959593;
 
   --light-transparent: rgba(255, 255, 255, 0.3);
   --light-border: solid 1px var(--light-transparent);
