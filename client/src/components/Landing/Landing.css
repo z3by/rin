@@ -35,11 +35,11 @@
 
 /* ------------------------------------ navigation group----------------------------------- */
 .effect-circle {
-  height: 250px;
-  width: 250px;
-  background: rgba(255, 255, 111, 0.1);
+  height: 30vw;
+  width: 30vw;
+  background: var(--color-1);
+  opacity: 0.5;
   position: absolute;
-  z-index: 10;
   border-radius: 50%;
 }
 
@@ -80,7 +80,7 @@
 }
 
 .nav-link.active {
-  text-shadow: 2px 2px 10px #000;
+  text-shadow: 2px 2px 10px #333;
   cursor: pointer;
   color: var(--color-2);
   -webkit-transition: var(--smooth);
@@ -149,7 +149,6 @@
   position: absolute;
   height: 7vh;
   width: 14vh;
-  border: var(--light-border);
   top: 5vh;
   right: 5vh;
   margin: 0 auto;
@@ -159,6 +158,7 @@
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
+  background: var(--color-1);
 }
 
 .partners > img {
@@ -177,7 +177,7 @@
 /* --------------------------------------- partners end---------------------------------- */
 
 .circle {
-  opacity: 0.9;
+  opacity: 0.7;
   height: 35vw;
   width: 35vw;
   left: 30vw;
@@ -192,6 +192,7 @@
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
+  box-shadow: 2px 2px 10px #333;
 }
 
 .circle-overlay {
@@ -228,13 +229,14 @@
 
 .up-rec,
 .down-rec {
+  box-shadow: 2px 2px 10px #333;
   height: 20vh;
   width: 35vw;
   position: absolute;
   z-index: 1;
   background-size: 100vh 100vw;
   background-attachment: fixed;
-  opacity: 1;
+  opacity: 0.7;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   -webkit-transition: left ease 1s, right ease 1s;
   transition: left ease 1s, right ease 1s;
@@ -290,7 +292,7 @@
   height: 6vh;
   width: 16vh;
   position: absolute;
-  /* background: var(--color-5); */
+  background: var(--color-3);
   border: var(--light-border);
   left: 2.5%;
   bottom: 5vh;
@@ -298,14 +300,14 @@
 }
 
 .counter span {
-  color: var(--color-5);
+  color: var(--color-2);
   margin-left: 6px;
 }
 
 .counter h4 {
   text-align: center;
   margin: 0;
-  color: var(--color-2);
+  color: var(--color-4);
   font-family: Arial, Helvetica, sans-serif;
   line-height: 6vh;
 }

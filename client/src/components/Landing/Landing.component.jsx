@@ -33,11 +33,6 @@ export default class Landing extends Component {
 
   // mouse move effect on the landing page circle;
   onMouseMove = e => {
-    // exit if not on the landing page
-    if (!document.querySelector(".effect-circle")) {
-      return;
-    }
-
     // get the mouse axis
     if (!document.querySelector(".effect-circle")) {
       return;
@@ -211,6 +206,7 @@ export default class Landing extends Component {
     const routes = ["stories", "map", "data", "about", "library"];
     document.querySelector(".circle").classList.add("grow");
     document.querySelector(".circle-overlay").classList.add("grow");
+    document.querySelector(".effect-circle").style.display = "none";
 
     setTimeout(() => {
       this.props.history.push(routes[this.state.index]);
