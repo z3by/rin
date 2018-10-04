@@ -103,7 +103,7 @@ export default class Story extends Component {
       <div className="story">
         <div className="story-img1">
           <img className="story-banner" src={this.state.stories[id].banner} alt="banner" />
-          <img src={this.state.stories[id].logo} className="story-1" alt="logo" />
+          <img src={this.state.stories[id].logo} className="story-partner" alt="logo" />
           <div className="story-title1">
             <h1>{this.state.stories[id].title}</h1>
           </div>
