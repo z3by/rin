@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import "./Filter.css";
+import { connect } from "react-redux";
+import { setCountries } from "../../../actions/index";
 
 class Filter extends React.Component {
   constructor(props) {
@@ -15,9 +17,9 @@ class Filter extends React.Component {
   }
 
   fetchAllCountries = () => {
-    axios
-      .get("https://restcountries.eu/rest/v2/all")
-      .then(res => this.setState({ countries: res.data }));
+    axios.get("https://restcountries.eu/rest/v2/all").then(res => {
+      this.props.setCountries(res.data);
+    });
   };
 
   onSlide = e => {
@@ -38,13 +40,15 @@ class Filter extends React.Component {
   };
 
   render() {
-    const countries = this.state.countries.map(country => {
-      return (
-        <option value={country.name} key={country.alpha2Code}>
-          {country.name}
-        </option>
-      );
-    });
+    let countries = !this.props.countries.countries
+      ? []
+      : this.props.countries.countries.map(country => {
+          return (
+            <option value={country.name} key={country.alpha2Code}>
+              {country.name}
+            </option>
+          );
+        });
 
     return (
       <div className="filter">
@@ -141,4 +145,11 @@ class Filter extends React.Component {
   }
 }
 
-export default Filter;
+const mapStateToProps = state => ({
+  countries: state.countries
+});
+
+export default connect(
+  mapStateToProps,
+  { setCountries }
+)(Filter);
