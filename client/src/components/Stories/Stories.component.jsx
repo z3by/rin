@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Stories.css";
 import ScrollMagic from "scrollmagic";
 import { Link } from "react-router-dom";
-import Particles from 'react-particles-js';
+import Particles from "react-particles-js";
 import * as particleOpt from "./practiles-options";
 import * as stories from "./stories-info";
 class Stories extends Component {
@@ -34,7 +34,7 @@ class Stories extends Component {
 
     window.scroll({
       top: 400,
-      behavior: 'smooth'
+      behavior: "smooth"
     });
   };
 
@@ -44,13 +44,13 @@ class Stories extends Component {
   render() {
     return (
       <div className="stories fadeInFast">
-        <div className="video-container">
+        <div className="header">
           {/* <video loop autoPlay muted>
             <source src={this.state.videoURL} type="video/mp4" />
             Your browser does not support the video tag.
           </video> */}
-          <img src="/imgs/success.jpg" className="img-container" alt="" />
-          <div className="overlay-desc">
+          <img src="/imgs/success.jpg" className="header-img" alt="" />
+          <div className="header-text">
             <h1>Success Stories</h1>
             <a onClick={this.goDown} className="down-arrow">
               <img src="/imgs/arrow.png" className="down-arrow-img" alt="" />
@@ -59,9 +59,7 @@ class Stories extends Component {
         </div>
 
         <div className="particles-js">
-          <Particles
-            params={particleOpt}
-          />
+          <Particles params={particleOpt} />
         </div>
 
         {/* <div className="vertical-line" id="id1" /> */}
@@ -71,64 +69,44 @@ class Stories extends Component {
         <ul className="stories-items">
           {stories.map((story, i) => (
             <li className="story-item">
-              <Link to={"/stories/" + story.id}
-                className={"links link" + ++i}>
+              <Link to={"/stories/" + story.id} className={"links link" + ++i}>
                 <span className="story-title">{story.title}</span>
               </Link>
             </li>
           ))}
 
           <li className="story-item">
-            <Link
-              to={"/stories/" + stories[4].id}
-              className="link10 links"
-            >
+            <Link to={"/stories/" + stories[4].id} className="link10 links">
               <span className="story-title">{stories[4].title}</span>
             </Link>
           </li>
 
           <li className="story-item">
-            <Link
-              to={"/stories/" + stories[4].id}
-              className="link11 links"
-            >
+            <Link to={"/stories/" + stories[4].id} className="link11 links">
               <span className="story-title">{stories[4].title}</span>
             </Link>
           </li>
           <li className="story-item">
-            <Link
-              to={"/stories/" + stories[4].id}
-              className="link12 links"
-            >
+            <Link to={"/stories/" + stories[4].id} className="link12 links">
               <span className="story-title">{stories[4].title}</span>
             </Link>
           </li>
           <li className="story-item">
-            <Link
-              to={"/stories/" + stories[4].id}
-              className="link13 links"
-            >
+            <Link to={"/stories/" + stories[4].id} className="link13 links">
               <span className="story-title">{stories[4].title}</span>
             </Link>
           </li>
           <li className="story-item">
-            <Link
-              to={"/stories/" + stories[4].id}
-              className="link14 links"
-            >
+            <Link to={"/stories/" + stories[4].id} className="link14 links">
               <span className="story-title">{stories[4].title}</span>
             </Link>
           </li>
           <li className="story-item">
-            <Link
-              to={"/stories/" + stories[4].id}
-              className="link15 links"
-            >
+            <Link to={"/stories/" + stories[4].id} className="link15 links">
               <span className="story-title">{stories[4].title}</span>
             </Link>
           </li>
         </ul>
-
 
         <div className="down" />
       </div>

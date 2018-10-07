@@ -10,17 +10,17 @@
   --color-4: #0094ab;
   --color-5: #c1b5a1; */
   /* <<<<< theme number 2 >>>>>>> */
-  --color-1: #3c3c3b;
+  /* --color-1: #3c3c3b;
   --color-2: #ef8e38;
   --color-3: #d2e5ed;
   --color-4: #eee;
-  --color-5: #8c8c8a;
-  /* <<<<< theme number 3 >>>>>>> */
-  /* --color-1: #414c53;
-  --color-2: #ef8e38;
-  --color-3: #414c53;
-  --color-4: #faf9f9;
   --color-5: #8c8c8a; */
+  /* <<<<< theme number 3 >>>>>>> */
+  --color-1: #d5d5d3;
+  --color-2: #fcbc53;
+  --color-3: white;
+  --color-4: #2e2e2e;
+  --color-5: #959593;
 
   --light-transparent: rgba(255, 255, 255, 0.3);
   --light-border: solid 1px var(--light-transparent);
@@ -53,7 +53,8 @@ a {
 }
 
 b {
-  color: var(--color-3);
+  color: var(--color-2);
+  text-shadow: 1px 1px 4px #555;
   text-transform: capitalize;
 }
 
@@ -140,14 +141,17 @@ label {
   z-index: 11;
   cursor: pointer;
   margin: 0;
+  padding: 10px;
+  padding-bottom: 0;
   -webkit-transition: var(--smooth);
   transition: var(--smooth);
+  background: var(--color-4);
+  border-radius: 50px;
 }
 
 .arrows img {
   width: 50px;
-  -webkit-filter: saturate(0);
-  filter: saturate(0);
+  filter: brightness(1.5);
 }
 
 .arrows img:hover {
