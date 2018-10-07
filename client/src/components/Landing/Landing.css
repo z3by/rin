@@ -312,6 +312,13 @@
   line-height: 6vh;
 }
 
+@media (max-width: 1024px) {
+  .circle {
+    height: 60vw;
+    width: 60vw;
+  }
+}
+
 @media (max-width: 769px) {
   .circle video {
     display: none;
