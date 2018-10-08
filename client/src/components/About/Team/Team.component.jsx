@@ -2,10 +2,12 @@ import React from "react";
 import "./Team.css";
 import TeamMember from "../TeamMember/TeamMember.component";
 
-export default () => {
+export default props => {
   return (
-    <div className="team-members">
-      <TeamMember teamMemberInfo={{ name: "john" }} />
+    <div className="grid-2">
+      {props.info.map((ele, id) => {
+        return <TeamMember key={id} teamMemberInfo={ele} />;
+      })}
     </div>
   );
 };

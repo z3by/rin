@@ -1,21 +1,21 @@
 @import "./styles/shared.css";
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 20px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: var(--light-color);
+  background: var(--color-4);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: var(--color-2);
-  border-radius: 10px;
+  border-radius: 7px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-2);
+  background: var(--color-3);
 }
