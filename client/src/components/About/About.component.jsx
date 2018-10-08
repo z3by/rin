@@ -62,7 +62,7 @@ export default class About extends Component {
         </header>
 
         <main className="container">
-          <div id="intro">
+          <div id="intro" data-aos="slide-up">
             <p className="p-theme-1">
               <b> The Refugee Investment Network (RIN)</b> is the first blended
               finance investment collaborative dedicated to creating long-term
