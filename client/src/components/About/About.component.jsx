@@ -52,7 +52,7 @@ export default class About extends Component {
         <header>
           <div className="header">
             <h1 className="header-text">
-              About <i className="fas fa-binoculars" />
+              {/* About <i className="fas fa-binoculars" /> */}
             </h1>
             <img src="/imgs/about1.jpg" className="header-img" alt="" />
           </div>
