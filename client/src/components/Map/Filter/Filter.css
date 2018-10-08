@@ -83,9 +83,10 @@
   cursor: pointer;
 }
 
-.filter-input p {
-  color: var(--color-2);
+.filter-label span {
+  color: var(--color-5);
   font-family: var(--main-font);
+  margin-left: 20px;
 }
 
 @media (max-width: 768px) {

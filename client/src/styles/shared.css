@@ -318,7 +318,14 @@ select {
 }
 
 option {
+  color: var(--color-4);
   font-size: 16px;
+  background: var(--color-5);
+}
+
+option:hover {
+  color: var(--color-3);
+  background: var(--color-2);
 }
 
 @-webkit-keyframes fadeIn {
