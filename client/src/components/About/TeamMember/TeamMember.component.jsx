@@ -6,10 +6,17 @@ export default props => {
 
   return (
     <div className="team-member">
-      <img src={info.img} alt={info.name} />
-      <h2 className="heading-theme-2">{info.name}</h2>
-      <h3 className="heading-theme-3">{info.title}</h3>
-      <p className="p-theme-1">{info.description}</p>
+      <figure class="effect-chico">
+        <img src={info.img} alt="img15" />
+        <figcaption>
+          <h2>{info.name}</h2>
+          <p>
+            {info.title}
+            <a className="read-more">read more..</a>
+          </p>
+        </figcaption>
+      </figure>
+      <p className="team-description">{info.description}</p>
     </div>
   );
 };

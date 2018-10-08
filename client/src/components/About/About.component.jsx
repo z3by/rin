@@ -6,6 +6,7 @@ import * as teamInfo from "./team.json";
 import Strategy from "./Strategy/Strategy.component";
 import HowItWorksComponent from "./HowItWorks/HowItWorks.component";
 import WhyRefugeesComponent from "./WhyRefugees/WhyRefugees.component";
+import { Link } from "react-router-dom";
 
 export default class About extends Component {
   constructor() {
@@ -77,6 +78,38 @@ export default class About extends Component {
               stability among displaced people.
             </p>
           </div>
+
+          <ul className="grid-3">
+            <Link to={"/landing"}>
+              <h1 className="">Our strategy</h1>
+              <i className="fa-4x fas fa-map" />
+            </Link>
+
+            <Link to={"/landing"}>
+              <h1 className="">How It Works</h1>
+              <i className="fa-4x fas fa-map" />
+            </Link>
+
+            <Link to={"/landing"}>
+              <h1 className="">Whoe We Are </h1>
+              <i className="fa-4x fas fa-map" />
+            </Link>
+
+            <Link to={"/landing"}>
+              <h1 className="">Why Refugees</h1>
+              <i className="fa-4x fas fa-map" />
+            </Link>
+
+            <Link to={"/landing"}>
+              <h1 className="">Our Team</h1>
+              <i className="fa-4x fas fa-map" />
+            </Link>
+
+            <Link to={"/landing"}>
+              <h1 className="">steering Comittee</h1>
+              <i className="fa-4x fas fa-map" />
+            </Link>
+          </ul>
 
           <section id="strategy">
             <Strategy />

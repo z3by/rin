@@ -511,6 +511,18 @@ option:hover {
 .color-5 {
   color: var(--color-5) !important;
 }
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-row-gap: 100px;
+}
+
+.grid-6 a {
+  width: 100%000;
+}
+
 @media (max-width: 768px) {
   .arrows {
     /* left: calc(50% - 50px); */
