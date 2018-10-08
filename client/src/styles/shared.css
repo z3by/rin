@@ -28,7 +28,8 @@
   --smooth: all 1300ms cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
-body {
+body,
+html {
   margin: 0;
   background: var(--color-1);
   height: 100vh;
@@ -224,7 +225,6 @@ input[type="range"]::-webkit-slider-runnable-track {
   width: 100%;
   height: 5px;
   cursor: pointer;
-  animate: 0.2s;
   -webkit-box-shadow: 0px 0px 0px #000000;
   box-shadow: 0px 0px 0px #000000;
   background: var(--color-5);
@@ -318,7 +318,14 @@ select {
 }
 
 option {
+  color: var(--color-4);
   font-size: 16px;
+  background: var(--color-5);
+}
+
+option:hover {
+  color: var(--color-3);
+  background: var(--color-2);
 }
 
 @-webkit-keyframes fadeIn {
@@ -504,9 +511,22 @@ option {
 .color-5 {
   color: var(--color-5) !important;
 }
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-row-gap: 100px;
+}
+
+.grid-6 a {
+  width: 100%000;
+}
+
 @media (max-width: 768px) {
   .arrows {
-    left: calc(50% - 50px);
+    /* left: calc(50% - 50px); */
+    padding: 10px 20px;
   }
 
   .grid-2 {

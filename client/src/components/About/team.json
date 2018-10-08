@@ -1,0 +1,33 @@
+[
+  {
+    "id": "0",
+    "name": "JOHN W. KLUGE",
+    "title": "Founder + Managing Director",
+    "img": "/imgs/team/JohnKlugeRIN.jpg",
+    "description": "John W. Kluge is a systems entrepreneur and committed social justice activist. He is the Co-Founder and Managing Partner of the Alight Fund, an investment and financing company for refugee and host country entrepreneurs. Previously, he co-founded Eirene, a multi-family-office impact investing fund, Toilet Hackers, a social enterprise dedicated to scaling access to dignified sanitation for the 2.5 billion people without a toilet. Kluge currently serves as a Trustee of Babson College, as a member of the Center for Strategic International Studies' Taskforce on Global Forced Migration, as a Director of the Fonderie 47 Foundation, as the Co-Chair of the Virginia Policy Entrepreneurship Lab, and as a member of the Human Rights Commission of Charlottesville. He is the co-author of the book, Charity & Philanthropy for Dummies (Wylie, 2013), the author of John Kluge: Stories (Columbia University Press, 2008) and has written about the intersection of business and social impact for Forbes and Conscious Company Magazine. Kluge holds a B.A. from Columbia University and an MBA from the Babson F.W. Olin Graduate School of Business."
+  },
+
+  {
+    "id": "1",
+    "name": "TIMOTHY DOCKING",
+    "title": "Managing Director",
+    "img": "/imgs/team/Tim+Docking+RIN.jpeg",
+    "description": "Timothy W. Docking, Ph.D. is a Washington, D.C.-based business executive with twenty years of emerging market and public sector experience. As an intrapreneur, he worked at the intersection of business, technology and development and built a new $100M revenue stream at IBM; as a public sector executive and manager, he helped start up the MCC (U.S. government agency); and as a scholar, he directed Africa research at a D.C. think tank. Docking has testified before Congress, published and commented widely in the media, is a member of multiple national and international boards including the current co-Chair of the Private Sector Advisory Council at the Millennium Challenge Corporation, and has helped form and implement policy at highest levels of government as a White House Fellow. Docking holds a Ph.D. in comparative politics from Boston University and has lived and worked in more than 40 countries."
+  },
+
+  {
+    "id": "2",
+    "name": "ANDREW STERN",
+    "title": "Strategic Advisor",
+    "img": "/imgs/team/Andrew+headshot.jpg",
+    "description": "Andrew Stern is the Founder, President and Executive Director of the Global Development Incubator (GDI) and a member of the GDI U.S. and Hong Kong boards. He leads the team across focus areas and crafts unconventional perspectives to drive the global development sector forward. Stern has played many roles within GDI initiatives, including Interim CEO of Convergence, the global network for Blended Finance, and serves on the governance or advisory boards of Emerging Public Leaders, citiesRise and Tendrel. Prior to founding GDI, Stern was a Global Operating Partner at Dalberg Global Advisors. During that time, he helped design and launch the Aspen Network of Entrepreneurs (ANDE) and served as the founding chairman of mothers2mothers. Stern holds a joint MBA/MPP from Harvard Business School and Harvard Kennedy School and a BA in Economics from Princeton University."
+  },
+
+  {
+    "id": "3",
+    "name": "SARA BEATTY",
+    "title": "Communications Manager",
+    "img": "/imgs/team/Sara+Beatty+headshot.jpg",
+    "description": "Sara is the Communications Manager at GDI. She guides communications efforts across all focus areas, advances GDI thought leadership in external media, and oversees the branding process for new initiatives. Before joining GDI, Sara was part of the communications team at Dalberg Global Development Advisors and supported communications + fundraising at AppleTree Institute for Education Innovation. She has also worked at an array of journalism outlets including Media Matters for America, Philadelphia Magazine, and the Olive Press in Andalucía, Spain. Sara holds a BA in Sociology from Princeton University."
+  }
+]

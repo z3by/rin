@@ -82,7 +82,9 @@ class Filter extends React.Component {
 
         <div className="filter-input">
           <label htmlFor="capacity" className="filter-label">
-            Filter by project capacity
+            Filter by project capacity:
+            {"    "}
+            <span id="capacity-range" data-sympol="  person" />
           </label>
           <input
             id="capacity"
@@ -92,13 +94,13 @@ class Filter extends React.Component {
             className="slider"
             onChange={this.onSlide}
           />
-
-          <p id="capacity-range" data-sympol="  person" />
         </div>
 
         <div className="filter-input">
           <label htmlFor="benefits" className="filter-label">
-            Filter by investors benefits
+            Filter by investors benefits:
+            {"    "}
+            <span id="benefits-range" data-sympol="  $" />
           </label>
           <input
             id="benefits"
@@ -108,13 +110,15 @@ class Filter extends React.Component {
             onChange={this.onSlide}
             max="10000000"
           />
-          <p id="benefits-range" data-sympol="  $" />
         </div>
 
         <div className="filter-input">
           <label htmlFor="starting-year" className="filter-label">
-            Filter by project starting-year
+            Filter by project starting-year:
+            {"    "}
+            <span id="starting-year-range" data-sympol="" />
           </label>
+
           <input
             id="starting-year"
             type="range"
@@ -124,7 +128,6 @@ class Filter extends React.Component {
             max={new Date().getFullYear()}
             min={new Date().getFullYear() - 50}
           />
-          <p id="starting-year-range" data-sympol="" />
         </div>
 
         <div className="filter-input">

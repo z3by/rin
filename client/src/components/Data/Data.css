@@ -54,7 +54,7 @@
 }
 
 .data-text p {
-  color: var(--color-2);
+  color: var(--color-4);
   margin: 0;
   font-size: 22%;
   font-family: var(--main-font);

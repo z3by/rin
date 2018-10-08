@@ -6,7 +6,7 @@
   bottom: 5%;
   left: calc(50% - 50px);
   text-align: center;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.7);
   cursor: pointer;
   -webkit-transition: var(--smooth);
   transition: var(--smooth);
@@ -15,7 +15,7 @@
 
 .filter a {
   font-family: var(--main-font);
-  color: var(--color-5);
+  color: var(--color-2);
   font-size: 20px;
   line-height: 2;
 }
@@ -83,8 +83,10 @@
   cursor: pointer;
 }
 
-.filter-input p {
-  color: var(--color-2);
+.filter-label span {
+  color: var(--color-5);
+  font-family: var(--main-font);
+  margin-left: 20px;
 }
 
 @media (max-width: 768px) {
