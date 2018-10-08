@@ -6,7 +6,7 @@ import * as projects from "./projects-data.json";
 import Dot from "./Dot/Dot.component";
 import Filter from "./Filter/Filter.component";
 import Spectrum from "./Spectrum/Spectrum.component";
-
+import { mapApi } from "../../config/map.config";
 
 export default class Map extends Component {
   state = {
@@ -166,7 +166,7 @@ export default class Map extends Component {
         </div>
         <GoogleMapReact
           options={options}
-          bootstrapURLKeys={{ key: "AIzaSyAxYHlwX3Vu7-ygTF2wiB3sjSyFU7mAMJE" }}
+          bootstrapURLKeys={{ key: mapApi }}
           defaultCenter={this.state.position}
           defaultZoom={this.state.zoom}
         >

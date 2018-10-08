@@ -28,7 +28,8 @@
   --smooth: all 1300ms cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
-body {
+body,
+html {
   margin: 0;
   background: var(--color-1);
   height: 100vh;

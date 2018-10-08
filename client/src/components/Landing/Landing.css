@@ -180,7 +180,7 @@
   opacity: 0.7;
   height: 35vw;
   width: 35vw;
-  left: 30vw;
+  left: 35vw;
   bottom: 0;
   top: 0;
   position: absolute;
@@ -196,22 +196,25 @@
 }
 
 .circle-overlay {
-  opacity: 0;
-  height: 30vw;
-  width: 30vw;
-  left: 32%;
+  opacity: 0.4;
+  height: 35vw;
+  width: 35vw;
+  left: 35vw;
+  bottom: 0;
+  top: 0;
+  margin: auto 0;
   position: absolute;
   border-radius: 50%;
   z-index: 3;
-  mix-blend-mode: overlay;
+  mix-blend-mode: screen;
   background: -webkit-gradient(
     linear,
     left top,
     right top,
-    from(var(--color-2)),
+    from(var(--color-1)),
     to(var(--color-4))
   );
-  background: linear-gradient(90deg, var(--color-2), var(--color-4));
+  background: linear-gradient(90deg, var(--color-1), var(--color-4));
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
@@ -229,7 +232,7 @@
 
 .up-rec,
 .down-rec {
-  box-shadow: 2px 2px 10px #333;
+  /* box-shadow: 2px 2px 10px #333; */
   height: 20vh;
   width: 35vw;
   position: absolute;
@@ -237,7 +240,6 @@
   background-size: 100vh 100vw;
   background-attachment: fixed;
   opacity: 0.7;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   -webkit-transition: left ease 1s, right ease 1s;
   transition: left ease 1s, right ease 1s;
   background-repeat: no-repeat;
@@ -259,7 +261,7 @@
 .up-rec-overlay,
 .down-rec-overlay {
   mix-blend-mode: screen;
-  opacity: 0;
+  opacity: 0.5;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   position: absolute;
@@ -271,13 +273,13 @@
 }
 
 .down-rec-overlay {
-  background: linear-gradient(45deg, var(--color-4), var(--color-4));
+  background: linear-gradient(45deg, var(--color-2), var(--color-1));
   bottom: 10%;
   right: 20%;
 }
 
 .up-rec-overlay {
-  background: linear-gradient(45deg, var(--color-2), var(--color-2));
+  background: linear-gradient(45deg, var(--color-1), var(--color-2));
   top: 10%;
   left: 20%;
 }
