@@ -115,6 +115,7 @@ class Filter extends React.Component {
           <label htmlFor="starting-year" className="filter-label">
             Filter by project starting-year
           </label>
+
           <input
             id="starting-year"
             type="range"
