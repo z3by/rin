@@ -176,6 +176,7 @@ figure.effect-chico:hover p {
 figure.effect-chico:hover h2 {
   display: none;
 }
+
 @media screen and (max-width: 50em) {
   .content {
     padding: 0 10px;
