@@ -1,5 +1,5 @@
 const mysql = require("mysql");
-const migrateQuery = require("./query/migrate");
+const migrateQuery = require("../models/query/migrate");
 
 module.exports = () => {
   const connection = mysql.createConnection({
@@ -22,14 +22,29 @@ module.exports = () => {
       console.log("Database used");
     });
 
-    connection.query(migrateQuery.createLocationTable, function(err, result) {
+    connection.query(migrateQuery.createCountriesTable, function(err, result) {
       if (err) throw err;
-      console.log("location table created");
+      console.log("countries table created");
+    });
+
+    connection.query(migrateQuery.createLocationsTable, function(err, result) {
+      if (err) throw err;
+      console.log("locations table created");
+    });
+
+    connection.query(migrateQuery.createPartnersTable, function(err, result) {
+      if (err) throw err;
+      console.log("partners table created");
     });
 
     connection.query(migrateQuery.createProjectsTable, function(err, result) {
       if (err) throw err;
       console.log("projects table created");
+    });
+
+    connection.query(migrateQuery.createStoriesTable, function(err, result) {
+      if (err) throw err;
+      console.log("stories table created");
     });
   });
 };
