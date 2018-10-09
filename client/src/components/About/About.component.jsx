@@ -6,7 +6,8 @@ import * as teamInfo from "./team.json";
 import Strategy from "./Strategy/Strategy.component";
 import HowItWorksComponent from "./HowItWorks/HowItWorks.component";
 import WhyRefugeesComponent from "./WhyRefugees/WhyRefugees.component";
-import { Link } from "react-router-dom";
+import WhoWeAreComponent from "./WhoWeAre/WhoWeAre.component";
+import { Route, Link } from "react-router-dom";
 
 export default class About extends Component {
   constructor() {
@@ -78,65 +79,61 @@ export default class About extends Component {
               stability among displaced people.
             </p>
           </div>
+          <ul className="grid-3 about-nav">
+            <li>
+              <Link to={"/about/strategy"}>
+                <h3>our strategy</h3>
+                <i class="fas fa-street-view" />
+              </Link>
+            </li>
 
-          <ul className="grid-3">
-            <Link to={"/landing"}>
-              <h1 className="">Our strategy</h1>
-              <i className="fa-4x fas fa-map" />
-            </Link>
+            <li>
+              <Link to={"/about/how-it-works"}>
+                <h3>how it works</h3>
+                <i className="far fa-sun" />
+              </Link>
+            </li>
 
-            <Link to={"/landing"}>
-              <h1 className="">How It Works</h1>
-              <i className="fa-4x fas fa-map" />
-            </Link>
+            <li>
+              <Link to={"/about/who-we-are"}>
+                <h3>who we are</h3>
+                <i className="fas fa-users" />
+              </Link>
+            </li>
 
-            <Link to={"/landing"}>
-              <h1 className="">Whoe We Are </h1>
-              <i className="fa-4x fas fa-map" />
-            </Link>
+            <li>
+              <Link to={"/about/why-refugees"}>
+                <h3>why refugees</h3>
+                <i className="fab fa-accusoft" />
+              </Link>
+            </li>
 
-            <Link to={"/landing"}>
-              <h1 className="">Why Refugees</h1>
-              <i className="fa-4x fas fa-map" />
-            </Link>
+            <li>
+              <Link to={"/about/team"}>
+                <h3>meet the team</h3>
+                <i class="fas fa-users" />
+              </Link>
+            </li>
 
-            <Link to={"/landing"}>
-              <h1 className="">Our Team</h1>
-              <i className="fa-4x fas fa-map" />
-            </Link>
-
-            <Link to={"/landing"}>
-              <h1 className="">steering Comittee</h1>
-              <i className="fa-4x fas fa-map" />
-            </Link>
+            <li>
+              <Link to={"/about/steering"}>
+                <h3>steering comittee</h3>
+                <i className="fas fa-crosshairs" />
+              </Link>
+            </li>
           </ul>
-
-          <section id="strategy">
-            <Strategy />
-          </section>
-
-          <section id="how-it-works">
-            <HowItWorksComponent />
-          </section>
-
-          <section id="why-refugees">
-            <WhyRefugeesComponent />
-          </section>
-          <section id="who-we-are" />
-          <section id="team">
-            <h1 className="heading-theme-2 capitalize">
-              <i className="fas fa-users" />
-              meet the team
-            </h1>
-            <TeamComponent info={teamInfo} />
-          </section>
-          <section id="steering">
-            <h1 className="heading-theme-2 capitalize">
-              <i className="fas fa-users" />
-              meet the steering comittee
-            </h1>
-            <TeamComponent info={steeringInfo} />
-          </section>
+          <Route path="/about/strategy" component={Strategy} />
+          <Route path="/about/how-it-works" component={HowItWorksComponent} />
+          <Route path="/about/why-refugees" component={WhyRefugeesComponent} />
+          <Route
+            path="/about/team"
+            render={() => <TeamComponent info={teamInfo} />}
+          />
+          <Route
+            path="/about/steering"
+            render={() => <TeamComponent info={steeringInfo} />}
+          />
+          <Route path="/about/who-we-are" component={WhoWeAreComponent} />
         </main>
       </div>
     );
