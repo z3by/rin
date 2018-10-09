@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Particles from "react-particles-js";
 import * as particleOpt from "./practiles-options";
 import * as stories from "./stories-info";
+
 class Stories extends Component {
   state = {
     videoURL: "/videos/AmbientWebDemo_06.mp4"
