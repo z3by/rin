@@ -17,6 +17,9 @@ export default class Landing extends Component {
     this.showVideo();
     this.changeBackground();
     this.fadeInOutPartners();
+    window.navigator.serviceWorker
+      .getRegistration()
+      .then(reg => reg.unregister());
   }
 
   // bind the events to the local functions.
@@ -33,11 +36,6 @@ export default class Landing extends Component {
 
   // mouse move effect on the landing page circle;
   onMouseMove = e => {
-    // exit if not on the landing page
-    if (!document.querySelector(".effect-circle")) {
-      return;
-    }
-
     // get the mouse axis
     if (!document.querySelector(".effect-circle")) {
       return;
@@ -45,8 +43,8 @@ export default class Landing extends Component {
 
     const circleX = e.clientX;
     const circleY = e.clientY;
-    document.querySelector(".effect-circle").style.top = circleY - 300 + "px";
-    document.querySelector(".effect-circle").style.left = circleX - 700 + "px";
+    document.querySelector(".effect-circle").style.top = circleY / 5 + "px";
+    document.querySelector(".effect-circle").style.left = circleX / 5 + "px";
   };
 
   // mouse wheel handler for the landing page
@@ -211,6 +209,7 @@ export default class Landing extends Component {
     const routes = ["stories", "map", "data", "about", "library"];
     document.querySelector(".circle").classList.add("grow");
     document.querySelector(".circle-overlay").classList.add("grow");
+    document.querySelector(".effect-circle").style.display = "none";
 
     setTimeout(() => {
       this.props.history.push(routes[this.state.index]);
@@ -276,11 +275,6 @@ export default class Landing extends Component {
               {/* <li className="nav-item">
                 <a onClick={this.navigate} className="nav-link">
                   library
-                </a>
-              </li>
-              <li className="nav-item">
-                <a onClick={this.navigate} className="nav-link">
-                  about
                 </a>
               </li> */}
             </ul>

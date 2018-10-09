@@ -14,7 +14,7 @@
   position: relative;
 }
 
-.img1 {
+.story-banner {
   vertical-align: middle;
   width: 100%;
   -webkit-box-align: center;
@@ -37,7 +37,7 @@
 .story-title1 {
   background: rgba(0, 0, 0, 0);
   position: absolute;
-  top: 0px;
+  top: -10vh;
   right: 0;
   bottom: 0;
   left: 0;
@@ -55,7 +55,7 @@
 .story-title1 h1 {
   color: var(--color-2);
   margin: 0;
-  font-size: 500%;
+  font-size: 400%;
   text-transform: capitalize;
   font-family: var(--main-font);
   font-weight: 100;
@@ -63,21 +63,25 @@
 
 .story-images {
   position: relative;
-  left: 5%;
+  left: 10%;
   width: 60%;
   margin: 0 auto;
 }
 
 .story-images img {
-  margin: 30px auto;
-}
-.story-1 {
-  position: relative;
-  left: 30%;
+  margin: 0 auto;
 }
 
-.w-100 {
-  width: 100%;
+.story-partner {
+  position: relative;
+  top: -98vh;
+  left: 80%;
+  height: 11vh;
+  max-width: 12vw;
+}
+
+.story-img {
+  width: 80%;
 }
 
 .story-text {
@@ -104,7 +108,7 @@
 } */
 
 @media (max-width: 768px) {
-  .img1 {
+  .story-banner {
     height: 100%;
   }
   .story-title1 {
@@ -118,7 +122,7 @@
     left: 0;
     margin: 0 auto;
   }
-  .w-100 {
+  .story-img {
     width: 100vw;
     left: 0;
   }
