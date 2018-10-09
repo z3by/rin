@@ -1,7 +1,8 @@
 @import "./styles/shared.css";
 
 ::-webkit-scrollbar {
-  width: 20px;
+  width: 10px;
+  transition: height 1s ease;
 }
 
 /* Track */

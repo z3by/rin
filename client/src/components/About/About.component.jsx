@@ -7,7 +7,7 @@ import Strategy from "./Strategy/Strategy.component";
 import HowItWorksComponent from "./HowItWorks/HowItWorks.component";
 import WhyRefugeesComponent from "./WhyRefugees/WhyRefugees.component";
 import WhoWeAreComponent from "./WhoWeAre/WhoWeAre.component";
-import { Route, Link } from "react-router-dom";
+import { Route, a } from "react-router-dom";
 
 export default class About extends Component {
   constructor() {
@@ -54,9 +54,36 @@ export default class About extends Component {
     }
   };
 
+  // navigate to specifec route
+  navigateTO = route => {
+    this.props.history.push(route);
+    setTimeout(() => {
+      document.querySelector("#scroll-sign").scrollIntoView({
+        behavior: "smooth"
+      });
+    });
+  };
+
+  scrollToTop = () => {
+    document.querySelector(".about-nav").scrollIntoView();
+  };
+
+  closePopup = () => {
+    document.querySelector(".read-more-popup").style.display = "none";
+  };
+
   render() {
     return (
       <div className="about fadeInFast">
+        <div className="read-more-popup" onClick={this.closePopup}>
+          <img src="" alt="" className="read-more-img" />
+          <div className="read-more-close">
+            <i className="fas fa-times" />
+          </div>
+          <h1 className="read-more-name">hello</h1>
+          <h2 className="read-more-title">hello</h2>
+          <p className="read-more-description">hello</p>
+        </div>
         <header>
           <div className="header">
             <h1 className="header-text" />
@@ -79,62 +106,96 @@ export default class About extends Component {
               stability among displaced people.
             </p>
           </div>
-          <ul className="grid-3 about-nav">
+          <ul className="grid-3 about-nav" data-aos="slide-up">
             <li>
-              <Link to={"/about/strategy"}>
+              <a
+                onClick={() => {
+                  this.navigateTO("/about/strategy");
+                }}
+              >
                 <h3>our strategy</h3>
                 <i class="fas fa-street-view" />
-              </Link>
+              </a>
             </li>
 
             <li>
-              <Link to={"/about/how-it-works"}>
+              <a
+                onClick={() => {
+                  this.navigateTO("/about/how-it-works");
+                }}
+              >
                 <h3>how it works</h3>
                 <i className="far fa-sun" />
-              </Link>
+              </a>
             </li>
 
             <li>
-              <Link to={"/about/who-we-are"}>
+              <a
+                onClick={() => {
+                  this.navigateTO("/about/who-we-are");
+                }}
+              >
                 <h3>who we are</h3>
                 <i className="fas fa-users" />
-              </Link>
+              </a>
             </li>
 
             <li>
-              <Link to={"/about/why-refugees"}>
+              <a
+                onClick={() => {
+                  this.navigateTO("/about/why-refugees");
+                }}
+              >
                 <h3>why refugees</h3>
                 <i className="fab fa-accusoft" />
-              </Link>
+              </a>
             </li>
 
             <li>
-              <Link to={"/about/team"}>
+              <a
+                onClick={() => {
+                  this.navigateTO("/about/team");
+                }}
+              >
                 <h3>meet the team</h3>
                 <i class="fas fa-users" />
-              </Link>
+              </a>
             </li>
 
             <li>
-              <Link to={"/about/steering"}>
+              <a
+                onClick={() => {
+                  this.navigateTO("/about/steering");
+                }}
+              >
                 <h3>steering comittee</h3>
                 <i className="fas fa-crosshairs" />
-              </Link>
+              </a>
             </li>
           </ul>
-          <Route path="/about/strategy" component={Strategy} />
-          <Route path="/about/how-it-works" component={HowItWorksComponent} />
-          <Route path="/about/why-refugees" component={WhyRefugeesComponent} />
-          <Route
-            path="/about/team"
-            render={() => <TeamComponent info={teamInfo} />}
-          />
-          <Route
-            path="/about/steering"
-            render={() => <TeamComponent info={steeringInfo} />}
-          />
-          <Route path="/about/who-we-are" component={WhoWeAreComponent} />
+
+          <div id="scroll-sign" />
+          <section id="about-routes">
+            <Route path="/about/strategy" component={Strategy} />
+            <Route path="/about/how-it-works" component={HowItWorksComponent} />
+            <Route
+              path="/about/why-refugees"
+              component={WhyRefugeesComponent}
+            />
+            <Route
+              path="/about/team"
+              render={() => <TeamComponent info={teamInfo} />}
+            />
+            <Route
+              path="/about/steering"
+              render={() => <TeamComponent info={steeringInfo} />}
+            />
+            <Route path="/about/who-we-are" component={WhoWeAreComponent} />
+          </section>
         </main>
+        <div className="back-to-top" onClick={this.scrollToTop}>
+          <i className="fas fa-arrow-circle-up" />
+        </div>
       </div>
     );
   }
