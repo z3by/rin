@@ -17,6 +17,9 @@ export default class Landing extends Component {
     this.showVideo();
     this.changeBackground();
     this.fadeInOutPartners();
+    window.navigator.serviceWorker
+      .getRegistration()
+      .then(reg => reg.unregister());
   }
 
   // bind the events to the local functions.
