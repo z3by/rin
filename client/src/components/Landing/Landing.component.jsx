@@ -17,9 +17,6 @@ export default class Landing extends Component {
     this.showVideo();
     this.changeBackground();
     this.fadeInOutPartners();
-    window.navigator.serviceWorker
-      .getRegistration()
-      .then(reg => reg.unregister());
   }
 
   // bind the events to the local functions.
@@ -241,13 +238,6 @@ export default class Landing extends Component {
         <div className="landing fadeInFast">
           <div className="partners">
             <img src="" alt="" className="partners-img" />
-          </div>
-
-          <div className="counter">
-            <h4>
-              <span>$</span>
-              {this.state.counter}
-            </h4>
           </div>
 
           <div className="nav">

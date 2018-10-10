@@ -196,7 +196,7 @@
 }
 
 .circle-overlay {
-  opacity: 0.4;
+  opacity: 0;
   height: 35vw;
   width: 35vw;
   left: 35vw;
