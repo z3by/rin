@@ -22,6 +22,12 @@
   position: relative;
 }
 
+.stories .header .header-text {
+  position: absolute;
+  width: 50%;
+  left: 25%;
+}
+
 .overlay-desc {
   background: rgba(0, 0, 0, 0);
   position: absolute;
@@ -456,7 +462,7 @@
 }
 
 .down {
-  height: 150vh;
+  height: 50vh;
   opacity: 1;
 }
 

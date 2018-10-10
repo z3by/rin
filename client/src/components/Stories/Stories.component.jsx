@@ -29,12 +29,7 @@ class Stories extends Component {
   };
 
   goDown = () => {
-    // document.querySelector(".link3").scrollIntoView({
-    //   behavior: "smooth"
-    // });
-
-    window.scroll({
-      top: 400,
+    document.querySelector(".link10").scrollIntoView({
       behavior: "smooth"
     });
   };
@@ -108,8 +103,6 @@ class Stories extends Component {
             </Link>
           </li>
         </ul>
-
-        <div className="down" />
       </div>
     );
   }

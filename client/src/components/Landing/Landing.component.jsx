@@ -17,9 +17,6 @@ export default class Landing extends Component {
     this.showVideo();
     this.changeBackground();
     this.fadeInOutPartners();
-    window.navigator.serviceWorker
-      .getRegistration()
-      .then(reg => reg.unregister());
   }
 
   // bind the events to the local functions.
@@ -43,8 +40,8 @@ export default class Landing extends Component {
 
     const circleX = e.clientX;
     const circleY = e.clientY;
-    document.querySelector(".effect-circle").style.top = circleY / 5 + "px";
-    document.querySelector(".effect-circle").style.left = circleX / 5 + "px";
+    document.querySelector(".effect-circle").style.top = circleY / 10 + "px";
+    document.querySelector(".effect-circle").style.left = circleX / 10 + "px";
   };
 
   // mouse wheel handler for the landing page
@@ -172,22 +169,30 @@ export default class Landing extends Component {
       .state.index + 1}.jpg)`;
     document.querySelector(".down-rec").style.backgroundSize = "100%";
     document.querySelector(".down-rec").style.backgroundAttachment = "fixed";
+    document.querySelector(
+      ".effect-circle"
+    ).style.background = `url(imgs/backs${this.state.index + 1}.jpg)`;
+    document.querySelector(".effect-circle").style.backgroundSize = "100%";
+    document.querySelector(".effect-circle").style.backgroundAttachment =
+      "fixed";
   };
 
   translateShapes = () => {
-    let random1 = Math.floor(Math.random() * 50);
-    let random2 = Math.floor(Math.random() * 50);
+    let random1 = Math.floor(Math.random() * 40);
+    let random2 = Math.floor(Math.random() * 40);
     if (random1 < 15) {
-      random1 += 15;
+      random1 += 20;
     }
 
     if (random2 < 15) {
-      random2 += 15;
+      random2 += 20;
     }
 
     document.querySelector(".up-rec").style.left = `${random1}%`;
+    document.querySelector(".up-rec").style.width = `${random1}vw`;
     document.querySelector(".up-rec-overlay").style.left = `${random1}%`;
     document.querySelector(".down-rec").style.right = `${random2}%`;
+    document.querySelector(".down-rec").style.width = `${random2}vw`;
     document.querySelector(".down-rec-overlay").style.right = `${random2}%`;
   };
 
@@ -210,6 +215,8 @@ export default class Landing extends Component {
     document.querySelector(".circle").classList.add("grow");
     document.querySelector(".circle-overlay").classList.add("grow");
     document.querySelector(".effect-circle").style.display = "none";
+    document.querySelector(".down-rec").style.display = "none";
+    document.querySelector(".up-rec").style.display = "none";
 
     setTimeout(() => {
       this.props.history.push(routes[this.state.index]);
@@ -239,15 +246,13 @@ export default class Landing extends Component {
           <img src="/imgs/old-logo.png" alt="" />
         </div> */}
         <div className="landing fadeInFast">
+          <img
+            className="transparent-background"
+            src="http://www.tierneyphotography.co.uk/cache/uploads/blog/1029/millenium_bridge_london_2_950_633_90.jpg"
+            alt=""
+          />
           <div className="partners">
             <img src="" alt="" className="partners-img" />
-          </div>
-
-          <div className="counter">
-            <h4>
-              <span>$</span>
-              {this.state.counter}
-            </h4>
           </div>
 
           <div className="nav">

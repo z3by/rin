@@ -139,6 +139,10 @@ export default class Map extends Component {
     });
   };
 
+  closeProjectInfo = () => {
+    document.querySelector(".project-info").style.display = "none";
+  };
+
   render() {
     const dots = this.state.projects.map((project, key) => {
       return (
@@ -156,6 +160,14 @@ export default class Map extends Component {
         style={{ height: "100vh", width: "100%" }}
         className="map fadeInFast"
       >
+        <div className="project-info">
+          <div className="read-more-close" onClick={this.closeProjectInfo}>
+            <i className="fas fa-times" />
+          </div>
+          <div className="project-info-content">
+            <p />
+          </div>
+        </div>
         <Filter
           filterProjectsByOrgName={this.filterProjectsByOrgName}
           onSlide={this.onSlide}
