@@ -9,42 +9,43 @@ module.exports = () => {
     port: process.env.RDS_PORT || "3306"
   });
 
-  connection.connect(function(err) {
+  connection.connect(function (err) {
     if (err) throw err;
     console.log("Connected!");
-    connection.query(migrateQuery.createDB, function(err, result) {
+    connection.query(migrateQuery.createDB, function (err, result) {
       if (err) throw err;
       console.log("Database created");
     });
 
-    connection.query(`USE rin`, function(err, result) {
+    connection.query(`USE rin`, function (err, result) {
       if (err) throw err;
       console.log("Database used");
     });
 
-    connection.query(migrateQuery.createCountriesTable, function(err, result) {
+    connection.query(migrateQuery.createCountriesTable, function (err, result) {
       if (err) throw err;
       console.log("countries table created");
     });
 
-    connection.query(migrateQuery.createLocationsTable, function(err, result) {
+    connection.query(migrateQuery.createLocationsTable, function (err, result) {
       if (err) throw err;
       console.log("locations table created");
     });
 
-    connection.query(migrateQuery.createPartnersTable, function(err, result) {
+    connection.query(migrateQuery.createPartnersTable, function (err, result) {
       if (err) throw err;
       console.log("partners table created");
     });
 
-    connection.query(migrateQuery.createProjectsTable, function(err, result) {
+    connection.query(migrateQuery.createProjectsTable, function (err, result) {
       if (err) throw err;
       console.log("projects table created");
     });
 
-    connection.query(migrateQuery.createStoriesTable, function(err, result) {
+    connection.query(migrateQuery.createStoriesTable, function (err, result) {
       if (err) throw err;
       console.log("stories table created");
     });
+
   });
 };
