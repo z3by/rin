@@ -213,8 +213,10 @@ export default class Landing extends Component {
   navigate = () => {
     const routes = ["stories", "map", "data", "about", "library"];
     document.querySelector(".circle").classList.add("grow");
+    document.querySelector(".circle").style.opacity = "1";
     document.querySelector(".circle-overlay").classList.add("grow");
     document.querySelector(".effect-circle").style.display = "none";
+    document.querySelector(".counter").style.display = "none";
     document.querySelector(".down-rec").style.display = "none";
     document.querySelector(".up-rec").style.display = "none";
 
@@ -248,7 +250,7 @@ export default class Landing extends Component {
         <div className="landing fadeInFast">
           <img
             className="transparent-background"
-            src="http://www.tierneyphotography.co.uk/cache/uploads/blog/1029/millenium_bridge_london_2_950_633_90.jpg"
+            src="https://images.unsplash.com/photo-1539023032992-ae77eacac916?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=901c5c951abcee02a30229fda0248880&auto=format&fit=crop&w=2134&q=80"
             alt=""
           />
           <div className="partners">
