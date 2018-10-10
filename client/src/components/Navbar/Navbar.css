@@ -117,6 +117,8 @@
   width: 120px;
   background: var(--color-3);
   display: initial;
+  position: absolute;
+  z-index: 20000;
 }
 
 .counter span {
