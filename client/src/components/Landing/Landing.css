@@ -35,8 +35,8 @@
 
 /* ------------------------------------ navigation group----------------------------------- */
 .effect-circle {
-  height: 30vw;
-  width: 30vw;
+  height: 300px;
+  width: 300px;
   background: var(--color-1);
   opacity: 0.5;
   position: absolute;
@@ -178,8 +178,8 @@
 
 .circle {
   opacity: 0.7;
-  height: 35vw;
-  width: 35vw;
+  height: 500px;
+  width: 500px;
   left: 35vw;
   bottom: 0;
   top: 0;
@@ -233,8 +233,8 @@
 .up-rec,
 .down-rec {
   /* box-shadow: 2px 2px 10px #333; */
-  height: 20vh;
-  width: 35vw;
+  height: 170px;
+  width: 30vw;
   position: absolute;
   z-index: 1;
   background-size: 100vh 100vw;
@@ -261,7 +261,7 @@
 .up-rec-overlay,
 .down-rec-overlay {
   mix-blend-mode: screen;
-  opacity: 0.5;
+  opacity: 0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   position: absolute;
@@ -316,8 +316,8 @@
 
 @media (max-width: 1024px) {
   .circle {
-    height: 60vw;
-    width: 60vw;
+    height: 500px;
+    width: 500px;
   }
 }
 
@@ -328,9 +328,9 @@
   }
   .circle {
     position: absolute;
-    height: 70vw;
-    width: 70vw;
-    left: 15vw;
+    height: 400px;
+    width: 400px;
+    left: calc(50vw - 200px);
     opacity: 0.5;
   }
 
@@ -362,7 +362,18 @@
   .down-rec,
   .down-rec-overlay,
   .up-rec-overlay {
-    height: 20vw;
+    height: 150px;
+    width: 40%;
+  }
+
+  .up-rec,
+  .up-rec-overlay {
+    top: 20vh;
+  }
+
+  .down-rec,
+  .down-rec-overlay {
+    bottom: 20vh;
   }
 }
 

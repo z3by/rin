@@ -65,9 +65,9 @@
 }
 
 .navbar {
-  position: fixed;
+  position: absolute;
   height: 100vh;
-  z-index: 100;
+  z-index: 10000;
   width: 200px;
   background: rgba(0, 0, 0, 0.8);
   transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -157,13 +157,10 @@
 }
 
 @media (max-width: 1024px) {
-  .navbar {
-    width: 100px;
-  }
   .logo {
-    height: 50px;
-    width: 50px;
-    margin: 20px 25px;
+    height: 100px;
+    width: 100px;
+    margin: 20px 50px;
   }
   .logo img {
     width: 40px;
@@ -184,5 +181,8 @@
   }
   .navbar {
     background: unset;
+  }
+  .toggle-nav {
+    display: none;
   }
 }
