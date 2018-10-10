@@ -92,3 +92,15 @@ p.tooltip-money {
     transform: scale3d(1, 1, 1);
   }
 }
+
+.tooltip-read-more {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  color: var(--color-3);
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
