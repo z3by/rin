@@ -1,13 +1,9 @@
 const mysql = require('mysql');
 const axios = require("axios");
+const dbConfig = require("./db.config");
 
 module.exports.getStories = (req, res) => {
-    const connection = mysql.createConnection({
-        host: process.env.RDS_HOSTNAME || "localhost",
-        user: process.env.RDS_USERNAME || "root",
-        password: process.env.RDS_PASSWORD || "123456",
-        port: process.env.RDS_PORT || "3306"
-    });
+    const connection = mysql.createConnection(dbConfig);
 
     connection.connect((err) => {
         if (err) throw err;
@@ -26,12 +22,7 @@ module.exports.getStories = (req, res) => {
 }
 
 module.exports.getStory = (req, res) => {
-    const connection = mysql.createConnection({
-        host: process.env.RDS_HOSTNAME || "localhost",
-        user: process.env.RDS_USERNAME || "root",
-        password: process.env.RDS_PASSWORD || "123456",
-        port: process.env.RDS_PORT || "3306"
-    });
+    const connection = mysql.createConnection(dbConfig);
 
     connection.connect((err) => {
         if (err) throw err;
@@ -51,12 +42,7 @@ module.exports.getStory = (req, res) => {
 }
 
 module.exports.addStory = (req, res) => {
-    const connection = mysql.createConnection({
-        host: process.env.RDS_HOSTNAME || "localhost",
-        user: process.env.RDS_USERNAME || "root",
-        password: process.env.RDS_PASSWORD || "123456",
-        port: process.env.RDS_PORT || "3306"
-    });
+    const connection = mysql.createConnection(dbConfig);
 
     connection.connect((err) => {
         if (err) throw err;
@@ -85,12 +71,7 @@ module.exports.addStory = (req, res) => {
 }
 
 module.exports.updateStory = (req, res) => {
-    const connection = mysql.createConnection({
-        host: process.env.RDS_HOSTNAME || "localhost",
-        user: process.env.RDS_USERNAME || "root",
-        password: process.env.RDS_PASSWORD || "123456",
-        port: process.env.RDS_PORT || "3306"
-    });
+    const connection = mysql.createConnection(dbConfig);
 
     connection.connect((err) => {
         if (err) throw err;
@@ -120,12 +101,7 @@ module.exports.updateStory = (req, res) => {
 }
 
 module.exports.deleteStory = (req, res) => {
-    const connection = mysql.createConnection({
-        host: process.env.RDS_HOSTNAME || "localhost",
-        user: process.env.RDS_USERNAME || "root",
-        password: process.env.RDS_PASSWORD || "123456",
-        port: process.env.RDS_PORT || "3306"
-    });
+    const connection = mysql.createConnection(dbConfig);
 
     connection.connect((err) => {
         if (err) throw err;

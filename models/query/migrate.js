@@ -26,14 +26,25 @@ module.exports = {
         REFERENCES countries (id)
 )`,
 
+  createPartnersTable: `
+CREATE TABLE IF NOT EXISTS partners(
+  id INT AUTO_INCREMENT,
+  name VARCHAR(255) NOT NULL,
+  logo_url VARCHAR(255) NOT NULL,
+  country_id INT,
+  PRIMARY KEY (id),
+  FOREIGN KEY (country_id)
+        REFERENCES countries (id)
+)`,
+
   createProjectsTable: `
   CREATE TABLE IF NOT EXISTS projects (
     id INT AUTO_INCREMENT,
     title VARCHAR(255) NOT NULL,
     start_date DATE,
     capacity INT NOT NULL,
-    location_id INT NOT NULL,
-    partner_id INT NOT NULL,
+    location_id INT,
+    partner_id INT,
     organization_name VARCHAR(255) NOT NULL,
     img_url VARCHAR(255) NOT NULL,
     type VARCHAR(255) NOT NULL,
@@ -59,15 +70,4 @@ CREATE TABLE IF NOT EXISTS stories(
   FOREIGN KEY (project_id)
         REFERENCES projects (id)
 )`,
-
-  createPartnersTable: `
-CREATE TABLE IF NOT EXISTS partners(
-  id INT AUTO_INCREMENT,
-  name VARCHAR(255) NOT NULL,
-  logo_url VARCHAR(255) NOT NULL,
-  country_id INT,
-  PRIMARY KEY (id),
-  FOREIGN KEY (country_id)
-        REFERENCES countries (id)
-)`
 };
