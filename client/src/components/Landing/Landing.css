@@ -36,11 +36,12 @@
 .transparent-background {
   position: absolute;
   z-index: 0;
-  top: 0;
+  top: -500px;
   min-width: 100%;
   min-height: 100vh;
   opacity: 0.4;
   filter: grayscale(100%) contrast(120%);
+  image-resolution: 20%;
 }
 /* ------------------------------------ navigation group----------------------------------- */
 .effect-circle {
@@ -50,7 +51,7 @@
   opacity: 1;
   position: absolute;
   border-radius: 50%;
-  filter: contrast(200%) brightness(120%);
+  filter: contrast(100%) brightness(120%);
 }
 
 .nav-group {
@@ -329,6 +330,13 @@
     width: 400px;
     left: calc(50vw - 200px);
   }
+  .up-rec {
+    top: calc(50vh - 350px);
+  }
+
+  .down-rec {
+    bottom: calc(50vh - 350px);
+  }
 }
 
 @media (max-width: 769px) {
@@ -352,7 +360,7 @@
 
   .nav-link,
   .nav-link.active {
-    font-size: 12vw;
+    font-size: 3rem;
   }
   .nav-item {
     width: 100vw;
