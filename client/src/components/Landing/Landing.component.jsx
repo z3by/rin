@@ -17,9 +17,6 @@ export default class Landing extends Component {
     this.showVideo();
     this.changeBackground();
     this.fadeInOutPartners();
-    window.navigator.serviceWorker
-      .getRegistration()
-      .then(reg => reg.unregister());
   }
 
   // bind the events to the local functions.
@@ -43,12 +40,13 @@ export default class Landing extends Component {
 
     const circleX = e.clientX;
     const circleY = e.clientY;
-    document.querySelector(".effect-circle").style.top = circleY / 5 + "px";
-    document.querySelector(".effect-circle").style.left = circleX / 5 + "px";
+    document.querySelector(".effect-circle").style.top = circleY / 10 + "px";
+    document.querySelector(".effect-circle").style.left = circleX / 10 + "px";
   };
 
   // mouse wheel handler for the landing page
   handleWheel = e => {
+    return;
     if (e.deltaY === -100) {
       this.animatePrev();
     } else {
@@ -172,22 +170,30 @@ export default class Landing extends Component {
       .state.index + 1}.jpg)`;
     document.querySelector(".down-rec").style.backgroundSize = "100%";
     document.querySelector(".down-rec").style.backgroundAttachment = "fixed";
+    document.querySelector(
+      ".effect-circle"
+    ).style.background = `url(imgs/backs${this.state.index + 1}.jpg)`;
+    document.querySelector(".effect-circle").style.backgroundSize = "100%";
+    document.querySelector(".effect-circle").style.backgroundAttachment =
+      "fixed";
   };
 
   translateShapes = () => {
-    let random1 = Math.floor(Math.random() * 50);
-    let random2 = Math.floor(Math.random() * 50);
+    let random1 = Math.floor(Math.random() * 40);
+    let random2 = Math.floor(Math.random() * 40);
     if (random1 < 15) {
-      random1 += 15;
+      random1 += 20;
     }
 
     if (random2 < 15) {
-      random2 += 15;
+      random2 += 20;
     }
 
     document.querySelector(".up-rec").style.left = `${random1}%`;
+    document.querySelector(".up-rec").style.width = `${random1}vw`;
     document.querySelector(".up-rec-overlay").style.left = `${random1}%`;
     document.querySelector(".down-rec").style.right = `${random2}%`;
+    document.querySelector(".down-rec").style.width = `${random2}vw`;
     document.querySelector(".down-rec-overlay").style.right = `${random2}%`;
   };
 
@@ -208,8 +214,11 @@ export default class Landing extends Component {
   navigate = () => {
     const routes = ["stories", "map", "data", "about", "library"];
     document.querySelector(".circle").classList.add("grow");
+    document.querySelector(".circle").style.opacity = "1";
     document.querySelector(".circle-overlay").classList.add("grow");
     document.querySelector(".effect-circle").style.display = "none";
+    document.querySelector(".down-rec").style.display = "none";
+    document.querySelector(".up-rec").style.display = "none";
 
     setTimeout(() => {
       this.props.history.push(routes[this.state.index]);
@@ -235,19 +244,25 @@ export default class Landing extends Component {
   render() {
     return (
       <div>
-        {/* <div className="splash-screen">
-          <img src="/imgs/old-logo.png" alt="" />
-        </div> */}
+        <div class="lines-container">
+          <div class="line" />
+          <div class="line" />
+          <div class="line" />
+          <div class="line" />
+          <div class="line" />
+          <div class="line" />
+          <div class="line" />
+          <div class="line" />
+          <div class="line" />
+        </div>
         <div className="landing fadeInFast">
+          <img
+            className="transparent-background"
+            src="https://images.unsplash.com/photo-1539023032992-ae77eacac916?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=901c5c951abcee02a30229fda0248880&auto=format&fit=crop&w=2134&q=80"
+            alt=""
+          />
           <div className="partners">
             <img src="" alt="" className="partners-img" />
-          </div>
-
-          <div className="counter">
-            <h4>
-              <span>$</span>
-              {this.state.counter}
-            </h4>
           </div>
 
           <div className="nav">
@@ -303,13 +318,17 @@ export default class Landing extends Component {
           <div className="counter">
             <h4>
               <span>$</span>
-              {this.state.counter}
+              10,034,623
             </h4>
           </div>
 
           <div className="arrows">
-            <img src="imgs/arrow.png" alt="" onClick={this.animatePrev} />
-            <img src="imgs/arrow.png" alt="" onClick={this.animateNext} />
+            <a onClick={this.animatePrev}>
+              <i className="fas fa-arrow-left" />
+            </a>
+            <a onClick={this.animateNext}>
+              <i className="fas fa-arrow-right" />
+            </a>
           </div>
         </div>
       </div>

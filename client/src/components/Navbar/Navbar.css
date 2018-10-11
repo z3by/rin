@@ -2,7 +2,8 @@
   position: relative;
   height: 10px;
   width: 22px;
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--color-1);
+  box-shadow: 0px 0px 2px var(--dark-transparent);
 }
 
 .rounded {
@@ -65,11 +66,13 @@
 }
 
 .navbar {
-  position: fixed;
+  position: absolute;
   height: 100vh;
-  z-index: 100;
-  padding: 5vh;
-  background: rgba(0, 0, 0, 0.8);
+  z-index: 10000;
+  width: 200px;
+  background: var(--dark-transparent);
+  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  box-shadow: 2px 0px 10px var(--dark-transparent);
 }
 
 .navbar-middle {
@@ -99,65 +102,51 @@
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  height: 14vh;
-  width: 14vh;
+  height: 100px;
+  width: 100px;
+  margin: 20px 50px;
   border-radius: 50%;
   border: var(--light-border);
-  background: var(--color-3);
+  background: var(--color-1);
 }
 
 .logo-img {
   max-width: 95px;
 }
 
-.counter {
-  height: 6vh;
-  width: 16vh;
-  position: absolute;
-  background: var(--color-3);
+.toggle-nav {
+  position: relative;
+  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  width: 30px;
+  height: 50px;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  top: 50%;
+  left: 200px;
+  background: var(--dark-transparent);
+  box-shadow: 0px 0px 5px var(--dark-transparent);
 }
 
-.counter span {
-  color: var(--color-4);
-  margin-left: 6px;
+.toggle-nav i {
+  color: var(--color-1);
+  margin: 15px;
+  margin-left: 3px;
+  transform: rotate(180deg);
+  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  font-size: 20px;
 }
-
-.counter h4 {
-  text-align: center;
-  margin: 0;
+.toggle-nav:hover i {
   color: var(--color-2);
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 6vh;
-}
-
-.back-gredient {
-  position: fixed;
-  z-index: 99;
-  background: -webkit-gradient(
-    linear,
-    right top,
-    left top,
-    from(rgba(0, 0, 0, 0)),
-    to(rgba(10, 0, 30, 0.7))
-  );
-  background: linear-gradient(-90deg, rgba(0, 0, 0, 0), rgba(10, 0, 30, 0.7));
-  height: 100vh;
-  width: 15%;
 }
 
 @media (max-width: 1024px) {
-  .navbar {
-    width: 100px;
-    padding: 0;
-  }
   .logo {
     height: 100px;
     width: 100px;
+    margin: 20px 50px;
   }
-  .counter {
-    width: 100px;
-    margin: 0;
-    padding: 0;
+  .logo img {
+    width: 40px;
   }
 }
 
@@ -168,5 +157,8 @@
   }
   .navbar {
     background: unset;
+  }
+  .toggle-nav {
+    display: none;
   }
 }

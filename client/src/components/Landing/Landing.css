@@ -33,14 +33,28 @@
   }
 }
 
+.transparent-background {
+  position: absolute;
+  z-index: 0;
+  top: -500px;
+  min-width: 100%;
+  min-height: 100vh;
+  opacity: 0.4;
+  filter: grayscale(100%) contrast(120%);
+  image-resolution: 20%;
+}
 /* ------------------------------------ navigation group----------------------------------- */
 .effect-circle {
-  height: 30vw;
-  width: 30vw;
+  height: 400px;
+  width: 400px;
   background: var(--color-1);
-  opacity: 0.5;
+  opacity: 1;
   position: absolute;
   border-radius: 50%;
+  filter: contrast(100%) brightness(120%);
+  transition: top 2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    left 2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    background 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .nav-group {
@@ -66,7 +80,7 @@
 
 .nav-link {
   font-family: var(--main-font);
-  color: var(--color-5);
+  color: var(--color-3);
   font-size: 6vw;
   text-transform: uppercase;
   font-weight: bolder;
@@ -158,7 +172,6 @@
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  background: var(--color-1);
 }
 
 .partners > img {
@@ -177,9 +190,9 @@
 /* --------------------------------------- partners end---------------------------------- */
 
 .circle {
-  opacity: 0.7;
-  height: 35vw;
-  width: 35vw;
+  opacity: 0.5;
+  height: 500px;
+  width: 500px;
   left: 35vw;
   bottom: 0;
   top: 0;
@@ -193,10 +206,11 @@
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   box-shadow: 2px 2px 10px #333;
+  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .circle-overlay {
-  opacity: 0.4;
+  opacity: 0;
   height: 35vw;
   width: 35vw;
   left: 35vw;
@@ -233,15 +247,15 @@
 .up-rec,
 .down-rec {
   /* box-shadow: 2px 2px 10px #333; */
-  height: 20vh;
-  width: 35vw;
+  height: 170px;
+  width: 30vw;
   position: absolute;
   z-index: 1;
   background-size: 100vh 100vw;
   background-attachment: fixed;
-  opacity: 0.7;
+  opacity: 0.5;
   -webkit-transition: left ease 1s, right ease 1s;
-  transition: left ease 1s, right ease 1s;
+  transition: left ease 1s, right ease 1s, width ease 1.5s;
   background-repeat: no-repeat;
   -moz-transition: left ease 1s, right ease 1s;
   -ms-transition: left ease 1s, right ease 1s;
@@ -261,7 +275,7 @@
 .up-rec-overlay,
 .down-rec-overlay {
   mix-blend-mode: screen;
-  opacity: 0.5;
+  opacity: 0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   position: absolute;
@@ -291,14 +305,13 @@
 }
 
 .counter {
-  height: 6vh;
-  width: 16vh;
+  height: 50px;
+  width: 120px;
   position: absolute;
-  background: var(--color-3);
-  border: var(--light-border);
-  left: 2.5%;
-  bottom: 5vh;
-  z-index: 1200;
+  background: var(--color-4);
+  left: 40px;
+  bottom: 50px;
+  z-index: 20000;
 }
 
 .counter span {
@@ -309,15 +322,23 @@
 .counter h4 {
   text-align: center;
   margin: 0;
-  color: var(--color-4);
+  color: var(--color-1);
   font-family: Arial, Helvetica, sans-serif;
   line-height: 6vh;
 }
 
 @media (max-width: 1024px) {
   .circle {
-    height: 60vw;
-    width: 60vw;
+    height: 400px;
+    width: 400px;
+    left: calc(50vw - 200px);
+  }
+  .up-rec {
+    top: calc(50vh - 350px);
+  }
+
+  .down-rec {
+    bottom: calc(50vh - 350px);
   }
 }
 
@@ -328,9 +349,9 @@
   }
   .circle {
     position: absolute;
-    height: 70vw;
-    width: 70vw;
-    left: 15vw;
+    height: 400px;
+    width: 400px;
+    left: calc(50vw - 200px);
     opacity: 0.5;
   }
 
@@ -342,7 +363,7 @@
 
   .nav-link,
   .nav-link.active {
-    font-size: 8vw;
+    font-size: 3rem;
   }
   .nav-item {
     width: 100vw;
@@ -362,7 +383,18 @@
   .down-rec,
   .down-rec-overlay,
   .up-rec-overlay {
-    height: 20vw;
+    height: 150px;
+    width: 40%;
+  }
+
+  .up-rec,
+  .up-rec-overlay {
+    top: 20vh;
+  }
+
+  .down-rec,
+  .down-rec-overlay {
+    bottom: 20vh;
   }
 }
 
@@ -382,4 +414,22 @@
   .nav-link.active {
     font-size: 8vw;
   }
+}
+
+.lines-container {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  right: 5%;
+  bottom: 0;
+  left: 5%;
+  z-index: 1;
+  height: 100%;
+}
+
+.line {
+  width: 1px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
 }

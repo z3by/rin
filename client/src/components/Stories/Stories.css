@@ -1,6 +1,4 @@
 .stories {
-  /* background-image: url("/imgs/bg.png"); */
-  background-size: cover;
   position: relative;
 }
 
@@ -20,6 +18,12 @@
 
 .video-container {
   position: relative;
+}
+
+.stories .header .header-text {
+  position: absolute;
+  width: 50%;
+  left: 25%;
 }
 
 .overlay-desc {
@@ -456,16 +460,14 @@
 }
 
 .down {
-  height: 150vh;
+  height: 50vh;
   opacity: 1;
 }
 
-.particles-js canvas {
+.particles-js {
   position: absolute;
-  width: 85%;
-  height: 100%;
-  z-index: -1;
-  left: 11vh;
+  width: 100%;
+  z-index: 0;
 }
 
 .spinner-text {
@@ -551,7 +553,8 @@
     -webkit-transform: rotate(
       0deg
     ); /* Chrome, Opera 15+, Safari 3.1+ */ /* IE 9 */
-    transform: rotate(0deg); /* Firefox 16+, IE 10+, Opera */
+    transform: rotate(0deg);
+    /* Firefox 16+, IE 10+, Opera */
   }
   100% {
     -webkit-transform: rotate(360deg);

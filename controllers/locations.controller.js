@@ -1,13 +1,9 @@
 const mysql = require('mysql');
 const axios = require("axios");
+const dbConfig = require("./db.config");
 
 module.exports.getLocations = (req, res) => {
-    const connection = mysql.createConnection({
-        host: process.env.RDS_HOSTNAME || "localhost",
-        user: process.env.RDS_USERNAME || "root",
-        password: process.env.RDS_PASSWORD || "123456",
-        port: process.env.RDS_PORT || "3306"
-    });
+    const connection = mysql.createConnection(dbConfig);
 
     connection.connect((err) => {
         if (err) throw err;
@@ -26,12 +22,7 @@ module.exports.getLocations = (req, res) => {
 }
 
 module.exports.getLocation = (req, res) => {
-    const connection = mysql.createConnection({
-        host: process.env.RDS_HOSTNAME || "localhost",
-        user: process.env.RDS_USERNAME || "root",
-        password: process.env.RDS_PASSWORD || "123456",
-        port: process.env.RDS_PORT || "3306"
-    });
+    const connection = mysql.createConnection(dbConfig);
 
     connection.connect((err) => {
         if (err) throw err;
@@ -51,12 +42,7 @@ module.exports.getLocation = (req, res) => {
 }
 
 module.exports.addLocation = (req, res) => {
-    const connection = mysql.createConnection({
-        host: process.env.RDS_HOSTNAME || "localhost",
-        user: process.env.RDS_USERNAME || "root",
-        password: process.env.RDS_PASSWORD || "123456",
-        port: process.env.RDS_PORT || "3306"
-    });
+    const connection = mysql.createConnection(dbConfig);
 
     connection.connect((err) => {
         if (err) throw err;
@@ -68,13 +54,12 @@ module.exports.addLocation = (req, res) => {
         });
 
         let data = {
-            id: req.body.id,
             country_id: req.body.country_id,
             lng: req.body.lng,
             lat: req.body.lat
         };
 
-        let qry = `insert into locations values(${data.id},${data.country_id}, ${data.lng}, ${data.lat});`;
+        let qry = `insert into locations(country_id, lng, lat) values(${data.id},${data.country_id}, ${data.lng}, ${data.lat});`;
         connection.query(qry, (err, result) => {
             if (err) throw err;
             res.send("location row inserted successfully");
@@ -83,12 +68,7 @@ module.exports.addLocation = (req, res) => {
 }
 
 module.exports.updateLocation = (req, res) => {
-    const connection = mysql.createConnection({
-        host: process.env.RDS_HOSTNAME || "localhost",
-        user: process.env.RDS_USERNAME || "root",
-        password: process.env.RDS_PASSWORD || "123456",
-        port: process.env.RDS_PORT || "3306"
-    });
+    const connection = mysql.createConnection(dbConfig);
 
     connection.connect((err) => {
         if (err) throw err;
@@ -116,12 +96,7 @@ module.exports.updateLocation = (req, res) => {
 }
 
 module.exports.deleteLocation = (req, res) => {
-    const connection = mysql.createConnection({
-        host: process.env.RDS_HOSTNAME || "localhost",
-        user: process.env.RDS_USERNAME || "root",
-        password: process.env.RDS_PASSWORD || "123456",
-        port: process.env.RDS_PORT || "3306"
-    });
+    const connection = mysql.createConnection(dbConfig);
 
     connection.connect((err) => {
         if (err) throw err;
