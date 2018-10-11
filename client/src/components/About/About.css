@@ -13,7 +13,7 @@
 }
 
 .heading-theme-2 {
-  color: var(--color-3);
+  color: var(--color-1);
   text-shadow: 1px 1px 4px #555;
   font-size: 4rem;
   font-family: var(--main-font);
@@ -23,14 +23,15 @@
 
 .heading-theme-3 {
   color: var(--color-5);
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-family: var(--main-font);
   margin: 5px;
   margin-left: 0;
+  font-weight: 500;
 }
 
 .heading-theme-4 {
-  color: var(--color-4);
+  color: var(--color-5);
   font-size: 2rem;
   font-family: var(--main-font);
   margin: 10px;
@@ -43,11 +44,10 @@
 
 .p-theme-1 {
   color: var(--color-4);
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-family: var(--main-font);
   margin-bottom: 50px;
   margin-left: 0;
-  text-align: justify;
 }
 
 .about-header {

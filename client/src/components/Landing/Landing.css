@@ -52,6 +52,9 @@
   position: absolute;
   border-radius: 50%;
   filter: contrast(100%) brightness(120%);
+  transition: top 2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    left 2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    background 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .nav-group {
@@ -77,7 +80,7 @@
 
 .nav-link {
   font-family: var(--main-font);
-  color: var(--color-5);
+  color: var(--color-3);
   font-size: 6vw;
   text-transform: uppercase;
   font-weight: bolder;
@@ -203,6 +206,7 @@
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   box-shadow: 2px 2px 10px #333;
+  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .circle-overlay {
@@ -301,14 +305,13 @@
 }
 
 .counter {
-  height: 6vh;
-  width: 16vh;
+  height: 50px;
+  width: 120px;
   position: absolute;
-  background: var(--color-3);
-  border: var(--light-border);
-  left: 2.5%;
-  bottom: 5vh;
-  z-index: 1200;
+  background: var(--color-4);
+  left: 40px;
+  bottom: 50px;
+  z-index: 20000;
 }
 
 .counter span {
@@ -319,7 +322,7 @@
 .counter h4 {
   text-align: center;
   margin: 0;
-  color: var(--color-4);
+  color: var(--color-1);
   font-family: Arial, Helvetica, sans-serif;
   line-height: 6vh;
 }
@@ -411,4 +414,22 @@
   .nav-link.active {
     font-size: 8vw;
   }
+}
+
+.lines-container {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  right: 5%;
+  bottom: 0;
+  left: 5%;
+  z-index: 1;
+  height: 100%;
+}
+
+.line {
+  width: 1px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
 }
