@@ -46,6 +46,7 @@ export default class Landing extends Component {
 
   // mouse wheel handler for the landing page
   handleWheel = e => {
+    return;
     if (e.deltaY === -100) {
       this.animatePrev();
     } else {
@@ -243,6 +244,17 @@ export default class Landing extends Component {
   render() {
     return (
       <div>
+        <div class="lines-container">
+          <div class="line" />
+          <div class="line" />
+          <div class="line" />
+          <div class="line" />
+          <div class="line" />
+          <div class="line" />
+          <div class="line" />
+          <div class="line" />
+          <div class="line" />
+        </div>
         <div className="landing fadeInFast">
           <img
             className="transparent-background"
