@@ -128,7 +128,7 @@
 }
 
 .toggle-nav i {
-  color: var(--color-2);
+  color: var(--color-1);
   margin: 15px;
   margin-left: 3px;
   transform: rotate(180deg);
@@ -136,7 +136,7 @@
   font-size: 20px;
 }
 .toggle-nav:hover i {
-  color: var(--color-3);
+  color: var(--color-2);
 }
 
 @media (max-width: 1024px) {

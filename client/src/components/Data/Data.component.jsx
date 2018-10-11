@@ -90,8 +90,12 @@ export default class Data extends Component {
           </div>
         </div>
         <div className="arrows">
-          <img src="imgs/arrow.png" alt="" onClick={this.onPageUp} />
-          <img src="imgs/arrow.png" alt="" onClick={this.onPageDown} />
+          <a onClick={this.onPageUp}>
+            <i className="fas fa-arrow-left" />
+          </a>
+          <a onClick={this.onPageDown}>
+            <i className="fas fa-arrow-right" />
+          </a>
         </div>
       </div>
     );

@@ -169,14 +169,14 @@ label {
 }
 
 .arrows i {
-  color: var(--color-2);
+  color: var(--color-1);
   margin: 20px 25px;
   transition: all 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
   font-size: 20px;
 }
 
 .arrows i:hover {
-  color: var(--color-5);
+  color: var(--color-2);
 }
 .slideInRight {
   -webkit-animation-name: slideInRight;
