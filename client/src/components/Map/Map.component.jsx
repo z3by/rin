@@ -174,6 +174,7 @@ export default class Map extends Component {
           filterByCountry={this.filterByCountry}
         />
         <div className="spectrum-container">
+          <h2 className="heading-theme-1">filter by the projects type</h2>
           <Spectrum className="" filterByType={this.filterProjectsByType} />
         </div>
         <GoogleMapReact

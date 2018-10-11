@@ -8,7 +8,7 @@ export default props => {
         <i className="fas fa-users" />
         Who We Are
       </h1>
-      <h3 className="heading-theme-4 color-5">
+      <h3 className="heading-theme-3">
         A commitment to courageous action, innovative economic solutions, and
         deep collaboration.
       </h3>

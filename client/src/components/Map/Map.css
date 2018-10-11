@@ -29,3 +29,11 @@
 .project-info img {
   height: 300px;
 }
+
+.spectrum-container h2 {
+  position: absolute;
+  z-index: 100;
+  font-size: 22px;
+  top: -30px;
+  color: #eee;
+}

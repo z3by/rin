@@ -1,31 +1,50 @@
-@import url("https://fonts.googleapis.com/css?family=Baloo+Tammudu|Comfortaa|Dosis|Exo+2|Noto+Sans+JP|Nunito|Quicksand");
-@import url("https://fonts.googleapis.com/css?family=Kadwa:700|Orbitron|Righteous|Russo+One");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:800");
 @import url("https://fonts.googleapis.com/css?family=Catamaran");
 
 :root {
-  /* <<<<< theme number 1 >>>>>>> */
-  /* --color-1: #363636;
-  --color-2: #ef8e38;
-  --color-3: #181818;
-  --color-4: #0094ab;
-  --color-5: #c1b5a1; */
-  /* <<<<< theme number 2 >>>>>>> */
   /* --color-1: #3c3c3b;
   --color-2: #ef8e38;
   --color-3: #d2e5ed;
   --color-4: #eee;
   --color-5: #8c8c8a; */
-  /* <<<<< theme number 3 >>>>>>> */
-  --color-1: #d5d5d3;
-  --color-2: #fcbc53;
-  --color-3: white;
-  --color-4: #2e2e2e;
-  --color-5: #959593;
-
-  --light-transparent: rgba(255, 255, 255, 0.3);
-  --light-border: solid 1px var(--light-transparent);
-  --main-font: "Catamaran", Helvetica, Arial, sans-serif;
+  /* --light-transparent: rgba(255, 255, 255, 0.3); */
+  /* /* --dark-transparent: rgba(0, 0, 0, 0.5); */
+  /* --light-border: solid 1px var(--light-transparent); */
+  --main-font: "OpenSans", Helvetica, Arial, sans-serif;
   --smooth: all 1300ms cubic-bezier(0.215, 0.61, 0.355, 1);
+
+  /* 11111111111111111111111111111111111111111111 */
+  /* --color-1: #eee;
+  --color-2: #ff6644;
+  --color-3: #d2e5ed;
+  --color-4: #eee;
+  --color-5: #8c8c8a; */
+
+  /* 11111111111111111111111111111111111111111111 */
+  /* --color-1: #888;
+  --color-2: #ff8800;
+  --color-3: #777;
+  --color-4: #eee;
+  --color-5: #222;
+  --light-transparent: rgba(255, 255, 255, 0.6);
+  --dark-transparent: rgba(0, 0, 0, 0.5); */
+  /* 11111111111111111111111111111111111111111111 */
+  --color-1: #fff;
+  --color-2: #f26101;
+  --color-3: #dedede;
+  --color-4: #313732;
+  --color-5: #8aa8b0;
+  --light-transparent: rgba(255, 255, 255, 0.6);
+  --dark-transparent: rgba(0, 0, 0, 0.5);
+
+  /* 11111111111111111111111111111111111111111111 */
+  /* --color-1: #456f74;
+  --color-2: #eb5937;
+  --color-3: #403d3c;
+  --color-4: #d3cbbd;
+  --color-5: #403d3c;
+  --light-transparent: rgba(255, 255, 255, 0.6);
+  --dark-transparent: rgba(0, 0, 0, 0.5); */
 }
 
 body,
@@ -58,7 +77,6 @@ a {
 
 b {
   color: var(--color-2);
-  text-shadow: 1px 1px 4px #555;
   text-transform: capitalize;
 }
 
@@ -137,39 +155,29 @@ label {
 }
 
 .arrows {
-  -webkit-transform: rotate(90deg) translateX(-40px);
-  transform: rotate(90deg) translateX(-40px);
   position: absolute;
-  bottom: 2.5vh;
+  bottom: 30px;
   right: 50px;
   z-index: 11;
   cursor: pointer;
   margin: 0;
-  padding: 10px;
-  padding-bottom: 0;
   -webkit-transition: var(--smooth);
   transition: var(--smooth);
-  background: var(--color-4);
+  background: var(--dark-transparent);
   border-radius: 50px;
+  box-shadow: 0px 0px 5px var(--dark-transparent);
 }
 
-.arrows img {
-  width: 50px;
-  filter: brightness(1.5);
+.arrows i {
+  color: var(--color-2);
+  margin: 20px 25px;
+  transition: all 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+  font-size: 20px;
 }
 
-.arrows img:hover {
-  -webkit-filter: brightness(1.5) saturate(0.4);
-  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="linear" slope="1.5" /><feFuncG type="linear" slope="1.5" /><feFuncB type="linear" slope="1.5" /></feComponentTransfer><feColorMatrix type="matrix" color-interpolation-filters="sRGB" values="0.5278 0.429 0.043199999999999995 0 0 0.1278 0.833 0.043199999999999995 0 0 0.1278 0.429 0.44320000000000004 0 0 0 0 0 1 0" /></filter></svg>#filter');
-  filter: brightness(1.5) saturate(0.4);
+.arrows i:hover {
+  color: var(--color-5);
 }
-
-.arrows img:nth-child(2) {
-  -webkit-transform: rotate(180deg);
-  transform: rotate(180deg);
-  margin-left: 20px;
-}
-
 .slideInRight {
   -webkit-animation-name: slideInRight;
   animation-name: slideInRight;
@@ -230,14 +238,14 @@ input[type="range"]::-webkit-slider-runnable-track {
   cursor: pointer;
   -webkit-box-shadow: 0px 0px 0px #000000;
   box-shadow: 0px 0px 0px #000000;
-  background: var(--color-5);
+  background: var(--color-3);
   border-radius: 1px;
   border: 0px solid #000000;
 }
 input[type="range"]::-webkit-slider-thumb {
   -webkit-box-shadow: 0px 0px 0px #000000;
   box-shadow: 0px 0px 0px #000000;
-  border: 1px solid var(--color-5);
+  border: 1px solid var(--color-3);
   height: 18px;
   width: 18px;
   border-radius: 25px;
@@ -247,7 +255,7 @@ input[type="range"]::-webkit-slider-thumb {
   margin-top: -7px;
 }
 input[type="range"]:focus::-webkit-slider-runnable-track {
-  background: var(--color-5);
+  background: var(--color-3);
 }
 input[type="range"]::-moz-range-track {
   width: 100%;
@@ -255,13 +263,13 @@ input[type="range"]::-moz-range-track {
   cursor: pointer;
   animate: 0.2s;
   box-shadow: 0px 0px 0px #000000;
-  background: var(--color-5);
+  background: var(--color-3);
   border-radius: 1px;
   border: 0px solid #000000;
 }
 input[type="range"]::-moz-range-thumb {
   box-shadow: 0px 0px 0px #000000;
-  border: 1px solid var(--color-5);
+  border: 1px solid var(--color-3);
   height: 18px;
   width: 18px;
   border-radius: 25px;
@@ -278,13 +286,13 @@ input[type="range"]::-ms-track {
   color: transparent;
 }
 input[type="range"]::-ms-fill-lower {
-  background: var(--color-5);
+  background: var(--color-3);
   border: 0px solid #000000;
   border-radius: 2px;
   box-shadow: 0px 0px 0px #000000;
 }
 input[type="range"]::-ms-fill-upper {
-  background: var(--color-5);
+  background: var(--color-3);
   border: 0px solid #000000;
   border-radius: 2px;
   box-shadow: 0px 0px 0px #000000;
@@ -292,7 +300,7 @@ input[type="range"]::-ms-fill-upper {
 input[type="range"]::-ms-thumb {
   margin-top: 1px;
   box-shadow: 0px 0px 0px #000000;
-  border: 1px solid var(--color-5);
+  border: 1px solid var(--color-3);
   height: 18px;
   width: 18px;
   border-radius: 25px;
@@ -300,10 +308,10 @@ input[type="range"]::-ms-thumb {
   cursor: pointer;
 }
 input[type="range"]:focus::-ms-fill-lower {
-  background: var(--color-5);
+  background: var(--color-3);
 }
 input[type="range"]:focus::-ms-fill-upper {
-  background: var(--color-5);
+  background: var(--color-3);
 }
 video {
   width: 100vw;
@@ -323,7 +331,7 @@ select {
 option {
   color: var(--color-4);
   font-size: 16px;
-  background: var(--color-5);
+  background: var(--color-3);
 }
 
 option:hover {

@@ -216,7 +216,6 @@ export default class Landing extends Component {
     document.querySelector(".circle").style.opacity = "1";
     document.querySelector(".circle-overlay").classList.add("grow");
     document.querySelector(".effect-circle").style.display = "none";
-    document.querySelector(".counter").style.display = "none";
     document.querySelector(".down-rec").style.display = "none";
     document.querySelector(".up-rec").style.display = "none";
 
@@ -244,9 +243,6 @@ export default class Landing extends Component {
   render() {
     return (
       <div>
-        {/* <div className="splash-screen">
-          <img src="/imgs/old-logo.png" alt="" />
-        </div> */}
         <div className="landing fadeInFast">
           <img
             className="transparent-background"
@@ -310,13 +306,17 @@ export default class Landing extends Component {
           <div className="counter">
             <h4>
               <span>$</span>
-              {this.state.counter}
+              10,034,623
             </h4>
           </div>
 
           <div className="arrows">
-            <img src="imgs/arrow.png" alt="" onClick={this.animatePrev} />
-            <img src="imgs/arrow.png" alt="" onClick={this.animateNext} />
+            <a onClick={this.animatePrev}>
+              <i className="fas fa-arrow-left" />
+            </a>
+            <a onClick={this.animateNext}>
+              <i className="fas fa-arrow-right" />
+            </a>
           </div>
         </div>
       </div>

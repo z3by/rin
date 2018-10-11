@@ -21,8 +21,14 @@ export default class Navbar extends Component {
       document.querySelector(".navbar-middle").style.display = "none";
       document.querySelector(".toggle-nav").style.left = "0";
       document.querySelector(".toggle-nav i").style.transform = "initial";
+      if (!!document.querySelector(".counter")) {
+        document.querySelector(".counter").style.display = "none";
+      }
     } else {
       document.querySelector(".navbar").style.width = "200px";
+      if (!!document.querySelector(".counter")) {
+        document.querySelector(".counter").style.display = "block";
+      }
       document.querySelector(".navbar-middle").style.display = "flex";
       document.querySelector(".toggle-nav").style.left = "200px";
       document.querySelector(".toggle-nav i").style.transform =
@@ -97,12 +103,6 @@ export default class Navbar extends Component {
               </div>
             </Link> */}
           </div>
-        </div>
-        <div className="counter">
-          <h4>
-            <span>$</span>
-            {this.state.counter}
-          </h4>
         </div>
       </div>
     );
