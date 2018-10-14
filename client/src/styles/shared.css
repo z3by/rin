@@ -10,7 +10,7 @@
   /* --light-transparent: rgba(255, 255, 255, 0.3); */
   /* /* --dark-transparent: rgba(0, 0, 0, 0.5); */
   /* --light-border: solid 1px var(--light-transparent); */
-  --main-font: "OpenSans", Helvetica, Arial, sans-serif;
+  --main-font: "Catamaran", Helvetica, Arial, sans-serif;
   --smooth: all 1300ms cubic-bezier(0.215, 0.61, 0.355, 1);
 
   /* 11111111111111111111111111111111111111111111 */
@@ -21,21 +21,19 @@
   --color-5: #8c8c8a; */
 
   /* 11111111111111111111111111111111111111111111 */
-  /* --color-1: #888;
+  --color-1: #ccc;
   --color-2: #ff8800;
   --color-3: #777;
   --color-4: #eee;
   --color-5: #222;
-  --light-transparent: rgba(255, 255, 255, 0.6);
-  --dark-transparent: rgba(0, 0, 0, 0.5); */
   /* 11111111111111111111111111111111111111111111 */
-  --color-1: #fff;
+  /* --color-1: #fff;
   --color-2: #f26101;
   --color-3: #dedede;
   --color-4: #313732;
-  --color-5: #8aa8b0;
+  --color-5: #8aa8b0; */
   --light-transparent: rgba(255, 255, 255, 0.6);
-  --dark-transparent: rgba(0, 0, 0, 0.5);
+  --dark-transparent: rgba(0, 0, 0, 0.7);
 
   /* 11111111111111111111111111111111111111111111 */
   /* --color-1: #456f74;

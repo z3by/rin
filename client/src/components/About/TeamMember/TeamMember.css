@@ -21,7 +21,7 @@
   max-width: 480px;
   max-height: 360px;
   width: 30%;
-  background: #3085a3;
+  background: lightslategray;
   text-align: center;
   cursor: pointer;
 }
@@ -76,7 +76,7 @@
   font-weight: 800;
 }
 
-.team-member figure h2,
+.team-member h2,
 .team-member figure p {
   font-family: var(--main-font);
   font-weight: 100;
@@ -101,13 +101,6 @@ figure.effect-chico:hover img {
   transform: scale(1);
 }
 
-figure.effect-chico figca figure.effect-chico:hover h2 {
-  display: none;
-}
-ption {
-  padding: 3em;
-}
-
 figure.effect-chico figcaption::before {
   position: absolute;
   top: 30px;
@@ -127,11 +120,11 @@ figure.effect-chico p {
   transition: opacity 0.35s, transform 0.35s;
 }
 
-figure.effect-chico h2 {
-  padding: 20% 0 20px 0;
-}
-
 figure.effect-chico p {
+  position: absolute;
+  bottom: 15%;
+  left: 0;
+  right: 0;
   margin: 0 auto;
   max-width: 200px;
   -webkit-transform: scale(1.5);
@@ -141,17 +134,16 @@ figure.effect-chico p {
 figure.effect-chico p a.read-more {
   display: block;
   margin: 0 auto;
-  margin-top: 100px;
   border: solid 1px #eee;
   padding: 0;
   width: 50%;
 }
 
 figure.effect-chico p a.read-more:hover {
-  border-radius: 10px;
   transition: var(--smooth);
   transition-duration: 0.3s;
-  border-bottom: solid white 2px;
+  background: #eee;
+  color: var(--color-5);
 }
 
 .team-member p.team-description {
