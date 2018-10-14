@@ -22,85 +22,123 @@
   animation: unset;
 }
 
-.map-img {
-  padding: 20px;
+.project-info {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  height: 300px;
+  width: 450px;
+  top: -145px;
+  left: -225px;
+  z-index: 100000;
+  transform: scale(0);
+  transition: all 1s ease;
 }
 
-.dot:hover .tooltip {
+.dot:hover .project-info {
   visibility: visible;
   opacity: 1;
-  width: 10vw;
-  top: 20px;
-  left: calc(-5vw + 7px);
-}
-.dot:hover .tooltiptext {
-  font-size: 10px;
+  transform: scale(1);
 }
 
-.dot:hover .tooltip img {
-  visibility: visible;
+.project-info-popup {
+  height: 140px;
+  width: 215px;
+  background: var(--dark-transparent);
+  position: absolute;
 }
-.dot .tooltip img {
-  height: 70px;
-  margin: 10px auto;
-  visibility: hidden;
-  display: block;
+.project-info-popup:nth-child(1) {
+  left: 0;
+  -webkit-clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 75%,
+    83% 76%,
+    100% 100%,
+    68% 75%,
+    0% 75%
+  );
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 90%,
+    83% 90%,
+    100% 100%,
+    68% 90%,
+    0% 90%
+  );
+  padding-bottom: 20px;
 }
-
-.tooltiptext.spec {
-  display: initial;
-  top: 25px;
+.project-info-popup:nth-child(2) {
+  right: 0;
+  -webkit-clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 90%,
+    23% 90%,
+    0 100%,
+    12% 90%,
+    0% 90%
+  );
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 90%,
+    23% 90%,
+    0 100%,
+    12% 90%,
+    0% 90%
+  );
+  padding-bottom: 20px;
 }
-
-p.tooltip-money {
-  font-size: 8px;
-  color: var(--color-2);
-  margin: 0;
-  float: left;
+.project-info-popup:nth-child(3) {
+  bottom: 0;
+  left: calc(50% - 100px);
+  -webkit-clip-path: polygon(
+    0 15%,
+    48% 15%,
+    50% 0,
+    52% 15%,
+    100% 15%,
+    100% 100%,
+    0 100%
+  );
+  clip-path: polygon(
+    0 15%,
+    48% 15%,
+    50% 0,
+    52% 15%,
+    100% 15%,
+    100% 100%,
+    0 100%
+  );
+  padding-top: 20px;
 }
-
 @-webkit-keyframes pulse {
   from {
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1);
   }
-
   50% {
     -webkit-transform: scale3d(1.05, 1.05, 1.05);
     transform: scale3d(2.05, 2.05, 2.05);
   }
-
   to {
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1);
   }
 }
-
 @keyframes pulse {
   from {
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1);
   }
-
   50% {
     -webkit-transform: scale3d(1.05, 1.05, 1.05);
     transform: scale3d(2.05, 2.05, 2.05);
   }
-
   to {
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1);
   }
-}
-
-.tooltip-read-more {
-  position: absolute;
-  bottom: 8px;
-  right: 8px;
-  color: var(--color-3);
-}
-
-.grid-3 {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
 }

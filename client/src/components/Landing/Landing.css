@@ -306,7 +306,7 @@
   height: 50px;
   width: 120px;
   position: absolute;
-  background: var(--color-1);
+  background: var(--color-4);
   left: 40px;
   bottom: 50px;
   z-index: 20000;

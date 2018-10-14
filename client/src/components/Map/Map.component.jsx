@@ -14,7 +14,7 @@ export default class Map extends Component {
       lat: 31.95,
       lng: 35.99
     },
-    zoom: 5,
+    zoom: 0,
     projects: []
   };
 
@@ -160,6 +160,7 @@ export default class Map extends Component {
         style={{ height: "100vh", width: "100%" }}
         className="map fadeInFast"
       >
+        <div className="red" />
         <div className="project-info">
           <div className="read-more-close" onClick={this.closeProjectInfo}>
             <i className="fas fa-times" />
@@ -174,7 +175,6 @@ export default class Map extends Component {
           filterByCountry={this.filterByCountry}
         />
         <div className="spectrum-container">
-          <h2 className="heading-theme-1">filter by the projects type</h2>
           <Spectrum className="" filterByType={this.filterProjectsByType} />
         </div>
         <GoogleMapReact
