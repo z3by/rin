@@ -13,7 +13,7 @@
 }
 
 .heading-theme-2 {
-  color: var(--color-1);
+  color: var(--color-4);
   text-shadow: 1px 1px 4px #555;
   font-size: 4rem;
   font-family: var(--main-font);
@@ -43,7 +43,7 @@
 }
 
 .p-theme-1 {
-  color: var(--color-4);
+  color: var(--color-5);
   font-size: 1.3rem;
   font-family: var(--main-font);
   margin-bottom: 50px;
@@ -126,7 +126,7 @@
 
 .about-nav h3 {
   text-transform: uppercase;
-  color: var(--color-4);
+  color: var(--color-5);
   font-family: var(--main-font);
 }
 
@@ -144,6 +144,10 @@
   align-items: center;
 }
 
+.about-nav li a:hover {
+  transform: scale(1.2);
+}
+
 .back-to-top {
   width: 100px;
   margin: 0 auto;
@@ -158,14 +162,14 @@
 }
 
 .read-more-popup {
-  height: 100vh;
-  width: 100vw;
-  background: #eee;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
   position: absolute;
   z-index: 1500;
   font-family: var(--main-font);
   text-align: center;
-  padding: 20%;
+  padding: 20px;
   padding-top: 5%;
   display: none;
   animation-name: popup;
@@ -173,6 +177,14 @@
   animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
+.read-more-wrapper {
+  background: #eee;
+  height: 90%;
+  width: 40%;
+  position: relative;
+  left: 30%;
+  padding: 20px;
+}
 @keyframes popup {
   from {
     transform: scale(0);
@@ -183,8 +195,8 @@
 }
 
 .read-more-close {
-  height: 70px;
-  width: 70px;
+  height: 40px;
+  width: 40px;
   background: var(--color-2);
   border-radius: 50%;
   display: flex;
@@ -196,6 +208,6 @@
   top: 20px;
 }
 .read-more-close i {
-  font-size: 50px;
-  color: var(--color-3);
+  font-size: 30px;
+  color: var(--color-1);
 }

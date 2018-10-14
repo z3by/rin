@@ -53,8 +53,7 @@
   border-radius: 50%;
   filter: contrast(100%) brightness(120%);
   transition: top 2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-    left 2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-    background 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    left 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .nav-group {
@@ -206,7 +205,6 @@
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   box-shadow: 2px 2px 10px #333;
-  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .circle-overlay {
@@ -322,7 +320,7 @@
 .counter h4 {
   text-align: center;
   margin: 0;
-  color: var(--color-1);
+  color: var(--color-5);
   font-family: Arial, Helvetica, sans-serif;
   line-height: 6vh;
 }

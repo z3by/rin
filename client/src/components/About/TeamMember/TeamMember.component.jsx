@@ -18,7 +18,6 @@ export default props => {
       <figure class="effect-chico">
         <img src={info.img} alt="img15" />
         <figcaption>
-          <h2>{info.name}</h2>
           <p>
             {info.title}
             <a
@@ -32,6 +31,7 @@ export default props => {
           </p>
         </figcaption>
       </figure>
+      <h2>{info.name}</h2>
     </div>
   );
 };
