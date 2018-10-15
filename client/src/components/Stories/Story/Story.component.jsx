@@ -13,19 +13,19 @@ export default class Story extends Component {
 
   render() {
     return (
-      <div className="story">
-        <div class="ch-item">
+      <div className="story pop">
+        <div className="ch-item">
           <h3>
             {this.props.story.title}
             <a href="">read the story</a>
           </h3>
 
           <div
-            class="ch-info"
+            className="ch-info"
             style={{ backgroundImage: "url(" + this.props.story.img + ")" }}
           />
           <div
-            class="ch-thumb"
+            className="ch-thumb"
             style={{ backgroundImage: "url(" + this.props.story.img + ")" }}
           />
         </div>

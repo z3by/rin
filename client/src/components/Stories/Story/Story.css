@@ -1,6 +1,27 @@
 .story {
-  height: 300px;
-  width: 300px;
+  height: 250px;
+  width: 250px;
+  transform: scale(0);
+}
+
+.story.pop {
+  animation-name: pop;
+  animation-duration: 1s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0);
+  }
+  90% {
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 .ch-item {
   width: 100%;
@@ -101,8 +122,11 @@
   text-transform: uppercase;
   letter-spacing: 2px;
   font-size: 18px;
-  height: 200px;
-  padding: 100px 20px;
+  height: 150px;
+  width: 200px;
+  left: 25px;
+  top: 50px;
+  padding: 100px auto;
   font-family: "Open Sans", Arial, sans-serif;
   text-shadow: 0 0 1px #ccc, 0 1px 2px rgba(0, 0, 0, 0.3);
   text-align: center;

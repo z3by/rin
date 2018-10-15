@@ -11,6 +11,9 @@
 .story-items {
   position: relative;
   width: 70%;
-  margin: 0 auto;
+  margin: 10% 10% 10% 20%;
   height: 100vh;
+  display: grid;
+  grid-gap: 50px;
+  grid-template-columns: 1fr 1fr 1fr;
 }
