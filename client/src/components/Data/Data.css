@@ -63,6 +63,7 @@
 }
 
 .data .arrows {
+  -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
   bottom: 100px;
 }

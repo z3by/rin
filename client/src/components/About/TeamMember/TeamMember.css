@@ -90,7 +90,9 @@
 
 figure.effect-chico img {
   -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, -webkit-transform 0.35s;
   transition: opacity 0.35s, transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
   -webkit-transform: scale(1.12);
   transform: scale(1.12);
 }
@@ -117,7 +119,9 @@ figure.effect-chico figcaption::before,
 figure.effect-chico p {
   opacity: 0;
   -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, -webkit-transform 0.35s;
   transition: opacity 0.35s, transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
 }
 
 figure.effect-chico p {
@@ -140,7 +144,9 @@ figure.effect-chico p a.read-more {
 }
 
 figure.effect-chico p a.read-more:hover {
+  -webkit-transition: var(--smooth);
   transition: var(--smooth);
+  -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
   background: #eee;
   color: var(--color-5);

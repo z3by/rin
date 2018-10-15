@@ -178,6 +178,7 @@ export default class Map extends Component {
           <Spectrum className="" filterByType={this.filterProjectsByType} />
         </div>
         <GoogleMapReact
+          className="land-map"
           options={options}
           bootstrapURLKeys={{ key: mapApi }}
           defaultCenter={this.state.position}

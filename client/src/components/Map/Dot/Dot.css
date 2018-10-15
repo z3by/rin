@@ -2,6 +2,8 @@
   background: var(--color-2);
   height: 10px;
   width: 10px;
+  position: absolute;
+  z-index: 0;
   border-radius: 50%;
   -webkit-animation-name: pulse;
   animation-name: pulse;
@@ -30,20 +32,26 @@
   width: 450px;
   top: -145px;
   left: -225px;
-  z-index: 100000;
+  -webkit-transform: scale(0);
   transform: scale(0);
+  -webkit-transition: all 1s ease;
   transition: all 1s ease;
 }
 
 .dot:hover .project-info {
   visibility: visible;
   opacity: 1;
+  -webkit-transform: scale(1);
   transform: scale(1);
 }
 
 .project-info-popup {
   height: 140px;
   width: 215px;
+  padding: 20px;
+  position: absolute;
+  z-index: 100000;
+  overflow-y: scroll;
   background: var(--dark-transparent);
   position: absolute;
 }
@@ -114,6 +122,12 @@
   );
   padding-top: 20px;
 }
+.project-info-popup h1 {
+  color: white;
+}
+.project-info-popup p {
+  color: white;
+}
 @-webkit-keyframes pulse {
   from {
     -webkit-transform: scale3d(1, 1, 1);
@@ -127,6 +141,9 @@
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1);
   }
+}
+.project-info-popup::-webkit-scrollbar {
+  width: 5px;
 }
 @keyframes pulse {
   from {

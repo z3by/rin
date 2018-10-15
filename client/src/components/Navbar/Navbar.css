@@ -156,7 +156,7 @@
     display: none;
   }
   .navbar {
-    background: unset;
+    display: none;
   }
   .toggle-nav {
     display: none;

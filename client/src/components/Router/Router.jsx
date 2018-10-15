@@ -9,7 +9,7 @@ import Data from "../Data/Data.component";
 import Landing from "../Landing/Landing.component";
 import Library from "../Library/Library.component";
 import Navbar from "../Navbar/Navbar.component";
-import Story from "../Story/Story.component";
+import Story from "../Stories/Story/Story.component";
 import Members from "../Members/Members.component";
 
 export default class MyRouter extends Component {

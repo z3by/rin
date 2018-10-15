@@ -9,3 +9,8 @@
   justify-content: center;
   top: 5%;
 }
+
+.land-map {
+  position: absolute;
+  z-index: 0;
+}

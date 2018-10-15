@@ -21,7 +21,7 @@
   --color-5: #8c8c8a; */
 
   /* 11111111111111111111111111111111111111111111 */
-  --color-1: #ccc;
+  --color-1: #fff;
   --color-2: #ff8800;
   --color-3: #777;
   --color-4: #eee;
@@ -163,12 +163,14 @@ label {
   transition: var(--smooth);
   background: var(--dark-transparent);
   border-radius: 50px;
+  -webkit-box-shadow: 0px 0px 5px var(--dark-transparent);
   box-shadow: 0px 0px 5px var(--dark-transparent);
 }
 
 .arrows i {
   color: var(--color-1);
   margin: 20px 25px;
+  -webkit-transition: all 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
   transition: all 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
   font-size: 20px;
 }
