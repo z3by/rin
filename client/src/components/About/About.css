@@ -151,16 +151,16 @@
 
 .go-down,
 .back-to-top {
-  width: 100px;
+  text-align: center;
   margin: 0 auto;
   cursor: pointer;
+  padding: 0 auto;
 }
 
 .go-down i,
 .back-to-top i {
   font-size: 50px;
   color: var(--color-2);
-  text-align: center;
 }
 
 .read-more-popup {
@@ -212,4 +212,11 @@
 .read-more-close i {
   font-size: 30px;
   color: var(--color-1);
+}
+
+@media (max-width: 768px) {
+  .go-down i,
+  .back-to-top i {
+    font-size: 30px;
+  }
 }

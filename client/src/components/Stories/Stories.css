@@ -17,3 +17,15 @@
   grid-gap: 50px;
   grid-template-columns: 1fr 1fr 1fr;
 }
+
+@media (max-width: 768px) {
+  .story-items {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    height: 400vh;
+    display: grid;
+    grid-gap: 50px;
+    grid-template-columns: 1fr;
+  }
+}
