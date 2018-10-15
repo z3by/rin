@@ -10,11 +10,17 @@ class Stories extends Component {
 
   // handle the down arrow btn
   goDown = () => {
-    window.scrollTo(0, 2000);
+    document.querySelector(".back-to-top").scrollIntoView({
+      behavior: "smooth"
+    });
   };
 
   // handle the down arrow btn
-  goTop = () => {};
+  goTop = () => {
+    document.querySelector(".go-down").scrollIntoView({
+      behavior: "smooth"
+    });
+  };
 
   render() {
     //map the stories
