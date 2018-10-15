@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import "./Stories.css";
 import ScrollMagic from "scrollmagic";
 import { Link } from "react-router-dom";
-import Particles from "react-particles-js";
-import * as particleOpt from "./practiles-options";
 import * as stories from "./stories-info";
 
 class Stories extends Component {
@@ -41,10 +39,6 @@ class Stories extends Component {
     return (
       <div className="stories fadeInFast">
         <div className="header">
-          {/* <video loop autoPlay muted>
-            <source src={this.state.videoURL} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video> */}
           <img src="/imgs/success.jpg" className="header-img" alt="" />
           <div className="header-text">
             <h1>Success Stories</h1>
@@ -53,12 +47,6 @@ class Stories extends Component {
             </a>
           </div>
         </div>
-
-        <div className="particles-js">
-          <Particles params={particleOpt} />
-        </div>
-
-        {/* <div className="vertical-line" id="id1" /> */}
 
         <div className="up" />
 

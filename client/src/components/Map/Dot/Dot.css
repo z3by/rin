@@ -139,6 +139,9 @@
     transform: scale3d(1, 1, 1);
   }
 }
+.project-info-popup::-webkit-scrollbar {
+  width: 5px;
+}
 @keyframes pulse {
   from {
     -webkit-transform: scale3d(1, 1, 1);

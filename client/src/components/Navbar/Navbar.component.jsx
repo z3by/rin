@@ -10,7 +10,9 @@ export default class Navbar extends Component {
 
   onClickCircle = e => {
     const index = parseInt(e.target.getAttribute("index"), 10) - 1;
-    document.querySelector(".active").classList.remove("active");
+    if (!!document.querySelector(".active")) {
+      document.querySelector(".active").classList.remove("active");
+    }
     document.querySelectorAll(".nav-rec")[index].classList.add("active");
   };
 
