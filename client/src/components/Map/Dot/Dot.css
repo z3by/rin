@@ -32,13 +32,16 @@
   width: 450px;
   top: -145px;
   left: -225px;
+  -webkit-transform: scale(0);
   transform: scale(0);
+  -webkit-transition: all 1s ease;
   transition: all 1s ease;
 }
 
 .dot:hover .project-info {
   visibility: visible;
   opacity: 1;
+  -webkit-transform: scale(1);
   transform: scale(1);
 }
 
