@@ -81,9 +81,9 @@ export default class About extends Component {
             <div className="read-more-close">
               <i className="fas fa-times" />
             </div>
-            <h1 className="read-more-name">hello</h1>
-            <h2 className="read-more-title">hello</h2>
-            <p className="read-more-description">hello</p>
+            <h1 className="read-more-name ">name</h1>
+            <h2 className="read-more-title heading-theme-3">title</h2>
+            <p className="read-more-description">description</p>
           </div>
         </div>
         <header>
