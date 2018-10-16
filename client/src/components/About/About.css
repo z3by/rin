@@ -13,7 +13,7 @@
 }
 
 .heading-theme-2 {
-  color: var(--color-4);
+  color: var(--color-2);
   text-shadow: 1px 1px 4px #555;
   font-size: 4rem;
   font-family: var(--main-font);
