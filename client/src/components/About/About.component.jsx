@@ -76,13 +76,15 @@ export default class About extends Component {
     return (
       <div className="about fadeInFast">
         <div className="read-more-popup" onClick={this.closePopup}>
-          <img src="" alt="" className="read-more-img" />
-          <div className="read-more-close">
-            <i className="fas fa-times" />
+          <div className="read-more-wrapper">
+            <img src="" alt="" className="read-more-img" />
+            <div className="read-more-close">
+              <i className="fas fa-times" />
+            </div>
+            <h1 className="read-more-name">hello</h1>
+            <h2 className="read-more-title">hello</h2>
+            <p className="read-more-description">hello</p>
           </div>
-          <h1 className="read-more-name">hello</h1>
-          <h2 className="read-more-title">hello</h2>
-          <p className="read-more-description">hello</p>
         </div>
         <header>
           <div className="header">

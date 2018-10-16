@@ -244,23 +244,7 @@ export default class Landing extends Component {
   render() {
     return (
       <div>
-        <div class="lines-container">
-          <div class="line" />
-          <div class="line" />
-          <div class="line" />
-          <div class="line" />
-          <div class="line" />
-          <div class="line" />
-          <div class="line" />
-          <div class="line" />
-          <div class="line" />
-        </div>
         <div className="landing fadeInFast">
-          <img
-            className="transparent-background"
-            src="https://images.unsplash.com/photo-1539023032992-ae77eacac916?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=901c5c951abcee02a30229fda0248880&auto=format&fit=crop&w=2134&q=80"
-            alt=""
-          />
           <div className="partners">
             <img src="" alt="" className="partners-img" />
           </div>

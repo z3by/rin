@@ -13,34 +13,54 @@ const Dot = props => {
     infancy: "#fc67fa"
   };
 
-  const showProjectInfo = info => {
-    document.querySelector(".project-info").style.display = "initial";
-    document.querySelector(".project-info-content").innerHTML = `
-    <img src=${info.imgUrl} />
-    <div className="grid-3">
-      <h1>${info.projectName}</h1> 
-      <h2>${info.title}</h2>
-      <h2>${info.country}</h2>
-      <h2>capacity:${info.capacity}</h2>
-      <h2>started in:${info.year}</h2>
-    </div>
-    `;
-  };
-
   return (
     <div className="dot" style={{ background: colors[props.project.type] }}>
-      <div className="tooltip">
-        <div className="tooltiptext">{props.project.title}</div>
-        <img src={props.project.imgUrl} alt="" />
-        <p className="tooltip-money">${props.project.benefits}</p>
-        <a
-          onClick={() => {
-            showProjectInfo(props.project);
-          }}
-          className="tooltip-read-more"
-        >
-          read more...
-        </a>
+      <div className="project-info">
+        <div className="project-info-popup">
+          <h1>title</h1>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque
+            similique obcaecati vitae consequuntur atque eligendi architecto
+            quam. Ut natus repellendus sint earum rerum consequuntur assumenda
+            quo illum veritatis. Soluta, corrupti!
+          </p>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque
+            similique obcaecati vitae consequuntur atque eligendi architecto
+            quam. Ut natus repellendus sint earum rerum consequuntur assumenda
+            quo illum veritatis. Soluta, corrupti!
+          </p>
+        </div>
+        <div className="project-info-popup">
+          <h1>title</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo amet
+            dolore blanditiis, culpa tempore voluptatibus! Id, animi eligendi
+            voluptate, iure, quibusdam voluptatum quam hic odit quidem
+            reiciendis nam voluptatibus ipsam!
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo amet
+            dolore blanditiis, culpa tempore voluptatibus! Id, animi eligendi
+            voluptate, iure, quibusdam voluptatum quam hic odit quidem
+            reiciendis nam voluptatibus ipsam!
+          </p>
+        </div>
+        <div className="project-info-popup">
+          <h1>title</h1>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui,
+            exercitationem! Amet eum ipsa accusamus nulla libero iste sequi
+            dolorum magnam reiciendis porro, ex tempora voluptates maiores
+            eveniet saepe nam fugit?
+          </p>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui,
+            exercitationem! Amet eum ipsa accusamus nulla libero iste sequi
+            dolorum magnam reiciendis porro, ex tempora voluptates maiores
+            eveniet saepe nam fugit?
+          </p>
+        </div>
       </div>
     </div>
   );

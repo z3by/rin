@@ -1,68 +1,13 @@
 .nav-rec {
-  position: relative;
-  height: 10px;
-  width: 22px;
-  background: var(--color-1);
-  box-shadow: 0px 0px 2px var(--dark-transparent);
+  width: 30px;
+  min-height: 15px;
+  background: var(--light-transparent);
 }
 
 .rounded {
-  height: 22px;
-  width: 22px;
   border-radius: 50%;
-}
-
-.nav-rec-text {
-  color: var(--color-2);
-  font-family: var(--main-font);
-  font-size: 18px;
-  line-height: 10px;
-  text-transform: uppercase;
-  position: relative;
-  left: 30px;
-  display: none;
-}
-
-.nav-rec:hover {
-  -webkit-transition: var(--smooth);
-  transition: var(--smooth);
-  background: var(--color-2);
-}
-
-.nav-rec:active {
-  background: var(--color-3);
-  /* border-radius: 50%; */
-}
-
-.nav-rec:active p {
-  color: var(--color-3);
-}
-
-.nav-rec.active {
-  height: 10px;
-  width: 22px;
-  background: var(--color-2);
-  -webkit-transition: var(--smooth);
-  transition: var(--smooth);
-}
-
-.nav-rec.active.rounded {
-  height: 22px;
-  width: 22px;
-}
-
-.nav-rec.active p {
-  line-height: 10px;
-}
-
-.nav-rec.active.rounded p {
-  line-height: 0px;
-}
-
-.nav-rec:hover p {
-  display: initial;
-  -webkit-animation: fadeInSlideRight 0.5s ease;
-  animation: fadeInSlideRight 0.5s ease;
+  width: 20px;
+  height: 20px;
 }
 
 .navbar {
@@ -76,20 +21,78 @@
 }
 
 .navbar-middle {
-  position: relative;
   height: 50%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -ms-flex-pack: distribute;
-  justify-content: space-around;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
+  list-style: none;
+  position: relative;
+  padding: 0 60px;
+}
+.navbar-middle li {
+  margin: 8vh 0;
+}
+
+.navbar-middle .navbar-link {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
   align-items: center;
+  width: 100%;
+  height: 40px;
+}
+
+.navbar-middle .navbar-link:hover .nav-rec-menu {
+  display: block;
+}
+
+.navbar-middle .navbar-link:hover .nav-rec-text {
+  color: var(--color-2);
+}
+
+.navbar-middle .navbar-link:hover .nav-rec {
+  background-color: var(--color-2);
+}
+
+.nav-rec-text {
+  font-family: var(--main-font);
+  color: var(--color-3);
+  margin: 0 5px;
+  text-transform: uppercase;
+}
+
+.nav-rec-menu {
+  display: none;
+  list-style: none;
+  position: absolute;
+  margin-left: 30px;
+  margin-top: -20px;
+  font-family: var(--main-font);
+  width: 200px;
+  z-index: 1000000;
+}
+
+.nav-rec-menu li {
+  margin: 0;
+  height: 30px;
+  padding: 0;
+  color: var(--color-1);
+  background: var(--dark-transparent);
+  padding: 3px 20px;
+}
+.nav-rec-menu li a {
+  color: var(--color-1);
+  font-weight: 100;
+  text-transform: capitalize;
+}
+
+.nav-rec-menu li:hover {
+  background: var(--color-2);
+}
+.navbar-link:hover .nav-rec .nav-rec-menu {
+  display: block;
+}
+
+.navbar-link:hover {
+}
+
+.navbar-link:hover p {
 }
 
 .logo {
@@ -107,7 +110,7 @@
   margin: 20px 50px;
   border-radius: 50%;
   border: var(--light-border);
-  background: var(--color-1);
+  background: var(--color-4);
 }
 
 .logo-img {
@@ -156,7 +159,7 @@
     display: none;
   }
   .navbar {
-    background: unset;
+    display: none;
   }
   .toggle-nav {
     display: none;

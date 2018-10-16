@@ -54,7 +54,7 @@
 }
 
 .data-text p {
-  color: var(--color-4);
+  color: var(--color-5);
   margin: 0;
   font-size: 22%;
   font-family: var(--main-font);
@@ -63,6 +63,7 @@
 }
 
 .data .arrows {
+  -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
   bottom: 100px;
 }

@@ -40,6 +40,7 @@
   min-width: 100%;
   min-height: 100vh;
   opacity: 0.4;
+  -webkit-filter: grayscale(100%) contrast(120%);
   filter: grayscale(100%) contrast(120%);
   image-resolution: 20%;
 }
@@ -51,10 +52,12 @@
   opacity: 1;
   position: absolute;
   border-radius: 50%;
+  -webkit-filter: contrast(100%) brightness(120%);
   filter: contrast(100%) brightness(120%);
+  -webkit-transition: top 2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    left 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transition: top 2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-    left 2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-    background 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    left 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .nav-group {
@@ -94,7 +97,7 @@
 }
 
 .nav-link.active {
-  text-shadow: 2px 2px 10px #333;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   color: var(--color-2);
   -webkit-transition: var(--smooth);
@@ -205,8 +208,8 @@
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
+  -webkit-box-shadow: 2px 2px 10px #333;
   box-shadow: 2px 2px 10px #333;
-  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .circle-overlay {
@@ -255,6 +258,7 @@
   background-attachment: fixed;
   opacity: 0.5;
   -webkit-transition: left ease 1s, right ease 1s;
+  -webkit-transition: left ease 1s, right ease 1s, width ease 1.5s;
   transition: left ease 1s, right ease 1s, width ease 1.5s;
   background-repeat: no-repeat;
   -moz-transition: left ease 1s, right ease 1s;
@@ -322,7 +326,7 @@
 .counter h4 {
   text-align: center;
   margin: 0;
-  color: var(--color-1);
+  color: var(--color-5);
   font-family: Arial, Helvetica, sans-serif;
   line-height: 6vh;
 }
@@ -417,7 +421,11 @@
 }
 
 .lines-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   position: absolute;
   top: 0;
