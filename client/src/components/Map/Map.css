@@ -10,7 +10,40 @@
   top: 5%;
 }
 
+.spectrum-container:hover .spectrum-popup {
+  display: none;
+}
+
 .land-map {
   position: absolute;
   z-index: 0;
+}
+
+.spectrum-popup {
+  position: absolute;
+  color: white;
+  z-index: 100;
+  font-family: var(--main-font);
+  top: -25px;
+  background: var(--dark-transparent);
+  padding: 2px 20px;
+}
+
+.spectrum-popup::after {
+  content: "";
+  position: absolute;
+  z-index: 100;
+  width: 0;
+  height: 0;
+  top: 30px;
+  left: 50%;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid var(--dark-transparent);
+}
+
+@media (max-width: 768px) {
+  .spectrum-popup {
+    display: none;
+  }
 }
