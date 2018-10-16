@@ -150,6 +150,29 @@
   text-decoration-line: underline;
 }
 
+.story .story-details {
+  display: none;
+}
+.story.full-story {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  background: var(--color-1);
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  text-align: center;
+  overflow: scroll;
+}
+
+.story.story.full-story .story-details {
+  padding: 50px 20%;
+  display: block;
+}
+
+.story.full-story .ch-item {
+  display: none;
+}
 @media (max-width: 768px) {
   .story {
     height: 250px;
