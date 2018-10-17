@@ -17,6 +17,8 @@ export default class About extends Component {
 
   componentDidMount() {
     document.body.style.overflowY = "auto";
+    document.querySelector(".header").style.backgroundImage =
+      'url("/imgs/about1.jpg")';
   }
 
   componentWillUnmount() {
@@ -90,7 +92,6 @@ export default class About extends Component {
         <header>
           <div className="header">
             <h1 className="header-text" />
-            <img src="/imgs/about1.jpg" className="header-img" alt="" />
           </div>
         </header>
 
