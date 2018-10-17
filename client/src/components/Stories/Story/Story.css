@@ -13,6 +13,10 @@
   animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 
+.story.story.full-story .story-details img {
+  width: 100%;
+}
+
 @keyframes pop {
   from {
     transform: scale(0);
@@ -206,9 +210,5 @@
   }
   .story.story.full-story .story-details {
     padding: 10px;
-  }
-
-  .story.story.full-story .story-details img {
-    width: 100%;
   }
 }
