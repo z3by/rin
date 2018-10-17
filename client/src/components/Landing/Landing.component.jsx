@@ -170,22 +170,16 @@ export default class Landing extends Component {
       .state.index + 1}.jpg)`;
     document.querySelector(".down-rec").style.backgroundSize = "100%";
     document.querySelector(".down-rec").style.backgroundAttachment = "fixed";
-    document.querySelector(
-      ".effect-circle"
-    ).style.background = `url(imgs/backs${this.state.index + 1}.jpg)`;
-    document.querySelector(".effect-circle").style.backgroundSize = "100%";
-    document.querySelector(".effect-circle").style.backgroundAttachment =
-      "fixed";
   };
 
   translateShapes = () => {
     let random1 = Math.floor(Math.random() * 40);
     let random2 = Math.floor(Math.random() * 40);
-    if (random1 < 15) {
-      random1 += 20;
+    if (random1 < 20) {
+      random1 += 22;
     }
 
-    if (random2 < 15) {
+    if (random2 < 20) {
       random2 += 20;
     }
 

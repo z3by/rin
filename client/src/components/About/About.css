@@ -262,4 +262,7 @@
   .about-nav i {
     font-size: 50px;
   }
+  .container {
+    margin-left: auto;
+  }
 }

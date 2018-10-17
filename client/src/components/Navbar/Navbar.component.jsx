@@ -23,13 +23,17 @@ export default class Navbar extends Component {
       document.querySelector(".navbar-middle").style.display = "none";
       document.querySelector(".toggle-nav").style.left = "0";
       document.querySelector(".toggle-nav i").style.transform = "initial";
-      document.querySelector(".container").style.marginLeft = "15%";
+      if (!!document.querySelector(".container")) {
+        document.querySelector(".container").style.marginLeft = "15%";
+      }
       if (!!document.querySelector(".counter")) {
         document.querySelector(".counter").style.display = "none";
       }
     } else {
-      document.querySelector(".container").style.marginLeft =
-        "calc(15% + 100px)";
+      if (!!document.querySelector(".container")) {
+        document.querySelector(".container").style.marginLeft =
+          "calc(15% + 100px)";
+      }
       document.querySelector(".navbar").style.width = "200px";
       if (!!document.querySelector(".counter")) {
         document.querySelector(".counter").style.display = "block";
@@ -46,7 +50,7 @@ export default class Navbar extends Component {
       <div>
         <div className="navbar">
           <div className="toggle-nav" onClick={this.toggleNavbar}>
-            <i className="fas fa-arrow-right" />
+            <i className="fas fa-angle-double-right" />
           </div>
           <div className="logo">
             <Link className="navbar-link" to={"/"}>

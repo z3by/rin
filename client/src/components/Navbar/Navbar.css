@@ -89,12 +89,6 @@
   display: block;
 }
 
-.navbar-link:hover {
-}
-
-.navbar-link:hover p {
-}
-
 .logo {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -105,16 +99,16 @@
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  height: 100px;
-  width: 100px;
-  margin: 20px 50px;
+  height: 120px;
+  width: 120px;
+  margin: 20px 40px;
   border-radius: 50%;
   border: var(--light-border);
-  background: var(--color-4);
+  background: var(--color-1);
 }
 
 .logo-img {
-  max-width: 95px;
+  max-width: 80px;
 }
 
 .toggle-nav {
