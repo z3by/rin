@@ -50,7 +50,7 @@ export default class Navbar extends Component {
       <div>
         <div className="navbar">
           <div className="toggle-nav" onClick={this.toggleNavbar}>
-            <i className="fas fa-angle-double-right" />
+            <i className="fas fa-times" />
           </div>
           <div className="logo">
             <Link className="navbar-link" to={"/"}>
