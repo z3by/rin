@@ -1,6 +1,8 @@
 .container {
-  margin: 20px auto;
-  width: 50%;
+  margin: 20px;
+  margin-left: calc(15% + 100px);
+  width: 70%;
+  transition: all 1s ease;
 }
 
 .heading-theme-1 {
@@ -124,7 +126,7 @@
 .about-nav {
   list-style: none;
   margin: 50px auto;
-  width: 100%;
+  width: 80%;
   padding: 0;
 }
 

@@ -538,9 +538,13 @@ option:hover {
   width: 100%;
 }
 
+@media (max-width: 1024px) {
+  .grid-4 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
 @media (max-width: 768px) {
   .arrows {
-    /* left: calc(50% - 50px); */
     padding: 10px 20px;
   }
 
@@ -549,12 +553,10 @@ option:hover {
   }
 
   .grid-3 {
-    display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-row-gap: 10px;
   }
   .grid-4 {
-    display: grid;
     grid-template-columns: 1fr;
     grid-gap: 10px;
   }

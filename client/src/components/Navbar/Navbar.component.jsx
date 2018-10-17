@@ -23,10 +23,13 @@ export default class Navbar extends Component {
       document.querySelector(".navbar-middle").style.display = "none";
       document.querySelector(".toggle-nav").style.left = "0";
       document.querySelector(".toggle-nav i").style.transform = "initial";
+      document.querySelector(".container").style.marginLeft = "15%";
       if (!!document.querySelector(".counter")) {
         document.querySelector(".counter").style.display = "none";
       }
     } else {
+      document.querySelector(".container").style.marginLeft =
+        "calc(15% + 100px)";
       document.querySelector(".navbar").style.width = "200px";
       if (!!document.querySelector(".counter")) {
         document.querySelector(".counter").style.display = "block";
