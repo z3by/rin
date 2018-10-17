@@ -2,6 +2,7 @@
   height: 250px;
   width: 250px;
   transform: scale(0);
+  margin: 0 auto;
 }
 
 .pop {
@@ -173,13 +174,41 @@
 .story.full-story .ch-item {
   display: none;
 }
+
 @media (max-width: 768px) {
   .story {
-    height: 250px;
+    height: 450px;
     width: 100%;
     transform: scale(1);
   }
   .story.pop {
     animation: unset;
+  }
+  .ch-item,
+  .ch-info,
+  .ch-thumb {
+    border-radius: 0;
+  }
+
+  .ch-thumb {
+    display: none;
+  }
+
+  .ch-info {
+    background-size: cover;
+  }
+
+  .ch-item h3 {
+    font-size: 50px;
+    left: 10%;
+    top: 20%;
+    width: 80%;
+  }
+  .story.story.full-story .story-details {
+    padding: 10px;
+  }
+
+  .story.story.full-story .story-details img {
+    width: 100%;
   }
 }

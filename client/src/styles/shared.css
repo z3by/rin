@@ -23,8 +23,8 @@
   /* 11111111111111111111111111111111111111111111 */
   --color-1: #f0f0f0;
   --color-2: #ff8800;
-  --color-3: #777;
-  --color-4: #eee;
+  --color-3: #999;
+  --color-4: #088;
   --color-5: #333;
   /* 11111111111111111111111111111111111111111111 */
   /* --color-1: #fff;
@@ -97,6 +97,26 @@ i {
 
 .capitalize {
   text-transform: capitalize;
+}
+
+.header {
+  background: url(/imgs/success.jpg);
+  height: 50vh;
+  background-attachment: fixed;
+}
+.header-img {
+  width: 100vh;
+  min-height: 30vh;
+}
+
+.header-text {
+  text-align: center;
+  position: relative;
+  top: 15vh;
+  font-size: 3vw;
+  color: var(--color-3);
+  font-family: var(--main-font);
+  text-transform: uppercase;
 }
 
 .splash-screen {
@@ -526,21 +546,38 @@ option:hover {
 .grid-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
   grid-row-gap: 100px;
+}
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
 }
 
 .grid-6 a {
-  width: 100%000;
+  width: 100%;
 }
 
+@media (max-width: 1024px) {
+  .grid-4 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
 @media (max-width: 768px) {
   .arrows {
-    /* left: calc(50% - 50px); */
     padding: 10px 20px;
   }
 
   .grid-2 {
     grid-template-columns: 1fr;
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: 10px;
+  }
+  .grid-4 {
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
   }
 }

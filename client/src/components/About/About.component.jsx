@@ -81,11 +81,12 @@ export default class About extends Component {
             <div className="read-more-close">
               <i className="fas fa-times" />
             </div>
-            <h1 className="read-more-name">hello</h1>
-            <h2 className="read-more-title">hello</h2>
-            <p className="read-more-description">hello</p>
+            <h1 className="read-more-name ">name</h1>
+            <h2 className="read-more-title heading-theme-3">title</h2>
+            <p className="read-more-description">description</p>
           </div>
         </div>
+
         <header>
           <div className="header">
             <h1 className="header-text" />
@@ -194,10 +195,10 @@ export default class About extends Component {
             />
             <Route path="/about/who-we-are" component={WhoWeAreComponent} />
           </section>
+          <div className="back-to-top" onClick={this.scrollToTop}>
+            <i className="fas fa-arrow-circle-up" />
+          </div>
         </main>
-        <div className="back-to-top" onClick={this.scrollToTop}>
-          <i className="fas fa-arrow-circle-up" />
-        </div>
       </div>
     );
   }

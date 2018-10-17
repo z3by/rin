@@ -4,9 +4,6 @@
 
 .team-member {
   position: relative;
-  margin: 0 auto;
-  padding: 1em 0 4em;
-  max-width: 1000px;
   list-style: none;
   text-align: center;
 }
@@ -17,10 +14,10 @@
   float: left;
   overflow: hidden;
   margin: 10px 1%;
-  min-width: 320px;
+  min-width: 220px;
   max-width: 480px;
   max-height: 360px;
-  width: 30%;
+  width: 100%;
   background: lightslategray;
   text-align: center;
   cursor: pointer;
@@ -35,7 +32,6 @@
 }
 
 .team-member figure figcaption {
-  padding: 2em;
   color: #fff;
   text-transform: uppercase;
   font-size: 1.25em;
@@ -67,12 +63,14 @@
   opacity: 0;
 }
 
-.team-member figure h2 {
-  word-spacing: -0.15em;
+.team-member h2 {
+  font-size: 18px;
   font-weight: 600;
+  display: block;
+  width: 100%;
 }
 
-.team-member figure h2 span {
+.team-member h2 span {
   font-weight: 800;
 }
 
@@ -85,7 +83,7 @@
 
 .team-member figure p {
   letter-spacing: 1px;
-  font-size: 68.5%;
+  font-size: 70.5%;
 }
 
 figure.effect-chico img {
@@ -101,18 +99,6 @@ figure.effect-chico:hover img {
   opacity: 0.5;
   -webkit-transform: scale(1);
   transform: scale(1);
-}
-
-figure.effect-chico figcaption::before {
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  bottom: 30px;
-  left: 30px;
-  border: 1px solid #fff;
-  content: "";
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
 }
 
 figure.effect-chico figcaption::before,
@@ -175,15 +161,9 @@ figure.effect-chico:hover h2 {
   display: none;
 }
 
-@media screen and (max-width: 50em) {
-  .content {
-    padding: 0 10px;
-    text-align: center;
-  }
-  .grid figure {
-    display: inline-block;
-    float: none;
-    margin: 10px auto;
-    width: 100%;
+@media screen and (max-width: 768px) {
+  .team-member {
+    width: 50%;
+    margin: 0 auto;
   }
 }

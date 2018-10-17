@@ -175,6 +175,9 @@ export default class Map extends Component {
           filterByCountry={this.filterByCountry}
         />
         <div className="spectrum-container">
+          <div className="spectrum-popup">
+            hover over different colors to filter by project type
+          </div>
           <Spectrum className="" filterByType={this.filterProjectsByType} />
         </div>
         <GoogleMapReact
