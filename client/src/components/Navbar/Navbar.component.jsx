@@ -22,7 +22,7 @@ export default class Navbar extends Component {
       document.querySelector(".navbar").style.width = "0px";
       document.querySelector(".navbar-middle").style.display = "none";
       document.querySelector(".toggle-nav").style.left = "0";
-      document.querySelector(".toggle-nav i").style.transform = "initial";
+      document.querySelector(".toggle-nav i").style.transform = "rotate(45deg)";
       if (!!document.querySelector(".container")) {
         document.querySelector(".container").style.marginLeft = "15%";
       }
@@ -40,8 +40,7 @@ export default class Navbar extends Component {
       }
       document.querySelector(".navbar-middle").style.display = "block";
       document.querySelector(".toggle-nav").style.left = "200px";
-      document.querySelector(".toggle-nav i").style.transform =
-        "rotate(180deg)";
+      document.querySelector(".toggle-nav i").style.transform = "rotate(0)";
     }
   };
 
