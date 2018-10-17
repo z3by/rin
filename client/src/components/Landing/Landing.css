@@ -49,10 +49,9 @@
   height: 400px;
   width: 400px;
   opacity: 1;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 170, 55, 0.2);
   position: absolute;
   border-radius: 50%;
-  filter: contrast(160%);
 }
 
 .nav-group {
@@ -258,7 +257,7 @@
   z-index: 17;
   background-size: 100vh 100vw;
   background-attachment: fixed;
-  opacity: 0;
+  opacity: 0.3;
   -webkit-transition: left ease 1s, right ease 1s;
   -webkit-transition: left ease 1s, right ease 1s, width ease 1.5s;
   transition: left ease 1s, right ease 1s, width ease 1.5s;
@@ -269,13 +268,13 @@
 }
 
 .down-rec-overlay {
-  background: steelblue;
+  background: cadetblue;
   bottom: 10%;
   right: 20%;
 }
 
 .up-rec-overlay {
-  background: salmon;
+  background: khaki;
   top: 10%;
   left: 20%;
 }
