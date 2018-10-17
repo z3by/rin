@@ -99,6 +99,26 @@ i {
   text-transform: capitalize;
 }
 
+.header {
+  background: url(/imgs/success.jpg);
+  height: 50vh;
+  background-attachment: fixed;
+}
+.header-img {
+  width: 100vh;
+  min-height: 30vh;
+}
+
+.header-text {
+  text-align: center;
+  position: relative;
+  top: 15vh;
+  font-size: 3vw;
+  color: var(--color-3);
+  font-family: var(--main-font);
+  text-transform: uppercase;
+}
+
 .splash-screen {
   display: -webkit-box;
   display: -ms-flexbox;

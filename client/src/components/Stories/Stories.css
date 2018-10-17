@@ -1,20 +1,15 @@
 .stories {
-  position: relative;
-}
-
-.stories .header .header-text {
-  position: absolute;
-  width: 50%;
-  left: 25%;
+  margin: 0 auto;
 }
 
 .story-items {
   position: relative;
-  width: 70%;
-  margin: 10% 10% 10% 20%;
   height: 100vh;
   display: grid;
   grid-gap: 50px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   grid-template-columns: 1fr 1fr 1fr;
 }
 

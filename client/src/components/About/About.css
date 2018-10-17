@@ -2,6 +2,7 @@
   margin: 20px;
   margin-left: calc(15% + 100px);
   width: 70%;
+  -webkit-transition: all 1s ease;
   transition: all 1s ease;
 }
 
@@ -73,23 +74,6 @@
 
 .banner-title {
   font-size: 4rem;
-  color: var(--color-3);
-  font-family: var(--main-font);
-  text-transform: uppercase;
-}
-
-.header-img {
-  width: 100%;
-  min-height: 30vh;
-  -webkit-filter: brightness(50%);
-  filter: brightness(50%);
-}
-
-.header-text {
-  text-align: center;
-  position: relative;
-  top: 15vh;
-  font-size: 3vw;
   color: var(--color-3);
   font-family: var(--main-font);
   text-transform: uppercase;
@@ -202,6 +186,7 @@
   position: relative;
   left: 30%;
   padding: 40px;
+  -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
