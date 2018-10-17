@@ -102,6 +102,7 @@ i {
 .header {
   background: url(/imgs/success.jpg);
   height: 50vh;
+  background-size: 100% auto;
   background-attachment: fixed;
 }
 .header-img {
