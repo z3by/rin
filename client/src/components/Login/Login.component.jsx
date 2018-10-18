@@ -10,6 +10,10 @@ export default class Login extends Component {
     };
   }
 
+  componentDidMount() {
+    document.querySelector(".navbar").style.display = "none";
+  }
+
   onChange = e => {
     this.setState({
       [e.target.name]: e.target.value
