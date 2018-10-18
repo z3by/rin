@@ -84,7 +84,7 @@ export default class NewProject extends Component {
             name="organization_name"
             id="organization_name"
             onChange={this.onChange}
-          />{" "}
+          />
           <br />
           <br />
         </from>
