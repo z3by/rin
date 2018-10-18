@@ -1,0 +1,83 @@
+.projects-list-table th h1 {
+  font-weight: bold;
+  font-size: 1em;
+  text-align: left;
+  color: var(--color-1);
+  font-family: var(--main-font);
+}
+
+.projects-list-table td button {
+  height: 50px;
+  width: 100px;
+}
+
+.projects-list-table td.project-options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.projects-list-table td.project-options a {
+  margin: 0 20px;
+}
+
+.projects-list-table td.project-options a:hover {
+  color: var(--color-1);
+}
+.projects-list-table td {
+  font-weight: normal;
+  font-size: 1em;
+}
+
+.projects-list-table {
+  text-align: left;
+  overflow: hidden;
+  width: 80%;
+  margin: 0 auto;
+  display: table;
+  padding: 0 0 8em 0;
+}
+
+.projects-list-table td,
+.projects-list-table th {
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-left: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* Background-color of the odd rows */
+.projects-list-table tr:nth-child(odd) {
+  background-color: #ddd;
+}
+
+/* Background-color of the even rows */
+.projects-list-table tr:nth-child(even) {
+  background-color: #555;
+}
+
+.projects-list-table th {
+  background-color: #444;
+}
+
+.projects-list-table td:first-child {
+  color: var(--color-5);
+  width: 100px;
+}
+
+.projects-list-table td:hover {
+  background-color: var(--color-2);
+  color: #403e10;
+
+  transition-delay: 0s;
+  transition-duration: 0.4s;
+  transition-property: all;
+  transition-timing-function: line;
+}
+
+@media (max-width: 800px) {
+  .projects-list-table td:nth-child(4),
+  .projects-list-table th:nth-child(4) {
+    display: none;
+  }
+}
