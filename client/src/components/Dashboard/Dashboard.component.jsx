@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Dashboard.css";
-import Project from "../Dashboard/Project/Project.component";
+import Projects from "../Dashboard/Projects/Projects.component";
 import { Route } from "react-router-dom";
 import Sidebar from "../general-components/sidebar/sidebar";
 
@@ -19,7 +19,9 @@ export default class Dashboard extends Component {
     return (
       <div className="admin-dashboard">
         <Sidebar />
-        <Route path="/dashboard/projects" component={Projects} />
+        <main>
+          <Route path="/dashboard/projects" component={Projects} />
+        </main>
       </div>
     );
   }
