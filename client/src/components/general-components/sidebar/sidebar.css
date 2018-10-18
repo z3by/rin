@@ -3,6 +3,7 @@
   float: left;
   background: var(--color-5);
   height: 100vh;
+  position: fixed;
 }
 
 .sidebar .logo {
