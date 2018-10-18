@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link, Route } from "react-router-dom";
-import NewProject from "../../NewProject/NewProject.component";
+import NewProject from "../NewProject/NewProject.component";
 import ProjectsList from "../ProjectsList/ProjectsList.component";
 import "./Projects.css";
 
