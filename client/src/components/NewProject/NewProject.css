@@ -1,0 +1,7 @@
+.new-project {
+  background-color: var(--color-1);
+  height: 100vh;
+  display: flex;
+  background-position: center;
+  justify-content: left;
+}

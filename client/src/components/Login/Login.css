@@ -1,0 +1,27 @@
+.admin-login {
+  background-color: var(--color-1);
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: url("https://backgroundcheckall.com/wp-content/uploads/2017/12/admin-background-images-2.png");
+  background-size: cover;
+  background-position: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.admin-login .loginbox {
+  background: var(--color-5);
+}
+
+.admin-login .login-title {
+  font-size: 40px;
+  margin: 0;
+  padding: 0;
+}
+
+.admin-login form {
+  margin: 0;
+}
