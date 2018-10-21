@@ -25,8 +25,20 @@ export default class ProjectsList extends Component {
     });
   };
 
+
+  deleteProject = (project) => {
+    axios.delete(`/api/projects/${project.id}`)
+      .then(res => {
+        console.log("Deleted Successfully");
+        this.fetchAllProjects();
+      })
+      .catch((err) => {
+        console.log("Error deleting a table row");
+      });
+  }
+
   render() {
-    const projects = this.state.allProject.map((project, key) => {
+    const projects = this.state.allProject.map(project => {
       return (
         <tr>
           <td>{project.id}</td>
@@ -40,7 +52,7 @@ export default class ProjectsList extends Component {
               <i className="fas fa-edit" />
               update
             </a>
-            <a>
+            <a onClick={() => this.deleteProject(project)}>
               <i className="fas fa-trash-alt" /> delete
             </a>
           </td>
