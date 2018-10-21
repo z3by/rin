@@ -10,8 +10,8 @@ module.exports = {
     capital VARCHAR(50) NOT NULL,
     region VARCHAR(50) NOT NULL,
     population INT,
-    lat FLOAT,
-    lng FLOAT,
+    lat DOUBLE ,
+    lng DOUBLE ,
     PRIMARY KEY (id)
   )`,
 
@@ -19,8 +19,8 @@ module.exports = {
   CREATE TABLE IF NOT EXISTS locations (
     id INT AUTO_INCREMENT,
     country_id INT,
-    lng FLOAT NOT NULL,
-    lat FLOAT NOT NULL,
+    lng DOUBLE NOT NULL,
+    lat DOUBLE NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (country_id)
         REFERENCES countries (id)

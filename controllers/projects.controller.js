@@ -42,6 +42,7 @@ module.exports.getProject = (req, res) => {
 }
 
 module.exports.addProject = (req, res) => {
+    console.log(req.body);
     const connection = mysql.createConnection(dbConfig);
 
     connection.connect((err) => {

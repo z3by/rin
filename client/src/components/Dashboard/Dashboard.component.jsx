@@ -13,7 +13,7 @@ export default class Dashboard extends Component {
   componentDidMount() {
     document.querySelector(".navbar").style.display = "none";
   }
-  componentWillMount() {}
+  componentWillMount() { }
 
   render() {
     return (
