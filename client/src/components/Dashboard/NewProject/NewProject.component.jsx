@@ -31,32 +31,40 @@ export default class NewProject extends Component {
       zoom: 0
     };
   }
+
   componentWillMount() {
     this.fetchAllCountries();
   }
+
   componentDidMount() {
     document.body.style.overflowY = "auto";
   }
+
   fetchAllCountries = () => {
     axios.get("https://restcountries.eu/rest/v2/all").then(res => {
       this.setState({ countries: res.data });
     });
   };
+
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value }, () => {
       console.log(this.state);
     });
   };
+
   openForm = () => {
     document.getElementById("myForm").style.display = "block";
     console.log("hiiiiiiiiii");
   };
+
   closeForm = () => {
     document.getElementById("myForm").style.display = "none";
   };
+
   onClick = ({ lng, lat }) => {
     this.setState({ lng: lng, lat: lat });
   };
+
   addProject = () => {
     let projectData = {
       title: this.state.title,
@@ -72,12 +80,12 @@ export default class NewProject extends Component {
       lat: this.state.lat
     };
     axios
-      .post("/api/projects", JSON.stringify(projectData))
-      .then(function(response) {
+      .post("/api/projects", projectData)
+      .then(function (response) {
         console.log("SUCCESS");
       })
-      .catch(function(error) {
-        console.log("ERROR");
+      .catch(function (error) {
+        console.log(error);
       });
   };
   render() {
