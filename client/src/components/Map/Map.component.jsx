@@ -56,7 +56,7 @@ export default class Map extends Component {
   };
 
   render() {
-    const dots = this.state.projects.map((project, key) => {
+    const dots = this.state.filteredProjects.map((project, key) => {
       return (
         <Dot lng={project.lng} lat={project.lat} key={key} project={project} />
       );
