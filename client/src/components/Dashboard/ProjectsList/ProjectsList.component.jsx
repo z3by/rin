@@ -1,15 +1,37 @@
 import React, { Component } from "react";
+import axios from "axios";
 import "./ProjectsList.css";
 import * as projectsData from "../../Map/projects-data.json";
 
 export default class ProjectsList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      allProject: []
+    }
+  }
+
+  componentWillMount() {
+    this.fetchAllProjects();
+  }
+
+  componentDidMount() {
+    document.body.style.overflowY = "auto";
+  }
+
+  fetchAllProjects = () => {
+    axios.get("/api/projects").then(res => {
+      this.setState({ allProject: res.data }, () => { console.log(this.state.allProject); });
+    });
+  };
+
   render() {
-    const projects = projectsData.map((project, key) => {
+    const projects = this.state.allProject.map((project, key) => {
       return (
         <tr>
-          <td>{key}</td>
+          <td>{project.id}</td>
           <td>{project.title}</td>
-          <td>{project.organizationName}</td>
+          <td>{project.organization_name}</td>
           <td className="project-options">
             <a>
               <i className="far fa-eye" /> show
