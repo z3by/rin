@@ -7,6 +7,7 @@ import Dot from "./Dot/Dot.component";
 import Filter from "./Filter/Filter.component";
 import Spectrum from "./Spectrum/Spectrum.component";
 import { mapApi } from "../../config/map.config";
+import Axios from "axios";
 
 export default class Map extends Component {
   state = {
@@ -15,143 +16,52 @@ export default class Map extends Component {
       lng: 35.99
     },
     zoom: 0,
+    filterOptions: {},
     projects: []
   };
 
   componentWillMount() {
-    this.getUserLocation();
-    this.setTheProjects();
+    this.fetchProjects();
   }
 
-  // ser all the projects to the state;
-  setTheProjects = () => {
-    this.setState({
-      projects: projects
-    });
-  };
+  // get all the projects and map it to the state;
+  fetchProjects = () => {
+    const options = this.state.filterOptions;
+    Axios.get("/api/projects/locations", {
+      params: options
+    }).then(res => {
+      console.log(res.data);
 
-  // get the user location;
-  getUserLocation = () => {
-    navigator.geolocation.getCurrentPosition(position => {
       this.setState({
-        position: {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        }
+        projects: res.data
       });
     });
   };
 
-  // filter projects by organization name
-  filterProjectsByOrgName = e => {
-    const name = e.target.value;
-    const filteredProjects = projects.filter(project => {
-      return project.organizationName.includes(name.toLowerCase());
-    });
-
-    // set the state to the filtered projects
+  // get the user filter input and call the filter by the options func
+  setFilterOptions = e => {
     this.setState({
-      projects: filteredProjects
+      filterOptions: {
+        ...this.state.filterOptions,
+        [e.target.name]: e.target.value
+      }
     });
   };
 
-  // filter projects by organization name
-  filterProjectsByProjectName = e => {
-    const name = e.target.value;
-    const filteredProjects = projects.filter(project => {
-      return project.projectName.includes(name.toLowerCase());
-    });
-
-    // set the state to the filtered projects
+  // filter projects by it own type
+  filterByType = type => {
     this.setState({
-      projects: filteredProjects
+      filterOptions: {
+        ...this.state.filterOptions,
+        type: type
+      }
     });
-  };
-
-  // filter projects by type;
-  filterProjectsByType = type => {
-    // filter the projects based on it own type
-    const filteredProjects = projects.filter(project => {
-      return project.type === type;
-    });
-
-    // set the state to the filtered projects
-    this.setState({
-      projects: filteredProjects
-    });
-  };
-
-  onSlide = e => {
-    if (e.target.id === "starting-year") {
-      this.filterByYear(e.target.value);
-    }
-    if (e.target.id === "benefits") {
-      this.filterByBenefits(e.target.value);
-    }
-    if (e.target.id === "capacity") {
-      this.filterByCapacity(e.target.value);
-    }
-  };
-
-  filterByYear = year => {
-    const filteredProjects = projects.filter(project => {
-      return project.year > year;
-    });
-
-    // set the state to the filtered projects
-    this.setState({
-      projects: filteredProjects
-    });
-  };
-
-  filterByBenefits = benefits => {
-    const filteredProjects = projects.filter(project => {
-      return parseInt(project.benefits, 10) > parseInt(benefits, 10);
-    });
-
-    // set the state to the filtered projects
-    this.setState({
-      projects: filteredProjects
-    });
-  };
-
-  filterByCapacity = capacity => {
-    const filteredProjects = projects.filter(project => {
-      return parseInt(project.capacity, 10) > parseInt(capacity, 10);
-    });
-
-    // set the state to the filtered projects
-    this.setState({
-      projects: filteredProjects
-    });
-  };
-
-  filterByCountry = e => {
-    const country = e.target.value;
-
-    const filteredProjects = projects.filter(project => {
-      return project.country.toLowerCase() === country.toLowerCase();
-    });
-
-    // set the state to the filtered projects
-    this.setState({
-      projects: filteredProjects
-    });
-  };
-
-  closeProjectInfo = () => {
-    document.querySelector(".project-info").style.display = "none";
   };
 
   render() {
     const dots = this.state.projects.map((project, key) => {
       return (
-        <Dot
-          lng={project.position.lng}
-          lat={project.position.lat}
-          key={key}
-          project={project}
-        />
+        <Dot lng={project.lng} lat={project.lat} key={key} project={project} />
       );
     });
 
@@ -160,25 +70,15 @@ export default class Map extends Component {
         style={{ height: "100vh", width: "100%" }}
         className="map fadeInFast"
       >
-        <div className="red" />
-        <div className="project-info">
-          <div className="read-more-close" onClick={this.closeProjectInfo}>
-            <i className="fas fa-times" />
-          </div>
-          <div className="project-info-content">
-            <p />
-          </div>
-        </div>
         <Filter
-          filterProjectsByOrgName={this.filterProjectsByOrgName}
-          onSlide={this.onSlide}
-          filterByCountry={this.filterByCountry}
+          filter={this.setFilterOptions}
+          fetchProjects={this.fetchProjects}
         />
         <div className="spectrum-container">
           <div className="spectrum-popup">
             hover over different colors to filter by project type
           </div>
-          <Spectrum className="" filterByType={this.filterProjectsByType} />
+          <Spectrum className="" filterByType={this.filterByType} />
         </div>
         <GoogleMapReact
           className="land-map"
