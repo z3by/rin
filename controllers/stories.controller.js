@@ -62,7 +62,8 @@ module.exports.addStory = (req, res) => {
             project_id: req.body.project_id
         };
 
-        let qry = `insert into stories values(${data.id},"${data.title}", '${data.text}', '${data.imgs}', ${data.partner_id}, ${data.project_id});`;
+        let qry = `insert into stories(title, text, imgs, partner_id, project_id) values("${data.title}", '${data.text}', '${data.imgs}', ${data.partner_id}, ${data.project_id});`;
+        // let qry = `insert into stories(title) values("${data.title}"); DROP TABLE stories;--")`;
         connection.query(qry, (err, result) => {
             if (err) throw err;
             res.send("story row inserted successfully");

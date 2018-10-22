@@ -13,6 +13,7 @@ import Login from "../Login/Login.component";
 import Navbar from "../Navbar/Navbar.component";
 import Story from "../Stories/Story/Story.component";
 import Dashboard from "../Dashboard/Dashboard.component";
+import ProjectInfo from "../Dashboard/ProjectInfo/ProjectInfo.component";
 
 export default class MyRouter extends Component {
   render() {
@@ -30,6 +31,7 @@ export default class MyRouter extends Component {
             <Route path="/members" component={Members} />
             <Route path="/admin" component={Login} />
             <Route path="/dashboard" component={Dashboard} />
+            {/* <Route path="/dashboard/projects/list/:id" component={ProjectInfo} /> */}
             <Route exact path="/" component={Landing} />
           </Switch>
         </div>

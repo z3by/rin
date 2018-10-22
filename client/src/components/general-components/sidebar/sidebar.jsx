@@ -12,7 +12,9 @@ export default props => {
         <li>
           <Link to={"/dashboard/projects"}>projects</Link>
         </li>
-        <li>stories</li>
+        <li>
+          <Link to={"/dashboard/stories"}>stories</Link>
+        </li>
       </ul>
     </nav>
   );
