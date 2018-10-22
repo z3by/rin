@@ -7,6 +7,7 @@ import Dot from "./Dot/Dot.component";
 import Filter from "./Filter/Filter.component";
 import Spectrum from "./Spectrum/Spectrum.component";
 import { mapApi } from "../../config/map.config";
+import Axios from "axios";
 
 export default class Map extends Component {
   state = {
@@ -15,14 +16,7 @@ export default class Map extends Component {
       lng: 35.99
     },
     zoom: 0,
-    filterOptions: {
-      projectName: "",
-      organizationName: "",
-      country: "",
-      capacity: 0,
-      benefits: 0,
-      year: 0
-    },
+    filterOptions: {},
     projects: []
   };
 
@@ -32,6 +26,12 @@ export default class Map extends Component {
 
   // get all the projects and map it to the state;
   fetchProjects = () => {
+    const options = this.state.filterOptions;
+    Axios.get("/api/projects/locations", {
+      params: options
+    }).then(res => {
+      console.log(res.data);
+    });
     this.setState({
       projects: projects
     });
@@ -59,17 +59,11 @@ export default class Map extends Component {
 
   render() {
     const dots = this.state.projects.map((project, key) => {
-      const options = this.state.filterOptions;
-      let shown = project.projectName
-        .toLowerCase()
-        .includes(options.projectName.toLowerCase());
-
       return (
         <Dot
           lng={project.position.lng}
           lat={project.position.lat}
           key={key}
-          style={{ display: shown ? "block" : "none" }}
           project={project}
         />
       );
@@ -80,7 +74,10 @@ export default class Map extends Component {
         style={{ height: "100vh", width: "100%" }}
         className="map fadeInFast"
       >
-        <Filter filter={this.setFilterOptions} />
+        <Filter
+          filter={this.setFilterOptions}
+          fetchProjects={this.fetchProjects}
+        />
         <div className="spectrum-container">
           <div className="spectrum-popup">
             hover over different colors to filter by project type

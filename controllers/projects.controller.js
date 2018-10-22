@@ -22,6 +22,37 @@ module.exports.getProjects = (req, res) => {
 };
 
 module.exports.getLocations = (req, res) => {
+  const filterOptions = req.query;
+
+  let qry =
+    "select p.id, l.lat, l.lng from projects p inner join locations l where p.location_id = l.id";
+
+  if (filterOptions.organizationName) {
+    qry += ` and p.organization_name like "%${
+      filterOptions.organizationName
+    }%"`;
+  }
+
+  if (filterOptions.projectName) {
+    qry += ` and p.title like "%${filterOptions.projectName}%"`;
+  }
+
+  if (filterOptions.capacity) {
+    qry += ` and p.capacity < ${filterOptions.capacity}`;
+  }
+
+  if (filterOptions.country) {
+    qry += ` and p.country = ${filterOptions.country}`;
+  }
+
+  if (filterOptions.type) {
+    qry += ` and p.type = "${filterOptions.type}"`;
+  }
+
+  if (filterOptions.year) {
+    qry += ` and p.start_date = ${filterOptions.year}`;
+  }
+
   const connection = mysql.createConnection(dbConfig);
 
   connection.connect(err => {
@@ -33,13 +64,10 @@ module.exports.getLocations = (req, res) => {
       console.log("Database used");
     });
 
-    connection.query(
-      "select p.id, l.lat, l.lng from projects p inner join locations l where p.location_id = l.id",
-      (err, result) => {
-        if (err) throw err;
-        res.send(result);
-      }
-    );
+    connection.query(qry, (err, result) => {
+      if (err) throw err;
+      res.send(result);
+    });
   });
 };
 module.exports.getProject = (req, res) => {

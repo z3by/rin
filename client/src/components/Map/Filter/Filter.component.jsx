@@ -22,7 +22,6 @@ class Filter extends React.Component {
     });
   };
 
-
   render() {
     let countries = !this.props.countries.countries
       ? []
@@ -59,7 +58,7 @@ class Filter extends React.Component {
           <input
             id="projectName"
             type="text"
-            name='projectName'
+            name="projectName"
             placeholder="project name"
             className="filter-input-text"
             onChange={this.props.filter}
@@ -75,28 +74,11 @@ class Filter extends React.Component {
           <input
             id="capacity"
             type="range"
-            max="10000"
+            max="1000000"
             name="capacity"
             placeholder="porject capacity"
             className="slider"
             onChange={this.props.filter}
-          />
-        </div>
-
-        <div className="filter-input">
-          <label htmlFor="benefits" className="filter-label">
-            Filter by investors benefits:
-            {"    "}
-            <span id="benefits-range" data-sympol="  $" />
-          </label>
-          <input
-            id="benefits"
-            type="range"
-            name="benefits"
-            placeholder="organization benefits"
-            className="slider"
-            onChange={this.props.filter}
-            max="10000000"
           />
         </div>
 
@@ -123,15 +105,12 @@ class Filter extends React.Component {
           <label htmlFor="countries" className="filter-label">
             Filter by countries
           </label>
-          <select
-            name="country"
-            id="countries"
-            onChange={this.props.filter}
-          >
+          <select name="country" id="countries" onChange={this.props.filter}>
             <option value="choose one ">choose country</option>
             {countries}
           </select>
         </div>
+        <button onClick={this.props.fetchProjects}>fetch</button>
       </div>
     );
   }
