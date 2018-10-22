@@ -103,6 +103,7 @@ export default class NewProject extends Component {
         </option>
       );
     });
+
     return (
       <div className="new-project">
         <from method="POST">

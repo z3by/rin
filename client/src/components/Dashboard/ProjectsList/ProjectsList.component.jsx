@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Route, Link } from "react-router-dom";
 import "./ProjectsList.css";
-import * as projectsData from "../../Map/projects-data.json";
 
 export default class ProjectsList extends Component {
   constructor(props) {
@@ -37,6 +37,12 @@ export default class ProjectsList extends Component {
       });
   }
 
+  displayProject = (project) => {
+    // return <ProjectInfo project={project} />;
+    // this.props.history.push(`/dashboard/projects/list/${project.id}`);
+    // browserHistory.push(`${project.id}`);
+  }
+
   render() {
     const projects = this.state.allProject.map(project => {
       return (
@@ -45,9 +51,12 @@ export default class ProjectsList extends Component {
           <td>{project.title}</td>
           <td>{project.organization_name}</td>
           <td className="project-options">
-            <a>
+            <Link to={`/dashboard/projects/list/${project.id}`}>
               <i className="far fa-eye" /> show
-            </a>
+            </Link>
+            {/* <a onClick={() => this.displayProject(project)}>
+              <i className="far fa-eye" /> show
+            </a > */}
             <a>
               <i className="fas fa-edit" />
               update
