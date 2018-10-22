@@ -31,9 +31,10 @@ export default class Map extends Component {
       params: options
     }).then(res => {
       console.log(res.data);
-    });
-    this.setState({
-      projects: projects
+
+      this.setState({
+        projects: res.data
+      });
     });
   };
 
@@ -60,12 +61,7 @@ export default class Map extends Component {
   render() {
     const dots = this.state.projects.map((project, key) => {
       return (
-        <Dot
-          lng={project.position.lng}
-          lat={project.position.lat}
-          key={key}
-          project={project}
-        />
+        <Dot lng={project.lng} lat={project.lat} key={key} project={project} />
       );
     });
 
