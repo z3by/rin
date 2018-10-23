@@ -30,8 +30,7 @@ export default class NewProject extends Component {
       capacity: 0,
       partner_id: 1,
       organization_name: "",
-      img_url:
-        "https://worldvisionadvocacy.org/wp-content/uploads/2017/10/W220-0005-107_706974.jpg",
+      img_url: "",
       type: "",
       project_description: "",
       countryName: "",
@@ -50,7 +49,7 @@ export default class NewProject extends Component {
   }
 
   fetchAllCountries = () => {
-    axios.get("https://restcountries.eu/rest/v2/all").then(res => {
+    axios.get("/api/countries").then(res => {
       this.setState({ countries: res.data });
     });
   };
@@ -169,14 +168,19 @@ export default class NewProject extends Component {
           <br />
           <br />
           <label htmlFor="type">Project Type</label> <br />
-          <select name="type" id="type" onChange={this.onChange}>
+          <select required name="type" id="type" onChange={this.onChange}>
             <option value="select type">Select Type</option>
             {types}
           </select>
           <br />
           <br />
           <label htmlFor="countryName">Project Country</label> <br />
-          <select name="countryName" id="countryName" onChange={this.onChange}>
+          <select
+            required
+            name="countryName"
+            id="countryName"
+            onChange={this.onChange}
+          >
             <option value="select type">Select Country</option>
             {countries}
           </select>

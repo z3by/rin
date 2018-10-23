@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch, HashRouter } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  HashRouter
+} from "react-router-dom";
 import "../../App.css";
 
 import About from "../About/About.component";
@@ -31,7 +36,6 @@ export default class MyRouter extends Component {
             <Route path="/members" component={Members} />
             <Route path="/admin" component={Login} />
             <Route path="/dashboard" component={Dashboard} />
-            {/* <Route path="/dashboard/projects/list/:id" component={ProjectInfo} /> */}
             <Route exact path="/" component={Landing} />
           </Switch>
         </div>
