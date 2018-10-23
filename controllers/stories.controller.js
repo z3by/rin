@@ -58,11 +58,9 @@ module.exports.addStory = (req, res) => {
             title: req.body.title,
             text: JSON.stringify(req.body.text), //text is an array of strings
             imgs: JSON.stringify(req.body.imgs), //imgs is an array of urls
-            partner_id: req.body.partner_id,
-            project_id: req.body.project_id
         };
 
-        let qry = `insert into stories(title, text, imgs, partner_id, project_id) values("${data.title}", '${data.text}', '${data.imgs}', ${data.partner_id}, ${data.project_id});`;
+        let qry = `insert into stories(title, text, imgs) values("${data.title}", '${data.text}', '${data.imgs}');`;
         // let qry = `insert into stories(title) values("${data.title}"); DROP TABLE stories;--")`;
         connection.query(qry, (err, result) => {
             if (err) throw err;
@@ -87,12 +85,10 @@ module.exports.updateStory = (req, res) => {
             title: req.body.title,
             text: JSON.stringify(req.body.text), //text is an array of strings
             imgs: JSON.stringify(req.body.imgs), //imgs is an array of urls
-            partner_id: req.body.partner_id,
-            project_id: req.body.project_id
         };
 
         let qry = `UPDATE stories
-                   SET title="${data.title}", text='${data.text}', imgs='${data.imgs}', partner_id=${data.partner_id}, project_id=${data.project_id}
+                   SET title="${data.title}", text='${data.text}', imgs='${data.imgs}',
                    WHERE id=${req.params.id};`;
         connection.query(qry, (err, result) => {
             if (err) throw err;
