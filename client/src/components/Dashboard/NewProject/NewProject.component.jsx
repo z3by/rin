@@ -188,9 +188,7 @@ export default class NewProject extends Component {
               <Marker lng={this.state.lng} lat={this.state.lat} />
             </GoogleMapReact>
 
-            <button type="submit" onClick={this.addProject}>
-              Add Project
-            </button>
+            <button onClick={this.addProject}>Add Project</button>
           </div>
         </form>
       </div>

@@ -12,11 +12,15 @@ export default class NewProject extends Component {
     document.body.style.overflowY = "auto";
   }
   onChange = e => {
+    e.preventDefault();
     this.setState({ [e.target.name]: e.target.value }, () => {});
   };
 
-  addStory = () => {
+  addStory = e => {
+    e.preventDefault();
     let story = this.state.story;
+    console.log(this.state);
+
     axios
       .post("/api/stories", story)
       .then(function(response) {
@@ -51,14 +55,16 @@ export default class NewProject extends Component {
             id="story-text"
             onChange={this.onChange}
           />
-          <button type="file">
+          <label htmlFor="image">add image for the story</label> <br />
+          <input
+            type="file"
+            name="image"
+            accept="image/*"
+            onChange={this.onChange}
+          />
+          <button type="submit" onClick={this.addStory}>
             <p>
-              <i className="fas fa-arrow-up" /> upload image
-            </p>
-          </button>
-          <button type="submit" onClick={this.addProject}>
-            <p>
-              <i className="fas fa-plus" /> add story
+              <i className="fas fa-plus" /> Add Story
             </p>
           </button>
         </form>
