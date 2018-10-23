@@ -48,16 +48,10 @@
 .effect-circle {
   height: 400px;
   width: 400px;
-  background: var(--color-1);
   opacity: 1;
+  background: rgba(255, 170, 55, 0.2);
   position: absolute;
   border-radius: 50%;
-  -webkit-filter: contrast(100%) brightness(120%);
-  filter: contrast(100%) brightness(120%);
-  -webkit-transition: top 2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-    left 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  transition: top 2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-    left 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .nav-group {
@@ -97,12 +91,12 @@
 }
 
 .nav-link.active {
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   color: var(--color-2);
   -webkit-transition: var(--smooth);
   transition: var(--smooth);
-  opacity: 0.8;
+  opacity: 1;
+  font-weight: bolder;
   letter-spacing: 0.3rem;
 }
 
@@ -193,7 +187,7 @@
 /* --------------------------------------- partners end---------------------------------- */
 
 .circle {
-  opacity: 0.5;
+  opacity: 0.6;
   height: 500px;
   width: 500px;
   left: 35vw;
@@ -212,30 +206,10 @@
   box-shadow: 2px 2px 10px #333;
 }
 
-.circle-overlay {
-  opacity: 0;
-  height: 35vw;
-  width: 35vw;
-  left: 35vw;
-  bottom: 0;
+.circle img {
+  position: fixed;
   top: 0;
-  margin: auto 0;
-  position: absolute;
-  border-radius: 50%;
-  z-index: 3;
-  mix-blend-mode: screen;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    from(var(--color-1)),
-    to(var(--color-4))
-  );
-  background: linear-gradient(90deg, var(--color-1), var(--color-4));
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
+  left: 0;
 }
 
 .circle video {
@@ -249,14 +223,13 @@
 
 .up-rec,
 .down-rec {
-  /* box-shadow: 2px 2px 10px #333; */
+  opacity: 0.5;
   height: 170px;
   width: 30vw;
   position: absolute;
-  z-index: 1;
-  background-size: 100vh 100vw;
+  z-index: 0;
+  background-image: url(/imgs/backs1.jpg);
   background-attachment: fixed;
-  opacity: 0.5;
   -webkit-transition: left ease 1s, right ease 1s;
   -webkit-transition: left ease 1s, right ease 1s, width ease 1.5s;
   transition: left ease 1s, right ease 1s, width ease 1.5s;
@@ -278,26 +251,30 @@
 
 .up-rec-overlay,
 .down-rec-overlay {
-  mix-blend-mode: screen;
-  opacity: 0;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
-  filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+  height: 170px;
+  width: 30vw;
   position: absolute;
-  height: 20vh;
-  width: 35vw;
-  z-index: 5;
+  z-index: 17;
+  background-size: 100vh 100vw;
+  background-attachment: fixed;
+  opacity: 0.3;
   -webkit-transition: left ease 1s, right ease 1s;
-  transition: left ease 1s, right ease 1s;
+  -webkit-transition: left ease 1s, right ease 1s, width ease 1.5s;
+  transition: left ease 1s, right ease 1s, width ease 1.5s;
+  background-repeat: no-repeat;
+  -moz-transition: left ease 1s, right ease 1s;
+  -ms-transition: left ease 1s, right ease 1s;
+  -o-transition: left ease 1s, right ease 1s;
 }
 
 .down-rec-overlay {
-  background: linear-gradient(45deg, var(--color-2), var(--color-1));
+  background: cadetblue;
   bottom: 10%;
   right: 20%;
 }
 
 .up-rec-overlay {
-  background: linear-gradient(45deg, var(--color-1), var(--color-2));
+  background: khaki;
   top: 10%;
   left: 20%;
 }
@@ -312,7 +289,6 @@
   height: 50px;
   width: 120px;
   position: absolute;
-  background: var(--color-4);
   left: 40px;
   bottom: 50px;
   z-index: 20000;
@@ -326,7 +302,7 @@
 .counter h4 {
   text-align: center;
   margin: 0;
-  color: var(--color-5);
+  color: var(--color-3);
   font-family: Arial, Helvetica, sans-serif;
   line-height: 6vh;
 }

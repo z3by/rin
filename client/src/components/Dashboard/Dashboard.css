@@ -1,0 +1,4 @@
+.admin-dashboard > main {
+  width: calc(100vw - 200px);
+  float: right;
+}

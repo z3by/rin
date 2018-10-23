@@ -2,6 +2,7 @@ const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
 const logger = require("morgan");
 
 const indexRouter = require("./routes/index");
@@ -22,13 +23,14 @@ app.use(
   })
 );
 app.use(cookieParser());
+app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "client", "build")));
 
 app.use("/", indexRouter);
 app.use("/api", apiRouter);
-// app.get("*", (req, res) => {
-//   res.redirect("/");
-// });
+app.get("*", (req, res) => {
+  res.redirect("/");
+});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

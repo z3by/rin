@@ -17,7 +17,7 @@ const Dot = props => {
     <div className="dot" style={{ background: colors[props.project.type] }}>
       <div className="project-info">
         <div className="project-info-popup">
-          <h1>title</h1>
+          <h1>Basic statistics</h1>
           <p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque
             similique obcaecati vitae consequuntur atque eligendi architecto
@@ -32,7 +32,7 @@ const Dot = props => {
           </p>
         </div>
         <div className="project-info-popup">
-          <h1>title</h1>
+          <h1>Qualitative information</h1>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo amet
             dolore blanditiis, culpa tempore voluptatibus! Id, animi eligendi
@@ -47,7 +47,7 @@ const Dot = props => {
           </p>
         </div>
         <div className="project-info-popup">
-          <h1>title</h1>
+          <h1>other info</h1>
           <p>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui,
             exercitationem! Amet eum ipsa accusamus nulla libero iste sequi

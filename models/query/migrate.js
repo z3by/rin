@@ -6,12 +6,12 @@ module.exports = {
   createCountriesTable: `
   CREATE TABLE IF NOT EXISTS countries (
     id INT AUTO_INCREMENT,
-    name VARCHAR(100) NOT NULL,
-    capital VARCHAR(50) NOT NULL,
-    region VARCHAR(50) NOT NULL,
+    name NVARCHAR(100) NOT NULL,
+    capital NVARCHAR(100) NOT NULL,
+    region NVARCHAR(100) NOT NULL,
     population INT,
-    lat FLOAT,
-    lng FLOAT,
+    lat DOUBLE ,
+    lng DOUBLE ,
     PRIMARY KEY (id)
   )`,
 
@@ -19,8 +19,8 @@ module.exports = {
   CREATE TABLE IF NOT EXISTS locations (
     id INT AUTO_INCREMENT,
     country_id INT,
-    lng FLOAT NOT NULL,
-    lat FLOAT NOT NULL,
+    lng DOUBLE NOT NULL,
+    lat DOUBLE NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (country_id)
         REFERENCES countries (id)
@@ -69,5 +69,5 @@ CREATE TABLE IF NOT EXISTS stories(
         REFERENCES partners (id),
   FOREIGN KEY (project_id)
         REFERENCES projects (id)
-)`,
+)`
 };

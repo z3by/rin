@@ -13,10 +13,12 @@
 .navbar {
   position: absolute;
   height: 100vh;
-  z-index: 10000;
+  z-index: 100;
   width: 200px;
   background: var(--dark-transparent);
+  -webkit-transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
   transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  -webkit-box-shadow: 2px 0px 10px var(--dark-transparent);
   box-shadow: 2px 0px 10px var(--dark-transparent);
 }
 
@@ -25,14 +27,15 @@
   list-style: none;
   position: relative;
   padding: 0 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
-.navbar-middle li {
-  margin: 8vh 0;
-}
-
 .navbar-middle .navbar-link {
   display: grid;
   grid-template-columns: 1fr 2fr;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   width: 100%;
   height: 40px;
@@ -89,12 +92,6 @@
   display: block;
 }
 
-.navbar-link:hover {
-}
-
-.navbar-link:hover p {
-}
-
 .logo {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -105,37 +102,40 @@
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  height: 100px;
-  width: 100px;
-  margin: 20px 50px;
+  height: 120px;
+  width: 120px;
+  margin: 20px 40px;
   border-radius: 50%;
   border: var(--light-border);
-  background: var(--color-4);
+  background: var(--color-1);
 }
 
 .logo-img {
-  max-width: 95px;
+  max-width: 80px;
 }
 
 .toggle-nav {
   position: relative;
+  -webkit-transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
   transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-  width: 30px;
+  width: 40px;
   height: 50px;
   border-top-right-radius: 50%;
   border-bottom-right-radius: 50%;
-  top: 50%;
+  top: 2%;
   left: 200px;
   background: var(--dark-transparent);
+  -webkit-box-shadow: 0px 0px 5px var(--dark-transparent);
   box-shadow: 0px 0px 5px var(--dark-transparent);
 }
 
 .toggle-nav i {
   color: var(--color-1);
-  margin: 15px;
-  margin-left: 3px;
+  -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
-  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  margin: 14px 10px;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
   font-size: 20px;
 }
 .toggle-nav:hover i {

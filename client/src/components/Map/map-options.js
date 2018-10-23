@@ -90,7 +90,7 @@ module.exports = {
       elementType: "geometry",
       stylers: [
         {
-          color: "#959593"
+          color: "#717777"
         }
       ]
     },
@@ -276,7 +276,7 @@ module.exports = {
       elementType: "geometry",
       stylers: [
         {
-          color: "#2e2e2e"
+          color: "#222735"
         }
       ]
     },

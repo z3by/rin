@@ -17,26 +17,9 @@ class Filter extends React.Component {
   }
 
   fetchAllCountries = () => {
-    axios.get("https://restcountries.eu/rest/v2/all").then(res => {
+    axios.get("/api/countries").then(res => {
       this.props.setCountries(res.data);
     });
-  };
-
-  onSlide = e => {
-    const paragraph = document.querySelector(`#${e.target.id}-range`);
-
-    if (e.target.id === "starting-year") {
-      paragraph.innerText =
-        "after:  " + parseInt(e.target.value, 10) + paragraph.dataset.sympol;
-    } else {
-      paragraph.innerText =
-        "more than:  " +
-        parseInt(e.target.value, 10) +
-        paragraph.dataset.sympol;
-    }
-
-    // pass the event to the parent component;
-    this.props.onSlide(e);
   };
 
   render() {
@@ -61,9 +44,10 @@ class Filter extends React.Component {
           <input
             id="org-name"
             type="text"
+            name="organizationName"
             placeholder="organization name"
             className="filter-input-text"
-            onInput={this.props.filterProjectsByOrgName}
+            onChange={this.props.filter}
           />
         </div>
 
@@ -72,11 +56,12 @@ class Filter extends React.Component {
             Filter by project name
           </label>
           <input
-            id="org-name"
+            id="projectName"
             type="text"
+            name="projectName"
             placeholder="project name"
             className="filter-input-text"
-            onInput={this.props.filterProjectsByProjectName}
+            onChange={this.props.filter}
           />
         </div>
 
@@ -89,26 +74,11 @@ class Filter extends React.Component {
           <input
             id="capacity"
             type="range"
-            max="10000"
+            max="1000000"
+            name="capacity"
             placeholder="porject capacity"
             className="slider"
-            onChange={this.onSlide}
-          />
-        </div>
-
-        <div className="filter-input">
-          <label htmlFor="benefits" className="filter-label">
-            Filter by investors benefits:
-            {"    "}
-            <span id="benefits-range" data-sympol="  $" />
-          </label>
-          <input
-            id="benefits"
-            type="range"
-            placeholder="organization benefits"
-            className="slider"
-            onChange={this.onSlide}
-            max="10000000"
+            onChange={this.props.filter}
           />
         </div>
 
@@ -122,9 +92,10 @@ class Filter extends React.Component {
           <input
             id="starting-year"
             type="range"
+            name="year"
             placeholder="project starting year"
             className="slider"
-            onChange={this.onSlide}
+            onChange={this.props.filter}
             max={new Date().getFullYear()}
             min={new Date().getFullYear() - 50}
           />
@@ -134,15 +105,12 @@ class Filter extends React.Component {
           <label htmlFor="countries" className="filter-label">
             Filter by countries
           </label>
-          <select
-            name="countries"
-            id="countries"
-            onChange={this.props.filterByCountry}
-          >
+          <select name="country" id="countries" onChange={this.props.filter}>
             <option value="choose one ">choose country</option>
             {countries}
           </select>
         </div>
+        <button onClick={this.props.fetchProjects}>fetch</button>
       </div>
     );
   }

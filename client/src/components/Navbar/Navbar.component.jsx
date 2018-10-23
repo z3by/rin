@@ -22,19 +22,25 @@ export default class Navbar extends Component {
       document.querySelector(".navbar").style.width = "0px";
       document.querySelector(".navbar-middle").style.display = "none";
       document.querySelector(".toggle-nav").style.left = "0";
-      document.querySelector(".toggle-nav i").style.transform = "initial";
+      document.querySelector(".toggle-nav i").style.transform = "rotate(45deg)";
+      if (!!document.querySelector(".container")) {
+        document.querySelector(".container").style.marginLeft = "15%";
+      }
       if (!!document.querySelector(".counter")) {
         document.querySelector(".counter").style.display = "none";
       }
     } else {
+      if (!!document.querySelector(".container")) {
+        document.querySelector(".container").style.marginLeft =
+          "calc(15% + 100px)";
+      }
       document.querySelector(".navbar").style.width = "200px";
       if (!!document.querySelector(".counter")) {
         document.querySelector(".counter").style.display = "block";
       }
-      document.querySelector(".navbar-middle").style.display = "block";
+      document.querySelector(".navbar-middle").style.display = "flex";
       document.querySelector(".toggle-nav").style.left = "200px";
-      document.querySelector(".toggle-nav i").style.transform =
-        "rotate(180deg)";
+      document.querySelector(".toggle-nav i").style.transform = "rotate(0)";
     }
   };
 
@@ -43,7 +49,7 @@ export default class Navbar extends Component {
       <div>
         <div className="navbar">
           <div className="toggle-nav" onClick={this.toggleNavbar}>
-            <i className="fas fa-arrow-right" />
+            <i className="fas fa-times" />
           </div>
           <div className="logo">
             <Link className="navbar-link" to={"/"}>
