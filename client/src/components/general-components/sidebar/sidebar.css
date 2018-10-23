@@ -30,7 +30,7 @@
   width: 100%;
   cursor: pointer;
   text-transform: uppercase;
-  background: linear-gradient(90deg, coral);
+  background: linear-gradient(90deg, #ee8800);
 }
 
 .sidebar ul li a {
@@ -38,5 +38,5 @@
 }
 
 .sidebar ul li:hover {
-  background: linear-gradient(90deg, coral, steelblue);
+  background: linear-gradient(90deg, #ff9900);
 }

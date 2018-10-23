@@ -21,6 +21,13 @@ import Dashboard from "../Dashboard/Dashboard.component";
 import ProjectInfo from "../Dashboard/ProjectInfo/ProjectInfo.component";
 
 export default class MyRouter extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isAdmin: true
+    };
+  }
+
   render() {
     return (
       <HashRouter>
@@ -35,7 +42,10 @@ export default class MyRouter extends Component {
             <Route path="/about" component={About} />
             <Route path="/members" component={Members} />
             <Route path="/admin" component={Login} />
-            <Route path="/dashboard" component={Dashboard} />
+            <Route
+              path="/dashboard"
+              component={this.state.isAdmin ? Dashboard : Login}
+            />
             <Route exact path="/" component={Landing} />
           </Switch>
         </div>

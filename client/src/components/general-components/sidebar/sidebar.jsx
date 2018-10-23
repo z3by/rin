@@ -10,10 +10,10 @@ export default props => {
       </div>
       <ul>
         <li>
-          <Link to={"/dashboard/projects"}>projects</Link>
+          <Link to={"/dashboard/projects/list"}>projects</Link>
         </li>
         <li>
-          <Link to={"/dashboard/stories"}>stories</Link>
+          <Link to={"/dashboard/stories/list"}>stories</Link>
         </li>
       </ul>
     </nav>

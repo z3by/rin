@@ -14,10 +14,6 @@ export default class Projects extends Component {
             <li>
               <Link to={"/dashboard/projects/add"}>add project</Link>
             </li>
-
-            <li>
-              <Link to={"/dashboard/projects/list"}>show projects</Link>
-            </li>
           </ul>
         </nav>
         <main>
