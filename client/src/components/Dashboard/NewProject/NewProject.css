@@ -20,36 +20,38 @@ button[type="submit"] {
   padding: 10px 30px;
 }
 .new-project form {
-  padding: 30px;
-  width: 100%;
+  padding: 100px;
+  width: 30%;
+  margin: 100px;
+  background: var(--color-5);
 }
 
 .new-project label {
-  font-size: 20px;
+  font-size: 24px;
   width: 50%;
-  color: var(--color-5);
+  color: var(--color-2);
 }
 /* The popup form - hidden by default */
 .form-popup {
-  display: none;
-  position: fixed;
-  z-index: 10;
-  height: 50vh;
-  width: 50vw;
-  top: 25vh;
-  left: 25vw;
+  position: relative;
+  height: 400px;
+  width: 100%;
+  margin: 30px 0;
 }
 
 .new-project input {
+  border: none;
+  border-bottom: 1px solid var(--color-3);
+  background: transparent;
+  outline: none;
+  height: 40px;
   width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
+  color: #fff;
+  font-size: 16px;
 }
-
+.new-project select {
+  width: 100%;
+}
 /* Set a style for the submit/login button */
 .form-container .btn {
   position: relative;
@@ -76,4 +78,17 @@ button[type="submit"] {
   background-color: var(--dark-transparent);
   color: var(--color-1);
   z-index: 100;
+}
+
+.marker {
+  height: 60px;
+  width: 60px;
+}
+
+.marker i {
+  color: crimson;
+  font-size: 30px;
+  position: relative;
+  top: -30px;
+  left: -30px;
 }
