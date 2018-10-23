@@ -58,14 +58,6 @@ export default class NewProject extends Component {
     this.setState({ [e.target.name]: e.target.value }, () => {});
   };
 
-  openForm = () => {
-    document.getElementById("myForm").style.display = "block";
-  };
-
-  closeForm = () => {
-    document.getElementById("myForm").style.display = "none";
-  };
-
   onMapClick = ({ lng, lat }) => {
     this.setState({ lng: lng, lat: lat });
   };
@@ -110,7 +102,7 @@ export default class NewProject extends Component {
     });
 
     return (
-      <div className="new-project">
+      <div className="admin-form">
         <form>
           <label htmlFor="project-title">Project Title</label> <br />
           <input

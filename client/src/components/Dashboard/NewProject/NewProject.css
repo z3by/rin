@@ -1,32 +1,54 @@
-.new-project {
+.admin-form {
   background-color: var(--color-1);
   display: flex;
   justify-content: center;
   padding: 100px auto;
 }
 
+.admin-form textarea {
+  border: none;
+  border: 1px solid var(--color-3);
+  background: transparent;
+  outline: none;
+  height: 40px;
+  width: 100%;
+  font-family: var(--main-font);
+  color: #fff;
+  font-size: 16px;
+  height: 300px;
+}
+
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button,
-button[type="submit"] {
+.admin-form button[type="submit"],
+.admin-form button[type="file"] {
   background-color: #222;
   color: white;
   border: none;
   cursor: pointer;
   opacity: 0.8;
-  bottom: 23px;
-  right: 28px;
   width: 100%;
   margin: 20px 0;
-  padding: 10px 30px;
+  padding: 20px;
+  text-align: left;
+  padding-left: 40%;
 }
-.new-project form {
+
+.admin-form button:hover {
+  background: var(--color-2);
+}
+
+.admin-form button i {
+  margin: 0 10px;
+}
+.admin-form form {
   padding: 100px;
   width: 30%;
   margin: 100px;
   background: var(--color-5);
 }
 
-.new-project label {
+.admin-form label {
   font-size: 24px;
   width: 50%;
   color: var(--color-2);
@@ -39,7 +61,7 @@ button[type="submit"] {
   margin: 30px 0;
 }
 
-.new-project input {
+.admin-form input {
   border: none;
   border-bottom: 1px solid var(--color-3);
   background: transparent;
@@ -49,7 +71,7 @@ button[type="submit"] {
   color: #fff;
   font-size: 16px;
 }
-.new-project select {
+.admin-form select {
   width: 100%;
 }
 /* Set a style for the submit/login button */
