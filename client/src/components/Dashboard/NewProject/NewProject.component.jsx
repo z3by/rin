@@ -62,7 +62,9 @@ export default class NewProject extends Component {
     this.setState({ lng: lng, lat: lat });
   };
 
-  addProject = () => {
+  addProject = e => {
+    e.preventDefault();
+
     let projectData = {
       title: this.state.title,
       start_date: this.state.start_date,
@@ -79,7 +81,11 @@ export default class NewProject extends Component {
     axios
       .post("/api/projects", projectData)
       .then(function(response) {
-        console.log("SUCCESS");
+        document.querySelector(".admin-form form").reset();
+        document.querySelector(".done-img").style.display = "flex";
+        setTimeout(() => {
+          document.querySelector(".done-img").style.display = "none";
+        }, 6000);
       })
       .catch(function(error) {
         console.log(error);
@@ -187,8 +193,10 @@ export default class NewProject extends Component {
             >
               <Marker lng={this.state.lng} lat={this.state.lat} />
             </GoogleMapReact>
-
-            <button onClick={this.addProject}>Add Project</button>
+          </div>
+          <button onClick={this.addProject}>Add Project</button>
+          <div className="done-img">
+            <img src="/imgs/done.gif" alt="" />
           </div>
         </form>
       </div>
