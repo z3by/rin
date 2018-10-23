@@ -1,6 +1,6 @@
 .nav-up {
   height: 100px;
-  background: coral;
+  background: #ee8800;
 }
 
 .nav-up ul {
@@ -14,9 +14,11 @@
   padding: 0 20px;
   height: 100%;
 }
+
 .nav-up ul li:hover {
   background: rgba(255, 255, 255, 0.4);
 }
+
 .nav-up ul li a {
   color: white;
   font-size: 20px;

@@ -1,5 +1,6 @@
 const mysql = require("mysql");
 const migrateQuery = require("../models/query/migrate");
+const addCountries = require("./countries.controller").addCountries;
 
 module.exports = () => {
   const connection = mysql.createConnection({
@@ -24,6 +25,14 @@ module.exports = () => {
 
     connection.query(migrateQuery.createCountriesTable, function (err, result) {
       if (err) throw err;
+      let countriesNumQry = "select count(*) from countries";
+      connection.query(countriesNumQry, function (err, res) {
+        if (err) throw err;
+        let countriesNum = (res[0]['count(*)']);
+        if (!countriesNum) {
+          addCountries();
+        }
+      });
       console.log("countries table created");
     });
 

@@ -14,16 +14,15 @@ export default class Projects extends Component {
             <li>
               <Link to={"/dashboard/projects/add"}>add project</Link>
             </li>
-
-            <li>
-              <Link to={"/dashboard/projects/list"}>show projects</Link>
-            </li>
           </ul>
         </nav>
         <main>
           <Route path={"/dashboard/projects/add"} component={NewProject} />
           <Route path={"/dashboard/projects/list"} component={ProjectsList} />
-          <Route path={"/dashboard/projects/list/:id"} component={ProjectInfo} />
+          <Route
+            path={"/dashboard/projects/list/:id"}
+            component={ProjectInfo}
+          />
         </main>
       </div>
     );

@@ -3,6 +3,15 @@ import axios from "axios";
 import GoogleMapReact from "google-map-react";
 import { mapApi } from "../../../config/map.config";
 import "./NewProject.css";
+
+const Marker = () => {
+  return (
+    <div className="marker">
+      <i className="fas fa-map-marker-alt" />
+    </div>
+  );
+};
+
 export default class NewProject extends Component {
   constructor(props) {
     super(props);
@@ -21,8 +30,7 @@ export default class NewProject extends Component {
       capacity: 0,
       partner_id: 1,
       organization_name: "",
-      img_url:
-        "https://worldvisionadvocacy.org/wp-content/uploads/2017/10/W220-0005-107_706974.jpg",
+      img_url: "",
       type: "",
       project_description: "",
       countryName: "",
@@ -41,31 +49,22 @@ export default class NewProject extends Component {
   }
 
   fetchAllCountries = () => {
-    axios.get("https://restcountries.eu/rest/v2/all").then(res => {
+    axios.get("/api/countries").then(res => {
       this.setState({ countries: res.data });
     });
   };
 
   onChange = e => {
-    this.setState({ [e.target.name]: e.target.value }, () => {
-      console.log(this.state);
-    });
+    this.setState({ [e.target.name]: e.target.value }, () => {});
   };
 
-  openForm = () => {
-    document.getElementById("myForm").style.display = "block";
-    console.log("hiiiiiiiiii");
-  };
-
-  closeForm = () => {
-    document.getElementById("myForm").style.display = "none";
-  };
-
-  onClick = ({ lng, lat }) => {
+  onMapClick = ({ lng, lat }) => {
     this.setState({ lng: lng, lat: lat });
   };
 
-  addProject = () => {
+  addProject = e => {
+    e.preventDefault();
+
     let projectData = {
       title: this.state.title,
       start_date: this.state.start_date,
@@ -81,10 +80,14 @@ export default class NewProject extends Component {
     };
     axios
       .post("/api/projects", projectData)
-      .then(function (response) {
-        console.log("SUCCESS");
+      .then(function(response) {
+        document.querySelector(".admin-form form").reset();
+        document.querySelector(".done-img").style.display = "flex";
+        setTimeout(() => {
+          document.querySelector(".done-img").style.display = "none";
+        }, 6000);
       })
-      .catch(function (error) {
+      .catch(function(error) {
         console.log(error);
       });
   };
@@ -105,10 +108,11 @@ export default class NewProject extends Component {
     });
 
     return (
-      <div className="new-project">
-        <from method="POST">
+      <div className="admin-form">
+        <form>
           <label htmlFor="project-title">Project Title</label> <br />
           <input
+            required
             type="text"
             name="title"
             id="project-title"
@@ -118,6 +122,7 @@ export default class NewProject extends Component {
           <br />
           <label htmlFor="project-desc">Project Description</label> <br />
           <input
+            required
             type="text"
             name="project_description"
             id="project-desc"
@@ -127,6 +132,7 @@ export default class NewProject extends Component {
           <br />
           <label htmlFor="start_date">Start Date</label> <br />
           <input
+            required
             type="date"
             name="start_date"
             id="start_date"
@@ -136,7 +142,9 @@ export default class NewProject extends Component {
           <br />
           <label htmlFor="capacity">Capacity</label> <br />
           <input
+            required
             type="number"
+            min="0"
             name="capacity"
             id="capacity"
             onChange={this.onChange}
@@ -145,6 +153,7 @@ export default class NewProject extends Component {
           <br />
           <label htmlFor="organization_name">Organization Name</label> <br />
           <input
+            required
             type="text"
             name="organization_name"
             id="organization_name"
@@ -153,51 +162,43 @@ export default class NewProject extends Component {
           <br />
           <br />
           <label htmlFor="img_url">Image Url</label> <br />
-          <input type="text" name="img_url" id="img_url" />
+          <input required type="text" name="img_url" id="img_url" />
           <br />
           <br />
           <label htmlFor="type">Project Type</label> <br />
-          <select name="type" id="type" onChange={this.onChange}>
+          <select required name="type" id="type" onChange={this.onChange}>
             <option value="select type">Select Type</option>
             {types}
           </select>
           <br />
           <br />
           <label htmlFor="countryName">Project Country</label> <br />
-          <select name="countryName" id="countryName" onChange={this.onChange}>
+          <select
+            required
+            name="countryName"
+            id="countryName"
+            onChange={this.onChange}
+          >
             <option value="select type">Select Country</option>
             {countries}
           </select>
-          <br />
-          <br />
-          <button className="open-button" onClick={this.openForm}>
-            Select Project Location
-          </button>
-          <button type="submit" onClick={this.addProject}>
-            Add Project
-          </button>
           <div className="form-popup" id="myForm">
-            <form className="form-container">
-              <h1>Select Project location</h1>
-              <GoogleMapReact
-                //className="project-map"
-                style={{ height: "40vh", width: "40vw" }}
-                bootstrapURLKeys={{ key: mapApi }}
-                defaultCenter={{ lng: this.state.lng, lat: this.state.lat }}
-                defaultZoom={this.state.zoom}
-                onClick={this.onClick}
-              />
-
-              <button
-                type="button"
-                className="btn cancel"
-                onClick={this.closeForm}
-              >
-                Ok
-              </button>
-            </form>
+            <GoogleMapReact
+              //className="project-map"
+              style={{ height: "40vh", width: "40vw" }}
+              bootstrapURLKeys={{ key: mapApi }}
+              defaultCenter={{ lng: this.state.lng, lat: this.state.lat }}
+              defaultZoom={this.state.zoom}
+              onClick={this.onMapClick}
+            >
+              <Marker lng={this.state.lng} lat={this.state.lat} />
+            </GoogleMapReact>
           </div>
-        </from>
+          <button onClick={this.addProject}>Add Project</button>
+          <div className="done-img">
+            <img src="/imgs/done.gif" alt="" />
+          </div>
+        </form>
       </div>
     );
   }

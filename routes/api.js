@@ -7,7 +7,6 @@ const locationsAPI = require("../controllers/locations.controller");
 const projectsAPI = require("../controllers/projects.controller");
 
 //countries routes
-router.get("/addcountries", countriesAPI.addCountries);
 router.get("/countries", countriesAPI.getCountries);
 router.get("/countries/:id", countriesAPI.getCountry);
 
