@@ -37,12 +37,6 @@ export default class ProjectsList extends Component {
       });
   }
 
-  displayProject = (project) => {
-    // return <ProjectInfo project={project} />;
-    // this.props.history.push(`/dashboard/projects/list/${project.id}`);
-    // browserHistory.push(`${project.id}`);
-  }
-
   render() {
     const projects = this.state.allProject.map(project => {
       return (
@@ -54,9 +48,6 @@ export default class ProjectsList extends Component {
             <Link to={`/dashboard/projects/list/${project.id}`}>
               <i className="far fa-eye" /> show
             </Link>
-            {/* <a onClick={() => this.displayProject(project)}>
-              <i className="far fa-eye" /> show
-            </a > */}
             <a>
               <i className="fas fa-edit" />
               update
@@ -84,7 +75,7 @@ export default class ProjectsList extends Component {
                 <h1>Organization Name</h1>
               </th>
               <th>
-                <h1>Options</h1>
+                <h1>Actions</h1>
               </th>
             </tr>
           </thead>

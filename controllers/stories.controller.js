@@ -54,7 +54,6 @@ module.exports.addStory = (req, res) => {
         });
 
         let data = {
-            id: req.body.id,
             title: req.body.title,
             text: JSON.stringify(req.body.text), //text is an array of strings
             imgs: JSON.stringify(req.body.imgs), //imgs is an array of urls
