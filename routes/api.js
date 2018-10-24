@@ -34,6 +34,7 @@ router.delete("/locations/:id", locationsAPI.deleteLocation);
 //projects routes
 router.get("/projects", projectsAPI.getProjects);
 router.get("/projects/locations", projectsAPI.getLocations);
+router.get("/projects/location/:id", projectsAPI.getProjectCountry);
 router.get("/projects/:id", projectsAPI.getProject);
 router.post("/projects", projectsAPI.addProject);
 router.put("/projects/:id", projectsAPI.updateProject);

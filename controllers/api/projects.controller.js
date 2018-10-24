@@ -70,6 +70,27 @@ module.exports.getLocations = (req, res) => {
     });
   });
 };
+
+module.exports.getProjectCountry = (req, res) => {
+  const connection = mysql.createConnection(dbConfig);
+
+  connection.connect(err => {
+    if (err) throw err;
+    console.log("Connected!");
+
+    connection.query(`USE rin`, function (err, result) {
+      if (err) throw err;
+      console.log("Database used");
+    });
+
+    let qry = `select c.name from countries c inner join locations l where c.id = l.country_id and l.id=${req.params.id};`
+    connection.query(qry, (err, result) => {
+      if (err) throw err;
+      res.send(result);
+    });
+  });
+}
+
 module.exports.getProject = (req, res) => {
   const connection = mysql.createConnection(dbConfig);
 
