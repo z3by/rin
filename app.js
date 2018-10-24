@@ -10,7 +10,7 @@ const apiRouter = require("./routes/api");
 
 const migrateDB = require("./controllers/migrate.controller");
 
-//require("dotenv").config();
+require("dotenv").config();
 
 // init the database
 migrateDB();
