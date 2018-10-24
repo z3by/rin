@@ -5,30 +5,56 @@ import "./NewStory.css";
 export default class NewProject extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      title: "",
+      text: "",
+      img: "",
+      allTexts: [],
+      allImgs: ["https://worldvisionadvocacy.org/wp-content/uploads/2017/10/W220-0005-107_706974.jpg"]
+    };
   }
 
   componentDidMount() {
     document.body.style.overflowY = "auto";
   }
+
   onChange = e => {
     e.preventDefault();
-    this.setState({ [e.target.name]: e.target.value }, () => {});
-  };
+    this.setState({ [e.target.name]: e.target.value }, () => { console.log(this.state) });
+  }
 
   addStory = e => {
     e.preventDefault();
-    let story = this.state.story;
-    console.log(this.state);
+    this.setState({ allTexts: [...this.state.allTexts, this.state.text] }, () => {
+      //console.log(this.state.allTexts) 
+      let storyData = {
+        title: this.state.title,
+        text: this.state.allTexts,
+        imgs: this.state.allImgs
+      }
 
-    axios
-      .post("/api/stories", story)
-      .then(function(response) {
-        console.log("SUCCESS");
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+      axios
+        .post("/api/stories", storyData)
+        .then(function (response) {
+          console.log("Story added successfully");
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    });
+
+
+
+    // let txt = "";
+    // for (let i = 0; i < this.state.text.length; i++) {
+    //   if (this.state.text[i] !== "\n") {
+    //     txt += this.state.text[i];
+    //   }
+    //   else {
+    //     this.setState({ allTexts: [...this.state.allTexts, txt] }, () => console.log(this.state.allTexts));
+    //     txt = "";
+    //   }
+    // }
   };
 
   render() {
@@ -51,16 +77,16 @@ export default class NewProject extends Component {
             cols="50"
             required
             type="text"
-            name="project_description"
+            name="text"
             id="story-text"
             onChange={this.onChange}
           />
           <label htmlFor="image">add image for the story</label> <br />
           <input
             type="file"
-            name="image"
+            name="img"
             accept="image/*"
-            onChange={this.onChange}
+          // onChange={this.onChange}
           />
           <button type="submit" onClick={this.addStory}>
             <p>
