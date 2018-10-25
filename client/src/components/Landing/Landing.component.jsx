@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Landing.css";
+import Axios from "axios";
 
 export default class Landing extends Component {
   constructor(props) {
@@ -17,6 +18,9 @@ export default class Landing extends Component {
     this.showVideo();
     this.changeBackground();
     this.fadeInOutPartners();
+    Axios.get("/users/isadmin").then(res => {
+      console.log(res);
+    });
   }
 
   // bind the events to the local functions.

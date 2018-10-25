@@ -1,6 +1,6 @@
 const mysql = require("mysql");
 const migrateQuery = require("../models/query/migrate");
-const addCountries = require("./countries.controller").addCountries;
+const addCountries = require("./api/countries.controller").addCountries;
 const dbConfig = require("./db.config");
 
 module.exports = () => {
