@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Landing.css";
+import Axios from "axios";
 
 export default class Landing extends Component {
   constructor(props) {
@@ -17,6 +18,9 @@ export default class Landing extends Component {
     this.showVideo();
     this.changeBackground();
     this.fadeInOutPartners();
+    Axios.get("/users/isadmin").then(res => {
+      console.log(res);
+    });
   }
 
   // bind the events to the local functions.
@@ -42,16 +46,6 @@ export default class Landing extends Component {
     const circleY = e.clientY;
     document.querySelector(".effect-circle").style.top = circleY / 10 + "px";
     document.querySelector(".effect-circle").style.left = circleX / 10 + "px";
-  };
-
-  // mouse wheel handler for the landing page
-  handleWheel = e => {
-    return;
-    if (e.deltaY === -100) {
-      this.animatePrev();
-    } else {
-      this.animateNext();
-    }
   };
 
   // key press handler for the landing page

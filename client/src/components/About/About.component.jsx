@@ -91,7 +91,7 @@ export default class About extends Component {
 
         <header>
           <div className="header">
-            <h1 className="header-text" />
+            <h1 className="header-text">About Us</h1>
           </div>
         </header>
 

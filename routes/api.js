@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const countriesAPI = require("../controllers/countries.controller");
-const storiesAPI = require("../controllers/stories.controller");
-const partnersAPI = require("../controllers/partners.controller");
-const locationsAPI = require("../controllers/locations.controller");
-const projectsAPI = require("../controllers/projects.controller");
+const countriesAPI = require("../controllers/api/countries.controller");
+const storiesAPI = require("../controllers/api/stories.controller");
+const partnersAPI = require("../controllers/api/partners.controller");
+const locationsAPI = require("../controllers/api/locations.controller");
+const projectsAPI = require("../controllers/api/projects.controller");
 
 //countries routes
 router.get("/countries", countriesAPI.getCountries);

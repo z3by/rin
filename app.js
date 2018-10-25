@@ -1,19 +1,31 @@
+require("dotenv").config();
 const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
+const session = require("express-session");
 
+const usersRouter = require("./routes/users");
 const indexRouter = require("./routes/index");
 const apiRouter = require("./routes/api");
-
 const migrateDB = require("./controllers/migrate.controller");
 
 // init the database
 migrateDB();
 
 const app = express();
+
+// setup sessions
+app.use(
+  session({
+    secret: "secret word don't tell",
+    resave: true,
+    saveUninitialized: true,
+    adminLogged: false
+  })
+);
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -28,6 +40,7 @@ app.use(express.static(path.join(__dirname, "client", "build")));
 
 app.use("/", indexRouter);
 app.use("/api", apiRouter);
+app.use("/users", usersRouter);
 app.get("*", (req, res) => {
   res.redirect("/");
 });

@@ -1,8 +1,6 @@
 import React from "react";
 import axios from "axios";
 import "./Filter.css";
-import { connect } from "react-redux";
-import { setCountries } from "../../../actions/index";
 
 class Filter extends React.Component {
   constructor(props) {
@@ -18,20 +16,20 @@ class Filter extends React.Component {
 
   fetchAllCountries = () => {
     axios.get("/api/countries").then(res => {
-      this.props.setCountries(res.data);
+      this.setState({
+        countries: res.data
+      });
     });
   };
 
   render() {
-    let countries = !this.props.countries.countries
-      ? []
-      : this.props.countries.countries.map(country => {
-          return (
-            <option value={country.name} key={country.alpha2Code}>
-              {country.name}
-            </option>
-          );
-        });
+    const countries = this.state.countries.map(country => {
+      return (
+        <option value={country.name} key={country.alpha2Code}>
+          {country.name}
+        </option>
+      );
+    });
 
     return (
       <div className="filter">
@@ -116,11 +114,4 @@ class Filter extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  countries: state.countries
-});
-
-export default connect(
-  mapStateToProps,
-  { setCountries }
-)(Filter);
+export default Filter;

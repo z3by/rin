@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import MyRouter from "./components/Router/Router";
-import { Provider } from "react-redux";
-import store from "./store";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -17,9 +15,7 @@ class App extends Component {
 
     return (
       <div>
-        <Provider store={store}>
-          <MyRouter />
-        </Provider>
+        <MyRouter />
       </div>
     );
   }

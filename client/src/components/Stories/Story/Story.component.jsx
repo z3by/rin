@@ -4,8 +4,8 @@ import "./Story.css";
 export default class Story extends Component {
   constructor(props) {
     super(props);
+    this.state = {};
   }
-  state = {};
 
   componentDidMount() {
     document.body.style.overflowY = "auto";

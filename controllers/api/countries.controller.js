@@ -1,6 +1,6 @@
 const mysql = require("mysql");
 const axios = require("axios");
-const dbConfig = require("./db.config");
+const dbConfig = require("../db.config");
 
 module.exports.getCountries = (req, res) => {
   const connection = mysql.createConnection(dbConfig);

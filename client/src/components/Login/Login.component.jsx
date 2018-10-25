@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Login.css";
+import Axios from "axios";
 
 export default class Login extends Component {
   constructor(props) {
@@ -22,11 +23,16 @@ export default class Login extends Component {
 
   _onSubmit = e => {
     e.preventDefault();
-    if (this.state.username === "admin" && this.state.password === "admin") {
-      this.props.history.push("dashboard");
-    } else {
-      window.alert("username or password is wrong");
-    }
+    const userInfo = this.state;
+    Axios.post("/users/loginadmin", userInfo).then(res => {
+      if (res.data === true) {
+        setTimeout(() => {
+          this.props.history.push("dashboard");
+        }, 2000);
+      } else {
+        alert("user name or password is wrong");
+      }
+    });
   };
 
   render() {

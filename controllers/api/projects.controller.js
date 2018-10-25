@@ -1,6 +1,6 @@
 const mysql = require("mysql");
 const axios = require("axios");
-const dbConfig = require("./db.config");
+const dbConfig = require("../db.config");
 
 module.exports.getProjects = (req, res) => {
   const connection = mysql.createConnection(dbConfig);
@@ -9,7 +9,7 @@ module.exports.getProjects = (req, res) => {
     if (err) throw err;
     console.log("Connected!");
 
-    connection.query(`USE rin`, function (err, result) {
+    connection.query(`USE rin`, function(err, result) {
       if (err) throw err;
       console.log("Database used");
     });
@@ -30,7 +30,7 @@ module.exports.getLocations = (req, res) => {
   if (filterOptions.organizationName) {
     qry += ` and p.organization_name like "%${
       filterOptions.organizationName
-      }%"`;
+    }%"`;
   }
 
   if (filterOptions.projectName) {
@@ -59,7 +59,7 @@ module.exports.getLocations = (req, res) => {
     if (err) throw err;
     console.log("Connected!");
 
-    connection.query(`USE rin`, function (err, result) {
+    connection.query(`USE rin`, function(err, result) {
       if (err) throw err;
       console.log("Database used");
     });
@@ -77,7 +77,7 @@ module.exports.getProject = (req, res) => {
     if (err) throw err;
     console.log("Connected!");
 
-    connection.query(`USE rin`, function (err, result) {
+    connection.query(`USE rin`, function(err, result) {
       if (err) throw err;
       console.log("Database used");
     });
@@ -97,7 +97,7 @@ module.exports.addProject = (req, res) => {
     if (err) throw err;
     console.log("Connected!");
 
-    connection.query(`USE rin`, function (err, result) {
+    connection.query(`USE rin`, function(err, result) {
       if (err) throw err;
       console.log("Database used");
     });
@@ -116,7 +116,7 @@ module.exports.addProject = (req, res) => {
         */
     let getLocationIDQry = `select id from locations where lat like ${
       req.body.lat
-      } AND lng like ${req.body.lng};`;
+    } AND lng like ${req.body.lng};`;
     let id;
     connection.query(getLocationIDQry, (err, result) => {
       if (err) throw err;
@@ -135,9 +135,9 @@ module.exports.addProject = (req, res) => {
         data.location_id = result[0].id;
         let qry = `insert into projects(title, start_date, capacity, location_id, organization_name, img_url, type, project_description) values("${
           data.title
-          }", '${data.start_date}', ${data.capacity}, ${data.location_id}, "${data.organization_name}", "${data.img_url}", "${data.type}", "${
-          data.project_description
-          }");`;
+        }", '${data.start_date}', ${data.capacity}, ${data.location_id}, "${
+          data.organization_name
+        }", "${data.img_url}", "${data.type}", "${data.project_description}");`;
         connection.query(qry, (err, result) => {
           if (err) throw err;
           res.send("project row inserted successfully");
@@ -147,7 +147,7 @@ module.exports.addProject = (req, res) => {
         //get country id from country name returned by map api
         let getCountryIDQry = `select id from countries where name="${
           req.body.countryName
-          }"`;
+        }"`;
         let countryId;
         connection.query(getCountryIDQry, (err, result) => {
           if (err) throw err;
@@ -164,13 +164,13 @@ module.exports.addProject = (req, res) => {
           //add the new location
           let addNewLocationQry = `insert into locations(country_id, lng, lat) values(${
             locationData.country_id
-            }, ${locationData.lng}, ${locationData.lat});`;
+          }, ${locationData.lng}, ${locationData.lat});`;
           connection.query(addNewLocationQry, (err, result) => {
             if (err) throw err;
 
             let getNewLocationIDQry = `select id from locations where lat like ${
               req.body.lat
-              } AND lng like ${req.body.lng};`;
+            } AND lng like ${req.body.lng};`;
             let newID;
             connection.query(getNewLocationIDQry, (err, result) => {
               if (err) throw err;
@@ -187,11 +187,11 @@ module.exports.addProject = (req, res) => {
               };
               let qry = `insert into projects(title, start_date, capacity, location_id, organization_name, img_url, type, project_description) values("${
                 data.title
-                }", '${data.start_date}', ${data.capacity}, ${
+              }", '${data.start_date}', ${data.capacity}, ${
                 data.location_id
-                }, "${data.organization_name}", "${
-                data.img_url
-                }", "${data.type}", "${data.project_description}");`;
+              }, "${data.organization_name}", "${data.img_url}", "${
+                data.type
+              }", "${data.project_description}");`;
               connection.query(qry, (err, result) => {
                 if (err) throw err;
                 res.send(
@@ -213,7 +213,7 @@ module.exports.updateProject = (req, res) => {
     if (err) throw err;
     console.log("Connected!");
 
-    connection.query(`USE rin`, function (err, result) {
+    connection.query(`USE rin`, function(err, result) {
       if (err) throw err;
       console.log("Database used");
     });
@@ -231,11 +231,11 @@ module.exports.updateProject = (req, res) => {
     let qry = `UPDATE projects 
                   SET title="${data.title}", start_date='${
       data.start_date
-      }', capacity=${data.capacity}, organization_name="${
+    }', capacity=${data.capacity}, organization_name="${
       data.organization_name
-      }", img_url="${data.img_url}", type="${data.type}", project_description="${
+    }", img_url="${data.img_url}", type="${data.type}", project_description="${
       data.project_description
-      }"
+    }"
                   WHERE id=${req.params.id};`;
     connection.query(qry, (err, result) => {
       if (err) throw err;
@@ -251,7 +251,7 @@ module.exports.deleteProject = (req, res) => {
     if (err) throw err;
     console.log("Connected!");
 
-    connection.query(`USE rin`, function (err, result) {
+    connection.query(`USE rin`, function(err, result) {
       if (err) throw err;
       console.log("Database used");
     });
