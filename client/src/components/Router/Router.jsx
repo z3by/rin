@@ -1,10 +1,5 @@
 import React, { Component } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  HashRouter
-} from "react-router-dom";
+import { Route, Switch, HashRouter } from "react-router-dom";
 import "../../App.css";
 
 import About from "../About/About.component";
@@ -18,7 +13,6 @@ import Login from "../Login/Login.component";
 import Navbar from "../Navbar/Navbar.component";
 import Story from "../Stories/Story/Story.component";
 import Dashboard from "../Dashboard/Dashboard.component";
-import ProjectInfo from "../Dashboard/ProjectInfo/ProjectInfo.component";
 
 export default class MyRouter extends Component {
   constructor(props) {

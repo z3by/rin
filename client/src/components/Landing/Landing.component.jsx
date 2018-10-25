@@ -44,16 +44,6 @@ export default class Landing extends Component {
     document.querySelector(".effect-circle").style.left = circleX / 10 + "px";
   };
 
-  // mouse wheel handler for the landing page
-  handleWheel = e => {
-    return;
-    if (e.deltaY === -100) {
-      this.animatePrev();
-    } else {
-      this.animateNext();
-    }
-  };
-
   // key press handler for the landing page
   handleArrowsInput = e => {
     if (e.key === "ArrowRight") {
