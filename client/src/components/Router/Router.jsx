@@ -13,7 +13,6 @@ import Login from "../Login/Login.component";
 import Navbar from "../Navbar/Navbar.component";
 import Story from "../Stories/Story/Story.component";
 import Dashboard from "../Dashboard/Dashboard.component";
-import Axios from "axios";
 
 export default class MyRouter extends Component {
   render() {
