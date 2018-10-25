@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
 import "./Map.css";
 import * as options from "./map-options";
-import * as projects from "./projects-data.json";
 import Dot from "./Dot/Dot.component";
 import Filter from "./Filter/Filter.component";
 import Spectrum from "./Spectrum/Spectrum.component";
@@ -30,8 +29,6 @@ export default class Map extends Component {
     Axios.get("/api/projects/locations", {
       params: options
     }).then(res => {
-      console.log(res.data);
-
       this.setState({
         projects: res.data
       });
