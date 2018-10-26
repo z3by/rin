@@ -55,7 +55,7 @@ export default class NewProject extends Component {
   };
 
   onChange = e => {
-    this.setState({ [e.target.name]: e.target.value }, () => {});
+    this.setState({ [e.target.name]: e.target.value }, () => { });
   };
 
   onMapClick = ({ lng, lat }) => {
@@ -69,7 +69,6 @@ export default class NewProject extends Component {
       title: this.state.title,
       start_date: this.state.start_date,
       capacity: this.state.capacity,
-      partner_id: this.state.partner_id,
       organization_name: this.state.organization_name,
       img_url: this.state.img_url,
       type: this.state.type,
@@ -80,17 +79,18 @@ export default class NewProject extends Component {
     };
     axios
       .post("/api/projects", projectData)
-      .then(function(response) {
+      .then(function (response) {
         document.querySelector(".admin-form form").reset();
         document.querySelector(".done-img").style.display = "flex";
         setTimeout(() => {
           document.querySelector(".done-img").style.display = "none";
         }, 6000);
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   };
+
   render() {
     let countries = this.state.countries.map((country, i) => {
       return (
@@ -184,7 +184,6 @@ export default class NewProject extends Component {
           </select>
           <div className="form-popup" id="myForm">
             <GoogleMapReact
-              //className="project-map"
               style={{ height: "40vh", width: "40vw" }}
               bootstrapURLKeys={{ key: mapApi }}
               defaultCenter={{ lng: this.state.lng, lat: this.state.lat }}
