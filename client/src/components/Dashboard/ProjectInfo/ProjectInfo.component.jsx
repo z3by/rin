@@ -15,6 +15,8 @@ export default class ProjectInfo extends Component {
 
     componentDidMount() {
         document.body.style.overflowY = "auto";
+        console.log(this.project);
+
     }
 
     componentWillMount() {
