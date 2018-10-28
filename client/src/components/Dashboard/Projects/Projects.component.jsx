@@ -19,9 +19,21 @@ export default class Projects extends Component {
         </nav>
         <main>
           <Route path={"/dashboard/projects/add"} component={NewProject} />
-          <Route exact path={"/dashboard/projects/list"} component={ProjectsList} />
-          <Route exact path={"/dashboard/projects/list/:id"} component={ProjectInfo} />
-          <Route exact path={"/dashboard/projects/list/updateproject/:id"} component={UpdateProject} />
+          <Route
+            exact
+            path={"/dashboard/projects/list"}
+            component={ProjectsList}
+          />
+          <Route
+            exact
+            path={"/dashboard/projects/list/:id"}
+            component={ProjectInfo}
+          />
+          <Route
+            exact
+            path={"/dashboard/projects/list/updateproject/:id"}
+            component={UpdateProject}
+          />
         </main>
       </div>
     );

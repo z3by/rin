@@ -1,24 +1,44 @@
 const mysql = require("mysql");
 const axios = require("axios");
 const dbConfig = require("../db.config");
+const connection = mysql.createConnection(dbConfig);
 
 module.exports.getProjects = (req, res) => {
-  const connection = mysql.createConnection(dbConfig);
-
   connection.connect(err => {
     if (err) throw err;
-    console.log("Connected!");
-
-    connection.query(`USE rin`, function (err, result) {
-      if (err) throw err;
-      console.log("Database used");
-    });
-
     connection.query("select * from projects", (err, result) => {
       if (err) throw err;
       res.send(result);
     });
   });
+};
+
+// helper function to check if the admin enered the field and return the proper query
+const checkInputAndModifyQuery = (qry, input) => {
+  if (input.organizationName) {
+    qry += ` and p.organization_name like "%${input.organizationName}%"`;
+  }
+
+  if (input.projectName) {
+    qry += ` and p.title like "%${input.projectName}%"`;
+  }
+
+  if (input.capacity) {
+    qry += ` and p.capacity < ${input.capacity}`;
+  }
+
+  if (input.country) {
+    qry += ` and p.country = ${input.country}`;
+  }
+
+  if (input.type) {
+    qry += ` and p.type = "${input.type}"`;
+  }
+
+  if (input.year) {
+    qry += ` and YEAR(p.start_date) = ${input.year}`;
+  }
+  return qry;
 };
 
 module.exports.getLocations = (req, res) => {
@@ -27,42 +47,10 @@ module.exports.getLocations = (req, res) => {
   let qry =
     "select p.id, l.lat, l.lng from projects p inner join locations l where p.location_id = l.id";
 
-  if (filterOptions.organizationName) {
-    qry += ` and p.organization_name like "%${
-      filterOptions.organizationName
-      }%"`;
-  }
-
-  if (filterOptions.projectName) {
-    qry += ` and p.title like "%${filterOptions.projectName}%"`;
-  }
-
-  if (filterOptions.capacity) {
-    qry += ` and p.capacity < ${filterOptions.capacity}`;
-  }
-
-  if (filterOptions.country) {
-    qry += ` and p.country = ${filterOptions.country}`;
-  }
-
-  if (filterOptions.type) {
-    qry += ` and p.type = "${filterOptions.type}"`;
-  }
-
-  if (filterOptions.year) {
-    qry += ` and YEAR(p.start_date) = ${filterOptions.year}`;
-  }
-
-  const connection = mysql.createConnection(dbConfig);
+  qry = checkInputAndModifyQuery(qry, filterOptions);
 
   connection.connect(err => {
     if (err) throw err;
-    console.log("Connected!");
-
-    connection.query(`USE rin`, function (err, result) {
-      if (err) throw err;
-      console.log("Database used");
-    });
 
     connection.query(qry, (err, result) => {
       if (err) throw err;
@@ -72,37 +60,21 @@ module.exports.getLocations = (req, res) => {
 };
 
 module.exports.getProjectCountry = (req, res) => {
-  const connection = mysql.createConnection(dbConfig);
-
   connection.connect(err => {
     if (err) throw err;
-    console.log("Connected!");
-
-    connection.query(`USE rin`, function (err, result) {
-      if (err) throw err;
-      console.log("Database used");
-    });
-
-    let qry = `select c.name from countries c inner join locations l where c.id = l.country_id and l.id=${req.params.id};`
+    let qry = `select c.name from countries c inner join locations l where c.id = l.country_id and l.id=${
+      req.params.id
+    };`;
     connection.query(qry, (err, result) => {
       if (err) throw err;
       res.send(result);
     });
   });
-}
+};
 
 module.exports.getProject = (req, res) => {
-  const connection = mysql.createConnection(dbConfig);
-
   connection.connect(err => {
     if (err) throw err;
-    console.log("Connected!");
-
-    connection.query(`USE rin`, function (err, result) {
-      if (err) throw err;
-      console.log("Database used");
-    });
-
     let qry = `select * from projects where id=${req.params.id}`;
     connection.query(qry, (err, result) => {
       if (err) throw err;
@@ -112,17 +84,8 @@ module.exports.getProject = (req, res) => {
 };
 
 module.exports.addProject = (req, res) => {
-  const connection = mysql.createConnection(dbConfig);
-
   connection.connect(err => {
     if (err) throw err;
-    console.log("Connected!");
-
-    connection.query(`USE rin`, function (err, result) {
-      if (err) throw err;
-      console.log("Database used");
-    });
-
     /*
          - user selects location
          - map api returns the country name, lat, lng
@@ -137,28 +100,29 @@ module.exports.addProject = (req, res) => {
         */
     let getLocationIDQry = `select id from locations where lat like ${
       req.body.lat
-      } AND lng like ${req.body.lng};`;
+    } AND lng like ${req.body.lng};`;
     let id;
     connection.query(getLocationIDQry, (err, result) => {
       if (err) throw err;
 
+      let body = req.body;
       let data = {
-        title: req.body.title,
-        start_date: req.body.start_date,
-        capacity: req.body.capacity,
-        organization_name: req.body.organization_name,
-        img_url: req.body.img_url,
-        type: req.body.type,
-        project_description: req.body.project_description
+        title: body.title,
+        start_date: body.start_date,
+        capacity: body.capacity,
+        organization_name: body.organization_name,
+        img_url: body.img_url,
+        type: body.type,
+        project_description: body.project_description
       };
       if (result[0]) {
         //location exists
         data.location_id = result[0].id;
         let qry = `insert into projects(title, start_date, capacity, location_id, organization_name, img_url, type, project_description) values("${
           data.title
-          }", '${data.start_date}', ${data.capacity}, ${data.location_id}, "${
+        }", '${data.start_date}', ${data.capacity}, ${data.location_id}, "${
           data.organization_name
-          }", "${data.img_url}", "${data.type}", "${data.project_description}");`;
+        }", "${data.img_url}", "${data.type}", "${data.project_description}");`;
         connection.query(qry, (err, result) => {
           if (err) throw err;
           res.send("project row inserted successfully");
@@ -168,7 +132,7 @@ module.exports.addProject = (req, res) => {
         //get country id from country name returned by map api
         let getCountryIDQry = `select id from countries where name="${
           req.body.countryName
-          }"`;
+        }"`;
         let countryId;
         connection.query(getCountryIDQry, (err, result) => {
           if (err) throw err;
@@ -185,13 +149,13 @@ module.exports.addProject = (req, res) => {
           //add the new location
           let addNewLocationQry = `insert into locations(country_id, lng, lat) values(${
             locationData.country_id
-            }, ${locationData.lng}, ${locationData.lat});`;
+          }, ${locationData.lng}, ${locationData.lat});`;
           connection.query(addNewLocationQry, (err, result) => {
             if (err) throw err;
 
             let getNewLocationIDQry = `select id from locations where lat like ${
               req.body.lat
-              } AND lng like ${req.body.lng};`;
+            } AND lng like ${req.body.lng};`;
             let newID;
             connection.query(getNewLocationIDQry, (err, result) => {
               if (err) throw err;
@@ -208,11 +172,11 @@ module.exports.addProject = (req, res) => {
               };
               let qry = `insert into projects(title, start_date, capacity, location_id, organization_name, img_url, type, project_description) values("${
                 data.title
-                }", '${data.start_date}', ${data.capacity}, ${
+              }", '${data.start_date}', ${data.capacity}, ${
                 data.location_id
-                }, "${data.organization_name}", "${data.img_url}", "${
+              }, "${data.organization_name}", "${data.img_url}", "${
                 data.type
-                }", "${data.project_description}");`;
+              }", "${data.project_description}");`;
               connection.query(qry, (err, result) => {
                 if (err) throw err;
                 res.send(
@@ -228,20 +192,11 @@ module.exports.addProject = (req, res) => {
 };
 
 module.exports.updateProject = (req, res) => {
-  const connection = mysql.createConnection(dbConfig);
-
   connection.connect(err => {
     if (err) throw err;
-    console.log("Connected!");
-
-    connection.query(`USE rin`, function (err, result) {
-      if (err) throw err;
-      console.log("Database used");
-    });
-
     let getLocationIDQry = `select id from locations where lat like ${
       req.body.lat
-      } AND lng like ${req.body.lng};`;
+    } AND lng like ${req.body.lng};`;
     let id;
     connection.query(getLocationIDQry, (err, result) => {
       if (err) throw err;
@@ -256,17 +211,18 @@ module.exports.updateProject = (req, res) => {
         project_description: req.body.project_description
       };
 
-      if (result[0]) { //location exists
+      if (result[0]) {
+        //location exists
         data.location_id = result[0].id;
 
         let qry = `UPDATE projects 
                   SET title="${data.title}", start_date='${
           data.start_date
-          }', capacity=${data.capacity}, organization_name="${
+        }', capacity=${data.capacity}, organization_name="${
           data.organization_name
-          }", img_url="${data.img_url}", type="${data.type}", project_description="${
-          data.project_description
-          }"
+        }", img_url="${data.img_url}", type="${
+          data.type
+        }", project_description="${data.project_description}"
                   WHERE id=${req.params.id};`;
         connection.query(qry, (err, result) => {
           if (err) throw err;
@@ -277,7 +233,7 @@ module.exports.updateProject = (req, res) => {
         //get country id from country name returned by map api
         let getCountryIDQry = `select id from countries where name="${
           req.body.countryName
-          }"`;
+        }"`;
         let countryId;
         connection.query(getCountryIDQry, (err, result) => {
           if (err) throw err;
@@ -294,13 +250,13 @@ module.exports.updateProject = (req, res) => {
           //add the new location
           let addNewLocationQry = `insert into locations(country_id, lng, lat) values(${
             locationData.country_id
-            }, ${locationData.lng}, ${locationData.lat});`;
+          }, ${locationData.lng}, ${locationData.lat});`;
           connection.query(addNewLocationQry, (err, result) => {
             if (err) throw err;
 
             let getNewLocationIDQry = `select id from locations where lat like ${
               req.body.lat
-              } AND lng like ${req.body.lng};`;
+            } AND lng like ${req.body.lng};`;
             let newID;
             connection.query(getNewLocationIDQry, (err, result) => {
               if (err) throw err;
@@ -318,11 +274,13 @@ module.exports.updateProject = (req, res) => {
               let qry = `UPDATE projects 
                   SET title="${data.title}", start_date='${
                 data.start_date
-                }', capacity=${data.capacity}, location_id=${data.location_id}, organization_name="${
-                data.organization_name
-                }", img_url="${data.img_url}", type="${data.type}", project_description="${
+              }', capacity=${data.capacity}, location_id=${
+                data.location_id
+              }, organization_name="${data.organization_name}", img_url="${
+                data.img_url
+              }", type="${data.type}", project_description="${
                 data.project_description
-                }"
+              }"
                   WHERE id=${req.params.id};`;
               connection.query(qry, (err, result) => {
                 if (err) throw err;
@@ -339,17 +297,8 @@ module.exports.updateProject = (req, res) => {
 };
 
 module.exports.deleteProject = (req, res) => {
-  const connection = mysql.createConnection(dbConfig);
-
   connection.connect(err => {
     if (err) throw err;
-    console.log("Connected!");
-
-    connection.query(`USE rin`, function (err, result) {
-      if (err) throw err;
-      console.log("Database used");
-    });
-
     let qry = `delete from projects where id=${req.params.id}`;
     connection.query(qry, (err, result) => {
       if (err) throw err;
