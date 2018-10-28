@@ -1,24 +1,44 @@
 const mysql = require("mysql");
 const axios = require("axios");
 const dbConfig = require("../db.config");
+const connection = mysql.createConnection(dbConfig);
 
 module.exports.getProjects = (req, res) => {
-  const connection = mysql.createConnection(dbConfig);
-
   connection.connect(err => {
     if (err) throw err;
-    console.log("Connected!");
-
-    connection.query(`USE rin`, function(err, result) {
-      if (err) throw err;
-      console.log("Database used");
-    });
-
     connection.query("select * from projects", (err, result) => {
       if (err) throw err;
       res.send(result);
     });
   });
+};
+
+// helper function to check if the admin enered the field and return the proper query
+const checkInputAndModifyQuery = (qry, input) => {
+  if (input.organizationName) {
+    qry += ` and p.organization_name like "%${input.organizationName}%"`;
+  }
+
+  if (input.projectName) {
+    qry += ` and p.title like "%${input.projectName}%"`;
+  }
+
+  if (input.capacity) {
+    qry += ` and p.capacity < ${input.capacity}`;
+  }
+
+  if (input.country) {
+    qry += ` and p.country = ${input.country}`;
+  }
+
+  if (input.type) {
+    qry += ` and p.type = "${input.type}"`;
+  }
+
+  if (input.year) {
+    qry += ` and YEAR(p.start_date) = ${input.year}`;
+  }
+  return qry;
 };
 
 module.exports.getLocations = (req, res) => {
@@ -27,42 +47,10 @@ module.exports.getLocations = (req, res) => {
   let qry =
     "select p.id, l.lat, l.lng from projects p inner join locations l where p.location_id = l.id";
 
-  if (filterOptions.organizationName) {
-    qry += ` and p.organization_name like "%${
-      filterOptions.organizationName
-    }%"`;
-  }
-
-  if (filterOptions.projectName) {
-    qry += ` and p.title like "%${filterOptions.projectName}%"`;
-  }
-
-  if (filterOptions.capacity) {
-    qry += ` and p.capacity < ${filterOptions.capacity}`;
-  }
-
-  if (filterOptions.country) {
-    qry += ` and p.country = ${filterOptions.country}`;
-  }
-
-  if (filterOptions.type) {
-    qry += ` and p.type = "${filterOptions.type}"`;
-  }
-
-  if (filterOptions.year) {
-    qry += ` and YEAR(p.start_date) = ${filterOptions.year}`;
-  }
-
-  const connection = mysql.createConnection(dbConfig);
+  qry = checkInputAndModifyQuery(qry, filterOptions);
 
   connection.connect(err => {
     if (err) throw err;
-    console.log("Connected!");
-
-    connection.query(`USE rin`, function(err, result) {
-      if (err) throw err;
-      console.log("Database used");
-    });
 
     connection.query(qry, (err, result) => {
       if (err) throw err;
@@ -72,17 +60,8 @@ module.exports.getLocations = (req, res) => {
 };
 
 module.exports.getProjectCountry = (req, res) => {
-  const connection = mysql.createConnection(dbConfig);
-
   connection.connect(err => {
     if (err) throw err;
-    console.log("Connected!");
-
-    connection.query(`USE rin`, function(err, result) {
-      if (err) throw err;
-      console.log("Database used");
-    });
-
     let qry = `select c.name from countries c inner join locations l where c.id = l.country_id and l.id=${
       req.params.id
     };`;
@@ -94,17 +73,8 @@ module.exports.getProjectCountry = (req, res) => {
 };
 
 module.exports.getProject = (req, res) => {
-  const connection = mysql.createConnection(dbConfig);
-
   connection.connect(err => {
     if (err) throw err;
-    console.log("Connected!");
-
-    connection.query(`USE rin`, function(err, result) {
-      if (err) throw err;
-      console.log("Database used");
-    });
-
     let qry = `select * from projects where id=${req.params.id}`;
     connection.query(qry, (err, result) => {
       if (err) throw err;
@@ -114,17 +84,8 @@ module.exports.getProject = (req, res) => {
 };
 
 module.exports.addProject = (req, res) => {
-  const connection = mysql.createConnection(dbConfig);
-
   connection.connect(err => {
     if (err) throw err;
-    console.log("Connected!");
-
-    connection.query(`USE rin`, function(err, result) {
-      if (err) throw err;
-      console.log("Database used");
-    });
-
     /*
          - user selects location
          - map api returns the country name, lat, lng
@@ -144,14 +105,15 @@ module.exports.addProject = (req, res) => {
     connection.query(getLocationIDQry, (err, result) => {
       if (err) throw err;
 
+      let body = req.body;
       let data = {
-        title: req.body.title,
-        start_date: req.body.start_date,
-        capacity: req.body.capacity,
-        organization_name: req.body.organization_name,
-        img_url: req.body.img_url,
-        type: req.body.type,
-        project_description: req.body.project_description
+        title: body.title,
+        start_date: body.start_date,
+        capacity: body.capacity,
+        organization_name: body.organization_name,
+        img_url: body.img_url,
+        type: body.type,
+        project_description: body.project_description
       };
       if (result[0]) {
         //location exists
@@ -230,17 +192,8 @@ module.exports.addProject = (req, res) => {
 };
 
 module.exports.updateProject = (req, res) => {
-  const connection = mysql.createConnection(dbConfig);
-
   connection.connect(err => {
     if (err) throw err;
-    console.log("Connected!");
-
-    connection.query(`USE rin`, function(err, result) {
-      if (err) throw err;
-      console.log("Database used");
-    });
-
     let getLocationIDQry = `select id from locations where lat like ${
       req.body.lat
     } AND lng like ${req.body.lng};`;
@@ -344,17 +297,8 @@ module.exports.updateProject = (req, res) => {
 };
 
 module.exports.deleteProject = (req, res) => {
-  const connection = mysql.createConnection(dbConfig);
-
   connection.connect(err => {
     if (err) throw err;
-    console.log("Connected!");
-
-    connection.query(`USE rin`, function(err, result) {
-      if (err) throw err;
-      console.log("Database used");
-    });
-
     let qry = `delete from projects where id=${req.params.id}`;
     connection.query(qry, (err, result) => {
       if (err) throw err;

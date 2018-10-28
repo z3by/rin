@@ -1,19 +1,10 @@
 const mysql = require("mysql");
-const axios = require("axios");
 const dbConfig = require("../db.config");
+const connection = mysql.createConnection(dbConfig);
 
 module.exports.getPartners = (req, res) => {
-  const connection = mysql.createConnection(dbConfig);
-
   connection.connect(err => {
     if (err) throw err;
-    console.log("Connected!");
-
-    connection.query(`USE rin`, function(err, result) {
-      if (err) throw err;
-      console.log("Database used");
-    });
-
     connection.query("select * from partners", (err, result) => {
       if (err) throw err;
       res.send(result);
@@ -22,17 +13,8 @@ module.exports.getPartners = (req, res) => {
 };
 
 module.exports.getPartner = (req, res) => {
-  const connection = mysql.createConnection(dbConfig);
-
   connection.connect(err => {
     if (err) throw err;
-    console.log("Connected!");
-
-    connection.query(`USE rin`, function(err, result) {
-      if (err) throw err;
-      console.log("Database used");
-    });
-
     let qry = `select * from partners where id=${req.params.id}`;
     connection.query(qry, (err, result) => {
       if (err) throw err;
@@ -42,17 +24,8 @@ module.exports.getPartner = (req, res) => {
 };
 
 module.exports.addPartner = (req, res) => {
-  const connection = mysql.createConnection(dbConfig);
-
   connection.connect(err => {
     if (err) throw err;
-    console.log("Connected!");
-
-    connection.query(`USE rin`, function(err, result) {
-      if (err) throw err;
-      console.log("Database used");
-    });
-
     let data = {
       id: req.body.id,
       name: req.body.name,
@@ -71,17 +44,8 @@ module.exports.addPartner = (req, res) => {
 };
 
 module.exports.updatePartner = (req, res) => {
-  const connection = mysql.createConnection(dbConfig);
-
   connection.connect(err => {
     if (err) throw err;
-    console.log("Connected!");
-
-    connection.query(`USE rin`, function(err, result) {
-      if (err) throw err;
-      console.log("Database used");
-    });
-
     let data = {
       name: req.body.name,
       logo_url: req.body.logo_url,
@@ -101,17 +65,8 @@ module.exports.updatePartner = (req, res) => {
 };
 
 module.exports.deletePartner = (req, res) => {
-  const connection = mysql.createConnection(dbConfig);
-
   connection.connect(err => {
     if (err) throw err;
-    console.log("Connected!");
-
-    connection.query(`USE rin`, function(err, result) {
-      if (err) throw err;
-      console.log("Database used");
-    });
-
     let qry = `delete from partners where id=${req.params.id}`;
     connection.query(qry, (err, result) => {
       if (err) throw err;
