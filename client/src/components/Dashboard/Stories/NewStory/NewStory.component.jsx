@@ -10,7 +10,9 @@ export default class NewProject extends Component {
       text: "",
       img: "",
       allTexts: [],
-      allImgs: ["https://worldvisionadvocacy.org/wp-content/uploads/2017/10/W220-0005-107_706974.jpg"]
+      allImgs: [
+        "https://worldvisionadvocacy.org/wp-content/uploads/2017/10/W220-0005-107_706974.jpg"
+      ]
     };
   }
 
@@ -20,45 +22,48 @@ export default class NewProject extends Component {
 
   onChange = e => {
     e.preventDefault();
-    this.setState({ [e.target.name]: e.target.value }, () => { console.log(this.state) });
-  }
+    this.setState({ [e.target.name]: e.target.value }, () => {
+      console.log(this.state);
+    });
+  };
 
   addStory = e => {
     e.preventDefault();
-    this.setState({ allTexts: [...this.state.allTexts, this.state.text] }, () => {
-      //console.log(this.state.allTexts) 
-      let storyData = {
-        title: this.state.title,
-        text: this.state.allTexts,
-        imgs: this.state.allImgs
+    this.setState(
+      { allTexts: [...this.state.allTexts, this.state.text] },
+      () => {
+        //console.log(this.state.allTexts)
+        let storyData = {
+          title: this.state.title,
+          text: this.state.allTexts,
+          imgs: this.state.allImgs
+        };
+
+        axios
+          .post("/api/stories", storyData)
+          .then(function(response) {
+            console.log("Story added successfully");
+          })
+          .catch(function(error) {
+            console.log(error);
+          });
       }
+    );
+  };
 
-      axios
-        .post("/api/stories", storyData)
-        .then(function (response) {
-          document.querySelector(".admin-form form").reset();
-          document.querySelector(".done-img").style.display = "flex";
-          setTimeout(() => {
-            document.querySelector(".done-img").style.display = "none";
-          }, 6000);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+  onChangeImg = e => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("img", e.target.files[0]);
+    const config = {
+      headers: {
+        "content-type": "multipart/form-data"
+      }
+    };
+
+    axios.post("/api/stories/image", formData, config).then(res => {
+      console.log(res);
     });
-
-
-
-    // let txt = "";
-    // for (let i = 0; i < this.state.text.length; i++) {
-    //   if (this.state.text[i] !== "\n") {
-    //     txt += this.state.text[i];
-    //   }
-    //   else {
-    //     this.setState({ allTexts: [...this.state.allTexts, txt] }, () => console.log(this.state.allTexts));
-    //     txt = "";
-    //   }
-    // }
   };
 
   render() {
@@ -91,7 +96,7 @@ export default class NewProject extends Component {
             type="file"
             name="img"
             accept="image/*"
-          // onChange={this.onChange}
+            onChange={this.onChangeImg}
           />
           <button type="submit" onClick={this.addStory}>
             <p>

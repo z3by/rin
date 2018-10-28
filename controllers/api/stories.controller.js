@@ -70,6 +70,10 @@ module.exports.addStory = (req, res) => {
   });
 };
 
+module.exports.uploadImage = (req, res) => {
+  console.log(req.file);
+};
+
 module.exports.updateStory = (req, res) => {
   const connection = mysql.createConnection(dbConfig);
 
