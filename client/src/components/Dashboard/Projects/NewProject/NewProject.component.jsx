@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import GoogleMapReact from "google-map-react";
-import { mapApi } from "../../../config/map.config";
+import { mapApi } from "../../../../config/map.config";
 import "./NewProject.css";
 
 const Marker = () => {

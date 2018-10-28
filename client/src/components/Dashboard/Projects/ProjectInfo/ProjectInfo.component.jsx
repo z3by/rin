@@ -13,15 +13,14 @@ export default class ProjectInfo extends Component {
         }
     }
 
-    componentDidMount() {
-        document.body.style.overflowY = "auto";
-        console.log(this.project);
-
-    }
-
     componentWillMount() {
         this.getProject(this.state.id);
     }
+
+    componentDidMount() {
+        document.body.style.overflowY = "auto";
+    }
+
 
     getProject = (id) => {
         axios.get(`/api/projects/${id}`).then(res => {
@@ -40,41 +39,41 @@ export default class ProjectInfo extends Component {
 
     render() {
         return (
-            <div className="">
+            <div>
                 <table className="projects-table">
                     <tr>
                         <th><h3 className="heading-theme-3-admin-titles">Project ID</h3></th>
                         <td>
-                            <p className="p-theme-1-admin-project-info">{this.state.id}</p>
+                            <p className="p-theme-1-admin-info">{this.state.id}</p>
                         </td>
                     </tr>
                     <tr>
                         <th><h3 className="heading-theme-3-admin-titles">Project Tilte</h3></th>
-                        <td><p className="p-theme-1-admin-project-info">{this.state.project.title}</p></td>
+                        <td><p className="p-theme-1-admin-info">{this.state.project.title}</p></td>
                     </tr>
                     <tr>
                         <th><h3 className="heading-theme-3-admin-titles">Project Country</h3></th>
-                        <td><p className="p-theme-1-admin-project-info">{this.state.country}</p></td>
+                        <td><p className="p-theme-1-admin-info">{this.state.country}</p></td>
                     </tr>
                     <tr>
                         <th><h3 className="heading-theme-3-admin-titles">Project Description</h3></th>
-                        <td><p className="p-theme-1-admin-project-info">{this.state.project.project_description}</p></td>
+                        <td><p className="p-theme-1-admin-info">{this.state.project.project_description}</p></td>
                     </tr>
                     <tr>
                         <th><h3 className="heading-theme-3-admin-titles">Project Start Date</h3></th>
-                        <td><p className="p-theme-1-admin-project-info">{this.state.start_date}</p></td>
+                        <td><p className="p-theme-1-admin-info">{this.state.start_date}</p></td>
                     </tr>
                     <tr>
                         <th><h3 className="heading-theme-3-admin-titles">Project Capacity </h3></th>
-                        <td><p className="p-theme-1-admin-project-info">{this.state.project.capacity}</p></td>
+                        <td><p className="p-theme-1-admin-info">{this.state.project.capacity}</p></td>
                     </tr>
                     <tr>
                         <th><h3 className="heading-theme-3-admin-titles">Project Organization Name</h3></th>
-                        <td><p className="p-theme-1-admin-project-info">{this.state.project.organization_name}</p></td>
+                        <td><p className="p-theme-1-admin-info">{this.state.project.organization_name}</p></td>
                     </tr>
                     <tr>
                         <th><h3 className="heading-theme-3-admin-titles">Project Type</h3></th>
-                        <td><p className="p-theme-1-admin-project-info">{this.state.project.type}</p></td>
+                        <td><p className="p-theme-1-admin-info">{this.state.project.type}</p></td>
                     </tr>
                     <tr>
                         <th><h3 className="heading-theme-3-admin-titles">Project Image</h3></th>

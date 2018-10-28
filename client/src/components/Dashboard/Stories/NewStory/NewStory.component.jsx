@@ -36,7 +36,11 @@ export default class NewProject extends Component {
       axios
         .post("/api/stories", storyData)
         .then(function (response) {
-          console.log("Story added successfully");
+          document.querySelector(".admin-form form").reset();
+          document.querySelector(".done-img").style.display = "flex";
+          setTimeout(() => {
+            document.querySelector(".done-img").style.display = "none";
+          }, 6000);
         })
         .catch(function (error) {
           console.log(error);
@@ -93,6 +97,9 @@ export default class NewProject extends Component {
               <i className="fas fa-plus" /> Add Story
             </p>
           </button>
+          <div className="done-img">
+            <img src="/imgs/done.gif" alt="" />
+          </div>
         </form>
       </div>
     );
