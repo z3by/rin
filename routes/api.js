@@ -41,6 +41,9 @@ var upload = multer({
   }
 }).single("img");
 
+// upload image route
+router.post("/upload", upload, storiesAPI.uploadImage);
+
 //countries routes
 router.get("/countries", countriesAPI.getCountries);
 router.get("/countries/:id", countriesAPI.getCountry);
@@ -49,7 +52,6 @@ router.get("/countries/:id", countriesAPI.getCountry);
 router.get("/stories", storiesAPI.getStories);
 router.get("/stories/:id", storiesAPI.getStory);
 router.post("/stories", storiesAPI.addStory);
-router.post("/stories/image", upload, storiesAPI.uploadImage);
 router.put("/stories/:id", storiesAPI.updateStory);
 router.delete("/stories/:id", storiesAPI.deleteStory);
 

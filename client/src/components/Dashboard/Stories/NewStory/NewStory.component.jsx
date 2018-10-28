@@ -8,11 +8,7 @@ export default class NewProject extends Component {
     this.state = {
       title: "",
       text: "",
-      img: "",
-      allTexts: [],
-      allImgs: [
-        "https://worldvisionadvocacy.org/wp-content/uploads/2017/10/W220-0005-107_706974.jpg"
-      ]
+      img: ""
     };
   }
 
@@ -22,33 +18,27 @@ export default class NewProject extends Component {
 
   onChange = e => {
     e.preventDefault();
-    this.setState({ [e.target.name]: e.target.value }, () => {
-      console.log(this.state);
-    });
+    this.setState({ [e.target.name]: e.target.value });
   };
 
   addStory = e => {
-    e.preventDefault();
-    this.setState(
-      { allTexts: [...this.state.allTexts, this.state.text] },
-      () => {
-        //console.log(this.state.allTexts)
-        let storyData = {
-          title: this.state.title,
-          text: this.state.allTexts,
-          imgs: this.state.allImgs
-        };
+    console.log(this.state);
 
-        axios
-          .post("/api/stories", storyData)
-          .then(function(response) {
-            console.log("Story added successfully");
-          })
-          .catch(function(error) {
-            console.log(error);
-          });
-      }
-    );
+    e.preventDefault();
+    let storyData = {
+      title: this.state.title,
+      text: [this.state.text],
+      imgs: [this.state.img]
+    };
+
+    axios
+      .post("/api/stories", storyData)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 
   onChangeImg = e => {
@@ -61,8 +51,11 @@ export default class NewProject extends Component {
       }
     };
 
-    axios.post("/api/stories/image", formData, config).then(res => {
-      console.log(res);
+    axios.post("/api/upload", formData, config).then(res => {
+      const imageURL = res.data.location;
+      this.setState({
+        img: imageURL
+      });
     });
   };
 

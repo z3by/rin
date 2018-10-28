@@ -71,7 +71,7 @@ module.exports.addStory = (req, res) => {
 };
 
 module.exports.uploadImage = (req, res) => {
-  console.log(req.file);
+  res.send(req.file);
 };
 
 module.exports.updateStory = (req, res) => {
