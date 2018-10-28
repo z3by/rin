@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Link, Route } from "react-router-dom";
-import NewProject from "../NewProject/NewProject.component";
-import ProjectsList from "../ProjectsList/ProjectsList.component";
-import ProjectInfo from "../ProjectInfo/ProjectInfo.component";
-import UpdateProject from "../UpdateProject/UpdateProject.component";
+import NewProject from "./NewProject/NewProject.component";
+import ProjectsList from "./ProjectsList/ProjectsList.component";
+import ProjectInfo from "./ProjectInfo/ProjectInfo.component";
+import UpdateProject from "./UpdateProject/UpdateProject.component";
 import "./Projects.css";
 // import { updateProject } from "../../../../../controllers/projects.controller";
 
