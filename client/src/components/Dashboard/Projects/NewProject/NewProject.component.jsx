@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import GoogleMapReact from "google-map-react";
-import { mapApi } from "../../../config/map.config";
+import { mapApi } from "../../../../config/map.config";
 import "./NewProject.css";
 
 const Marker = () => {
@@ -69,7 +69,6 @@ export default class NewProject extends Component {
       title: this.state.title,
       start_date: this.state.start_date,
       capacity: this.state.capacity,
-      partner_id: this.state.partner_id,
       organization_name: this.state.organization_name,
       img_url: this.state.img_url,
       type: this.state.type,
@@ -91,6 +90,26 @@ export default class NewProject extends Component {
         console.log(error);
       });
   };
+
+  // upload image to the storage
+  onChangeImg = e => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("img", e.target.files[0]);
+    const config = {
+      headers: {
+        "content-type": "multipart/form-data"
+      }
+    };
+
+    axios.post("/api/upload", formData, config).then(res => {
+      const imageURL = res.data.location;
+      this.setState({
+        img_url: imageURL
+      });
+    });
+  };
+
   render() {
     let countries = this.state.countries.map((country, i) => {
       return (
@@ -162,7 +181,12 @@ export default class NewProject extends Component {
           <br />
           <br />
           <label htmlFor="img_url">Image Url</label> <br />
-          <input required type="text" name="img_url" id="img_url" />
+          <input
+            type="file"
+            name="img"
+            accept="image/*"
+            onChange={this.onChangeImg}
+          />
           <br />
           <br />
           <label htmlFor="type">Project Type</label> <br />
@@ -184,7 +208,6 @@ export default class NewProject extends Component {
           </select>
           <div className="form-popup" id="myForm">
             <GoogleMapReact
-              //className="project-map"
               style={{ height: "40vh", width: "40vw" }}
               bootstrapURLKeys={{ key: mapApi }}
               defaultCenter={{ lng: this.state.lng, lat: this.state.lat }}

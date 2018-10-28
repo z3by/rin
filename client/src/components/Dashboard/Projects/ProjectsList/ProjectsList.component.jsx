@@ -50,10 +50,10 @@ export default class ProjectsList extends Component {
             <Link to={`/dashboard/projects/list/${project.id}`}>
               <i className="far fa-eye" /> show
             </Link>
-            <a>
+            <Link to={`/dashboard/projects/list/updateproject/${project.id}`}>
               <i className="fas fa-edit" />
               update
-            </a>
+            </Link>
             <a onClick={() => this.deleteProject(project)}>
               <i className="fas fa-trash-alt" /> delete
             </a>

@@ -7,13 +7,6 @@ module.exports.getStories = (req, res) => {
 
   connection.connect(err => {
     if (err) throw err;
-    console.log("Connected!");
-
-    connection.query(`USE rin`, function(err, result) {
-      if (err) throw err;
-      console.log("Database used");
-    });
-
     connection.query("select * from stories", (err, result) => {
       if (err) throw err;
       res.send(result);
@@ -26,13 +19,6 @@ module.exports.getStory = (req, res) => {
 
   connection.connect(err => {
     if (err) throw err;
-    console.log("Connected!");
-
-    connection.query(`USE rin`, function(err, result) {
-      if (err) throw err;
-      console.log("Database used");
-    });
-
     let qry = `select * from stories where id=${req.params.id}`;
     connection.query(qry, (err, result) => {
       if (err) throw err;
@@ -46,13 +32,6 @@ module.exports.addStory = (req, res) => {
 
   connection.connect(err => {
     if (err) throw err;
-    console.log("Connected!");
-
-    connection.query(`USE rin`, function(err, result) {
-      if (err) throw err;
-      console.log("Database used");
-    });
-
     let data = {
       title: req.body.title,
       text: JSON.stringify(req.body.text), //text is an array of strings
@@ -70,18 +49,15 @@ module.exports.addStory = (req, res) => {
   });
 };
 
+module.exports.uploadImage = (req, res) => {
+  res.send(req.file);
+};
+
 module.exports.updateStory = (req, res) => {
   const connection = mysql.createConnection(dbConfig);
 
   connection.connect(err => {
     if (err) throw err;
-    console.log("Connected!");
-
-    connection.query(`USE rin`, function(err, result) {
-      if (err) throw err;
-      console.log("Database used");
-    });
-
     let data = {
       title: req.body.title,
       text: JSON.stringify(req.body.text), //text is an array of strings
@@ -105,13 +81,6 @@ module.exports.deleteStory = (req, res) => {
 
   connection.connect(err => {
     if (err) throw err;
-    console.log("Connected!");
-
-    connection.query(`USE rin`, function(err, result) {
-      if (err) throw err;
-      console.log("Database used");
-    });
-
     let qry = `delete from stories where id=${req.params.id}`;
     connection.query(qry, (err, result) => {
       if (err) throw err;

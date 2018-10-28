@@ -8,9 +8,7 @@ export default class NewProject extends Component {
     this.state = {
       title: "",
       text: "",
-      img: "",
-      allTexts: [],
-      allImgs: ["https://worldvisionadvocacy.org/wp-content/uploads/2017/10/W220-0005-107_706974.jpg"]
+      img: ""
     };
   }
 
@@ -20,41 +18,45 @@ export default class NewProject extends Component {
 
   onChange = e => {
     e.preventDefault();
-    this.setState({ [e.target.name]: e.target.value }, () => { console.log(this.state) });
-  }
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
   addStory = e => {
+    console.log(this.state);
+
     e.preventDefault();
-    this.setState({ allTexts: [...this.state.allTexts, this.state.text] }, () => {
-      //console.log(this.state.allTexts) 
-      let storyData = {
-        title: this.state.title,
-        text: this.state.allTexts,
-        imgs: this.state.allImgs
+    let storyData = {
+      title: this.state.title,
+      text: [this.state.text],
+      imgs: [this.state.img]
+    };
+
+    axios
+      .post("/api/stories", storyData)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
+  onChangeImg = e => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("img", e.target.files[0]);
+    const config = {
+      headers: {
+        "content-type": "multipart/form-data"
       }
+    };
 
-      axios
-        .post("/api/stories", storyData)
-        .then(function (response) {
-          console.log("Story added successfully");
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+    axios.post("/api/upload", formData, config).then(res => {
+      const imageURL = res.data.location;
+      this.setState({
+        img: imageURL
+      });
     });
-
-
-
-    // let txt = "";
-    // for (let i = 0; i < this.state.text.length; i++) {
-    //   if (this.state.text[i] !== "\n") {
-    //     txt += this.state.text[i];
-    //   }
-    //   else {
-    //     this.setState({ allTexts: [...this.state.allTexts, txt] }, () => console.log(this.state.allTexts));
-    //     txt = "";
-    //   }
-    // }
   };
 
   render() {
@@ -73,6 +75,7 @@ export default class NewProject extends Component {
           <br />
           <label htmlFor="story-text">story text</label> <br />
           <textarea
+            required
             rows="4"
             cols="50"
             required
@@ -86,13 +89,16 @@ export default class NewProject extends Component {
             type="file"
             name="img"
             accept="image/*"
-          // onChange={this.onChange}
+            onChange={this.onChangeImg}
           />
           <button type="submit" onClick={this.addStory}>
             <p>
               <i className="fas fa-plus" /> Add Story
             </p>
           </button>
+          <div className="done-img">
+            <img src="/imgs/done.gif" alt="" />
+          </div>
         </form>
       </div>
     );

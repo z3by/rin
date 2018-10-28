@@ -1,0 +1,98 @@
+.admin-table th h1 {
+  font-weight: bold;
+  font-size: 1em;
+  text-align: left;
+  color: var(--color-1);
+  font-family: var(--main-font);
+}
+
+.admin-table td button {
+  height: 50px;
+  width: 100px;
+}
+
+.admin-table td.project-options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-table td.project-options a {
+  margin: 0 20px;
+}
+
+.admin-table td.project-options a:hover {
+  color: var(--color-1);
+}
+.admin-table td {
+  font-weight: normal;
+  font-size: 1em;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.admin-table {
+  text-align: left;
+  overflow: hidden;
+  width: 80%;
+  margin: 3% auto;
+  display: table;
+  padding: 0 0 8em 0;
+}
+
+.admin-table th {
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-left: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  width: 25%;
+}
+
+.admin-table td {
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-left: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* Background-color of the odd rows */
+.admin-table tr:nth-child(odd) {
+  background-color: #ddd;
+}
+
+/* Background-color of the even rows */
+.admin-table tr:nth-child(even) {
+  background-color: #555;
+}
+
+.admin-table th {
+  background-color: #444;
+}
+
+.admin-table td:first-child {
+  color: var(--color-5);
+  width: 100px;
+}
+
+.admin-table td:hover {
+  background-color: var(--color-2);
+  color: #403e10;
+
+  transition-delay: 0s;
+  transition-duration: 0.4s;
+  transition-property: all;
+  transition-timing-function: line;
+}
+
+.heading-theme-3-admin-titles {
+  color: #ddd;
+  font-family: var(--main-font);
+  font-weight: 500;
+  margin-bottom: 0.6vh;
+}
+
+.p-theme-1-admin-info {
+  color: var(--color-5);
+  font-size: 1.3rem;
+  font-family: var(--main-font);
+}
