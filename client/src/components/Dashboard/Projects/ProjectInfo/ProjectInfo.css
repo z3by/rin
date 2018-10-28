@@ -1,4 +1,4 @@
-  .projects-table th h1 {
+  .admin-table th h1 {
     font-weight: bold;
     font-size: 1em;
     text-align: left;
@@ -6,32 +6,32 @@
     font-family: var(--main-font);
   }
   
-  .projects-table td button {
+  .admin-table td button {
     height: 50px;
     width: 100px;
   }
   
-  .projects-table td.project-options {
+  .admin-table td.project-options {
     display: flex;
     align-items: center;
     justify-content: center;
   }
   
-  .projects-table td.project-options a {
+  .admin-table td.project-options a {
     margin: 0 20px;
   }
   
-  .projects-table td.project-options a:hover {
+  .admin-table td.project-options a:hover {
     color: var(--color-1);
   }
-  .projects-table td {
+  .admin-table td {
     font-weight: normal;
     font-size: 1em;
     white-space: pre-wrap;
     word-wrap: break-word
   }
   
-  .projects-table {
+  .admin-table {
     text-align: left;
     overflow: hidden;
     width: 80%;
@@ -40,7 +40,7 @@
     padding: 0 0 8em 0;
   }
   
-  .projects-table th {
+  .admin-table th {
     padding-bottom: 10px;
     padding-top: 10px;
     padding-left: 10px;
@@ -48,7 +48,7 @@
     width: 25%;
   }
 
-  .projects-table td {
+  .admin-table td {
     padding-bottom: 10px;
     padding-top: 10px;
     padding-left: 10px;
@@ -56,25 +56,25 @@
   }
   
   /* Background-color of the odd rows */
-  .projects-table tr:nth-child(odd) {
+  .admin-table tr:nth-child(odd) {
     background-color: #ddd;
   }
   
   /* Background-color of the even rows */
-  .projects-table tr:nth-child(even) {
+  .admin-table tr:nth-child(even) {
     background-color: #555;
   }
   
-  .projects-table th {
+  .admin-table th {
     background-color: #444;
   }
   
-  .projects-table td:first-child {
+  .admin-table td:first-child {
     color: var(--color-5);
     width: 100px;
   }
   
-  .projects-table td:hover {
+  .admin-table td:hover {
     background-color: var(--color-2);
     color: #403e10;
   

@@ -40,7 +40,7 @@ export default class ProjectInfo extends Component {
     render() {
         return (
             <div>
-                <table className="projects-table">
+                <table className="admin-table">
                     <tr>
                         <th><h3 className="heading-theme-3-admin-titles">Project ID</h3></th>
                         <td>

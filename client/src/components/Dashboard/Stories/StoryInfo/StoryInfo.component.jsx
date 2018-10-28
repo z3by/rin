@@ -32,7 +32,7 @@ export default class StoryInfo extends Component {
     render() {
         return (
             <div>
-                <table className="projects-table">
+                <table className="admin-table">
                     <tr>
                         <th><h3 className="heading-theme-3-admin-titles">Story ID</h3></th>
                         <td><p className="p-theme-1-admin-info">{this.state.id}</p></td>
@@ -47,7 +47,7 @@ export default class StoryInfo extends Component {
                     </tr>
                     <tr>
                         <th><h3 className="heading-theme-3-admin-titles">Story Images</h3></th>
-                        <td><img src={this.state.imgs[0]} alt="Story Image" /></td>
+                        <td><img src={this.state.imgs[0]} alt="Story Image" style={{ "max-height": "40vh", "max-width": "40vh" }} /></td>
                     </tr>
                 </table>
             </div>

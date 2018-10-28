@@ -77,6 +77,7 @@ export default class NewProject extends Component {
           <br />
           <label htmlFor="story-text">story text</label> <br />
           <textarea
+            required
             rows="4"
             cols="50"
             required

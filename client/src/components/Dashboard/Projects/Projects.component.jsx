@@ -5,7 +5,6 @@ import ProjectsList from "./ProjectsList/ProjectsList.component";
 import ProjectInfo from "./ProjectInfo/ProjectInfo.component";
 import UpdateProject from "./UpdateProject/UpdateProject.component";
 import "./Projects.css";
-// import { updateProject } from "../../../../../controllers/projects.controller";
 
 export default class Projects extends Component {
   render() {
