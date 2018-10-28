@@ -55,7 +55,7 @@ export default class NewProject extends Component {
   };
 
   onChange = e => {
-    this.setState({ [e.target.name]: e.target.value }, () => { });
+    this.setState({ [e.target.name]: e.target.value }, () => {});
   };
 
   onMapClick = ({ lng, lat }) => {
@@ -79,16 +79,35 @@ export default class NewProject extends Component {
     };
     axios
       .post("/api/projects", projectData)
-      .then(function (response) {
+      .then(function(response) {
         document.querySelector(".admin-form form").reset();
         document.querySelector(".done-img").style.display = "flex";
         setTimeout(() => {
           document.querySelector(".done-img").style.display = "none";
         }, 6000);
       })
-      .catch(function (error) {
+      .catch(function(error) {
         console.log(error);
       });
+  };
+
+  // upload image to the storage
+  onChangeImg = e => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("img", e.target.files[0]);
+    const config = {
+      headers: {
+        "content-type": "multipart/form-data"
+      }
+    };
+
+    axios.post("/api/upload", formData, config).then(res => {
+      const imageURL = res.data.location;
+      this.setState({
+        img_url: imageURL
+      });
+    });
   };
 
   render() {
@@ -162,7 +181,12 @@ export default class NewProject extends Component {
           <br />
           <br />
           <label htmlFor="img_url">Image Url</label> <br />
-          <input required type="text" name="img_url" id="img_url" />
+          <input
+            type="file"
+            name="img"
+            accept="image/*"
+            onChange={this.onChangeImg}
+          />
           <br />
           <br />
           <label htmlFor="type">Project Type</label> <br />
