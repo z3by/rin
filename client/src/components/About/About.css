@@ -148,6 +148,8 @@
 .back-to-top {
   text-align: center;
   margin: 0 auto;
+  display: block;
+  position: relative;
   cursor: pointer;
   padding: 0 auto;
 }

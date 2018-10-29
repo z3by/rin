@@ -18,7 +18,7 @@ export default class About extends Component {
   componentDidMount() {
     document.body.style.overflowY = "auto";
     document.querySelector(".header").style.backgroundImage =
-      'url("/imgs/about1.jpg")';
+      'url("/imgs/backs4.jpg")';
   }
 
   componentWillUnmount() {
@@ -110,7 +110,7 @@ export default class About extends Component {
               stability among displaced people.
             </p>
           </div>
-          <ul className="grid-3 about-nav" data-aos="slide-up">
+          <ul className="grid-3 about-nav">
             <li>
               <a
                 onClick={() => {
