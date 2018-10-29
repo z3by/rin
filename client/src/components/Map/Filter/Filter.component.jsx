@@ -108,7 +108,9 @@ class Filter extends React.Component {
             {countries}
           </select>
         </div>
-        <button onClick={this.props.fetchProjects}>fetch</button>
+        <button className="btn" onClick={this.props.fetchProjects}>
+          fetch
+        </button>
       </div>
     );
   }

@@ -85,6 +85,15 @@ section {
 i {
   margin: 20px;
 }
+
+.btn {
+  background: transparent;
+  border: solid 1px var(--color-2);
+  padding: 10px 30px;
+  color: var(--color-2);
+  cursor: pointer;
+}
+
 .grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
