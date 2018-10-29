@@ -29,7 +29,7 @@ export default class Story extends Component {
             {this.props.story.title}
             <a
               onClick={() => {
-                this.showStory(this.props.story.id + 1);
+                this.showStory(this.props.index + 1);
               }}
             >
               read the story
@@ -38,18 +38,18 @@ export default class Story extends Component {
 
           <div
             className="ch-info"
-            style={{ backgroundImage: "url(" + this.props.story.img + ")" }}
+            style={{ backgroundImage: "url(" + this.props.story.imgs[0] + ")" }}
           />
           <div
             className="ch-thumb"
-            style={{ backgroundImage: "url(" + this.props.story.img + ")" }}
+            style={{ backgroundImage: "url(" + this.props.story.imgs[0] + ")" }}
           />
         </div>
         <div className="story-details">
           <div className="read-more-close" onClick={this.closeStory}>
             <i className="fas fa-times" />
           </div>
-          <img src={this.props.story.img} alt="" />
+          <img src={this.props.story.imgs[0]} alt="" />
           <h1 className="heading-theme-2">{this.props.story.title}</h1>
           <p className="p-theme-1">{this.props.story.text}</p>
         </div>

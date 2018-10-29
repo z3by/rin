@@ -33,7 +33,7 @@ class Stories extends Component {
     const stories = this.state.stories;
     //map the stories
     const storiesInfo = stories.map((story, id) => {
-      return <Story story={story} key={id} />;
+      return <Story story={story} key={id} index={id} />;
     });
     return (
       <div className="stories fadeInFast">

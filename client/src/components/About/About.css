@@ -16,10 +16,10 @@
 
 .heading-theme-2 {
   color: var(--color-2);
-  text-shadow: 1px 1px 4px #555;
   font-family: var(--main-font);
   margin: 10px;
   margin-left: 0;
+  text-transform: uppercase;
 }
 
 .heading-theme-3 {
