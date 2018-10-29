@@ -38,7 +38,7 @@ export default class Navbar extends Component {
       if (!!document.querySelector(".counter")) {
         document.querySelector(".counter").style.display = "block";
       }
-      document.querySelector(".navbar-middle").style.display = "block";
+      document.querySelector(".navbar-middle").style.display = "flex";
       document.querySelector(".toggle-nav").style.left = "200px";
       document.querySelector(".toggle-nav i").style.transform = "rotate(0)";
     }

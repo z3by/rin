@@ -27,11 +27,10 @@
   list-style: none;
   position: relative;
   padding: 0 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
-.navbar-middle li {
-  margin: 8vh 0;
-}
-
 .navbar-middle .navbar-link {
   display: grid;
   grid-template-columns: 1fr 2fr;

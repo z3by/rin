@@ -1,0 +1,131 @@
+.admin-form {
+  background-color: var(--color-1);
+  display: flex;
+  justify-content: center;
+  padding: 100px auto;
+}
+
+.admin-form textarea {
+  border: none;
+  border: 1px solid var(--color-3);
+  background: transparent;
+  outline: none;
+  height: 40px;
+  width: 100%;
+  font-family: var(--main-font);
+  color: #fff;
+  font-size: 16px;
+  height: 300px;
+}
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button,
+.admin-form button {
+  background-color: #222;
+  color: white;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  width: 100%;
+  margin: 50px 0;
+  font-size: 18px;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.admin-form button:hover {
+  background: var(--color-2);
+}
+
+.admin-form form {
+  padding: 100px;
+  width: 30%;
+  margin: 100px;
+  background: var(--color-5);
+}
+
+.admin-form label {
+  padding-top: 20px;
+  text-transform: capitalize;
+  font-size: 24px;
+  width: 50%;
+  color: var(--color-2);
+}
+/* The popup form - hidden by default */
+.form-popup {
+  position: relative;
+  height: 400px;
+  width: 100%;
+  margin: 30px 0;
+}
+
+.admin-form input {
+  border: none;
+  border-bottom: 1px solid var(--color-3);
+  background: transparent;
+  outline: none;
+  height: 40px;
+  width: 100%;
+  color: #fff;
+  font-size: 16px;
+}
+.admin-form select {
+  width: 100%;
+}
+/* Set a style for the submit/login button */
+.form-container .btn {
+  position: relative;
+  z-index: 100;
+  left: 20px;
+  bottom: 20px;
+  background-color: #4caf50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 20%;
+  opacity: 0.8;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover,
+.open-button:hover {
+  opacity: 1;
+}
+
+.selected-location {
+  position: absolute;
+  background-color: var(--dark-transparent);
+  color: var(--color-1);
+  z-index: 100;
+}
+
+.marker {
+  height: 60px;
+  width: 60px;
+}
+
+.marker i {
+  color: crimson;
+  font-size: 30px;
+  position: relative;
+  top: -30px;
+  left: -30px;
+}
+
+.done-img {
+  display: none;
+  background: var(white);
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.done-img img {
+  height: 150px;
+}
+
+.loading {
+  display: block;
+  height: 50px;
+  margin: 20px auto;
+}

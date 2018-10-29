@@ -1,8 +1,6 @@
 import React from "react";
 import axios from "axios";
 import "./Filter.css";
-import { connect } from "react-redux";
-import { setCountries } from "../../../actions/index";
 
 class Filter extends React.Component {
   constructor(props) {
@@ -18,21 +16,20 @@ class Filter extends React.Component {
 
   fetchAllCountries = () => {
     axios.get("/api/countries").then(res => {
-      this.props.setCountries(res.data);
+      this.setState({
+        countries: res.data
+      });
     });
   };
 
-
   render() {
-    let countries = !this.props.countries.countries
-      ? []
-      : this.props.countries.countries.map(country => {
-          return (
-            <option value={country.name} key={country.alpha2Code}>
-              {country.name}
-            </option>
-          );
-        });
+    const countries = this.state.countries.map(country => {
+      return (
+        <option value={country.name} key={country.alpha2Code}>
+          {country.name}
+        </option>
+      );
+    });
 
     return (
       <div className="filter">
@@ -59,7 +56,7 @@ class Filter extends React.Component {
           <input
             id="projectName"
             type="text"
-            name='projectName'
+            name="projectName"
             placeholder="project name"
             className="filter-input-text"
             onChange={this.props.filter}
@@ -71,11 +68,12 @@ class Filter extends React.Component {
             Filter by project capacity:
             {"    "}
             <span id="capacity-range" data-sympol="  person" />
+            <span>{this.props.options.capacity}</span>
           </label>
           <input
             id="capacity"
             type="range"
-            max="10000"
+            max="1000000"
             name="capacity"
             placeholder="porject capacity"
             className="slider"
@@ -84,27 +82,10 @@ class Filter extends React.Component {
         </div>
 
         <div className="filter-input">
-          <label htmlFor="benefits" className="filter-label">
-            Filter by investors benefits:
-            {"    "}
-            <span id="benefits-range" data-sympol="  $" />
-          </label>
-          <input
-            id="benefits"
-            type="range"
-            name="benefits"
-            placeholder="organization benefits"
-            className="slider"
-            onChange={this.props.filter}
-            max="10000000"
-          />
-        </div>
-
-        <div className="filter-input">
           <label htmlFor="starting-year" className="filter-label">
             Filter by project starting-year:
             {"    "}
-            <span id="starting-year-range" data-sympol="" />
+            <span>{this.props.options.year}</span>
           </label>
 
           <input
@@ -123,25 +104,17 @@ class Filter extends React.Component {
           <label htmlFor="countries" className="filter-label">
             Filter by countries
           </label>
-          <select
-            name="country"
-            id="countries"
-            onChange={this.props.filter}
-          >
+          <select name="country" id="countries" onChange={this.props.filter}>
             <option value="choose one ">choose country</option>
             {countries}
           </select>
         </div>
+        <button className="btn" onClick={this.props.fetchProjects}>
+          fetch
+        </button>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  countries: state.countries
-});
-
-export default connect(
-  mapStateToProps,
-  { setCountries }
-)(Filter);
+export default Filter;

@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
 import "./Map.css";
 import * as options from "./map-options";
-import * as projects from "./projects-data.json";
 import Dot from "./Dot/Dot.component";
 import Filter from "./Filter/Filter.component";
 import Spectrum from "./Spectrum/Spectrum.component";
 import { mapApi } from "../../config/map.config";
+import Axios from "axios";
 
 export default class Map extends Component {
   state = {
@@ -15,18 +15,8 @@ export default class Map extends Component {
       lng: 35.99
     },
     zoom: 0,
-    projects: [],
-    filterOptions: {
-      type: "",
-      title: "",
-      projectName: "",
-      year: 2018,
-      benefits: 10000000,
-      organizationName: "",
-      capacity: 10000,
-      country: ""
-    },
-    filteredProjects: []
+    filterOptions: {},
+    projects: []
   };
 
   componentWillMount() {
@@ -35,61 +25,40 @@ export default class Map extends Component {
 
   // get all the projects and map it to the state;
   fetchProjects = () => {
-    this.setState({
-      projects: projects,
-      filteredProjects: projects
+    const options = this.state.filterOptions;
+    Axios.get("/api/projects/locations", {
+      params: options
+    }).then(res => {
+      this.setState({
+        projects: res.data
+      });
     });
   };
 
   // get the user filter input and call the filter by the options func
   setFilterOptions = e => {
-    this.setState(
-      {
-        filterOptions: {
-          ...this.state.filterOptions,
-          [e.target.name]: e.target.value
-        }
-      },
-      this.filterProjectsByOptions
-    );
+    this.setState({
+      filterOptions: {
+        ...this.state.filterOptions,
+        [e.target.name]: e.target.value
+      }
+    });
   };
 
-  // filter the projects by the given catrgories;
-  filterProjectsByOptions = () => {
-    // the filter callback to use;
-    const theFilter = project => {
-      const options = this.state.filterOptions;
-
-      // get only the projects that follow this pattern
-      const filterCondition =
-        project.projectName
-          .toLowerCase()
-          .includes(options.projectName.toLowerCase()) &&
-        project.organizationName
-          .toLowerCase()
-          .includes(options.organizationName.toLowerCase());
-
-      return filterCondition;
-    };
-
-    // calling the filter;
-    const filteredProjects = this.state.projects.filter(theFilter);
-
-    // set the filtered projects array to the state;
+  // filter projects by it own type
+  filterByType = type => {
     this.setState({
-      filteredProjects: filteredProjects
+      filterOptions: {
+        ...this.state.filterOptions,
+        type: type
+      }
     });
   };
 
   render() {
     const dots = this.state.filteredProjects.map((project, key) => {
       return (
-        <Dot
-          lng={project.position.lng}
-          lat={project.position.lat}
-          key={key}
-          project={project}
-        />
+        <Dot lng={project.lng} lat={project.lat} key={key} project={project} />
       );
     });
 
@@ -98,12 +67,16 @@ export default class Map extends Component {
         style={{ height: "100vh", width: "100%" }}
         className="map fadeInFast"
       >
-        <Filter filter={this.setFilterOptions} />
+        <Filter
+          filter={this.setFilterOptions}
+          fetchProjects={this.fetchProjects}
+          options={this.state.filterOptions}
+        />
         <div className="spectrum-container">
           <div className="spectrum-popup">
             hover over different colors to filter by project type
           </div>
-          <Spectrum className="" filterByType={this.filterProjectsByType} />
+          <Spectrum className="" filterByType={this.filterByType} />
         </div>
         <GoogleMapReact
           className="land-map"
