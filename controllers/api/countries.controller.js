@@ -11,7 +11,6 @@ module.exports.getCountries = (req, res) => {
   connection.query("select * from countries", (err, result) => {
     if (err) throw err;
     res.send(result);
-    connection.end();
   });
 };
 

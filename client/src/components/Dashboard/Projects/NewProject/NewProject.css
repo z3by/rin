@@ -123,3 +123,9 @@
 .done-img img {
   height: 150px;
 }
+
+.loading {
+  display: block;
+  height: 50px;
+  margin: 20px auto;
+}
