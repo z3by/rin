@@ -123,7 +123,11 @@ export default class ProjectInfo extends Component {
               <h3 className="heading-theme-3-admin-titles">Project Image</h3>
             </th>
             <td>
-              <img src={this.state.project.img_url} alt="Project Img" />
+              <img
+                className="admin-img"
+                src={this.state.project.img_url}
+                alt="Project Img"
+              />
             </td>
           </tr>
         </table>

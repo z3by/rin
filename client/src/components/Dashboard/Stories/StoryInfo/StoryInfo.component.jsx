@@ -24,15 +24,10 @@ export default class StoryInfo extends Component {
   getStory = id => {
     axios.get(`/api/stories/${id}`).then(res => {
       this.setState({ story: res.data[0] }, () => {
-        this.setState(
-          {
-            text: JSON.parse(res.data[0]["text"]),
-            imgs: JSON.parse(res.data[0]["imgs"])
-          },
-          () => {
-            console.log(this.state.imgs);
-          }
-        );
+        this.setState({
+          text: JSON.parse(res.data[0]["text"]),
+          imgs: JSON.parse(res.data[0]["imgs"])
+        });
       });
     });
   };
@@ -70,7 +65,11 @@ export default class StoryInfo extends Component {
               <h3 className="heading-theme-3-admin-titles">Story Images</h3>
             </th>
             <td>
-              <img src={this.state.imgs[0]} alt="Story Image" />
+              <img
+                className="admin-img"
+                src={this.state.imgs[0]}
+                alt="Story Image"
+              />
             </td>
           </tr>
         </table>

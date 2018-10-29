@@ -8,7 +8,8 @@ export default class NewProject extends Component {
     this.state = {
       title: "",
       text: "",
-      img: ""
+      img: "",
+      loading: false
     };
   }
 
@@ -22,8 +23,6 @@ export default class NewProject extends Component {
   };
 
   addStory = e => {
-    console.log(this.state);
-
     e.preventDefault();
     let storyData = {
       title: this.state.title,
@@ -34,7 +33,11 @@ export default class NewProject extends Component {
     axios
       .post("/api/stories", storyData)
       .then(response => {
-        console.log(response);
+        document.querySelector(".admin-form form").reset();
+        document.querySelector(".done-img").style.display = "flex";
+        setTimeout(() => {
+          document.querySelector(".done-img").style.display = "none";
+        }, 3000);
       })
       .catch(error => {
         console.log(error);
@@ -42,6 +45,10 @@ export default class NewProject extends Component {
   };
 
   onChangeImg = e => {
+    this.setState({
+      loading: true
+    });
+
     e.preventDefault();
     const formData = new FormData();
     formData.append("img", e.target.files[0]);
@@ -54,7 +61,8 @@ export default class NewProject extends Component {
     axios.post("/api/upload", formData, config).then(res => {
       const imageURL = res.data.location;
       this.setState({
-        img: imageURL
+        img: imageURL,
+        loading: false
       });
     });
   };
@@ -91,6 +99,12 @@ export default class NewProject extends Component {
             accept="image/*"
             onChange={this.onChangeImg}
           />
+          <img
+            src="/imgs/loading.gif"
+            alt=""
+            className="loading"
+            style={{ display: this.state.loading ? "block" : "none" }}
+          />
           <button type="submit" onClick={this.addStory}>
             <p>
               <i className="fas fa-plus" /> Add Story
@@ -100,6 +114,9 @@ export default class NewProject extends Component {
             <img src="/imgs/done.gif" alt="" />
           </div>
         </form>
+        <div className="done-img">
+          <img src="/imgs/done.gif" alt="" />
+        </div>
       </div>
     );
   }

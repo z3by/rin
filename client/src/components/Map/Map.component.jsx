@@ -70,6 +70,7 @@ export default class Map extends Component {
         <Filter
           filter={this.setFilterOptions}
           fetchProjects={this.fetchProjects}
+          options={this.state.filterOptions}
         />
         <div className="spectrum-container">
           <div className="spectrum-popup">

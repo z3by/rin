@@ -1,24 +1,39 @@
 import React, { Component } from "react";
 import "./Stories.css";
-import * as stories from "./stories-info";
 import Story from "./Story/Story.component";
+import Axios from "axios";
 
 class Stories extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      stories: []
+    };
+  }
   componentDidMount() {
     document.body.style.overflowY = "auto";
+    this.fetchStories();
   }
 
+  fetchStories = () => {
+    Axios.get("/api/stories").then(res => {
+      this.setState({
+        stories: res.data
+      });
+    });
+  };
   // handle the down arrow btn
   goTop = () => {
-    document.querySelector(".go-down").scrollIntoView({
+    document.querySelector(".header").scrollIntoView({
       behavior: "smooth"
     });
   };
 
   render() {
+    const stories = this.state.stories;
     //map the stories
     const storiesInfo = stories.map((story, id) => {
-      return <Story story={story} key={id} />;
+      return <Story story={story} key={id} index={id} />;
     });
     return (
       <div className="stories fadeInFast">

@@ -68,6 +68,7 @@ class Filter extends React.Component {
             Filter by project capacity:
             {"    "}
             <span id="capacity-range" data-sympol="  person" />
+            <span>{this.props.options.capacity}</span>
           </label>
           <input
             id="capacity"
@@ -84,7 +85,7 @@ class Filter extends React.Component {
           <label htmlFor="starting-year" className="filter-label">
             Filter by project starting-year:
             {"    "}
-            <span id="starting-year-range" data-sympol="" />
+            <span>{this.props.options.year}</span>
           </label>
 
           <input
@@ -108,7 +109,9 @@ class Filter extends React.Component {
             {countries}
           </select>
         </div>
-        <button onClick={this.props.fetchProjects}>fetch</button>
+        <button className="btn" onClick={this.props.fetchProjects}>
+          fetch
+        </button>
       </div>
     );
   }
