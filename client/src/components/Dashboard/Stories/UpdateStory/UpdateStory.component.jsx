@@ -112,7 +112,12 @@ export default class UpdateStory extends Component {
             value={this.state.text[0]}
             onChange={this.onChangeText}
           />
-          <label htmlFor="image">add image for the story</label> <br />
+          <label htmlFor="image">Update story image</label> <br />
+          <img
+            className="admin-img-update"
+            src={this.state.imgs[0]}
+            alt="Story Image"
+          />
           <input
             type="file"
             name="img"
