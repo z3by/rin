@@ -71,7 +71,6 @@ export default class NewProject extends Component {
     return (
       <div className="admin-form">
         <form>
-          <h1>Hello</h1>
           <label htmlFor="story-title">story title</label> <br />
           <input
             required
