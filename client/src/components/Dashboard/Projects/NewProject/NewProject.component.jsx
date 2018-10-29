@@ -36,7 +36,8 @@ export default class NewProject extends Component {
       countryName: "",
       lng: 0,
       lat: 0,
-      zoom: 0
+      zoom: 0,
+      loading: false
     };
   }
 
@@ -84,7 +85,7 @@ export default class NewProject extends Component {
         document.querySelector(".done-img").style.display = "flex";
         setTimeout(() => {
           document.querySelector(".done-img").style.display = "none";
-        }, 6000);
+        }, 3000);
       })
       .catch(function(error) {
         console.log(error);
@@ -93,6 +94,9 @@ export default class NewProject extends Component {
 
   // upload image to the storage
   onChangeImg = e => {
+    this.setState({
+      loading: true
+    });
     e.preventDefault();
     const formData = new FormData();
     formData.append("img", e.target.files[0]);
@@ -104,8 +108,10 @@ export default class NewProject extends Component {
 
     axios.post("/api/upload", formData, config).then(res => {
       const imageURL = res.data.location;
+
       this.setState({
-        img_url: imageURL
+        img_url: imageURL,
+        loading: false
       });
     });
   };
@@ -186,6 +192,12 @@ export default class NewProject extends Component {
             name="img"
             accept="image/*"
             onChange={this.onChangeImg}
+          />
+          <img
+            src="/imgs/loading.gif"
+            alt=""
+            className="loading"
+            style={{ display: this.state.loading ? "block" : "none" }}
           />
           <br />
           <br />
