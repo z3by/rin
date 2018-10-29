@@ -1,54 +1,45 @@
 import React, { Component } from "react";
 import axios from "axios";
-import "./NewStory.css";
+import "./UpdateStory.css";
 
-export default class NewProject extends Component {
+export default class UpdateStory extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: this.props.match.params.id,
+      story: {},
       title: "",
-      text: "",
-      img: "",
-      loading: false
+      text: [],
+      imgs: []
     };
+  }
+
+  componentWillMount() {
+    this.getStory(this.state.id);
   }
 
   componentDidMount() {
     document.body.style.overflowY = "auto";
   }
 
+  getStory = id => {
+    axios.get(`/api/stories/${id}`).then(res => {
+      this.setState({ story: res.data[0] }, () => {
+        console.log(this.state.story);
+        this.setState({
+          title: res.data[0]["title"],
+          text: JSON.parse(res.data[0]["text"]),
+          imgs: JSON.parse(res.data[0]["imgs"])
+        });
+      });
+    });
+  };
+
   onChange = e => {
-    e.preventDefault();
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  addStory = e => {
-    e.preventDefault();
-    let storyData = {
-      title: this.state.title,
-      text: [this.state.text],
-      imgs: [this.state.img]
-    };
-
-    axios
-      .post("/api/stories", storyData)
-      .then(response => {
-        document.querySelector(".admin-form form").reset();
-        document.querySelector(".done-img").style.display = "flex";
-        setTimeout(() => {
-          document.querySelector(".done-img").style.display = "none";
-        }, 3000);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  };
-
   onChangeImg = e => {
-    this.setState({
-      loading: true
-    });
-
     e.preventDefault();
     const formData = new FormData();
     formData.append("img", e.target.files[0]);
@@ -61,22 +52,50 @@ export default class NewProject extends Component {
     axios.post("/api/upload", formData, config).then(res => {
       const imageURL = res.data.location;
       this.setState({
-        img: imageURL,
-        loading: false
+        imgs: [imageURL]
       });
     });
+  };
+
+  onChangeText = e => {
+    let txtArr = [...this.state.text];
+    txtArr[0] = e.target.value;
+    this.setState({ text: txtArr });
+  };
+
+  updateStory = e => {
+    e.preventDefault();
+
+    let storyData = {
+      title: this.state.title,
+      text: this.state.text,
+      imgs: this.state.imgs
+    };
+
+    axios
+      .put(`/api/stories/${this.state.id}`, storyData)
+      .then(function(response) {
+        document.querySelector(".done-img").style.display = "flex";
+        setTimeout(() => {
+          document.querySelector(".done-img").style.display = "none";
+        }, 6000);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   };
 
   render() {
     return (
       <div className="admin-form">
-        <form>
+        <form method="POST">
           <label htmlFor="story-title">story title</label> <br />
           <input
             required
             type="text"
             name="title"
             id="story-title"
+            value={this.state.title}
             onChange={this.onChange}
           />
           <br />
@@ -90,7 +109,8 @@ export default class NewProject extends Component {
             type="text"
             name="text"
             id="story-text"
-            onChange={this.onChange}
+            value={this.state.text[0]}
+            onChange={this.onChangeText}
           />
           <label htmlFor="image">add image for the story</label> <br />
           <input
@@ -99,24 +119,15 @@ export default class NewProject extends Component {
             accept="image/*"
             onChange={this.onChangeImg}
           />
-          <img
-            src="/imgs/loading.gif"
-            alt=""
-            className="loading"
-            style={{ display: this.state.loading ? "block" : "none" }}
-          />
-          <button type="submit" onClick={this.addStory}>
+          <button type="submit" onClick={this.updateStory}>
             <p>
-              <i className="fas fa-plus" /> Add Story
+              <i className="fas fa-plus" /> Update Story
             </p>
           </button>
           <div className="done-img">
             <img src="/imgs/done.gif" alt="" />
           </div>
         </form>
-        <div className="done-img">
-          <img src="/imgs/done.gif" alt="" />
-        </div>
       </div>
     );
   }
