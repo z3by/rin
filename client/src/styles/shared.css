@@ -109,10 +109,11 @@ i {
 }
 
 .header {
-  background: url(/imgs/success.jpg);
-  height: 50vh;
+  background: url(/imgs/stories.gif);
+  height: 70vh;
   background-size: 100% auto;
   background-attachment: fixed;
+  background-position-y: 50%;
 }
 .header-img {
   width: 100vh;

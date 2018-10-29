@@ -10,7 +10,13 @@ connection.connect(err => {
 module.exports.getStories = (req, res) => {
   connection.query("select * from stories", (err, result) => {
     if (err) throw err;
-    res.send(result);
+    const parsed = result.map(story => {
+      story.imgs = JSON.parse(story.imgs);
+      story.text = JSON.parse(story.text);
+      return story;
+    });
+
+    res.send(parsed);
   });
 };
 
