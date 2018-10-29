@@ -21,9 +21,7 @@ export default class StoriesList extends Component {
 
   fetchAllStories = () => {
     axios.get("/api/stories").then(res => {
-      this.setState({ allStories: res.data }, () => {
-        console.log(this.state.allStories);
-      });
+      this.setState({ allStories: res.data });
     });
   };
 
@@ -31,7 +29,6 @@ export default class StoriesList extends Component {
     axios
       .delete(`/api/stories/${story.id}`)
       .then(res => {
-        console.log("Deleted Successfully");
         this.fetchAllStories();
       })
       .catch(err => {
@@ -49,10 +46,10 @@ export default class StoriesList extends Component {
             <Link to={`/dashboard/stories/list/${story.id}`}>
               <i className="far fa-eye" /> show
             </Link>
-            <a>
+            <Link to={`/dashboard/stories/list/updatestory/${story.id}`}>
               <i className="fas fa-edit" />
               update
-            </a>
+            </Link>
             <a onClick={() => this.deleteStory(story)}>
               <i className="fas fa-trash-alt" /> delete
             </a>

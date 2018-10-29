@@ -53,7 +53,7 @@ module.exports.updateStory = (req, res) => {
   let qry = `UPDATE stories
                    SET title="${data.title}", text='${data.text}', imgs='${
     data.imgs
-  }',
+  }'
                    WHERE id=${req.params.id};`;
   connection.query(qry, (err, result) => {
     if (err) throw err;

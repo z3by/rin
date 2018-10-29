@@ -21,9 +21,7 @@ export default class ProjectsList extends Component {
 
   fetchAllProjects = () => {
     axios.get("/api/projects").then(res => {
-      this.setState({ allProject: res.data }, () => {
-        console.log(this.state.allProject);
-      });
+      this.setState({ allProject: res.data });
     });
   };
 
@@ -31,7 +29,6 @@ export default class ProjectsList extends Component {
     axios
       .delete(`/api/projects/${project.id}`)
       .then(res => {
-        console.log("Deleted Successfully");
         this.fetchAllProjects();
       })
       .catch(err => {
