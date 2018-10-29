@@ -18,9 +18,6 @@ export default class Landing extends Component {
     this.showVideo();
     this.changeBackground();
     this.fadeInOutPartners();
-    Axios.get("/users/isadmin").then(res => {
-      console.log(res);
-    });
   }
 
   // bind the events to the local functions.
@@ -151,6 +148,7 @@ export default class Landing extends Component {
       .childNodes[this.state.index].firstChild.classList.add("active");
   };
 
+  // change the circle background;
   changeBackground = () => {
     document.querySelector(".circle").style.background = `url(imgs/backs${this
       .state.index + 1}.jpg)`;
@@ -187,6 +185,7 @@ export default class Landing extends Component {
     document.querySelector(".down-rec-overlay").style.right = `${random2}%`;
   };
 
+  // change the rectangles overlay color
   toggleOverlayColor = () => {
     document.querySelector(".up-rec-overlay").style.background =
       document.querySelector(".up-rec-overlay").style.background === "cadetblue"
@@ -205,8 +204,10 @@ export default class Landing extends Component {
     document.querySelector(".circle").style.opacity = "1";
     document.querySelector(".circle-overlay").classList.add("grow");
     document.querySelector(".effect-circle").style.display = "none";
+    document.querySelector(".down-rec-overlay").style.display = "none";
     document.querySelector(".down-rec").style.display = "none";
     document.querySelector(".up-rec").style.display = "none";
+    document.querySelector(".up-rec-overlay").style.display = "none";
 
     setTimeout(() => {
       this.props.history.push(routes[this.state.index]);
