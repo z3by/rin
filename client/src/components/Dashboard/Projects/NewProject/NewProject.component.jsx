@@ -85,7 +85,7 @@ export default class NewProject extends Component {
         document.querySelector(".done-img").style.display = "flex";
         setTimeout(() => {
           document.querySelector(".done-img").style.display = "none";
-        }, 6000);
+        }, 3000);
       })
       .catch(function(error) {
         console.log(error);
