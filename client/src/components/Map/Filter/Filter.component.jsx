@@ -110,7 +110,7 @@ class Filter extends React.Component {
           </select>
         </div>
         <button className="btn" onClick={this.props.fetchProjects}>
-          fetch
+          search
         </button>
       </div>
     );
