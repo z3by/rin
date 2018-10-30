@@ -5,20 +5,9 @@ const strongPassword = require("./isStrongPassword");
 const validateRegisterInput = data => {
   let errors = {};
 
-  const inputUsername = !isEmpty(data.username) ? data.username : "";
   const inputPassword = !isEmpty(data.password) ? data.password : "";
   const inputPasswordConfirm = !isEmpty(data.password2) ? data.password2 : "";
   const inputEmail = !isEmpty(data.email) ? data.email : "";
-
-  // check if the user name is short;
-  if (!validator.isLength(inputUsername, { min: 2, max: 30 })) {
-    errors.username = "the user name must be between 2 and 30 characters";
-  }
-
-  // check if the user name is empty;
-  if (validator.isEmpty(inputUsername)) {
-    errors.username = "the user name is required";
-  }
 
   // check if the password is empty;
   if (validator.isEmpty(inputPassword)) {
