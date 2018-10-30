@@ -14,6 +14,14 @@ module.exports.getProjects = (req, res) => {
   });
 };
 
+const getCountryIdByName = (countryName, cb) => {
+  let qry = `select id from countries where name="${countryName}"`;
+  connection.query(qry, (err, result) => {
+    if (err) throw err;
+    cb(result[0]["id"]);
+  });
+};
+
 // helper function to check if the admin enered the field and return the proper query
 const checkInputAndModifyQuery = (qry, input) => {
   if (input.organizationName) {
@@ -29,7 +37,9 @@ const checkInputAndModifyQuery = (qry, input) => {
   }
 
   if (input.country) {
-    qry += ` and p.country = ${input.country}`;
+    getCountryIdByName(input.country, id => {
+      qry += ` and l.country_id = ${id}`;
+    });
   }
 
   if (input.type) {
@@ -49,7 +59,7 @@ module.exports.getLocations = (req, res) => {
     "select p.id, l.lat, l.lng from projects p inner join locations l where p.location_id = l.id";
 
   qry = checkInputAndModifyQuery(qry, filterOptions);
-
+  console.log(qry);
   connection.query(qry, (err, result) => {
     if (err) throw err;
     res.send(result);
