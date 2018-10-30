@@ -13,8 +13,10 @@ const Dot = props => {
     infancy: "#fc67fa"
   };
 
+  let type = props.project.type.toLowerCase();
+
   return (
-    <div className="dot" style={{ background: colors[props.project.type] }}>
+    <div className="dot" style={{ background: colors[type] }}>
       <div className="project-info">
         <div className="project-info-popup">
           <h1>Basic statistics</h1>
