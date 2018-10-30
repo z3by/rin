@@ -1,4 +1,6 @@
-module.exports.addCountries = () => {
+const axios = require("axios");
+
+module.exports.addCountries = connection => {
   axios.get("https://restcountries.eu/rest/v2/all").then(result => {
     for (let i = 0; i < result.data.length; i++) {
       if (i === 33 || i === 79) {

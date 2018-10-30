@@ -1,10 +1,10 @@
 // load input validators;
-const registerValidator = require("../../validators/register");
-const loginValidator = require("../../validators/login");
+const registerValidator = require("../validators/register.validator");
+const loginValidator = require("../validators/login.validator");
 const helpers = require("../helpers/users.helpers");
 
 // sign up new user controller;
-module.exports.signUp = (req, res) => {
+module.exports.registerNewMember = (req, res) => {
   // validate user input;
   const errors = registerValidator(req.body);
   const isValid = Object.keys(errors).length === 0;

@@ -8,6 +8,6 @@ const membersCtrl = require("../controllers/users/members.controller");
 router.get("/isadmin", adminCtrl.isAdmin);
 router.post("/loginadmin", adminCtrl.loginAdmin);
 
-router.get("/register", adminCtrl.registerNewMember);
+router.get("/register", membersCtrl.registerNewMember);
 
 module.exports = router;
