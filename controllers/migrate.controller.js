@@ -1,5 +1,5 @@
 const mysql = require("mysql");
-const addCountries = require("./api/countries.controller").addCountries;
+const countriesHelpers = require("./helpers/countries.helpers");
 const dbConfig = require("./db.config");
 
 const countriesModel = require("../models/countries.model");
@@ -34,4 +34,9 @@ module.exports = () => {
 
   // create stories table
   migrateHelpers.createTable(connection, storiesModel);
+
+  // fetch countries and insert them  into countries table
+  if (!migrateHelpers.checkIfCountriesExists) {
+    countriesHelpers.addCountries();
+  }
 };
