@@ -26,6 +26,11 @@ export default class Map extends Component {
   // get all the projects and map it to the state;
   fetchProjects = () => {
     const options = this.state.filterOptions;
+    for (const key in options) {
+      if (!options[key]) {
+        delete options[key];
+      }
+    }
     Axios.get("/api/projects/locations", {
       params: options
     }).then(res => {
