@@ -52,12 +52,17 @@ export default class Map extends Component {
 
   // filter projects by it own type
   filterByType = type => {
-    this.setState({
-      filterOptions: {
-        ...this.state.filterOptions,
-        type: type
+    this.setState(
+      {
+        filterOptions: {
+          ...this.state.filterOptions,
+          type: type
+        }
+      },
+      () => {
+        this.fetchProjects();
       }
-    });
+    );
   };
 
   render() {
