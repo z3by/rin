@@ -36,7 +36,10 @@ module.exports = () => {
   migrateHelpers.createTable(connection, storiesModel);
 
   // fetch countries and insert them  into countries table
-  if (!migrateHelpers.checkIfCountriesExists(connection)) {
-    countriesHelpers.addCountries(connection);
-  }
+
+  countriesHelpers.checkIfCountriesExists(connection, res => {
+    if (res === false) {
+      countriesHelpers.addCountries(connection);
+    }
+  });
 };

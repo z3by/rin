@@ -20,16 +20,3 @@ module.exports.createTable = (connection, model) => {
     if (err) throw err;
   });
 };
-
-// check if countries table is filled already
-module.exports.checkIfCountriesExists = connection => {
-  const countriesNumQry = "select count(*) from countries";
-
-  connection.query(countriesNumQry, (err, res) => {
-    if (err) throw err;
-
-    const countriesNum = res[0]["count(*)"];
-
-    return countriesNum ? true : false;
-  });
-};

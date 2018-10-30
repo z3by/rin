@@ -26,3 +26,17 @@ module.exports.addCountries = connection => {
     }
   });
 };
+
+// check if countries table is filled already
+module.exports.checkIfCountriesExists = (connection, cb) => {
+  const countriesNumQry = "select count(*) from countries";
+
+  connection.query(countriesNumQry, (err, res) => {
+    if (err) throw err;
+
+    const countriesNum = res[0]["count(*)"];
+
+    let created = countriesNum > 0 ? true : false;
+    cb(created);
+  });
+};
