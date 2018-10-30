@@ -6,7 +6,9 @@ export default props => {
   return (
     <nav id="ml-menu" className="sidebar">
       <div className="logo">
-        <img src="/imgs/old-logo.png" alt="" />
+        <Link to={"/"}>
+          <img src="/imgs/old-logo.png" alt="" className="logo-img" />
+        </Link>
       </div>
       <ul>
         <li>
