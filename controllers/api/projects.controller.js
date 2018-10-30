@@ -56,10 +56,9 @@ module.exports.getLocations = (req, res) => {
   const filterOptions = req.query;
 
   let qry =
-    "select p.id, l.lat, l.lng from projects p inner join locations l where p.location_id = l.id";
+    "select p.id, l.lat, l.lng, p.type from projects p inner join locations l where p.location_id = l.id";
 
   qry = checkInputAndModifyQuery(qry, filterOptions);
-  console.log(qry);
   connection.query(qry, (err, result) => {
     if (err) throw err;
     res.send(result);

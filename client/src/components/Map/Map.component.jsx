@@ -16,7 +16,9 @@ export default class Map extends Component {
     },
     zoom: 0,
     filterOptions: {},
-    projects: []
+    projects: [],
+    projectsInfo: [],
+    currentProject: {}
   };
 
   componentWillMount() {
@@ -26,6 +28,11 @@ export default class Map extends Component {
   // get all the projects and map it to the state;
   fetchProjects = () => {
     const options = this.state.filterOptions;
+    for (const key in options) {
+      if (!options[key]) {
+        delete options[key];
+      }
+    }
     Axios.get("/api/projects/locations", {
       params: options
     }).then(res => {
@@ -47,10 +54,49 @@ export default class Map extends Component {
 
   // filter projects by it own type
   filterByType = type => {
-    this.setState({
-      filterOptions: {
-        ...this.state.filterOptions,
-        type: type
+    this.setState(
+      {
+        filterOptions: {
+          ...this.state.filterOptions,
+          type: type
+        }
+      },
+      () => {
+        this.fetchProjects();
+      }
+    );
+  };
+
+  // get one project info
+  getProject = id => {
+    let projectLoaded = false;
+    this.state.projectsInfo.forEach(one => {
+      if (one.id === id) {
+        projectLoaded = true;
+      }
+    });
+    if (projectLoaded) {
+      return this.setCurrentProject(id);
+    }
+    Axios.get(`/api/projects/${id}`).then(res => {
+      this.setState(
+        {
+          projectsInfo: [...this.state.projectsInfo, res.data[0]]
+        },
+        () => {
+          this.setCurrentProject(id);
+        }
+      );
+    });
+  };
+
+  // set the current hovered project in the state
+  setCurrentProject = id => {
+    this.state.projectsInfo.forEach(one => {
+      if (one.id === id) {
+        this.setState({
+          currentProject: one
+        });
       }
     });
   };
@@ -58,7 +104,14 @@ export default class Map extends Component {
   render() {
     const dots = this.state.projects.map((project, key) => {
       return (
-        <Dot lng={project.lng} lat={project.lat} key={key} project={project} />
+        <Dot
+          hover={this.getProject}
+          lng={project.lng}
+          lat={project.lat}
+          key={key}
+          project={project}
+          info={this.state.currentProject}
+        />
       );
     });
 
