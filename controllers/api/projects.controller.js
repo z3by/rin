@@ -61,8 +61,6 @@ module.exports.getLocations = (req, res) => {
   qry = checkInputAndModifyQuery(qry, filterOptions);
   connection.query(qry, (err, result) => {
     if (err) throw err;
-    console.log(result);
-
     res.send(result);
   });
 };
