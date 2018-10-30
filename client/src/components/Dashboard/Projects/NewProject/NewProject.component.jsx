@@ -187,6 +187,11 @@ export default class NewProject extends Component {
           <br />
           <br />
           <label htmlFor="img_url">Image Url</label> <br />
+          <img
+            className="admin-img-update"
+            src={this.state.img_url}
+            alt="Project Image"
+          />
           <input
             type="file"
             name="img"
