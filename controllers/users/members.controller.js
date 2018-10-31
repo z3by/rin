@@ -19,5 +19,8 @@ module.exports.registerNewMember = (req, res) => {
 
 // log in user
 module.exports.loginMember = (req, res) => {
-  res.send(req.body);
+  const userInfo = req.body;
+
+  // validate user input;
+  usersHelpers.validateUserLogin(userInfo, res);
 };

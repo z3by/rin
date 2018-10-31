@@ -7,12 +7,17 @@ const validateLoginInput = data => {
   const inputPassword = data.password;
 
   // check if the password is empty;
-  if (validator.isEmpty(inputPassword) || !data.password) {
+  if (validator.isEmpty(inputPassword)) {
     errors.password = "password is required";
   }
 
+  // check if the password is empty;
+  if (!validator.isEmail(inputEmail)) {
+    errors.email = "please enter valid email";
+  }
+
   // check if the email is empty;
-  if (validator.isEmpty(inputEmail) || !data.email) {
+  if (validator.isEmpty(inputEmail)) {
     errors.email = "email is required";
   }
 

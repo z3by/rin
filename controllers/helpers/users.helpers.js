@@ -66,8 +66,9 @@ module.exports.checkIfEmailTaken = (email, res) => {
 
 // hash password
 module.exports.hashPassword = (password, cb) => {
-  const salt = password;
+  const salt = process.env.HASH_SECRET;
   bcrypt.genSalt(10, (err, salt) => {
+    if (err) throw err;
     bcrypt.hash(password, salt, (err, hash) => {
       if (err) throw err;
       cb(hash);
