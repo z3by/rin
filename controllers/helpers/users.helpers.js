@@ -1,4 +1,5 @@
 const mysql = require("mysql");
+const bcrypt = require("bcryptjs");
 
 const registerValidator = require("../validators/register.validator");
 const loginValidator = require("../validators/login.validator");
@@ -43,11 +44,6 @@ module.exports.validateUserLogin = (userInfo, res) => {
   }
 };
 
-// login user
-module.exports.login = userInfo => {
-  console.log(userInfo);
-};
-
 // check if email is taken
 module.exports.checkIfEmailTaken = (email, res) => {
   const connection = mysql.createConnection(DBconfig);
@@ -66,4 +62,20 @@ module.exports.checkIfEmailTaken = (email, res) => {
       }
     );
   });
+};
+
+// hash password
+module.exports.hashPassword = (password, cb) => {
+  const salt = password;
+  bcrypt.genSalt(10, (err, salt) => {
+    bcrypt.hash(password, salt, (err, hash) => {
+      if (err) throw err;
+      cb(hash);
+    });
+  });
+};
+
+// login user
+module.exports.login = userInfo => {
+  console.log(userInfo);
 };
