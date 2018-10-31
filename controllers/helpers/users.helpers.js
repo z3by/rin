@@ -16,8 +16,20 @@ module.exports.validateUserRegister = (userInfo, res) => {
 };
 
 // create new user in the database
-module.exports.register = userInfo => {
-  console.log(userInfo);
+module.exports.register = (userInfo, res) => {
+  const connection = mysql.createConnection(DBconfig);
+  connection.connect(err => {
+    if (err) throw err;
+    connection.query(
+      `insert into members (email, password) values ("${userInfo.email}", "${
+        userInfo.password
+      }")`,
+      (err, result) => {
+        if (err) throw err;
+        res.send(result);
+      }
+    );
+  });
 };
 
 // check if user input is valid for register
@@ -49,6 +61,7 @@ module.exports.checkIfEmailTaken = (email, res) => {
             email: "this email is already linked with another account"
           };
           res.status(400).json(errors);
+          connection.end();
         }
       }
     );
