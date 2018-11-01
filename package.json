@@ -5,12 +5,14 @@
   "scripts": {
     "postinstall": "cd ./client && npm run build",
     "start": "node ./bin/www",
+    "watch": "nodemon ./bin/www",
     "server": "cd client && npm run build && cd .. && npm start",
     "dev": "cd ./client/ && npm start"
   },
   "dependencies": {
     "aws-sdk": "^2.344.0",
     "axios": "^0.18.0",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
@@ -22,6 +24,7 @@
     "multer": "^1.4.1",
     "multer-s3": "^2.7.0",
     "mysql": "^2.16.0",
+    "nodemon": "^1.18.5",
     "npm": "^6.4.1",
     "password-validator": "^4.1.1",
     "validator": "^10.8.0"

@@ -1,17 +1,32 @@
-// load input validators;
-const registerValidator = require("../validators/register.validator");
-const loginValidator = require("../validators/login.validator");
-const helpers = require("../helpers/users.helpers");
+const usersHelpers = require("../helpers/users.helpers");
 
 // sign up new user controller;
 module.exports.registerNewMember = (req, res) => {
-  // validate user input;
-  const errors = registerValidator(req.body);
-  const isValid = Object.keys(errors).length === 0;
-  if (!isValid) {
-    return res.status(400).json(errors);
-  }
+  const userInfo = req.body;
 
-  // register new user if the input is valid
-  helpers.signUpNewUser(req.body);
+  // validate user input;
+  usersHelpers.validateUserRegister(userInfo, res);
+
+  // check if the email is taken
+  usersHelpers.checkIfEmailTaken(userInfo.email, res);
+
+  usersHelpers.hashPassword(userInfo.password, hashedPassword => {
+    // register new user with hashed password
+    userInfo.password = hashedPassword;
+    usersHelpers.register(userInfo, res);
+  });
+};
+
+// log in user
+module.exports.loginMember = (req, res) => {
+  const userInfo = req.body;
+
+  // validate user input;
+  usersHelpers.validateUserLogin(userInfo, res);
+
+  // check if email is correct
+  usersHelpers.checkEmail(userInfo.email, res);
+
+  // check if password is correct
+  usersHelpers.checkPassword(userInfo, res);
 };
