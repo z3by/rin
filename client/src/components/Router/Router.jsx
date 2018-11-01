@@ -13,6 +13,7 @@ import Login from "../Login/Login.component";
 import Navbar from "../Navbar/Navbar.component";
 import Story from "../Stories/Story/Story.component";
 import Dashboard from "../Dashboard/Dashboard.component";
+import SignUpLogIn from "../SignUpLogIn/SignUpLogIn.component";
 import Axios from "axios";
 
 export default class MyRouter extends Component {
@@ -29,8 +30,9 @@ export default class MyRouter extends Component {
             <Route path="/library" component={Library} />
             <Route path="/about" component={About} />
             <Route path="/members" component={Members} />
-            <Route path="/admin" component={Login} />
+            <Route path="/admin" component={Login} />signuplogin
             <Route path="/dashboard" component={Dashboard} />
+            <Route path="/signuplogin" component={SignUpLogIn} />
             <Route exact path="/" component={Landing} />
           </Switch>
         </div>
