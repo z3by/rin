@@ -1,5 +1,6 @@
 const mysql = require("mysql");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const registerValidator = require("../validators/register.validator");
 const loginValidator = require("../validators/login.validator");
@@ -32,6 +33,26 @@ module.exports.register = (userInfo, res) => {
       }
     );
   });
+};
+
+// creat and send jwt for the user after login successfully
+module.exports.sendJWT = (userInfo, res) => {
+  const payload = userInfo;
+
+  jwt.sign(
+    payload,
+    process.env.HASH_SECRET,
+    { expiresIn: 5000 },
+    (err, token) => {
+      if (err) throw err;
+      else {
+        res.json({
+          success: true,
+          token: `Bearer ${token}`
+        });
+      }
+    }
+  );
 };
 
 // check if user input is valid for register
@@ -120,9 +141,4 @@ module.exports.checkPassword = (userInfo, res) => {
       }
     );
   });
-};
-
-// login user
-module.exports.login = userInfo => {
-  console.log(userInfo);
 };
