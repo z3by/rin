@@ -23,4 +23,10 @@ module.exports.loginMember = (req, res) => {
 
   // validate user input;
   usersHelpers.validateUserLogin(userInfo, res);
+
+  // check if email is correct
+  usersHelpers.checkEmail(userInfo.email, res);
+
+  // check if password is correct
+  usersHelpers.checkPassword(userInfo, res);
 };

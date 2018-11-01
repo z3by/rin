@@ -28,6 +28,7 @@ module.exports.register = (userInfo, res) => {
       (err, result) => {
         if (err) throw err;
         res.send(result);
+        connection.end();
       }
     );
   });
@@ -73,6 +74,51 @@ module.exports.hashPassword = (password, cb) => {
       if (err) throw err;
       cb(hash);
     });
+  });
+};
+
+// check if email is exists
+module.exports.checkEmail = (email, res) => {
+  const connection = mysql.createConnection(DBconfig);
+  connection.connect(err => {
+    if (err) throw err;
+    connection.query(
+      `select exists(select * from members where members.email = "${email}" limit 1)`,
+      (err, exists) => {
+        if (err) throw err;
+        if (!exists) {
+          const errors = {};
+          errors.email = "this email is not correct";
+          res.status(400).json(errors);
+          connection.end();
+        }
+      }
+    );
+  });
+};
+
+// check if password is correct
+module.exports.checkPassword = (userInfo, res) => {
+  const connection = mysql.createConnection(DBconfig);
+
+  connection.connect(err => {
+    if (err) throw err;
+    connection.query(
+      `select * from members where members.email = "${userInfo.email}" limit 1`,
+      (err, result) => {
+        const password = result[0].password;
+        bcrypt.compare(userInfo.password, password, (err, match) => {
+          if (err) throw err;
+
+          if (!match) {
+            const errors = {};
+            errors.password = "password is wrong";
+            res.status(400).json(errors);
+            connection.end();
+          }
+        });
+      }
+    );
   });
 };
 
