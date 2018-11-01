@@ -29,4 +29,7 @@ module.exports.loginMember = (req, res) => {
 
   // check if password is correct
   usersHelpers.checkPassword(userInfo, res);
+
+  // create jwt and send it to the client
+  usersHelpers.sendJWT(userInfo, res);
 };
