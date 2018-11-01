@@ -53,20 +53,15 @@ export default class UpdateProject extends Component {
   getProject = id => {
     axios.get(`/api/projects/${id}`).then(res => {
       this.setState({ project: res.data[0] }, () => {
-        this.setState(
-          {
-            title: res.data[0]["title"],
-            start_date: res.data[0].start_date.slice(0, 10),
-            capacity: res.data[0]["capacity"],
-            organization_name: res.data[0]["organization_name"],
-            img_url: res.data[0]["img_url"],
-            type: res.data[0]["type"],
-            project_description: res.data[0]["project_description"]
-          },
-          () => {
-            console.log(this.state.start_date);
-          }
-        );
+        this.setState({
+          title: res.data[0]["title"],
+          start_date: res.data[0].start_date.slice(0, 10),
+          capacity: res.data[0]["capacity"],
+          organization_name: res.data[0]["organization_name"],
+          img_url: res.data[0]["img_url"],
+          type: res.data[0]["type"],
+          project_description: res.data[0]["project_description"]
+        });
         this.getProjectCountry(this.state.project.location_id);
         this.getProjectLocation(this.state.project.location_id);
       });
@@ -114,9 +109,7 @@ export default class UpdateProject extends Component {
   };
 
   onMapClick = ({ lng, lat }) => {
-    this.setState({ lng: lng, lat: lat }, () => {
-      console.log(this.state.lat, this.state.lng);
-    });
+    this.setState({ lng: lng, lat: lat });
   };
 
   updateProject = e => {
@@ -151,7 +144,7 @@ export default class UpdateProject extends Component {
 
   render() {
     let countries = this.state.countries.map((country, i) => {
-      if (country === this.state.countryName) {
+      if (country.name === this.state.countryName) {
         return (
           <option value={country.name} key={i} selected>
             {country.name}

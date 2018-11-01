@@ -93,6 +93,11 @@ export default class NewProject extends Component {
             onChange={this.onChange}
           />
           <label htmlFor="image">add image for the story</label> <br />
+          <img
+            className="admin-img-update"
+            src={this.state.img}
+            alt="Project Image"
+          />
           <input
             type="file"
             name="img"
