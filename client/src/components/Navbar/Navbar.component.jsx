@@ -123,12 +123,6 @@ export default class Navbar extends Component {
                     <li>
                       <Link to={"/about/why-refugees"}>why refugees </Link>
                     </li>
-                    <li>
-                      <Link to={"/about/team"}>our team </Link>
-                    </li>
-                    <li>
-                      <Link to={"/about/steering"}>steering committee</Link>
-                    </li>
                   </ul>
                 </p>
               </Link>

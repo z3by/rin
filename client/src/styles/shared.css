@@ -53,6 +53,7 @@ html {
   width: 100vw;
   padding: 0;
   overflow: hidden;
+  font-family: var(--main-font);
 }
 
 a {
@@ -69,6 +70,25 @@ p {
   padding: 0;
 }
 
+h1 {
+  font-size: 2.4rem;
+}
+
+h2 {
+  font-size: 2.1rem;
+}
+
+h3 {
+  font-size: 1.8rem;
+}
+
+h4 {
+  font-size: 1.6rem;
+}
+
+h5 {
+  font-size: 1.2rem;
+}
 a {
   text-decoration: none;
 }
@@ -110,8 +130,8 @@ i {
 
 .header {
   background: url(/imgs/stories.gif);
-  height: 70vh;
-  background-size: 100% auto;
+  height: 90vh;
+  background-size: cover;
   background-attachment: fixed;
   background-position-y: 50%;
 }
@@ -122,47 +142,11 @@ i {
 
 .header-text {
   text-align: center;
-  position: relative;
-  top: 15vh;
-  font-size: 3vw;
+  font-size: 4rem;
   color: var(--color-3);
   font-family: var(--main-font);
+  padding: 100px 0;
   text-transform: uppercase;
-}
-
-.splash-screen {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  background: var(--color-2);
-  height: 100vh;
-  width: 100vw;
-  margin: 0;
-  position: fixed;
-  z-index: 1500;
-  -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-name: splash;
-  animation-name: splash;
-  -webkit-animation-delay: 3s;
-  animation-delay: 3s;
-  -webkit-animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
-  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-
-.splash-screen img {
-  background: var(--color-4);
-  padding: 3% 100%;
-  z-index: 1501;
-  position: absolute;
 }
 
 label {
