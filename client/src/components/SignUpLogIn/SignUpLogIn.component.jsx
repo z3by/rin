@@ -9,7 +9,8 @@ export default class SignUpLogIn extends Component {
     this.state = {
       email: "",
       password: "",
-      password2: ""
+      password2: "",
+      errors: []
     };
   }
 
@@ -35,15 +36,17 @@ export default class SignUpLogIn extends Component {
   };
 
   onChange = e => {
-    this.setState({ [e.target.name]: e.target.value }, () => {
-      console.log(this.state);
-    });
+    this.setState({ [e.target.name]: e.target.value });
   };
 
   addUser = e => {
     e.preventDefault();
 
-    let userData = this.state;
+    let userData = {
+      email: this.state.email,
+      password: this.state.password,
+      password2: this.state.password2
+    };
 
     axios
       .post("/users/register", userData)
@@ -51,7 +54,16 @@ export default class SignUpLogIn extends Component {
         this.toggleClassBounce();
       })
       .catch(error => {
-        console.log(error);
+        const errors = [];
+        if (typeof error.response.data === "object") {
+          for (let i in error.response.data) {
+            errors.push(<li key={i}>{error.response.data[i]}</li>);
+          }
+        }
+
+        this.setState({
+          errors: errors
+        });
       });
   };
 
@@ -73,9 +85,23 @@ export default class SignUpLogIn extends Component {
       });
   };
 
+  hideErrors = () => {
+    document.querySelector(".errors").style.display = "none";
+  };
+
   render() {
     return (
       <div className="user">
+        <div
+          className="errors"
+          style={{ display: this.state.errors.length ? "block" : "none" }}
+        >
+          <h3 className="heading-theme-2">please try again</h3>
+          <ul>{this.state.errors}</ul>
+          <button className="errors-dismiss" onClick={this.hideErrors}>
+            OK
+          </button>
+        </div>
         <div className="user_options-container">
           <div className="user_options-text">
             <div className="user_options">
@@ -107,7 +133,7 @@ export default class SignUpLogIn extends Component {
             </div>
           </div>
 
-          <div className="user_options-forms">
+          <div className="user_options-forms bounceRight">
             <div className="user_forms-login">
               <h2 className="forms_title">Login</h2>
               <form className="forms_form">
