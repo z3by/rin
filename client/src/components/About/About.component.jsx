@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import "./About.css";
-import TeamComponent from "./Team/Team.component";
-import * as steeringInfo from "./steering.json";
-import * as teamInfo from "./team.json";
 import Strategy from "./Strategy/Strategy.component";
 import HowItWorksComponent from "./HowItWorks/HowItWorks.component";
 import WhyRefugeesComponent from "./WhyRefugees/WhyRefugees.component";
 import WhoWeAreComponent from "./WhoWeAre/WhoWeAre.component";
-import { Route, a } from "react-router-dom";
+import { Route } from "react-router-dom";
+import AboutIntro from "./AboutIntro/AboutIntro";
 
 export default class About extends Component {
   constructor() {
@@ -143,6 +141,7 @@ export default class About extends Component {
         <main className="container">
           <div id="scroll-sign" />
           <section id="about-routes">
+            <Route exact path="/about" component={AboutIntro} />
             <Route path="/about/strategy" component={Strategy} />
             <Route path="/about/how-it-works" component={HowItWorksComponent} />
             <Route
