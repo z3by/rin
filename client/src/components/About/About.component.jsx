@@ -99,7 +99,7 @@ export default class About extends Component {
                     this.navigateTO("/about/strategy");
                   }}
                 >
-                  <h3 className="color-1">our strategy</h3>
+                  <h5 className="color-1 upper">our strategy</h5>
                   <i className="color-1 fas fa-street-view" />
                 </a>
               </li>
@@ -110,7 +110,7 @@ export default class About extends Component {
                     this.navigateTO("/about/how-it-works");
                   }}
                 >
-                  <h3 className="color-1">how it works</h3>
+                  <h5 className="color-1 upper">how it works</h5>
                   <i className="color-1 far fa-sun" />
                 </a>
               </li>
@@ -121,7 +121,7 @@ export default class About extends Component {
                     this.navigateTO("/about/who-we-are");
                   }}
                 >
-                  <h3 className="color-1">who we are</h3>
+                  <h5 className="color-1 upper">who we are</h5>
                   <i className="color-1 fas fa-users" />
                 </a>
               </li>
@@ -132,7 +132,7 @@ export default class About extends Component {
                     this.navigateTO("/about/why-refugees");
                   }}
                 >
-                  <h3 className="color-1">why refugees</h3>
+                  <h5 className="color-1 upper">why refugees</h5>
                   <i className="color-1 fab fa-accusoft" />
                 </a>
               </li>
@@ -151,10 +151,10 @@ export default class About extends Component {
             />
             <Route path="/about/who-we-are" component={WhoWeAreComponent} />
           </section>
-          <div className="back-to-top" onClick={this.scrollToTop}>
-            <i className="fas fa-arrow-circle-up" />
-          </div>
         </main>
+        <div className="back-to-top" onClick={this.scrollToTop}>
+          <i className="fas fa-arrow-circle-up" />
+        </div>
       </div>
     );
   }
