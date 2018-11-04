@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 import "./SignUpLogIn.css";
 
 export default class SignUpLogIn extends Component {
@@ -6,6 +7,9 @@ export default class SignUpLogIn extends Component {
         super(props);
 
         this.state = {
+            email: "",
+            password: "",
+            password2: ""
         }
     }
 
@@ -21,58 +25,100 @@ export default class SignUpLogIn extends Component {
         }, false);
     }
 
+
+    onChange = e => {
+        this.setState({ [e.target.name]: e.target.value }, () => { console.log(this.state) });
+    }
+
+    addUser = (e) => {
+        e.preventDefault();
+
+        let userData = {
+            email: this.state.email,
+            password: this.state.password,
+            password2: this.state.password2
+        }
+
+        axios.post("/users/register", userData)
+            .then(function (response) {
+                console.log("user added successfully");
+                document.querySelector('.user_options-forms').classList.remove('bounceLeft');
+                document.querySelector('.user_options-forms').classList.add('bounceRight');
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    login = e => {
+        e.preventDefault();
+
+        let userData = {
+            email: this.state.email,
+            password: this.state.password
+        }
+
+        axios.post("/users/login", userData)
+            .then(function (response) {
+                console.log("user login successfully");
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
     render() {
         return (
             <div className="user">
-                <div class="user_options-container">
-                    <div class="user_options-text">
-                        <div class="user_options">
-                            <h2 class="user-title">Don't have an account?</h2>
-                            <p class="user-text">Banjo tote bag bicycle rights, High Life sartorial cray craft beer whatever street art fap.</p>
-                            <button class="user-signup-login" id="signup-button">Sign up</button>
+                <div className="user_options-container">
+                    <div className="user_options-text">
+                        <div className="user_options">
+                            <h2 className="user-title">Don't have an account?</h2>
+                            <p className="user-text">Banjo tote bag bicycle rights, High Life sartorial cray craft beer whatever street art fap.</p>
+                            <button className="user-signup-login" id="signup-button">Sign up</button>
                         </div>
 
-                        <div class="user_options">
-                            <h2 class="user-title">Have an account?</h2>
-                            <p class="user-text">Banjo tote bag bicycle rights, High Life sartorial cray craft beer whatever street art fap.</p>
-                            <button class="user-signup-login" id="login-button">Login</button>
+                        <div className="user_options">
+                            <h2 className="user-title">Have an account?</h2>
+                            <p className="user-text">Banjo tote bag bicycle rights, High Life sartorial cray craft beer whatever street art fap.</p>
+                            <button className="user-signup-login" id="login-button">Login</button>
                         </div>
                     </div>
 
-                    <div class="user_options-forms">
-                        <div class="user_forms-login">
-                            <h2 class="forms_title">Login</h2>
-                            <form class="forms_form">
-                                <fieldset class="forms_fieldset">
-                                    <div class="forms_field">
-                                        <input type="email" placeholder="Email" class="forms_field-input" required autofocus />
+                    <div className="user_options-forms">
+                        <div className="user_forms-login">
+                            <h2 className="forms_title">Login</h2>
+                            <form className="forms_form">
+                                <fieldset className="forms_fieldset">
+                                    <div className="forms_field">
+                                        <input type="email" name="email" placeholder="Email" className="forms_field-input" onChange={this.onChange} required autoFocus />
                                     </div>
-                                    <div class="forms_field">
-                                        <input type="password" placeholder="Password" class="forms_field-input" required />
+                                    <div className="forms_field">
+                                        <input type="password" name="password" placeholder="Password" className="forms_field-input" onChange={this.onChange} required />
                                     </div>
                                 </fieldset>
-                                <div class="forms_buttons">
-                                    <button type="button" class="forms_buttons-forgot">Forgot password?</button>
-                                    <input type="submit" value="Log In" class="forms_buttons-action" />
+                                <div className="forms_buttons">
+                                    <button type="button" className="forms_buttons-forgot">Forgot password?</button>
+                                    <input type="submit" value="Log In" className="forms_buttons-action" onClick={this.login} />
                                 </div>
                             </form>
                         </div>
-                        <div class="user_forms-signup">
-                            <h2 class="forms_title">Sign Up</h2>
-                            <form class="forms_form">
-                                <fieldset class="forms_fieldset">
-                                    <div class="forms_field">
-                                        <input type="text" placeholder="Full Name" class="forms_field-input" required />
+                        <div className="user_forms-signup">
+                            <h2 className="forms_title">Sign Up</h2>
+                            <form className="forms_form" onSubmit={this.addUser}>
+                                <fieldset className="forms_fieldset">
+                                    <div className="forms_field">
+                                        <input type="email" name="email" placeholder="Email" className="forms_field-input" onChange={this.onChange} required />
                                     </div>
-                                    <div class="forms_field">
-                                        <input type="email" placeholder="Email" class="forms_field-input" required />
+                                    <div className="forms_field">
+                                        <input type="password" name="password" placeholder="Password" className="forms_field-input" onChange={this.onChange} required />
                                     </div>
-                                    <div class="forms_field">
-                                        <input type="password" placeholder="Password" class="forms_field-input" required />
+                                    <div className="forms_field">
+                                        <input type="password" name="password2" placeholder="Confirm Password" className="forms_field-input" onChange={this.onChange} required />
                                     </div>
                                 </fieldset>
-                                <div class="forms_buttons">
-                                    <input type="submit" value="Sign up" class="forms_buttons-action" />
+                                <div className="forms_buttons">
+                                    <input type="submit" value="Sign up" className="forms_buttons-action" />
                                 </div>
                             </form>
                         </div>
