@@ -7,7 +7,7 @@ export default class Landing extends Component {
     super(props);
 
     this.state = {
-      counter: "10,034,623",
+      counter: "200,034,623",
       index: 0
     };
   }
@@ -114,7 +114,6 @@ export default class Landing extends Component {
           this.toggleClassActive();
           this.changeBackground();
           this.translateShapes();
-          // this.toggleOverlayColor();
           this.showVideo();
         }
       );
@@ -130,7 +129,6 @@ export default class Landing extends Component {
           this.toggleClassActive();
           this.changeBackground();
           this.translateShapes();
-          // this.toggleOverlayColor();
           this.showVideo();
         }
       );
@@ -187,13 +185,15 @@ export default class Landing extends Component {
   // change the rectangles overlay color
   toggleOverlayColor = () => {
     document.querySelector(".up-rec-overlay").style.background =
-      document.querySelector(".up-rec-overlay").style.background === "cadetblue"
-        ? "khaki"
-        : "cadetblue";
+      document.querySelector(".up-rec-overlay").style.background ===
+      "var(--color-4)"
+        ? "var(--color-2)"
+        : "var(--color-4)";
     document.querySelector(".down-rec-overlay").style.background =
-      document.querySelector(".down-rec-overlay").style.background === "khaki"
-        ? "cadetblue"
-        : "khaki";
+      document.querySelector(".down-rec-overlay").style.background ===
+      "var(--color-2)"
+        ? "var(--color-4)"
+        : "var(--color-2)";
   };
 
   // navigate to route after 2 seconds
