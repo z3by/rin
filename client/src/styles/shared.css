@@ -22,9 +22,9 @@
 
   /* 11111111111111111111111111111111111111111111 */
   --color-1: #f0f0f0;
-  --color-2: #ff8800;
+  --color-2: #f90;
   --color-3: #999;
-  --color-4: #088;
+  --color-4: #003049;
   --color-5: #333;
   /* 11111111111111111111111111111111111111111111 */
   /* --color-1: #fff;
@@ -574,4 +574,24 @@ option:hover {
     grid-template-columns: 1fr;
     grid-gap: 10px;
   }
+}
+
+.center {
+  text-align: center;
+}
+.bg-1 {
+  background-color: var(--color-1);
+}
+.bg-2 {
+  background-color: var(--color-2);
+}
+
+.bg-3 {
+  background-color: var(--color-3);
+}
+.bg-4 {
+  background-color: var(--color-4);
+}
+.bg-5 {
+  background-color: var(--color-5);
 }

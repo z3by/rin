@@ -11,6 +11,7 @@
   left: 25%;
   padding: 30px 60px;
   z-index: 10;
+  display: none;
 }
 .errors-dismiss {
   background: var(--color-2);

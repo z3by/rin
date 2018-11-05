@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Landing.css";
+import Partners from "../Partners/Partners.component";
 
 export default class Landing extends Component {
   constructor(props) {
@@ -16,7 +17,6 @@ export default class Landing extends Component {
     this.rotateArrows();
     this.showVideo();
     this.changeBackground();
-    this.fadeInOutPartners();
   }
 
   // bind the events to the local functions.
@@ -213,30 +213,13 @@ export default class Landing extends Component {
     }, 2000);
   };
 
-  fadeInOutPartners = () => {
-    // exit if not on the landing page
-    let i = 0;
-    setInterval(function() {
-      if (!document.querySelector(".partners")) {
-        return;
-      }
-      document.querySelector(".partners-img").src =
-        "/imgs/partners/i" + i + ".png";
-      i++;
-      if (i === 20) {
-        i = 0;
-      }
-    }, 2000);
-  };
-
   render() {
     return (
-      <div>
+      <div className="landing-main">
+        <div className="partners">
+          <Partners />
+        </div>
         <div className="landing fadeInFast">
-          <div className="partners">
-            <img src="" alt="" className="partners-img" />
-          </div>
-
           <div className="nav">
             <ul className="nav-group">
               <li className="nav-item">
