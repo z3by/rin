@@ -11,8 +11,7 @@ export default class Members extends Component {
   }
 
   checkAuth = () => {
-    const loggedin = false;
-
+    let loggedin = false;
     if (!loggedin) {
       this.props.history.push("login");
     }

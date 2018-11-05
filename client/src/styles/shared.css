@@ -575,3 +575,23 @@ option:hover {
     grid-gap: 10px;
   }
 }
+
+.center {
+  text-align: center;
+}
+.bg-1 {
+  background-color: var(--color-1);
+}
+.bg-2 {
+  background-color: var(--color-2);
+}
+
+.bg-3 {
+  background-color: var(--color-3);
+}
+.bg-4 {
+  background-color: var(--color-4);
+}
+.bg-5 {
+  background-color: var(--color-5);
+}
