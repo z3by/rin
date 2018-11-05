@@ -1,12 +1,23 @@
 import React, { Component } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
+import CountUp from "react-countup";
 
 export default class Navbar extends Component {
-  state = {
-    counter: "10,034,623",
-    index: -1
-  };
+  constructor() {
+    super();
+    this.state = {
+      counter: "10,034,623",
+      index: -1
+    };
+  }
+
+  componentDidMount() {
+    this.startCounter();
+  }
+
+  //start counter
+  startCounter = () => {};
 
   onClickCircle = e => {
     const index = parseInt(e.target.getAttribute("index"), 10) - 1;
@@ -147,6 +158,29 @@ export default class Navbar extends Component {
               </div>
             </Link> */}
           </ul>
+          <div className="counter">
+            <h4>
+              <CountUp
+                start={0}
+                end={this.state.counter}
+                duration={2.75}
+                separator=","
+                decimal=","
+                prefix="$"
+                className="counter-num"
+              >
+                {({ countUpRef, start }) => {
+                  this.startCounter = start;
+                  return (
+                    <div>
+                      <span ref={countUpRef} />
+                      <p>partners commitments</p>
+                    </div>
+                  );
+                }}
+              </CountUp>
+            </h4>
+          </div>
         </nav>
       </div>
     );

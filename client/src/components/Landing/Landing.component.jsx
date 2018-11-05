@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import "./Landing.css";
 import Partners from "../Partners/Partners.component";
+import CountUp from "react-countup";
 
 export default class Landing extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      counter: "200,034,623",
+      counter: 200034623,
       index: 0
     };
   }
@@ -17,6 +18,7 @@ export default class Landing extends Component {
     this.rotateArrows();
     this.showVideo();
     this.changeBackground();
+    this.startCounter();
   }
 
   // bind the events to the local functions.
@@ -30,6 +32,9 @@ export default class Landing extends Component {
   rotateArrows = () => {
     document.querySelector(".arrows").style.transform = "rotate(0)";
   };
+
+  //start counter
+  startCounter = () => {};
 
   // mouse move effect on the landing page circle;
   onMouseMove = e => {
@@ -272,8 +277,24 @@ export default class Landing extends Component {
 
           <div className="counter">
             <h4>
-              <span>$</span>
-              {this.state.counter}
+              <CountUp
+                start={0}
+                end={this.state.counter}
+                duration={2.75}
+                separator=","
+                decimal=","
+                prefix="$"
+              >
+                {({ countUpRef, start }) => {
+                  this.startCounter = start;
+                  return (
+                    <div>
+                      <span ref={countUpRef} />
+                      <p>partners commitments</p>
+                    </div>
+                  );
+                }}
+              </CountUp>
             </h4>
           </div>
 
