@@ -2,7 +2,7 @@
   height: 40px;
   width: 100px;
   position: absolute;
-  z-index: 100;
+  z-index: 99;
   bottom: 5%;
   left: calc(50% - 50px);
   text-align: center;
@@ -91,6 +91,10 @@
   margin-left: 20px;
 }
 
+.filter .btn {
+  position: relative;
+  bottom: 0;
+}
 @media (max-width: 768px) {
   .filter-input {
     grid-template-columns: 1fr;

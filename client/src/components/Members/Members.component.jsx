@@ -2,23 +2,25 @@ import React, { Component } from "react";
 import "./Members.css";
 
 export default class Members extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    this.checkAuth();
+  }
+
+  checkAuth = () => {
+    let loggedin = false;
+    if (!loggedin) {
+      this.props.history.push("login");
+    }
+  };
+
   render() {
     return (
       <div className="members fadeInFast">
-        <div className="loginbox">
-          <img src="/imgs/login.png" alt="login icon" className="avatar" />
-          <h1 className="login-title">Login</h1>
-          <form>
-            <label>Username</label>
-            <input type="text" />
-            <label>Password</label>
-            <input type="password" />
-            <input type="submit" value="Login" />
-            <a>Lost your password?</a>
-            <br />
-            <a>Don't have an account?</a>
-          </form>
-        </div>
+        <h1>hello you are in the members page</h1>
       </div>
     );
   }

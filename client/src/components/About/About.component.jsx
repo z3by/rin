@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import "./About.css";
-import TeamComponent from "./Team/Team.component";
-import * as steeringInfo from "./steering.json";
-import * as teamInfo from "./team.json";
 import Strategy from "./Strategy/Strategy.component";
 import HowItWorksComponent from "./HowItWorks/HowItWorks.component";
 import WhyRefugeesComponent from "./WhyRefugees/WhyRefugees.component";
 import WhoWeAreComponent from "./WhoWeAre/WhoWeAre.component";
-import { Route, a } from "react-router-dom";
+import { Route } from "react-router-dom";
+import AboutIntro from "./AboutIntro/AboutIntro";
 
 export default class About extends Component {
   constructor() {
@@ -91,115 +89,71 @@ export default class About extends Component {
 
         <header>
           <div className="header">
-            <h1 className="header-text">About Us</h1>
+            <h1 className="header-text color-1">About Us</h1>
+            <ul className="about-nav">
+              <li>
+                <a
+                  onClick={() => {
+                    this.navigateTO("/about/strategy");
+                  }}
+                >
+                  <h5 className="color-1 upper">our strategy</h5>
+                  <i className="color-1 fas fa-street-view" />
+                </a>
+              </li>
+
+              <li>
+                <a
+                  onClick={() => {
+                    this.navigateTO("/about/how-it-works");
+                  }}
+                >
+                  <h5 className="color-1 upper">how it works</h5>
+                  <i className="color-1 far fa-sun" />
+                </a>
+              </li>
+
+              <li>
+                <a
+                  onClick={() => {
+                    this.navigateTO("/about/who-we-are");
+                  }}
+                >
+                  <h5 className="color-1 upper">who we are</h5>
+                  <i className="color-1 fas fa-users" />
+                </a>
+              </li>
+
+              <li>
+                <a
+                  onClick={() => {
+                    this.navigateTO("/about/why-refugees");
+                  }}
+                >
+                  <h5 className="color-1 upper">why refugees</h5>
+                  <i className="color-1 fab fa-accusoft" />
+                </a>
+              </li>
+            </ul>
           </div>
         </header>
 
         <main className="container">
-          <div id="intro" data-aos="slide-up">
-            <p className="p-theme-1">
-              <b> The Refugee Investment Network (RIN)</b> is the first blended
-              finance investment collaborative dedicated to creating long-term
-              solutions to global forced migration. The RIN moves private
-              capital from commitment to active investment by sourcing,
-              structuring, and supporting the financing of projects and
-              companies that benefit refugees and host communities. Ultimately,
-              the RIN aims to bridge the gap between the untapped
-              entrepreneurial potential of refugees and capital markets to spur
-              economic growth, create jobs, and increase socio-economic
-              stability among displaced people.
-            </p>
-          </div>
-          <ul className="grid-3 about-nav">
-            <li>
-              <a
-                onClick={() => {
-                  this.navigateTO("/about/strategy");
-                }}
-              >
-                <h3>our strategy</h3>
-                <i class="fas fa-street-view" />
-              </a>
-            </li>
-
-            <li>
-              <a
-                onClick={() => {
-                  this.navigateTO("/about/how-it-works");
-                }}
-              >
-                <h3>how it works</h3>
-                <i className="far fa-sun" />
-              </a>
-            </li>
-
-            <li>
-              <a
-                onClick={() => {
-                  this.navigateTO("/about/who-we-are");
-                }}
-              >
-                <h3>who we are</h3>
-                <i className="fas fa-users" />
-              </a>
-            </li>
-
-            <li>
-              <a
-                onClick={() => {
-                  this.navigateTO("/about/why-refugees");
-                }}
-              >
-                <h3>why refugees</h3>
-                <i className="fab fa-accusoft" />
-              </a>
-            </li>
-
-            <li>
-              <a
-                onClick={() => {
-                  this.navigateTO("/about/team");
-                }}
-              >
-                <h3>meet the team</h3>
-                <i class="fas fa-users" />
-              </a>
-            </li>
-
-            <li>
-              <a
-                onClick={() => {
-                  this.navigateTO("/about/steering");
-                }}
-              >
-                <h3>steering comittee</h3>
-                <i className="fas fa-crosshairs" />
-              </a>
-            </li>
-          </ul>
-
           <div id="scroll-sign" />
           <section id="about-routes">
+            <Route exact path="/about" component={AboutIntro} />
             <Route path="/about/strategy" component={Strategy} />
             <Route path="/about/how-it-works" component={HowItWorksComponent} />
             <Route
               path="/about/why-refugees"
               component={WhyRefugeesComponent}
             />
-            <Route
-              path="/about/team"
-              render={() => <TeamComponent info={teamInfo} />}
-            />
-            <Route
-              path="/about/steering"
-              render={() => <TeamComponent info={steeringInfo} />}
-            />
             <Route path="/about/who-we-are" component={WhoWeAreComponent} />
           </section>
-          <div className="back-to-top" onClick={this.scrollToTop}>
-            <i className="fas fa-arrow-circle-up" />
-          </div>
         </main>
+        <div className="back-to-top" onClick={this.scrollToTop}>
+          <i className="fas fa-arrow-circle-up" />
+        </div>
       </div>
     );
   }

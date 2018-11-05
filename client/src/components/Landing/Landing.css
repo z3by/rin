@@ -103,87 +103,25 @@
 /* ------------------------------- navigation group end ------------------------- */
 
 /* ---------------------------------- partners ----------------------------------- */
-@-webkit-keyframes prtnrsFadeInOut {
-  0% {
-    opacity: 1;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-  }
-
-  17% {
-    opacity: 1;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-  }
-
-  25% {
-    opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  }
-
-  92% {
-    opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  }
-
-  100% {
-    opacity: 1;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-  }
-}
-@keyframes prtnrsFadeInOut {
-  0% {
-    opacity: 1;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-  }
-
-  17% {
-    opacity: 1;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-  }
-
-  25% {
-    opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  }
-
-  92% {
-    opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  }
-
-  100% {
-    opacity: 1;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-  }
-}
 
 .partners {
   position: absolute;
-  height: 7vh;
-  width: 14vh;
-  top: 5vh;
-  right: 5vh;
-  margin: 0 auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+  height: 150px;
+  width: 320px;
+  top: 20px;
+  right: 0;
+  top: 40px;
+  overflow: hidden;
 }
-
-.partners > img {
+.landing-main h5 {
   position: absolute;
-  -webkit-transition: opacity 1s ease-in-out;
-  transition: opacity 1s ease-in-out;
-  max-width: 10vh;
-  height: 5vh;
-  top: 1vh;
-  bottom: 1vh;
-  left: 2vh;
-  right: 2vh;
-  opacity: 1;
+  right: 0;
+  top: 0;
+  margin: 0;
+  width: 320px;
+  font: 100;
+  color: #889;
 }
-
 /* --------------------------------------- partners end---------------------------------- */
 
 .circle {
@@ -268,13 +206,13 @@
 }
 
 .down-rec-overlay {
-  background: cadetblue;
+  background: var(--color-4);
   bottom: 10%;
   right: 20%;
 }
 
 .up-rec-overlay {
-  background: khaki;
+  background: var(--color-2);
   top: 10%;
   left: 20%;
 }
@@ -289,9 +227,9 @@
   height: 50px;
   width: 120px;
   position: absolute;
-  left: 40px;
+  left: 30px;
   bottom: 50px;
-  z-index: 20000;
+  z-index: 200;
 }
 
 .counter span {
@@ -303,8 +241,7 @@
   text-align: center;
   margin: 0;
   color: var(--color-3);
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 6vh;
+  font-size: 1.2rem;
 }
 
 @media (max-width: 1024px) {
