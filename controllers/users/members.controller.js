@@ -5,16 +5,28 @@ module.exports.registerNewMember = (req, res) => {
   const userInfo = req.body;
 
   // validate user input;
-  usersHelpers.validateUserRegister(userInfo, res);
-
-  // check if the email is taken
-  usersHelpers.checkIfEmailTaken(userInfo.email, res);
-
-  usersHelpers.hashPassword(userInfo.password, hashedPassword => {
-    // register new user with hashed password
-    userInfo.password = hashedPassword;
-    usersHelpers.register(userInfo, res);
-  });
+  usersHelpers
+    .validateUserRegister(userInfo)
+    .then(valid => {
+      // check if the email is taken
+      usersHelpers
+        .checkIfEmailTaken(userInfo.email)
+        .then(valid => {
+          // hash the password before adding it to the database
+          usersHelpers.hashPassword(userInfo.password).then(hash => {
+            userInfo.password = hash;
+            usersHelpers.register(userInfo).then(added => {
+              return res.status(201).json(added);
+            });
+          });
+        })
+        .catch(errors => {
+          return res.status(400).json(errors);
+        });
+    })
+    .catch(errors => {
+      return res.status(400).json(errors);
+    });
 };
 
 // log in user

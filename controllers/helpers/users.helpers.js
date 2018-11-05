@@ -7,14 +7,13 @@ const loginValidator = require("../validators/login.validator");
 const DBconfig = require("../db.config");
 
 // check if user input is valid for register
-module.exports.validateUserRegister = () => {
+module.exports.validateUserRegister = userInfo => {
   return new Promise((resolve, reject) => {
     const errors = registerValidator(userInfo);
 
     const isValid = Object.keys(errors).length === 0;
-
-    if (!isValid) {
-      resolve(true);
+    if (isValid) {
+      resolve(isValid);
     } else {
       reject(errors);
     }
@@ -34,8 +33,8 @@ module.exports.register = userInfo => {
         (err, result) => {
           if (err) reject(err);
           else {
-            resolve(result);
             connection.end();
+            resolve(result);
           }
         }
       );
@@ -95,10 +94,10 @@ module.exports.checkIfEmailTaken = email => {
               email: "this email is already linked with another account"
             };
             connection.end();
-            resolve(errors);
+            reject(errors);
           } else {
             connection.end();
-            resolve(false);
+            resolve(true);
           }
         }
       );

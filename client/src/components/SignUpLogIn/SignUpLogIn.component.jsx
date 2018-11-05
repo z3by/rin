@@ -85,8 +85,8 @@ export default class SignUpLogIn extends Component {
       });
   };
 
-  hideErrors = () => {
-    document.querySelector(".errors").style.display = "none";
+  toggleErrors = () => {
+    this.setState({ errors: [] });
   };
 
   render() {
@@ -98,7 +98,7 @@ export default class SignUpLogIn extends Component {
         >
           <h3 className="heading-theme-2">please try again</h3>
           <ul>{this.state.errors}</ul>
-          <button className="errors-dismiss" onClick={this.hideErrors}>
+          <button className="errors-dismiss" onClick={this.toggleErrors}>
             OK
           </button>
         </div>
@@ -107,8 +107,7 @@ export default class SignUpLogIn extends Component {
             <div className="user_options">
               <h2 className="user-title">Don't have an account?</h2>
               <p className="user-text">
-                Banjo tote bag bicycle rights, High Life sartorial cray craft
-                beer whatever street art fap.
+                Create a member account and enjoy our exclusive services
               </p>
               <button
                 className="user-signup-login"
@@ -120,10 +119,7 @@ export default class SignUpLogIn extends Component {
 
             <div className="user_options">
               <h2 className="user-title">Have an account?</h2>
-              <p className="user-text">
-                Banjo tote bag bicycle rights, High Life sartorial cray craft
-                beer whatever street art fap.
-              </p>
+              <p className="user-text">Login dierctly to your account</p>
               <button
                 className="user-signup-login"
                 onClick={this.toggleClassBounce}
@@ -142,6 +138,7 @@ export default class SignUpLogIn extends Component {
                     <input
                       type="email"
                       name="email"
+                      value={this.state.email}
                       placeholder="Email"
                       className="forms_field-input"
                       onChange={this.onChange}
@@ -156,13 +153,14 @@ export default class SignUpLogIn extends Component {
                       placeholder="Password"
                       className="forms_field-input"
                       onChange={this.onChange}
+                      value={this.state.password}
                       required
                     />
                   </div>
                 </fieldset>
                 <div className="forms_buttons">
                   <button type="button" className="forms_buttons-forgot">
-                    Forgot password?
+                    {/* Forgot password? */}
                   </button>
                   <input
                     type="submit"
