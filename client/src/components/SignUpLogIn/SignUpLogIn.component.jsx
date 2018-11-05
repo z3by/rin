@@ -78,7 +78,9 @@ export default class SignUpLogIn extends Component {
     axios
       .post("/users/login", userData)
       .then(res => {
-        console.log("user login successfully");
+        const token = res.data.token;
+        window.localStorage.setItem("jwttoken", token);
+        this.props.history.push("members");
       })
       .catch(error => {
         console.log(error);

@@ -34,14 +34,35 @@ module.exports.loginMember = (req, res) => {
   const userInfo = req.body;
 
   // validate user input;
-  usersHelpers.validateUserLogin(userInfo, res);
-
-  // check if email is correct
-  usersHelpers.checkEmail(userInfo.email, res);
-
-  // check if password is correct
-  usersHelpers.checkPassword(userInfo, res);
-
-  // create jwt and send it to the client
-  usersHelpers.sendJWT(userInfo, res);
+  usersHelpers
+    .validateUserLogin(userInfo)
+    .then(valid => {
+      // check if email is correct
+      usersHelpers
+        .checkEmail(userInfo.email)
+        .then(exists => {
+          if (exists) {
+            // check if password is correct
+            usersHelpers
+              .checkPassword(userInfo)
+              .then(match => {
+                if (match) {
+                  // create jwt and send it to the client
+                  usersHelpers.createJWT(userInfo).then(jwt => {
+                    res.status(200).json({ token: jwt });
+                  });
+                }
+              })
+              .catch(errors => {
+                return res.status(400).json(errors);
+              });
+          }
+        })
+        .catch(errors => {
+          return res.status(400).json(errors);
+        });
+    })
+    .catch(errors => {
+      return res.status(400).json(errors);
+    });
 };

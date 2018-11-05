@@ -42,25 +42,6 @@ module.exports.register = userInfo => {
   });
 };
 
-// creat and send jwt for the user after login successfully
-module.exports.sendJWT = userInfo => {
-  return new Promise((resolve, reject) => {
-    const payload = userInfo;
-
-    jwt.sign(
-      payload,
-      process.env.HASH_SECRET,
-      { expiresIn: 5000 },
-      (err, token) => {
-        if (err) reject(err);
-        else {
-          resolve(`Bearer ${token}`);
-        }
-      }
-    );
-  });
-};
-
 // check if user input is valid for register
 module.exports.validateUserLogin = userInfo => {
   return new Promise((resolve, reject) => {
@@ -130,7 +111,7 @@ module.exports.checkEmail = email => {
         (err, exists) => {
           if (err) throw reject(err);
           connection.end();
-          resolve(exists);
+          resolve(!!exists);
         }
       );
     });
@@ -158,10 +139,29 @@ module.exports.checkPassword = userInfo => {
             if (err) reject(err);
 
             connection.end();
-            resolve(match);
+            resolve(!!match);
           });
         }
       );
     });
+  });
+};
+
+// creat and create jwt for the user after login successfully
+module.exports.createJWT = userInfo => {
+  return new Promise((resolve, reject) => {
+    const payload = userInfo;
+
+    jwt.sign(
+      payload,
+      process.env.HASH_SECRET,
+      { expiresIn: 5000 },
+      (err, token) => {
+        if (err) reject(err);
+        else {
+          resolve(`Bearer ${token}`);
+        }
+      }
+    );
   });
 };
