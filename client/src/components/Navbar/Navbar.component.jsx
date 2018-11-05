@@ -47,7 +47,7 @@ export default class Navbar extends Component {
   render() {
     return (
       <div>
-        <div className="navbar">
+        <nav className="navbar">
           <div className="toggle-nav" onClick={this.toggleNavbar}>
             <i className="fas fa-times" />
           </div>
@@ -147,7 +147,7 @@ export default class Navbar extends Component {
               </div>
             </Link> */}
           </ul>
-        </div>
+        </nav>
       </div>
     );
   }

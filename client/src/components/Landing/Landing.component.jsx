@@ -273,7 +273,7 @@ export default class Landing extends Component {
           <div className="counter">
             <h4>
               <span>$</span>
-              10,034,623
+              {this.state.counter}
             </h4>
           </div>
 
