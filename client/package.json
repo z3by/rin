@@ -10,6 +10,7 @@
     "google-map-react": "^1.0.6",
     "react": "^16.6.0",
     "react-bootstrap": "^0.32.4",
+    "react-countup": "^4.0.0",
     "react-dom": "^16.6.0",
     "react-google-maps": "^9.4.5",
     "react-particles-js": "^2.3.0",

@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import "./Landing.css";
 import Partners from "../Partners/Partners.component";
+import CountUp from "react-countup";
 
 export default class Landing extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      counter: "10,034,623",
+      counter: 200034623,
       index: 0
     };
   }
@@ -17,6 +18,7 @@ export default class Landing extends Component {
     this.rotateArrows();
     this.showVideo();
     this.changeBackground();
+    this.startCounter();
   }
 
   // bind the events to the local functions.
@@ -30,6 +32,9 @@ export default class Landing extends Component {
   rotateArrows = () => {
     document.querySelector(".arrows").style.transform = "rotate(0)";
   };
+
+  //start counter
+  startCounter = () => {};
 
   // mouse move effect on the landing page circle;
   onMouseMove = e => {
@@ -114,7 +119,6 @@ export default class Landing extends Component {
           this.toggleClassActive();
           this.changeBackground();
           this.translateShapes();
-          // this.toggleOverlayColor();
           this.showVideo();
         }
       );
@@ -130,7 +134,6 @@ export default class Landing extends Component {
           this.toggleClassActive();
           this.changeBackground();
           this.translateShapes();
-          // this.toggleOverlayColor();
           this.showVideo();
         }
       );
@@ -187,13 +190,15 @@ export default class Landing extends Component {
   // change the rectangles overlay color
   toggleOverlayColor = () => {
     document.querySelector(".up-rec-overlay").style.background =
-      document.querySelector(".up-rec-overlay").style.background === "cadetblue"
-        ? "khaki"
-        : "cadetblue";
+      document.querySelector(".up-rec-overlay").style.background ===
+      "var(--color-4)"
+        ? "var(--color-2)"
+        : "var(--color-4)";
     document.querySelector(".down-rec-overlay").style.background =
-      document.querySelector(".down-rec-overlay").style.background === "khaki"
-        ? "cadetblue"
-        : "khaki";
+      document.querySelector(".down-rec-overlay").style.background ===
+      "var(--color-2)"
+        ? "var(--color-4)"
+        : "var(--color-2)";
   };
 
   // navigate to route after 2 seconds
@@ -272,8 +277,24 @@ export default class Landing extends Component {
 
           <div className="counter">
             <h4>
-              <span>$</span>
-              10,034,623
+              <CountUp
+                start={0}
+                end={this.state.counter}
+                duration={2.75}
+                separator=","
+                decimal=","
+                prefix="$"
+              >
+                {({ countUpRef, start }) => {
+                  this.startCounter = start;
+                  return (
+                    <div>
+                      <span ref={countUpRef} />
+                      <p>partners commitments</p>
+                    </div>
+                  );
+                }}
+              </CountUp>
             </h4>
           </div>
 

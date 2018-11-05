@@ -206,13 +206,13 @@
 }
 
 .down-rec-overlay {
-  background: cadetblue;
+  background: var(--color-4);
   bottom: 10%;
   right: 20%;
 }
 
 .up-rec-overlay {
-  background: khaki;
+  background: var(--color-2);
   top: 10%;
   left: 20%;
 }
@@ -227,9 +227,9 @@
   height: 50px;
   width: 120px;
   position: absolute;
-  left: 40px;
+  left: 30px;
   bottom: 50px;
-  z-index: 20000;
+  z-index: 200;
 }
 
 .counter span {
@@ -241,8 +241,7 @@
   text-align: center;
   margin: 0;
   color: var(--color-3);
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 6vh;
+  font-size: 1.2rem;
 }
 
 @media (max-width: 1024px) {
