@@ -5,6 +5,9 @@ import TeamInfo from "../team.json";
 import SteeringInfo from "../steering.json";
 
 export default props => {
+  setTimeout(() => {
+    document.body.scrollTo(0, window.innerHeight);
+  }, 200);
   return (
     <div className="who-we-are">
       <section>

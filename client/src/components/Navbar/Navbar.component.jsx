@@ -30,6 +30,7 @@ export default class Navbar extends Component {
     const collapsed = document.querySelector(".navbar").style.width === "0px";
     if (!collapsed) {
       document.querySelector(".navbar").style.width = "0px";
+      document.querySelector(".logo").style.background = "transparent";
       document.querySelector(".navbar-middle").style.display = "none";
       document.querySelector(".toggle-nav").style.left = "0";
       document.querySelector(".toggle-nav i").style.transform = "rotate(45deg)";
@@ -40,6 +41,8 @@ export default class Navbar extends Component {
         document.querySelector(".counter").style.display = "none";
       }
     } else {
+      document.querySelector(".logo").style.background = "var(--color-1)";
+
       if (!!document.querySelector(".container")) {
         document.querySelector(".container").style.marginLeft =
           "calc(15% + 100px)";
@@ -122,7 +125,9 @@ export default class Navbar extends Component {
                   about
                   <ul className="nav-rec-menu">
                     <li>
-                      <Link to={"/about/who-we-are"}>who we are</Link>
+                      <Link to={"/about/who-we-are"} hash={"#about-routes"}>
+                        who we are
+                      </Link>
                     </li>
                     <li>
                       <Link to={"/about/strategy"}>our strategy</Link>

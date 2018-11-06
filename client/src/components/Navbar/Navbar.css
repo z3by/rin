@@ -107,6 +107,8 @@
   top: 20px;
   width: 200px;
   background: var(--color-1);
+  transition: cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition-duration: 1s;
 }
 
 .logo-img {

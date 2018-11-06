@@ -2,10 +2,13 @@ import React from "react";
 import "./Strategy.css";
 
 export default props => {
+  setTimeout(() => {
+    document.body.scrollTo(0, window.innerHeight);
+  }, 200);
   return (
-    <div className="">
+    <div className="strategy">
       <img
-        src="/imgs/banners/2348401144_7e265721b8_o.jpg"
+        src="/imgs/banners/lidya-nada-638295-unsplash.jpg"
         className="banner-img"
         alt=""
       />
