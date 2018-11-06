@@ -181,7 +181,4 @@
     left: 12%;
     top: 82%;
   }
-  #stories-list button {
-    left: calc(50% - 140px);
-  }
 }

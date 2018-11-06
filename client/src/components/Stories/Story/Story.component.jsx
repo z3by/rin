@@ -25,9 +25,11 @@ export default class Story extends Component {
     console.log(this.props);
 
     return (
-      <div className="story">
-        <div className="story-item" style={{ backgroundImage: `url(${this.props.story.imgs[0]})` }}>
-        </div>
+      <div className="story bub">
+        <div
+          className="story-item"
+          style={{ backgroundImage: `url(${this.props.story.imgs[0]})` }}
+        />
       </div>
     );
   }
