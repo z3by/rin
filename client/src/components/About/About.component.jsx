@@ -22,37 +22,6 @@ export default class About extends Component {
   componentWillUnmount() {
     document.body.style.overflowY = "hidden";
   }
-  // handle the onclick event on the down button
-  onPageDown = () => {
-    if (this.state.pageNumber < 1) {
-      this.setState(
-        {
-          pageNumber: this.state.pageNumber + 1
-        },
-        () => {
-          // animate the pages by one page down
-          document.querySelector(".pages").style.top = `${-this.state
-            .pageNumber * 100}vh`;
-        }
-      );
-    }
-  };
-
-  // handle the onclick event on the up button
-  onPageUp = () => {
-    if (this.state.pageNumber > 0) {
-      this.setState(
-        {
-          pageNumber: this.state.pageNumber - 1
-        },
-        () => {
-          // animate the pages by one page up
-          document.querySelector(".pages").style.top = `${-this.state
-            .pageNumber * 100}vh`;
-        }
-      );
-    }
-  };
 
   // navigate to specifec route
   navigateTO = route => {
@@ -65,7 +34,9 @@ export default class About extends Component {
   };
 
   scrollToTop = () => {
-    document.querySelector(".about-nav").scrollIntoView();
+    document.querySelector(".about").scrollIntoView({
+      behavior: "smooth"
+    });
   };
 
   goDown = () => {
@@ -141,9 +112,9 @@ export default class About extends Component {
                 </a>
               </li>
             </ul>
-          </div>
-          <div className="go-down" onClick={this.goDown}>
-            <i className="fas fa-arrow-circle-down" />
+            <div className="go-down" onClick={this.goDown}>
+              <i className="fas fa-arrow-circle-down" />
+            </div>
           </div>
         </header>
 

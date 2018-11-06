@@ -21,7 +21,6 @@
 .about-nav {
   display: flex;
   list-style: none;
-  justify-content: center;
 }
 
 .about-nav h3 {
@@ -66,13 +65,12 @@
 .go-down,
 .back-to-top {
   text-align: center;
-  margin: 0 auto;
-  display: block;
   cursor: pointer;
 }
 
 .go-down i,
 .back-to-top i {
+  position: relative;
   font-size: 50px;
   color: var(--color-2);
 }
