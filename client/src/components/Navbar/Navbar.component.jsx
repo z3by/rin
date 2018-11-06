@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
-import CountUp from "react-countup";
 
 export default class Navbar extends Component {
   constructor() {
@@ -158,29 +157,6 @@ export default class Navbar extends Component {
               </div>
             </Link> */}
           </ul>
-          <div className="counter">
-            <h4>
-              <CountUp
-                start={0}
-                end={this.state.counter}
-                duration={2.75}
-                separator=","
-                decimal=","
-                prefix="$"
-                className="counter-num"
-              >
-                {({ countUpRef, start }) => {
-                  this.startCounter = start;
-                  return (
-                    <div>
-                      <span ref={countUpRef} />
-                      <p>partners commitments</p>
-                    </div>
-                  );
-                }}
-              </CountUp>
-            </h4>
-          </div>
         </nav>
       </div>
     );

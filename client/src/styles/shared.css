@@ -32,8 +32,8 @@
   --color-3: #dedede;
   --color-4: #313732;
   --color-5: #8aa8b0; */
-  --light-transparent: rgba(255, 255, 255, 0.6);
-  --dark-transparent: rgba(0, 0, 0, 0.6);
+  --light-transparent: rgba(255, 255, 255, 0.8);
+  --dark-transparent: rgba(0, 0, 0, 0.8);
 
   /* 11111111111111111111111111111111111111111111 */
   /* --color-1: #456f74;
@@ -601,4 +601,8 @@ option:hover {
 }
 .bg-5 {
   background-color: var(--color-5);
+}
+
+.p-theme-2 {
+  font-size: 0.9rem;
 }
