@@ -29,10 +29,16 @@ class Stories extends Component {
     });
   };
 
+  goDown = () => {
+    document.querySelector(".vertical-line").scrollIntoView({
+      behavior: "smooth"
+    });
+  };
+
   render() {
     const stories = this.state.stories;
     //map the stories
-    const storiesInfo = stories.map((story, id) => {
+    const storiesInfo = stories.slice(0, 9).map((story, id) => {
       return <Story story={story} key={id} index={id} />;
     });
     return (
@@ -41,9 +47,19 @@ class Stories extends Component {
           <div className="header-text">
             <h1 className="color-1">Success Stories</h1>
           </div>
+          <div className="go-down" onClick={this.goDown}>
+            <i className="fas fa-arrow-circle-down" />
+          </div>
         </div>
 
-        <div className="story-items container">{[storiesInfo]}</div>
+        <div className="vertical-line"></div>
+        <div className="center-stories">
+          <img src="/imgs/old-logo.png" alt="" />
+        </div>
+        <div className="container" id="stories-list">
+          {storiesInfo}
+          <button>See More Stories</button>
+        </div>
         <div className="back-to-top" onClick={this.goTop}>
           <i className="fas fa-arrow-circle-up" />
         </div>

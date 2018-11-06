@@ -1,26 +1,124 @@
 .stories {
-  margin: 0 auto;
-}
-
-.story-items {
   position: relative;
-  display: grid;
-  padding: 30px 0;
-  grid-gap: 50px;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  grid-template-columns: 1fr 1fr 1fr;
 }
 
-@media (max-width: 768px) {
-  .story-items {
-    position: relative;
-    width: 100%;
-    margin: 0;
-    height: 400vh;
-    display: grid;
-    grid-gap: 50px;
-    grid-template-columns: 1fr;
+.stories .go-down {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+}
+
+.center-stories {
+  position: absolute;
+  display: flex;
+  left: 47%;
+  top: 63%;
+  background-color: #fff;
+  height: 35vh;
+  width: 35vh;
+  border-radius: 50%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.center-stories img{
+  position: absolute;
+  height: 70px;
+}
+
+.vertical-line {
+  position: absolute;
+  background-color: var(--color-2);
+  width: 3px;
+  left: 55%;
+  animation: growLine 5s 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes growLine {
+  from {
+    height: 0;
   }
+
+  to {
+    height: 122vh;
+  }
+}
+
+#stories-list {
+  min-height: 120vh;
+  background-image: url("/imgs/particles.png");
+}
+
+#stories-list button {
+    position: absolute;
+    background-color: var(--color-2);
+    border-radius: 10px;
+    padding: 10px 35px;
+    font-size: 1rem;
+    font-family:var(--main-font);
+    font-weight: 300;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    transition: background-color 0.2s ease-in-out;
+    cursor: pointer;
+    left: 46%;
+    bottom: 5%;
+    border: none;
+}
+
+#stories-list .story:nth-child(1) {
+  position: absolute;
+  left: 50%;
+  top: 48%;
+}
+
+#stories-list .story:nth-child(2) {
+  position: absolute;
+  left: 35%;
+  top: 58%;
+}
+
+#stories-list .story:nth-child(3) {
+  position: absolute;
+  left: 25%;
+  top: 66%;
+}
+
+#stories-list .story:nth-child(4) {
+  position: absolute;
+  left: 18%;
+  top: 76%;
+}
+
+#stories-list .story:nth-child(5) {
+  position: absolute;
+  left: 83%;
+  top: 46%;
+}
+
+#stories-list .story:nth-child(6) {
+  position: absolute;
+  left: 63%;
+  top: 56%;
+}
+
+#stories-list .story:nth-child(7) {
+  position: absolute;
+  left: 77%;
+  top: 63%;
+}
+
+#stories-list .story:nth-child(8) {
+  position: absolute;
+  left: 60%;
+  top: 78%;
+}
+
+#stories-list .story:nth-child(9) {
+  position: absolute;
+  left: 42%;
+  top: 82%;
 }

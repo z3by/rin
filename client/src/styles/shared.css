@@ -130,8 +130,13 @@ i {
 
 .header {
   background: url(/imgs/stories.gif);
+<<<<<<< HEAD
   height: 90vh;
   background-size: cover;
+=======
+  height: 100vh;
+  background-size: 100% auto;
+>>>>>>> FEAT rebuild stories page
   background-attachment: fixed;
   background-position-y: 50%;
 }
@@ -142,6 +147,8 @@ i {
 
 .header-text {
   text-align: center;
+  position: relative;
+  top: 40vh;
   font-size: 4rem;
   color: var(--color-3);
   font-family: var(--main-font);
