@@ -10,3 +10,7 @@
   border-radius: 50%;
   background-size: cover;
 }
+
+.story:hover .story-item {
+  transform: scale(1);
+}

@@ -2,22 +2,18 @@
   position: relative;
   background-image: url("/imgs/particles.png");
   background-size: 90%;
-}
-
-.stories .go-down {
-  position: absolute;
-  left: 50%;
-  top: 30%;
+  background-repeat: no-repeat;
+  background-position-y: 90%;
 }
 
 .center-stories {
   position: absolute;
   display: flex;
-  left: calc(52% - 200px);
+  left: calc(50% - 150px);
   top: 63%;
   background-color: #fff;
-  height: 400px;
-  width: 400px;
+  height: 300px;
+  width: 300px;
   border-radius: 50%;
   text-align: center;
   align-items: center;
@@ -33,7 +29,7 @@
   position: absolute;
   background-color: var(--color-2);
   width: 3px;
-  left: 52%;
+  left: 50%;
   animation: growLine 5s 1;
   animation-fill-mode: forwards;
 }
@@ -65,7 +61,7 @@
   letter-spacing: 0.1rem;
   transition: background-color 0.2s ease-in-out;
   cursor: pointer;
-  left: calc(50% - 120px);
+  left: calc(50% - 150px);
   bottom: 5%;
   border: none;
   width: 300px;
@@ -97,8 +93,8 @@
 
 #stories-list .story:nth-child(5) {
   position: absolute;
-  left: 73%;
-  top: 49%;
+  left: 75%;
+  top: 53%;
 }
 
 #stories-list .story:nth-child(6) {

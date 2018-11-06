@@ -30,7 +30,6 @@ export default class Navbar extends Component {
     const collapsed = document.querySelector(".navbar").style.width === "0px";
     if (!collapsed) {
       document.querySelector(".navbar").style.width = "0px";
-      document.querySelector(".logo").style.background = "transparent";
       document.querySelector(".navbar-middle").style.display = "none";
       document.querySelector(".toggle-nav").style.left = "0";
       document.querySelector(".toggle-nav i").style.transform = "rotate(45deg)";
@@ -41,8 +40,6 @@ export default class Navbar extends Component {
         document.querySelector(".counter").style.display = "none";
       }
     } else {
-      document.querySelector(".logo").style.background = "var(--color-1)";
-
       if (!!document.querySelector(".container")) {
         document.querySelector(".container").style.marginLeft =
           "calc(15% + 100px)";
@@ -60,14 +57,14 @@ export default class Navbar extends Component {
   render() {
     return (
       <div>
+        <div className="logo">
+          <Link className="navbar-link" to={"/"}>
+            <img src="/imgs/old-logo.png" alt="" className="logo-img" />
+          </Link>
+        </div>
         <nav className="navbar">
           <div className="toggle-nav" onClick={this.toggleNavbar}>
             <i className="fas fa-times" />
-          </div>
-          <div className="logo">
-            <Link className="navbar-link" to={"/"}>
-              <img src="/imgs/old-logo.png" alt="" className="logo-img" />
-            </Link>
           </div>
 
           <ul className="navbar-middle">

@@ -68,6 +68,11 @@
   cursor: pointer;
 }
 
+.go-down {
+  position: absolute;
+  bottom: 50px;
+}
+
 .go-down i,
 .back-to-top i {
   position: relative;

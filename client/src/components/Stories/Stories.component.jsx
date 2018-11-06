@@ -46,9 +46,12 @@ class Stories extends Component {
         <header>
           <div className="header">
             <h1 className="header-text color-1">Success Stories</h1>
-          </div>
-          <div className="go-down" onClick={this.goDown}>
-            <i className="fas fa-arrow-circle-down" />
+            <h3 className="color-3">
+              Every-day stories proving that refugees are investable
+            </h3>
+            <div className="go-down" onClick={this.goDown}>
+              <i className="fas fa-arrow-circle-down" />
+            </div>
           </div>
         </header>
 
@@ -58,7 +61,7 @@ class Stories extends Component {
         </div>
         <div className="container" id="stories-list">
           {storiesInfo}
-          <button>See More Stories</button>
+          <button>Read More Stories</button>
         </div>
       </div>
     );
