@@ -121,8 +121,8 @@
 
 #stories-list .story:nth-child(9) {
   position: absolute;
-  left: 12%;
-  top: 82%;
+  left: 64%;
+  top: 59%;
 }
 
 @media (max-width: 968px) {

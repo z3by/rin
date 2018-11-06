@@ -6,6 +6,7 @@
 .story-item {
   height: 100%;
   width: 100%;
+  background-color: var(--color-4);
   border-radius: 50%;
   background-size: cover;
 }

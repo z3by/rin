@@ -38,7 +38,7 @@ class Stories extends Component {
   render() {
     const stories = this.state.stories;
     //map the stories
-    const storiesInfo = stories.slice(0, 10).map((story, id) => {
+    const storiesInfo = stories.slice(0, 9).map((story, id) => {
       return <Story story={story} key={id} index={id} />;
     });
     return (
