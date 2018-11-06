@@ -68,6 +68,12 @@ export default class About extends Component {
     document.querySelector(".about-nav").scrollIntoView();
   };
 
+  goDown = () => {
+    document.querySelector("#scroll-sign").scrollIntoView({
+      behavior: "smooth"
+    });
+  };
+
   closePopup = () => {
     document.querySelector(".read-more-popup").style.display = "none";
   };
@@ -135,6 +141,9 @@ export default class About extends Component {
                 </a>
               </li>
             </ul>
+          </div>
+          <div className="go-down" onClick={this.goDown}>
+            <i className="fas fa-arrow-circle-down" />
           </div>
         </header>
 
