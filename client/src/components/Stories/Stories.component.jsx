@@ -38,7 +38,7 @@ class Stories extends Component {
   render() {
     const stories = this.state.stories;
     //map the stories
-    const storiesInfo = stories.slice(0, 9).map((story, id) => {
+    const storiesInfo = stories.slice(0, 10).map((story, id) => {
       return <Story story={story} key={id} index={id} />;
     });
     return (
@@ -59,9 +59,6 @@ class Stories extends Component {
         <div className="container" id="stories-list">
           {storiesInfo}
           <button>See More Stories</button>
-        </div>
-        <div className="back-to-top" onClick={this.goTop}>
-          <i className="fas fa-arrow-circle-up" />
         </div>
       </div>
     );

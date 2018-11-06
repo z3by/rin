@@ -232,13 +232,21 @@
     margin: 20px auto;
     width: 90%;
   }
-  .about-nav {
-    display: none;
+  .about-nav h5 {
+    font-size: 0.8rem;
+  }
+
+  .about-nav i {
+    font-size: 0.5rem;
+  }
+
+  .about-nav li {
+    margin: 10px;
   }
 
   .go-down i,
   .back-to-top i {
-    font-size: 30px;
+    font-size: 50px;
   }
 
   .read-more-wrapper {
