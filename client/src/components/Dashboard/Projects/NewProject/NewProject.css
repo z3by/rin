@@ -21,7 +21,7 @@
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button,
 .admin-form button {
-  background-color: #222;
+  background-color: #666;
   color: white;
   border: none;
   cursor: pointer;
@@ -33,14 +33,9 @@
   text-align: center;
 }
 
-.admin-form button:hover {
-  background: var(--color-2);
-}
-
 .admin-form form {
   padding: 100px;
-  width: 30%;
-  margin: 100px;
+  width: 50%;
   background: var(--color-5);
 }
 

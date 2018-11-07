@@ -28,7 +28,6 @@ export default class NewProject extends Component {
       title: "",
       start_date: "",
       capacity: 0,
-      partner_id: 1,
       organization_name: "",
       img_url: "",
       type: "",
@@ -49,6 +48,31 @@ export default class NewProject extends Component {
     document.body.style.overflowY = "auto";
   }
 
+  enableAddButton = () => {
+    document.querySelector(".btn-admin").disabled = false;
+    document.querySelector(".btn-admin").style.backgroundColor = "#222";
+    document.querySelector(".btn-admin").addEventListener("mouseenter", function () {
+      document.querySelector(".btn-admin").style.backgroundColor = "#f90";
+    });
+    document.querySelector(".btn-admin").addEventListener("mouseleave", function () {
+      document.querySelector(".btn-admin").style.backgroundColor = "#222";
+    });
+  }
+
+  disableAddButton = () => {
+    document.querySelector(".btn-admin").disabled = true;
+    document.querySelector(".btn-admin").style.backgroundColor = "#666";
+  }
+
+  checkButtonAvailability = () => {
+    if (this.state.title && this.state.project_description && this.state.organization_name && this.state.capacity && this.state.img_url && this.state.type && this.state.countryName && this.state.start_date && this.state.lat && this.state.lng) {
+      this.enableAddButton();
+    }
+    else {
+      this.disableAddButton();
+    }
+  }
+
   fetchAllCountries = () => {
     axios.get("/api/countries").then(res => {
       this.setState({ countries: res.data });
@@ -56,11 +80,15 @@ export default class NewProject extends Component {
   };
 
   onChange = e => {
-    this.setState({ [e.target.name]: e.target.value }, () => {});
+    this.setState({ [e.target.name]: e.target.value }, () => {
+      this.checkButtonAvailability();
+    });
   };
 
   onMapClick = ({ lng, lat }) => {
-    this.setState({ lng: lng, lat: lat });
+    this.setState({ lng: lng, lat: lat }, () => {
+      this.checkButtonAvailability();
+    });
   };
 
   addProject = e => {
@@ -80,14 +108,14 @@ export default class NewProject extends Component {
     };
     axios
       .post("/api/projects", projectData)
-      .then(function(response) {
+      .then(function (response) {
         document.querySelector(".admin-form form").reset();
         document.querySelector(".done-img").style.display = "flex";
         setTimeout(() => {
           document.querySelector(".done-img").style.display = "none";
         }, 3000);
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   };
@@ -112,6 +140,8 @@ export default class NewProject extends Component {
       this.setState({
         img_url: imageURL,
         loading: false
+      }, () => {
+        this.checkButtonAvailability();
       });
     });
   };
@@ -134,7 +164,7 @@ export default class NewProject extends Component {
 
     return (
       <div className="admin-form">
-        <form>
+        <form onSubmit={this.addProject}>
           <label htmlFor="project-title">Project Title</label> <br />
           <input
             required
@@ -193,6 +223,7 @@ export default class NewProject extends Component {
             alt="Project uploaded"
           />
           <input
+            required
             type="file"
             name="img"
             accept="image/*"
@@ -234,7 +265,7 @@ export default class NewProject extends Component {
               <Marker lng={this.state.lng} lat={this.state.lat} />
             </GoogleMapReact>
           </div>
-          <button onClick={this.addProject}>Add Project</button>
+          <button type="submit" className="btn-admin" disabled>Add Project</button>
           <div className="done-img">
             <img src="/imgs/done.gif" alt="" />
           </div>

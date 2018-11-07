@@ -14,7 +14,7 @@ module.exports.useDB = (connection, dbName) => {
   });
 };
 
-// use database
+// create table
 module.exports.createTable = (connection, model) => {
   connection.query(model, err => {
     if (err) throw err;
