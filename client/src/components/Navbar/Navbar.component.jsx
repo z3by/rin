@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
-import CountUp from "react-countup";
 
 export default class Navbar extends Component {
   constructor() {
@@ -58,14 +57,14 @@ export default class Navbar extends Component {
   render() {
     return (
       <div>
+        <div className="logo">
+          <Link className="navbar-link" to={"/"}>
+            <img src="/imgs/old-logo.png" alt="" className="logo-img" />
+          </Link>
+        </div>
         <nav className="navbar">
           <div className="toggle-nav" onClick={this.toggleNavbar}>
             <i className="fas fa-times" />
-          </div>
-          <div className="logo">
-            <Link className="navbar-link" to={"/"}>
-              <img src="/imgs/old-logo.png" alt="" className="logo-img" />
-            </Link>
           </div>
 
           <ul className="navbar-middle">
@@ -123,7 +122,9 @@ export default class Navbar extends Component {
                   about
                   <ul className="nav-rec-menu">
                     <li>
-                      <Link to={"/about/who-we-are"}>who we are</Link>
+                      <Link to={"/about/who-we-are"} hash={"#about-routes"}>
+                        who we are
+                      </Link>
                     </li>
                     <li>
                       <Link to={"/about/strategy"}>our strategy</Link>
@@ -158,29 +159,6 @@ export default class Navbar extends Component {
               </div>
             </Link> */}
           </ul>
-          <div className="counter">
-            <h4>
-              <CountUp
-                start={0}
-                end={this.state.counter}
-                duration={2.75}
-                separator=","
-                decimal=","
-                prefix="$"
-                className="counter-num"
-              >
-                {({ countUpRef, start }) => {
-                  this.startCounter = start;
-                  return (
-                    <div>
-                      <span ref={countUpRef} />
-                      <p>partners commitments</p>
-                    </div>
-                  );
-                }}
-              </CountUp>
-            </h4>
-          </div>
         </nav>
       </div>
     );

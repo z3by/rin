@@ -290,7 +290,7 @@ export default class Landing extends Component {
                   return (
                     <div>
                       <span ref={countUpRef} />
-                      <p>partners commitments</p>
+                      <p className="p-theme-2">partners commitments</p>
                     </div>
                   );
                 }}

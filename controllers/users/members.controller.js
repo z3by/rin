@@ -66,3 +66,26 @@ module.exports.loginMember = (req, res) => {
       return res.status(400).json(errors);
     });
 };
+
+// check if the user is logged in
+module.exports.isLoggedin = (req, res) => {
+  const token = req.body.token;
+
+  usersHelpers
+    .checkJWT(token)
+    .then(decoded => {
+      const currentDate = new Date().getTime() / 1000;
+      if (decoded.exp < currentDate) {
+        res.status(404).json({
+          status: "expiered"
+        });
+      } else {
+        res.status(200).json({
+          status: "valid"
+        });
+      }
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};

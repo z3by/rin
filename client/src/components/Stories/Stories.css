@@ -1,37 +1,35 @@
 .stories {
   position: relative;
-}
-
-.stories .go-down {
-  position: absolute;
-  left: 50%;
-  top: 30%;
+  background-image: url("/imgs/particles.png");
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position-y: 90%;
 }
 
 .center-stories {
   position: absolute;
   display: flex;
-  left: 47%;
+  left: calc(50% - 150px);
   top: 63%;
   background-color: #fff;
-  height: 35vh;
-  width: 35vh;
+  height: 300px;
+  width: 300px;
   border-radius: 50%;
   text-align: center;
   align-items: center;
   justify-content: center;
 }
 
-.center-stories img{
+.center-stories img {
   position: absolute;
-  height: 70px;
+  height: 100px;
 }
 
 .vertical-line {
   position: absolute;
   background-color: var(--color-2);
   width: 3px;
-  left: 55%;
+  left: 50%;
   animation: growLine 5s 1;
   animation-fill-mode: forwards;
 }
@@ -42,73 +40,73 @@
   }
 
   to {
-    height: 122vh;
+    height: 1020px;
   }
 }
 
 #stories-list {
-  min-height: 120vh;
-  background-image: url("/imgs/particles.png");
+  height: 1120px;
 }
 
 #stories-list button {
-    position: absolute;
-    background-color: var(--color-2);
-    border-radius: 10px;
-    padding: 10px 35px;
-    font-size: 1rem;
-    font-family:var(--main-font);
-    font-weight: 300;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 0.1rem;
-    transition: background-color 0.2s ease-in-out;
-    cursor: pointer;
-    left: 46%;
-    bottom: 5%;
-    border: none;
+  position: absolute;
+  background-color: var(--color-2);
+  border-radius: 10px;
+  padding: 10px 35px;
+  font-size: 1rem;
+  font-family: var(--main-font);
+  font-weight: 300;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  transition: background-color 0.2s ease-in-out;
+  cursor: pointer;
+  left: calc(50% - 150px);
+  bottom: 5%;
+  border: none;
+  width: 300px;
 }
 
 #stories-list .story:nth-child(1) {
   position: absolute;
-  left: 50%;
-  top: 48%;
+  left: 55%;
+  top: 50%;
 }
 
 #stories-list .story:nth-child(2) {
   position: absolute;
-  left: 35%;
+  left: 30%;
   top: 58%;
 }
 
 #stories-list .story:nth-child(3) {
   position: absolute;
-  left: 25%;
+  left: 20%;
   top: 66%;
 }
 
 #stories-list .story:nth-child(4) {
   position: absolute;
-  left: 18%;
+  left: 12%;
   top: 76%;
 }
 
 #stories-list .story:nth-child(5) {
   position: absolute;
-  left: 83%;
-  top: 46%;
+  left: 75%;
+  top: 53%;
 }
 
 #stories-list .story:nth-child(6) {
   position: absolute;
-  left: 63%;
-  top: 56%;
+  left: 33%;
+  top: 80%;
 }
 
 #stories-list .story:nth-child(7) {
   position: absolute;
-  left: 77%;
-  top: 63%;
+  left: 67%;
+  top: 69%;
 }
 
 #stories-list .story:nth-child(8) {
@@ -119,6 +117,6 @@
 
 #stories-list .story:nth-child(9) {
   position: absolute;
-  left: 42%;
-  top: 82%;
+  left: 64%;
+  top: 59%;
 }

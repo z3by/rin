@@ -86,7 +86,6 @@ export default class NewProject extends Component {
             required
             rows="4"
             cols="50"
-            required
             type="text"
             name="text"
             id="story-text"
@@ -96,7 +95,7 @@ export default class NewProject extends Component {
           <img
             className="admin-img-update"
             src={this.state.img}
-            alt="Project Image"
+            alt="Project"
           />
           <input
             type="file"

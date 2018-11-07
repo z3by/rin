@@ -43,25 +43,27 @@ class Stories extends Component {
     });
     return (
       <div className="stories fadeInFast">
-        <div className="header">
-          <div className="header-text">
-            <h1 className="color-1">Success Stories</h1>
-          </div>
-          <div className="go-down" onClick={this.goDown}>
-            <i className="fas fa-arrow-circle-down" />
-          </div>
-        </div>
+        <header>
+          <div className="header">
+            <h1 className="header-text color-1">Success Stories</h1>
+            <div className="line" />
 
-        <div className="vertical-line"></div>
+            <h3 className="color-1">
+              Every-day stories proving that refugees are investable
+            </h3>
+            <div className="go-down" onClick={this.goDown}>
+              <i className="fas fa-arrow-circle-down" />
+            </div>
+          </div>
+        </header>
+
+        <div className="vertical-line" />
         <div className="center-stories">
           <img src="/imgs/old-logo.png" alt="" />
         </div>
         <div className="container" id="stories-list">
           {storiesInfo}
-          <button>See More Stories</button>
-        </div>
-        <div className="back-to-top" onClick={this.goTop}>
-          <i className="fas fa-arrow-circle-up" />
+          <button>Read More Stories</button>
         </div>
       </div>
     );

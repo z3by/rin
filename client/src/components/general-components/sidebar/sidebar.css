@@ -6,12 +6,12 @@
   position: fixed;
 }
 
-.sidebar .logo {
-  background: seashell;
+.sidebar .admin-logo {
+  background: var(--color-1);
 }
 
-.sidebar .logo img {
-  width: 80px;
+.sidebar .admin-logo img {
+  width: 200px;
 }
 
 .sidebar ul {
@@ -30,7 +30,7 @@
   width: 100%;
   cursor: pointer;
   text-transform: uppercase;
-  background: linear-gradient(90deg, #ee8800);
+  background: var(--color-2);
 }
 
 .sidebar ul li a {
@@ -38,5 +38,5 @@
 }
 
 .sidebar ul li:hover {
-  background: linear-gradient(90deg, #ff9900);
+  background: linear-gradient(90deg, #ffaa33);
 }

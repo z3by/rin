@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default props => {
   return (
     <nav id="ml-menu" className="sidebar">
-      <div className="logo">
+      <div className="admin-logo">
         <Link to={"/"}>
           <img src="/imgs/old-logo.png" alt="" className="logo-img" />
         </Link>

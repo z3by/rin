@@ -11,4 +11,6 @@ router.post("/loginadmin", adminCtrl.loginAdmin);
 router.post("/register", membersCtrl.registerNewMember);
 router.post("/login", membersCtrl.loginMember);
 
+router.post("/islogged", membersCtrl.isLoggedin);
+
 module.exports = router;

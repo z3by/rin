@@ -1,19 +1,30 @@
 import React, { Component } from "react";
 import "./Members.css";
+import Axios from "axios";
 
 export default class Members extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      loggedin: false
+    };
   }
-
   componentDidMount() {
     this.checkAuth();
   }
 
   checkAuth = () => {
-    let loggedin = false;
-    if (!loggedin) {
+    const token = window.localStorage.getItem("jwttoken");
+    if (this.state.loggedin === "false" || !token) {
       this.props.history.push("login");
+    } else {
+      Axios.post("/users/islogged", { token: token }).then(res => {
+        if (res.data.status === "valid") {
+          this.setState({
+            loggedin: true
+          });
+        }
+      });
     }
   };
 
