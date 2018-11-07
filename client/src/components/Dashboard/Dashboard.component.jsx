@@ -14,11 +14,14 @@ export default class Dashboard extends Component {
 
   componentDidMount() {
     document.querySelector(".navbar").style.display = "none";
+    document.querySelector(".logo").style.display = "none";
+  }
+  componentWillUnmount() {
+    document.querySelector(".navbar").style.display = "block";
+    document.querySelector(".logo").style.display = "block";
   }
   componentWillMount() {
     Axios.get("/users/isadmin").then(res => {
-      console.log(res.data);
-
       if (res.data === false) {
         this.props.history.push("admin");
       }
