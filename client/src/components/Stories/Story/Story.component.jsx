@@ -20,8 +20,11 @@ export default class Story extends Component {
           className="story-item"
           style={{ backgroundImage: `url(${this.props.story.imgs[0]})` }}
         >
-          <Link to={"/stories/story-details"}>
-            <p className="link-read-more"> Read Story </p>
+          <Link
+            className="link-read-more"
+            to={`/stories/${this.props.story.id}`}
+          >
+            <p> Read Story </p>
           </Link>
         </div>
         <p className="center">{this.props.story.title}</p>

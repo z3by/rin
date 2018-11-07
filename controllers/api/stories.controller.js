@@ -24,7 +24,13 @@ module.exports.getStory = (req, res) => {
   let qry = `select * from stories where id=${req.params.id}`;
   connection.query(qry, (err, result) => {
     if (err) throw err;
-    res.send(result);
+    const parsed = result.map(story => {
+      story.imgs = JSON.parse(story.imgs);
+      story.text = JSON.parse(story.text);
+      return story;
+    });
+
+    res.send(parsed);
   });
 };
 
