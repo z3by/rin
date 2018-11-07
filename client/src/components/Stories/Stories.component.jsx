@@ -46,7 +46,7 @@ class Stories extends Component {
         <header>
           <div className="header">
             <h1 className="header-text color-1">Success Stories</h1>
-            <h3 className="color-3">
+            <h3 className="color-1">
               Every-day stories proving that refugees are investable
             </h3>
             <div className="go-down" onClick={this.goDown}>

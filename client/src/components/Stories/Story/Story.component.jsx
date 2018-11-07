@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+
 import "./Story.css";
 
 export default class Story extends Component {
@@ -11,25 +13,16 @@ export default class Story extends Component {
     document.body.style.overflowY = "auto";
   }
 
-  showStory = id => {
-    document
-      .querySelector(".story:nth-child(" + id + ")")
-      .classList.add("full-story");
-  };
-
-  closeStory = () => {
-    document.querySelector(".full-story").classList.remove("full-story");
-  };
-
   render() {
-    console.log(this.props);
-
     return (
       <div className="story bub">
         <div
           className="story-item"
           style={{ backgroundImage: `url(${this.props.story.imgs[0]})` }}
-        />
+        >
+          <p className="link-read-more"> Read Story </p>
+        </div>
+        <p className="center">{this.props.story.title}</p>
       </div>
     );
   }

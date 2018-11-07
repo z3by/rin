@@ -1,6 +1,7 @@
 .story {
   height: 160px;
   width: 160px;
+  cursor: pointer;
 }
 
 .story-item {
@@ -9,6 +10,21 @@
   background-color: var(--color-4);
   border-radius: 50%;
   background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.story:hover .link-read-more {
+  opacity: 1;
+}
+
+.link-read-more {
+  text-decoration: underline;
+  position: absolute;
+  line-height: 160px;
+  color: var(--color-2);
+  opacity: 0;
 }
 
 .story:hover .story-item {
