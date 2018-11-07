@@ -13,9 +13,9 @@ module.exports.getStories = (req, res) => {
     const parsed = result.map(story => {
       story.imgs = JSON.parse(story.imgs);
       story.text = JSON.parse(story.text);
+      story.lenses = JSON.parse(story.lenses);
       return story;
     });
-
     res.send(parsed);
   });
 };
@@ -37,14 +37,15 @@ module.exports.getStory = (req, res) => {
 module.exports.addStory = (req, res) => {
   let data = {
     title: req.body.title,
+    pre_description: req.body.pre_description,
+    lenses: JSON.stringify(req.body.lenses), // lenses is an array of lenses names
     text: JSON.stringify(req.body.text), //text is an array of strings
     imgs: JSON.stringify(req.body.imgs) //imgs is an array of urls
   };
 
-  let qry = `insert into stories(title, text, imgs) values("${data.title}", '${
+  let qry = `insert into stories(title, pre_description, lenses, text, imgs) values("${data.title}", "${data.pre_description}", '${data.lenses}', '${
     data.text
-  }', '${data.imgs}');`;
-  // let qry = `insert into stories(title) values("${data.title}"); DROP TABLE stories;--")`;
+    }', '${data.imgs}');`;
   connection.query(qry, (err, result) => {
     if (err) throw err;
     res.send("story row inserted successfully");
@@ -58,14 +59,16 @@ module.exports.uploadImage = (req, res) => {
 module.exports.updateStory = (req, res) => {
   let data = {
     title: req.body.title,
+    pre_description: req.body.pre_description,
+    lenses: JSON.stringify(req.body.lenses), // lenses is an array of lenses names
     text: JSON.stringify(req.body.text), //text is an array of strings
     imgs: JSON.stringify(req.body.imgs) //imgs is an array of urls
   };
 
   let qry = `UPDATE stories
-                   SET title="${data.title}", text='${data.text}', imgs='${
+                   SET title="${data.title}", pre_description="${data.pre_description}", lenses='${data.lenses}', text='${data.text}', imgs='${
     data.imgs
-  }'
+    }'
                    WHERE id=${req.params.id};`;
   connection.query(qry, (err, result) => {
     if (err) throw err;
