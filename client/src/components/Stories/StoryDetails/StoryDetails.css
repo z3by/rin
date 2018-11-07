@@ -5,8 +5,31 @@
 }
 
 .banner-full {
-  height: 50%;
+  height: 100%;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background-size: 100%;
   background-attachment: fixed;
+}
+
+.banner-full h1 {
+  font-size: 5rem;
+  text-transform: capitalize;
+  color: var(--color-1);
+}
+
+.banner-full h3 {
+  text-transform: capitalize;
+  color: var(--color-1);
+  font-weight: 300;
+}
+
+.banner-full .line,
+.header .line {
+  width: 20%;
+  height: 2px;
+  background: white;
 }

@@ -29,14 +29,28 @@
   font-family: var(--main-font);
 }
 
+.about-nav h5 {
+  text-transform: uppercase;
+  color: var(--color-1);
+  font-family: var(--main-font);
+}
+
 .about-nav i {
-  color: var(--color-2);
+  color: var(--color-1);
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
   font-size: 50px;
   text-align: center;
 }
 .about-nav li {
-  margin: 0 40px;
+  margin: 0 20px;
+}
+
+.about-nav li:hover i {
+  color: var(--color-2);
+}
+
+.about-nav li:hover h5 {
+  color: var(--color-2);
 }
 
 .about-nav li a {
@@ -56,8 +70,8 @@
 }
 
 .about-nav li a:hover {
-  -webkit-transform: scale(1) translateY(-20px);
-  transform: scale(1) translateY(-20px);
+  -webkit-transform: scale(1) translateY(-5px);
+  transform: scale(1) translateY(-5px);
   transition: cubic-bezier(0.165, 0.84, 0.44, 1);
   transition-duration: 0.2s;
 }

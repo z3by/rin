@@ -67,6 +67,8 @@ export default class About extends Component {
         <header>
           <div className="header">
             <h1 className="header-text color-1">About Us</h1>
+            <div className="line" />
+
             <ul className="about-nav">
               <li>
                 <a
@@ -74,8 +76,8 @@ export default class About extends Component {
                     this.navigateTO("/about/strategy");
                   }}
                 >
-                  <h5 className="color-1 upper">our strategy</h5>
-                  <i className="color-1 fas fa-street-view" />
+                  <h5 className="upper">our strategy</h5>
+                  <i className="fas fa-street-view" />
                 </a>
               </li>
 
@@ -85,8 +87,8 @@ export default class About extends Component {
                     this.navigateTO("/about/how-it-works");
                   }}
                 >
-                  <h5 className="color-1 upper">how it works</h5>
-                  <i className="color-1 far fa-sun" />
+                  <h5 className="upper">how it works</h5>
+                  <i className="far fa-sun" />
                 </a>
               </li>
 
@@ -96,8 +98,8 @@ export default class About extends Component {
                     this.navigateTO("/about/who-we-are");
                   }}
                 >
-                  <h5 className="color-1 upper">who we are</h5>
-                  <i className="color-1 fas fa-users" />
+                  <h5 className="upper">who we are</h5>
+                  <i className="fas fa-users" />
                 </a>
               </li>
 
@@ -107,8 +109,8 @@ export default class About extends Component {
                     this.navigateTO("/about/why-refugees");
                   }}
                 >
-                  <h5 className="color-1 upper">why refugees</h5>
-                  <i className="color-1 fab fa-accusoft" />
+                  <h5 className="upper">why refugees</h5>
+                  <i className="fab fa-accusoft" />
                 </a>
               </li>
             </ul>

@@ -32,13 +32,16 @@ export default class StoryDetails extends Component {
 
   render() {
     return (
-      <div className="story-details">
+      <div className="story-details fadeInFast">
         <div
           className="banner-full"
           style={{ backgroundImage: `url(${this.state.story.imgs[0]}` }}
-        />
+        >
+          <h1>{this.state.story.title}</h1>
+          <div className="line" />
+          <h3>this.state.story.subtitle</h3>
+        </div>
         <div className="container">
-          <h1 className="center">{this.state.story.title}</h1>
           {this.state.story.text.map(text => {
             return <p className="p-theme-1">{text}</p>;
           })}

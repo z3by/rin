@@ -145,6 +145,10 @@ i {
   position: relative;
 }
 
+.header h3 {
+  font-weight: 300;
+  text-transform: capitalize;
+}
 .header-text {
   font-size: 6rem;
   color: var(--color-3);
