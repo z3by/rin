@@ -23,11 +23,8 @@ export default class StoryInfo extends Component {
 
   getStory = id => {
     axios.get(`/api/stories/${id}`).then(res => {
-      this.setState({ story: res.data[0] }, () => {
-        this.setState({
-          text: JSON.parse(res.data[0]["text"]),
-          imgs: JSON.parse(res.data[0]["imgs"])
-        });
+      this.setState({
+        story: res.data[0]
       });
     });
   };
