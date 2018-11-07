@@ -237,7 +237,7 @@ export default class UpdateProject extends Component {
           <img
             className="admin-img-update"
             src={this.state.img_url}
-            alt="Project Image"
+            alt="Project uploaded"
           />
           <input
             type="file"

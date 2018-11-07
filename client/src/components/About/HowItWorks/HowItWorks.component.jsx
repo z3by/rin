@@ -2,6 +2,9 @@ import React from "react";
 import "./HowItWorks.css";
 
 export default props => {
+  setTimeout(() => {
+    document.body.scrollTo(0, window.innerHeight);
+  }, 200);
   return (
     <div className="">
       <div className="key-strategy">

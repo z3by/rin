@@ -32,8 +32,8 @@
   --color-3: #dedede;
   --color-4: #313732;
   --color-5: #8aa8b0; */
-  --light-transparent: rgba(255, 255, 255, 0.6);
-  --dark-transparent: rgba(0, 0, 0, 0.6);
+  --light-transparent: rgba(255, 255, 255, 0.8);
+  --dark-transparent: rgba(0, 0, 0, 0.8);
 
   /* 11111111111111111111111111111111111111111111 */
   /* --color-1: #456f74;
@@ -94,12 +94,16 @@ a {
 }
 
 b {
-  color: var(--color-2);
   text-transform: capitalize;
+  font-weight: bolder;
+}
+
+b i {
+  font-size: 3rem;
 }
 
 section {
-  margin: 220px auto;
+  margin: 50px auto;
 }
 
 i {
@@ -130,22 +134,25 @@ i {
 
 .header {
   background: url(/imgs/stories.gif);
-  height: 90vh;
+  height: 100vh;
   background-size: cover;
   background-attachment: fixed;
   background-position-y: 50%;
-}
-.header-img {
-  width: 100vh;
-  min-height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
+.header h3 {
+  font-weight: 300;
+  text-transform: capitalize;
+}
 .header-text {
-  text-align: center;
-  font-size: 4rem;
+  font-size: 6rem;
   color: var(--color-3);
   font-family: var(--main-font);
-  padding: 100px 0;
   text-transform: uppercase;
 }
 
@@ -548,6 +555,16 @@ option:hover {
   grid-gap: 20px;
 }
 
+.grid-5 {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 20px;
+}
+.grid-6 {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 20px;
+}
 .grid-6 a {
   width: 100%;
 }
@@ -558,8 +575,8 @@ option:hover {
   }
 }
 @media (max-width: 768px) {
-  .arrows {
-    padding: 10px 20px;
+  .header-text {
+    font-size: 3rem;
   }
 
   .grid-2 {
@@ -573,6 +590,17 @@ option:hover {
   .grid-4 {
     grid-template-columns: 1fr;
     grid-gap: 10px;
+  }
+
+  .grid-5 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0px;
+  }
+  .grid-6 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0px;
   }
 }
 
@@ -594,4 +622,8 @@ option:hover {
 }
 .bg-5 {
   background-color: var(--color-5);
+}
+
+.p-theme-2 {
+  font-size: 0.9rem;
 }

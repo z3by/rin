@@ -2,6 +2,8 @@ import React from "react";
 import "./WhyRefugees.css";
 
 export default props => {
+  document.body.scrollTo(0, window.innerHeight);
+
   return (
     <div className="">
       <img

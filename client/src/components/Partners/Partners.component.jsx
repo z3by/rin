@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./Partners.css";
 import { Slide } from "react-slideshow-image";
 

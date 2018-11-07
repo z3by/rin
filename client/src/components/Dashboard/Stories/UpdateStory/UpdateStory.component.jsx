@@ -105,7 +105,6 @@ export default class UpdateStory extends Component {
             required
             rows="4"
             cols="50"
-            required
             type="text"
             name="text"
             id="story-text"
@@ -116,7 +115,7 @@ export default class UpdateStory extends Component {
           <img
             className="admin-img-update"
             src={this.state.imgs[0]}
-            alt="Story Image"
+            alt="uploaded"
           />
           <input
             type="file"

@@ -159,9 +159,21 @@ module.exports.createJWT = userInfo => {
       (err, token) => {
         if (err) reject(err);
         else {
-          resolve(`Bearer ${token}`);
+          resolve(token);
         }
       }
     );
+  });
+};
+
+// check if jwt valid
+module.exports.checkJWT = token => {
+  return new Promise((resolve, reject) => {
+    jwt.verify(token, process.env.HASH_SECRET, (err, decoded) => {
+      if (err) reject(err);
+      else {
+        resolve(decoded);
+      }
+    });
   });
 };

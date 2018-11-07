@@ -5,6 +5,9 @@ import TeamInfo from "../team.json";
 import SteeringInfo from "../steering.json";
 
 export default props => {
+  setTimeout(() => {
+    document.body.scrollTo(0, window.innerHeight);
+  }, 200);
   return (
     <div className="who-we-are">
       <section>
@@ -58,7 +61,7 @@ export default props => {
       <section>
         <h1 className="heading-theme-4 upper">
           <i className="fas fa-user-friends" />
-          guided by world First Class Steering Committee
+          Guided by a world-class Steering Committee.
         </h1>
         <Team info={SteeringInfo} />
       </section>

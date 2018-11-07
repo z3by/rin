@@ -22,37 +22,6 @@ export default class About extends Component {
   componentWillUnmount() {
     document.body.style.overflowY = "hidden";
   }
-  // handle the onclick event on the down button
-  onPageDown = () => {
-    if (this.state.pageNumber < 1) {
-      this.setState(
-        {
-          pageNumber: this.state.pageNumber + 1
-        },
-        () => {
-          // animate the pages by one page down
-          document.querySelector(".pages").style.top = `${-this.state
-            .pageNumber * 100}vh`;
-        }
-      );
-    }
-  };
-
-  // handle the onclick event on the up button
-  onPageUp = () => {
-    if (this.state.pageNumber > 0) {
-      this.setState(
-        {
-          pageNumber: this.state.pageNumber - 1
-        },
-        () => {
-          // animate the pages by one page up
-          document.querySelector(".pages").style.top = `${-this.state
-            .pageNumber * 100}vh`;
-        }
-      );
-    }
-  };
 
   // navigate to specifec route
   navigateTO = route => {
@@ -65,7 +34,15 @@ export default class About extends Component {
   };
 
   scrollToTop = () => {
-    document.querySelector(".about-nav").scrollIntoView();
+    document.querySelector(".about").scrollIntoView({
+      behavior: "smooth"
+    });
+  };
+
+  goDown = () => {
+    document.querySelector("#scroll-sign").scrollIntoView({
+      behavior: "smooth"
+    });
   };
 
   closePopup = () => {
@@ -90,6 +67,8 @@ export default class About extends Component {
         <header>
           <div className="header">
             <h1 className="header-text color-1">About Us</h1>
+            <div className="line" />
+
             <ul className="about-nav">
               <li>
                 <a
@@ -97,8 +76,8 @@ export default class About extends Component {
                     this.navigateTO("/about/strategy");
                   }}
                 >
-                  <h5 className="color-1 upper">our strategy</h5>
-                  <i className="color-1 fas fa-street-view" />
+                  <h5 className="upper">our strategy</h5>
+                  <i className="fas fa-street-view" />
                 </a>
               </li>
 
@@ -108,8 +87,8 @@ export default class About extends Component {
                     this.navigateTO("/about/how-it-works");
                   }}
                 >
-                  <h5 className="color-1 upper">how it works</h5>
-                  <i className="color-1 far fa-sun" />
+                  <h5 className="upper">how it works</h5>
+                  <i className="far fa-sun" />
                 </a>
               </li>
 
@@ -119,8 +98,8 @@ export default class About extends Component {
                     this.navigateTO("/about/who-we-are");
                   }}
                 >
-                  <h5 className="color-1 upper">who we are</h5>
-                  <i className="color-1 fas fa-users" />
+                  <h5 className="upper">who we are</h5>
+                  <i className="fas fa-users" />
                 </a>
               </li>
 
@@ -130,11 +109,14 @@ export default class About extends Component {
                     this.navigateTO("/about/why-refugees");
                   }}
                 >
-                  <h5 className="color-1 upper">why refugees</h5>
-                  <i className="color-1 fab fa-accusoft" />
+                  <h5 className="upper">why refugees</h5>
+                  <i className="fab fa-accusoft" />
                 </a>
               </li>
             </ul>
+            <div className="go-down" onClick={this.goDown}>
+              <i className="fas fa-arrow-circle-down" />
+            </div>
           </div>
         </header>
 

@@ -65,11 +65,7 @@ export default class StoryInfo extends Component {
               <h3 className="heading-theme-3-admin-titles">Story Images</h3>
             </th>
             <td>
-              <img
-                className="admin-img"
-                src={this.state.imgs[0]}
-                alt="Story Image"
-              />
+              <img className="admin-img" src={this.state.imgs[0]} alt="Story" />
             </td>
           </tr>
         </table>
