@@ -1,0 +1,83 @@
+.story {
+  height: 160px;
+  width: 160px;
+  cursor: pointer;
+}
+
+.story-item {
+  height: 100%;
+  width: 100%;
+  background-color: var(--color-4);
+  border-radius: 50%;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.story:hover .link-read-more {
+  opacity: 1;
+}
+
+.link-read-more {
+  text-decoration: underline;
+  position: absolute;
+  line-height: 160px;
+  color: var(--color-2);
+  opacity: 0;
+}
+
+.story:hover .story-item {
+  transform: scale(1);
+}
+
+.bub {
+  transform: scale(0);
+  animation: bub 1s ease forwards;
+  animation-delay: 2s;
+}
+
+.bub:nth-child(1) {
+  animation-delay: 2.1s;
+}
+
+.bub:nth-child(2) {
+  animation-delay: 2.11s;
+}
+
+.bub:nth-child(3) {
+  animation-delay: 2.13s;
+}
+
+.bub:nth-child(4) {
+  animation-delay: 2.17s;
+}
+
+.bub:nth-child(5) {
+  animation-delay: 2.2s;
+}
+
+.bub:nth-child(6) {
+  animation-delay: 2.3s;
+}
+
+.bub:nth-child(7) {
+  animation-delay: 2.4s;
+}
+
+.bub:nth-child(8) {
+  animation-delay: 2.5s;
+}
+
+.bub:nth-child(9) {
+  animation-delay: 2.6s;
+}
+
+@keyframes bub {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}

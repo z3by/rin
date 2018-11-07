@@ -165,4 +165,8 @@
   .toggle-nav {
     display: none;
   }
+  .logo-img {
+    max-width: 150px;
+    margin: 0;
+  }
 }

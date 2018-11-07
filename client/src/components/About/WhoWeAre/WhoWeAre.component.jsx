@@ -61,7 +61,7 @@ export default props => {
       <section>
         <h1 className="heading-theme-4 upper">
           <i className="fas fa-user-friends" />
-          guided by world First Class Steering Committee
+          Guided by a world-class Steering Committee.
         </h1>
         <Team info={SteeringInfo} />
       </section>
