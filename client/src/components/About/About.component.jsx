@@ -40,9 +40,7 @@ export default class About extends Component {
   };
 
   goDown = () => {
-    document.querySelector("#scroll-sign").scrollIntoView({
-      behavior: "smooth"
-    });
+    document.body.scrollTo(0, window.innerHeight);
   };
 
   closePopup = () => {
