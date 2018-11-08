@@ -76,7 +76,7 @@
 
 .user-signup-login {
   margin-top: 30px;
-  border: 1px solid #777;
+  border: 1px solid var(--color-1);
   border-radius: 3px;
   padding: 10px 30px;
   color: #fff;
@@ -90,10 +90,13 @@
   cursor: pointer;
 }
 
+.user-signup-login:hover {
+  background-color: var(--color-2);
+}
 .user_registered-login:hover,
 .user_unregistered-signup:hover {
   color: rgba(34, 34, 34, 0.85);
-  background-color: #777;
+  background-color: #111;
 }
 
 /**
@@ -141,7 +144,7 @@
 .user_options-forms .forms_field-input {
   width: 100%;
   border: 0;
-  border-bottom: 1px solid #777;
+  border-bottom: 1px solid #111;
   padding: 6px 20px 6px 6px;
   font-family: var(--main-font);
   font-size: 1rem;
@@ -156,50 +159,50 @@
 
 .forms_field-input::-webkit-input-placeholder {
   font-size: 0.85rem;
-  font-family: var(--main-font) f;
+  font-family: var(--main-font);
   font-weight: 300;
   letter-spacing: 0.1rem;
-  color: #777;
+  color: #111;
 }
 
 .forms_field-input::-moz-input-placeholder {
   font-size: 0.85rem;
-  font-family: var(--main-font) f;
+  font-family: var(--main-font);
   font-weight: 300;
   letter-spacing: 0.1rem;
-  color: #777;
+  color: #111;
 }
 
 .forms_field-input::-ms-input-placeholder {
   font-size: 0.85rem;
-  font-family: var(--main-font) f;
+  font-family: var(--main-font);
   font-weight: 300;
   letter-spacing: 0.1rem;
-  color: #777;
+  color: #111;
 }
 
 .forms_field-input::-webkit-input-placeholder {
   font-size: 0.85rem;
-  font-family: var(--main-font) f;
+  font-family: var(--main-font);
   font-weight: 300;
   letter-spacing: 0.1rem;
-  color: #777;
+  color: #111;
 }
 
 .forms_field-input:-ms-input-placeholder {
   font-size: 0.85rem;
-  font-family: var(--main-font) f;
+  font-family: var(--main-font);
   font-weight: 300;
   letter-spacing: 0.1rem;
-  color: #777;
+  color: #111;
 }
 
 .forms_field-input::placeholder {
   font-size: 0.85rem;
-  font-family: var(--main-font) f;
+  font-family: var(--main-font);
   font-weight: 300;
   letter-spacing: 0.1rem;
-  color: #777;
+  color: #111;
 }
 
 .user_options-forms .forms_field-input:focus {
@@ -222,7 +225,7 @@
 .user_options-forms .forms_buttons-forgot {
   font-family: var(--main-font);
   letter-spacing: 0.1rem;
-  color: #777;
+  color: #111;
   text-decoration: underline;
   -webkit-transition: color 0.2s ease-in-out;
   transition: color 0.2s ease-in-out;
@@ -239,13 +242,14 @@
 
 .user_options-forms .forms_buttons-action,
 .errors-dismiss {
-  background-color: var(--color-2);
+  background-color: transparent;
   border-radius: 3px;
-  padding: 10px 35px;
+  border: solid var(--color-2) 1px;
+  padding: 4px 35px;
   font-size: 1rem;
-  font-family: var(--main-font) f;
+  font-family: var(--main-font);
   font-weight: 300;
-  color: #fff;
+  color: var(--color-2);
   text-transform: uppercase;
   letter-spacing: 0.1rem;
   -webkit-transition: background-color 0.2s ease-in-out;
@@ -254,7 +258,8 @@
 }
 
 .user_options-forms .forms_buttons-action:hover {
-  background-color: #e87;
+  color: var(--color-1);
+  background-color: var(--color-2);
 }
 
 .user_options-forms .user_forms-signup,
