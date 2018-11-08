@@ -64,7 +64,7 @@
 
 .user-signup-login {
   margin-top: 30px;
-  border: 1px solid #ccc;
+  border: 1px solid #777;
   border-radius: 3px;
   padding: 10px 30px;
   color: #fff;
@@ -80,7 +80,7 @@
 .user_registered-login:hover,
 .user_unregistered-signup:hover {
   color: rgba(34, 34, 34, 0.85);
-  background-color: #ccc;
+  background-color: #777;
 }
 
 /**
@@ -124,7 +124,7 @@
 .user_options-forms .forms_field-input {
   width: 100%;
   border: 0;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #777;
   padding: 6px 20px 6px 6px;
   font-family: var(--main-font);
   font-size: 1rem;
@@ -141,7 +141,7 @@
   font-family: var(--main-font) f;
   font-weight: 300;
   letter-spacing: 0.1rem;
-  color: #ccc;
+  color: #777;
 }
 
 .forms_field-input::-moz-input-placeholder {
@@ -149,7 +149,7 @@
   font-family: var(--main-font) f;
   font-weight: 300;
   letter-spacing: 0.1rem;
-  color: #ccc;
+  color: #777;
 }
 
 .forms_field-input::-ms-input-placeholder {
@@ -157,7 +157,7 @@
   font-family: var(--main-font) f;
   font-weight: 300;
   letter-spacing: 0.1rem;
-  color: #ccc;
+  color: #777;
 }
 
 .forms_field-input::placeholder {
@@ -165,7 +165,7 @@
   font-family: var(--main-font) f;
   font-weight: 300;
   letter-spacing: 0.1rem;
-  color: #ccc;
+  color: #777;
 }
 
 .user_options-forms .forms_field-input:focus {
@@ -182,7 +182,7 @@
 .user_options-forms .forms_buttons-forgot {
   font-family: var(--main-font) f;
   letter-spacing: 0.1rem;
-  color: #ccc;
+  color: #777;
   text-decoration: underline;
   transition: color 0.2s ease-in-out;
   background-color: transparent;
