@@ -6,7 +6,14 @@ export default class NewProject extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      lenses: ["refugee-owned", "refugee-led", "refugee-supporting", "refugee-supporting, host weighted", "lending facilities", "refugee funds"],
+      lenses: [
+        "refugee-owned",
+        "refugee-led",
+        "refugee-supporting",
+        "refugee-supporting, host weighted",
+        "lending facilities",
+        "refugee funds"
+      ],
       title: "",
       pre_description: "",
       lens: "",
@@ -23,27 +30,36 @@ export default class NewProject extends Component {
   enableAddButton = () => {
     document.querySelector(".btn-admin").disabled = false;
     document.querySelector(".btn-admin").style.backgroundColor = "#222";
-    document.querySelector(".btn-admin").addEventListener("mouseenter", function () {
-      document.querySelector(".btn-admin").style.backgroundColor = "#f90";
-    });
-    document.querySelector(".btn-admin").addEventListener("mouseleave", function () {
-      document.querySelector(".btn-admin").style.backgroundColor = "#222";
-    });
-  }
+    document
+      .querySelector(".btn-admin")
+      .addEventListener("mouseenter", function() {
+        document.querySelector(".btn-admin").style.backgroundColor = "#f90";
+      });
+    document
+      .querySelector(".btn-admin")
+      .addEventListener("mouseleave", function() {
+        document.querySelector(".btn-admin").style.backgroundColor = "#222";
+      });
+  };
 
   disableAddButton = () => {
     document.querySelector(".btn-admin").disabled = true;
     document.querySelector(".btn-admin").style.backgroundColor = "#666";
-  }
+  };
 
   checkButtonAvailability = () => {
-    if (this.state.title && this.state.pre_description && this.state.lens && this.state.text && this.state.img) {
+    if (
+      this.state.title &&
+      this.state.pre_description &&
+      this.state.lens &&
+      this.state.text &&
+      this.state.img
+    ) {
       this.enableAddButton();
-    }
-    else {
+    } else {
       this.disableAddButton();
     }
-  }
+  };
 
   onChange = e => {
     e.preventDefault();
@@ -93,13 +109,16 @@ export default class NewProject extends Component {
 
     axios.post("/api/upload", formData, config).then(res => {
       const imageURL = res.data.location;
-      this.setState({
-        img: imageURL,
-        loading: false
-      }, () => {
-        console.log(this.state);
-        this.checkButtonAvailability();
-      });
+      this.setState(
+        {
+          img: imageURL,
+          loading: false
+        },
+        () => {
+          console.log(this.state);
+          this.checkButtonAvailability();
+        }
+      );
     });
   };
 
@@ -125,7 +144,10 @@ export default class NewProject extends Component {
           />
           <br />
           <br />
-          <label htmlFor="story-pre_description">story pre-description</label> <br />
+          <label htmlFor="story-pre_description">
+            story pre-description
+          </label>{" "}
+          <br />
           <input
             required
             type="text"
@@ -155,10 +177,6 @@ export default class NewProject extends Component {
           <br />
           <br />
           <label htmlFor="image">add image for the story</label> <br />
-          <img
-            className="admin-img-update"
-            src={this.state.img}
-          />
           <input
             required
             type="file"
@@ -166,6 +184,7 @@ export default class NewProject extends Component {
             accept="image/*"
             onChange={this.onChangeImg}
           />
+          <img className="admin-img-update" src={this.state.img} />
           <img
             src="/imgs/loading.gif"
             alt=""

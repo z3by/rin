@@ -51,27 +51,41 @@ export default class NewProject extends Component {
   enableAddButton = () => {
     document.querySelector(".btn-admin").disabled = false;
     document.querySelector(".btn-admin").style.backgroundColor = "#222";
-    document.querySelector(".btn-admin").addEventListener("mouseenter", function () {
-      document.querySelector(".btn-admin").style.backgroundColor = "#f90";
-    });
-    document.querySelector(".btn-admin").addEventListener("mouseleave", function () {
-      document.querySelector(".btn-admin").style.backgroundColor = "#222";
-    });
-  }
+    document
+      .querySelector(".btn-admin")
+      .addEventListener("mouseenter", function() {
+        document.querySelector(".btn-admin").style.backgroundColor = "#f90";
+      });
+    document
+      .querySelector(".btn-admin")
+      .addEventListener("mouseleave", function() {
+        document.querySelector(".btn-admin").style.backgroundColor = "#222";
+      });
+  };
 
   disableAddButton = () => {
     document.querySelector(".btn-admin").disabled = true;
     document.querySelector(".btn-admin").style.backgroundColor = "#666";
-  }
+  };
 
   checkButtonAvailability = () => {
-    if (this.state.title && this.state.project_description && this.state.organization_name && this.state.capacity && this.state.img_url && this.state.type && this.state.countryName && this.state.start_date && this.state.lat && this.state.lng) {
+    if (
+      this.state.title &&
+      this.state.project_description &&
+      this.state.organization_name &&
+      this.state.capacity &&
+      this.state.img_url &&
+      this.state.type &&
+      this.state.countryName &&
+      this.state.start_date &&
+      this.state.lat &&
+      this.state.lng
+    ) {
       this.enableAddButton();
-    }
-    else {
+    } else {
       this.disableAddButton();
     }
-  }
+  };
 
   fetchAllCountries = () => {
     axios.get("/api/countries").then(res => {
@@ -108,14 +122,14 @@ export default class NewProject extends Component {
     };
     axios
       .post("/api/projects", projectData)
-      .then(function (response) {
+      .then(function(response) {
         document.querySelector(".admin-form form").reset();
         document.querySelector(".done-img").style.display = "flex";
         setTimeout(() => {
           document.querySelector(".done-img").style.display = "none";
         }, 3000);
       })
-      .catch(function (error) {
+      .catch(function(error) {
         console.log(error);
       });
   };
@@ -137,12 +151,15 @@ export default class NewProject extends Component {
     axios.post("/api/upload", formData, config).then(res => {
       const imageURL = res.data.location;
 
-      this.setState({
-        img_url: imageURL,
-        loading: false
-      }, () => {
-        this.checkButtonAvailability();
-      });
+      this.setState(
+        {
+          img_url: imageURL,
+          loading: false
+        },
+        () => {
+          this.checkButtonAvailability();
+        }
+      );
     });
   };
 
@@ -217,17 +234,17 @@ export default class NewProject extends Component {
           <br />
           <br />
           <label htmlFor="img_url">Image Url</label> <br />
-          <img
-            className="admin-img-update"
-            src={this.state.img_url}
-            alt="Project uploaded"
-          />
           <input
             required
             type="file"
             name="img"
             accept="image/*"
             onChange={this.onChangeImg}
+          />
+          <img
+            className="admin-img-update"
+            src={this.state.img_url}
+            alt="Project uploaded"
           />
           <img
             src="/imgs/loading.gif"
@@ -265,7 +282,11 @@ export default class NewProject extends Component {
               <Marker lng={this.state.lng} lat={this.state.lat} />
             </GoogleMapReact>
           </div>
-          <button type="submit" className="btn-admin" disabled>Add Project</button>
+          <button type="submit" className="btn-admin" disabled>
+            <p>
+              <i className="fas fa-plus" /> Add Project
+            </p>
+          </button>
           <div className="done-img">
             <img src="/imgs/done.gif" alt="" />
           </div>
