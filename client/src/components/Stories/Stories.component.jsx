@@ -30,7 +30,7 @@ class Stories extends Component {
   };
 
   goDown = () => {
-    document.querySelector(".vertical-line").scrollIntoView({
+    document.querySelector("#scroll-sign").scrollIntoView({
       behavior: "smooth"
     });
   };
@@ -56,7 +56,7 @@ class Stories extends Component {
             </div>
           </div>
         </header>
-
+        <div id="scroll-sign" />
         <div className="vertical-line" />
         <div className="center-stories">
           <img src="/imgs/old-logo.png" alt="" />
