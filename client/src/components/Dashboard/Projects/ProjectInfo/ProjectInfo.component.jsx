@@ -41,35 +41,25 @@ export default class ProjectInfo extends Component {
       <div>
         <table className="admin-table">
           <tr>
-            <th>
-              <h3 className="heading-theme-3-admin-titles">Project ID</h3>
-            </th>
+            <th>Project ID</th>
             <td>
               <p className="p-theme-1-admin-info">{this.state.id}</p>
             </td>
           </tr>
           <tr>
-            <th>
-              <h3 className="heading-theme-3-admin-titles">Project Tilte</h3>
-            </th>
+            <th>Project Tilte</th>
             <td>
               <p className="p-theme-1-admin-info">{this.state.project.title}</p>
             </td>
           </tr>
           <tr>
-            <th>
-              <h3 className="heading-theme-3-admin-titles">Project Country</h3>
-            </th>
+            <th>Project Country</th>
             <td>
               <p className="p-theme-1-admin-info">{this.state.country}</p>
             </td>
           </tr>
           <tr>
-            <th>
-              <h3 className="heading-theme-3-admin-titles">
-                Project Description
-              </h3>
-            </th>
+            <th>Project Description</th>
             <td>
               <p className="p-theme-1-admin-info">
                 {this.state.project.project_description}
@@ -77,21 +67,13 @@ export default class ProjectInfo extends Component {
             </td>
           </tr>
           <tr>
-            <th>
-              <h3 className="heading-theme-3-admin-titles">
-                Project Start Date
-              </h3>
-            </th>
+            <th>Project Start Date</th>
             <td>
               <p className="p-theme-1-admin-info">{this.state.start_date}</p>
             </td>
           </tr>
           <tr>
-            <th>
-              <h3 className="heading-theme-3-admin-titles">
-                Project Capacity{" "}
-              </h3>
-            </th>
+            <th>Project Capacity </th>
             <td>
               <p className="p-theme-1-admin-info">
                 {this.state.project.capacity}
@@ -99,11 +81,7 @@ export default class ProjectInfo extends Component {
             </td>
           </tr>
           <tr>
-            <th>
-              <h3 className="heading-theme-3-admin-titles">
-                Project Organization Name
-              </h3>
-            </th>
+            <th>Project Organization Name</th>
             <td>
               <p className="p-theme-1-admin-info">
                 {this.state.project.organization_name}
@@ -111,17 +89,13 @@ export default class ProjectInfo extends Component {
             </td>
           </tr>
           <tr>
-            <th>
-              <h3 className="heading-theme-3-admin-titles">Project Type</h3>
-            </th>
+            <th>Project Type</th>
             <td>
               <p className="p-theme-1-admin-info">{this.state.project.type}</p>
             </td>
           </tr>
           <tr>
-            <th>
-              <h3 className="heading-theme-3-admin-titles">Project Image</h3>
-            </th>
+            <th>Project Image</th>
             <td>
               <img
                 className="admin-img"

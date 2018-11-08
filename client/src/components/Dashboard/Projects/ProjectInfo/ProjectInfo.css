@@ -46,6 +46,7 @@
   padding-left: 10px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   width: 25%;
+  color: var(--color-1);
 }
 
 .admin-table td {
@@ -62,11 +63,11 @@
 
 /* Background-color of the even rows */
 .admin-table tr:nth-child(even) {
-  background-color: #555;
+  background-color: #ccc;
 }
 
 .admin-table th {
-  background-color: #444;
+  background-color: #222;
 }
 
 .admin-table td:first-child {

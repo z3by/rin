@@ -8,7 +8,8 @@ export default class SignUpLogIn extends Component {
 
     this.state = {
       roles: ["Inverstor", "Service Provider", "Media", "Other"],
-      username: "",
+      first_name: "",
+      last_name: "",
       organization_name: "",
       user_role: "",
       email: "",
@@ -29,7 +30,6 @@ export default class SignUpLogIn extends Component {
         .querySelector(".user_options-forms")
         .classList.remove("bounceRight");
       document.querySelector(".user_options-forms").classList.add("bounceLeft");
-      document.querySelector(".user_options-forms").style.minHeight = "600px";
     } else {
       document
         .querySelector(".user_options-forms")
@@ -37,7 +37,6 @@ export default class SignUpLogIn extends Component {
       document
         .querySelector(".user_options-forms")
         .classList.add("bounceRight");
-      document.querySelector(".user_options-forms").style.minHeight = "420px";
     }
   };
 
@@ -49,7 +48,8 @@ export default class SignUpLogIn extends Component {
     e.preventDefault();
 
     let userData = {
-      username: this.state.username,
+      first_name: this.state.first_name,
+      last_name: this.state.last_name,
       organization_name: this.state.organization_name,
       user_role: this.state.user_role,
       email: this.state.email,
@@ -103,8 +103,10 @@ export default class SignUpLogIn extends Component {
   render() {
     let roles = this.state.roles.map((role, i) => {
       return (
-        <option value={role} key={i}>{role}</option>
-      )
+        <option value={role} key={i}>
+          {role}
+        </option>
+      );
     });
 
     return (
@@ -145,7 +147,7 @@ export default class SignUpLogIn extends Component {
               </button>
             </div>
           </div>
-
+          {/******************** login form  *******************************/}
           <div className="user_options-forms bounceRight">
             <div className="user_forms-login">
               <h2 className="forms_title">Login</h2>
@@ -188,6 +190,8 @@ export default class SignUpLogIn extends Component {
                 </div>
               </form>
             </div>
+
+            {/******************** signup form  *******************************/}
             <div className="user_forms-signup">
               <h2 className="forms_title">Sign Up</h2>
               <form className="forms_form" onSubmit={this.addUser}>
@@ -195,13 +199,24 @@ export default class SignUpLogIn extends Component {
                   <div className="forms_field">
                     <input
                       type="text"
-                      name="username"
-                      placeholder="Username"
+                      name="first_name"
+                      placeholder="First Name"
                       className="forms_field-input"
                       onChange={this.onChange}
                       required
                     />
                   </div>
+                  <div className="forms_field">
+                    <input
+                      type="text"
+                      name="last_name"
+                      placeholder="Last Name"
+                      className="forms_field-input"
+                      onChange={this.onChange}
+                      required
+                    />
+                  </div>
+
                   <div className="forms_field">
                     <input
                       type="text"
@@ -213,7 +228,12 @@ export default class SignUpLogIn extends Component {
                     />
                   </div>
                   <div className="forms_field">
-                    <select name="user_role" className="forms_field-input" onChange={this.onChange} required>
+                    <select
+                      name="user_role"
+                      className="forms_field-input"
+                      onChange={this.onChange}
+                      required
+                    >
                       <option>User Role</option>
                       {roles}
                     </select>

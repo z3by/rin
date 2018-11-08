@@ -13,6 +13,20 @@ export default class Members extends Component {
     this.checkAuth();
   }
 
+  // log out the current member
+  onLogOut = () => {
+    window.localStorage.removeItem("jwttoken");
+    this.setState(
+      {
+        loggedin: false
+      },
+      () => {
+        this.checkAuth();
+      }
+    );
+  };
+
+  // check if the user jwt is valid
   checkAuth = () => {
     const token = window.localStorage.getItem("jwttoken");
     if (this.state.loggedin === "false" || !token) {
@@ -31,7 +45,9 @@ export default class Members extends Component {
   render() {
     return (
       <div className="members fadeInFast">
-        <h1>hello you are in the members page</h1>
+        <button className="logout" onClick={this.onLogOut}>
+          log out
+        </button>
       </div>
     );
   }

@@ -6,6 +6,14 @@
   font-family: var(--main-font);
 }
 
+.project-options a {
+  color: var(--color-4);
+}
+
+.project-options a:hover {
+  color: var(--color-2) !important;
+}
+
 .projects-list-table td button {
   height: 50px;
   width: 100px;
@@ -53,26 +61,16 @@
 
 /* Background-color of the even rows */
 .projects-list-table tr:nth-child(even) {
-  background-color: #555;
+  background-color: #ccc;
 }
 
 .projects-list-table th {
-  background-color: #444;
+  background-color: #222;
 }
 
 .projects-list-table td:first-child {
   color: var(--color-5);
   width: 100px;
-}
-
-.projects-list-table td:hover {
-  background-color: var(--color-2);
-  color: #403e10;
-
-  transition-delay: 0s;
-  transition-duration: 0.4s;
-  transition-property: all;
-  transition-timing-function: line;
 }
 
 @media (max-width: 800px) {

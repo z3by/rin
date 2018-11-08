@@ -27,9 +27,11 @@ module.exports.register = userInfo => {
     connection.connect(err => {
       if (err) throw err;
       connection.query(
-        `insert into members (email, password) values ("${userInfo.email}", "${
-          userInfo.password
-        }")`,
+        `insert into members (email, password, first_name, last_name, organization_name, user_role ) values ("${
+          userInfo.email
+        }", "${userInfo.password}", "${userInfo.first_name}","${
+          userInfo.last_name
+        }","${userInfo.organization_name}","${userInfo.user_role}")`,
         (err, result) => {
           if (err) reject(err);
           else {

@@ -21,6 +21,8 @@ export default class StoryDetails extends Component {
   getStoryInfo = id => {
     Axios.get(`/api/stories/${id}`)
       .then(res => {
+        console.log(res);
+
         this.setState({
           story: res.data[0]
         });
@@ -39,7 +41,7 @@ export default class StoryDetails extends Component {
         >
           <h1>{this.state.story.title}</h1>
           <div className="line" />
-          <h3>this.state.story.subtitle</h3>
+          <h3>{this.state.story["pre_description"]}</h3>
         </div>
         <div className="container">
           {this.state.story.text.map(text => {
