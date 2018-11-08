@@ -146,14 +146,6 @@
   color: var(--color-2);
 }
 
-@media (max-width: 1024px) {
-  .logo {
-    height: 100px;
-    width: 100px;
-    margin: 20px 50px;
-  }
-}
-
 @media (max-width: 768px) {
   .counter,
   .navbar-middle {

@@ -59,7 +59,7 @@ export default class Navbar extends Component {
       <div>
         <div className="logo">
           <Link className="navbar-link" to={"/"}>
-            <img src="/imgs/old-logo.png" alt="" className="logo-img" />
+            <img src="/imgs/logo.png" alt="" className="logo-img" />
           </Link>
         </div>
         <nav className="navbar">
