@@ -16,6 +16,7 @@ export default class StoryDetails extends Component {
 
   componentWillMount() {
     this.getStoryInfo(this.props.match.params.id);
+    document.body.style.overflowY = "auto";
   }
 
   getStoryInfo = id => {
