@@ -178,9 +178,6 @@ export default class SignUpLogIn extends Component {
                   </div>
                 </fieldset>
                 <div className="forms_buttons">
-                  <button type="button" className="forms_buttons-forgot">
-                    {/* Forgot password? */}
-                  </button>
                   <input
                     type="submit"
                     value="Log In"
@@ -272,8 +269,9 @@ export default class SignUpLogIn extends Component {
                 <div className="forms_buttons">
                   <input
                     type="submit"
-                    value="Sign up"
+                    value="Sign Up"
                     className="forms_buttons-action"
+                    onClick={this.addUser}
                   />
                 </div>
               </form>

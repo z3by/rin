@@ -22,6 +22,14 @@ class Filter extends React.Component {
     });
   };
 
+  toggleFilter = () => {
+    if (document.querySelector(".filter").classList.contains("show")) {
+      document.querySelector(".filter").classList.remove("show");
+    } else {
+      document.querySelector(".filter").classList.add("show");
+    }
+  };
+
   render() {
     const countries = this.state.countries.map(country => {
       return (
@@ -33,7 +41,7 @@ class Filter extends React.Component {
 
     return (
       <div className="filter">
-        <a>Filter</a>
+        <a onClick={this.toggleFilter}>Filter</a>
 
         <div className="filter-input">
           <label htmlFor="org-name" className="filter-label">
@@ -109,7 +117,13 @@ class Filter extends React.Component {
             {countries}
           </select>
         </div>
-        <button className="btn" onClick={this.props.fetchProjects}>
+        <button
+          className="btn"
+          onClick={() => {
+            this.toggleFilter();
+            this.props.fetchProjects();
+          }}
+        >
           search
         </button>
       </div>
