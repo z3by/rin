@@ -2,7 +2,7 @@
   position: relative;
   background-image: url("/imgs/particles.png");
   background-repeat: no-repeat;
-  background-position-x: 100px;
+  background-size: 100vw;
   background-position-y: 110vh;
 }
 
@@ -143,13 +143,13 @@
 @media (max-width: 768px) {
   .stories {
     background-position-x: 0;
-    background-position-y: 140vh;
+    background-position-y: calc(120vh);
     background-size: 100%;
   }
 
   .center-stories {
     left: calc(50% - 75px);
-    top: 70%;
+    top: calc(150vh -75px);
     background-color: #fff;
     height: 150px;
     width: 150px;
