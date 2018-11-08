@@ -135,7 +135,7 @@ export default class NewProject extends Component {
           />
           <br />
           <br />
-          <label htmlFor="lens">Choose Story Lens</label> <br />
+          <label htmlFor="lens">Story Lens</label> <br />
           <select name="lens" id="lens" onChange={this.onChange} required>
             <option>Select Lens</option>
             {lenses}
