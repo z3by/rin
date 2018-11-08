@@ -31,7 +31,7 @@ module.exports.register = userInfo => {
           userInfo.email
         }", "${userInfo.password}", "${userInfo.first_name}","${
           userInfo.last_name
-        }","${userInfo.organization_name}","${userInfo.user_role}",)`,
+        }","${userInfo.organization_name}","${userInfo.user_role}")`,
         (err, result) => {
           if (err) reject(err);
           else {

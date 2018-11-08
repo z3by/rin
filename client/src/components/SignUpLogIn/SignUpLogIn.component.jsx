@@ -30,7 +30,6 @@ export default class SignUpLogIn extends Component {
         .querySelector(".user_options-forms")
         .classList.remove("bounceRight");
       document.querySelector(".user_options-forms").classList.add("bounceLeft");
-      document.querySelector(".user_options-forms").style.minHeight = "600px";
     } else {
       document
         .querySelector(".user_options-forms")
@@ -38,7 +37,6 @@ export default class SignUpLogIn extends Component {
       document
         .querySelector(".user_options-forms")
         .classList.add("bounceRight");
-      document.querySelector(".user_options-forms").style.minHeight = "420px";
     }
   };
 
