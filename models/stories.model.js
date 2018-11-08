@@ -3,7 +3,7 @@ module.exports = `
     id INT AUTO_INCREMENT,
     title VARCHAR(255) NOT NULL,
     pre_description VARCHAR(3000) NOT NULL,
-    lenses JSON,
+    lens VARCHAR(255) NOT NULL,
     text JSON,
     imgs JSON,
     project_id int,

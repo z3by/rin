@@ -13,7 +13,6 @@ module.exports.getStories = (req, res) => {
     const parsed = result.map(story => {
       story.imgs = JSON.parse(story.imgs);
       story.text = JSON.parse(story.text);
-      story.lenses = JSON.parse(story.lenses);
       return story;
     });
     res.send(parsed);
@@ -38,12 +37,12 @@ module.exports.addStory = (req, res) => {
   let data = {
     title: req.body.title,
     pre_description: req.body.pre_description,
-    lenses: JSON.stringify(req.body.lenses), // lenses is an array of lenses names
+    lens: req.body.lens,
     text: JSON.stringify(req.body.text), //text is an array of strings
     imgs: JSON.stringify(req.body.imgs) //imgs is an array of urls
   };
 
-  let qry = `insert into stories(title, pre_description, lenses, text, imgs) values("${data.title}", "${data.pre_description}", '${data.lenses}', '${
+  let qry = `insert into stories(title, pre_description, lens, text, imgs) values("${data.title}", "${data.pre_description}", "${data.lens}", '${
     data.text
     }', '${data.imgs}');`;
   connection.query(qry, (err, result) => {
@@ -60,13 +59,13 @@ module.exports.updateStory = (req, res) => {
   let data = {
     title: req.body.title,
     pre_description: req.body.pre_description,
-    lenses: JSON.stringify(req.body.lenses), // lenses is an array of lenses names
+    lens: req.body.lens,
     text: JSON.stringify(req.body.text), //text is an array of strings
     imgs: JSON.stringify(req.body.imgs) //imgs is an array of urls
   };
 
   let qry = `UPDATE stories
-                   SET title="${data.title}", pre_description="${data.pre_description}", lenses='${data.lenses}', text='${data.text}', imgs='${
+                   SET title="${data.title}", pre_description="${data.pre_description}", lens="${data.lens}", text='${data.text}', imgs='${
     data.imgs
     }'
                    WHERE id=${req.params.id};`;
