@@ -7,6 +7,11 @@ export default class SignUpLogIn extends Component {
     super(props);
 
     this.state = {
+      roles: ["Inverstor", "Service Provider", "Media", "Other"],
+      first_name: "",
+      last_name: "",
+      organization_name: "",
+      user_role: "",
       email: "",
       password: "",
       password2: "",
@@ -43,6 +48,10 @@ export default class SignUpLogIn extends Component {
     e.preventDefault();
 
     let userData = {
+      first_name: this.state.first_name,
+      last_name: this.state.last_name,
+      organization_name: this.state.organization_name,
+      user_role: this.state.user_role,
       email: this.state.email,
       password: this.state.password,
       password2: this.state.password2
@@ -92,6 +101,14 @@ export default class SignUpLogIn extends Component {
   };
 
   render() {
+    let roles = this.state.roles.map((role, i) => {
+      return (
+        <option value={role} key={i}>
+          {role}
+        </option>
+      );
+    });
+
     return (
       <div className="user">
         <div
@@ -130,7 +147,7 @@ export default class SignUpLogIn extends Component {
               </button>
             </div>
           </div>
-
+          {/******************** login form  *******************************/}
           <div className="user_options-forms bounceRight">
             <div className="user_forms-login">
               <h2 className="forms_title">Login</h2>
@@ -173,10 +190,54 @@ export default class SignUpLogIn extends Component {
                 </div>
               </form>
             </div>
+
+            {/******************** signup form  *******************************/}
             <div className="user_forms-signup">
               <h2 className="forms_title">Sign Up</h2>
               <form className="forms_form" onSubmit={this.addUser}>
                 <fieldset className="forms_fieldset">
+                  <div className="forms_field">
+                    <input
+                      type="text"
+                      name="first_name"
+                      placeholder="First Name"
+                      className="forms_field-input"
+                      onChange={this.onChange}
+                      required
+                    />
+                  </div>
+                  <div className="forms_field">
+                    <input
+                      type="text"
+                      name="last_name"
+                      placeholder="Last Name"
+                      className="forms_field-input"
+                      onChange={this.onChange}
+                      required
+                    />
+                  </div>
+
+                  <div className="forms_field">
+                    <input
+                      type="text"
+                      name="organization_name"
+                      placeholder="Organization Name"
+                      className="forms_field-input"
+                      onChange={this.onChange}
+                      required
+                    />
+                  </div>
+                  <div className="forms_field">
+                    <select
+                      name="user_role"
+                      className="forms_field-input"
+                      onChange={this.onChange}
+                      required
+                    >
+                      <option>User Role</option>
+                      {roles}
+                    </select>
+                  </div>
                   <div className="forms_field">
                     <input
                       type="email"

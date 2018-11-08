@@ -250,11 +250,13 @@
     width: 400px;
     left: calc(50vw - 200px);
   }
-  .up-rec {
+  .up-rec,
+  .up-rec-overlay {
     top: calc(50vh - 350px);
   }
 
-  .down-rec {
+  .down-rec,
+  .down-rec-overlay {
     bottom: calc(50vh - 350px);
   }
 }
@@ -320,33 +322,24 @@
   .down-rec-overlay {
     bottom: 22%;
     width: 50%;
+    height: 12vh;
   }
 
   .up-rec,
   .up-rec-overlay {
     top: 22%;
+    height: 12vh;
     width: 50%;
   }
   .nav-link,
   .nav-link.active {
     font-size: 8vw;
   }
-}
-
-.lines-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  position: absolute;
-  top: 0;
-  right: 5%;
-  bottom: 0;
-  left: 5%;
-  z-index: 1;
-  height: 100%;
+  .circle {
+    height: 250px;
+    width: 250px;
+    left: calc(50vw - 125px);
+  }
 }
 
 .line {

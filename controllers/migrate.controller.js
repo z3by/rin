@@ -7,6 +7,7 @@ const projectsModel = require("../models/projects.model");
 const locationsModel = require("../models/locations.model");
 const storiesModel = require("../models/stories.model");
 const membersModel = require("../models/members.model");
+const lensesModel = require("../models/lenses.model");
 
 const migrateHelpers = require("./helpers/migrate.helpers");
 
@@ -38,6 +39,9 @@ module.exports = () => {
 
   // create stories table
   migrateHelpers.createTable(connection, membersModel);
+
+  // create lenses table
+  migrateHelpers.createTable(connection, lensesModel);
 
   // fetch countries and insert them  into countries table
 

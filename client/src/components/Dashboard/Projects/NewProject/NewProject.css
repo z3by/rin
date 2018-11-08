@@ -13,7 +13,7 @@
   height: 40px;
   width: 100%;
   font-family: var(--main-font);
-  color: #fff;
+  color: #333;
   font-size: 16px;
   height: 300px;
 }
@@ -21,8 +21,8 @@
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button,
 .admin-form button {
-  background-color: #222;
-  color: white;
+  background-color: #666;
+  color: #333;
   border: none;
   cursor: pointer;
   opacity: 0.8;
@@ -33,15 +33,13 @@
   text-align: center;
 }
 
-.admin-form button:hover {
-  background: var(--color-2);
+.admin-img-update {
+  width: 100px;
+  margin: 0 auto;
 }
 
 .admin-form form {
   padding: 100px;
-  width: 30%;
-  margin: 100px;
-  background: var(--color-5);
 }
 
 .admin-form label {
@@ -49,7 +47,7 @@
   text-transform: capitalize;
   font-size: 24px;
   width: 50%;
-  color: var(--color-2);
+  color: var(--color-4);
 }
 /* The popup form - hidden by default */
 .form-popup {
@@ -66,7 +64,7 @@
   outline: none;
   height: 40px;
   width: 100%;
-  color: #fff;
+  color: #333;
   font-size: 16px;
 }
 .admin-form select {

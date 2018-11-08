@@ -5,6 +5,12 @@ const strongPassword = require("./isStrongPassword");
 const validateRegisterInput = data => {
   let errors = {};
 
+  const inputOrgName = !isEmpty(data.organization_name)
+    ? data.organization_name
+    : "";
+  const inputUserRole = !isEmpty(data.user_role) ? data.user_role : "";
+  const inputFiratName = !isEmpty(data.first_name) ? data.first_name : "";
+  const inputLastName = !isEmpty(data.last_name) ? data.last_name : "";
   const inputPassword = !isEmpty(data.password) ? data.password : "";
   const inputPasswordConfirm = !isEmpty(data.password2) ? data.password2 : "";
   const inputEmail = !isEmpty(data.email) ? data.email : "";
@@ -12,6 +18,26 @@ const validateRegisterInput = data => {
   // check if the password is empty;
   if (validator.isEmpty(inputPassword)) {
     errors.password = "password is required";
+  }
+
+  // check if the first name is empty;
+  if (validator.isEmpty(inputFiratName)) {
+    errors.firstName = "first name is required";
+  }
+
+  // check if the last name is empty;
+  if (validator.isEmpty(inputLastName)) {
+    errors.lastName = "last name is required";
+  }
+
+  // check if the organization name is empty;
+  if (validator.isEmpty(inputOrgName)) {
+    errors.organizationName = "organization name is required";
+  }
+
+  // check if the user role is empty;
+  if (validator.isEmpty(inputUserRole)) {
+    errors.userRole = "user role is required";
   }
 
   // check if the confirm password is empty;

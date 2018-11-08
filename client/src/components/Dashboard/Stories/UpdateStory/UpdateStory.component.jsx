@@ -9,8 +9,11 @@ export default class UpdateStory extends Component {
       id: this.props.match.params.id,
       story: {},
       title: "",
+      pre_description: "",
+      lenses: [],
       text: [],
-      imgs: []
+      imgs: [],
+      loading: false
     };
   }
 
@@ -22,27 +25,62 @@ export default class UpdateStory extends Component {
     document.body.style.overflowY = "auto";
   }
 
+  enableUpdateButton = () => {
+    document.querySelector(".btn-admin").disabled = false;
+    document.querySelector(".btn-admin").style.backgroundColor = "#222";
+    document
+      .querySelector(".btn-admin")
+      .addEventListener("mouseenter", function() {
+        document.querySelector(".btn-admin").style.backgroundColor = "#f90";
+      });
+    document
+      .querySelector(".btn-admin")
+      .addEventListener("mouseleave", function() {
+        document.querySelector(".btn-admin").style.backgroundColor = "#222";
+      });
+  };
+
+  disableUpdateButton = () => {
+    document.querySelector(".btn-admin").disabled = true;
+    document.querySelector(".btn-admin").style.backgroundColor = "#666";
+  };
+
+  checkButtonAvailability = () => {
+    if (
+      this.state.title &&
+      this.state.pre_description &&
+      this.state.text[0] &&
+      this.state.imgs[0]
+    ) {
+      this.enableUpdateButton();
+    } else {
+      this.disableUpdateButton();
+    }
+  };
+
   getStory = id => {
     axios.get(`/api/stories/${id}`).then(res => {
-      this.setState({ story: res.data[0] }, () => {
-        console.log(this.state.story);
-        this.setState({
-          title: res.data[0]["title"],
-          text: JSON.parse(res.data[0]["text"]),
-          imgs: JSON.parse(res.data[0]["imgs"])
-        });
+      this.setState({
+        story: res.data[0]
       });
     });
   };
 
   onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({ [e.target.name]: e.target.value }, () => {
+      this.checkButtonAvailability();
+    });
   };
 
   onChangeImg = e => {
+    this.setState({
+      loading: true
+    });
+
     e.preventDefault();
     const formData = new FormData();
     formData.append("img", e.target.files[0]);
+
     const config = {
       headers: {
         "content-type": "multipart/form-data"
@@ -51,16 +89,24 @@ export default class UpdateStory extends Component {
 
     axios.post("/api/upload", formData, config).then(res => {
       const imageURL = res.data.location;
-      this.setState({
-        imgs: [imageURL]
-      });
+      this.setState(
+        {
+          imgs: [imageURL],
+          loading: false
+        },
+        () => {
+          this.checkButtonAvailability();
+        }
+      );
     });
   };
 
   onChangeText = e => {
     let txtArr = [...this.state.text];
     txtArr[0] = e.target.value;
-    this.setState({ text: txtArr });
+    this.setState({ text: txtArr }, () => {
+      this.checkButtonAvailability();
+    });
   };
 
   updateStory = e => {
@@ -68,6 +114,8 @@ export default class UpdateStory extends Component {
 
     let storyData = {
       title: this.state.title,
+      pre_description: this.state.pre_description,
+      lenses: this.state.lenses,
       text: this.state.text,
       imgs: this.state.imgs
     };
@@ -78,7 +126,7 @@ export default class UpdateStory extends Component {
         document.querySelector(".done-img").style.display = "flex";
         setTimeout(() => {
           document.querySelector(".done-img").style.display = "none";
-        }, 6000);
+        }, 3000);
       })
       .catch(function(error) {
         console.log(error);
@@ -88,7 +136,7 @@ export default class UpdateStory extends Component {
   render() {
     return (
       <div className="admin-form">
-        <form method="POST">
+        <form method="POST" onSubmit={this.updateStory}>
           <label htmlFor="story-title">story title</label> <br />
           <input
             required
@@ -96,6 +144,20 @@ export default class UpdateStory extends Component {
             name="title"
             id="story-title"
             value={this.state.title}
+            onChange={this.onChange}
+          />
+          <br />
+          <br />
+          <label htmlFor="story-pre_description">
+            story pre-description
+          </label>{" "}
+          <br />
+          <input
+            required
+            type="text"
+            name="pre_description"
+            id="story-pre_description"
+            value={this.state.pre_description}
             onChange={this.onChange}
           />
           <br />
@@ -123,7 +185,13 @@ export default class UpdateStory extends Component {
             accept="image/*"
             onChange={this.onChangeImg}
           />
-          <button type="submit" onClick={this.updateStory}>
+          <img
+            src="/imgs/loading.gif"
+            alt=""
+            className="loading"
+            style={{ display: this.state.loading ? "block" : "none" }}
+          />
+          <button type="submit" className="btn-admin" disabled>
             <p>
               <i className="fas fa-plus" /> Update Story
             </p>
