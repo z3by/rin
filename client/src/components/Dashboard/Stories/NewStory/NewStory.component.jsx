@@ -6,9 +6,10 @@ export default class NewProject extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      lenses: ["refugee-owned", "refugee-led", "refugee-supporting", "refugee-supporting, host weighted", "lending facilities", "refugee funds"],
       title: "",
       pre_description: "",
-      lenses: ["lens 1"],
+      lens: "",
       text: "",
       img: "",
       loading: false
@@ -36,7 +37,7 @@ export default class NewProject extends Component {
   }
 
   checkButtonAvailability = () => {
-    if (this.state.title && this.state.pre_description && this.state.text && this.state.img) {
+    if (this.state.title && this.state.pre_description && this.state.lens && this.state.text && this.state.img) {
       this.enableAddButton();
     }
     else {
@@ -57,7 +58,7 @@ export default class NewProject extends Component {
     let storyData = {
       title: this.state.title,
       pre_description: this.state.pre_description,
-      lenses: this.state.lenses,
+      lens: this.state.lens,
       text: [this.state.text],
       imgs: [this.state.img]
     };
@@ -103,6 +104,14 @@ export default class NewProject extends Component {
   };
 
   render() {
+    let lenses = this.state.lenses.map((lens, i) => {
+      return (
+        <option value={lens} key={i}>
+          {lens}
+        </option>
+      );
+    });
+
     return (
       <div className="admin-form">
         <form onSubmit={this.addStory}>
@@ -126,6 +135,13 @@ export default class NewProject extends Component {
           />
           <br />
           <br />
+          <label htmlFor="lens">Choose Story Lens</label> <br />
+          <select name="lens" id="lens" onChange={this.onChange} required>
+            <option>Select Lens</option>
+            {lenses}
+          </select>
+          <br />
+          <br />
           <label htmlFor="story-text">story text</label> <br />
           <textarea
             required
@@ -136,11 +152,12 @@ export default class NewProject extends Component {
             id="story-text"
             onChange={this.onChange}
           />
+          <br />
+          <br />
           <label htmlFor="image">add image for the story</label> <br />
           <img
             className="admin-img-update"
             src={this.state.img}
-            alt="Project"
           />
           <input
             required
