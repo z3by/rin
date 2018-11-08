@@ -40,7 +40,7 @@ class Filter extends React.Component {
     });
 
     return (
-      <div className="filter show">
+      <div className="filter">
         <a onClick={this.toggleFilter}>Filter</a>
 
         <div className="filter-input">

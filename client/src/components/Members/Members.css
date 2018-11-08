@@ -1,5 +1,9 @@
 .members {
-  background: var(--color-1);
+  background: url("/imgs/members.jpeg");
+  min-height: 100vh;
+  width: 100vw;
+  background-size: 100%;
+  background-position-y: 50%;
 }
 
 .logout {
