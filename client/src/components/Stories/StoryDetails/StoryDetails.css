@@ -34,6 +34,7 @@
   text-transform: capitalize;
   color: var(--color-1);
   font-weight: 300;
+  margin: 30px 0;
 }
 
 .banner-full .line,
