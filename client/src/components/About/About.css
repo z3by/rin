@@ -19,6 +19,7 @@
 }
 
 .about-nav {
+  margin-top: 50px;
   display: flex;
   list-style: none;
 }
@@ -200,7 +201,6 @@
 
 .p-theme-1 {
   color: var(--color-5);
-  font-size: 1.5rem;
   font-family: var(--main-font);
   margin-bottom: 30px;
   margin-left: 0;
