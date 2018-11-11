@@ -32,6 +32,9 @@ export default class Dashboard extends Component {
     return (
       <div className="admin-dashboard">
         <Sidebar />
+        <nav className="nav-up">
+          <a href="">back</a>
+        </nav>
         <main>
           <Route path="/dashboard/projects" component={Projects} />
           <Route path="/dashboard/stories" component={Stories} />

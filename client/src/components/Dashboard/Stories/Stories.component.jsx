@@ -9,13 +9,6 @@ export default class Stories extends Component {
   render() {
     return (
       <div className="projects-dashboard">
-        <nav className="nav-up">
-          <ul>
-            <li>
-              <Link to={"/dashboard/stories/add"}>add story</Link>
-            </li>
-          </ul>
-        </nav>
         <main>
           <Route path={"/dashboard/stories/add"} component={NewStory} />
           <Route

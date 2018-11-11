@@ -1,17 +1,21 @@
 .sidebar {
   width: 200px;
   float: left;
-  background: var(--color-5);
+  background: var(--color-1);
   height: 100vh;
   position: fixed;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.3);
 }
 
 .sidebar .admin-logo {
   background: var(--color-1);
+  width: 200px;
 }
 
 .sidebar .admin-logo img {
-  width: 200px;
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 25%;
 }
 
 .sidebar ul {
