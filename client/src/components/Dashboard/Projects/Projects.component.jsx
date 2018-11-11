@@ -15,6 +15,10 @@ export default class Projects extends Component {
             <i className="fas fa-plus" />
             <span>New Project</span>
           </Link>
+          <div className="search-group">
+            <input type="search" className="search-input" />
+            <i className="fas fa-search" />
+          </div>
         </nav>
         <main>
           <Route path={"/dashboard/projects/add"} component={NewProject} />

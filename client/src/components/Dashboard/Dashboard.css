@@ -35,3 +35,27 @@
 .nav-up a span {
   margin: 0 10px;
 }
+
+.nav-up .fa-search {
+  margin: auto 0;
+}
+
+.nav-up .fa-search:hover {
+  color: var(--color-2);
+}
+.nav-up .search-group {
+  float: right;
+  height: 40px;
+  margin: 20px;
+  background: var(--color-1);
+  border-radius: 20px;
+  padding: 0 15px;
+}
+
+.nav-up .search-input {
+  margin: 0;
+  border: none;
+  height: 100%;
+  background: none;
+  padding: 0 20px;
+}

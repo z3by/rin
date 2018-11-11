@@ -14,6 +14,10 @@ export default class Stories extends Component {
             <i className="fas fa-plus" />
             <span>New Story</span>
           </Link>
+          <div className="search-group">
+            <input type="search" className="search-input" />
+            <i className="fas fa-search" />
+          </div>
         </nav>
         <main>
           <Route path={"/dashboard/stories/add"} component={NewStory} />
