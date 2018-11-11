@@ -10,27 +10,28 @@
   margin-bottom: 50px;
 }
 
-.nav-up ul {
-  margin: 0;
-  list-style: none;
-}
-
-.nav-up ul li {
-  display: inline-block;
-  margin: 0 1px;
-  padding: 0 20px;
-  height: 100%;
-}
-
-.nav-up ul li:hover {
-  background: rgba(255, 255, 255, 0.4);
-}
-
-.nav-up ul li a {
-  color: white;
-  font-size: 20px;
-  line-height: 100px;
+.nav-up a {
+  color: var(--color-2);
+  border-radius: 50%;
+  height: 80px;
+  line-height: 80px;
+  margin: 0 30px;
   display: inline-block;
   text-transform: capitalize;
-  font-family: var(--main-font);
+}
+
+.nav-up a i {
+  background: var(--color-1);
+  padding: 10px;
+  border-radius: 50%;
+  margin: 0;
+}
+
+.nav-up a:hover i {
+  background: var(--color-2);
+  color: var(--color-1);
+}
+
+.nav-up a span {
+  margin: 0 10px;
 }

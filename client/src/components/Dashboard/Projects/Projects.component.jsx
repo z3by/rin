@@ -10,6 +10,12 @@ export default class Projects extends Component {
   render() {
     return (
       <div className="projects-dashboard">
+        <nav className="nav-up">
+          <Link to="/dashboard/projects/add">
+            <i className="fas fa-plus" />
+            <span>New Project</span>
+          </Link>
+        </nav>
         <main>
           <Route path={"/dashboard/projects/add"} component={NewProject} />
           <Route
