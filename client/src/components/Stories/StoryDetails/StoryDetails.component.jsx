@@ -45,6 +45,9 @@ export default class StoryDetails extends Component {
           <h3>{this.state.story["pre_description"]}</h3>
         </div>
         <div className="container">
+          <div className="lenses">
+            <img className="lens" src={`/imgs/lenses/${this.state.story.lens}.png`} alt="" />
+          </div>
           {this.state.story.text.map(text => {
             return <p className="p-theme-1">{text}</p>;
           })}

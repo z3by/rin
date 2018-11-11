@@ -32,12 +32,12 @@ export default class NewProject extends Component {
     document.querySelector(".btn-admin").style.backgroundColor = "#222";
     document
       .querySelector(".btn-admin")
-      .addEventListener("mouseenter", function() {
+      .addEventListener("mouseenter", function () {
         document.querySelector(".btn-admin").style.backgroundColor = "#f90";
       });
     document
       .querySelector(".btn-admin")
-      .addEventListener("mouseleave", function() {
+      .addEventListener("mouseleave", function () {
         document.querySelector(".btn-admin").style.backgroundColor = "#222";
       });
   };
@@ -75,7 +75,7 @@ export default class NewProject extends Component {
       title: this.state.title,
       pre_description: this.state.pre_description,
       lens: this.state.lens,
-      text: [this.state.text],
+      text: this.state.text,
       imgs: [this.state.img]
     };
 
@@ -92,6 +92,13 @@ export default class NewProject extends Component {
         console.log(error);
       });
   };
+
+  onChangeTxt = e => {
+    e.preventDefault();
+    // let text = e.target.value.replace(/\n/g, "\\");
+    // let text = `<pre>${e.target.value}</pre>`;
+    this.setState({ text: e.target.value });
+  }
 
   onChangeImg = e => {
     this.setState({

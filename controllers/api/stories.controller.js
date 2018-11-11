@@ -12,7 +12,6 @@ module.exports.getStories = (req, res) => {
     if (err) throw err;
     const parsed = result.map(story => {
       story.imgs = JSON.parse(story.imgs);
-      story.text = JSON.parse(story.text);
       return story;
     });
     res.send(parsed);
@@ -25,7 +24,6 @@ module.exports.getStory = (req, res) => {
     if (err) throw err;
     const parsed = result.map(story => {
       story.imgs = JSON.parse(story.imgs);
-      story.text = JSON.parse(story.text);
       return story;
     });
 
@@ -38,13 +36,13 @@ module.exports.addStory = (req, res) => {
     title: req.body.title,
     pre_description: req.body.pre_description,
     lens: req.body.lens,
-    text: JSON.stringify(req.body.text), //text is an array of strings
+    text: req.body.text,
     imgs: JSON.stringify(req.body.imgs) //imgs is an array of urls
   };
 
-  let qry = `insert into stories(title, pre_description, lens, text, imgs) values("${data.title}", "${data.pre_description}", "${data.lens}", '${
+  let qry = `insert into stories(title, pre_description, lens, text, imgs) values("${data.title}", "${data.pre_description}", "${data.lens}", "${
     data.text
-    }', '${data.imgs}');`;
+    }", '${data.imgs}');`;
   connection.query(qry, (err, result) => {
     if (err) throw err;
     res.send("story row inserted successfully");
@@ -60,12 +58,12 @@ module.exports.updateStory = (req, res) => {
     title: req.body.title,
     pre_description: req.body.pre_description,
     lens: req.body.lens,
-    text: JSON.stringify(req.body.text), //text is an array of strings
+    text: req.body.text,
     imgs: JSON.stringify(req.body.imgs) //imgs is an array of urls
   };
 
   let qry = `UPDATE stories
-                   SET title="${data.title}", pre_description="${data.pre_description}", lens="${data.lens}", text='${data.text}', imgs='${
+                   SET title="${data.title}", pre_description="${data.pre_description}", lens="${data.lens}", text="${data.text}", imgs='${
     data.imgs
     }'
                    WHERE id=${req.params.id};`;
