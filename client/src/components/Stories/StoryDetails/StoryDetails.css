@@ -35,6 +35,8 @@
   color: var(--color-1);
   font-weight: 300;
   margin: 30px 0;
+  width: 60%;
+  text-align: center;
 }
 
 .banner-full .line,
@@ -42,4 +44,8 @@
   width: 20%;
   height: 2px;
   background: white;
+}
+
+.story-details .container {
+  width: 60%;
 }

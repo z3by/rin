@@ -12,8 +12,14 @@
 }
 
 .admin-table td.project-options {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -79,9 +85,14 @@
   background-color: var(--color-2);
   color: #403e10;
 
+  -webkit-transition-delay: 0s;
+
   transition-delay: 0s;
+  -webkit-transition-duration: 0.4s;
   transition-duration: 0.4s;
+  -webkit-transition-property: all;
   transition-property: all;
+  -webkit-transition-timing-function: line;
   transition-timing-function: line;
 }
 
