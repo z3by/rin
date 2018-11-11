@@ -1,7 +1,7 @@
 .nav-rec {
   width: 30px;
   min-height: 15px;
-  background: var(--light-transparent);
+  background: var(--color-3);
 }
 
 .rounded {
@@ -12,24 +12,20 @@
 
 .navbar {
   position: absolute;
-  height: 66vh;
-  top: 20vh;
+  height: 100vh;
   z-index: 100;
   width: 200px;
-  background: var(--dark-transparent);
+  background: white;
   -webkit-transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
   transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-  -webkit-box-shadow: 2px 0px 10px var(--dark-transparent);
-  box-shadow: 2px 0px 10px var(--dark-transparent);
-  border-top-right-radius: 30px;
-  border-bottom-right-radius: 30px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .navbar-middle {
-  height: 60%;
+  height: 90%;
   list-style: none;
   position: relative;
-  padding: 0 60px;
+  padding: 0 10px;
   padding-left: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -48,7 +44,7 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  width: 100%;
+  width: 60%;
   height: 80px;
 }
 
@@ -75,29 +71,33 @@
   display: none;
   list-style: none;
   position: absolute;
-  margin-left: 30px;
-  margin-top: -20px;
   font-family: var(--main-font);
   width: 200px;
-  z-index: 1000000;
+  z-index: 10000;
+  padding: 0;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
 }
 
 .nav-rec-menu li {
   margin: 0;
   height: 30px;
-  padding: 0;
-  color: var(--color-1);
-  background: var(--dark-transparent);
-  padding: 3px 20px;
+  width: 100%;
+  margin: 0;
+  background: white;
 }
 .nav-rec-menu li a {
-  color: var(--color-1);
+  color: var(--color-3);
   font-weight: 100;
+  padding: 10px 20px;
   text-transform: capitalize;
 }
 
 .nav-rec-menu li:hover {
   background: var(--color-2);
+}
+
+.nav-rec-menu li:hover a {
+  color: var(--color-1);
 }
 .navbar-link:hover .nav-rec .nav-rec-menu {
   display: block;
@@ -121,7 +121,7 @@
 }
 
 .logo-img {
-  max-width: 20vh;
+  max-width: 15vh;
   margin: 0;
 }
 
@@ -135,13 +135,13 @@
   border-bottom-right-radius: 50%;
   top: 50%;
   left: 200px;
-  background: var(--dark-transparent);
-  -webkit-box-shadow: 0px 0px 5px var(--dark-transparent);
-  box-shadow: 0px 0px 5px var(--dark-transparent);
+  background: white;
+  -webkit-box-shadow: 0px 0px 5px white;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
 
 .toggle-nav i {
-  color: var(--color-1);
+  color: var(--color-3);
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
   margin: 14px 10px;
@@ -153,6 +153,13 @@
   color: var(--color-2);
 }
 
+.navbar-link.active .nav-rec-text {
+  color: var(--color-2);
+}
+
+.navbar-link.active .nav-rec {
+  background: var(--color-2);
+}
 @media (max-width: 768px) {
   .counter,
   .navbar-middle {
