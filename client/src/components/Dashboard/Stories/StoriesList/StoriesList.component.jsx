@@ -63,15 +63,9 @@ export default class StoriesList extends Component {
         <table class="projects-list-table">
           <thead>
             <tr>
-              <th>
-                <h1>Story ID</h1>
-              </th>
-              <th>
-                <h1>Story Title</h1>
-              </th>
-              <th>
-                <h1>Actions</h1>
-              </th>
+              <th>Story ID</th>
+              <th>Story Title</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>{stories}</tbody>

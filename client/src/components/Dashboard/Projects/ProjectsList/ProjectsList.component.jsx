@@ -64,18 +64,10 @@ export default class ProjectsList extends Component {
         <table class="projects-list-table">
           <thead>
             <tr>
-              <th>
-                <h1>Project ID</h1>
-              </th>
-              <th>
-                <h1>Project Name</h1>
-              </th>
-              <th>
-                <h1>Organization Name</h1>
-              </th>
-              <th>
-                <h1>Actions</h1>
-              </th>
+              <th>Project ID</th>
+              <th>Project Name</th>
+              <th>Organization Name</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>{projects}</tbody>
