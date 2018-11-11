@@ -134,34 +134,22 @@ export default class NewProject extends Component {
     return (
       <div className="admin-form">
         <form onSubmit={this.addStory}>
-          <label htmlFor="story-title">story title</label> <br />
           <input
             required
             type="text"
             name="title"
+            placeholder="Story Title"
             id="story-title"
             onChange={this.onChange}
           />
-          <br />
-          <br />
-          <label htmlFor="story-pre_description">
-            story pre-description
-          </label>{" "}
-          <br />
           <input
             required
             type="text"
+            placeholder="Story Description"
             name="pre_description"
             id="story-pre_description"
             onChange={this.onChange}
           />
-          <br />
-          <br />
-          <label htmlFor="lens">Story Lens</label> <br />
-          <select name="lens" id="lens" onChange={this.onChange} required>
-            <option>Select Lens</option>
-            {lenses}
-          </select>
           <br />
           <br />
           <label htmlFor="story-text">story text</label> <br />
@@ -174,9 +162,7 @@ export default class NewProject extends Component {
             id="story-text"
             onChange={this.onChange}
           />
-          <br />
-          <br />
-          <label htmlFor="image">add image for the story</label> <br />
+          <label htmlFor="image">Upload Story Image</label> <br />
           <input
             required
             type="file"
@@ -184,6 +170,11 @@ export default class NewProject extends Component {
             accept="image/*"
             onChange={this.onChangeImg}
           />
+          <label htmlFor="lens">Story Lens</label> <br />
+          <select name="lens" id="lens" onChange={this.onChange} required>
+            <option>Select Lens</option>
+            {lenses}
+          </select>
           <img className="admin-img-update" src={this.state.img} />
           <img
             src="/imgs/loading.gif"
@@ -192,9 +183,7 @@ export default class NewProject extends Component {
             style={{ display: this.state.loading ? "block" : "none" }}
           />
           <button type="submit" className="btn-admin" disabled>
-            <p>
-              <i className="fas fa-plus" /> Add Story
-            </p>
+            <i className="fas fa-plus" /> Add Story
           </button>
           <div className="done-img">
             <img src="/imgs/done.gif" alt="" />

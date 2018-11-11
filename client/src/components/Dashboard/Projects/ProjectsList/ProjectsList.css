@@ -1,13 +1,5 @@
-.projects-list-table th h1 {
-  font-weight: bold;
-  font-size: 1em;
-  text-align: left;
-  color: var(--color-1);
-  font-family: var(--main-font);
-}
-
 .project-options a {
-  color: var(--color-4);
+  color: var(--color-5);
 }
 
 .project-options a:hover {
@@ -20,8 +12,14 @@
 }
 
 .projects-list-table td.project-options {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -41,36 +39,34 @@
   text-align: left;
   overflow: hidden;
   width: 80%;
-  margin: 0 auto;
+  margin: 30px auto;
   display: table;
   padding: 0 0 8em 0;
+  border-radius: 10px;
 }
 
-.projects-list-table td,
-.projects-list-table th {
-  padding-bottom: 10px;
-  padding-top: 10px;
-  padding-left: 10px;
+.projects-list-table td {
+  padding: 5px;
+  padding-left: 20px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-/* Background-color of the odd rows */
-.projects-list-table tr:nth-child(odd) {
-  background-color: #ddd;
-}
-
-/* Background-color of the even rows */
-.projects-list-table tr:nth-child(even) {
-  background-color: #ccc;
+.projects-list-table tr {
+  background-color: white;
 }
 
 .projects-list-table th {
-  background-color: #222;
+  background-color: var(--color-5);
+  color: var(--color-2);
+  text-align: center;
+  padding: 10px 30px;
 }
 
 .projects-list-table td:first-child {
-  color: var(--color-5);
+  color: var(--color-3);
   width: 100px;
+  text-align: center;
+  font-weight: bold;
 }
 
 @media (max-width: 800px) {

@@ -25,7 +25,7 @@ const Dot = props => {
     >
       <div className="project-info">
         <div className="project-info-popup">
-          <h1>Basic statistics</h1>
+          <h4>Basic statistics</h4>
           <p>{props.info.type}</p>
           <p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque
@@ -35,7 +35,7 @@ const Dot = props => {
           </p>
         </div>
         <div className="project-info-popup">
-          <h1>Qualitative information</h1>
+          <h4>Qualitative information</h4>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo amet
             dolore blanditiis, culpa tempore voluptatibus! Id, animi eligendi
@@ -50,7 +50,7 @@ const Dot = props => {
           </p>
         </div>
         <div className="project-info-popup">
-          <h1>other info</h1>
+          <h4>Other info</h4>
           <p>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui,
             exercitationem! Amet eum ipsa accusamus nulla libero iste sequi

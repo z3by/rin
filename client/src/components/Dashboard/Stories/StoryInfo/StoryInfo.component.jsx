@@ -31,25 +31,19 @@ export default class StoryInfo extends Component {
 
   render() {
     return (
-      <div>
-        <table className="admin-table">
+      <div className="admin-info-single">
+        <table>
           <tr>
             <th>Story ID</th>
-            <td>
-              <p className="p-theme-1-admin-info">{this.state.id}</p>
-            </td>
+            <td>{this.state.id}</td>
           </tr>
           <tr>
             <th>Story Tilte</th>
-            <td>
-              <p className="p-theme-1-admin-info">{this.state.story.title}</p>
-            </td>
+            <td>{this.state.story.title}</td>
           </tr>
           <tr>
             <th>Story Details</th>
-            <td>
-              <p className="p-theme-1-admin-info">{this.state.text[0]}</p>
-            </td>
+            <td>{this.state.text[0]}</td>
           </tr>
           <tr>
             <th>Story Images</th>

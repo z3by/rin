@@ -11,11 +11,14 @@ export default class Projects extends Component {
     return (
       <div className="projects-dashboard">
         <nav className="nav-up">
-          <ul>
-            <li>
-              <Link to={"/dashboard/projects/add"}>add project</Link>
-            </li>
-          </ul>
+          <Link to="/dashboard/projects/add">
+            <i className="fas fa-plus" />
+            <span>New Project</span>
+          </Link>
+          <div className="search-group">
+            <input type="search" className="search-input" />
+            <i className="fas fa-search" />
+          </div>
         </nav>
         <main>
           <Route path={"/dashboard/projects/add"} component={NewProject} />

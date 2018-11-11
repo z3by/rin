@@ -1,8 +1,12 @@
 .admin-form {
-  background-color: var(--color-1);
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
-  padding: 100px auto;
+  padding: 50px auto;
 }
 
 .admin-form textarea {
@@ -38,16 +42,10 @@
   margin: 0 auto;
 }
 
-.admin-form form {
-  padding: 100px;
-}
-
 .admin-form label {
-  padding-top: 20px;
   text-transform: capitalize;
   font-size: 24px;
-  width: 50%;
-  color: var(--color-4);
+  color: var(--color-5);
 }
 /* The popup form - hidden by default */
 .form-popup {
@@ -58,31 +56,24 @@
 }
 
 .admin-form input {
-  border: none;
-  border-bottom: 1px solid var(--color-3);
-  background: transparent;
-  outline: none;
-  height: 40px;
+  background: var(--color-1);
+  height: 50px;
   width: 100%;
-  color: #333;
-  font-size: 16px;
+  display: block;
+  margin: 40px auto;
+  border: none;
+  color: var(--color-3);
+  font-size: 1.5rem;
+  padding: 0 30px;
+  border-radius: 20px;
 }
+
+.admin-form input::placeholder {
+  color: #333;
+}
+
 .admin-form select {
   width: 100%;
-}
-/* Set a style for the submit/login button */
-.form-container .btn {
-  position: relative;
-  z-index: 100;
-  left: 20px;
-  bottom: 20px;
-  background-color: #4caf50;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 20%;
-  opacity: 0.8;
 }
 
 /* Add some hover effects to buttons */
@@ -114,7 +105,11 @@
 .done-img {
   display: none;
   background: var(white);
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   width: 100%;
 }

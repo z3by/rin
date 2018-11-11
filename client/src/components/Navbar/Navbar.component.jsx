@@ -18,14 +18,6 @@ export default class Navbar extends Component {
   //start counter
   startCounter = () => {};
 
-  onClickCircle = e => {
-    const index = parseInt(e.target.getAttribute("index"), 10) - 1;
-    if (!!document.querySelector(".active")) {
-      document.querySelector(".active").classList.remove("active");
-    }
-    document.querySelectorAll(".nav-rec")[index].classList.add("active");
-  };
-
   toggleNavbar = () => {
     const collapsed = document.querySelector(".navbar").style.width === "0px";
     if (!collapsed) {
@@ -69,55 +61,35 @@ export default class Navbar extends Component {
 
           <ul className="navbar-middle">
             <li>
-              <Link className="navbar-link" to={"/stories"}>
-                <div
-                  className="nav-rec active"
-                  index="1"
-                  onClick={this.onClickCircle}
-                />
+              <Link className="navbar-link" index="1" to={"/stories"}>
+                <div className="nav-rec" />
                 <p className="nav-rec-text">stories</p>
               </Link>
             </li>
 
             <li>
-              <Link className="navbar-link" to={"/map"}>
-                <div
-                  className="nav-rec"
-                  index="2"
-                  onClick={this.onClickCircle}
-                />
+              <Link className="navbar-link" index="2" to={"/map"}>
+                <div className="nav-rec" />
                 <p className="nav-rec-text">map</p>
               </Link>
             </li>
             <li>
-              <Link className="navbar-link" to={"/data"}>
-                <div
-                  className="nav-rec"
-                  index="3"
-                  onClick={this.onClickCircle}
-                />
+              <Link className="navbar-link" index="3" to={"/data"}>
+                <div className="nav-rec" />
                 <p className="nav-rec-text">data</p>
               </Link>
             </li>
 
             <li>
-              <Link className="navbar-link" to={"/members"}>
-                <div
-                  className="nav-rec rounded"
-                  index="4"
-                  onClick={this.onClickCircle}
-                />
+              <Link className="navbar-link" index=" 4" to={"/members"}>
+                <div className="nav-rec rounded" />
                 <p className="nav-rec-text">members</p>
               </Link>
             </li>
 
             <li>
-              <Link className="navbar-link" to={"/about"}>
-                <div
-                  className="nav-rec"
-                  index="5"
-                  onClick={this.onClickCircle}
-                />
+              <Link className="navbar-link" index="5" to={"/about"}>
+                <div className="nav-rec" />
                 <p className="nav-rec-text">
                   about
                   <ul className="nav-rec-menu">
@@ -140,7 +112,7 @@ export default class Navbar extends Component {
               </Link>
             </li>
             {/* <Link to={"/library"}>
-              <div className="nav-rec" index="4" onClick={this.onClickCircle}>
+               <div className="nav-rec" index="4" >
                 <p className="nav-rec-text">library</p>
               </div>
             </Link>

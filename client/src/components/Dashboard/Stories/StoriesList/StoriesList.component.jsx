@@ -44,14 +44,13 @@ export default class StoriesList extends Component {
           <td>{story.title}</td>
           <td className="project-options">
             <Link to={`/dashboard/stories/list/${story.id}`}>
-              <i className="far fa-eye" /> show
+              <i className="far fa-eye" />
             </Link>
             <Link to={`/dashboard/stories/list/updatestory/${story.id}`}>
               <i className="fas fa-edit" />
-              update
             </Link>
             <a onClick={() => this.deleteStory(story)}>
-              <i className="fas fa-trash-alt" /> delete
+              <i className="fas fa-trash-alt" />
             </a>
           </td>
         </tr>
@@ -63,15 +62,9 @@ export default class StoriesList extends Component {
         <table class="projects-list-table">
           <thead>
             <tr>
-              <th>
-                <h1>Story ID</h1>
-              </th>
-              <th>
-                <h1>Story Title</h1>
-              </th>
-              <th>
-                <h1>Actions</h1>
-              </th>
+              <th>Story ID</th>
+              <th>Story Title</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>{stories}</tbody>

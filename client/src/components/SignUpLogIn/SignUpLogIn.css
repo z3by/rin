@@ -108,8 +108,6 @@
   left: 30px;
   width: calc(50% - 30px);
   min-height: 420px;
-  overflow-y: scroll;
-  overflow-x: hidden;
   background-color: var(--color-1);
   border-radius: 3px;
   -webkit-box-shadow: 2px 0 15px rgba(0, 0, 0, 0.25);
@@ -135,10 +133,6 @@
   text-transform: uppercase;
   color: var(--color-2);
   letter-spacing: 0.1rem;
-}
-
-.user_options-forms .forms_field:not(:last-of-type) {
-  margin-bottom: 20px;
 }
 
 .user_options-forms .forms_field-input {
@@ -205,21 +199,17 @@
   color: #111;
 }
 
+.user_options-forms.bounceLeft {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
 .user_options-forms .forms_field-input:focus {
   border-color: gray;
 }
 
 .user_options-forms .forms_buttons {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-top: 35px;
+  margin: 35px 0;
 }
 
 .user_options-forms .forms_buttons-forgot {
@@ -283,12 +273,6 @@
 .user_options-forms .user_forms-signup {
   -webkit-transform: translate3d(120px, 0, 0);
   transform: translate3d(120px, 0, 0);
-}
-
-.user_options-forms .user_forms-signup .forms_buttons {
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
 }
 
 .user_options-forms .user_forms-login {
