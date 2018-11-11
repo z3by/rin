@@ -45,11 +45,9 @@
   border-radius: 10px;
 }
 
-.projects-list-table td,
-.projects-list-table th {
-  padding-bottom: 10px;
-  padding-top: 10px;
-  padding-left: 10px;
+.projects-list-table td {
+  padding: 5px;
+  padding-left: 20px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -60,6 +58,8 @@
 .projects-list-table th {
   background-color: var(--color-5);
   color: var(--color-2);
+  text-align: center;
+  padding: 10px 30px;
 }
 
 .projects-list-table td:first-child {

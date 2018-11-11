@@ -182,62 +182,53 @@ export default class NewProject extends Component {
     return (
       <div className="admin-form">
         <form onSubmit={this.addProject}>
-          <label htmlFor="project-title">Project Title</label> <br />
           <input
             required
             type="text"
             name="title"
             id="project-title"
+            placeholder="Project Title"
             onChange={this.onChange}
           />
-          <br />
-          <br />
-          <label htmlFor="project-desc">Project Description</label> <br />
           <input
             required
             type="text"
             name="project_description"
             id="project-desc"
+            placeholder="Project Description"
             onChange={this.onChange}
           />
-          <br />
-          <br />
-          <label htmlFor="start_date">Start Date</label> <br />
           <input
             required
             type="date"
             name="start_date"
             id="start_date"
+            placeholder="Start Date"
             onChange={this.onChange}
           />
-          <br />
-          <br />
-          <label htmlFor="capacity">Capacity</label> <br />
           <input
             required
             type="number"
             min="0"
+            placeholder="Capacity"
             name="capacity"
             id="capacity"
             onChange={this.onChange}
           />
-          <br />
-          <br />
-          <label htmlFor="organization_name">Organization Name</label> <br />
           <input
             required
             type="text"
+            placeholder="Organization Name"
             name="organization_name"
             id="organization_name"
             onChange={this.onChange}
           />
-          <br />
-          <br />
-          <label htmlFor="img_url">Image Url</label> <br />
+          <label htmlFor="img">Upload image..</label>
           <input
             required
             type="file"
             name="img"
+            placeholder="Upload Image"
             accept="image/*"
             onChange={this.onChangeImg}
           />
@@ -283,9 +274,7 @@ export default class NewProject extends Component {
             </GoogleMapReact>
           </div>
           <button type="submit" className="btn-admin" disabled>
-            <p>
-              <i className="fas fa-plus" /> Add Project
-            </p>
+            <i className="fas fa-plus" /> Add Project
           </button>
           <div className="done-img">
             <img src="/imgs/done.gif" alt="" />

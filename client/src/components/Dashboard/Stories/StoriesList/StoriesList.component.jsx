@@ -44,14 +44,13 @@ export default class StoriesList extends Component {
           <td>{story.title}</td>
           <td className="project-options">
             <Link to={`/dashboard/stories/list/${story.id}`}>
-              <i className="far fa-eye" /> show
+              <i className="far fa-eye" />
             </Link>
             <Link to={`/dashboard/stories/list/updatestory/${story.id}`}>
               <i className="fas fa-edit" />
-              update
             </Link>
             <a onClick={() => this.deleteStory(story)}>
-              <i className="fas fa-trash-alt" /> delete
+              <i className="fas fa-trash-alt" />
             </a>
           </td>
         </tr>

@@ -45,14 +45,13 @@ export default class ProjectsList extends Component {
           <td>{project.organization_name}</td>
           <td className="project-options">
             <Link to={`/dashboard/projects/list/${project.id}`}>
-              <i className="far fa-eye" /> show
+              <i className="far fa-eye" />
             </Link>
             <Link to={`/dashboard/projects/list/updateproject/${project.id}`}>
               <i className="fas fa-edit" />
-              update
             </Link>
             <a onClick={() => this.deleteProject(project)}>
-              <i className="fas fa-trash-alt" /> delete
+              <i className="fas fa-trash-alt" />
             </a>
           </td>
         </tr>

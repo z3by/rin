@@ -192,9 +192,7 @@ export default class NewProject extends Component {
             style={{ display: this.state.loading ? "block" : "none" }}
           />
           <button type="submit" className="btn-admin" disabled>
-            <p>
-              <i className="fas fa-plus" /> Add Story
-            </p>
+            <i className="fas fa-plus" /> Add Story
           </button>
           <div className="done-img">
             <img src="/imgs/done.gif" alt="" />
