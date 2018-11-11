@@ -4,7 +4,7 @@ module.exports = `
     title VARCHAR(255) NOT NULL,
     pre_description VARCHAR(3000) NOT NULL,
     lens VARCHAR(255) NOT NULL,
-    text JSON,
+    text VARCHAR(3000),
     imgs JSON,
     project_id int,
     PRIMARY KEY (id),
