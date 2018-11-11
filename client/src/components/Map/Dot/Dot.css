@@ -26,10 +26,10 @@
   visibility: hidden;
   opacity: 0;
   position: absolute;
-  height: 600px;
-  width: 800px;
-  top: -300px;
-  left: -400px;
+  height: 80vh;
+  width: 60vw;
+  top: -40vh;
+  left: -30vw;
   -webkit-transform: scale(0);
   transform: scale(0);
   -webkit-transition: all 1s ease;
@@ -44,8 +44,8 @@
 }
 
 .project-info-popup {
-  height: 250px;
-  width: 300px;
+  height: 20vw;
+  width: 25vw;
   padding: 20px;
   position: absolute;
   z-index: 100000;
@@ -99,7 +99,8 @@
 }
 .project-info-popup:nth-child(3) {
   bottom: 0;
-  left: calc(50% - 160px);
+  padding-top: 6vh;
+  left: calc(50% - 12.45vw);
   -webkit-clip-path: polygon(
     0 15%,
     48% 15%,
@@ -118,13 +119,12 @@
     100% 100%,
     0 100%
   );
-  padding-top: 20px;
 }
-.project-info-popup h1 {
-  color: white;
+.project-info-popup h4 {
+  color: var(--color-2);
 }
 .project-info-popup p {
-  color: white;
+  color: var(--color-1);
 }
 @-webkit-keyframes pulse {
   from {
