@@ -135,7 +135,6 @@ export default class NewProject extends Component {
       <div className="admin-form">
         <form onSubmit={this.addStory}>
           <input
-            required
             type="text"
             name="title"
             placeholder="Story Title"
@@ -143,16 +142,14 @@ export default class NewProject extends Component {
             onChange={this.onChange}
           />
           <input
-            required
             type="text"
             placeholder="Story Description"
             name="pre_description"
             id="story-pre_description"
             onChange={this.onChange}
           />
-          <label htmlFor="story-text">story text</label> <br />
           <textarea
-            required
+            placeholder="Story Text"
             rows="4"
             cols="50"
             type="text"
@@ -160,19 +157,17 @@ export default class NewProject extends Component {
             id="story-text"
             onChange={this.onChange}
           />
-          <label htmlFor="image">Upload Story Image</label> <br />
+          <select name="lens" id="lens" onChange={this.onChange}>
+            <option>Select Lens</option>
+            {lenses}
+          </select>
           <input
-            required
             type="file"
             name="img"
             accept="image/*"
             onChange={this.onChangeImg}
           />
-          <label htmlFor="lens">Story Lens</label> <br />
-          <select name="lens" id="lens" onChange={this.onChange} required>
-            <option>Select Lens</option>
-            {lenses}
-          </select>
+
           <img className="admin-img-update" src={this.state.img} />
           <img
             src="/imgs/loading.gif"
@@ -187,9 +182,6 @@ export default class NewProject extends Component {
             <img src="/imgs/done.gif" alt="" />
           </div>
         </form>
-        <div className="done-img">
-          <img src="/imgs/done.gif" alt="" />
-        </div>
       </div>
     );
   }

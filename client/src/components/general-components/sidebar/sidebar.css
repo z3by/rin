@@ -1,14 +1,13 @@
 .sidebar {
   width: 200px;
   float: left;
-  background: var(--color-1);
+  background: white;
   height: 100vh;
   position: fixed;
   box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.3);
 }
 
 .sidebar .admin-logo {
-  background: var(--color-1);
   width: 200px;
 }
 

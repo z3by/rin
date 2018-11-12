@@ -183,7 +183,6 @@ export default class NewProject extends Component {
       <div className="admin-form">
         <form onSubmit={this.addProject}>
           <input
-            required
             type="text"
             name="title"
             id="project-title"
@@ -191,7 +190,6 @@ export default class NewProject extends Component {
             onChange={this.onChange}
           />
           <input
-            required
             type="text"
             name="project_description"
             id="project-desc"
@@ -199,7 +197,6 @@ export default class NewProject extends Component {
             onChange={this.onChange}
           />
           <input
-            required
             type="date"
             name="start_date"
             id="start_date"
@@ -207,7 +204,6 @@ export default class NewProject extends Component {
             onChange={this.onChange}
           />
           <input
-            required
             type="number"
             min="0"
             placeholder="Capacity"
@@ -216,7 +212,6 @@ export default class NewProject extends Component {
             onChange={this.onChange}
           />
           <input
-            required
             type="text"
             placeholder="Organization Name"
             name="organization_name"
@@ -225,7 +220,6 @@ export default class NewProject extends Component {
           />
           <label htmlFor="img">Upload image..</label>
           <input
-            required
             type="file"
             name="img"
             placeholder="Upload Image"
@@ -243,22 +237,13 @@ export default class NewProject extends Component {
             className="loading"
             style={{ display: this.state.loading ? "block" : "none" }}
           />
-          <br />
-          <br />
           <label htmlFor="type">Project Type</label> <br />
-          <select required name="type" id="type" onChange={this.onChange}>
+          <select name="type" id="type" onChange={this.onChange}>
             <option value="select type">Select Type</option>
             {types}
           </select>
-          <br />
-          <br />
           <label htmlFor="countryName">Project Country</label> <br />
-          <select
-            required
-            name="countryName"
-            id="countryName"
-            onChange={this.onChange}
-          >
+          <select name="countryName" id="countryName" onChange={this.onChange}>
             <option value="select type">Select Country</option>
             {countries}
           </select>

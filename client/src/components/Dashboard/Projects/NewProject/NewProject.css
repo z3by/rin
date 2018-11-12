@@ -6,7 +6,10 @@
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding: 50px auto;
+}
+
+.admin-form form {
+  padding: 50px;
 }
 
 .admin-form textarea {
@@ -17,24 +20,32 @@
   height: 40px;
   width: 100%;
   font-family: var(--main-font);
-  color: #333;
   font-size: 16px;
   height: 300px;
+  background: var(--color-1);
+  border: none;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 50px;
+}
+
+.admin-form textarea::placeholder {
+  font-size: 24px;
+  color: #333;
 }
 
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button,
 .admin-form button {
-  background-color: #666;
+  background-color: var(--color-3);
   color: #333;
   border: none;
   cursor: pointer;
   opacity: 0.8;
   width: 100%;
-  margin: 50px 0;
   font-size: 18px;
-  padding: 10px 20px;
   text-align: center;
+  margin: 0;
 }
 
 .admin-img-update {
@@ -42,11 +53,6 @@
   margin: 0 auto;
 }
 
-.admin-form label {
-  text-transform: capitalize;
-  font-size: 24px;
-  color: var(--color-5);
-}
 /* The popup form - hidden by default */
 .form-popup {
   position: relative;
@@ -62,7 +68,6 @@
   display: block;
   margin: 40px auto;
   border: none;
-  color: var(--color-3);
   font-size: 1.5rem;
   padding: 0 30px;
   border-radius: 20px;
@@ -71,7 +76,10 @@
 .admin-form input::placeholder {
   color: #333;
 }
-
+.admin-form label {
+  color: var(--color-3);
+  font-size: 24px;
+}
 .admin-form select {
   width: 100%;
 }
