@@ -22,6 +22,7 @@
   justify-content: center;
   background-size: 100%;
   background-attachment: fixed;
+  position: relative;
 }
 
 .banner-full h1 {
@@ -50,6 +51,18 @@
   width: 60%;
 }
 
-.lens{
+.lensSDGs {
+  display: flex;
+  list-style: none;
+  position: absolute;
+  bottom: 0;
+}
+
+.lensSDGs li {
+  margin: 0 10px;
+}
+
+.lens, .sdg{
   height: 10vh;
 }
+
