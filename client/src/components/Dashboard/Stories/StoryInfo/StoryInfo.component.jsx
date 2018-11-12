@@ -8,9 +8,9 @@ export default class StoryInfo extends Component {
     this.state = {
       id: this.props.match.params.id,
       story: {
-        imgs: []
-      },
-      imgs: ""
+        imgs: [],
+        SDGs: []
+      }
     };
   }
 
@@ -31,6 +31,14 @@ export default class StoryInfo extends Component {
   };
 
   render() {
+    let SDGs = this.state.story.SDGs.map(sdg => {
+      return (
+        <li>
+          <p className="p-theme-1-admin-info">{sdg}</p>
+        </li>
+      );
+    });
+
     return (
       <div className="admin-info-single">
         <table>
@@ -43,9 +51,29 @@ export default class StoryInfo extends Component {
             <td>{this.state.story.title}</td>
           </tr>
           <tr>
+            <th>Story Pre-Description</th>
+            <td>
+              <p className="p-theme-1-admin-info">{this.state.story.pre_description}</p>
+            </td>
+          </tr>
+          <tr>
             <th>Story Details</th>
             <td>
               <p className="p-theme-1-admin-info">{this.state.story.text}</p>
+            </td>
+          </tr>
+          <tr>
+            <th>Story Lens</th>
+            <td>
+              <p className="p-theme-1-admin-info">{this.state.story.lens}</p>
+            </td>
+          </tr>
+          <tr>
+            <th>Story SDGs</th>
+            <td>
+              <ul>
+                {SDGs}
+              </ul>
             </td>
           </tr>
           <tr>
