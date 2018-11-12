@@ -7,6 +7,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import Button from "@material-ui/core/Button";
 
 const styles = theme => ({
   root: {
@@ -20,17 +21,17 @@ const styles = theme => ({
 });
 
 let id = 0;
-function createData(name, calories, fat, carbs, protein) {
+function createData(title, description) {
   id += 1;
-  return { id, name, calories, fat, carbs, protein };
+  return { id, title, description };
 }
 
 const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Gingerbread", 356, 16.0, 49, 3.9)
+  createData("Frozen yoghurt", "description"),
+  createData("Ice cream sandwich", "description"),
+  createData("Eclair", "description"),
+  createData("Cupcake", "description"),
+  createData("Gingerbread", "description")
 ];
 
 function ProjectRequests(props) {
@@ -41,11 +42,9 @@ function ProjectRequests(props) {
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell numeric>Calories</TableCell>
-            <TableCell numeric>Fat (g)</TableCell>
-            <TableCell numeric>Carbs (g)</TableCell>
-            <TableCell numeric>Protein (g)</TableCell>
+            <TableCell>project Title</TableCell>
+            <TableCell>Project Description</TableCell>
+            <TableCell>Actions</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -53,12 +52,26 @@ function ProjectRequests(props) {
             return (
               <TableRow key={row.id}>
                 <TableCell component="th" scope="row">
-                  {row.name}
+                  {row.title}
                 </TableCell>
-                <TableCell numeric>{row.calories}</TableCell>
-                <TableCell numeric>{row.fat}</TableCell>
-                <TableCell numeric>{row.carbs}</TableCell>
-                <TableCell numeric>{row.protein}</TableCell>
+                <TableCell component="th" scope="row">
+                  {row.description}
+                </TableCell>
+
+                <TableCell numeric>
+                  <Button>
+                    <i className="fas fa-edit" style={{ color: "royalblue" }} />
+                  </Button>
+                  <Button>
+                    <i
+                      className="fas fa-check"
+                      style={{ color: "lightgreen" }}
+                    />
+                  </Button>
+                  <Button>
+                    <i className="fas fa-times" style={{ color: "crimson" }} />
+                  </Button>
+                </TableCell>
               </TableRow>
             );
           })}
