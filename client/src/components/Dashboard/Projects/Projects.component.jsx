@@ -5,6 +5,7 @@ import ProjectsList from "./ProjectsList/ProjectsList.component";
 import ProjectInfo from "./ProjectInfo/ProjectInfo.component";
 import UpdateProject from "./UpdateProject/UpdateProject.component";
 import "./Projects.css";
+import ProjectRequest from "./ProjectRequest/ProjectRequest.component";
 
 export default class Projects extends Component {
   render() {
@@ -16,7 +17,7 @@ export default class Projects extends Component {
             <span>New Project</span>
           </Link>
 
-          <Link to="/dashboard/projects/add">
+          <Link to="/dashboard/projects/requests">
             <i className="fas fa-inbox" />
             <span>Project Requests</span>
           </Link>
@@ -31,6 +32,10 @@ export default class Projects extends Component {
         </nav>
         <main>
           <Route path={"/dashboard/projects/add"} component={NewProject} />
+          <Route
+            path={"/dashboard/projects/requests"}
+            component={ProjectRequest}
+          />
           <Route
             exact
             path={"/dashboard/projects/list"}
