@@ -9,6 +9,12 @@
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
 }
 
+.nav-up.main-nav {
+  padding-left: 190px;
+  margin: 0;
+  background: var(--color-4);
+}
+
 .nav-up a {
   color: var(--color-2);
   border-radius: 50%;
