@@ -20,6 +20,24 @@
   line-height: 2;
 }
 
+.filter a i {
+  margin: 0;
+  color: var(--color-3);
+}
+
+.filter a.close {
+  position: absolute;
+  right: 40px;
+  top: 20px;
+  display: none;
+}
+.filter a.close.shown {
+  display: block;
+}
+
+.filter a.close:hover i {
+  color: var(--color-2);
+}
 .filter.show {
   height: 70%;
   width: 70%;

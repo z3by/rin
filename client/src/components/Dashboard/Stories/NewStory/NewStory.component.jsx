@@ -150,8 +150,6 @@ export default class NewProject extends Component {
             id="story-pre_description"
             onChange={this.onChange}
           />
-          <br />
-          <br />
           <label htmlFor="story-text">story text</label> <br />
           <textarea
             required
