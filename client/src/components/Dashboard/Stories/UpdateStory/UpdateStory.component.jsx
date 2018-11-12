@@ -137,34 +137,24 @@ export default class UpdateStory extends Component {
     return (
       <div className="admin-form">
         <form method="POST" onSubmit={this.updateStory}>
-          <label htmlFor="story-title">story title</label> <br />
+          <label htmlFor="story-title">story title</label>
           <input
-            required
             type="text"
             name="title"
             id="story-title"
             value={this.state.title}
             onChange={this.onChange}
           />
-          <br />
-          <br />
-          <label htmlFor="story-pre_description">
-            story pre-description
-          </label>{" "}
-          <br />
+          <label htmlFor="story-pre_description">story pre-description</label>{" "}
           <input
-            required
             type="text"
             name="pre_description"
             id="story-pre_description"
             value={this.state.pre_description}
             onChange={this.onChange}
           />
-          <br />
-          <br />
-          <label htmlFor="story-text">story text</label> <br />
+          <label htmlFor="story-text">story text</label>
           <textarea
-            required
             rows="4"
             cols="50"
             type="text"
@@ -173,7 +163,7 @@ export default class UpdateStory extends Component {
             value={this.state.text[0]}
             onChange={this.onChangeText}
           />
-          <label htmlFor="image">Update story image</label> <br />
+          <label htmlFor="image">Story image</label>
           <img
             className="admin-img-update"
             src={this.state.imgs[0]}
@@ -191,10 +181,8 @@ export default class UpdateStory extends Component {
             className="loading"
             style={{ display: this.state.loading ? "block" : "none" }}
           />
-          <button type="submit" className="btn-admin" disabled>
-            <p>
-              <i className="fas fa-plus" /> Update Story
-            </p>
+          <button type="submit" className="btn" disabled>
+            <i className="fas fa-edit" /> Update Story
           </button>
           <div className="done-img">
             <img src="/imgs/done.gif" alt="" />

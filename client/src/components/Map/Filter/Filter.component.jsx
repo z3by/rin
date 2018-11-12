@@ -25,8 +25,10 @@ class Filter extends React.Component {
   toggleFilter = () => {
     if (document.querySelector(".filter").classList.contains("show")) {
       document.querySelector(".filter").classList.remove("show");
+      document.querySelector(".filter a.close").classList.remove("shown");
     } else {
       document.querySelector(".filter").classList.add("show");
+      document.querySelector(".filter a.close").classList.add("shown");
     }
   };
 
@@ -41,8 +43,13 @@ class Filter extends React.Component {
 
     return (
       <div className="filter">
-        <a onClick={this.toggleFilter}>Filter</a>
+        <a onClick={this.toggleFilter}>
+          <i className="fas fa-search" /> Filter
+        </a>
 
+        <a className="close" onClick={this.toggleFilter}>
+          <i className="fas fa-times" />
+        </a>
         <div className="filter-input">
           <label htmlFor="org-name" className="filter-label">
             Filter by organization name
@@ -83,7 +90,7 @@ class Filter extends React.Component {
             type="range"
             max="1000000"
             name="capacity"
-            placeholder="porject capacity"
+            placeholder="Porject Capacity"
             className="slider"
             onChange={this.props.filter}
           />
@@ -100,7 +107,7 @@ class Filter extends React.Component {
             id="starting-year"
             type="range"
             name="year"
-            placeholder="project starting year"
+            placeholder="Project Starting Year"
             className="slider"
             onChange={this.props.filter}
             max={new Date().getFullYear()}

@@ -28,7 +28,7 @@ class Spectrum extends React.Component {
           onMouseEnter={this.handleMouseHover}
         >
           <div className="tooltip">
-            <div className="tooltiptext spec">housing projects</div>
+            <div className="tooltiptext spec">housing</div>
           </div>
         </li>
         <li
@@ -37,7 +37,7 @@ class Spectrum extends React.Component {
           onMouseEnter={this.handleMouseHover}
         >
           <div className="tooltip">
-            <div className="tooltiptext spec">education projects</div>
+            <div className="tooltiptext spec">education</div>
           </div>
         </li>
         <li
@@ -46,7 +46,7 @@ class Spectrum extends React.Component {
           onMouseEnter={this.handleMouseHover}
         >
           <div className="tooltip">
-            <div className="tooltiptext spec">agriculture projects</div>
+            <div className="tooltiptext spec">agriculture</div>
           </div>
         </li>
         <li
@@ -55,7 +55,7 @@ class Spectrum extends React.Component {
           onMouseEnter={this.handleMouseHover}
         >
           <div className="tooltip">
-            <div className="tooltiptext spec">health projects</div>
+            <div className="tooltiptext spec">health</div>
           </div>
         </li>
         <li
@@ -64,7 +64,7 @@ class Spectrum extends React.Component {
           onMouseEnter={this.handleMouseHover}
         >
           <div className="tooltip">
-            <div className="tooltiptext spec">water projects</div>
+            <div className="tooltiptext spec">water</div>
           </div>
         </li>
         <li
@@ -73,7 +73,7 @@ class Spectrum extends React.Component {
           onMouseEnter={this.handleMouseHover}
         >
           <div className="tooltip">
-            <div className="tooltiptext spec">nutrition projects</div>
+            <div className="tooltiptext spec">nutrition </div>
           </div>
         </li>
         <li
@@ -82,7 +82,7 @@ class Spectrum extends React.Component {
           onMouseEnter={this.handleMouseHover}
         >
           <div className="tooltip">
-            <div className="tooltiptext spec">infancy projects</div>
+            <div className="tooltiptext spec">infancy </div>
           </div>
         </li>
       </ul>

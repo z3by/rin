@@ -16,7 +16,11 @@ export default class Projects extends Component {
             <span>New Project</span>
           </Link>
           <div className="search-group">
-            <input type="search" className="search-input" />
+            <input
+              type="search"
+              className="search-input"
+              placeholder="Search"
+            />
             <i className="fas fa-search" />
           </div>
         </nav>

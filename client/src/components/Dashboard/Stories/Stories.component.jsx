@@ -15,7 +15,11 @@ export default class Stories extends Component {
             <span>New Story</span>
           </Link>
           <div className="search-group">
-            <input type="search" className="search-input" />
+            <input
+              type="search"
+              className="search-input"
+              placeholder="Search"
+            />
             <i className="fas fa-search" />
           </div>
         </nav>
