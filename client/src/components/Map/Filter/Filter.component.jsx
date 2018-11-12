@@ -90,7 +90,7 @@ class Filter extends React.Component {
             type="range"
             max="1000000"
             name="capacity"
-            placeholder="porject capacity"
+            placeholder="Porject Capacity"
             className="slider"
             onChange={this.props.filter}
           />
@@ -107,7 +107,7 @@ class Filter extends React.Component {
             id="starting-year"
             type="range"
             name="year"
-            placeholder="project starting year"
+            placeholder="Project Starting Year"
             className="slider"
             onChange={this.props.filter}
             max={new Date().getFullYear()}

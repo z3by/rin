@@ -22,7 +22,6 @@
 
 .filter a i {
   margin: 0;
-  color: var(--color-3);
 }
 
 .filter a.close {
