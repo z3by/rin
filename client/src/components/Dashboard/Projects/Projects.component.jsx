@@ -15,6 +15,11 @@ export default class Projects extends Component {
             <i className="fas fa-plus" />
             <span>New Project</span>
           </Link>
+
+          <Link to="/dashboard/projects/add">
+            <i className="fas fa-inbox" />
+            <span>Project Requests</span>
+          </Link>
           <div className="search-group">
             <input
               type="search"
