@@ -48,7 +48,9 @@ export default class MoreStories extends Component {
                   />
                 </CardContent>
                 <CardActions>
-                  <Button className="color-5">read this story</Button>
+                  <Link to={`/stories/${story.id}`}>
+                    <Button className="color-5">read this story</Button>
+                  </Link>
                 </CardActions>
               </Card>
             );

@@ -23,9 +23,9 @@ export default class MyRouter extends Component {
         <div className="App">
           <Navbar />
           <Switch>
+            <Route path="/stories/:id" component={StoryDetails} />
             <Route path="/stories" component={Stories} />
             <Route path="/all-stories" component={MoreStories} />
-            <Route path="/stories/:id" component={StoryDetails} />
             <Route path="/map" component={Map} />
             <Route path="/data" component={Data} />
             <Route path="/library" component={Library} />
