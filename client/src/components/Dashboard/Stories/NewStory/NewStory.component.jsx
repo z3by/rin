@@ -20,7 +20,8 @@ export default class NewProject extends Component {
       lens: "",
       text: "",
       img: "",
-      loading: false
+      loading: false,
+      expanded: false
     };
   }
 
@@ -70,6 +71,18 @@ export default class NewProject extends Component {
     });
   };
 
+  showCheckBoxes = () => {
+    let checkboxes = document.getElementById("checkboxes");
+    if (!this.state.expanded) {
+      checkboxes.style.display = "block";
+      this.state.expanded = true;
+    }
+    else {
+      checkboxes.style.display = "none";
+      this.state.expanded = false;
+    }
+  }
+
   addStory = e => {
     e.preventDefault();
     let storyData = {
@@ -81,13 +94,11 @@ export default class NewProject extends Component {
       SDGs: []
     };
 
-    // for (let i = 0; i < 2; i++) {
-    //   if (document.getElementById(this.state.SDGs[i]).checked) {
-    //     storyData.SDGs.push(this.state.SDGs[i])
-    //   }
-    // }
-
-    //console.log(this.state.SDGs);
+    for (let i = 0; i < this.state.SDGs.length; i++) {
+      if (document.getElementById(this.state.SDGs[i]).checked) {
+        storyData.SDGs.push(this.state.SDGs[i])
+      }
+    }
 
     axios
       .post("/api/stories", storyData)
@@ -102,13 +113,6 @@ export default class NewProject extends Component {
         console.log(error);
       });
   };
-
-  onChangeTxt = e => {
-    e.preventDefault();
-    // let text = e.target.value.replace(/\n/g, "\\");
-    // let text = `<pre>${e.target.value}</pre>`;
-    this.setState({ text: e.target.value });
-  }
 
   onChangeImg = e => {
     this.setState({
@@ -148,6 +152,12 @@ export default class NewProject extends Component {
       );
     });
 
+    let SDGs = this.state.SDGs.map(sdg => {
+      return (
+        <label><input type="checkbox" value={sdg} id={sdg} />{sdg}</label>
+      );
+    });
+
     return (
       <div className="admin-form">
         <form onSubmit={this.addStory}>
@@ -177,19 +187,24 @@ export default class NewProject extends Component {
           <select name="lens" id="lens" onChange={this.onChange}>
             <option>Select Lens</option>
             {lenses}
-          </select>
+          </select> <br /> <br />
+          <div className="multiSelect">
+            <div className="selectBox" onClick={this.showCheckBoxes}>
+              <select>
+                <option>Select SDGs</option>
+              </select>
+              <div className="overSelect"></div>
+            </div>
+            <div id="checkboxes">
+              {SDGs}
+            </div>
+          </div> <br />
           <input
             type="file"
             name="img"
             accept="image/*"
             onChange={this.onChangeImg}
           />
-
-          <label htmlFor="lens">Story Lens</label> <br />
-          <select name="lens" id="lens" onChange={this.onChange} required>
-            <option>Select Lens</option>
-            {lenses}
-          </select> <br />
           <img className="admin-img-update" src={this.state.img} />
           <img
             src="/imgs/loading.gif"
