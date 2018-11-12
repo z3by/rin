@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./NewStory.css";
+import Paper from "@material-ui/core/Paper";
 
 export default class NewProject extends Component {
   constructor(props) {
@@ -159,7 +160,7 @@ export default class NewProject extends Component {
     });
 
     return (
-      <div className="admin-form">
+      <Paper className="admin-form">
         <form onSubmit={this.addStory}>
           <input
             type="text"
@@ -219,7 +220,7 @@ export default class NewProject extends Component {
             <img src="/imgs/done.gif" alt="" />
           </div>
         </form>
-      </div>
+      </Paper>
     );
   }
 }

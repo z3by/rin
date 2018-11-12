@@ -33,7 +33,7 @@ export default class Dashboard extends Component {
       <div className="admin-dashboard">
         <Sidebar />
         <nav className="nav-up main-nav">
-          <Link to="/dashboard/">
+          <Link to="/dashboard">
             <i className="fas fa-tachometer-alt" />
             <span>Dashboard</span>
           </Link>

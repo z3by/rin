@@ -20,6 +20,11 @@
   background: var(--color-4);
 }
 
+.nav-up.nav-up.main-nav a i {
+  background: none;
+  font-size: 2rem;
+}
+
 .nav-up a {
   color: var(--color-2);
   border-radius: 50%;
@@ -41,6 +46,10 @@
 .nav-up a:hover i {
   background: var(--color-2);
   color: var(--color-1);
+}
+
+.nav-up.nav-up.main-nav a {
+  font-size: 2rem;
 }
 
 .nav-up a span {

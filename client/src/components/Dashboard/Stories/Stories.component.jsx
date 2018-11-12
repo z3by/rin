@@ -10,7 +10,7 @@ export default class Stories extends Component {
     return (
       <div className="projects-dashboard">
         <nav className="nav-up">
-          <Link to="/dashboard/projects/add">
+          <Link to="/dashboard/stories/add">
             <i className="fas fa-plus" />
             <span>New Story</span>
           </Link>
