@@ -1,6 +1,8 @@
 const mysql = require("mysql");
 const axios = require("axios");
 const dbConfig = require("../db.config");
+const storyValidator = require("../validators/story.validator");
+
 const connection = mysql.createConnection(dbConfig);
 connection.connect(err => {
   if (err) throw err;
@@ -43,9 +45,16 @@ module.exports.addStory = (req, res) => {
     SDGs: JSON.stringify(req.body.SDGs)
   };
 
-  let qry = `insert into stories(title, pre_description, lens, text, imgs, SDGs) values("${data.title}", "${data.pre_description}", "${data.lens}", "${
-    data.text
-    }", '${data.imgs}', '${data.SDGs}');`;
+  const errors = storyValidator(data);
+  if (Object.keys(errors).length) {
+    return res.status(400).json(errors);
+  }
+
+  let qry = `insert into stories(title, pre_description, lens, text, imgs) values("${
+    data.title
+  }", "${data.pre_description}", "${data.lens}", '${data.text}', '${
+    data.imgs
+  }');`;
   connection.query(qry, (err, result) => {
     if (err) throw err;
     res.send("story row inserted successfully");
@@ -66,10 +75,17 @@ module.exports.updateStory = (req, res) => {
     SDGs: JSON.stringify(req.body.SDGs)
   };
 
+  const errors = storyValidator(data);
+  if (Object.keys(errors).length) {
+    return res.status(400).json(errors);
+  }
+
   let qry = `UPDATE stories
-                   SET title="${data.title}", pre_description="${data.pre_description}", lens="${data.lens}", text="${data.text}", imgs='${
-    data.imgs
-    }', SDGs='${data.SDGs}'
+                   SET title="${data.title}", pre_description="${
+    data.pre_description
+  }", lens="${data.lens}", text="${data.text}", imgs='${data.imgs}', SDGs='${
+    data.SDGs
+  }'
                    WHERE id=${req.params.id};`;
   connection.query(qry, (err, result) => {
     if (err) throw err;
