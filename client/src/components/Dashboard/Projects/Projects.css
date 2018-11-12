@@ -1,5 +1,6 @@
 .projects-dashboard main {
   height: calc(100vh - 100px);
-  width: calc(80%);
+  width: calc(100%);
   margin: 0 auto;
+  padding: 100px;
 }

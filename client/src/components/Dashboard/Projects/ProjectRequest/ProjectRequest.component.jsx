@@ -1,6 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -8,17 +6,6 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
-
-const styles = theme => ({
-  root: {
-    width: "100%",
-    marginTop: theme.spacing.unit * 3,
-    overflowX: "auto"
-  },
-  table: {
-    minWidth: 700
-  }
-});
 
 let id = 0;
 function createData(title, description) {
@@ -38,13 +25,13 @@ function ProjectRequests(props) {
   const { classes } = props;
 
   return (
-    <Paper className={classes.root}>
-      <Table className={classes.table}>
+    <Paper>
+      <Table>
         <TableHead>
           <TableRow>
             <TableCell>project Title</TableCell>
             <TableCell>Project Description</TableCell>
-            <TableCell>Actions</TableCell>
+            <TableCell />
           </TableRow>
         </TableHead>
         <TableBody>
@@ -81,8 +68,4 @@ function ProjectRequests(props) {
   );
 }
 
-ProjectRequests.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-
-export default withStyles(styles)(ProjectRequests);
+export default ProjectRequests;
