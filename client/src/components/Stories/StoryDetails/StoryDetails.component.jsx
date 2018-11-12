@@ -6,16 +6,16 @@ export default class StoryDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: this.props.match.params.id,
       story: {
-        title: "",
-        text: [""],
-        imgs: [""]
+        imgs: [],
+        SDGs: []
       }
     };
   }
 
   componentWillMount() {
-    this.getStoryInfo(this.props.match.params.id);
+    this.getStoryInfo(this.state.id);
     document.body.style.overflowY = "auto";
   }
 
@@ -34,6 +34,10 @@ export default class StoryDetails extends Component {
   };
 
   render() {
+    let SDGs = this.state.story.SDGs.map(sdg => {
+      return <li><img className="sdg" src={`/imgs/SDGs/${sdg}.png`} alt="SDG" /></li>
+    });
+
     return (
       <div className="story-details fadeInFast">
         <div
@@ -43,14 +47,14 @@ export default class StoryDetails extends Component {
           <h1>{this.state.story.title}</h1>
           <div className="line" />
           <h3>{this.state.story["pre_description"]}</h3>
+
+          <ul className="lensSDGs">
+            <li><img className="lens" src={`/imgs/lenses/${this.state.story.lens}.png`} alt="Lens" /></li>
+            {SDGs}
+          </ul>
         </div>
         <div className="container">
-          <div className="lenses">
-            <img className="lens" src={`/imgs/lenses/${this.state.story.lens}.png`} alt="" />
-          </div>
-          {this.state.story.text.map(text => {
-            return <p className="p-theme-1">{text}</p>;
-          })}
+          <p className="p-theme-1">{this.state.story.text}</p>
         </div>
       </div>
     );
