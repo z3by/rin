@@ -37,6 +37,10 @@ export default class Dashboard extends Component {
             <i className="fas fa-tachometer-alt" />
             <span>Dashboard</span>
           </Link>
+          <Link to="/">
+            <i className="fas fa-home" />
+            <span>Home</span>
+          </Link>
         </nav>
         <main>
           <Route path="/dashboard/projects" component={Projects} />

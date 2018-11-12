@@ -1,0 +1,17 @@
+.more-stories {
+  padding: 200px;
+}
+
+.story-card {
+  margin: 20px 0;
+}
+
+.story-card h5 {
+  color: var(--color-3);
+}
+
+.story-card .story-card-img {
+  height: 350px;
+  width: 100%;
+  background-size: cover;
+}

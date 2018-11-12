@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Stories.css";
 import Story from "./Story/Story.component";
 import Axios from "axios";
+import { Link } from "react-router-dom";
 
 class Stories extends Component {
   constructor(props) {
@@ -63,7 +64,9 @@ class Stories extends Component {
         </div>
         <div className="container" id="stories-list">
           {storiesInfo}
-          <button>Read More Stories</button>
+          <Link to={"/all-stories"}>
+            <button>Read More Stories</button>
+          </Link>
         </div>
       </div>
     );

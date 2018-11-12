@@ -14,6 +14,7 @@ import Navbar from "../Navbar/Navbar.component";
 import Dashboard from "../Dashboard/Dashboard.component";
 import SignUpLogIn from "../SignUpLogIn/SignUpLogIn.component";
 import StoryDetails from "../Stories/StoryDetails/StoryDetails.component";
+import MoreStories from "../Stories/MoreStories/MoreStories.component";
 
 export default class MyRouter extends Component {
   render() {
@@ -22,8 +23,9 @@ export default class MyRouter extends Component {
         <div className="App">
           <Navbar />
           <Switch>
-            <Route path="/stories/:id" component={StoryDetails} />
             <Route path="/stories" component={Stories} />
+            <Route path="/all-stories" component={MoreStories} />
+            <Route path="/stories/:id" component={StoryDetails} />
             <Route path="/map" component={Map} />
             <Route path="/data" component={Data} />
             <Route path="/library" component={Library} />
