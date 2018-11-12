@@ -50,7 +50,7 @@ export default class ProjectsList extends Component {
           <TableCell>{project.id}</TableCell>
           <TableCell>{project.title}</TableCell>
           <TableCell>{project.organization_name}</TableCell>
-          <TableCell className="project-options">
+          <TableCell>
             <Link to={`/dashboard/projects/list/${project.id}`}>
               <Button>
                 <i className="far fa-eye" />
@@ -79,7 +79,7 @@ export default class ProjectsList extends Component {
               <TableCell>Project ID</TableCell>
               <TableCell>Project Name</TableCell>
               <TableCell>Organization Name</TableCell>
-              <TableCell>Actions</TableCell>
+              <TableCell />
             </TableRow>
           </TableHead>
           <TableBody>{projects}</TableBody>
