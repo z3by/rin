@@ -36,7 +36,8 @@
 
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button,
-.admin-form button {
+.admin-form button,
+.btn-admin {
   background-color: var(--color-3);
   color: #333;
   border: none;
@@ -79,6 +80,7 @@
 .admin-form label {
   color: var(--color-3);
   font-size: 24px;
+  text-transform: capitalize;
 }
 .admin-form select {
   width: 100%;
