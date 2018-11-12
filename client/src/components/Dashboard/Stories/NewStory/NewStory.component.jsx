@@ -14,6 +14,7 @@ export default class NewProject extends Component {
         "lending facilities",
         "refugee funds"
       ],
+      SDGs: ["Climate Action", "Decent Work and Economic Growth", "Gender Equality", "Good Health and Well-Being", "Industry Innovation and Infrastructure", "Life on Land", "No Poverty", "Partnerships for the Goals", "Peace, Justice and Strong Institutions", "Quality Education", "Reduced Inqualities", "Sustainable Cities and Communities", "Zero Hunger"],
       title: "",
       pre_description: "",
       lens: "",
@@ -76,8 +77,17 @@ export default class NewProject extends Component {
       pre_description: this.state.pre_description,
       lens: this.state.lens,
       text: this.state.text,
-      imgs: [this.state.img]
+      imgs: [this.state.img],
+      SDGs: []
     };
+
+    // for (let i = 0; i < 2; i++) {
+    //   if (document.getElementById(this.state.SDGs[i]).checked) {
+    //     storyData.SDGs.push(this.state.SDGs[i])
+    //   }
+    // }
+
+    //console.log(this.state.SDGs);
 
     axios
       .post("/api/stories", storyData)
@@ -175,6 +185,11 @@ export default class NewProject extends Component {
             onChange={this.onChangeImg}
           />
 
+          <label htmlFor="lens">Story Lens</label> <br />
+          <select name="lens" id="lens" onChange={this.onChange} required>
+            <option>Select Lens</option>
+            {lenses}
+          </select> <br />
           <img className="admin-img-update" src={this.state.img} />
           <img
             src="/imgs/loading.gif"
