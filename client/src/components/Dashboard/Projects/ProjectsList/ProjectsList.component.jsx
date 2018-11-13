@@ -2,6 +2,13 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./ProjectsList.css";
+import Button from "@material-ui/core/Button";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
 
 export default class ProjectsList extends Component {
   constructor(props) {
@@ -39,39 +46,45 @@ export default class ProjectsList extends Component {
   render() {
     const projects = this.state.allProject.map(project => {
       return (
-        <tr>
-          <td>{project.id}</td>
-          <td>{project.title}</td>
-          <td>{project.organization_name}</td>
-          <td className="project-options">
+        <TableRow>
+          <TableCell>{project.id}</TableCell>
+          <TableCell>{project.title}</TableCell>
+          <TableCell>{project.organization_name}</TableCell>
+          <TableCell>
             <Link to={`/dashboard/projects/list/${project.id}`}>
-              <i className="far fa-eye" />
+              <Button>
+                <i className="far fa-eye" />
+              </Button>
             </Link>
             <Link to={`/dashboard/projects/list/updateproject/${project.id}`}>
-              <i className="fas fa-edit" />
+              <Button>
+                <i className="fas fa-edit" style={{ color: "royalblue" }} />
+              </Button>
             </Link>
             <a onClick={() => this.deleteProject(project)}>
-              <i className="fas fa-trash-alt" />
+              <Button>
+                <i className="fas fa-trash-alt" style={{ color: "crimson" }} />
+              </Button>
             </a>
-          </td>
-        </tr>
+          </TableCell>
+        </TableRow>
       );
     });
 
     return (
-      <div>
-        <table class="projects-list-table">
-          <thead>
-            <tr>
-              <th>Project ID</th>
-              <th>Project Name</th>
-              <th>Organization Name</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>{projects}</tbody>
-        </table>
-      </div>
+      <Paper>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Project ID</TableCell>
+              <TableCell>Project Name</TableCell>
+              <TableCell>Organization Name</TableCell>
+              <TableCell />
+            </TableRow>
+          </TableHead>
+          <TableBody>{projects}</TableBody>
+        </Table>
+      </Paper>
     );
   }
 }

@@ -32,7 +32,16 @@ export default class Dashboard extends Component {
     return (
       <div className="admin-dashboard">
         <Sidebar />
-
+        <nav className="nav-up main-nav">
+          <Link to="/dashboard">
+            <i className="fas fa-tachometer-alt" />
+            <span>Dashboard</span>
+          </Link>
+          <Link to="/">
+            <i className="fas fa-home" />
+            <span>Home</span>
+          </Link>
+        </nav>
         <main>
           <Route path="/dashboard/projects" component={Projects} />
           <Route path="/dashboard/stories" component={Stories} />

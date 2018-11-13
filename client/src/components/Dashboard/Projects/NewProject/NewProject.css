@@ -9,24 +9,23 @@
 }
 
 .admin-form form {
-  padding: 50px;
+  padding: 100px;
 }
 
 .admin-form textarea {
+  display: block;
   border: none;
   border: 1px solid var(--color-3);
   background: transparent;
   outline: none;
-  height: 40px;
-  width: 100%;
+  width: 80%;
   font-family: var(--main-font);
   font-size: 16px;
-  height: 300px;
   background: var(--color-1);
   border: none;
   border-radius: 20px;
   padding: 20px;
-  margin-bottom: 30px;
+  margin: 40px auto;
 }
 
 .admin-form textarea::placeholder {
@@ -35,41 +34,48 @@
 }
 
 /* Button used to open the contact form - fixed at the bottom of the page */
-.open-button,
 .admin-form button,
 .btn-admin {
-  background-color: var(--color-3);
-  color: #333;
+  background-color: var(--color-2);
+  color: var(--color-5);
   border: none;
   cursor: pointer;
   opacity: 0.8;
-  width: 100%;
+  width: 80%;
   font-size: 18px;
   text-align: center;
-  margin: 0;
+  margin: 0 auto;
+  display: block;
 }
 
+.admin-form button:disabled {
+  background-color: var(--color-3);
+}
 .admin-img-update {
   width: 100px;
-  margin: 0 auto;
+  display: block;
+  margin: 30px auto;
 }
 
 /* The popup form - hidden by default */
 .form-popup {
   position: relative;
   height: 400px;
-  width: 100%;
-  margin: 30px 0;
+  width: 80%;
+  margin: 40px auto;
 }
 
-.admin-form input[type=text] {
+.admin-form input[type="text"],
+.admin-form input[type="date"],
+.admin-form input[type="number"],
+.admin-form input[type="file"] {
   background: var(--color-1);
   height: 50px;
-  width: 100%;
+  width: 80%;
   display: block;
   margin: 40px auto;
   border: none;
-  font-size: 1.5rem;
+  font-size: 1rem;
   padding: 0 30px;
   border-radius: 20px;
 }
@@ -78,12 +84,16 @@
   color: #333;
 }
 .admin-form label {
-  color: var(--color-3);
+  color: var(--color-5);
   font-size: 24px;
+  padding-left: 10%;
   text-transform: capitalize;
 }
 .admin-form select {
-  width: 100%;
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+  height: 55px;
 }
 
 /* Add some hover effects to buttons */
@@ -92,11 +102,8 @@
   opacity: 1;
 }
 
-.selected-location {
-  position: absolute;
-  background-color: var(--dark-transparent);
-  color: var(--color-1);
-  z-index: 100;
+.menu-full-width {
+  width: 100%;
 }
 
 .marker {

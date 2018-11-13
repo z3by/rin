@@ -2,6 +2,13 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./StoriesList.css";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
+import Button from "@material-ui/core/Button";
 
 export default class StoriesList extends Component {
   constructor(props) {
@@ -15,7 +22,7 @@ export default class StoriesList extends Component {
     this.fetchAllStories();
   }
 
-  componentDidMount() {
+  componenTableCellidMount() {
     document.body.style.overflowY = "auto";
   }
 
@@ -39,37 +46,43 @@ export default class StoriesList extends Component {
   render() {
     const stories = this.state.allStories.map(story => {
       return (
-        <tr>
-          <td>{story.id}</td>
-          <td>{story.title}</td>
-          <td className="project-options">
+        <TableRow>
+          <TableCell>{story.id}</TableCell>
+          <TableCell>{story.title}</TableCell>
+          <TableCell numeric>
             <Link to={`/dashboard/stories/list/${story.id}`}>
-              <i className="far fa-eye" />
+              <Button>
+                <i className="far fa-eye" />
+              </Button>
             </Link>
             <Link to={`/dashboard/stories/list/updatestory/${story.id}`}>
-              <i className="fas fa-edit" />
+              <Button>
+                <i className="fas fa-edit" style={{ color: "royalblue" }} />
+              </Button>
             </Link>
             <a onClick={() => this.deleteStory(story)}>
-              <i className="fas fa-trash-alt" />
+              <Button>
+                <i className="fas fa-trash-alt" style={{ color: "crimson" }} />
+              </Button>
             </a>
-          </td>
-        </tr>
+          </TableCell>
+        </TableRow>
       );
     });
 
     return (
-      <div>
-        <table class="projects-list-table">
-          <thead>
-            <tr>
-              <th>Story ID</th>
-              <th>Story Title</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>{stories}</tbody>
-        </table>
-      </div>
+      <Paper>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Story ID</TableCell>
+              <TableCell>Story Title</TableCell>
+              <TableCell />
+            </TableRow>
+          </TableHead>
+          <TableBody>{stories}</TableBody>
+        </Table>
+      </Paper>
     );
   }
 }

@@ -3,6 +3,7 @@ import axios from "axios";
 import GoogleMapReact from "google-map-react";
 import { mapApi } from "../../../../config/map.config";
 import "./NewProject.css";
+import Paper from "@material-ui/core/Paper";
 
 const Marker = () => {
   return (
@@ -180,7 +181,7 @@ export default class NewProject extends Component {
     });
 
     return (
-      <div className="admin-form">
+      <Paper className="admin-form">
         <form onSubmit={this.addProject}>
           <input
             type="text"
@@ -265,7 +266,7 @@ export default class NewProject extends Component {
             <img src="/imgs/done.gif" alt="" />
           </div>
         </form>
-      </div>
+      </Paper>
     );
   }
 }

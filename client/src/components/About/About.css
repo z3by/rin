@@ -1,5 +1,5 @@
 .container {
-  margin: 20px;
+  padding: 20px;
   margin-left: calc(15% + 100px);
   width: 70%;
   -webkit-transition: all 1s ease;
