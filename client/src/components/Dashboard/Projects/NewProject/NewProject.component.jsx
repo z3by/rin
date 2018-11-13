@@ -67,10 +67,13 @@ export default class NewProject extends Component {
     // check if the user added all required input
     const isValid =
       state.title &&
-      state.pre_description &&
-      state.lens &&
-      state.text &&
-      state.img;
+      state.start_date &&
+      state.type &&
+      state.img_url &&
+      state.project_description &&
+      state.countryName &&
+      state.lng &&
+      state.lat;
 
     if (isValid) {
       this.enableAddButton();
@@ -253,7 +256,7 @@ export default class NewProject extends Component {
           <button
             type="submit"
             className="btn-admin"
-            disabled={this.state.formValid}
+            disabled={!this.state.formValid}
           >
             <i className="fas fa-plus" /> Add Project
           </button>
