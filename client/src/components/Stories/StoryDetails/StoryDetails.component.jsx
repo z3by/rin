@@ -8,8 +8,9 @@ export default class StoryDetails extends Component {
     this.state = {
       id: this.props.match.params.id,
       story: {
-        imgs: [""],
-        SDGs: [""]
+        imgs: [],
+        SDGs: [],
+        lens: ""
       }
     };
   }
@@ -37,7 +38,7 @@ export default class StoryDetails extends Component {
     let SDGs = this.state.story.SDGs.map(sdg => {
       return (
         <li>
-          <img className="sdg" src={`/imgs/SDGs/${sdg}.png` || ""} alt="SDG" />
+          <img className="sdg" src={`/imgs/SDGs/${sdg}.png`} alt="SDG" />
         </li>
       );
     });
@@ -56,7 +57,7 @@ export default class StoryDetails extends Component {
             <li>
               <img
                 className="lens"
-                src={`/imgs/lenses/${this.state.story.lens}.png`}
+                src={`/imgs/lenses/${this.state.story.lens.toLowerCase()}.png`}
                 alt="Lens"
               />
             </li>

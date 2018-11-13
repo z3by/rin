@@ -15,25 +15,25 @@ const lenses = [
   "Refugee-Owned",
   "Refugee-Led",
   "Refugee-Supporting",
-  "Refugee-Supporting, Host Weighted",
-  "Lending Facilities",
-  "Refugee Funds"
+  "Refugee-Supporting-Host-Weighted",
+  "Lending-Facilities",
+  "Refugee-Funds"
 ];
 
 const SDGs = [
-  "Climate Action",
-  "Decent Work and Economic Growth",
-  "Gender Equality",
-  "Good Health and Well-Being",
-  "Industry Innovation and Infrastructure",
-  "Life on Land",
-  "No Poverty",
-  "Partnerships for the Goals",
-  "Peace, Justice and Strong Institutions",
-  "Quality Education",
-  "Reduced Inqualities",
-  "Sustainable Cities and Communities",
-  "Zero Hunger"
+  "Climate-Action",
+  "Decent-Work-and-Economic-Growth",
+  "Gender-Equality",
+  "Good-Health-and-Well-Being",
+  "Industry-Innovation-and-Infrastructure",
+  "Life-on-Land",
+  "No-Poverty",
+  "Partnerships-for-the-Goals",
+  "Peace-Justice-and-Strong-Institutions",
+  "Quality-Education",
+  "Reduced-Inqualities",
+  "Sustainable-Cities-and-Communities",
+  "Zero-Hunger"
 ];
 
 export default class NewProject extends Component {
