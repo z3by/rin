@@ -35,6 +35,7 @@
   cursor: pointer;
   text-transform: uppercase;
   background: var(--color-2);
+  text-align: left;
 }
 
 .sidebar ul li a {
