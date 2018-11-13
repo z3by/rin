@@ -38,7 +38,8 @@ export default class UpdateProject extends Component {
       lng: 0,
       lat: 0,
       zoom: 0,
-      loading: false
+      loading: false,
+      formValid: false
     };
   }
 
@@ -51,42 +52,35 @@ export default class UpdateProject extends Component {
     document.body.style.overflowY = "auto";
   }
 
-  enableUpdateButton = () => {
-    document.querySelector(".btn-admin").disabled = false;
-    document.querySelector(".btn-admin").style.backgroundColor = "#222";
-    document
-      .querySelector(".btn-admin")
-      .addEventListener("mouseenter", function() {
-        document.querySelector(".btn-admin").style.backgroundColor = "#f90";
-      });
-    document
-      .querySelector(".btn-admin")
-      .addEventListener("mouseleave", function() {
-        document.querySelector(".btn-admin").style.backgroundColor = "#222";
-      });
+  enableAddButton = () => {
+    this.setState({
+      formValid: true
+    });
   };
 
-  disableUpdateButton = () => {
-    document.querySelector(".btn-admin").disabled = true;
-    document.querySelector(".btn-admin").style.backgroundColor = "#666";
+  disableAddButton = () => {
+    this.setState({
+      formValid: false
+    });
   };
 
   checkButtonAvailability = () => {
-    if (
-      this.state.title &&
-      this.state.project_description &&
-      this.state.organization_name &&
-      this.state.capacity &&
-      this.state.img_url &&
-      this.state.type &&
-      this.state.countryName &&
-      this.state.start_date &&
-      this.state.lat &&
-      this.state.lng
-    ) {
-      this.enableUpdateButton();
+    const state = this.state;
+    // check if the user added all required input
+    const isValid =
+      state.title &&
+      state.start_date &&
+      state.type &&
+      state.img_url &&
+      state.project_description &&
+      state.countryName &&
+      state.lng &&
+      state.lat;
+
+    if (isValid) {
+      this.enableAddButton();
     } else {
-      this.disableUpdateButton();
+      this.disableAddButton();
     }
   };
 
@@ -188,8 +182,7 @@ export default class UpdateProject extends Component {
         document.querySelector(".done-img").style.display = "flex";
         setTimeout(() => {
           document.querySelector(".done-img").style.display = "none";
-        }, 6000);
-        console.log("UPDATED SUCCESSFULLY");
+        }, 2000);
       })
       .catch(function(error) {
         console.log(error);
@@ -327,7 +320,11 @@ export default class UpdateProject extends Component {
               <Marker lng={this.state.lng} lat={this.state.lat} />
             </GoogleMapReact>
           </div>
-          <button type="submit" className="btn" disabled>
+          <button
+            type="submit"
+            className="btn"
+            disabled={!this.state.formValid}
+          >
             <i className="fas fa-edit" /> Update Project
           </button>
           <div className="done-img">
