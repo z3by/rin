@@ -13,7 +13,8 @@ export default class UpdateStory extends Component {
       lenses: [],
       text: [],
       imgs: [],
-      loading: false
+      loading: false,
+      formValid: false
     };
   }
 
@@ -25,36 +26,32 @@ export default class UpdateStory extends Component {
     document.body.style.overflowY = "auto";
   }
 
-  enableUpdateButton = () => {
-    document.querySelector(".btn-admin").disabled = false;
-    document.querySelector(".btn-admin").style.backgroundColor = "#222";
-    document
-      .querySelector(".btn-admin")
-      .addEventListener("mouseenter", function() {
-        document.querySelector(".btn-admin").style.backgroundColor = "#f90";
-      });
-    document
-      .querySelector(".btn-admin")
-      .addEventListener("mouseleave", function() {
-        document.querySelector(".btn-admin").style.backgroundColor = "#222";
-      });
+  enableAddButton = () => {
+    this.setState({
+      formValid: true
+    });
   };
 
-  disableUpdateButton = () => {
-    document.querySelector(".btn-admin").disabled = true;
-    document.querySelector(".btn-admin").style.backgroundColor = "#666";
+  disableAddButton = () => {
+    this.setState({
+      formValid: false
+    });
   };
 
   checkButtonAvailability = () => {
-    if (
-      this.state.title &&
-      this.state.pre_description &&
-      this.state.text[0] &&
-      this.state.imgs[0]
-    ) {
-      this.enableUpdateButton();
+    const state = this.state;
+    // check if the user added all required input
+    const isValid =
+      state.title &&
+      state.pre_description &&
+      state.lens &&
+      state.text &&
+      state.img;
+
+    if (isValid) {
+      this.enableAddButton();
     } else {
-      this.disableUpdateButton();
+      this.disableAddButton();
     }
   };
 
@@ -181,7 +178,11 @@ export default class UpdateStory extends Component {
             className="loading"
             style={{ display: this.state.loading ? "block" : "none" }}
           />
-          <button type="submit" className="btn" disabled>
+          <button
+            type="submit"
+            className="btn"
+            disabled={!this.state.formValid}
+          >
             <i className="fas fa-edit" /> Update Story
           </button>
           <div className="done-img">
