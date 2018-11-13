@@ -1,6 +1,40 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./UpdateStory.css";
+import Paper from "@material-ui/core/Paper";
+import Select from "@material-ui/core/Select";
+import Checkbox from "@material-ui/core/Checkbox";
+import MenuItem from "@material-ui/core/MenuItem";
+import Menu from "@material-ui/core/Menu";
+import { MenuList } from "@material-ui/core";
+import ExpansionPanel from "@material-ui/core/ExpansionPanel";
+import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
+import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
+
+const lenses = [
+  "Refugee-Owned",
+  "Refugee-Led",
+  "Refugee-Supporting",
+  "Refugee-Supporting-Host-Weighted",
+  "Lending-Facilities",
+  "Refugee-Funds"
+];
+
+const SDGs = [
+  "Climate-Action",
+  "Decent-Work-and-Economic-Growth",
+  "Gender-Equality",
+  "Good-Health-and-Well-Being",
+  "Industry-Innovation-and-Infrastructure",
+  "Life-on-Land",
+  "No-Poverty",
+  "Partnerships-for-the-Goals",
+  "Peace-Justice-and-Strong-Institutions",
+  "Quality-Education",
+  "Reduced-Inqualities",
+  "Sustainable-Cities-and-Communities",
+  "Zero-Hunger"
+];
 
 export default class UpdateStory extends Component {
   constructor(props) {
@@ -10,11 +44,11 @@ export default class UpdateStory extends Component {
       story: {},
       title: "",
       pre_description: "",
-      lenses: [],
-      text: [],
+      lens: "",
+      text: "",
       imgs: [],
-      loading: false,
-      formValid: false
+      SDGs: [],
+      loading: false
     };
   }
 
@@ -46,7 +80,7 @@ export default class UpdateStory extends Component {
       state.pre_description &&
       state.lens &&
       state.text &&
-      state.img;
+      state.imgs;
 
     if (isValid) {
       this.enableAddButton();
@@ -59,12 +93,35 @@ export default class UpdateStory extends Component {
     axios.get(`/api/stories/${id}`).then(res => {
       this.setState({
         story: res.data[0]
+      }, () => {
+        this.setState({ title: res.data[0]["title"], pre_description: res.data[0]["pre_description"], lens: res.data[0]["lens"], text: res.data[0]["text"], imgs: res.data[0]["imgs"], SDGs: res.data[0]["SDGs"] });
       });
     });
   };
 
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value }, () => {
+      this.checkButtonAvailability();
+    });
+  };
+
+  onChangeSDG = e => {
+    const index = e.target.value;
+    const sdgVal = SDGs[index];
+    const checked = this.state.SDGs.includes(sdgVal);
+    let selectedSDGs;
+
+    if (!checked) {
+      selectedSDGs = [...this.state.SDGs, SDGs[index]];
+    } else {
+      selectedSDGs = this.state.SDGs.filter(sdg => {
+        return sdg !== sdgVal;
+      });
+    }
+
+    this.setState({
+      SDGs: selectedSDGs
+    }, () => {
       this.checkButtonAvailability();
     });
   };
@@ -112,27 +169,60 @@ export default class UpdateStory extends Component {
     let storyData = {
       title: this.state.title,
       pre_description: this.state.pre_description,
-      lenses: this.state.lenses,
+      lens: this.state.lens,
       text: this.state.text,
-      imgs: this.state.imgs
+      imgs: this.state.imgs,
+      SDGs: this.state.SDGs
     };
 
     axios
       .put(`/api/stories/${this.state.id}`, storyData)
-      .then(function(response) {
+      .then(function (response) {
         document.querySelector(".done-img").style.display = "flex";
         setTimeout(() => {
           document.querySelector(".done-img").style.display = "none";
         }, 3000);
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   };
 
   render() {
+    let lensesUI = lenses.map((lens, i) => {
+      if (lens === this.state.lens) {
+        return (
+          <option value={lens} key={i} selected>
+            {lens}
+          </option>
+        );
+      }
+      else {
+        return (
+          <option value={lens} key={i}>
+            {lens}
+          </option>
+        );
+      }
+
+    });
+
+    let SDGsUI = SDGs.map((sdg, id) => {
+      return (
+        <MenuItem>
+          <Checkbox
+            checked={this.state.SDGs.includes(sdg) ? true : false}
+            style={{ color: "var(--color-2)" }}
+            onChange={this.onChangeSDG}
+            value={id}
+          />
+          {sdg}
+        </MenuItem>
+      );
+    });
+
     return (
-      <div className="admin-form">
+      <Paper className="admin-form">
         <form method="POST" onSubmit={this.updateStory}>
           <label htmlFor="story-title">story title</label>
           <input
@@ -160,6 +250,20 @@ export default class UpdateStory extends Component {
             value={this.state.text[0]}
             onChange={this.onChangeText}
           />
+          <select name="lens" id="lens" onChange={this.onChange}>
+            <option>Select Lens</option>
+            {lensesUI}
+          </select>
+          <br />
+          <ExpansionPanel id="checkboxes">
+            <ExpansionPanelSummary>
+              <p>Select SDGs</p>
+            </ExpansionPanelSummary>
+            <ExpansionPanelDetails>
+              <MenuList className="menu-full-width">{SDGsUI}</MenuList>
+            </ExpansionPanelDetails>
+          </ExpansionPanel>
+          <br />
           <label htmlFor="image">Story image</label>
           <img
             className="admin-img-update"
@@ -189,7 +293,7 @@ export default class UpdateStory extends Component {
             <img src="/imgs/done.gif" alt="" />
           </div>
         </form>
-      </div>
+      </Paper>
     );
   }
 }

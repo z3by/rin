@@ -178,7 +178,7 @@ export default class NewProject extends Component {
       return (
         <MenuItem>
           <Checkbox
-            checked={this.state.checkedA}
+            checked={this.state.checked}
             style={{ color: "var(--color-2)" }}
             onChange={this.onChangeSDG}
             value={id}
