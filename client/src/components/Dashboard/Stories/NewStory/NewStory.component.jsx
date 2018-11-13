@@ -11,40 +11,43 @@ import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 
+const lenses = [
+  "Refugee-Owned",
+  "Refugee-Led",
+  "Refugee-Supporting",
+  "Refugee-Supporting, Host Weighted",
+  "Lending Facilities",
+  "Refugee Funds"
+];
+
+const SDGs = [
+  "Climate Action",
+  "Decent Work and Economic Growth",
+  "Gender Equality",
+  "Good Health and Well-Being",
+  "Industry Innovation and Infrastructure",
+  "Life on Land",
+  "No Poverty",
+  "Partnerships for the Goals",
+  "Peace, Justice and Strong Institutions",
+  "Quality Education",
+  "Reduced Inqualities",
+  "Sustainable Cities and Communities",
+  "Zero Hunger"
+];
+
 export default class NewProject extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      lenses: [
-        "Refugee-Owned",
-        "Refugee-Led",
-        "Refugee-Supporting",
-        "Refugee-Supporting, Host Weighted",
-        "Lending Facilities",
-        "Refugee Funds"
-      ],
-      SDGs: [
-        "Climate Action",
-        "Decent Work and Economic Growth",
-        "Gender Equality",
-        "Good Health and Well-Being",
-        "Industry Innovation and Infrastructure",
-        "Life on Land",
-        "No Poverty",
-        "Partnerships for the Goals",
-        "Peace, Justice and Strong Institutions",
-        "Quality Education",
-        "Reduced Inqualities",
-        "Sustainable Cities and Communities",
-        "Zero Hunger"
-      ],
+      lens: "",
+      SDGs: [],
       title: "",
       pre_description: "",
       lens: "",
       text: "",
       img: "",
-      loading: false,
-      expanded: false
+      loading: false
     };
   }
 
@@ -89,20 +92,28 @@ export default class NewProject extends Component {
   onChange = e => {
     e.preventDefault();
     this.setState({ [e.target.name]: e.target.value }, () => {
-      console.log(this.state);
       this.checkButtonAvailability();
     });
   };
 
-  showCheckBoxes = () => {
-    let checkboxes = document.getElementById("checkboxes");
-    if (!this.state.expanded) {
-      checkboxes.style.display = "block";
-      this.state.expanded = true;
+  // when checkboxes are checked;
+  onChangeSDG = e => {
+    const index = e.target.value;
+    const sdgVal = SDGs[index];
+    const checked = this.state.SDGs.includes(sdgVal);
+    let selectedSDGs;
+
+    if (!checked) {
+      selectedSDGs = [...this.state.SDGs, SDGs[index]];
     } else {
-      checkboxes.style.display = "none";
-      this.state.expanded = false;
+      selectedSDGs = this.state.SDGs.filter(sdg => {
+        return sdg !== sdgVal;
+      });
     }
+
+    this.setState({
+      SDGs: selectedSDGs
+    });
   };
 
   addStory = e => {
@@ -110,17 +121,11 @@ export default class NewProject extends Component {
     let storyData = {
       title: this.state.title,
       pre_description: this.state.pre_description,
-      lens: this.state.lens,
       text: this.state.text,
       imgs: [this.state.img],
-      SDGs: []
+      lens: this.state.lens,
+      SDGs: this.state.SDGs
     };
-
-    for (let i = 0; i < this.state.SDGs.length; i++) {
-      if (document.getElementById(this.state.SDGs[i]).checked) {
-        storyData.SDGs.push(this.state.SDGs[i]);
-      }
-    }
 
     axios
       .post("/api/stories", storyData)
@@ -158,7 +163,6 @@ export default class NewProject extends Component {
           loading: false
         },
         () => {
-          console.log(this.state);
           this.checkButtonAvailability();
         }
       );
@@ -166,7 +170,7 @@ export default class NewProject extends Component {
   };
 
   render() {
-    let lenses = this.state.lenses.map((lens, i) => {
+    let lensesUI = lenses.map((lens, i) => {
       return (
         <option value={lens} key={i}>
           {lens}
@@ -174,12 +178,14 @@ export default class NewProject extends Component {
       );
     });
 
-    let SDGs = this.state.SDGs.map(sdg => {
+    let SDGsUI = SDGs.map((sdg, id) => {
       return (
         <MenuItem>
           <Checkbox
             checked={this.state.checkedA}
             style={{ color: "var(--color-2)" }}
+            onChange={this.onChangeSDG}
+            value={id}
           />
           {sdg}
         </MenuItem>
@@ -214,7 +220,7 @@ export default class NewProject extends Component {
           />
           <select name="lens" id="lens" onChange={this.onChange}>
             <option>Select Lens</option>
-            {lenses}
+            {lensesUI}
           </select>
           <br />
           <ExpansionPanel id="checkboxes">
@@ -222,7 +228,7 @@ export default class NewProject extends Component {
               <p>Select SDGs</p>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
-              <MenuList className="menu-full-width">{SDGs}</MenuList>
+              <MenuList className="menu-full-width">{SDGsUI}</MenuList>
             </ExpansionPanelDetails>
           </ExpansionPanel>
 
