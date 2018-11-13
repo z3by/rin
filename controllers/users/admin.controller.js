@@ -1,3 +1,5 @@
+const helpers = require("../helpers/admin.helpers");
+
 module.exports.isAdmin = (req, res) => {
   if (req.session.adminLogged) {
     res.send(true);
@@ -15,4 +17,16 @@ module.exports.loginAdmin = (req, res) => {
       res.send(false);
     }
   }
+};
+
+// get all mmebers
+module.exports.getAllMembers = (req, res) => {
+  helpers
+    .getAllUsers()
+    .then(result => {
+      res.status(200).json(result);
+    })
+    .catch(err => {
+      console.log(err);
+    });
 };

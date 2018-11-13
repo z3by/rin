@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Stories.css";
 import Story from "./Story/Story.component";
 import Axios from "axios";
+import { Link } from "react-router-dom";
 
 class Stories extends Component {
   constructor(props) {
@@ -30,7 +31,7 @@ class Stories extends Component {
   };
 
   goDown = () => {
-    document.querySelector(".vertical-line").scrollIntoView({
+    document.querySelector("#scroll-sign").scrollIntoView({
       behavior: "smooth"
     });
   };
@@ -56,14 +57,16 @@ class Stories extends Component {
             </div>
           </div>
         </header>
-
+        <div id="scroll-sign" />
         <div className="vertical-line" />
         <div className="center-stories">
           <img src="/imgs/old-logo.png" alt="" />
         </div>
         <div className="container" id="stories-list">
           {storiesInfo}
-          <button>Read More Stories</button>
+          <Link to={"/all-stories"}>
+            <button>Read More Stories</button>
+          </Link>
         </div>
       </div>
     );

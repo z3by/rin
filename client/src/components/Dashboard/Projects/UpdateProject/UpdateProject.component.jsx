@@ -38,7 +38,8 @@ export default class UpdateProject extends Component {
       lng: 0,
       lat: 0,
       zoom: 0,
-      loading: false
+      loading: false,
+      formValid: false
     };
   }
 
@@ -51,30 +52,37 @@ export default class UpdateProject extends Component {
     document.body.style.overflowY = "auto";
   }
 
-  enableUpdateButton = () => {
-    document.querySelector(".btn-admin").disabled = false;
-    document.querySelector(".btn-admin").style.backgroundColor = "#222";
-    document.querySelector(".btn-admin").addEventListener("mouseenter", function () {
-      document.querySelector(".btn-admin").style.backgroundColor = "#f90";
+  enableAddButton = () => {
+    this.setState({
+      formValid: true
     });
-    document.querySelector(".btn-admin").addEventListener("mouseleave", function () {
-      document.querySelector(".btn-admin").style.backgroundColor = "#222";
-    });
-  }
+  };
 
-  disableUpdateButton = () => {
-    document.querySelector(".btn-admin").disabled = true;
-    document.querySelector(".btn-admin").style.backgroundColor = "#666";
-  }
+  disableAddButton = () => {
+    this.setState({
+      formValid: false
+    });
+  };
 
   checkButtonAvailability = () => {
-    if (this.state.title && this.state.project_description && this.state.organization_name && this.state.capacity && this.state.img_url && this.state.type && this.state.countryName && this.state.start_date && this.state.lat && this.state.lng) {
-      this.enableUpdateButton();
+    const state = this.state;
+    // check if the user added all required input
+    const isValid =
+      state.title &&
+      state.start_date &&
+      state.type &&
+      state.img_url &&
+      state.project_description &&
+      state.countryName &&
+      state.lng &&
+      state.lat;
+
+    if (isValid) {
+      this.enableAddButton();
+    } else {
+      this.disableAddButton();
     }
-    else {
-      this.disableUpdateButton();
-    }
-  }
+  };
 
   getProject = id => {
     axios.get(`/api/projects/${id}`).then(res => {
@@ -134,12 +142,15 @@ export default class UpdateProject extends Component {
 
     axios.post("/api/upload", formData, config).then(res => {
       const imageURL = res.data.location;
-      this.setState({
-        img_url: imageURL,
-        loading: false
-      }, () => {
-        this.checkButtonAvailability();
-      });
+      this.setState(
+        {
+          img_url: imageURL,
+          loading: false
+        },
+        () => {
+          this.checkButtonAvailability();
+        }
+      );
     });
   };
 
@@ -167,14 +178,13 @@ export default class UpdateProject extends Component {
 
     axios
       .put(`/api/projects/${this.state.id}`, projectData)
-      .then(function (response) {
+      .then(function(response) {
         document.querySelector(".done-img").style.display = "flex";
         setTimeout(() => {
           document.querySelector(".done-img").style.display = "none";
-        }, 6000);
-        console.log("UPDATED SUCCESSFULLY");
+        }, 2000);
       })
-      .catch(function (error) {
+      .catch(function(error) {
         console.log(error);
       });
   };
@@ -214,7 +224,7 @@ export default class UpdateProject extends Component {
     return (
       <div className="admin-form">
         <form onSubmit={this.updateProject}>
-          <label htmlFor="project-title">Project Title</label> <br />
+          <label htmlFor="project-title">Project Title</label>
           <input
             required
             type="text"
@@ -223,9 +233,8 @@ export default class UpdateProject extends Component {
             onChange={this.onChange}
             value={this.state.title}
           />
-          <br />
-          <br />
-          <label htmlFor="project-desc">Project Description</label> <br />
+
+          <label htmlFor="project-desc">Project Description</label>
           <input
             required
             type="text"
@@ -234,9 +243,8 @@ export default class UpdateProject extends Component {
             value={this.state.project_description}
             onChange={this.onChange}
           />
-          <br />
-          <br />
-          <label htmlFor="start_date">Start Date</label> <br />
+
+          <label htmlFor="start_date">Start Date</label>
           <input
             required
             type="date"
@@ -245,9 +253,8 @@ export default class UpdateProject extends Component {
             value={this.state.start_date}
             onChange={this.onChange}
           />
-          <br />
-          <br />
-          <label htmlFor="capacity">Capacity</label> <br />
+
+          <label htmlFor="capacity">Capacity</label>
           <input
             required
             type="number"
@@ -257,9 +264,8 @@ export default class UpdateProject extends Component {
             value={this.state.capacity}
             onChange={this.onChange}
           />
-          <br />
-          <br />
-          <label htmlFor="organization_name">Organization Name</label> <br />
+
+          <label htmlFor="organization_name">Organization Name</label>
           <input
             required
             type="text"
@@ -268,9 +274,8 @@ export default class UpdateProject extends Component {
             value={this.state.organization_name}
             onChange={this.onChange}
           />
-          <br />
-          <br />
-          <label htmlFor="img_url">Image Url</label> <br />
+
+          <label htmlFor="img_url">Project Image</label>
           <img
             className="admin-img-update"
             src={this.state.img_url}
@@ -289,15 +294,13 @@ export default class UpdateProject extends Component {
             className="loading"
             style={{ display: this.state.loading ? "block" : "none" }}
           />
-          <br />
-          <br />
-          <label htmlFor="type">Project Type</label> <br />
+
+          <label htmlFor="type">Project Type</label>
           <select required name="type" id="type" onChange={this.onChange}>
             {types}
           </select>
-          <br />
-          <br />
-          <label htmlFor="countryName">Project Country</label> <br />
+
+          <label htmlFor="countryName">Project Country</label>
           <select
             required
             name="countryName"
@@ -317,7 +320,13 @@ export default class UpdateProject extends Component {
               <Marker lng={this.state.lng} lat={this.state.lat} />
             </GoogleMapReact>
           </div>
-          <button type="submit" className="btn-admin" disabled>Update Project</button>
+          <button
+            type="submit"
+            className="btn"
+            disabled={!this.state.formValid}
+          >
+            <i className="fas fa-edit" /> Update Project
+          </button>
           <div className="done-img">
             <img src="/imgs/done.gif" alt="" />
           </div>

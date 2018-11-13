@@ -7,9 +7,10 @@ export default class StoryInfo extends Component {
     super(props);
     this.state = {
       id: this.props.match.params.id,
-      story: {},
-      text: [],
-      imgs: []
+      story: {
+        imgs: [],
+        SDGs: []
+      }
     };
   }
 
@@ -30,31 +31,55 @@ export default class StoryInfo extends Component {
   };
 
   render() {
+    let SDGs = this.state.story.SDGs.map(sdg => {
+      return (
+        <li>
+          <p className="p-theme-1-admin-info">{sdg}</p>
+        </li>
+      );
+    });
+
     return (
-      <div>
-        <table className="admin-table">
+      <div className="admin-info-single">
+        <table>
           <tr>
             <th>Story ID</th>
-            <td>
-              <p className="p-theme-1-admin-info">{this.state.id}</p>
-            </td>
+            <td>{this.state.id}</td>
           </tr>
           <tr>
             <th>Story Tilte</th>
+            <td>{this.state.story.title}</td>
+          </tr>
+          <tr>
+            <th>Story Pre-Description</th>
             <td>
-              <p className="p-theme-1-admin-info">{this.state.story.title}</p>
+              <p className="p-theme-1-admin-info">{this.state.story.pre_description}</p>
             </td>
           </tr>
           <tr>
             <th>Story Details</th>
             <td>
-              <p className="p-theme-1-admin-info">{this.state.text[0]}</p>
+              <p className="p-theme-1-admin-info">{this.state.story.text}</p>
+            </td>
+          </tr>
+          <tr>
+            <th>Story Lens</th>
+            <td>
+              <p className="p-theme-1-admin-info">{this.state.story.lens}</p>
+            </td>
+          </tr>
+          <tr>
+            <th>Story SDGs</th>
+            <td>
+              <ul>
+                {SDGs}
+              </ul>
             </td>
           </tr>
           <tr>
             <th>Story Images</th>
             <td>
-              <img className="admin-img" src={this.state.imgs[0]} alt="Story" />
+              <img className="admin-img" src={this.state.story.imgs[0]} alt="Story" />
             </td>
           </tr>
         </table>

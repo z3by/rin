@@ -12,10 +12,21 @@ export default props => {
       </div>
       <ul>
         <li>
-          <Link to={"/dashboard/projects/list"}>projects</Link>
+          <Link to={"/dashboard/projects/list"}>
+            <i className="fas fa-building" /> Projects
+          </Link>
         </li>
         <li>
-          <Link to={"/dashboard/stories/list"}>stories</Link>
+          <Link to={"/dashboard/stories/list"}>
+            <i className="fas fa-user-check" />
+            Stories
+          </Link>
+        </li>
+        <li>
+          <Link to={"/dashboard/users/list"}>
+            <i className="fas fa-users" />
+            Users
+          </Link>
         </li>
       </ul>
     </nav>

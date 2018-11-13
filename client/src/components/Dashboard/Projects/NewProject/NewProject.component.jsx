@@ -3,6 +3,7 @@ import axios from "axios";
 import GoogleMapReact from "google-map-react";
 import { mapApi } from "../../../../config/map.config";
 import "./NewProject.css";
+import Paper from "@material-ui/core/Paper";
 
 const Marker = () => {
   return (
@@ -36,7 +37,8 @@ export default class NewProject extends Component {
       lng: 0,
       lat: 0,
       zoom: 0,
-      loading: false
+      loading: false,
+      formValid: false
     };
   }
 
@@ -49,38 +51,31 @@ export default class NewProject extends Component {
   }
 
   enableAddButton = () => {
-    document.querySelector(".btn-admin").disabled = false;
-    document.querySelector(".btn-admin").style.backgroundColor = "#222";
-    document
-      .querySelector(".btn-admin")
-      .addEventListener("mouseenter", function() {
-        document.querySelector(".btn-admin").style.backgroundColor = "#f90";
-      });
-    document
-      .querySelector(".btn-admin")
-      .addEventListener("mouseleave", function() {
-        document.querySelector(".btn-admin").style.backgroundColor = "#222";
-      });
+    this.setState({
+      formValid: true
+    });
   };
 
   disableAddButton = () => {
-    document.querySelector(".btn-admin").disabled = true;
-    document.querySelector(".btn-admin").style.backgroundColor = "#666";
+    this.setState({
+      formValid: false
+    });
   };
 
   checkButtonAvailability = () => {
-    if (
-      this.state.title &&
-      this.state.project_description &&
-      this.state.organization_name &&
-      this.state.capacity &&
-      this.state.img_url &&
-      this.state.type &&
-      this.state.countryName &&
-      this.state.start_date &&
-      this.state.lat &&
-      this.state.lng
-    ) {
+    const state = this.state;
+    // check if the user added all required input
+    const isValid =
+      state.title &&
+      state.start_date &&
+      state.type &&
+      state.img_url &&
+      state.project_description &&
+      state.countryName &&
+      state.lng &&
+      state.lat;
+
+    if (isValid) {
       this.enableAddButton();
     } else {
       this.disableAddButton();
@@ -127,7 +122,7 @@ export default class NewProject extends Component {
         document.querySelector(".done-img").style.display = "flex";
         setTimeout(() => {
           document.querySelector(".done-img").style.display = "none";
-        }, 3000);
+        }, 2000);
       })
       .catch(function(error) {
         console.log(error);
@@ -180,64 +175,49 @@ export default class NewProject extends Component {
     });
 
     return (
-      <div className="admin-form">
+      <Paper className="admin-form">
         <form onSubmit={this.addProject}>
-          <label htmlFor="project-title">Project Title</label> <br />
           <input
-            required
             type="text"
             name="title"
             id="project-title"
+            placeholder="Project Title"
             onChange={this.onChange}
           />
-          <br />
-          <br />
-          <label htmlFor="project-desc">Project Description</label> <br />
           <input
-            required
             type="text"
             name="project_description"
             id="project-desc"
+            placeholder="Project Description"
             onChange={this.onChange}
           />
-          <br />
-          <br />
-          <label htmlFor="start_date">Start Date</label> <br />
           <input
-            required
             type="date"
             name="start_date"
             id="start_date"
+            placeholder="Start Date"
             onChange={this.onChange}
           />
-          <br />
-          <br />
-          <label htmlFor="capacity">Capacity</label> <br />
           <input
-            required
             type="number"
             min="0"
+            placeholder="Capacity"
             name="capacity"
             id="capacity"
             onChange={this.onChange}
           />
-          <br />
-          <br />
-          <label htmlFor="organization_name">Organization Name</label> <br />
           <input
-            required
             type="text"
+            placeholder="Organization Name"
             name="organization_name"
             id="organization_name"
             onChange={this.onChange}
           />
-          <br />
-          <br />
-          <label htmlFor="img_url">Image Url</label> <br />
+          <label htmlFor="img">Upload image..</label>
           <input
-            required
             type="file"
             name="img"
+            placeholder="Upload Image"
             accept="image/*"
             onChange={this.onChangeImg}
           />
@@ -252,22 +232,13 @@ export default class NewProject extends Component {
             className="loading"
             style={{ display: this.state.loading ? "block" : "none" }}
           />
-          <br />
-          <br />
           <label htmlFor="type">Project Type</label> <br />
-          <select required name="type" id="type" onChange={this.onChange}>
+          <select name="type" id="type" onChange={this.onChange}>
             <option value="select type">Select Type</option>
             {types}
           </select>
-          <br />
-          <br />
           <label htmlFor="countryName">Project Country</label> <br />
-          <select
-            required
-            name="countryName"
-            id="countryName"
-            onChange={this.onChange}
-          >
+          <select name="countryName" id="countryName" onChange={this.onChange}>
             <option value="select type">Select Country</option>
             {countries}
           </select>
@@ -282,16 +253,18 @@ export default class NewProject extends Component {
               <Marker lng={this.state.lng} lat={this.state.lat} />
             </GoogleMapReact>
           </div>
-          <button type="submit" className="btn-admin" disabled>
-            <p>
-              <i className="fas fa-plus" /> Add Project
-            </p>
+          <button
+            type="submit"
+            className="btn-admin"
+            disabled={!this.state.formValid}
+          >
+            <i className="fas fa-plus" /> Add Project
           </button>
           <div className="done-img">
             <img src="/imgs/done.gif" alt="" />
           </div>
         </form>
-      </div>
+      </Paper>
     );
   }
 }

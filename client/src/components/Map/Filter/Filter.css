@@ -20,33 +20,46 @@
   line-height: 2;
 }
 
-.filter:hover {
+.filter a i {
+  margin: 0;
+}
+
+.filter a.close {
+  position: absolute;
+  right: 40px;
+  top: 20px;
+  display: none;
+}
+.filter a.close.shown {
+  display: block;
+}
+
+.filter a.close:hover i {
+  color: var(--color-2);
+}
+.filter.show {
   height: 70%;
   width: 70%;
   left: 15%;
   overflow-y: scroll;
   padding: 20px;
+  transition-duration: 1s;
+  transition: var(--smooth);
 }
 
-.filter:hover .filter-input {
+.filter.show .filter-input {
   visibility: visible;
   -webkit-transition-delay: 1s;
   transition-delay: 1s;
   opacity: 1;
 }
 
-.filter:hover a {
+.filter.show a {
   font-size: 40px;
   -webkit-transition: var(--smooth);
   transition: var(--smooth);
 }
 
-.filter:hover .spectrum {
-  visibility: visible;
-  opacity: 1;
-  -webkit-transition-delay: 1s;
-  transition-delay: 1s;
-}
 .filter-input {
   text-align: left;
   visibility: hidden;

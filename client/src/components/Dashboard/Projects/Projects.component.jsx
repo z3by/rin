@@ -5,20 +5,37 @@ import ProjectsList from "./ProjectsList/ProjectsList.component";
 import ProjectInfo from "./ProjectInfo/ProjectInfo.component";
 import UpdateProject from "./UpdateProject/UpdateProject.component";
 import "./Projects.css";
+import ProjectRequest from "./ProjectRequest/ProjectRequest.component";
 
 export default class Projects extends Component {
   render() {
     return (
       <div className="projects-dashboard">
         <nav className="nav-up">
-          <ul>
-            <li>
-              <Link to={"/dashboard/projects/add"}>add project</Link>
-            </li>
-          </ul>
+          <Link to="/dashboard/projects/add">
+            <i className="fas fa-plus" />
+            <span>New Project</span>
+          </Link>
+
+          <Link to="/dashboard/projects/requests">
+            <i className="fas fa-inbox" />
+            <span>Project Requests</span>
+          </Link>
+          <div className="search-group">
+            <input
+              type="search"
+              className="search-input"
+              placeholder="Search"
+            />
+            <i className="fas fa-search" />
+          </div>
         </nav>
         <main>
           <Route path={"/dashboard/projects/add"} component={NewProject} />
+          <Route
+            path={"/dashboard/projects/requests"}
+            component={ProjectRequest}
+          />
           <Route
             exact
             path={"/dashboard/projects/list"}

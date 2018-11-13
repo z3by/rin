@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import "./Dashboard.css";
 import Projects from "../Dashboard/Projects/Projects.component";
 import Stories from "./Stories/Stories.component";
-import { Route } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 import Sidebar from "../general-components/sidebar/sidebar";
 import Axios from "axios";
+import Users from "./Users/Users.component";
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -32,9 +33,20 @@ export default class Dashboard extends Component {
     return (
       <div className="admin-dashboard">
         <Sidebar />
+        <nav className="nav-up main-nav">
+          <Link to="/dashboard">
+            <i className="fas fa-tachometer-alt" />
+            <span>Dashboard</span>
+          </Link>
+          <Link to="/">
+            <i className="fas fa-home" />
+            <span>Home</span>
+          </Link>
+        </nav>
         <main>
           <Route path="/dashboard/projects" component={Projects} />
           <Route path="/dashboard/stories" component={Stories} />
+          <Route path="/dashboard/users" component={Users} />
         </main>
       </div>
     );

@@ -38,61 +38,39 @@ export default class ProjectInfo extends Component {
 
   render() {
     return (
-      <div>
-        <table className="admin-table">
+      <div className="admin-info-single">
+        <table>
           <tr>
             <th>Project ID</th>
-            <td>
-              <p className="p-theme-1-admin-info">{this.state.id}</p>
-            </td>
+            <td>{this.state.id}</td>
           </tr>
           <tr>
             <th>Project Tilte</th>
-            <td>
-              <p className="p-theme-1-admin-info">{this.state.project.title}</p>
-            </td>
+            <td>{this.state.project.title}</td>
           </tr>
           <tr>
             <th>Project Country</th>
-            <td>
-              <p className="p-theme-1-admin-info">{this.state.country}</p>
-            </td>
+            <td>{this.state.country}</td>
           </tr>
           <tr>
             <th>Project Description</th>
-            <td>
-              <p className="p-theme-1-admin-info">
-                {this.state.project.project_description}
-              </p>
-            </td>
+            <td>{this.state.project.project_description}</td>
           </tr>
           <tr>
             <th>Project Start Date</th>
-            <td>
-              <p className="p-theme-1-admin-info">{this.state.start_date}</p>
-            </td>
+            <td>{this.state.start_date}</td>
           </tr>
           <tr>
             <th>Project Capacity </th>
-            <td>
-              <p className="p-theme-1-admin-info">
-                {this.state.project.capacity}
-              </p>
-            </td>
+            <td>{this.state.project.capacity}</td>
           </tr>
           <tr>
             <th>Project Organization Name</th>
-            <td>
-              <p className="p-theme-1-admin-info">
-                {this.state.project.organization_name}
-              </p>
-            </td>
+            <td>{this.state.project.organization_name}</td>
           </tr>
           <tr>
             <th>Project Type</th>
-            <td>
-              <p className="p-theme-1-admin-info">{this.state.project.type}</p>
-            </td>
+            <td>{this.state.project.type}</td>
           </tr>
           <tr>
             <th>Project Image</th>

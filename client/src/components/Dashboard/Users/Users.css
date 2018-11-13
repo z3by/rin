@@ -1,0 +1,5 @@
+.users-dashboard main {
+  width: calc(60%);
+  margin: 0 auto;
+  padding: 50px;
+}
