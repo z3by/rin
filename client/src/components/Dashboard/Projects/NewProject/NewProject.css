@@ -53,7 +53,8 @@
 }
 .admin-img-update {
   width: 100px;
-  margin: 0 auto;
+  display: block;
+  margin: 30px auto;
 }
 
 /* The popup form - hidden by default */
