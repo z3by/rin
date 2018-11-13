@@ -47,7 +47,8 @@ export default class NewProject extends Component {
       lens: "",
       text: "",
       img: "",
-      loading: false
+      loading: false,
+      formValid: false
     };
   }
 
@@ -56,33 +57,28 @@ export default class NewProject extends Component {
   }
 
   enableAddButton = () => {
-    document.querySelector(".btn-admin").disabled = false;
-    document.querySelector(".btn-admin").style.backgroundColor = "#222";
-    document
-      .querySelector(".btn-admin")
-      .addEventListener("mouseenter", function() {
-        document.querySelector(".btn-admin").style.backgroundColor = "#f90";
-      });
-    document
-      .querySelector(".btn-admin")
-      .addEventListener("mouseleave", function() {
-        document.querySelector(".btn-admin").style.backgroundColor = "#222";
-      });
+    this.setState({
+      formValid: true
+    });
   };
 
   disableAddButton = () => {
-    document.querySelector(".btn-admin").disabled = true;
-    document.querySelector(".btn-admin").style.backgroundColor = "#666";
+    this.setState({
+      formValid: false
+    });
   };
 
   checkButtonAvailability = () => {
-    if (
-      this.state.title &&
-      this.state.pre_description &&
-      this.state.lens &&
-      this.state.text &&
-      this.state.img
-    ) {
+    const state = this.state;
+    // check if the user added all required input
+    const isValid =
+      state.title &&
+      state.pre_description &&
+      state.lens &&
+      state.text &&
+      state.img;
+
+    if (isValid) {
       this.enableAddButton();
     } else {
       this.disableAddButton();
@@ -246,7 +242,11 @@ export default class NewProject extends Component {
             className="loading"
             style={{ display: this.state.loading ? "block" : "none" }}
           />
-          <button type="submit" className="btn-admin" disabled>
+          <button
+            type="submit"
+            className="btn-admin"
+            disabled={!this.state.formValid}
+          >
             <i className="fas fa-plus" /> Add Story
           </button>
           <div className="done-img">

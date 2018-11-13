@@ -36,8 +36,8 @@
 /* Button used to open the contact form - fixed at the bottom of the page */
 .admin-form button,
 .btn-admin {
-  background-color: var(--color-3);
-  color: #333;
+  background-color: var(--color-2);
+  color: var(--color-5);
   border: none;
   cursor: pointer;
   opacity: 0.8;
@@ -48,6 +48,9 @@
   display: block;
 }
 
+.admin-form button:disabled {
+  background-color: var(--color-3);
+}
 .admin-img-update {
   width: 100px;
   margin: 0 auto;
