@@ -8,6 +8,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
+import Axios from "axios";
 
 export default class UsersList extends Component {
   constructor(props) {
@@ -30,7 +31,11 @@ export default class UsersList extends Component {
   }
 
   fetchUsers = () => {
-    console.log("hello");
+    Axios.get("/users/all").then(res => {
+      this.setState({
+        users: res.data
+      });
+    });
   };
 
   render() {
