@@ -37,7 +37,8 @@ export default class NewProject extends Component {
       lng: 0,
       lat: 0,
       zoom: 0,
-      loading: false
+      loading: false,
+      formValid: false
     };
   }
 
@@ -50,38 +51,28 @@ export default class NewProject extends Component {
   }
 
   enableAddButton = () => {
-    document.querySelector(".btn-admin").disabled = false;
-    document.querySelector(".btn-admin").style.backgroundColor = "#222";
-    document
-      .querySelector(".btn-admin")
-      .addEventListener("mouseenter", function() {
-        document.querySelector(".btn-admin").style.backgroundColor = "#f90";
-      });
-    document
-      .querySelector(".btn-admin")
-      .addEventListener("mouseleave", function() {
-        document.querySelector(".btn-admin").style.backgroundColor = "#222";
-      });
+    this.setState({
+      formValid: true
+    });
   };
 
   disableAddButton = () => {
-    document.querySelector(".btn-admin").disabled = true;
-    document.querySelector(".btn-admin").style.backgroundColor = "#666";
+    this.setState({
+      formValid: false
+    });
   };
 
   checkButtonAvailability = () => {
-    if (
-      this.state.title &&
-      this.state.project_description &&
-      this.state.organization_name &&
-      this.state.capacity &&
-      this.state.img_url &&
-      this.state.type &&
-      this.state.countryName &&
-      this.state.start_date &&
-      this.state.lat &&
-      this.state.lng
-    ) {
+    const state = this.state;
+    // check if the user added all required input
+    const isValid =
+      state.title &&
+      state.pre_description &&
+      state.lens &&
+      state.text &&
+      state.img;
+
+    if (isValid) {
       this.enableAddButton();
     } else {
       this.disableAddButton();
@@ -128,7 +119,7 @@ export default class NewProject extends Component {
         document.querySelector(".done-img").style.display = "flex";
         setTimeout(() => {
           document.querySelector(".done-img").style.display = "none";
-        }, 3000);
+        }, 2000);
       })
       .catch(function(error) {
         console.log(error);
@@ -259,7 +250,11 @@ export default class NewProject extends Component {
               <Marker lng={this.state.lng} lat={this.state.lat} />
             </GoogleMapReact>
           </div>
-          <button type="submit" className="btn-admin" disabled>
+          <button
+            type="submit"
+            className="btn-admin"
+            disabled={this.state.formValid}
+          >
             <i className="fas fa-plus" /> Add Project
           </button>
           <div className="done-img">

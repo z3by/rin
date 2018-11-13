@@ -188,8 +188,7 @@ export default class UpdateProject extends Component {
         document.querySelector(".done-img").style.display = "flex";
         setTimeout(() => {
           document.querySelector(".done-img").style.display = "none";
-        }, 6000);
-        console.log("UPDATED SUCCESSFULLY");
+        }, 2000);
       })
       .catch(function(error) {
         console.log(error);
