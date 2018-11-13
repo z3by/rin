@@ -2,6 +2,14 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./NewStory.css";
 import Paper from "@material-ui/core/Paper";
+import Select from "@material-ui/core/Select";
+import Checkbox from "@material-ui/core/Checkbox";
+import MenuItem from "@material-ui/core/MenuItem";
+import Menu from "@material-ui/core/Menu";
+import { MenuList } from "@material-ui/core";
+import ExpansionPanel from "@material-ui/core/ExpansionPanel";
+import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
+import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 
 export default class NewProject extends Component {
   constructor(props) {
@@ -15,7 +23,21 @@ export default class NewProject extends Component {
         "Lending Facilities",
         "Refugee Funds"
       ],
-      SDGs: ["Climate Action", "Decent Work and Economic Growth", "Gender Equality", "Good Health and Well-Being", "Industry Innovation and Infrastructure", "Life on Land", "No Poverty", "Partnerships for the Goals", "Peace, Justice and Strong Institutions", "Quality Education", "Reduced Inqualities", "Sustainable Cities and Communities", "Zero Hunger"],
+      SDGs: [
+        "Climate Action",
+        "Decent Work and Economic Growth",
+        "Gender Equality",
+        "Good Health and Well-Being",
+        "Industry Innovation and Infrastructure",
+        "Life on Land",
+        "No Poverty",
+        "Partnerships for the Goals",
+        "Peace, Justice and Strong Institutions",
+        "Quality Education",
+        "Reduced Inqualities",
+        "Sustainable Cities and Communities",
+        "Zero Hunger"
+      ],
       title: "",
       pre_description: "",
       lens: "",
@@ -35,12 +57,12 @@ export default class NewProject extends Component {
     document.querySelector(".btn-admin").style.backgroundColor = "#222";
     document
       .querySelector(".btn-admin")
-      .addEventListener("mouseenter", function () {
+      .addEventListener("mouseenter", function() {
         document.querySelector(".btn-admin").style.backgroundColor = "#f90";
       });
     document
       .querySelector(".btn-admin")
-      .addEventListener("mouseleave", function () {
+      .addEventListener("mouseleave", function() {
         document.querySelector(".btn-admin").style.backgroundColor = "#222";
       });
   };
@@ -77,12 +99,11 @@ export default class NewProject extends Component {
     if (!this.state.expanded) {
       checkboxes.style.display = "block";
       this.state.expanded = true;
-    }
-    else {
+    } else {
       checkboxes.style.display = "none";
       this.state.expanded = false;
     }
-  }
+  };
 
   addStory = e => {
     e.preventDefault();
@@ -97,7 +118,7 @@ export default class NewProject extends Component {
 
     for (let i = 0; i < this.state.SDGs.length; i++) {
       if (document.getElementById(this.state.SDGs[i]).checked) {
-        storyData.SDGs.push(this.state.SDGs[i])
+        storyData.SDGs.push(this.state.SDGs[i]);
       }
     }
 
@@ -155,7 +176,13 @@ export default class NewProject extends Component {
 
     let SDGs = this.state.SDGs.map(sdg => {
       return (
-        <label><input type="checkbox" value={sdg} id={sdg} />{sdg}</label>
+        <MenuItem>
+          <Checkbox
+            checked={this.state.checkedA}
+            style={{ color: "var(--color-2)" }}
+          />
+          {sdg}
+        </MenuItem>
       );
     });
 
@@ -188,18 +215,18 @@ export default class NewProject extends Component {
           <select name="lens" id="lens" onChange={this.onChange}>
             <option>Select Lens</option>
             {lenses}
-          </select> <br /> <br />
-          <div className="multiSelect">
-            <div className="selectBox" onClick={this.showCheckBoxes}>
-              <select>
-                <option>Select SDGs</option>
-              </select>
-              <div className="overSelect"></div>
-            </div>
-            <div id="checkboxes">
-              {SDGs}
-            </div>
-          </div> <br />
+          </select>
+          <br />
+          <ExpansionPanel id="checkboxes">
+            <ExpansionPanelSummary>
+              <p>Select SDGs</p>
+            </ExpansionPanelSummary>
+            <ExpansionPanelDetails>
+              <MenuList className="menu-full-width">{SDGs}</MenuList>
+            </ExpansionPanelDetails>
+          </ExpansionPanel>
+
+          <br />
           <input
             type="file"
             name="img"

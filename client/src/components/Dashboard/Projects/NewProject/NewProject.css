@@ -63,10 +63,8 @@
 
 .admin-form input[type="text"],
 .admin-form input[type="date"],
-.admin-form input,
-[type="number"],
-.admin-form input,
-[type="file"] {
+.admin-form input[type="number"],
+.admin-form input[type="file"] {
   background: var(--color-1);
   height: 50px;
   width: 80%;
@@ -91,13 +89,17 @@
   width: 80%;
   display: block;
   margin: 0 auto;
-  border-radius: 20px;
+  height: 55px;
 }
 
 /* Add some hover effects to buttons */
 .form-container .btn:hover,
 .open-button:hover {
   opacity: 1;
+}
+
+.menu-full-width {
+  width: 100%;
 }
 
 .marker {
