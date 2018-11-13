@@ -16,3 +16,8 @@ module.exports.loginAdmin = (req, res) => {
     }
   }
 };
+
+// get all mmebers
+module.exports.getAllMembers = (req, res) => {
+  res.send("hello");
+};
