@@ -50,11 +50,11 @@ module.exports.addStory = (req, res) => {
     return res.status(400).json(errors);
   }
 
-  let qry = `insert into stories(title, pre_description, lens, text, imgs) values("${
+  let qry = `insert into stories(title, pre_description, lens, text, imgs, SDGs) values("${
     data.title
   }", "${data.pre_description}", "${data.lens}", '${data.text}', '${
     data.imgs
-  }');`;
+  }', '${data.SDGs}');`;
   connection.query(qry, (err, result) => {
     if (err) throw err;
     res.send("story row inserted successfully");

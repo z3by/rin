@@ -61,7 +61,12 @@
   margin: 40px auto;
 }
 
-.admin-form input[type="text"] {
+.admin-form input[type="text"],
+.admin-form input[type="date"],
+.admin-form input,
+[type="number"],
+.admin-form input,
+[type="file"] {
   background: var(--color-1);
   height: 50px;
   width: 80%;

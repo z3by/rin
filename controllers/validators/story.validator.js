@@ -9,8 +9,6 @@ const validateStory = data => {
   const inputText = data.text;
   const inputImgs = data.imgs;
 
-  lens;
-
   if (validator.isEmpty(inputTitle)) {
     errors.title = "story title is required";
   }
@@ -27,7 +25,7 @@ const validateStory = data => {
     errors.lens = "story lens is required";
   }
 
-  if (validator.isEmpty(inputText[0])) {
+  if (validator.isEmpty(inputText)) {
     errors.text = "story text is required";
   }
 
