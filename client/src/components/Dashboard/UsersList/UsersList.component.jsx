@@ -10,6 +10,21 @@ import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 
 export default class UsersList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      users: [
+        {
+          first_name: "ahmad",
+          last_name: "mostafa",
+          organization: "rbk",
+          role: "role",
+          email: "email@mail.com"
+        }
+      ]
+    };
+  }
+
   componentDidMount() {
     this.fetchUsers();
   }
@@ -19,6 +34,19 @@ export default class UsersList extends Component {
   };
 
   render() {
+    const users = this.state.users.map(user => {
+      return (
+        <TableRow>
+          <TableCell>{user.first_name}</TableCell>
+          <TableCell>{user.last_name}</TableCell>
+          <TableCell>{user.organization}</TableCell>
+          <TableCell>{user.role}</TableCell>
+          <TableCell>{user.email}</TableCell>
+          <TableCell numeric />
+        </TableRow>
+      );
+    });
+
     return (
       <Paper>
         <Table>
@@ -32,7 +60,7 @@ export default class UsersList extends Component {
               <TableCell />
             </TableRow>
           </TableHead>
-          <TableBody>{}</TableBody>
+          <TableBody>{users}</TableBody>
         </Table>
       </Paper>
     );
