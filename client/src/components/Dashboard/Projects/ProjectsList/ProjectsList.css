@@ -7,11 +7,11 @@
     margin: 0;
   }
   
-  #page-numbers li {
-    margin-right: 0.3em;
-  }
+#page-numbers li {
+margin-right: 0.3em;
+}
 
-  .projectsPages #page-numbers li Button.active-page-number {
-      background-color: var(--color-2);
-      color: #fff;
-  }
+.projectsPages #page-numbers li Button.active-page-number {
+    background-color: var(--color-2);
+    color: #fff;
+}
