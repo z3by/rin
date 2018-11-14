@@ -50,6 +50,7 @@
 
 .admin-form button:disabled {
   background-color: var(--color-3);
+  cursor: not-allowed;
 }
 .admin-img-update {
   width: 100px;

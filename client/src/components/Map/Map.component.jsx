@@ -8,7 +8,6 @@ import Filter from "./Filter/Filter.component";
 import Spectrum from "./Spectrum/Spectrum.component";
 import { mapApi } from "../../config/map.config";
 import Axios from "axios";
-import NewProject from "../Dashboard/Projects/NewProject/NewProject.component";
 
 export default class Map extends Component {
   state = {
@@ -20,8 +19,7 @@ export default class Map extends Component {
     filterOptions: {},
     projects: [],
     projectsInfo: [],
-    currentProject: {},
-    addProjectClicked: false
+    currentProject: {}
   };
 
   componentWillMount() {

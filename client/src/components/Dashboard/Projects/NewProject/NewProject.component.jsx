@@ -121,6 +121,7 @@ export default class NewProject extends Component {
         document.querySelector(".admin-form form").reset();
         document.querySelector(".done-img").style.display = "flex";
         setTimeout(() => {
+          this.disableAddButton();
           document.querySelector(".done-img").style.display = "none";
         }, 2000);
       })
