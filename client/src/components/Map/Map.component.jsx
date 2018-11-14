@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
 import "./Map.css";
+import { Link } from "react-router-dom";
 import * as options from "./map-options";
 import Dot from "./Dot/Dot.component";
 import Filter from "./Filter/Filter.component";
@@ -125,6 +126,10 @@ export default class Map extends Component {
           fetchProjects={this.fetchProjects}
           options={this.state.filterOptions}
         />
+        <Link to="/map/add" className="map-add-project-btn">
+          <i className="fas fa-plus" />
+          Add Your Project
+        </Link>
         <div className="spectrum-container">
           <div className="spectrum-popup">
             hover over different colors to filter by project type

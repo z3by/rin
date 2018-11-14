@@ -4,7 +4,7 @@
   position: absolute;
   z-index: 99;
   bottom: 5%;
-  left: calc(50% - 50px);
+  left: calc(50% - 130px);
   text-align: center;
   background: rgba(0, 0, 0, 0.7);
   cursor: pointer;
@@ -28,10 +28,6 @@
   position: absolute;
   right: 40px;
   top: 20px;
-  display: none;
-}
-.filter a.close.shown {
-  display: block;
 }
 
 .filter a.close:hover i {

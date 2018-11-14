@@ -10,6 +10,28 @@
   top: 5%;
 }
 
+.map-add-project-btn {
+  height: 40px;
+  position: absolute;
+  z-index: 99;
+  bottom: 5%;
+  font-size: 20px;
+  color: var(--color-2);
+  left: calc(50%);
+  text-align: center;
+  background: rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  padding: 0 15px;
+}
+
+.map-add-project-btn:hover {
+  background: var(--color-2);
+  color: var(--color-1);
+}
+.map-add-project-btn i {
+  margin: 0 5px 0 0;
+  line-height: 40px;
+}
 .spectrum-container:hover .spectrum-popup {
   display: none;
 }
