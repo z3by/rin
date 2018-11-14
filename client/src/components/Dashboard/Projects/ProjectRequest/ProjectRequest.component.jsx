@@ -7,6 +7,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import Axios from "axios";
+import { Link } from "react-router-dom";
 
 export default class ProjectRequests extends Component {
   constructor(props) {
@@ -83,12 +84,16 @@ export default class ProjectRequests extends Component {
                   </TableCell>
 
                   <TableCell numeric>
-                    <Button>
-                      <i
-                        className="fas fa-edit"
-                        style={{ color: "royalblue" }}
-                      />
-                    </Button>
+                    <Link
+                      to={`/dashboard/projects/list/updateproject/${row.id}`}
+                    >
+                      <Button>
+                        <i
+                          className="fas fa-edit"
+                          style={{ color: "royalblue" }}
+                        />
+                      </Button>
+                    </Link>
                     <Button
                       onClick={() => {
                         this.acceptProject(row.id);
