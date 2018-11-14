@@ -1,0 +1,23 @@
+#page-numbers {
+    list-style: none;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 10px;
+    margin: 0;
+  }
+  
+  #page-numbers li {
+    margin-right: 0.3em;
+    color: blue;
+    user-select: none;
+    cursor: pointer;
+  }
+
+  /* ul#page-numbers li:hover {
+      color: var(--color-2);
+  } */
+
+  .projectsPages #page-numbers li.active-page-number {
+      color: var(--color-2);
+  }

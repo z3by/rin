@@ -14,7 +14,9 @@ export default class ProjectsList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      allProject: []
+      allProject: [],
+      currentPage: 1,
+      projectsPerPage: 10
     };
   }
 
@@ -43,8 +45,19 @@ export default class ProjectsList extends Component {
       });
   };
 
+  changeCurrentPage = (number) => {
+    this.setState({ currentPage: number })
+  }
+
   render() {
-    const projects = this.state.allProject.map(project => {
+    const { allProject, currentPage, projectsPerPage } = this.state;
+
+    // Logic for displaying projects
+    const indexOfLastProject = currentPage * projectsPerPage;
+    const indexOfFirstProject = indexOfLastProject - projectsPerPage;
+    const currentProjects = allProject.slice(indexOfFirstProject, indexOfLastProject);
+
+    const projects = currentProjects.map(project => {
       return (
         <TableRow>
           <TableCell>{project.id}</TableCell>
@@ -71,8 +84,26 @@ export default class ProjectsList extends Component {
       );
     });
 
+    // Logic for displaying page numbers
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(allProject.length / projectsPerPage); i++) {
+      pageNumbers.push(i);
+    }
+
+    const allPagesNumbers = pageNumbers.map(number => {
+      return (
+        <li
+          key={number}
+          onClick={() => { this.changeCurrentPage(number) }}
+          className={number === this.state.currentPage ? 'active-page-number' : ''}
+        >
+          {number}
+        </li>
+      );
+    });
+
     return (
-      <Paper>
+      <Paper className="projectsPages">
         <Table>
           <TableHead>
             <TableRow>
@@ -84,6 +115,10 @@ export default class ProjectsList extends Component {
           </TableHead>
           <TableBody>{projects}</TableBody>
         </Table>
+
+        <ul id="page-numbers">
+          {allPagesNumbers}
+        </ul>
       </Paper>
     );
   }
