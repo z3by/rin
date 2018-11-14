@@ -120,8 +120,8 @@ export default class AddProject extends Component {
       .then(function(response) {
         document.querySelector(".admin-form form").reset();
         document.querySelector(".done-img").style.display = "flex";
+        this.disableAddButton();
         setTimeout(() => {
-          this.disableAddButton();
           document.querySelector(".done-img").style.display = "none";
         }, 2000);
       })
