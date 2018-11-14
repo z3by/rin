@@ -268,7 +268,7 @@ export default class AddProject extends Component {
               <i className="fas fa-plus" /> Add Project
             </button>
             <div className="done-img">
-              <img src="/imgs/done.gif" alt="" />
+              <h4>Thanks! your project will be added after reviewing ...</h4>
             </div>
           </form>
         </Paper>

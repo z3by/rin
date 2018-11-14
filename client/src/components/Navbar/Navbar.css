@@ -1,6 +1,6 @@
 .nav-rec {
-  width: 30px;
-  min-height: 15px;
+  width: 25px;
+  min-height: 10px;
   background: var(--color-3);
 }
 
@@ -59,8 +59,8 @@
 
 .navbar-middle .navbar-link:hover .nav-rec {
   background-color: var(--color-2);
-  margin-left: 20px;
-  transition: margin 0.4s ease;
+  margin-left: 10px;
+  transition: margin 0.2s ease;
 }
 
 .nav-rec-text {
