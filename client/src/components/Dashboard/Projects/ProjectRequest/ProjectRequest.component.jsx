@@ -31,6 +31,26 @@ export default class ProjectRequests extends Component {
       });
   };
 
+  deleteProject = project => {
+    Axios.delete(`/api/projects/${project.id}`)
+      .then(res => {
+        this.fetchRequests();
+      })
+      .catch(err => {
+        console.log("Error deleting a table row");
+      });
+  };
+
+  acceptProject = id => {
+    Axios.put(`/api/requests`, { id: id })
+      .then(res => {
+        this.fetchRequests();
+      })
+      .catch(err => {
+        console.log("Error accepting request");
+      });
+  };
+
   render() {
     const rows = this.state.requests;
     return (
@@ -69,13 +89,21 @@ export default class ProjectRequests extends Component {
                         style={{ color: "royalblue" }}
                       />
                     </Button>
-                    <Button>
+                    <Button
+                      onClick={() => {
+                        this.acceptProject(row.id);
+                      }}
+                    >
                       <i
                         className="fas fa-check"
                         style={{ color: "lightgreen" }}
                       />
                     </Button>
-                    <Button>
+                    <Button
+                      onClick={() => {
+                        this.deleteProject(row);
+                      }}
+                    >
                       <i
                         className="fas fa-times"
                         style={{ color: "crimson" }}
