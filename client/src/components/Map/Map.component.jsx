@@ -8,6 +8,7 @@ import Filter from "./Filter/Filter.component";
 import Spectrum from "./Spectrum/Spectrum.component";
 import { mapApi } from "../../config/map.config";
 import Axios from "axios";
+import NewProject from "../Dashboard/Projects/NewProject/NewProject.component";
 
 export default class Map extends Component {
   state = {
@@ -19,7 +20,8 @@ export default class Map extends Component {
     filterOptions: {},
     projects: [],
     projectsInfo: [],
-    currentProject: {}
+    currentProject: {},
+    addProjectClicked: false
   };
 
   componentWillMount() {
@@ -126,7 +128,7 @@ export default class Map extends Component {
           fetchProjects={this.fetchProjects}
           options={this.state.filterOptions}
         />
-        <Link to="/map/add" className="map-add-project-btn">
+        <Link to="/add-project" className="map-add-project-btn">
           <i className="fas fa-plus" />
           Add Your Project
         </Link>
