@@ -33,6 +33,7 @@
 .filter a.close:hover i {
   color: var(--color-2);
 }
+
 .filter.show {
   height: 70%;
   width: 70%;
@@ -41,6 +42,20 @@
   padding: 20px;
   transition-duration: 1s;
   transition: var(--smooth);
+}
+
+.filter:hover {
+  background: var(--color-2);
+}
+.filter:hover a {
+  color: var(--color-1);
+}
+.filter.show:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.filter.show:hover a {
+  color: var(--color-2);
 }
 
 .filter.show .filter-input {
