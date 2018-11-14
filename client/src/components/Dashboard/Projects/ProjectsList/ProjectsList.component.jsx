@@ -92,12 +92,15 @@ export default class ProjectsList extends Component {
 
     const allPagesNumbers = pageNumbers.map(number => {
       return (
+
         <li
           key={number}
-          onClick={() => { this.changeCurrentPage(number) }}
-          className={number === this.state.currentPage ? 'active-page-number' : ''}
         >
-          {number}
+          <Button variant="fab" mini
+            onClick={() => { this.changeCurrentPage(number) }}
+            className={number === this.state.currentPage ? 'active-page-number' : ''}>
+            {number}
+          </Button>
         </li>
       );
     });

@@ -9,15 +9,9 @@
   
   #page-numbers li {
     margin-right: 0.3em;
-    color: blue;
-    user-select: none;
-    cursor: pointer;
   }
 
-  /* ul#page-numbers li:hover {
-      color: var(--color-2);
-  } */
-
-  .projectsPages #page-numbers li.active-page-number {
-      color: var(--color-2);
+  .projectsPages #page-numbers li Button.active-page-number {
+      background-color: var(--color-2);
+      color: #fff;
   }
