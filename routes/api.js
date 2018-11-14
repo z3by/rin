@@ -33,7 +33,7 @@ var upload = multer({
     // Auto detect contet type
     contentType: multerS3.AUTO_CONTENT_TYPE,
     // Set key/ filename as original uploaded name
-    filename: function (req, file, cb) {
+    filename: function(req, file, cb) {
       cb(null, "IMAGE-" + Date.now() + path.extname(file.originalname));
     }
   }),
@@ -70,6 +70,10 @@ router.post("/locations", locationsAPI.addLocation);
 router.put("/locations/:id", locationsAPI.updateLocation);
 router.delete("/locations/:id", locationsAPI.deleteLocation);
 
+// project requests
+router.get("/requests", projectsAPI.getProjectRequests);
+router.put("/requests", projectsAPI.acceptProjectRequest);
+
 //projects routes
 router.get("/projects", projectsAPI.getProjects);
 router.get("/projects/locations", projectsAPI.getLocations);
@@ -79,13 +83,11 @@ router.post("/projects", projectsAPI.addProject);
 router.put("/projects/:id", projectsAPI.updateProject);
 router.delete("/projects/:id", projectsAPI.deleteProject);
 
-
 //lenses routes
 router.get("/lenses", lensesAPI.getLenses);
 router.get("/lenses/:id", lensesAPI.getLens);
 router.post("/lenses", lensesAPI.addLens);
 router.put("/lenses/:id", lensesAPI.updateLens);
 router.delete("/lenses/:id", lensesAPI.deleteLens);
-
 
 module.exports = router;

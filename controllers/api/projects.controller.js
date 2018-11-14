@@ -309,22 +309,18 @@ module.exports.deleteProject = (req, res) => {
   });
 };
 
-//addProject Algorithm
-/*
-         - user selects location
-         - map api returns the country name, lat, lng
-         - check locations table if it includes that location latlng which has been returned from map api
-            - get location id from locations where lat="lat" and lng="lng"
-         - if location id exists => add project immediately
-         - else
-           - get country id from country name returned from api
-           - add location to locations tale 
-           - get location id
-           - add project
-        */
-
+// project requests controllers
 module.exports.getProjectRequests = (req, res) => {
   let qry = `select * from projects where pending = true`;
+  connection.query(qry, (err, result) => {
+    if (err) throw err;
+    res.status(200).json(result);
+  });
+};
+
+// project requests controllers
+module.exports.acceptProjectRequest = (req, res) => {
+  let qry = `update projects set pending=false where id=${req.body.id}`;
   connection.query(qry, (err, result) => {
     if (err) throw err;
     res.status(200).json(result);
