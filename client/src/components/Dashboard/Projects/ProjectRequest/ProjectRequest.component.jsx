@@ -23,9 +23,14 @@ export default class ProjectRequests extends Component {
   fetchRequests = () => {
     Axios.get("/api/requests")
       .then(res => {
-        this.setState({
-          requests: res.data
-        });
+        this.setState(
+          {
+            requests: res.data
+          },
+          () => {
+            this.props.onRequestFinalized();
+          }
+        );
       })
       .catch(err => {
         console.log(err);
