@@ -20,7 +20,7 @@
 
 .about-nav {
   margin-top: 50px;
-  display: flex;
+  display: block;
   list-style: none;
 }
 
@@ -34,16 +34,18 @@
   text-transform: uppercase;
   color: var(--color-1);
   font-family: var(--main-font);
+  font-family: 5vw;
 }
 
 .about-nav i {
   color: var(--color-1);
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-  font-size: 50px;
+  font-size: 5vw;
   text-align: center;
 }
 .about-nav li {
   margin: 0 20px;
+  display: inline-block;
 }
 
 .about-nav li:hover i {
@@ -255,17 +257,6 @@
     margin: 20px auto;
     width: 90%;
   }
-  .about-nav h5 {
-    font-size: 0.8rem;
-  }
-
-  .about-nav i {
-    font-size: 0.5rem;
-  }
-
-  .about-nav li {
-    margin: 10px;
-  }
 
   .go-down i,
   .back-to-top i {
@@ -275,8 +266,12 @@
   .read-more-wrapper {
     width: 100%;
   }
+
   .about-nav i {
-    font-size: 50px;
+    font-size: 8vw;
+  }
+  .about-nav h5 {
+    font-size: 3vw;
   }
 }
 
