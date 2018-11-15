@@ -100,6 +100,10 @@
   letter-spacing: 0.3rem;
 }
 
+.nav-link.active:hover {
+  filter: saturate(5);
+}
+
 /* ------------------------------- navigation group end ------------------------- */
 
 /* ---------------------------------- partners ----------------------------------- */
@@ -131,6 +135,8 @@
   left: 35vw;
   bottom: 0;
   top: 0;
+  background-size: 100vw;
+  background-attachment: fixed;
   position: absolute;
   border-radius: 50%;
   z-index: 0;
@@ -168,6 +174,7 @@
   z-index: 0;
   background-image: url(/imgs/backs1.jpg);
   background-attachment: fixed;
+  background-size: 100vw;
   -webkit-transition: left ease 1s, right ease 1s;
   -webkit-transition: left ease 1s, right ease 1s, width ease 1.5s;
   transition: left ease 1s, right ease 1s, width ease 1.5s;

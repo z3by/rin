@@ -152,18 +152,15 @@ export default class Landing extends Component {
 
   // change the circle background;
   changeBackground = () => {
-    document.querySelector(".circle").style.background = `url(imgs/backs${this
-      .state.index + 1}.jpg)`;
-    document.querySelector(".circle").style.backgroundAttachment = "fixed";
-    document.querySelector(".circle").style.backgroundSize = "100%";
-    document.querySelector(".up-rec").style.background = `url(imgs/backs${this
-      .state.index + 1}.jpg)`;
-    document.querySelector(".up-rec").style.backgroundSize = "100%";
-    document.querySelector(".up-rec").style.backgroundAttachment = "fixed";
-    document.querySelector(".down-rec").style.background = `url(imgs/backs${this
-      .state.index + 1}.jpg)`;
-    document.querySelector(".down-rec").style.backgroundSize = "100%";
-    document.querySelector(".down-rec").style.backgroundAttachment = "fixed";
+    document.querySelector(
+      ".circle"
+    ).style.backgroundImage = `url(imgs/backs${this.state.index + 1}.jpg)`;
+    document.querySelector(
+      ".up-rec"
+    ).style.backgroundImage = `url(imgs/backs${this.state.index + 1}.jpg)`;
+    document.querySelector(
+      ".down-rec"
+    ).style.backgroundImage = `url(imgs/backs${this.state.index + 1}.jpg)`;
   };
 
   translateShapes = () => {

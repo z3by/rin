@@ -19,7 +19,8 @@
   border-right: solid 1px rgba(0, 0, 0, 0.3);
   -webkit-transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
   transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .navbar-middle {
@@ -60,6 +61,7 @@
 .navbar-middle .navbar-link:hover .nav-rec {
   background-color: var(--color-2);
   margin-left: 10px;
+  -webkit-transition: margin 0.2s ease;
   transition: margin 0.2s ease;
 }
 
@@ -78,7 +80,8 @@
   width: 200px;
   z-index: 10000;
   padding: 0;
-  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+          box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
 }
 
 .nav-rec-menu li {
