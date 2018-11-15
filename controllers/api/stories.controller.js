@@ -1,6 +1,8 @@
 const mysql = require("mysql");
 const axios = require("axios");
 const dbConfig = require("../db.config");
+const storyValidator = require("../validators/story.validator");
+
 const connection = mysql.createConnection(dbConfig);
 connection.connect(err => {
   if (err) throw err;
@@ -12,10 +14,9 @@ module.exports.getStories = (req, res) => {
     if (err) throw err;
     const parsed = result.map(story => {
       story.imgs = JSON.parse(story.imgs);
-      story.text = JSON.parse(story.text);
+      story.SDGs = JSON.parse(story.SDGs);
       return story;
     });
-
     res.send(parsed);
   });
 };
@@ -24,21 +25,36 @@ module.exports.getStory = (req, res) => {
   let qry = `select * from stories where id=${req.params.id}`;
   connection.query(qry, (err, result) => {
     if (err) throw err;
-    res.send(result);
+    const parsed = result.map(story => {
+      story.imgs = JSON.parse(story.imgs);
+      story.SDGs = JSON.parse(story.SDGs);
+      return story;
+    });
+
+    res.send(parsed);
   });
 };
 
 module.exports.addStory = (req, res) => {
   let data = {
     title: req.body.title,
-    text: JSON.stringify(req.body.text), //text is an array of strings
-    imgs: JSON.stringify(req.body.imgs) //imgs is an array of urls
+    pre_description: req.body.pre_description,
+    lens: req.body.lens,
+    text: req.body.text,
+    imgs: JSON.stringify(req.body.imgs), //imgs is an array of urls
+    SDGs: JSON.stringify(req.body.SDGs)
   };
 
-  let qry = `insert into stories(title, text, imgs) values("${data.title}", '${
-    data.text
-  }', '${data.imgs}');`;
-  // let qry = `insert into stories(title) values("${data.title}"); DROP TABLE stories;--")`;
+  const errors = storyValidator(data);
+  if (Object.keys(errors).length) {
+    return res.status(400).json(errors);
+  }
+
+  let qry = `insert into stories(title, pre_description, lens, text, imgs, SDGs) values("${
+    data.title
+  }", "${data.pre_description}", "${data.lens}", '${data.text}', '${
+    data.imgs
+  }', '${data.SDGs}');`;
   connection.query(qry, (err, result) => {
     if (err) throw err;
     res.send("story row inserted successfully");
@@ -52,13 +68,23 @@ module.exports.uploadImage = (req, res) => {
 module.exports.updateStory = (req, res) => {
   let data = {
     title: req.body.title,
-    text: JSON.stringify(req.body.text), //text is an array of strings
-    imgs: JSON.stringify(req.body.imgs) //imgs is an array of urls
+    pre_description: req.body.pre_description,
+    lens: req.body.lens,
+    text: req.body.text,
+    imgs: JSON.stringify(req.body.imgs), //imgs is an array of urls
+    SDGs: JSON.stringify(req.body.SDGs)
   };
 
+  const errors = storyValidator(data);
+  if (Object.keys(errors).length) {
+    return res.status(400).json(errors);
+  }
+
   let qry = `UPDATE stories
-                   SET title="${data.title}", text='${data.text}', imgs='${
-    data.imgs
+                   SET title="${data.title}", pre_description="${
+    data.pre_description
+  }", lens="${data.lens}", text="${data.text}", imgs='${data.imgs}', SDGs='${
+    data.SDGs
   }'
                    WHERE id=${req.params.id};`;
   connection.query(qry, (err, result) => {

@@ -1,35 +1,15 @@
-.nav-up {
-  height: 100px;
-  background: #ee8800;
-}
-
-.nav-up ul {
-  margin: 0;
-  list-style: none;
-}
-
-.nav-up ul li {
-  display: inline-block;
-  margin: 0 1px;
-  padding: 0 20px;
-  height: 100%;
-}
-
-.nav-up ul li:hover {
-  background: rgba(255, 255, 255, 0.4);
-}
-
-.nav-up ul li a {
-  color: white;
-  font-size: 20px;
-  line-height: 100px;
-  display: inline-block;
-  text-transform: capitalize;
-  font-family: var(--main-font);
-}
-
 .projects-dashboard main {
-  float: right;
-  height: calc(100vh - 100px);
-  width: calc(100vw - 200px);
+  width: calc(60%);
+  margin: 0 auto;
+  padding: 50px;
+}
+
+.requests-notification {
+  height: 10px;
+  width: 10px;
+  background: crimson;
+  border-radius: 50%;
+  position: absolute;
+  top: 20px;
+  left: -10px;
 }

@@ -13,17 +13,23 @@ const Dot = props => {
     infancy: "#fc67fa"
   };
 
+  let type = props.project.type.toLowerCase();
+
   return (
-    <div className="dot" style={{ background: colors[props.project.type] }}>
+    <div
+      className="dot"
+      style={{ background: colors[type] }}
+      onMouseEnter={e => {
+        props.hover(props.project.id);
+      }}
+      onClick={e => {
+        props.hover(props.project.id);
+      }}
+    >
       <div className="project-info">
         <div className="project-info-popup">
-          <h1>Basic statistics</h1>
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque
-            similique obcaecati vitae consequuntur atque eligendi architecto
-            quam. Ut natus repellendus sint earum rerum consequuntur assumenda
-            quo illum veritatis. Soluta, corrupti!
-          </p>
+          <h4>Basic statistics</h4>
+          <p>{props.info.type}</p>
           <p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque
             similique obcaecati vitae consequuntur atque eligendi architecto
@@ -32,7 +38,7 @@ const Dot = props => {
           </p>
         </div>
         <div className="project-info-popup">
-          <h1>Qualitative information</h1>
+          <h4>Qualitative information</h4>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo amet
             dolore blanditiis, culpa tempore voluptatibus! Id, animi eligendi
@@ -47,7 +53,7 @@ const Dot = props => {
           </p>
         </div>
         <div className="project-info-popup">
-          <h1>other info</h1>
+          <h4>Other info</h4>
           <p>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui,
             exercitationem! Amet eum ipsa accusamus nulla libero iste sequi

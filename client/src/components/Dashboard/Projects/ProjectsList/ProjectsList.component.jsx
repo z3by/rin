@@ -2,12 +2,21 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./ProjectsList.css";
+import Button from "@material-ui/core/Button";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
 
 export default class ProjectsList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      allProject: []
+      allProject: [],
+      currentPage: 1,
+      projectsPerPage: 10
     };
   }
 
@@ -36,51 +45,84 @@ export default class ProjectsList extends Component {
       });
   };
 
+  changeCurrentPage = (number) => {
+    this.setState({ currentPage: number })
+  }
+
   render() {
-    const projects = this.state.allProject.map(project => {
+    const { allProject, currentPage, projectsPerPage } = this.state;
+
+    // Logic for displaying projects
+    const indexOfLastProject = currentPage * projectsPerPage;
+    const indexOfFirstProject = indexOfLastProject - projectsPerPage;
+    const currentProjects = allProject.slice(indexOfFirstProject, indexOfLastProject);
+
+    const projects = currentProjects.map(project => {
       return (
-        <tr>
-          <td>{project.id}</td>
-          <td>{project.title}</td>
-          <td>{project.organization_name}</td>
-          <td className="project-options">
+        <TableRow>
+          <TableCell>{project.id}</TableCell>
+          <TableCell>{project.title}</TableCell>
+          <TableCell>{project.organization_name}</TableCell>
+          <TableCell>
             <Link to={`/dashboard/projects/list/${project.id}`}>
-              <i className="far fa-eye" /> show
+              <Button>
+                <i className="far fa-eye" />
+              </Button>
             </Link>
             <Link to={`/dashboard/projects/list/updateproject/${project.id}`}>
-              <i className="fas fa-edit" />
-              update
+              <Button>
+                <i className="fas fa-edit" style={{ color: "royalblue" }} />
+              </Button>
             </Link>
             <a onClick={() => this.deleteProject(project)}>
-              <i className="fas fa-trash-alt" /> delete
+              <Button>
+                <i className="fas fa-trash-alt" style={{ color: "crimson" }} />
+              </Button>
             </a>
-          </td>
-        </tr>
+          </TableCell>
+        </TableRow>
+      );
+    });
+
+    // Logic for displaying page numbers
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(allProject.length / projectsPerPage); i++) {
+      pageNumbers.push(i);
+    }
+
+    const allPagesNumbers = pageNumbers.map(number => {
+      return (
+
+        <li
+          key={number}
+        >
+          <Button variant="fab" mini
+            onClick={() => { this.changeCurrentPage(number) }}
+            className={number === this.state.currentPage ? 'active-page-number' : ''}>
+            {number}
+          </Button>
+        </li>
       );
     });
 
     return (
-      <div>
-        <table class="projects-list-table">
-          <thead>
-            <tr>
-              <th>
-                <h1>Project ID</h1>
-              </th>
-              <th>
-                <h1>Project Name</h1>
-              </th>
-              <th>
-                <h1>Organization Name</h1>
-              </th>
-              <th>
-                <h1>Actions</h1>
-              </th>
-            </tr>
-          </thead>
-          <tbody>{projects}</tbody>
-        </table>
-      </div>
+      <Paper className="projectsPages">
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Project ID</TableCell>
+              <TableCell>Project Name</TableCell>
+              <TableCell>Organization Name</TableCell>
+              <TableCell />
+            </TableRow>
+          </TableHead>
+          <TableBody>{projects}</TableBody>
+        </Table>
+
+        <ul id="page-numbers">
+          {allPagesNumbers}
+        </ul>
+      </Paper>
     );
   }
 }

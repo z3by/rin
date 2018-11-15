@@ -6,7 +6,8 @@ class Filter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      countries: []
+      countries: [],
+      filterToggled: false
     };
   }
 
@@ -22,6 +23,13 @@ class Filter extends React.Component {
     });
   };
 
+  toggleFilter = () => {
+    const { filterToggled } = this.state;
+    this.setState({
+      filterToggled: !filterToggled
+    });
+  };
+
   render() {
     const countries = this.state.countries.map(country => {
       return (
@@ -31,10 +39,20 @@ class Filter extends React.Component {
       );
     });
 
+    let show = this.state.filterToggled ? " show" : "";
     return (
-      <div className="filter">
-        <a>Filter</a>
+      <div className={"filter" + show}>
+        <a onClick={this.toggleFilter}>
+          <i className="fas fa-search" /> Filter
+        </a>
 
+        <a
+          className="close"
+          onClick={this.toggleFilter}
+          style={{ display: this.state.filterToggled ? "block" : "none" }}
+        >
+          <i className="fas fa-times" />
+        </a>
         <div className="filter-input">
           <label htmlFor="org-name" className="filter-label">
             Filter by organization name
@@ -75,7 +93,7 @@ class Filter extends React.Component {
             type="range"
             max="1000000"
             name="capacity"
-            placeholder="porject capacity"
+            placeholder="Porject Capacity"
             className="slider"
             onChange={this.props.filter}
           />
@@ -92,7 +110,7 @@ class Filter extends React.Component {
             id="starting-year"
             type="range"
             name="year"
-            placeholder="project starting year"
+            placeholder="Project Starting Year"
             className="slider"
             onChange={this.props.filter}
             max={new Date().getFullYear()}
@@ -109,8 +127,14 @@ class Filter extends React.Component {
             {countries}
           </select>
         </div>
-        <button className="btn" onClick={this.props.fetchProjects}>
-          fetch
+        <button
+          className="btn"
+          onClick={() => {
+            this.toggleFilter();
+            this.props.fetchProjects();
+          }}
+        >
+          search
         </button>
       </div>
     );

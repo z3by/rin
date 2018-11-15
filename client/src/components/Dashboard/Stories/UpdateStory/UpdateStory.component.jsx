@@ -1,6 +1,40 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./UpdateStory.css";
+import Paper from "@material-ui/core/Paper";
+import Select from "@material-ui/core/Select";
+import Checkbox from "@material-ui/core/Checkbox";
+import MenuItem from "@material-ui/core/MenuItem";
+import Menu from "@material-ui/core/Menu";
+import { MenuList } from "@material-ui/core";
+import ExpansionPanel from "@material-ui/core/ExpansionPanel";
+import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
+import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
+
+const lenses = [
+  "Refugee-Owned",
+  "Refugee-Led",
+  "Refugee-Supporting",
+  "Refugee-Supporting-Host-Weighted",
+  "Lending-Facilities",
+  "Refugee-Funds"
+];
+
+const SDGs = [
+  "Climate-Action",
+  "Decent-Work-and-Economic-Growth",
+  "Gender-Equality",
+  "Good-Health-and-Well-Being",
+  "Industry-Innovation-and-Infrastructure",
+  "Life-on-Land",
+  "No-Poverty",
+  "Partnerships-for-the-Goals",
+  "Peace-Justice-and-Strong-Institutions",
+  "Quality-Education",
+  "Reduced-Inqualities",
+  "Sustainable-Cities-and-Communities",
+  "Zero-Hunger"
+];
 
 export default class UpdateStory extends Component {
   constructor(props) {
@@ -9,8 +43,12 @@ export default class UpdateStory extends Component {
       id: this.props.match.params.id,
       story: {},
       title: "",
-      text: [],
-      imgs: []
+      pre_description: "",
+      lens: "",
+      text: "",
+      imgs: [],
+      SDGs: [],
+      loading: false
     };
   }
 
@@ -22,27 +60,81 @@ export default class UpdateStory extends Component {
     document.body.style.overflowY = "auto";
   }
 
+  enableAddButton = () => {
+    this.setState({
+      formValid: true
+    });
+  };
+
+  disableAddButton = () => {
+    this.setState({
+      formValid: false
+    });
+  };
+
+  checkButtonAvailability = () => {
+    const state = this.state;
+    // check if the user added all required input
+    const isValid =
+      state.title &&
+      state.pre_description &&
+      state.lens &&
+      state.text &&
+      state.imgs;
+
+    if (isValid) {
+      this.enableAddButton();
+    } else {
+      this.disableAddButton();
+    }
+  };
+
   getStory = id => {
     axios.get(`/api/stories/${id}`).then(res => {
-      this.setState({ story: res.data[0] }, () => {
-        console.log(this.state.story);
-        this.setState({
-          title: res.data[0]["title"],
-          text: JSON.parse(res.data[0]["text"]),
-          imgs: JSON.parse(res.data[0]["imgs"])
-        });
+      this.setState({
+        story: res.data[0]
+      }, () => {
+        this.setState({ title: res.data[0]["title"], pre_description: res.data[0]["pre_description"], lens: res.data[0]["lens"], text: res.data[0]["text"], imgs: res.data[0]["imgs"], SDGs: res.data[0]["SDGs"] });
       });
     });
   };
 
   onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({ [e.target.name]: e.target.value }, () => {
+      this.checkButtonAvailability();
+    });
+  };
+
+  onChangeSDG = e => {
+    const index = e.target.value;
+    const sdgVal = SDGs[index];
+    const checked = this.state.SDGs.includes(sdgVal);
+    let selectedSDGs;
+
+    if (!checked) {
+      selectedSDGs = [...this.state.SDGs, SDGs[index]];
+    } else {
+      selectedSDGs = this.state.SDGs.filter(sdg => {
+        return sdg !== sdgVal;
+      });
+    }
+
+    this.setState({
+      SDGs: selectedSDGs
+    }, () => {
+      this.checkButtonAvailability();
+    });
   };
 
   onChangeImg = e => {
+    this.setState({
+      loading: true
+    });
+
     e.preventDefault();
     const formData = new FormData();
     formData.append("img", e.target.files[0]);
+
     const config = {
       headers: {
         "content-type": "multipart/form-data"
@@ -51,16 +143,24 @@ export default class UpdateStory extends Component {
 
     axios.post("/api/upload", formData, config).then(res => {
       const imageURL = res.data.location;
-      this.setState({
-        imgs: [imageURL]
-      });
+      this.setState(
+        {
+          imgs: [imageURL],
+          loading: false
+        },
+        () => {
+          this.checkButtonAvailability();
+        }
+      );
     });
   };
 
   onChangeText = e => {
     let txtArr = [...this.state.text];
     txtArr[0] = e.target.value;
-    this.setState({ text: txtArr });
+    this.setState({ text: txtArr }, () => {
+      this.checkButtonAvailability();
+    });
   };
 
   updateStory = e => {
@@ -68,67 +168,132 @@ export default class UpdateStory extends Component {
 
     let storyData = {
       title: this.state.title,
+      pre_description: this.state.pre_description,
+      lens: this.state.lens,
       text: this.state.text,
-      imgs: this.state.imgs
+      imgs: this.state.imgs,
+      SDGs: this.state.SDGs
     };
 
     axios
       .put(`/api/stories/${this.state.id}`, storyData)
-      .then(function(response) {
+      .then(function (response) {
         document.querySelector(".done-img").style.display = "flex";
         setTimeout(() => {
           document.querySelector(".done-img").style.display = "none";
-        }, 6000);
+        }, 3000);
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   };
 
   render() {
+    let lensesUI = lenses.map((lens, i) => {
+      if (lens === this.state.lens) {
+        return (
+          <option value={lens} key={i} selected>
+            {lens}
+          </option>
+        );
+      }
+      else {
+        return (
+          <option value={lens} key={i}>
+            {lens}
+          </option>
+        );
+      }
+
+    });
+
+    let SDGsUI = SDGs.map((sdg, id) => {
+      return (
+        <MenuItem>
+          <Checkbox
+            checked={this.state.SDGs.includes(sdg) ? true : false}
+            style={{ color: "var(--color-2)" }}
+            onChange={this.onChangeSDG}
+            value={id}
+          />
+          {sdg}
+        </MenuItem>
+      );
+    });
+
     return (
-      <div className="admin-form">
-        <form method="POST">
-          <label htmlFor="story-title">story title</label> <br />
+      <Paper className="admin-form">
+        <form method="POST" onSubmit={this.updateStory}>
+          <label htmlFor="story-title">story title</label>
           <input
-            required
             type="text"
             name="title"
             id="story-title"
             value={this.state.title}
             onChange={this.onChange}
           />
-          <br />
-          <br />
-          <label htmlFor="story-text">story text</label> <br />
+          <label htmlFor="story-pre_description">story pre-description</label>{" "}
+          <input
+            type="text"
+            name="pre_description"
+            id="story-pre_description"
+            value={this.state.pre_description}
+            onChange={this.onChange}
+          />
+          <label htmlFor="story-text">story text</label>
           <textarea
-            required
             rows="4"
             cols="50"
-            required
             type="text"
             name="text"
             id="story-text"
             value={this.state.text[0]}
             onChange={this.onChangeText}
           />
-          <label htmlFor="image">add image for the story</label> <br />
+          <select name="lens" id="lens" onChange={this.onChange}>
+            <option>Select Lens</option>
+            {lensesUI}
+          </select>
+          <br />
+          <ExpansionPanel id="checkboxes">
+            <ExpansionPanelSummary>
+              <p>Select SDGs</p>
+            </ExpansionPanelSummary>
+            <ExpansionPanelDetails>
+              <MenuList className="menu-full-width">{SDGsUI}</MenuList>
+            </ExpansionPanelDetails>
+          </ExpansionPanel>
+          <br />
+          <label htmlFor="image">Story image</label>
+          <img
+            className="admin-img-update"
+            src={this.state.imgs[0]}
+            alt="uploaded"
+          />
           <input
             type="file"
             name="img"
             accept="image/*"
             onChange={this.onChangeImg}
           />
-          <button type="submit" onClick={this.updateStory}>
-            <p>
-              <i className="fas fa-plus" /> Update Story
-            </p>
+          <img
+            src="/imgs/loading.gif"
+            alt=""
+            className="loading"
+            style={{ display: this.state.loading ? "block" : "none" }}
+          />
+          <button
+            type="submit"
+            className="btn"
+            disabled={!this.state.formValid}
+          >
+            <i className="fas fa-edit" /> Update Story
           </button>
           <div className="done-img">
             <img src="/imgs/done.gif" alt="" />
           </div>
         </form>
-      </div>
+      </Paper>
     );
   }
 }

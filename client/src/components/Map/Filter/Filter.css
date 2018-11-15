@@ -2,9 +2,9 @@
   height: 40px;
   width: 100px;
   position: absolute;
-  z-index: 100;
+  z-index: 99;
   bottom: 5%;
-  left: calc(50% - 50px);
+  left: calc(50% - 130px);
   text-align: center;
   background: rgba(0, 0, 0, 0.7);
   cursor: pointer;
@@ -20,33 +20,43 @@
   line-height: 2;
 }
 
-.filter:hover {
+.filter a i {
+  margin: 0;
+}
+
+.filter a.close {
+  position: absolute;
+  right: 40px;
+  top: 20px;
+}
+
+.filter a.close:hover i {
+  color: var(--color-2);
+}
+
+.filter.show {
   height: 70%;
   width: 70%;
   left: 15%;
   overflow-y: scroll;
   padding: 20px;
+  transition-duration: 1s;
+  transition: var(--smooth);
 }
 
-.filter:hover .filter-input {
+.filter.show .filter-input {
   visibility: visible;
   -webkit-transition-delay: 1s;
   transition-delay: 1s;
   opacity: 1;
 }
 
-.filter:hover a {
+.filter.show a {
   font-size: 40px;
   -webkit-transition: var(--smooth);
   transition: var(--smooth);
 }
 
-.filter:hover .spectrum {
-  visibility: visible;
-  opacity: 1;
-  -webkit-transition-delay: 1s;
-  transition-delay: 1s;
-}
 .filter-input {
   text-align: left;
   visibility: hidden;
@@ -91,6 +101,10 @@
   margin-left: 20px;
 }
 
+.filter .btn {
+  position: relative;
+  bottom: 0;
+}
 @media (max-width: 768px) {
   .filter-input {
     grid-template-columns: 1fr;
@@ -101,16 +115,6 @@
     margin: 0;
   }
 
-  .filter:hover {
-    height: 90%;
-    width: 80%;
-    left: 5%;
-    z-index: 1002;
-  }
-
-  .filter:hover a {
-    display: none;
-  }
   .filter select {
     width: 100%;
   }

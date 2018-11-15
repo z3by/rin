@@ -1,17 +1,23 @@
 .members {
-  background: var(--color-1);
-  height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  background: url("/imgs/bg-login.jpg");
-  background-size: cover;
-  background-position: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+  background: url("/imgs/members.jpeg");
+  min-height: 100vh;
+  width: 100vw;
+  background-size: 100%;
+  background-position-y: 50%;
 }
 
+.logout {
+  float: right;
+  border: none;
+  padding: 10px 30px;
+  cursor: pointer;
+  background: #ccc;
+  text-transform: uppercase;
+  margin: 20px;
+}
+.logout:hover {
+  background: var(--color-2);
+}
 .loginbox {
   -ms-flex-item-align: center;
   -ms-grid-row-align: center;

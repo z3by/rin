@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import "./Landing.css";
+import Partners from "../Partners/Partners.component";
+import CountUp from "react-countup";
 
 export default class Landing extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      counter: "10,034,623",
+      counter: 200034623,
       index: 0
     };
   }
@@ -16,7 +18,7 @@ export default class Landing extends Component {
     this.rotateArrows();
     this.showVideo();
     this.changeBackground();
-    this.fadeInOutPartners();
+    this.startCounter();
   }
 
   // bind the events to the local functions.
@@ -30,6 +32,9 @@ export default class Landing extends Component {
   rotateArrows = () => {
     document.querySelector(".arrows").style.transform = "rotate(0)";
   };
+
+  //start counter
+  startCounter = () => {};
 
   // mouse move effect on the landing page circle;
   onMouseMove = e => {
@@ -114,7 +119,6 @@ export default class Landing extends Component {
           this.toggleClassActive();
           this.changeBackground();
           this.translateShapes();
-          // this.toggleOverlayColor();
           this.showVideo();
         }
       );
@@ -130,7 +134,6 @@ export default class Landing extends Component {
           this.toggleClassActive();
           this.changeBackground();
           this.translateShapes();
-          // this.toggleOverlayColor();
           this.showVideo();
         }
       );
@@ -149,18 +152,15 @@ export default class Landing extends Component {
 
   // change the circle background;
   changeBackground = () => {
-    document.querySelector(".circle").style.background = `url(imgs/backs${this
-      .state.index + 1}.jpg)`;
-    document.querySelector(".circle").style.backgroundAttachment = "fixed";
-    document.querySelector(".circle").style.backgroundSize = "100%";
-    document.querySelector(".up-rec").style.background = `url(imgs/backs${this
-      .state.index + 1}.jpg)`;
-    document.querySelector(".up-rec").style.backgroundSize = "100%";
-    document.querySelector(".up-rec").style.backgroundAttachment = "fixed";
-    document.querySelector(".down-rec").style.background = `url(imgs/backs${this
-      .state.index + 1}.jpg)`;
-    document.querySelector(".down-rec").style.backgroundSize = "100%";
-    document.querySelector(".down-rec").style.backgroundAttachment = "fixed";
+    document.querySelector(
+      ".circle"
+    ).style.backgroundImage = `url(imgs/backs${this.state.index + 1}.jpg)`;
+    document.querySelector(
+      ".up-rec"
+    ).style.backgroundImage = `url(imgs/backs${this.state.index + 1}.jpg)`;
+    document.querySelector(
+      ".down-rec"
+    ).style.backgroundImage = `url(imgs/backs${this.state.index + 1}.jpg)`;
   };
 
   translateShapes = () => {
@@ -175,25 +175,23 @@ export default class Landing extends Component {
     }
 
     document.querySelector(".up-rec").style.left = `${random1}%`;
-    document.querySelector(".up-rec").style.width = `${random1}vw`;
-    document.querySelector(".up-rec-overlay").style.width = `${random1}vw`;
     document.querySelector(".up-rec-overlay").style.left = `${random1}%`;
     document.querySelector(".down-rec").style.right = `${random2}%`;
-    document.querySelector(".down-rec").style.width = `${random2}vw`;
-    document.querySelector(".down-rec-overlay").style.width = `${random2}vw`;
     document.querySelector(".down-rec-overlay").style.right = `${random2}%`;
   };
 
   // change the rectangles overlay color
   toggleOverlayColor = () => {
     document.querySelector(".up-rec-overlay").style.background =
-      document.querySelector(".up-rec-overlay").style.background === "cadetblue"
-        ? "khaki"
-        : "cadetblue";
+      document.querySelector(".up-rec-overlay").style.background ===
+      "var(--color-4)"
+        ? "var(--color-2)"
+        : "var(--color-4)";
     document.querySelector(".down-rec-overlay").style.background =
-      document.querySelector(".down-rec-overlay").style.background === "khaki"
-        ? "cadetblue"
-        : "khaki";
+      document.querySelector(".down-rec-overlay").style.background ===
+      "var(--color-2)"
+        ? "var(--color-4)"
+        : "var(--color-2)";
   };
 
   // navigate to route after 2 seconds
@@ -213,30 +211,13 @@ export default class Landing extends Component {
     }, 2000);
   };
 
-  fadeInOutPartners = () => {
-    // exit if not on the landing page
-    let i = 0;
-    setInterval(function() {
-      if (!document.querySelector(".partners")) {
-        return;
-      }
-      document.querySelector(".partners-img").src =
-        "/imgs/partners/i" + i + ".png";
-      i++;
-      if (i === 20) {
-        i = 0;
-      }
-    }, 2000);
-  };
-
   render() {
     return (
-      <div>
+      <div className="landing-main">
+        <div className="partners">
+          <Partners />
+        </div>
         <div className="landing fadeInFast">
-          <div className="partners">
-            <img src="" alt="" className="partners-img" />
-          </div>
-
           <div className="nav">
             <ul className="nav-group">
               <li className="nav-item">
@@ -289,8 +270,24 @@ export default class Landing extends Component {
 
           <div className="counter">
             <h4>
-              <span>$</span>
-              10,034,623
+              <CountUp
+                start={0}
+                end={this.state.counter}
+                duration={2.75}
+                separator=","
+                decimal=","
+                prefix="$"
+              >
+                {({ countUpRef, start }) => {
+                  this.startCounter = start;
+                  return (
+                    <div>
+                      <span ref={countUpRef} />
+                      <p className="p-theme-2">Partner Commitments</p>
+                    </div>
+                  );
+                }}
+              </CountUp>
             </h4>
           </div>
 

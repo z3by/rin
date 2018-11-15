@@ -5,26 +5,33 @@
   "scripts": {
     "postinstall": "cd ./client && npm run build",
     "start": "node ./bin/www",
+    "watch": "nodemon ./bin/www",
     "server": "cd client && npm run build && cd .. && npm start",
     "dev": "cd ./client/ && npm start"
   },
   "dependencies": {
-    "aws-sdk": "^2.344.0",
+    "aws-sdk": "^2.346.0",
     "axios": "^0.18.0",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "dotenv": "^6.1.0",
-    "express": "~4.16.0",
+    "express": "^4.16.4",
     "express-session": "^1.15.6",
     "http-errors": "~1.6.2",
+    "jsonwebtoken": "^8.3.0",
     "morgan": "~1.9.0",
     "multer": "^1.4.1",
     "multer-s3": "^2.7.0",
     "mysql": "^2.16.0",
-    "npm": "^6.4.1"
+    "nodemon": "^1.18.5",
+    "npm": "^6.4.1",
+    "password-validator": "^4.1.1",
+    "react-slideshow-image": "^1.0.8",
+    "validator": "^10.8.0"
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-free": "^5.3.1"
+    "@fortawesome/fontawesome-free": "^5.4.2"
   }
 }

@@ -1,7 +1,17 @@
 const mysql = require("mysql");
-const migrateQuery = require("../models/query/migrate");
-const addCountries = require("./api/countries.controller").addCountries;
+const countriesHelpers = require("./helpers/countries.helpers");
 const dbConfig = require("./db.config");
+
+const countriesModel = require("../models/countries.model");
+const projectsModel = require("../models/projects.model");
+const locationsModel = require("../models/locations.model");
+const storiesModel = require("../models/stories.model");
+const membersModel = require("../models/members.model");
+const lensesModel = require("../models/lenses.model");
+
+const migrateHelpers = require("./helpers/migrate.helpers");
+
+// init mysql connection
 const connection = mysql.createConnection(dbConfig);
 connection.connect(err => {
   if (err) throw err;
@@ -9,42 +19,35 @@ connection.connect(err => {
 });
 
 module.exports = () => {
-  connection.query(migrateQuery.createDB, err => {
-    if (err) throw err;
-    console.log("Database created");
+  // create database
+  migrateHelpers.createDB(connection, "rin");
 
-    connection.query("use rin");
-    connection.query(migrateQuery.createCountriesTable, err => {
-      if (err) throw err;
-      let countriesNumQry = "select count(*) from countries";
-      connection.query(countriesNumQry, function(err, res) {
-        if (err) throw err;
-        let countriesNum = res[0]["count(*)"];
-        if (!countriesNum) {
-          addCountries();
-        }
-      });
-      console.log("countries table created");
-    });
+  // use database
+  migrateHelpers.useDB(connection, "rin");
 
-    connection.query(migrateQuery.createLocationsTable, err => {
-      if (err) throw err;
-      console.log("locations table created");
-    });
+  // create countreis table
+  migrateHelpers.createTable(connection, countriesModel);
 
-    connection.query(migrateQuery.createPartnersTable, err => {
-      if (err) throw err;
-      console.log("partners table created");
-    });
+  // create locations table
+  migrateHelpers.createTable(connection, locationsModel);
 
-    connection.query(migrateQuery.createProjectsTable, err => {
-      if (err) throw err;
-      console.log("projects table created");
-    });
+  // create projects table
+  migrateHelpers.createTable(connection, projectsModel);
 
-    connection.query(migrateQuery.createStoriesTable, err => {
-      if (err) throw err;
-      console.log("stories table created");
-    });
+  // create stories table
+  migrateHelpers.createTable(connection, storiesModel);
+
+  // create stories table
+  migrateHelpers.createTable(connection, membersModel);
+
+  // create lenses table
+  migrateHelpers.createTable(connection, lensesModel);
+
+  // fetch countries and insert them  into countries table
+
+  countriesHelpers.checkIfCountriesExists(connection, res => {
+    if (res === false) {
+      countriesHelpers.addCountries(connection);
+    }
   });
 };

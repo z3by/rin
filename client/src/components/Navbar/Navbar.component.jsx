@@ -3,18 +3,20 @@ import "./Navbar.css";
 import { Link } from "react-router-dom";
 
 export default class Navbar extends Component {
-  state = {
-    counter: "10,034,623",
-    index: -1
-  };
+  constructor() {
+    super();
+    this.state = {
+      counter: "10,034,623",
+      index: -1
+    };
+  }
 
-  onClickCircle = e => {
-    const index = parseInt(e.target.getAttribute("index"), 10) - 1;
-    if (!!document.querySelector(".active")) {
-      document.querySelector(".active").classList.remove("active");
-    }
-    document.querySelectorAll(".nav-rec")[index].classList.add("active");
-  };
+  componentDidMount() {
+    this.startCounter();
+  }
+
+  //start counter
+  startCounter = () => {};
 
   toggleNavbar = () => {
     const collapsed = document.querySelector(".navbar").style.width === "0px";
@@ -47,72 +49,54 @@ export default class Navbar extends Component {
   render() {
     return (
       <div>
-        <div className="navbar">
+        <div className="logo">
+          <Link className="navbar-link" to={"/"}>
+            <img src="/imgs/logo.png" alt="" className="logo-img" />
+          </Link>
+        </div>
+        <nav className="navbar">
           <div className="toggle-nav" onClick={this.toggleNavbar}>
             <i className="fas fa-times" />
-          </div>
-          <div className="logo">
-            <Link className="navbar-link" to={"/"}>
-              <img src="/imgs/old-logo.png" alt="" className="logo-img" />
-            </Link>
           </div>
 
           <ul className="navbar-middle">
             <li>
-              <Link className="navbar-link" to={"/stories"}>
-                <div
-                  className="nav-rec active"
-                  index="1"
-                  onClick={this.onClickCircle}
-                />
+              <Link className="navbar-link" index="1" to={"/stories"}>
+                <div className="nav-rec" />
                 <p className="nav-rec-text">stories</p>
               </Link>
             </li>
 
             <li>
-              <Link className="navbar-link" to={"/map"}>
-                <div
-                  className="nav-rec"
-                  index="2"
-                  onClick={this.onClickCircle}
-                />
+              <Link className="navbar-link" index="2" to={"/map"}>
+                <div className="nav-rec" />
                 <p className="nav-rec-text">map</p>
               </Link>
             </li>
             <li>
-              <Link className="navbar-link" to={"/data"}>
-                <div
-                  className="nav-rec"
-                  index="3"
-                  onClick={this.onClickCircle}
-                />
+              <Link className="navbar-link" index="3" to={"/data"}>
+                <div className="nav-rec" />
                 <p className="nav-rec-text">data</p>
               </Link>
             </li>
 
             <li>
-              <Link className="navbar-link" to={"/members"}>
-                <div
-                  className="nav-rec rounded"
-                  index="4"
-                  onClick={this.onClickCircle}
-                />
+              <Link className="navbar-link" index=" 4" to={"/members"}>
+                <div className="nav-rec rounded" />
                 <p className="nav-rec-text">members</p>
               </Link>
             </li>
 
             <li>
-              <Link className="navbar-link" to={"/about"}>
-                <div
-                  className="nav-rec"
-                  index="5"
-                  onClick={this.onClickCircle}
-                />
+              <Link className="navbar-link" index="5" to={"/about"}>
+                <div className="nav-rec" />
                 <p className="nav-rec-text">
                   about
                   <ul className="nav-rec-menu">
                     <li>
-                      <Link to={"/about/who-we-are"}>who we are</Link>
+                      <Link to={"/about/who-we-are"} hash={"#about-routes"}>
+                        who we are
+                      </Link>
                     </li>
                     <li>
                       <Link to={"/about/strategy"}>our strategy</Link>
@@ -123,18 +107,12 @@ export default class Navbar extends Component {
                     <li>
                       <Link to={"/about/why-refugees"}>why refugees </Link>
                     </li>
-                    <li>
-                      <Link to={"/about/team"}>our team </Link>
-                    </li>
-                    <li>
-                      <Link to={"/about/steering"}>steering committee</Link>
-                    </li>
                   </ul>
                 </p>
               </Link>
             </li>
             {/* <Link to={"/library"}>
-              <div className="nav-rec" index="4" onClick={this.onClickCircle}>
+               <div className="nav-rec" index="4" >
                 <p className="nav-rec-text">library</p>
               </div>
             </Link>
@@ -153,7 +131,7 @@ export default class Navbar extends Component {
               </div>
             </Link> */}
           </ul>
-        </div>
+        </nav>
       </div>
     );
   }

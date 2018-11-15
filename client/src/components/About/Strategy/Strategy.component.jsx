@@ -2,17 +2,20 @@ import React from "react";
 import "./Strategy.css";
 
 export default props => {
+  setTimeout(() => {
+    document.body.scrollTo(0, window.innerHeight);
+  }, 200);
   return (
-    <div className="">
+    <div className="strategy">
       <img
-        src="/imgs/banners/2348401144_7e265721b8_o.jpg"
+        src="/imgs/banners/lidya-nada-638295-unsplash.jpg"
         className="banner-img"
         alt=""
       />
-      <h2 className="heading-theme-2">
+      <h3 className="heading-theme-2">
         <i class="fas fa-street-view" />
         The RIN strategy has three pillars:
-      </h2>
+      </h3>
       <p className="p-theme-1">
         <b>
           <i className="fab fa-searchengin" />

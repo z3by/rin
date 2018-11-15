@@ -2,12 +2,21 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./StoriesList.css";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
+import Button from "@material-ui/core/Button";
 
 export default class StoriesList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      allStories: []
+      allStories: [],
+      currentPage: 1,
+      storiesPerPage: 10
     };
   }
 
@@ -15,7 +24,7 @@ export default class StoriesList extends Component {
     this.fetchAllStories();
   }
 
-  componentDidMount() {
+  componenTableCellidMount() {
     document.body.style.overflowY = "auto";
   }
 
@@ -36,47 +45,81 @@ export default class StoriesList extends Component {
       });
   };
 
+  changeCurrentPage = (number) => {
+    this.setState({ currentPage: number })
+  }
+
   render() {
-    const stories = this.state.allStories.map(story => {
+    const { allStories, currentPage, storiesPerPage } = this.state;
+
+    // Logic for displaying stories
+    const indexOfLastStory = currentPage * storiesPerPage;
+    const indexOfFirstStory = indexOfLastStory - storiesPerPage;
+    const currentStories = allStories.slice(indexOfFirstStory, indexOfLastStory);
+
+    const stories = currentStories.map(story => {
       return (
-        <tr>
-          <td>{story.id}</td>
-          <td>{story.title}</td>
-          <td className="project-options">
+        <TableRow>
+          <TableCell>{story.id}</TableCell>
+          <TableCell>{story.title}</TableCell>
+          <TableCell numeric>
             <Link to={`/dashboard/stories/list/${story.id}`}>
-              <i className="far fa-eye" /> show
+              <Button>
+                <i className="far fa-eye" />
+              </Button>
             </Link>
             <Link to={`/dashboard/stories/list/updatestory/${story.id}`}>
-              <i className="fas fa-edit" />
-              update
+              <Button>
+                <i className="fas fa-edit" style={{ color: "royalblue" }} />
+              </Button>
             </Link>
             <a onClick={() => this.deleteStory(story)}>
-              <i className="fas fa-trash-alt" /> delete
+              <Button>
+                <i className="fas fa-trash-alt" style={{ color: "crimson" }} />
+              </Button>
             </a>
-          </td>
-        </tr>
+          </TableCell>
+        </TableRow>
+      );
+    });
+
+    // Logic for displaying page numbers
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(allStories.length / storiesPerPage); i++) {
+      pageNumbers.push(i);
+    }
+
+    const allPagesNumbers = pageNumbers.map(number => {
+      return (
+        <li
+          key={number}
+        >
+          <Button variant="fab" mini
+            onClick={() => { this.changeCurrentPage(number) }}
+            className={number === this.state.currentPage ? 'active-page-number' : ''}>
+            {number}
+          </Button>
+        </li>
       );
     });
 
     return (
-      <div>
-        <table class="projects-list-table">
-          <thead>
-            <tr>
-              <th>
-                <h1>Story ID</h1>
-              </th>
-              <th>
-                <h1>Story Title</h1>
-              </th>
-              <th>
-                <h1>Actions</h1>
-              </th>
-            </tr>
-          </thead>
-          <tbody>{stories}</tbody>
-        </table>
-      </div>
+      <Paper className="storiesPages">
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Story ID</TableCell>
+              <TableCell>Story Title</TableCell>
+              <TableCell />
+            </TableRow>
+          </TableHead>
+          <TableBody>{stories}</TableBody>
+        </Table>
+
+        <ul id="page-numbers">
+          {allPagesNumbers}
+        </ul>
+      </Paper>
     );
   }
 }

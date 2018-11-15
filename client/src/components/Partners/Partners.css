@@ -1,0 +1,7 @@
+.each-slide div {
+  width: 320px;
+  height: 150px;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: 25% 25%;
+}

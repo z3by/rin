@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Stories.css";
 import Story from "./Story/Story.component";
 import Axios from "axios";
+import { Link } from "react-router-dom";
 
 class Stories extends Component {
   constructor(props) {
@@ -29,23 +30,43 @@ class Stories extends Component {
     });
   };
 
+  goDown = () => {
+    document.querySelector("#scroll-sign").scrollIntoView({
+      behavior: "smooth"
+    });
+  };
+
   render() {
     const stories = this.state.stories;
     //map the stories
-    const storiesInfo = stories.map((story, id) => {
+    const storiesInfo = stories.slice(0, 9).map((story, id) => {
       return <Story story={story} key={id} index={id} />;
     });
     return (
       <div className="stories fadeInFast">
-        <div className="header">
-          <div className="header-text">
-            <h1 className="color-1">Success Stories</h1>
-          </div>
-        </div>
+        <header>
+          <div className="header">
+            <h1 className="header-text color-1">Success Stories</h1>
+            <div className="line" />
 
-        <div className="story-items container">{[storiesInfo]}</div>
-        <div className="back-to-top" onClick={this.goTop}>
-          <i className="fas fa-arrow-circle-up" />
+            <h3 className="color-1">
+              Every-day stories proving that refugees are investable
+            </h3>
+            <div className="go-down" onClick={this.goDown}>
+              <i className="fas fa-arrow-circle-down" />
+            </div>
+          </div>
+        </header>
+        <div id="scroll-sign" />
+        <div className="vertical-line" />
+        <div className="center-stories">
+          <img src="/imgs/old-logo.png" alt="" />
+        </div>
+        <div className="container" id="stories-list">
+          {storiesInfo}
+          <Link to={"/all-stories"}>
+            <button>Read More Stories</button>
+          </Link>
         </div>
       </div>
     );

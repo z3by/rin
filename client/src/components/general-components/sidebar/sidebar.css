@@ -1,17 +1,21 @@
 .sidebar {
   width: 200px;
   float: left;
-  background: var(--color-5);
+  background: white;
   height: 100vh;
   position: fixed;
+  z-index: 10;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.3);
 }
 
-.sidebar .logo {
-  background: seashell;
+.sidebar .admin-logo {
+  width: 200px;
 }
 
-.sidebar .logo img {
-  width: 80px;
+.sidebar .admin-logo img {
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 25%;
 }
 
 .sidebar ul {
@@ -30,7 +34,8 @@
   width: 100%;
   cursor: pointer;
   text-transform: uppercase;
-  background: linear-gradient(90deg, #ee8800);
+  background: var(--color-2);
+  text-align: left;
 }
 
 .sidebar ul li a {
@@ -38,5 +43,6 @@
 }
 
 .sidebar ul li:hover {
-  background: linear-gradient(90deg, #ff9900);
+  background: -webkit-gradient(linear, left top, right top, from(#ffaa33));
+  background: linear-gradient(90deg, #ffaa33);
 }

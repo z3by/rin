@@ -10,6 +10,7 @@ const storiesAPI = require("../controllers/api/stories.controller");
 const partnersAPI = require("../controllers/api/partners.controller");
 const locationsAPI = require("../controllers/api/locations.controller");
 const projectsAPI = require("../controllers/api/projects.controller");
+const lensesAPI = require("../controllers/api/lenses.controller");
 
 // Configure aws s3 SDK (update authentication)
 AWS.config.update({
@@ -69,6 +70,10 @@ router.post("/locations", locationsAPI.addLocation);
 router.put("/locations/:id", locationsAPI.updateLocation);
 router.delete("/locations/:id", locationsAPI.deleteLocation);
 
+// project requests
+router.get("/requests", projectsAPI.getProjectRequests);
+router.put("/requests", projectsAPI.acceptProjectRequest);
+
 //projects routes
 router.get("/projects", projectsAPI.getProjects);
 router.get("/projects/locations", projectsAPI.getLocations);
@@ -77,5 +82,12 @@ router.get("/projects/:id", projectsAPI.getProject);
 router.post("/projects", projectsAPI.addProject);
 router.put("/projects/:id", projectsAPI.updateProject);
 router.delete("/projects/:id", projectsAPI.deleteProject);
+
+//lenses routes
+router.get("/lenses", lensesAPI.getLenses);
+router.get("/lenses/:id", lensesAPI.getLens);
+router.post("/lenses", lensesAPI.addLens);
+router.put("/lenses/:id", lensesAPI.updateLens);
+router.delete("/lenses/:id", lensesAPI.deleteLens);
 
 module.exports = router;

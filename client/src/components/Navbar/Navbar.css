@@ -1,7 +1,7 @@
 .nav-rec {
-  width: 30px;
-  min-height: 15px;
-  background: var(--light-transparent);
+  width: 25px;
+  min-height: 10px;
+  background: var(--color-3);
 }
 
 .rounded {
@@ -15,21 +15,30 @@
   height: 100vh;
   z-index: 100;
   width: 200px;
-  background: var(--dark-transparent);
+  background: white;
+  border-right: solid 1px rgba(0, 0, 0, 0.3);
   -webkit-transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
   transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-  -webkit-box-shadow: 2px 0px 10px var(--dark-transparent);
-  box-shadow: 2px 0px 10px var(--dark-transparent);
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .navbar-middle {
-  height: 50%;
+  height: 90%;
   list-style: none;
   position: relative;
-  padding: 0 60px;
+  padding: 0 10px;
+  padding-left: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
-  justify-content: space-around;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 .navbar-middle .navbar-link {
   display: grid;
@@ -37,8 +46,8 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  width: 100%;
-  height: 40px;
+  width: 60%;
+  height: 80px;
 }
 
 .navbar-middle .navbar-link:hover .nav-rec-menu {
@@ -51,6 +60,9 @@
 
 .navbar-middle .navbar-link:hover .nav-rec {
   background-color: var(--color-2);
+  margin-left: 10px;
+  -webkit-transition: margin 0.2s ease;
+  transition: margin 0.2s ease;
 }
 
 .nav-rec-text {
@@ -64,29 +76,34 @@
   display: none;
   list-style: none;
   position: absolute;
-  margin-left: 30px;
-  margin-top: -20px;
   font-family: var(--main-font);
   width: 200px;
-  z-index: 1000000;
+  z-index: 10000;
+  padding: 0;
+  -webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
 }
 
 .nav-rec-menu li {
   margin: 0;
   height: 30px;
-  padding: 0;
-  color: var(--color-1);
-  background: var(--dark-transparent);
-  padding: 3px 20px;
+  width: 100%;
+  margin: 0;
+  background: white;
 }
 .nav-rec-menu li a {
-  color: var(--color-1);
+  color: var(--color-3);
   font-weight: 100;
+  padding: 10px 20px;
   text-transform: capitalize;
 }
 
 .nav-rec-menu li:hover {
   background: var(--color-2);
+}
+
+.nav-rec-menu li:hover a {
+  color: var(--color-1);
 }
 .navbar-link:hover .nav-rec .nav-rec-menu {
   display: block;
@@ -102,16 +119,15 @@
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  height: 120px;
-  width: 120px;
-  margin: 20px 40px;
-  border-radius: 50%;
-  border: var(--light-border);
-  background: var(--color-1);
+  position: absolute;
+  top: 20px;
+  z-index: 1000;
+  min-width: 150px;
 }
 
 .logo-img {
-  max-width: 80px;
+  max-width: 180px;
+  margin: 0;
 }
 
 .toggle-nav {
@@ -120,17 +136,19 @@
   transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
   width: 40px;
   height: 50px;
+  border-top: solid 1px rgba(0, 0, 0, 0.3);
+  border-bottom: solid 1px rgba(0, 0, 0, 0.3);
   border-top-right-radius: 50%;
   border-bottom-right-radius: 50%;
-  top: 2%;
+  top: 50%;
   left: 200px;
-  background: var(--dark-transparent);
-  -webkit-box-shadow: 0px 0px 5px var(--dark-transparent);
-  box-shadow: 0px 0px 5px var(--dark-transparent);
+  background: white;
+  -webkit-box-shadow: 0px 0px 5px white;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
 
 .toggle-nav i {
-  color: var(--color-1);
+  color: var(--color-3);
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
   margin: 14px 10px;
@@ -142,17 +160,13 @@
   color: var(--color-2);
 }
 
-@media (max-width: 1024px) {
-  .logo {
-    height: 100px;
-    width: 100px;
-    margin: 20px 50px;
-  }
-  .logo img {
-    width: 40px;
-  }
+.navbar-link.active .nav-rec-text {
+  color: var(--color-2);
 }
 
+.navbar-link.active .nav-rec {
+  background: var(--color-2);
+}
 @media (max-width: 768px) {
   .counter,
   .navbar-middle {
@@ -163,5 +177,9 @@
   }
   .toggle-nav {
     display: none;
+  }
+  .logo-img {
+    max-width: 100px;
+    margin: 0;
   }
 }

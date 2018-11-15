@@ -38,90 +38,42 @@ export default class ProjectInfo extends Component {
 
   render() {
     return (
-      <div>
-        <table className="admin-table">
+      <div className="admin-info-single">
+        <table>
           <tr>
-            <th>
-              <h3 className="heading-theme-3-admin-titles">Project ID</h3>
-            </th>
-            <td>
-              <p className="p-theme-1-admin-info">{this.state.id}</p>
-            </td>
+            <th>Project ID</th>
+            <td>{this.state.id}</td>
           </tr>
           <tr>
-            <th>
-              <h3 className="heading-theme-3-admin-titles">Project Tilte</h3>
-            </th>
-            <td>
-              <p className="p-theme-1-admin-info">{this.state.project.title}</p>
-            </td>
+            <th>Project Tilte</th>
+            <td>{this.state.project.title}</td>
           </tr>
           <tr>
-            <th>
-              <h3 className="heading-theme-3-admin-titles">Project Country</h3>
-            </th>
-            <td>
-              <p className="p-theme-1-admin-info">{this.state.country}</p>
-            </td>
+            <th>Project Country</th>
+            <td>{this.state.country}</td>
           </tr>
           <tr>
-            <th>
-              <h3 className="heading-theme-3-admin-titles">
-                Project Description
-              </h3>
-            </th>
-            <td>
-              <p className="p-theme-1-admin-info">
-                {this.state.project.project_description}
-              </p>
-            </td>
+            <th>Project Description</th>
+            <td>{this.state.project.project_description}</td>
           </tr>
           <tr>
-            <th>
-              <h3 className="heading-theme-3-admin-titles">
-                Project Start Date
-              </h3>
-            </th>
-            <td>
-              <p className="p-theme-1-admin-info">{this.state.start_date}</p>
-            </td>
+            <th>Project Start Date</th>
+            <td>{this.state.start_date}</td>
           </tr>
           <tr>
-            <th>
-              <h3 className="heading-theme-3-admin-titles">
-                Project Capacity{" "}
-              </h3>
-            </th>
-            <td>
-              <p className="p-theme-1-admin-info">
-                {this.state.project.capacity}
-              </p>
-            </td>
+            <th>Project Capacity </th>
+            <td>{this.state.project.capacity}</td>
           </tr>
           <tr>
-            <th>
-              <h3 className="heading-theme-3-admin-titles">
-                Project Organization Name
-              </h3>
-            </th>
-            <td>
-              <p className="p-theme-1-admin-info">
-                {this.state.project.organization_name}
-              </p>
-            </td>
+            <th>Project Organization Name</th>
+            <td>{this.state.project.organization_name}</td>
           </tr>
           <tr>
-            <th>
-              <h3 className="heading-theme-3-admin-titles">Project Type</h3>
-            </th>
-            <td>
-              <p className="p-theme-1-admin-info">{this.state.project.type}</p>
-            </td>
+            <th>Project Type</th>
+            <td>{this.state.project.type}</td>
           </tr>
           <tr>
-            <th>
-              <h3 className="heading-theme-3-admin-titles">Project Image</h3>
-            </th>
+            <th>Project Image</th>
             <td>
               <img
                 className="admin-img"

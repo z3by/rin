@@ -1,90 +1,100 @@
 .admin-form {
-  background-color: var(--color-1);
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
-  padding: 100px auto;
-}
-
-.admin-form textarea {
-  border: none;
-  border: 1px solid var(--color-3);
-  background: transparent;
-  outline: none;
-  height: 40px;
-  width: 100%;
-  font-family: var(--main-font);
-  color: #fff;
-  font-size: 16px;
-  height: 300px;
-}
-
-/* Button used to open the contact form - fixed at the bottom of the page */
-.open-button,
-.admin-form button {
-  background-color: #222;
-  color: white;
-  border: none;
-  cursor: pointer;
-  opacity: 0.8;
-  width: 100%;
-  margin: 50px 0;
-  font-size: 18px;
-  padding: 10px 20px;
-  text-align: center;
-}
-
-.admin-form button:hover {
-  background: var(--color-2);
 }
 
 .admin-form form {
   padding: 100px;
-  width: 30%;
-  margin: 100px;
-  background: var(--color-5);
 }
 
-.admin-form label {
-  padding-top: 20px;
-  text-transform: capitalize;
-  font-size: 24px;
-  width: 50%;
-  color: var(--color-2);
+.admin-form textarea {
+  display: block;
+  border: none;
+  border: 1px solid var(--color-3);
+  background: transparent;
+  outline: none;
+  width: 80%;
+  font-family: var(--main-font);
+  font-size: 16px;
+  background: var(--color-1);
+  border: none;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 40px auto;
 }
+
+.admin-form textarea::placeholder {
+  font-size: 24px;
+  color: #333;
+}
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+.admin-form button,
+.btn-admin {
+  background-color: var(--color-2);
+  color: var(--color-5);
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  width: 80%;
+  font-size: 18px;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+}
+
+.admin-form button:disabled {
+  background-color: var(--color-3);
+  cursor: not-allowed;
+}
+.admin-img-update {
+  width: 100px;
+  display: block;
+  margin: 30px auto;
+}
+
 /* The popup form - hidden by default */
 .form-popup {
   position: relative;
   height: 400px;
-  width: 100%;
-  margin: 30px 0;
+  width: 80%;
+  margin: 40px auto;
 }
 
-.admin-form input {
+.admin-form input[type="text"],
+.admin-form input[type="date"],
+.admin-form input[type="number"],
+.admin-form input[type="file"] {
+  background: var(--color-1);
+  height: 50px;
+  width: 80%;
+  display: block;
+  margin: 40px auto;
   border: none;
-  border-bottom: 1px solid var(--color-3);
-  background: transparent;
-  outline: none;
-  height: 40px;
-  width: 100%;
-  color: #fff;
-  font-size: 16px;
+  font-size: 1rem;
+  padding: 0 30px;
+  border-radius: 20px;
+}
+
+.admin-form input::placeholder {
+  color: #333;
+}
+.admin-form label {
+  color: var(--color-5);
+  font-size: 24px;
+  padding-left: 10%;
+  text-transform: capitalize;
 }
 .admin-form select {
-  width: 100%;
-}
-/* Set a style for the submit/login button */
-.form-container .btn {
-  position: relative;
-  z-index: 100;
-  left: 20px;
-  bottom: 20px;
-  background-color: #4caf50;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 20%;
-  opacity: 0.8;
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+  height: 55px;
 }
 
 /* Add some hover effects to buttons */
@@ -93,11 +103,8 @@
   opacity: 1;
 }
 
-.selected-location {
-  position: absolute;
-  background-color: var(--dark-transparent);
-  color: var(--color-1);
-  z-index: 100;
+.menu-full-width {
+  width: 100%;
 }
 
 .marker {
@@ -116,7 +123,11 @@
 .done-img {
   display: none;
   background: var(white);
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   width: 100%;
 }
@@ -128,4 +139,10 @@
   display: block;
   height: 50px;
   margin: 20px auto;
+}
+
+@media (max-width: 768px) {
+  .admin-form form {
+    padding: 100px 0;
+  }
 }
