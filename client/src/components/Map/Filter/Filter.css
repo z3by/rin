@@ -44,20 +44,6 @@
   transition: var(--smooth);
 }
 
-.filter:hover {
-  background: var(--color-2);
-}
-.filter:hover a {
-  color: var(--color-1);
-}
-.filter.show:hover {
-  background: rgba(0, 0, 0, 0.7);
-}
-
-.filter.show:hover a {
-  color: var(--color-2);
-}
-
 .filter.show .filter-input {
   visibility: visible;
   -webkit-transition-delay: 1s;
@@ -129,16 +115,6 @@
     margin: 0;
   }
 
-  .filter:hover {
-    height: 90%;
-    width: 80%;
-    left: 5%;
-    z-index: 1002;
-  }
-
-  .filter:hover a {
-    display: none;
-  }
   .filter select {
     width: 100%;
   }

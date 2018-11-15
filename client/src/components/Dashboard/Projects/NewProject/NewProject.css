@@ -140,3 +140,9 @@
   height: 50px;
   margin: 20px auto;
 }
+
+@media (max-width: 768px) {
+  .admin-form form {
+    padding: 100px 0;
+  }
+}
