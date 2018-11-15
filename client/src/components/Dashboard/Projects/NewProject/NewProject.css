@@ -50,6 +50,7 @@
 
 .admin-form button:disabled {
   background-color: var(--color-3);
+  cursor: not-allowed;
 }
 .admin-img-update {
   width: 100px;
@@ -138,4 +139,10 @@
   display: block;
   height: 50px;
   margin: 20px auto;
+}
+
+@media (max-width: 768px) {
+  .admin-form form {
+    padding: 100px 0;
+  }
 }

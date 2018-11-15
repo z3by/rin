@@ -12,10 +12,10 @@ export default props => {
         className="banner-img"
         alt=""
       />
-      <h2 className="heading-theme-2">
+      <h3 className="heading-theme-2">
         <i class="fas fa-street-view" />
         The RIN strategy has three pillars:
-      </h2>
+      </h3>
       <p className="p-theme-1">
         <b>
           <i className="fab fa-searchengin" />

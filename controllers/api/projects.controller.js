@@ -56,7 +56,7 @@ module.exports.getLocations = (req, res) => {
   const filterOptions = req.query;
 
   let qry =
-    "select p.id, l.lat, l.lng, p.type from projects p inner join locations l where p.location_id = l.id";
+    "select p.id, l.lat, l.lng, p.type from projects p inner join locations l where p.location_id = l.id and pending != true";
 
   qry = checkInputAndModifyQuery(qry, filterOptions);
   connection.query(qry, (err, result) => {
@@ -84,22 +84,26 @@ module.exports.getProject = (req, res) => {
 };
 
 addProjInExistLoc = data => {
-  let qry = `insert into projects(title, start_date, capacity, location_id, organization_name, img_url, type, project_description) values("${
+  let qry = `insert into projects(title, start_date, capacity, location_id, organization_name, img_url, type, project_description, pending) values("${
     data.title
   }", '${data.start_date}', ${data.capacity}, ${data.location_id}, "${
     data.organization_name
-  }", "${data.img_url}", "${data.type}", "${data.project_description}");`;
+  }", "${data.img_url}", "${data.type}", "${data.project_description}", ${
+    data.pending
+  });`;
   connection.query(qry, (err, result1) => {
     if (err) throw err;
   });
 };
 
 addProjInNewLoc = data => {
-  let qry = `insert into projects(title, start_date, capacity, location_id, organization_name, img_url, type, project_description) values("${
+  let qry = `insert into projects(title, start_date, capacity, location_id, organization_name, img_url, type, project_description, pending) values("${
     data.title
   }", '${data.start_date}', ${data.capacity}, ${data.location_id}, "${
     data.organization_name
-  }", "${data.img_url}", "${data.type}", "${data.project_description}");`;
+  }", "${data.img_url}", "${data.type}", "${data.project_description}", ${
+    data.pending
+  });`;
   connection.query(qry, (err, result) => {
     if (err) throw err;
   });
@@ -121,7 +125,8 @@ getNewLocId = req => {
       organization_name: req.body.organization_name,
       img_url: req.body.img_url,
       type: req.body.type,
-      project_description: req.body.project_description
+      project_description: req.body.project_description,
+      pending: !!req.session.adminLogged ? false : true
     };
     addProjInNewLoc(data);
   });
@@ -171,7 +176,8 @@ module.exports.addProject = (req, res) => {
       organization_name: req.body.organization_name,
       img_url: req.body.img_url,
       type: req.body.type,
-      project_description: req.body.project_description
+      project_description: req.body.project_description,
+      pending: !!req.session.adminLogged ? false : true
     };
     if (result[0]) {
       //location exists
@@ -303,16 +309,20 @@ module.exports.deleteProject = (req, res) => {
   });
 };
 
-//addProject Algorithm
-/*
-         - user selects location
-         - map api returns the country name, lat, lng
-         - check locations table if it includes that location latlng which has been returned from map api
-            - get location id from locations where lat="lat" and lng="lng"
-         - if location id exists => add project immediately
-         - else
-           - get country id from country name returned from api
-           - add location to locations tale 
-           - get location id
-           - add project
-        */
+// project requests controllers
+module.exports.getProjectRequests = (req, res) => {
+  let qry = `select * from projects where pending = true`;
+  connection.query(qry, (err, result) => {
+    if (err) throw err;
+    res.status(200).json(result);
+  });
+};
+
+// project requests controllers
+module.exports.acceptProjectRequest = (req, res) => {
+  let qry = `update projects set pending=false where id=${req.body.id}`;
+  connection.query(qry, (err, result) => {
+    if (err) throw err;
+    res.status(200).json(result);
+  });
+};

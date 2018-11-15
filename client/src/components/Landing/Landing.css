@@ -100,6 +100,10 @@
   letter-spacing: 0.3rem;
 }
 
+.nav-link.active:hover {
+  filter: saturate(5);
+}
+
 /* ------------------------------- navigation group end ------------------------- */
 
 /* ---------------------------------- partners ----------------------------------- */
@@ -131,7 +135,10 @@
   left: 35vw;
   bottom: 0;
   top: 0;
+  background-size: 100vw;
+  background-attachment: fixed;
   position: absolute;
+  background-size: 100vw 100vh;
   border-radius: 50%;
   z-index: 0;
   overflow: hidden;
@@ -140,8 +147,6 @@
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
-  -webkit-box-shadow: 2px 2px 10px #333;
-  box-shadow: 2px 2px 10px #333;
 }
 
 .circle img {
@@ -168,10 +173,10 @@
   z-index: 0;
   background-image: url(/imgs/backs1.jpg);
   background-attachment: fixed;
+  background-size: 100vw 100vh;
   -webkit-transition: left ease 1s, right ease 1s;
   -webkit-transition: left ease 1s, right ease 1s, width ease 1.5s;
   transition: left ease 1s, right ease 1s, width ease 1.5s;
-  background-repeat: no-repeat;
   -moz-transition: left ease 1s, right ease 1s;
   -ms-transition: left ease 1s, right ease 1s;
   -o-transition: left ease 1s, right ease 1s;
@@ -193,13 +198,11 @@
   width: 30vw;
   position: absolute;
   z-index: 17;
-  background-size: 100vh 100vw;
   background-attachment: fixed;
   opacity: 0.3;
   -webkit-transition: left ease 1s, right ease 1s;
   -webkit-transition: left ease 1s, right ease 1s, width ease 1.5s;
   transition: left ease 1s, right ease 1s, width ease 1.5s;
-  background-repeat: no-repeat;
   -moz-transition: left ease 1s, right ease 1s;
   -ms-transition: left ease 1s, right ease 1s;
   -o-transition: left ease 1s, right ease 1s;
@@ -272,6 +275,8 @@
     width: 400px;
     left: calc(50vw - 200px);
     opacity: 0.5;
+    background-size: 950px;
+    background-position-y: 20vh;
   }
 
   .effect-circle,
@@ -303,7 +308,9 @@
   .down-rec-overlay,
   .up-rec-overlay {
     height: 150px;
-    width: 40%;
+    width: 50%;
+    background-size: 950px;
+    background-position-y: 20vh;
   }
 
   .up-rec,
@@ -323,6 +330,8 @@
     bottom: 22%;
     width: 50%;
     height: 12vh;
+    background-size: 600px;
+    background-position-y: 20vh;
   }
 
   .up-rec,
@@ -330,6 +339,8 @@
     top: 22%;
     height: 12vh;
     width: 50%;
+    background-size: 600px;
+    background-position-y: 20vh;
   }
   .nav-link,
   .nav-link.active {
@@ -339,6 +350,8 @@
     height: 250px;
     width: 250px;
     left: calc(50vw - 125px);
+    background-size: 600px;
+    background-position-y: 20vh;
   }
 }
 
