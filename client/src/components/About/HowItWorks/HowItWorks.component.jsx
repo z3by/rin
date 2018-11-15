@@ -13,10 +13,10 @@ export default props => {
           alt=""
           className="banner-img"
         />
-        <h1 className="heading-theme-2">
+        <h3 className="heading-theme-2">
           <i className="far fa-sun" />
           How it works
-        </h1>
+        </h3>
         <p className="p-theme-1">
           Driving economic prosperity through improved investor networks and
           increased capital investments. Drawing on deep domain expertise on

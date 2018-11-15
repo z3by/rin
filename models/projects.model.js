@@ -9,6 +9,7 @@ module.exports = `
     img_url VARCHAR(255) NOT NULL,
     type VARCHAR(255) NOT NULL,
     project_description TEXT,
+    pending BOOLEAN,
     PRIMARY KEY (id),
     FOREIGN KEY (location_id)
         REFERENCES locations (id)

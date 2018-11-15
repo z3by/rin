@@ -6,7 +6,8 @@ class Filter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      countries: []
+      countries: [],
+      filterToggled: false
     };
   }
 
@@ -23,13 +24,10 @@ class Filter extends React.Component {
   };
 
   toggleFilter = () => {
-    if (document.querySelector(".filter").classList.contains("show")) {
-      document.querySelector(".filter").classList.remove("show");
-      document.querySelector(".filter a.close").classList.remove("shown");
-    } else {
-      document.querySelector(".filter").classList.add("show");
-      document.querySelector(".filter a.close").classList.add("shown");
-    }
+    const { filterToggled } = this.state;
+    this.setState({
+      filterToggled: !filterToggled
+    });
   };
 
   render() {
@@ -41,13 +39,18 @@ class Filter extends React.Component {
       );
     });
 
+    let show = this.state.filterToggled ? " show" : "";
     return (
-      <div className="filter">
+      <div className={"filter" + show}>
         <a onClick={this.toggleFilter}>
           <i className="fas fa-search" /> Filter
         </a>
 
-        <a className="close" onClick={this.toggleFilter}>
+        <a
+          className="close"
+          onClick={this.toggleFilter}
+          style={{ display: this.state.filterToggled ? "block" : "none" }}
+        >
           <i className="fas fa-times" />
         </a>
         <div className="filter-input">

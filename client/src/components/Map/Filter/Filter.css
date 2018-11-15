@@ -4,7 +4,7 @@
   position: absolute;
   z-index: 99;
   bottom: 5%;
-  left: calc(50% - 50px);
+  left: calc(50% - 130px);
   text-align: center;
   background: rgba(0, 0, 0, 0.7);
   cursor: pointer;
@@ -28,15 +28,12 @@
   position: absolute;
   right: 40px;
   top: 20px;
-  display: none;
-}
-.filter a.close.shown {
-  display: block;
 }
 
 .filter a.close:hover i {
   color: var(--color-2);
 }
+
 .filter.show {
   height: 70%;
   width: 70%;
@@ -118,16 +115,6 @@
     margin: 0;
   }
 
-  .filter:hover {
-    height: 90%;
-    width: 80%;
-    left: 5%;
-    z-index: 1002;
-  }
-
-  .filter:hover a {
-    display: none;
-  }
   .filter select {
     width: 100%;
   }

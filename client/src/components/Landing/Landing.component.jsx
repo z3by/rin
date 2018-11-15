@@ -152,18 +152,15 @@ export default class Landing extends Component {
 
   // change the circle background;
   changeBackground = () => {
-    document.querySelector(".circle").style.background = `url(imgs/backs${this
-      .state.index + 1}.jpg)`;
-    document.querySelector(".circle").style.backgroundAttachment = "fixed";
-    document.querySelector(".circle").style.backgroundSize = "100%";
-    document.querySelector(".up-rec").style.background = `url(imgs/backs${this
-      .state.index + 1}.jpg)`;
-    document.querySelector(".up-rec").style.backgroundSize = "100%";
-    document.querySelector(".up-rec").style.backgroundAttachment = "fixed";
-    document.querySelector(".down-rec").style.background = `url(imgs/backs${this
-      .state.index + 1}.jpg)`;
-    document.querySelector(".down-rec").style.backgroundSize = "100%";
-    document.querySelector(".down-rec").style.backgroundAttachment = "fixed";
+    document.querySelector(
+      ".circle"
+    ).style.backgroundImage = `url(imgs/backs${this.state.index + 1}.jpg)`;
+    document.querySelector(
+      ".up-rec"
+    ).style.backgroundImage = `url(imgs/backs${this.state.index + 1}.jpg)`;
+    document.querySelector(
+      ".down-rec"
+    ).style.backgroundImage = `url(imgs/backs${this.state.index + 1}.jpg)`;
   };
 
   translateShapes = () => {
@@ -178,12 +175,8 @@ export default class Landing extends Component {
     }
 
     document.querySelector(".up-rec").style.left = `${random1}%`;
-    document.querySelector(".up-rec").style.width = `${random1}vw`;
-    document.querySelector(".up-rec-overlay").style.width = `${random1}vw`;
     document.querySelector(".up-rec-overlay").style.left = `${random1}%`;
     document.querySelector(".down-rec").style.right = `${random2}%`;
-    document.querySelector(".down-rec").style.width = `${random2}vw`;
-    document.querySelector(".down-rec-overlay").style.width = `${random2}vw`;
     document.querySelector(".down-rec-overlay").style.right = `${random2}%`;
   };
 

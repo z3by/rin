@@ -22,6 +22,9 @@ const Dot = props => {
       onMouseEnter={e => {
         props.hover(props.project.id);
       }}
+      onClick={e => {
+        props.hover(props.project.id);
+      }}
     >
       <div className="project-info">
         <div className="project-info-popup">
