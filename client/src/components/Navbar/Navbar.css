@@ -20,7 +20,7 @@
   -webkit-transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
   transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
   -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .navbar-middle {
@@ -81,7 +81,7 @@
   z-index: 10000;
   padding: 0;
   -webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
-          box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
 }
 
 .nav-rec-menu li {
@@ -120,14 +120,13 @@
   -ms-flex-pack: center;
   justify-content: center;
   position: absolute;
-  top: 60px;
-  left: 30px;
+  top: 20px;
   z-index: 1000;
   min-width: 150px;
 }
 
 .logo-img {
-  max-width: 15vh;
+  max-width: 180px;
   margin: 0;
 }
 

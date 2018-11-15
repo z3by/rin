@@ -175,12 +175,8 @@ export default class Landing extends Component {
     }
 
     document.querySelector(".up-rec").style.left = `${random1}%`;
-    document.querySelector(".up-rec").style.width = `${random1}vw`;
-    document.querySelector(".up-rec-overlay").style.width = `${random1}vw`;
     document.querySelector(".up-rec-overlay").style.left = `${random1}%`;
     document.querySelector(".down-rec").style.right = `${random2}%`;
-    document.querySelector(".down-rec").style.width = `${random2}vw`;
-    document.querySelector(".down-rec-overlay").style.width = `${random2}vw`;
     document.querySelector(".down-rec-overlay").style.right = `${random2}%`;
   };
 
