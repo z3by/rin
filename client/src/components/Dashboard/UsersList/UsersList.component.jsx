@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import "./UsersList.css";
-import { Route, Link } from "react-router-dom";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import Button from "@material-ui/core/Button";
 import Axios from "axios";
 
 export default class UsersList extends Component {
@@ -18,8 +16,8 @@ export default class UsersList extends Component {
         {
           first_name: "ahmad",
           last_name: "mostafa",
-          organization: "rbk",
-          role: "role",
+          organization_name: "rbk",
+          user_role: "role",
           email: "email@mail.com"
         }
       ]
@@ -32,6 +30,8 @@ export default class UsersList extends Component {
 
   fetchUsers = () => {
     Axios.get("/users/all").then(res => {
+      console.log(res);
+
       this.setState({
         users: res.data
       });
@@ -44,8 +44,8 @@ export default class UsersList extends Component {
         <TableRow>
           <TableCell>{user.first_name}</TableCell>
           <TableCell>{user.last_name}</TableCell>
-          <TableCell>{user.organization}</TableCell>
-          <TableCell>{user.role}</TableCell>
+          <TableCell>{user.organization_name}</TableCell>
+          <TableCell>{user.user_role}</TableCell>
           <TableCell>{user.email}</TableCell>
           <TableCell numeric />
         </TableRow>

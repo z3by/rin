@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Users.css";
-import { Route, Link } from "react-router-dom";
+import { Route } from "react-router-dom";
 import UsersList from "../UsersList/UsersList.component";
 
 export default class Users extends Component {
