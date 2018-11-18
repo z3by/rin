@@ -4,98 +4,66 @@ import "./Data.css";
 export default class Data extends Component {
   constructor() {
     super();
-    this.state = {
-      pageNumber: 0
-    };
+    this.state = {};
   }
 
-  onPageDown = () => {
-    if (this.state.pageNumber < 3) {
-      this.setState(
-        {
-          pageNumber: this.state.pageNumber + 1
-        },
-        () => {
-          document.querySelector(".pages").style.top = `${-this.state
-            .pageNumber * 100}vh`;
-        }
-      );
-    }
-  };
-
-  onPageUp = () => {
-    if (this.state.pageNumber > 0) {
-      this.setState(
-        {
-          pageNumber: this.state.pageNumber - 1
-        },
-        () => {
-          document.querySelector(".pages").style.top = `${-this.state
-            .pageNumber * 100}vh`;
-        }
-      );
-    }
-  };
+  componentDidMount() {}
 
   render() {
     return (
-      <div className="data fadeInFast">
-        <div className="pages">
-          <div className="page">
-            <img src="/imgs/data/chart1.png" className="data-img" alt="" />
-            <div className="data-text">
-              <p>
-                <b>INCREASED CAPITAL INVESTMENT</b> CAN MAKE A BIG DIFFERENCE
-                The RIN's impact investing and blended finance collaborative
-                will increase deal flow and help unlock private capital to spur
-                economic growth and stability among refugees and their
-                communities.
-              </p>
-            </div>
-          </div>
+      <div
+        className="data fadeInFast"
+        style={{
+          overflowY: "scroll"
+        }}
+      >
+        <div className=" container ">
+          <section>
+            <h1 className="color-2">Figures at a Glance</h1>
+            <iframe
+              src="http://www.unhcr.org/figures-at-a-glance.html"
+              width="100%"
+              height="800"
+              frameborder="0"
+            />
+          </section>
+          <section>
+            <h1 className="color-2">
+              How investment can unlock the potential of refugees
+            </h1>
+            <iframe
+              src="https://static1.squarespace.com/static/5b280d6a620b85faae73af1a/t/5bd1e2b39140b788ed67c371/1540481747374/RIN+Investor+Report-Paradigm+Shift-FINAL.pdf"
+              width="100%"
+              height="800"
+              frameborder="0"
+            />
+          </section>
+          <section>
+            <h1 className="color-2">Syrian situation statistics</h1>
 
-          <div className="page">
-            <img src="/imgs/data/chart4.png" className="data-img" alt="" />
-            <div className="data-text">
-              <p>
-                <b>Today</b>, nearly 70 million people have been forcibly
-                displaced worldwide, the highest number in human history. The
-                resulting dilemma is the defining social crisis of our time.
-              </p>
-            </div>
-          </div>
-
-          <div className="page">
-            <img src="/imgs/data/chart7.png" className="data-img" alt="" />
-            <div className="data-text">
-              <p>
-                <b>The RIN</b> moves private capital from commitment to active
-                investment by sourcing, structuring, and supporting the
-                financing of projects and companies that benefit refugees and
-                host communities.
-              </p>
-            </div>
-          </div>
-
-          <div className="page">
-            <img src="/imgs/data/chart9.png" alt="chart" className="data-img" />
-            <div className="data-text">
-              <p>
-                <b>Ultimately</b>, the RIN aims to bridge the gap between the
-                untapped entrepreneurial potential of refugees and capital
-                markets to spur economic growth, create jobs, and increase
-                socio-economic stability among displaced people.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="arrows">
-          <a onClick={this.onPageUp}>
-            <i className="fas fa-arrow-left" />
-          </a>
-          <a onClick={this.onPageDown}>
-            <i className="fas fa-arrow-right" />
-          </a>
+            <iframe
+              src="https://data2.unhcr.org/en/situations/syria"
+              width="100%"
+              height="800"
+              frameborder="0"
+            />
+          </section>
+          <section>
+            <iframe
+              src="https://data2.unhcr.org/en/countries/"
+              width="100%"
+              height="800"
+              frameborder="0"
+            />
+          </section>
+          <section>
+            <iframe
+              src="https://www.newsdeeply.com/refugees/community/2018/01/15/spending-money-on-refugees-is-an-investment-not-a-cost"
+              width="100%"
+              height="800"
+              frameborder="0"
+            />
+          </section>
         </div>
       </div>
     );
