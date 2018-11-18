@@ -7,8 +7,11 @@ export default class Navbar extends Component {
     super();
     this.state = {
       counter: "10,034,623",
-      index: -1
+      index: -1,
+      collapsed: true
     };
+
+    document.body.onmousemove = this.onMouseMove;
   }
 
   componentDidMount() {
@@ -18,32 +21,19 @@ export default class Navbar extends Component {
   //start counter
   startCounter = () => {};
 
-  toggleNavbar = () => {
-    const collapsed = document.querySelector(".navbar").style.width === "0px";
-    if (!collapsed) {
-      document.querySelector(".navbar").style.width = "0px";
-      document.querySelector(".navbar-middle").style.display = "none";
-      document.querySelector(".toggle-nav").style.left = "0";
-      document.querySelector(".toggle-nav i").style.transform = "rotate(45deg)";
-      if (!!document.querySelector(".container")) {
-        document.querySelector(".container").style.marginLeft = "15%";
-      }
-      if (!!document.querySelector(".counter")) {
-        document.querySelector(".counter").style.display = "none";
-      }
-    } else {
-      if (!!document.querySelector(".container")) {
-        document.querySelector(".container").style.marginLeft =
-          "calc(15% + 100px)";
-      }
-      document.querySelector(".navbar").style.width = "200px";
-      if (!!document.querySelector(".counter")) {
-        document.querySelector(".counter").style.display = "block";
-      }
-      document.querySelector(".navbar-middle").style.display = "flex";
-      document.querySelector(".toggle-nav").style.left = "200px";
-      document.querySelector(".toggle-nav i").style.transform = "rotate(0)";
+  onMouseMove = e => {
+    const mousePosition = e.clientX;
+    if (mousePosition < 200 && this.state.collapsed) {
+      this.toggleNavbar(false);
+    } else if (mousePosition > 200 && !this.state.collapsed) {
+      this.toggleNavbar(true);
     }
+  };
+
+  toggleNavbar = newState => {
+    this.setState({
+      collapsed: newState || !this.state.collapsed
+    });
   };
 
   render() {
@@ -54,11 +44,7 @@ export default class Navbar extends Component {
             <img src="/imgs/logo.png" alt="" className="logo-img" />
           </Link>
         </div>
-        <nav className="navbar">
-          <div className="toggle-nav" onClick={this.toggleNavbar}>
-            <i className="fas fa-times" />
-          </div>
-
+        <nav className={`navbar ${this.state.collapsed ? "collapsed" : ""}`}>
           <ul className="navbar-middle">
             <li>
               <Link className="navbar-link" index="1" to={"/stories"}>

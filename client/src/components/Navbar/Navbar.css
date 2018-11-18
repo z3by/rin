@@ -23,6 +23,14 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+.navbar.collapsed {
+  width: 0;
+}
+
+.navbar.collapsed .navbar-middle {
+  display: none;
+}
+
 .navbar-middle {
   height: 90%;
   list-style: none;
