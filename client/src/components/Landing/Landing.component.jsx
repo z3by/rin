@@ -9,15 +9,15 @@ export default class Landing extends Component {
 
     this.state = {
       counter: 200034623,
-      index: 0
+      index: 0,
+      clientX: 0,
+      clientY: 0,
+      navigating: false
     };
   }
 
   componentDidMount() {
     this.bindEvents();
-    this.rotateArrows();
-    this.showVideo();
-    this.changeBackground();
     this.startCounter();
   }
 
@@ -28,25 +28,17 @@ export default class Landing extends Component {
     window.onmousemove = this.onMouseMove;
   };
 
-  // rotate the arrows for the landing page.
-  rotateArrows = () => {
-    document.querySelector(".arrows").style.transform = "rotate(0)";
-  };
-
   //start counter
   startCounter = () => {};
 
   // mouse move effect on the landing page circle;
   onMouseMove = e => {
-    // get the mouse axis
-    if (!document.querySelector(".effect-circle")) {
-      return;
-    }
-
     const circleX = e.clientX;
     const circleY = e.clientY;
-    document.querySelector(".effect-circle").style.top = circleY / 10 + "px";
-    document.querySelector(".effect-circle").style.left = circleX / 10 + "px";
+    this.setState({
+      clientX: circleX,
+      clientY: circleY
+    });
   };
 
   // key press handler for the landing page
@@ -80,10 +72,7 @@ export default class Landing extends Component {
           const nav = document.querySelector(".nav");
           nav.style.transform = `translate(${-this.state.index * divWidth}px)`;
           this.toggleClassActive();
-          this.changeBackground();
-          this.translateShapes();
-          this.toggleOverlayColor();
-          this.showVideo();
+          this.generateRandomNumbers();
         }
       );
     } else {
@@ -96,10 +85,7 @@ export default class Landing extends Component {
           const nav = document.querySelector(".nav");
           nav.style.transform = `translate(${-this.state.index * divWidth}px)`;
           this.toggleClassActive();
-          this.changeBackground();
-          this.translateShapes();
-          this.toggleOverlayColor();
-          this.showVideo();
+          this.generateRandomNumbers();
         }
       );
     }
@@ -117,9 +103,7 @@ export default class Landing extends Component {
           const nav = document.querySelector(".nav");
           nav.style.transform = `translate(${-this.state.index * divWidth}px)`;
           this.toggleClassActive();
-          this.changeBackground();
-          this.translateShapes();
-          this.showVideo();
+          this.generateRandomNumbers();
         }
       );
     } else {
@@ -132,9 +116,7 @@ export default class Landing extends Component {
           const nav = document.querySelector(".nav");
           nav.style.transform = `translate(${-this.state.index * divWidth}px)`;
           this.toggleClassActive();
-          this.changeBackground();
-          this.translateShapes();
-          this.showVideo();
+          this.generateRandomNumbers();
         }
       );
     }
@@ -150,20 +132,7 @@ export default class Landing extends Component {
       .childNodes[this.state.index].firstChild.classList.add("active");
   };
 
-  // change the circle background;
-  changeBackground = () => {
-    document.querySelector(
-      ".circle"
-    ).style.backgroundImage = `url(imgs/backs${this.state.index + 1}.jpg)`;
-    document.querySelector(
-      ".up-rec"
-    ).style.backgroundImage = `url(imgs/backs${this.state.index + 1}.jpg)`;
-    document.querySelector(
-      ".down-rec"
-    ).style.backgroundImage = `url(imgs/backs${this.state.index + 1}.jpg)`;
-  };
-
-  translateShapes = () => {
+  generateRandomNumbers = () => {
     let random1 = Math.floor(Math.random() * 40);
     let random2 = Math.floor(Math.random() * 40);
     if (random1 < 20) {
@@ -173,39 +142,18 @@ export default class Landing extends Component {
     if (random2 < 20) {
       random2 += 20;
     }
-
-    document.querySelector(".up-rec").style.left = `${random1}%`;
-    document.querySelector(".up-rec-overlay").style.left = `${random1}%`;
-    document.querySelector(".down-rec").style.right = `${random2}%`;
-    document.querySelector(".down-rec-overlay").style.right = `${random2}%`;
-  };
-
-  // change the rectangles overlay color
-  toggleOverlayColor = () => {
-    document.querySelector(".up-rec-overlay").style.background =
-      document.querySelector(".up-rec-overlay").style.background ===
-      "var(--color-4)"
-        ? "var(--color-2)"
-        : "var(--color-4)";
-    document.querySelector(".down-rec-overlay").style.background =
-      document.querySelector(".down-rec-overlay").style.background ===
-      "var(--color-2)"
-        ? "var(--color-4)"
-        : "var(--color-2)";
+    this.setState({
+      random1: random1,
+      random2: random2
+    });
   };
 
   // navigate to route after 2 seconds
   navigate = () => {
+    this.setState({
+      navigating: true
+    });
     const routes = ["stories", "map", "data", "about", "library"];
-    document.querySelector(".circle").classList.add("grow");
-    document.querySelector(".circle").style.opacity = "1";
-    document.querySelector(".circle-overlay").classList.add("grow");
-    document.querySelector(".effect-circle").style.display = "none";
-    document.querySelector(".down-rec-overlay").style.display = "none";
-    document.querySelector(".down-rec").style.display = "none";
-    document.querySelector(".up-rec").style.display = "none";
-    document.querySelector(".up-rec-overlay").style.display = "none";
-
     setTimeout(() => {
       this.props.history.push(routes[this.state.index]);
     }, 2000);
@@ -249,23 +197,58 @@ export default class Landing extends Component {
           </div>
 
           <div className="circle-overlay" />
-          <div className="circle fadeIn">
-            <div className="effect-circle" />
-            <video
-              src="/videos/stories.mp4"
-              autoPlay
-              muted
-              loop
-              height="100"
-              className="circle-video"
+          <div
+            className={`circle fadeIn ${this.state.navigating ? "grow" : ""}`}
+            style={{
+              backgroundImage: `url(imgs/backs${this.state.index + 1}.jpg)`,
+              top: this.state.clientY / 12,
+              left: this.state.clientX / 12 + window.innerWidth / 3
+            }}
+          >
+            <div
+              className={`${this.state.navigating ? "hide" : "effect-circle"}`}
+              style={{
+                top: this.state.clientY / 10,
+                left: this.state.clientX / 10
+              }}
             />
           </div>
 
           <div className="shapes">
-            <div className="up-rec slideInRight" />
-            <div className="up-rec-overlay slideInRight" />
-            <div className="down-rec slideInLeft" />
-            <div className="down-rec-overlay slideInLeft" />
+            <div
+              className={`${
+                this.state.navigating ? "hide" : "up-rec slideInRight"
+              }`}
+              style={{
+                backgroundImage: `url(imgs/backs${this.state.index + 1}.jpg)`,
+                left: `${this.state.random1}%`
+              }}
+            />
+            <div
+              className={`${
+                this.state.navigating ? "hide" : "up-rec-overlay slideInRight"
+              }`}
+              style={{
+                left: `${this.state.random1}%`
+              }}
+            />
+            <div
+              className={`${
+                this.state.navigating ? "hide" : "down-rec slideInLeft"
+              }`}
+              style={{
+                left: `${this.state.random2}%`,
+                backgroundImage: `url(imgs/backs${this.state.index + 1}.jpg)`
+              }}
+            />
+            <div
+              className={`${
+                this.state.navigating ? "hide" : "down-rec-overlay slideInLeft"
+              }`}
+              style={{
+                left: `${this.state.random2}%`
+              }}
+            />
           </div>
 
           <div className="counter">
