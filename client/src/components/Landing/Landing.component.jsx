@@ -11,13 +11,13 @@ export default class Landing extends Component {
       counter: 200034623,
       index: 0,
       clientX: 0,
-      clientY: 0
+      clientY: 0,
+      navigating: false
     };
   }
 
   componentDidMount() {
     this.bindEvents();
-    this.showVideo();
     this.startCounter();
   }
 
@@ -74,7 +74,6 @@ export default class Landing extends Component {
           this.toggleClassActive();
           this.translateShapes();
           this.toggleOverlayColor();
-          this.showVideo();
         }
       );
     } else {
@@ -89,7 +88,6 @@ export default class Landing extends Component {
           this.toggleClassActive();
           this.translateShapes();
           this.toggleOverlayColor();
-          this.showVideo();
         }
       );
     }
@@ -108,7 +106,6 @@ export default class Landing extends Component {
           nav.style.transform = `translate(${-this.state.index * divWidth}px)`;
           this.toggleClassActive();
           this.translateShapes();
-          this.showVideo();
         }
       );
     } else {
@@ -122,7 +119,6 @@ export default class Landing extends Component {
           nav.style.transform = `translate(${-this.state.index * divWidth}px)`;
           this.toggleClassActive();
           this.translateShapes();
-          this.showVideo();
         }
       );
     }
@@ -171,16 +167,10 @@ export default class Landing extends Component {
 
   // navigate to route after 2 seconds
   navigate = () => {
+    this.setState({
+      navigating: true
+    });
     const routes = ["stories", "map", "data", "about", "library"];
-    document.querySelector(".circle").classList.add("grow");
-    document.querySelector(".circle").style.opacity = "1";
-    document.querySelector(".circle-overlay").classList.add("grow");
-    document.querySelector(".effect-circle").style.display = "none";
-    document.querySelector(".down-rec-overlay").style.display = "none";
-    document.querySelector(".down-rec").style.display = "none";
-    document.querySelector(".up-rec").style.display = "none";
-    document.querySelector(".up-rec-overlay").style.display = "none";
-
     setTimeout(() => {
       this.props.history.push(routes[this.state.index]);
     }, 2000);
@@ -225,43 +215,47 @@ export default class Landing extends Component {
 
           <div className="circle-overlay" />
           <div
-            className="circle fadeIn"
+            className={`circle fadeIn ${this.state.navigating ? "grow" : ""}`}
             style={{
               backgroundImage: `url(imgs/backs${this.state.index + 1}.jpg)`
             }}
           >
             <div
-              className="effect-circle"
+              className={`${this.state.navigating ? "hide" : "effect-circle"}`}
               style={{
                 top: this.state.clientY / 10,
                 left: this.state.clientX / 10
               }}
             />
-            <video
-              src="/videos/stories.mp4"
-              autoPlay
-              muted
-              loop
-              height="100"
-              className="circle-video"
-            />
           </div>
 
           <div className="shapes">
             <div
-              className="up-rec slideInRight"
+              className={`${
+                this.state.navigating ? "hide" : "up-rec slideInRight"
+              }`}
               style={{
                 backgroundImage: `url(imgs/backs${this.state.index + 1}.jpg)`
               }}
             />
-            <div className="up-rec-overlay slideInRight" />
             <div
-              className="down-rec slideInLeft"
+              className={`${
+                this.state.navigating ? "hide" : "up-rec-overlay slideInRight"
+              }`}
+            />
+            <div
+              className={`${
+                this.state.navigating ? "hide" : "down-rec slideInLeft"
+              }`}
               style={{
                 backgroundImage: `url(imgs/backs${this.state.index + 1}.jpg)`
               }}
             />
-            <div className="down-rec-overlay slideInLeft" />
+            <div
+              className={`${
+                this.state.navigating ? "hide" : "down-rec-overlay slideInLeft"
+              }`}
+            />
           </div>
 
           <div className="counter">
