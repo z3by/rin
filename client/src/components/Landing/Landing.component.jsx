@@ -14,7 +14,7 @@ export default class Landing extends Component {
       clientX: 0,
       clientY: 0,
       navigating: false,
-      wheelEventTime: new Date().getSeconds()
+      wheelEventTime: 0
     };
   }
 
@@ -51,6 +51,8 @@ export default class Landing extends Component {
           wheelEventTime: fireDate
         },
         () => {
+          console.log(e.deltaY > 0);
+
           if (e.deltaY > 0) {
             this.animatePrev();
           } else if (e.deltaY < 0) {

@@ -9,7 +9,7 @@ for (let i = 1; i < 19; i++) {
 }
 
 const properties = {
-  duration: 3000,
+  duration: 5000,
   transitionDuration: 500,
   infinite: true,
   indicators: false,
