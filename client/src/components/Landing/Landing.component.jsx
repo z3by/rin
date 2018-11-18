@@ -17,9 +17,7 @@ export default class Landing extends Component {
 
   componentDidMount() {
     this.bindEvents();
-    this.rotateArrows();
     this.showVideo();
-    this.changeBackground();
     this.startCounter();
   }
 
@@ -28,11 +26,6 @@ export default class Landing extends Component {
     window.onmousewheel = this.handleWheel;
     window.onkeydown = this.handleArrowsInput;
     window.onmousemove = this.onMouseMove;
-  };
-
-  // rotate the arrows for the landing page.
-  rotateArrows = () => {
-    document.querySelector(".arrows").style.transform = "rotate(0)";
   };
 
   //start counter
@@ -79,7 +72,6 @@ export default class Landing extends Component {
           const nav = document.querySelector(".nav");
           nav.style.transform = `translate(${-this.state.index * divWidth}px)`;
           this.toggleClassActive();
-          this.changeBackground();
           this.translateShapes();
           this.toggleOverlayColor();
           this.showVideo();
@@ -95,7 +87,6 @@ export default class Landing extends Component {
           const nav = document.querySelector(".nav");
           nav.style.transform = `translate(${-this.state.index * divWidth}px)`;
           this.toggleClassActive();
-          this.changeBackground();
           this.translateShapes();
           this.toggleOverlayColor();
           this.showVideo();
@@ -116,7 +107,6 @@ export default class Landing extends Component {
           const nav = document.querySelector(".nav");
           nav.style.transform = `translate(${-this.state.index * divWidth}px)`;
           this.toggleClassActive();
-          this.changeBackground();
           this.translateShapes();
           this.showVideo();
         }
@@ -131,7 +121,6 @@ export default class Landing extends Component {
           const nav = document.querySelector(".nav");
           nav.style.transform = `translate(${-this.state.index * divWidth}px)`;
           this.toggleClassActive();
-          this.changeBackground();
           this.translateShapes();
           this.showVideo();
         }
@@ -147,19 +136,6 @@ export default class Landing extends Component {
     document
       .querySelector(".nav-group")
       .childNodes[this.state.index].firstChild.classList.add("active");
-  };
-
-  // change the circle background;
-  changeBackground = () => {
-    document.querySelector(
-      ".circle"
-    ).style.backgroundImage = `url(imgs/backs${this.state.index + 1}.jpg)`;
-    document.querySelector(
-      ".up-rec"
-    ).style.backgroundImage = `url(imgs/backs${this.state.index + 1}.jpg)`;
-    document.querySelector(
-      ".down-rec"
-    ).style.backgroundImage = `url(imgs/backs${this.state.index + 1}.jpg)`;
   };
 
   translateShapes = () => {
@@ -248,7 +224,12 @@ export default class Landing extends Component {
           </div>
 
           <div className="circle-overlay" />
-          <div className="circle fadeIn">
+          <div
+            className="circle fadeIn"
+            style={{
+              backgroundImage: `url(imgs/backs${this.state.index + 1}.jpg)`
+            }}
+          >
             <div
               className="effect-circle"
               style={{
@@ -267,9 +248,19 @@ export default class Landing extends Component {
           </div>
 
           <div className="shapes">
-            <div className="up-rec slideInRight" />
+            <div
+              className="up-rec slideInRight"
+              style={{
+                backgroundImage: `url(imgs/backs${this.state.index + 1}.jpg)`
+              }}
+            />
             <div className="up-rec-overlay slideInRight" />
-            <div className="down-rec slideInLeft" />
+            <div
+              className="down-rec slideInLeft"
+              style={{
+                backgroundImage: `url(imgs/backs${this.state.index + 1}.jpg)`
+              }}
+            />
             <div className="down-rec-overlay slideInLeft" />
           </div>
 
