@@ -49,7 +49,7 @@
   height: 400px;
   width: 400px;
   opacity: 1;
-  background: rgba(255, 170, 55, 0.2);
+  background: rgba(255, 170, 55, 0.4);
   position: absolute;
   border-radius: 50%;
 }

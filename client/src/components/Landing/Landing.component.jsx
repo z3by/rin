@@ -73,7 +73,6 @@ export default class Landing extends Component {
           nav.style.transform = `translate(${-this.state.index * divWidth}px)`;
           this.toggleClassActive();
           this.translateShapes();
-          this.toggleOverlayColor();
         }
       );
     } else {
@@ -87,7 +86,6 @@ export default class Landing extends Component {
           nav.style.transform = `translate(${-this.state.index * divWidth}px)`;
           this.toggleClassActive();
           this.translateShapes();
-          this.toggleOverlayColor();
         }
       );
     }
@@ -151,20 +149,6 @@ export default class Landing extends Component {
     document.querySelector(".down-rec-overlay").style.right = `${random2}%`;
   };
 
-  // change the rectangles overlay color
-  toggleOverlayColor = () => {
-    document.querySelector(".up-rec-overlay").style.background =
-      document.querySelector(".up-rec-overlay").style.background ===
-      "var(--color-4)"
-        ? "var(--color-2)"
-        : "var(--color-4)";
-    document.querySelector(".down-rec-overlay").style.background =
-      document.querySelector(".down-rec-overlay").style.background ===
-      "var(--color-2)"
-        ? "var(--color-4)"
-        : "var(--color-2)";
-  };
-
   // navigate to route after 2 seconds
   navigate = () => {
     this.setState({
@@ -217,7 +201,9 @@ export default class Landing extends Component {
           <div
             className={`circle fadeIn ${this.state.navigating ? "grow" : ""}`}
             style={{
-              backgroundImage: `url(imgs/backs${this.state.index + 1}.jpg)`
+              backgroundImage: `url(imgs/backs${this.state.index + 1}.jpg)`,
+              top: this.state.clientY / 10,
+              left: this.state.clientX / 10 + window.innerWidth / 3
             }}
           >
             <div
