@@ -23,9 +23,14 @@ export default class Navbar extends Component {
 
   onMouseMove = e => {
     const mousePosition = e.clientX;
-    if (mousePosition < 200 && this.state.collapsed) {
+    const mousePosition2 = e.clientY;
+    if (mousePosition < 200 && mousePosition2 > 200 && this.state.collapsed) {
       this.toggleNavbar(false);
-    } else if (mousePosition > 200 && !this.state.collapsed) {
+    } else if (
+      mousePosition > 200 &&
+      mousePosition2 > 200 &&
+      !this.state.collapsed
+    ) {
       this.toggleNavbar(true);
     }
   };

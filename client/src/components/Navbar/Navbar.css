@@ -13,6 +13,7 @@
 .navbar {
   position: absolute;
   height: 100vh;
+  top: 0;
   z-index: 100;
   width: 200px;
   background: white;
@@ -24,11 +25,17 @@
 }
 
 .navbar.collapsed {
-  width: 0;
+  top: 25vh;
+  height: 50vh;
+  width: 60px;
 }
 
 .navbar.collapsed .navbar-middle {
-  display: none;
+  padding: 0 15px;
+}
+
+.navbar.collapsed .navbar-middle .nav-rec-text {
+  opacity: 0;
 }
 
 .navbar-middle {
@@ -47,6 +54,7 @@
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
+  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
 .navbar-middle .navbar-link {
   display: grid;
