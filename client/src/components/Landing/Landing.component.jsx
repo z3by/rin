@@ -13,7 +13,8 @@ export default class Landing extends Component {
       index: 0,
       clientX: 0,
       clientY: 0,
-      navigating: false
+      navigating: false,
+      wheelEventTime: new Date().getSeconds()
     };
   }
 
@@ -24,8 +25,8 @@ export default class Landing extends Component {
 
   // bind the events to the local functions.
   bindEvents = () => {
-    window.onmousewheel = this.handleWheel;
     window.onkeydown = this.handleArrowsInput;
+    window.onwheel = this.handleWheel;
     window.onmousemove = this.onMouseMove;
   };
 
@@ -42,12 +43,32 @@ export default class Landing extends Component {
     });
   };
 
+  handleWheel = e => {
+    const fireDate = new Date().getSeconds();
+    if (fireDate > this.state.wheelEventTime) {
+      this.setState(
+        {
+          wheelEventTime: fireDate
+        },
+        () => {
+          if (e.deltaY > 0) {
+            this.animatePrev();
+          } else if (e.deltaY < 0) {
+            this.animateNext();
+          }
+        }
+      );
+    }
+  };
+
   // key press handler for the landing page
   handleArrowsInput = e => {
     if (e.key === "ArrowRight") {
       this.animateNext();
     } else if (e.key === "ArrowLeft") {
       this.animatePrev();
+    } else if (e.key === "Enter") {
+      this.navigate();
     }
   };
 
