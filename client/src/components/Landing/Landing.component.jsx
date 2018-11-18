@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Landing.css";
 import Partners from "../Partners/Partners.component";
 import CountUp from "react-countup";
+import IconButton from "@material-ui/core/IconButton";
 
 export default class Landing extends Component {
   constructor(props) {
@@ -275,12 +276,12 @@ export default class Landing extends Component {
           </div>
 
           <div className="arrows">
-            <a onClick={this.animatePrev}>
+            <IconButton onClick={this.animatePrev}>
               <i className="fas fa-arrow-left" />
-            </a>
-            <a onClick={this.animateNext}>
+            </IconButton>
+            <IconButton onClick={this.animateNext}>
               <i className="fas fa-arrow-right" />
-            </a>
+            </IconButton>
           </div>
         </div>
       </div>
