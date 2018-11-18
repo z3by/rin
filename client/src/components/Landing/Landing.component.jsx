@@ -9,7 +9,9 @@ export default class Landing extends Component {
 
     this.state = {
       counter: 200034623,
-      index: 0
+      index: 0,
+      clientX: 0,
+      clientY: 0
     };
   }
 
@@ -38,15 +40,12 @@ export default class Landing extends Component {
 
   // mouse move effect on the landing page circle;
   onMouseMove = e => {
-    // get the mouse axis
-    if (!document.querySelector(".effect-circle")) {
-      return;
-    }
-
     const circleX = e.clientX;
     const circleY = e.clientY;
-    document.querySelector(".effect-circle").style.top = circleY / 10 + "px";
-    document.querySelector(".effect-circle").style.left = circleX / 10 + "px";
+    this.setState({
+      clientX: circleX,
+      clientY: circleY
+    });
   };
 
   // key press handler for the landing page
@@ -250,7 +249,13 @@ export default class Landing extends Component {
 
           <div className="circle-overlay" />
           <div className="circle fadeIn">
-            <div className="effect-circle" />
+            <div
+              className="effect-circle"
+              style={{
+                top: this.state.clientY / 10,
+                left: this.state.clientX / 10
+              }}
+            />
             <video
               src="/videos/stories.mp4"
               autoPlay
