@@ -72,7 +72,7 @@ export default class Landing extends Component {
           const nav = document.querySelector(".nav");
           nav.style.transform = `translate(${-this.state.index * divWidth}px)`;
           this.toggleClassActive();
-          this.translateShapes();
+          this.generateRandomNumbers();
         }
       );
     } else {
@@ -85,7 +85,7 @@ export default class Landing extends Component {
           const nav = document.querySelector(".nav");
           nav.style.transform = `translate(${-this.state.index * divWidth}px)`;
           this.toggleClassActive();
-          this.translateShapes();
+          this.generateRandomNumbers();
         }
       );
     }
@@ -103,7 +103,7 @@ export default class Landing extends Component {
           const nav = document.querySelector(".nav");
           nav.style.transform = `translate(${-this.state.index * divWidth}px)`;
           this.toggleClassActive();
-          this.translateShapes();
+          this.generateRandomNumbers();
         }
       );
     } else {
@@ -116,7 +116,7 @@ export default class Landing extends Component {
           const nav = document.querySelector(".nav");
           nav.style.transform = `translate(${-this.state.index * divWidth}px)`;
           this.toggleClassActive();
-          this.translateShapes();
+          this.generateRandomNumbers();
         }
       );
     }
@@ -132,7 +132,7 @@ export default class Landing extends Component {
       .childNodes[this.state.index].firstChild.classList.add("active");
   };
 
-  translateShapes = () => {
+  generateRandomNumbers = () => {
     let random1 = Math.floor(Math.random() * 40);
     let random2 = Math.floor(Math.random() * 40);
     if (random1 < 20) {
@@ -142,11 +142,10 @@ export default class Landing extends Component {
     if (random2 < 20) {
       random2 += 20;
     }
-
-    document.querySelector(".up-rec").style.left = `${random1}%`;
-    document.querySelector(".up-rec-overlay").style.left = `${random1}%`;
-    document.querySelector(".down-rec").style.right = `${random2}%`;
-    document.querySelector(".down-rec-overlay").style.right = `${random2}%`;
+    this.setState({
+      random1: random1,
+      random2: random2
+    });
   };
 
   // navigate to route after 2 seconds
@@ -202,8 +201,8 @@ export default class Landing extends Component {
             className={`circle fadeIn ${this.state.navigating ? "grow" : ""}`}
             style={{
               backgroundImage: `url(imgs/backs${this.state.index + 1}.jpg)`,
-              top: this.state.clientY / 10,
-              left: this.state.clientX / 10 + window.innerWidth / 3
+              top: this.state.clientY / 12,
+              left: this.state.clientX / 12 + window.innerWidth / 3
             }}
           >
             <div
@@ -221,19 +220,24 @@ export default class Landing extends Component {
                 this.state.navigating ? "hide" : "up-rec slideInRight"
               }`}
               style={{
-                backgroundImage: `url(imgs/backs${this.state.index + 1}.jpg)`
+                backgroundImage: `url(imgs/backs${this.state.index + 1}.jpg)`,
+                left: `${this.state.random1}%`
               }}
             />
             <div
               className={`${
                 this.state.navigating ? "hide" : "up-rec-overlay slideInRight"
               }`}
+              style={{
+                left: `${this.state.random1}%`
+              }}
             />
             <div
               className={`${
                 this.state.navigating ? "hide" : "down-rec slideInLeft"
               }`}
               style={{
+                left: `${this.state.random2}%`,
                 backgroundImage: `url(imgs/backs${this.state.index + 1}.jpg)`
               }}
             />
@@ -241,6 +245,9 @@ export default class Landing extends Component {
               className={`${
                 this.state.navigating ? "hide" : "down-rec-overlay slideInLeft"
               }`}
+              style={{
+                left: `${this.state.random2}%`
+              }}
             />
           </div>
 
