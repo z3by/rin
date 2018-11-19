@@ -15,6 +15,7 @@ export default class StoriesList extends Component {
     super(props);
     this.state = {
       allStories: [],
+      filteredStories: [],
       currentPage: 1,
       storiesPerPage: 10
     };
@@ -30,7 +31,7 @@ export default class StoriesList extends Component {
 
   fetchAllStories = () => {
     axios.get("/api/stories").then(res => {
-      this.setState({ allStories: res.data });
+      this.setState({ allStories: res.data, filteredStories: res.data });
     });
   };
 
@@ -49,13 +50,26 @@ export default class StoriesList extends Component {
     this.setState({ currentPage: number })
   }
 
+  filterTable = (e) => {
+    let input = e.target.value.toLowerCase();
+
+    if (input) {
+      let filteredStories = this.state.allStories.filter(story => {
+        return story.title.toLowerCase().includes(input);
+      });
+      this.setState({ filteredStories });
+    } else {
+      this.setState({ filteredStories: this.state.allStories });
+    }
+  }
+
   render() {
-    const { allStories, currentPage, storiesPerPage } = this.state;
+    const { allStories, currentPage, storiesPerPage, filteredStories } = this.state;
 
     // Logic for displaying stories
     const indexOfLastStory = currentPage * storiesPerPage;
     const indexOfFirstStory = indexOfLastStory - storiesPerPage;
-    const currentStories = allStories.slice(indexOfFirstStory, indexOfLastStory);
+    const currentStories = filteredStories.slice(indexOfFirstStory, indexOfLastStory);
 
     const stories = currentStories.map(story => {
       return (
@@ -105,6 +119,15 @@ export default class StoriesList extends Component {
 
     return (
       <Paper className="storiesPages">
+        <div className="search-group">
+          <input
+            type="search"
+            className="search-input"
+            placeholder="Search"
+            onChange={this.filterTable}
+          />
+          <i className="fas fa-search" />
+        </div>
         <Table>
           <TableHead>
             <TableRow>
