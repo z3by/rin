@@ -9,8 +9,51 @@ connection.connect(err => {
   console.log("connected");
 });
 
+const checkInputAndModifyQuery = (qry, input) => {
+  let hasPrevCondition = false;
+
+  if (input.title) {
+    qry += ` WHERE title LIKE "%${input.title}%"`;
+    hasPrevCondition = true;
+  }
+
+  if (input.lens) {
+    if (hasPrevCondition) {
+      qry += ` AND lens LIKE "%${input.lens}%"`;
+    } else {
+      qry += ` WHERE lens LIKE "%${input.lens}%"`;
+      hasPrevCondition = true;
+    }
+  }
+
+  if (input.SDGs) {
+    if (hasPrevCondition) {
+      for (let i = 0; i < input.SDGs.length; i++) {
+        qry += ` AND JSON_SEARCH(SDGs, 'one', '${input.SDGs[i]}') IS NOT NULL`;
+      }
+    } else {
+      qry += ` WHERE JSON_SEARCH(SDGs, 'one', '${input.SDGs[0]}') IS NOT NULL`;
+      if (input.SDGs.length > 1) {
+        for (let i = 1; i < input.SDGs.length; i++) {
+          qry += ` AND JSON_SEARCH(SDGs, 'one', '${input.SDGs[i]}') IS NOT NULL`;
+        }
+      }
+    }
+    hasPrevCondition = true;
+  }
+
+  return qry;
+}
+
 module.exports.getStories = (req, res) => {
-  connection.query("select * from stories", (err, result) => {
+  const filterOptions = req.query;
+
+  let qry = "select * from stories";
+  if (filterOptions) {
+    qry = checkInputAndModifyQuery(qry, filterOptions);
+  }
+
+  connection.query(qry, (err, result) => {
     if (err) throw err;
     const parsed = result.map(story => {
       story.imgs = JSON.parse(story.imgs);
@@ -52,9 +95,9 @@ module.exports.addStory = (req, res) => {
 
   let qry = `insert into stories(title, pre_description, lens, text, imgs, SDGs) values("${
     data.title
-  }", "${data.pre_description}", "${data.lens}", '${data.text}', '${
+    }", "${data.pre_description}", "${data.lens}", '${data.text}', '${
     data.imgs
-  }', '${data.SDGs}');`;
+    }', '${data.SDGs}');`;
   connection.query(qry, (err, result) => {
     if (err) throw err;
     res.send("story row inserted successfully");
@@ -83,9 +126,9 @@ module.exports.updateStory = (req, res) => {
   let qry = `UPDATE stories
                    SET title="${data.title}", pre_description="${
     data.pre_description
-  }", lens="${data.lens}", text="${data.text}", imgs='${data.imgs}', SDGs='${
+    }", lens="${data.lens}", text="${data.text}", imgs='${data.imgs}', SDGs='${
     data.SDGs
-  }'
+    }'
                    WHERE id=${req.params.id};`;
   connection.query(qry, (err, result) => {
     if (err) throw err;
