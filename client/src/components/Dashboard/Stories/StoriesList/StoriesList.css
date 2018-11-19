@@ -15,3 +15,26 @@
       background-color: var(--color-2);
       color: #fff;
   }
+
+  .storiesPages .search-group {
+    height: 40px;
+    width: 300px;
+    background: #fff;
+    border-radius: 20px;
+    position: absolute;
+    display: flex;
+    text-align: center;
+    top: 25%;
+  }
+
+  .storiesPages .search-input {
+    margin: 0 auto;
+    border: none;
+    height: 100%;
+    background: none;
+    outline: none;
+  }
+
+  .storiesPages .fa-search {
+    margin: auto 15px;
+  }

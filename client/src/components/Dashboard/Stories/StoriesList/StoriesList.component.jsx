@@ -55,7 +55,7 @@ export default class StoriesList extends Component {
 
     if (input) {
       let filteredStories = this.state.allStories.filter(story => {
-        return story.title.toLowerCase().includes(input);
+        return story.title.toLowerCase().includes(input) || story.id.toString() === input;
       });
       this.setState({ filteredStories });
     } else {
