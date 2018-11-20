@@ -68,6 +68,8 @@ export default class Landing extends Component {
       this.animatePrev();
     } else if (e.key === "Enter") {
       this.navigate();
+    } else if (e.key === "Escape") {
+      this.props.history.push("/");
     }
   };
 
