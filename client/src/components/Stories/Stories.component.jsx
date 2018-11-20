@@ -48,10 +48,10 @@ class Stories extends Component {
         <header>
           <div className="header">
             <video src="/videos/camp.mp4" autoPlay muted loop />
-            <h1 className="header-text color-2">Success Stories</h1>
+            <h1 className="header-text">Success Stories</h1>
             <div className="line" />
 
-            <h3 className="color-1">
+            <h3 className="">
               Every-day stories proving that refugees are investable
             </h3>
             <div className="go-down" onClick={this.goDown}>

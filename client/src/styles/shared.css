@@ -143,7 +143,7 @@ i {
 }
 
 .header {
-  background: url(https://source.unsplash.com/random);
+  background: var(--color-2);
   height: 100vh;
   text-align: center;
   background-size: cover;
@@ -174,6 +174,7 @@ i {
   padding: 0;
   position: absolute;
   z-index: 0;
+  opacity: 0.3;
 }
 
 .header h3 {
@@ -181,19 +182,19 @@ i {
   text-transform: capitalize;
   margin: 30px 0;
   position: relative;
-  color: var(--color-2);
+  color: var(--color-3);
   z-index: 2;
-  background: rgba(200, 140, 80, 0.8);
+  mix-blend-mode: screen;
   padding: 10px 30px;
 }
 .header-text {
   font-size: 6rem;
-  color: var(--color-2);
+  color: var(--color-1);
   font-family: var(--main-font);
   text-transform: uppercase;
   position: relative;
   z-index: 2;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
 }
 
 label {
