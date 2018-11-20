@@ -19,7 +19,7 @@ export default class Data extends Component {
       >
         <div className=" container ">
           <section>
-            <h1 className="color-2">Figures at a Glance</h1>
+            <h2 className="color-2 upper">Figures at a Glance</h2>
             <iframe
               title="iframe 1"
               src="http://www.unhcr.org/figures-at-a-glance.html"
@@ -29,9 +29,9 @@ export default class Data extends Component {
             />
           </section>
           <section>
-            <h1 className="color-2">
+            <h2 className="color-2 upper">
               How investment can unlock the potential of refugees
-            </h1>
+            </h2>
             <iframe
               title="iframe 2"
               src="https://static1.squarespace.com/static/5b280d6a620b85faae73af1a/t/5bd1e2b39140b788ed67c371/1540481747374/RIN+Investor+Report-Paradigm+Shift-FINAL.pdf"
@@ -41,7 +41,7 @@ export default class Data extends Component {
             />
           </section>
           <section>
-            <h1 className="color-2">Syrian situation statistics</h1>
+            <h2 className="color-2 upper">Syrian situation statistics</h2>
 
             <iframe
               title="iframe 3"
