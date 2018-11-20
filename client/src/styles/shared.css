@@ -143,7 +143,7 @@ i {
 }
 
 .header {
-  background: url(/imgs/stories.gif);
+  background: url(https://source.unsplash.com/random);
   height: 100vh;
   text-align: center;
   background-size: cover;
@@ -163,18 +163,37 @@ i {
   -ms-flex-align: center;
   align-items: center;
   position: relative;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.header video {
+  margin: 0;
+  height: 130%;
+  width: 330%;
+  padding: 0;
+  position: absolute;
+  z-index: 0;
 }
 
 .header h3 {
   font-weight: 300;
   text-transform: capitalize;
   margin: 30px 0;
+  position: relative;
+  color: var(--color-2);
+  z-index: 2;
+  background: rgba(200, 140, 80, 0.8);
+  padding: 10px 30px;
 }
 .header-text {
   font-size: 6rem;
-  color: var(--color-3);
+  color: var(--color-2);
   font-family: var(--main-font);
   text-transform: uppercase;
+  position: relative;
+  z-index: 2;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
 }
 
 label {

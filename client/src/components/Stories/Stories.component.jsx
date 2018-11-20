@@ -47,7 +47,8 @@ class Stories extends Component {
       <div className="stories fadeInFast">
         <header>
           <div className="header">
-            <h1 className="header-text color-1">Success Stories</h1>
+            <video src="/videos/camp.mp4" autoPlay muted loop />
+            <h1 className="header-text color-2">Success Stories</h1>
             <div className="line" />
 
             <h3 className="color-1">
