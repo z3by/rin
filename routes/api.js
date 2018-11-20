@@ -51,6 +51,8 @@ router.get("/countries/:id", countriesAPI.getCountry);
 
 //stories routes
 router.get("/stories", storiesAPI.getStories);
+router.get("/stories/selectedpage", storiesAPI.getSelectedPageStories);
+router.get("/stories/count", storiesAPI.getStoriesCount);
 router.get("/stories/:id", storiesAPI.getStory);
 router.post("/stories", storiesAPI.addStory);
 router.put("/stories/:id", storiesAPI.updateStory);

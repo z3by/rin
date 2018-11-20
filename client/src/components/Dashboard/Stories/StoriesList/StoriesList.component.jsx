@@ -14,32 +14,60 @@ export default class StoriesList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      allStories: [],
-      filteredStories: [],
       currentPage: 1,
-      storiesPerPage: 10
+      storiesPerPage: 10,
+      allStoriesCount: 0,
+      selectedPageStories: [],
+      indexOfLastStory: 0,
+      indexOfFirstStory: 0
     };
   }
 
   componentWillMount() {
-    this.fetchAllStories();
+    this.fetchAllStoriesCount();
+    this.setAndRetrieveSelectedPageStories();
   }
 
-  componenTableCellidMount() {
+  componentDidMount() {
     document.body.style.overflowY = "auto";
   }
 
-  fetchAllStories = () => {
-    axios.get("/api/stories").then(res => {
-      this.setState({ allStories: res.data, filteredStories: res.data });
+  setAndRetrieveSelectedPageStories = () => {
+    this.setState({ indexOfLastStory: this.state.currentPage * this.state.storiesPerPage }, () => {
+      this.setState({ indexOfFirstStory: this.state.indexOfLastStory - this.state.storiesPerPage }, () => {
+        this.fetchSelectedPageStories(this.state.indexOfFirstStory, this.state.indexOfLastStory);
+      });
+    });
+  }
+
+  fetchAllStoriesCount = () => {
+    axios.get("/api/stories/count").then(res => {
+      this.setState({ allStoriesCount: res.data["count(*)"] });
     });
   };
+
+  fetchSelectedPageStories = (firstStoryIndex, lastStoryIndex) => {
+    const indexes = {
+      first: firstStoryIndex,
+      last: lastStoryIndex
+    };
+
+    axios.get("/api/stories/selectedpage", {
+      params: indexes
+    })
+      .then(res => {
+        this.setState({ selectedPageStories: res.data });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 
   deleteStory = story => {
     axios
       .delete(`/api/stories/${story.id}`)
       .then(res => {
-        this.fetchAllStories();
+        this.fetchSelectedPageStories(this.state.indexOfFirstStory, this.state.indexOfLastStory);
       })
       .catch(err => {
         console.log("Error deleting a table row");
@@ -47,31 +75,17 @@ export default class StoriesList extends Component {
   };
 
   changeCurrentPage = (number) => {
-    this.setState({ currentPage: number })
+    this.setState({ currentPage: number }, () => {
+      this.setAndRetrieveSelectedPageStories();
+    })
   }
 
-  filterTable = (e) => {
-    let input = e.target.value.toLowerCase();
 
-    if (input) {
-      let filteredStories = this.state.allStories.filter(story => {
-        return story.title.toLowerCase().includes(input) || story.id.toString() === input;
-      });
-      this.setState({ filteredStories });
-    } else {
-      this.setState({ filteredStories: this.state.allStories });
-    }
-  }
 
   render() {
-    const { allStories, currentPage, storiesPerPage, filteredStories } = this.state;
+    const { allStoriesCount, storiesPerPage, selectedPageStories } = this.state;
 
-    // Logic for displaying stories
-    const indexOfLastStory = currentPage * storiesPerPage;
-    const indexOfFirstStory = indexOfLastStory - storiesPerPage;
-    const currentStories = filteredStories.slice(indexOfFirstStory, indexOfLastStory);
-
-    const stories = currentStories.map(story => {
+    const stories = selectedPageStories.map(story => {
       return (
         <TableRow>
           <TableCell>{story.id}</TableCell>
@@ -99,7 +113,7 @@ export default class StoriesList extends Component {
 
     // Logic for displaying page numbers
     const pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(allStories.length / storiesPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(allStoriesCount / storiesPerPage); i++) {
       pageNumbers.push(i);
     }
 
@@ -119,15 +133,6 @@ export default class StoriesList extends Component {
 
     return (
       <Paper className="storiesPages">
-        <div className="search-group">
-          <input
-            type="search"
-            className="search-input"
-            placeholder="Search"
-            onChange={this.filterTable}
-          />
-          <i className="fas fa-search" />
-        </div>
         <Table>
           <TableHead>
             <TableRow>

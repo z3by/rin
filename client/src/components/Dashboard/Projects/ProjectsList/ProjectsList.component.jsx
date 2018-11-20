@@ -15,7 +15,7 @@ export default class ProjectsList extends Component {
     super(props);
     this.state = {
       currentPage: 1,
-      projectsPerPage: 3,
+      projectsPerPage: 10,
       allProjectsCount: 0,
       selectedPageProjects: [],
       indexOfLastProject: 0,
@@ -25,15 +25,11 @@ export default class ProjectsList extends Component {
 
   componentWillMount() {
     this.fetchAllProjectsCount();
-    this.setState({ indexOfLastProject: this.state.currentPage * this.state.projectsPerPage }, () => {
-      this.setState({ indexOfFirstProject: this.state.indexOfLastProject - this.state.projectsPerPage });
-    });
+    this.setAndRetrieveSelectedPageProjects();
   }
 
   componentDidMount() {
-    const { indexOfFirstProject, indexOfLastProject } = this.state;
     document.body.style.overflowY = "auto";
-    this.fetchSelectedPageProjects(indexOfFirstProject, indexOfLastProject);
   }
 
   fetchAllProjectsCount = () => {
@@ -59,11 +55,19 @@ export default class ProjectsList extends Component {
       });
   }
 
+  setAndRetrieveSelectedPageProjects = () => {
+    this.setState({ indexOfLastProject: this.state.currentPage * this.state.projectsPerPage }, () => {
+      this.setState({ indexOfFirstProject: this.state.indexOfLastProject - this.state.projectsPerPage }, () => {
+        this.fetchSelectedPageProjects(this.state.indexOfFirstProject, this.state.indexOfLastProject);
+      });
+    });
+  }
+
   deleteProject = project => {
     axios
       .delete(`/api/projects/${project.id}`)
       .then(res => {
-        this.fetchAllProjects();
+        this.fetchSelectedPageProjects(this.state.indexOfFirstProject, this.state.indexOfLastProject);
       })
       .catch(err => {
         console.log("Error deleting a table row");
@@ -72,21 +76,12 @@ export default class ProjectsList extends Component {
 
   changeCurrentPage = (number) => {
     this.setState({ currentPage: number }, () => {
-      this.setState({ indexOfLastProject: this.state.currentPage * this.state.projectsPerPage }, () => {
-        this.setState({ indexOfFirstProject: this.state.indexOfLastProject - this.state.projectsPerPage }, () => {
-          this.fetchSelectedPageProjects(this.state.indexOfFirstProject, this.state.indexOfLastProject);
-        });
-      });
+      this.setAndRetrieveSelectedPageProjects();
     });
   }
 
   render() {
     const { allProjectsCount, projectsPerPage, selectedPageProjects } = this.state;
-
-    // Logic for displaying projects
-    // const indexOfLastProject = currentPage * projectsPerPage;
-    // const indexOfFirstProject = indexOfLastProject - projectsPerPage;
-    // const currentProjects = allProject.slice(indexOfFirstProject, indexOfLastProject);
 
     const projects = selectedPageProjects.map(project => {
       return (

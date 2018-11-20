@@ -30,7 +30,6 @@ module.exports.getSelectedPageProjects = (req, res) => {
     if (err) throw err;
     const allProjects = result;
     // const selectPageProjects = allProjects.slice(firstProjectIndex, lastProjectIndex);
-    console.log(result);
 
     res.send(result.slice(firstProjectIndex, lastProjectIndex));
   });
