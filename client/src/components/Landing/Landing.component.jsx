@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./Landing.css";
-import Partners from "../Partners/Partners.component";
 import CountUp from "react-countup";
 import IconButton from "@material-ui/core/IconButton";
 
@@ -51,8 +50,6 @@ export default class Landing extends Component {
           wheelEventTime: fireDate
         },
         () => {
-          console.log(e.deltaY > 0);
-
           if (e.deltaY > 0) {
             this.animatePrev();
           } else if (e.deltaY < 0) {
@@ -186,9 +183,6 @@ export default class Landing extends Component {
   render() {
     return (
       <div className="landing-main">
-        <div className="partners">
-          <Partners />
-        </div>
         <div className="landing fadeInFast">
           <div className="nav">
             <ul className="nav-group">

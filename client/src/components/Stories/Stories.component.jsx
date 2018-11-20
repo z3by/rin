@@ -3,6 +3,7 @@ import "./Stories.css";
 import Story from "./Story/Story.component";
 import Axios from "axios";
 import { Link } from "react-router-dom";
+import IconButton from "@material-ui/core/IconButton";
 
 class Stories extends Component {
   constructor(props) {
@@ -53,7 +54,9 @@ class Stories extends Component {
               Every-day stories proving that refugees are investable
             </h3>
             <div className="go-down" onClick={this.goDown}>
-              <i className="fas fa-arrow-circle-down" />
+              <IconButton onClick={this.goDown}>
+                <i className="fas fa-arrow-down color-2" />
+              </IconButton>
             </div>
           </div>
         </header>

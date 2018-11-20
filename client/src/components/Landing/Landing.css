@@ -101,7 +101,7 @@
 }
 
 .nav-link.active:hover {
-  filter: saturate(5);
+  color: var(--color-5);
 }
 
 /* ------------------------------- navigation group end ------------------------- */
