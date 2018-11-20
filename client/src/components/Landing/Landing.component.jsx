@@ -50,9 +50,9 @@ export default class Landing extends Component {
           wheelEventTime: fireDate
         },
         () => {
-          if (e.deltaY > 0) {
+          if (e.deltaY > 0 || e.deltaX < 0) {
             this.animatePrev();
-          } else if (e.deltaY < 0) {
+          } else if (e.deltaY < 0 || e.deltaX > 0) {
             this.animateNext();
           }
         }
@@ -83,7 +83,7 @@ export default class Landing extends Component {
   // change current context on the landing page;
   animateNext = () => {
     // if (this.state.index < 4) {
-    if (this.state.index < 3) {
+    if (this.state.index < 4) {
       this.setState(
         {
           index: this.state.index + 1
@@ -130,7 +130,7 @@ export default class Landing extends Component {
     } else {
       this.setState(
         {
-          index: 3
+          index: 4
         },
         () => {
           const divWidth = document.querySelector(".nav-item").offsetWidth;
@@ -206,11 +206,11 @@ export default class Landing extends Component {
                   about us
                 </a>
               </li>
-              {/* <li className="nav-item">
+              <li className="nav-item">
                 <a onClick={this.navigate} className="nav-link">
                   library
                 </a>
-              </li> */}
+              </li>
             </ul>
           </div>
 

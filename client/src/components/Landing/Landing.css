@@ -93,8 +93,6 @@
 .nav-link.active {
   cursor: pointer;
   color: var(--color-2);
-  -webkit-transition: var(--smooth);
-  transition: var(--smooth);
   opacity: 1;
   font-weight: bolder;
   letter-spacing: 0.3rem;
