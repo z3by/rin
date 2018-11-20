@@ -14,25 +14,50 @@ export default class ProjectsList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      allProject: [],
       currentPage: 1,
-      projectsPerPage: 10
+      projectsPerPage: 3,
+      allProjectsCount: 0,
+      selectedPageProjects: [],
+      indexOfLastProject: 0,
+      indexOfFirstProject: 0
     };
   }
 
   componentWillMount() {
-    this.fetchAllProjects();
+    this.fetchAllProjectsCount();
+    this.setState({ indexOfLastProject: this.state.currentPage * this.state.projectsPerPage }, () => {
+      this.setState({ indexOfFirstProject: this.state.indexOfLastProject - this.state.projectsPerPage });
+    });
   }
 
   componentDidMount() {
+    const { indexOfFirstProject, indexOfLastProject } = this.state;
     document.body.style.overflowY = "auto";
+    this.fetchSelectedPageProjects(indexOfFirstProject, indexOfLastProject);
   }
 
-  fetchAllProjects = () => {
-    axios.get("/api/projects").then(res => {
-      this.setState({ allProject: res.data });
+  fetchAllProjectsCount = () => {
+    axios.get("/api/projects/count").then(res => {
+      this.setState({ allProjectsCount: res.data["count(*)"] });
     });
   };
+
+  fetchSelectedPageProjects = (firstProjectIndex, lastProjectIndex) => {
+    const indexes = {
+      first: firstProjectIndex,
+      last: lastProjectIndex
+    };
+
+    axios.get("/api/projects/selectedpage", {
+      params: indexes
+    })
+      .then(res => {
+        this.setState({ selectedPageProjects: res.data });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 
   deleteProject = project => {
     axios
@@ -46,18 +71,24 @@ export default class ProjectsList extends Component {
   };
 
   changeCurrentPage = (number) => {
-    this.setState({ currentPage: number })
+    this.setState({ currentPage: number }, () => {
+      this.setState({ indexOfLastProject: this.state.currentPage * this.state.projectsPerPage }, () => {
+        this.setState({ indexOfFirstProject: this.state.indexOfLastProject - this.state.projectsPerPage }, () => {
+          this.fetchSelectedPageProjects(this.state.indexOfFirstProject, this.state.indexOfLastProject);
+        });
+      });
+    });
   }
 
   render() {
-    const { allProject, currentPage, projectsPerPage } = this.state;
+    const { allProjectsCount, projectsPerPage, selectedPageProjects } = this.state;
 
     // Logic for displaying projects
-    const indexOfLastProject = currentPage * projectsPerPage;
-    const indexOfFirstProject = indexOfLastProject - projectsPerPage;
-    const currentProjects = allProject.slice(indexOfFirstProject, indexOfLastProject);
+    // const indexOfLastProject = currentPage * projectsPerPage;
+    // const indexOfFirstProject = indexOfLastProject - projectsPerPage;
+    // const currentProjects = allProject.slice(indexOfFirstProject, indexOfLastProject);
 
-    const projects = currentProjects.map(project => {
+    const projects = selectedPageProjects.map(project => {
       return (
         <TableRow>
           <TableCell>{project.id}</TableCell>
@@ -86,7 +117,7 @@ export default class ProjectsList extends Component {
 
     // Logic for displaying page numbers
     const pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(allProject.length / projectsPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(allProjectsCount / projectsPerPage); i++) {
       pageNumbers.push(i);
     }
 
