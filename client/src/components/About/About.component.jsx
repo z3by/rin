@@ -6,6 +6,7 @@ import WhyRefugeesComponent from "./WhyRefugees/WhyRefugees.component";
 import WhoWeAreComponent from "./WhoWeAre/WhoWeAre.component";
 import { Route } from "react-router-dom";
 import AboutIntro from "./AboutIntro/AboutIntro";
+import IconButton from "@material-ui/core/IconButton";
 
 export default class About extends Component {
   constructor() {
@@ -62,59 +63,59 @@ export default class About extends Component {
           </div>
         </div>
 
-        <header>
-          <div className="header">
-            <h1 className="header-text color-1">About Us</h1>
-            <div className="line" />
+        <header className="header">
+          <h1 className="header-text color-1">About Us</h1>
+          <div className="line" />
 
-            <ul className="about-nav">
-              <li>
-                <a
-                  onClick={() => {
-                    this.navigateTO("/about/strategy");
-                  }}
-                >
-                  <h5 className="upper">our strategy</h5>
-                  <i className="fas fa-street-view" />
-                </a>
-              </li>
+          <ul className="about-nav">
+            <li>
+              <a
+                onClick={() => {
+                  this.navigateTO("/about/strategy");
+                }}
+              >
+                <h5 className="upper">our strategy</h5>
+                <i className="fas fa-street-view" />
+              </a>
+            </li>
 
-              <li>
-                <a
-                  onClick={() => {
-                    this.navigateTO("/about/how-it-works");
-                  }}
-                >
-                  <h5 className="upper">how it works</h5>
-                  <i className="far fa-sun" />
-                </a>
-              </li>
+            <li>
+              <a
+                onClick={() => {
+                  this.navigateTO("/about/how-it-works");
+                }}
+              >
+                <h5 className="upper">how it works</h5>
+                <i className="far fa-sun" />
+              </a>
+            </li>
 
-              <li>
-                <a
-                  onClick={() => {
-                    this.navigateTO("/about/who-we-are");
-                  }}
-                >
-                  <h5 className="upper">who we are</h5>
-                  <i className="fas fa-users" />
-                </a>
-              </li>
+            <li>
+              <a
+                onClick={() => {
+                  this.navigateTO("/about/who-we-are");
+                }}
+              >
+                <h5 className="upper">who we are</h5>
+                <i className="fas fa-users" />
+              </a>
+            </li>
 
-              <li>
-                <a
-                  onClick={() => {
-                    this.navigateTO("/about/why-refugees");
-                  }}
-                >
-                  <h5 className="upper">why refugees</h5>
-                  <i className="fab fa-accusoft" />
-                </a>
-              </li>
-            </ul>
-            <div className="go-down" onClick={this.goDown}>
-              <i className="fas fa-arrow-circle-down" />
-            </div>
+            <li>
+              <a
+                onClick={() => {
+                  this.navigateTO("/about/why-refugees");
+                }}
+              >
+                <h5 className="upper">why refugees</h5>
+                <i className="fab fa-accusoft" />
+              </a>
+            </li>
+          </ul>
+          <div className="go-down" onClick={this.goDown}>
+            <IconButton className="arrow-btn" onClick={this.scrollToTop}>
+              <i className="fas fa-arrow-down" />
+            </IconButton>
           </div>
         </header>
 
@@ -131,8 +132,10 @@ export default class About extends Component {
             <Route path="/about/who-we-are" component={WhoWeAreComponent} />
           </section>
         </main>
-        <div className="back-to-top" onClick={this.scrollToTop}>
-          <i className="fas fa-arrow-circle-up" />
+        <div className="back-to-top">
+          <IconButton className="arrow-btn" onClick={this.scrollToTop}>
+            <i className="fas fa-arrow-up" />
+          </IconButton>
         </div>
       </div>
     );

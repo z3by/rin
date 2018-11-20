@@ -1,53 +1,67 @@
-import React, { Component } from 'react';
-import './Library.css';
+import React, { Component } from "react";
+import "./Library.css";
 
 export default class Library extends Component {
-    constructor() {
-        super()
-        this.state = {
-            pageNumber: 0,
-        };
-    }
+  constructor() {
+    super();
+    this.state = {
+      pageNumber: 0
+    };
+  }
 
-    onPageDown = () => {
-        if (this.state.pageNumber < 4) {
-            this.setState({
-                pageNumber: this.state.pageNumber + 1
-            }, () => {
-                document.querySelector('.pages').style.top = `${-this.state.pageNumber * 100}vh`;
+  render() {
+    return (
+      <div
+        className="library fadeInFast"
+        style={{
+          overflowY: "scroll"
+        }}
+      >
+        <div className=" container ">
+          <section>
+            <h2 className="color-2 upper">Figures at a Glance</h2>
+            <iframe
+              title="iframe 1"
+              src="http://www.unhcr.org/figures-at-a-glance.html"
+              width="100%"
+              height="800"
+              frameborder="0"
+            />
+          </section>
+          <section>
+            <h2 className="color-2 upper">
+              How investment can unlock the potential of refugees
+            </h2>
+            <iframe
+              title="iframe 2"
+              src="https://static1.squarespace.com/static/5b280d6a620b85faae73af1a/t/5bd1e2b39140b788ed67c371/1540481747374/RIN+Investor+Report-Paradigm+Shift-FINAL.pdf"
+              width="100%"
+              height="800"
+              frameborder="0"
+            />
+          </section>
+          <section>
+            <h2 className="color-2 upper">Syrian situation statistics</h2>
 
-            });
-        }
-
-
-    }
-
-    onPageUp = () => {
-        if (this.state.pageNumber > 0) {
-            this.setState({
-                pageNumber: this.state.pageNumber - 1
-            }, () => {
-                document.querySelector('.pages').style.top = `${-this.state.pageNumber * 100}vh`;
-            });
-        }
-    }
-
-
-    render() {
-        return (
-            <div className="library fadeInFast">
-                <div className="pages">
-                    <div className="page">this is page 1</div>
-                    <div className="page">this is page 2</div>
-                    <div className="page">this is page 3</div>
-                    <div className="page">this is page 4</div>
-                    <div className="page">this is page 5</div>
-                </div>
-                <div className="arrows">
-                    <img src="imgs/arrow.png" alt="" onClick={this.onPageUp} />
-                    <img src="imgs/arrow.png" alt="" onClick={this.onPageDown} />
-                </div>
-            </div>
-        )
-    }
+            <iframe
+              title="iframe 3"
+              src="https://data2.unhcr.org/en/situations/syria"
+              width="100%"
+              height="800"
+              frameborder="0"
+            />
+          </section>
+          <section>
+            <iframe
+              title="iframe 4"
+              src="https://data2.unhcr.org/en/countries/"
+              width="100%"
+              height="800"
+              frameborder="0"
+            />
+          </section>
+        </div>
+      </div>
+    );
+  }
 }

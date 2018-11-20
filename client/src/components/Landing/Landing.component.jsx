@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Landing.css";
-import Partners from "../Partners/Partners.component";
 import CountUp from "react-countup";
+import IconButton from "@material-ui/core/IconButton";
 
 export default class Landing extends Component {
   constructor(props) {
@@ -12,7 +12,8 @@ export default class Landing extends Component {
       index: 0,
       clientX: 0,
       clientY: 0,
-      navigating: false
+      navigating: false,
+      wheelEventTime: 0
     };
   }
 
@@ -23,8 +24,8 @@ export default class Landing extends Component {
 
   // bind the events to the local functions.
   bindEvents = () => {
-    window.onmousewheel = this.handleWheel;
     window.onkeydown = this.handleArrowsInput;
+    window.onwheel = this.handleWheel;
     window.onmousemove = this.onMouseMove;
   };
 
@@ -41,12 +42,34 @@ export default class Landing extends Component {
     });
   };
 
+  handleWheel = e => {
+    const fireDate = new Date().getSeconds();
+    if (fireDate > this.state.wheelEventTime) {
+      this.setState(
+        {
+          wheelEventTime: fireDate
+        },
+        () => {
+          if (e.deltaY > 0 || e.deltaX < 0) {
+            this.animatePrev();
+          } else if (e.deltaY < 0 || e.deltaX > 0) {
+            this.animateNext();
+          }
+        }
+      );
+    }
+  };
+
   // key press handler for the landing page
   handleArrowsInput = e => {
     if (e.key === "ArrowRight") {
       this.animateNext();
     } else if (e.key === "ArrowLeft") {
       this.animatePrev();
+    } else if (e.key === "Enter") {
+      this.navigate();
+    } else if (e.key === "Escape") {
+      this.props.history.push("/");
     }
   };
 
@@ -62,7 +85,7 @@ export default class Landing extends Component {
   // change current context on the landing page;
   animateNext = () => {
     // if (this.state.index < 4) {
-    if (this.state.index < 3) {
+    if (this.state.index < 4) {
       this.setState(
         {
           index: this.state.index + 1
@@ -109,7 +132,7 @@ export default class Landing extends Component {
     } else {
       this.setState(
         {
-          index: 3
+          index: 4
         },
         () => {
           const divWidth = document.querySelector(".nav-item").offsetWidth;
@@ -162,9 +185,6 @@ export default class Landing extends Component {
   render() {
     return (
       <div className="landing-main">
-        <div className="partners">
-          <Partners />
-        </div>
         <div className="landing fadeInFast">
           <div className="nav">
             <ul className="nav-group">
@@ -188,11 +208,11 @@ export default class Landing extends Component {
                   about us
                 </a>
               </li>
-              {/* <li className="nav-item">
+              <li className="nav-item">
                 <a onClick={this.navigate} className="nav-link">
                   library
                 </a>
-              </li> */}
+              </li>
             </ul>
           </div>
 
@@ -275,12 +295,12 @@ export default class Landing extends Component {
           </div>
 
           <div className="arrows">
-            <a onClick={this.animatePrev}>
+            <IconButton onClick={this.animatePrev}>
               <i className="fas fa-arrow-left" />
-            </a>
-            <a onClick={this.animateNext}>
+            </IconButton>
+            <IconButton onClick={this.animateNext}>
               <i className="fas fa-arrow-right" />
-            </a>
+            </IconButton>
           </div>
         </div>
       </div>

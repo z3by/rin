@@ -2,10 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./UpdateStory.css";
 import Paper from "@material-ui/core/Paper";
-import Select from "@material-ui/core/Select";
 import Checkbox from "@material-ui/core/Checkbox";
 import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
 import { MenuList } from "@material-ui/core";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
@@ -91,11 +89,21 @@ export default class UpdateStory extends Component {
 
   getStory = id => {
     axios.get(`/api/stories/${id}`).then(res => {
-      this.setState({
-        story: res.data[0]
-      }, () => {
-        this.setState({ title: res.data[0]["title"], pre_description: res.data[0]["pre_description"], lens: res.data[0]["lens"], text: res.data[0]["text"], imgs: res.data[0]["imgs"], SDGs: res.data[0]["SDGs"] });
-      });
+      this.setState(
+        {
+          story: res.data[0]
+        },
+        () => {
+          this.setState({
+            title: res.data[0]["title"],
+            pre_description: res.data[0]["pre_description"],
+            lens: res.data[0]["lens"],
+            text: res.data[0]["text"],
+            imgs: res.data[0]["imgs"],
+            SDGs: res.data[0]["SDGs"]
+          });
+        }
+      );
     });
   };
 
@@ -119,11 +127,14 @@ export default class UpdateStory extends Component {
       });
     }
 
-    this.setState({
-      SDGs: selectedSDGs
-    }, () => {
-      this.checkButtonAvailability();
-    });
+    this.setState(
+      {
+        SDGs: selectedSDGs
+      },
+      () => {
+        this.checkButtonAvailability();
+      }
+    );
   };
 
   onChangeImg = e => {
@@ -177,13 +188,13 @@ export default class UpdateStory extends Component {
 
     axios
       .put(`/api/stories/${this.state.id}`, storyData)
-      .then(function (response) {
+      .then(function(response) {
         document.querySelector(".done-img").style.display = "flex";
         setTimeout(() => {
           document.querySelector(".done-img").style.display = "none";
         }, 3000);
       })
-      .catch(function (error) {
+      .catch(function(error) {
         console.log(error);
       });
   };
@@ -196,15 +207,13 @@ export default class UpdateStory extends Component {
             {lens}
           </option>
         );
-      }
-      else {
+      } else {
         return (
           <option value={lens} key={i}>
             {lens}
           </option>
         );
       }
-
     });
 
     let SDGsUI = SDGs.map((sdg, id) => {

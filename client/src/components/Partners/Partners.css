@@ -1,7 +1,8 @@
 .each-slide div {
-  width: 320px;
-  height: 150px;
+  width: 220px;
+  height: 100px;
   background-size: 50%;
   background-repeat: no-repeat;
   background-position: 25% 25%;
+  filter: grayscale(100);
 }
