@@ -13,11 +13,11 @@ export default props => {
           alt=""
           className="banner-img"
         />
-        <h3 className="heading-theme-2">
+        <h2 className="color-2 upper">
           <i className="far fa-sun" />
           How it works
-        </h3>
-        <p className="p-theme-1">
+        </h2>
+        <p>
           Driving economic prosperity through improved investor networks and
           increased capital investments. Drawing on deep domain expertise on
           impact investing, development finance, and migration issues, and
@@ -25,15 +25,15 @@ export default props => {
           provides its members with three core offerings:
         </p>
 
-        <p className="p-theme-1">
+        <h5>
           <b>
-            <i className="fab fa-searchengin" />
+            <i className="color-4 fab fa-searchengin" />
             Research{" "}
           </b>{" "}
           RIN creates the investment and impact proof points that serve as the
           foundation of a vibrant refugee investment market. RIN members benefit
           from:
-        </p>
+        </h5>
 
         <ul>
           <li>
@@ -55,16 +55,14 @@ export default props => {
             collaboration with investment and humanitarian partners
           </li>
         </ul>
-      </div>
-      <div className="key-strategy">
-        <p className="p-theme-1">
+        <h5>
           <b>
-            <i className="fab fa-leanpub" />
+            <i className="color-4 fab fa-leanpub" />
             Facilitation:{" "}
           </b>
           RIN helps investors put their capital to work supporting displaced
           people and the communities hosting them. This support includes:
-        </p>
+        </h5>
 
         <ul>
           <li>
@@ -88,17 +86,15 @@ export default props => {
             often necessary in markets hosting refugees
           </li>
         </ul>
-      </div>
-      <div className="key-strategy">
-        <p className="p-theme-1">
+        <h5>
           <b>
-            <i className="fas fa-gavel" />
+            <i className="color-4 fas fa-gavel" />
             Policy and Advocacy:
           </b>{" "}
           RIN bridges the gap between private investors, international donors,
           governments, and NGOs in the broader global development community.
           These efforts focus on:
-        </p>
+        </h5>
 
         <ul>
           <li>

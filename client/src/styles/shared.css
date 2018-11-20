@@ -71,27 +71,33 @@ p {
 }
 
 h1 {
-  font-size: 2.4rem;
+  font-size: 2.7rem;
+  font-weight: bolder;
 }
 
 h2 {
-  font-size: 2.1rem;
+  font-size: 2.4rem;
+  font-weight: 800;
 }
 
 h3 {
-  font-size: 1.8rem;
+  font-size: 2rem;
+  font-weight: 400;
 }
 
 h4 {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
 }
 
 h5 {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 p {
   font-size: 1.2rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 300;
 }
 a {
   text-decoration: none;
@@ -103,7 +109,7 @@ b {
 }
 
 b i {
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 section {
@@ -137,7 +143,7 @@ i {
 }
 
 .header {
-  background: url(/imgs/stories.gif);
+  background: var(--color-2);
   height: 100vh;
   text-align: center;
   background-size: cover;
@@ -157,18 +163,38 @@ i {
   -ms-flex-align: center;
   align-items: center;
   position: relative;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.header video {
+  margin: 0;
+  height: 130%;
+  width: 330%;
+  padding: 0;
+  position: absolute;
+  z-index: 0;
+  opacity: 0.3;
 }
 
 .header h3 {
   font-weight: 300;
   text-transform: capitalize;
   margin: 30px 0;
+  position: relative;
+  color: var(--color-3);
+  z-index: 2;
+  mix-blend-mode: screen;
+  padding: 10px 30px;
 }
 .header-text {
   font-size: 6rem;
-  color: var(--color-3);
+  color: var(--color-1);
   font-family: var(--main-font);
   text-transform: uppercase;
+  position: relative;
+  z-index: 2;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
 }
 
 label {
@@ -198,23 +224,20 @@ label {
   margin: 0;
   -webkit-transition: var(--smooth);
   transition: var(--smooth);
-  background: var(--dark-transparent);
-  border-radius: 50px;
-  -webkit-box-shadow: 0px 0px 5px var(--dark-transparent);
-  box-shadow: 0px 0px 5px var(--dark-transparent);
 }
 
 .arrows i {
-  color: var(--color-1);
-  margin: 20px 25px;
+  color: var(--color-2);
   -webkit-transition: all 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
   transition: all 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
   font-size: 20px;
+  font-size: 1.5rem;
 }
 
 .arrows i:hover {
-  color: var(--color-2);
+  color: var(--color-1);
 }
+
 .slideInRight {
   -webkit-animation-name: slideInRight;
   animation-name: slideInRight;

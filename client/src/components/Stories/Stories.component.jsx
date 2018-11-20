@@ -3,6 +3,7 @@ import "./Stories.css";
 import Story from "./Story/Story.component";
 import Axios from "axios";
 import { Link } from "react-router-dom";
+import IconButton from "@material-ui/core/IconButton";
 
 class Stories extends Component {
   constructor(props) {
@@ -46,14 +47,17 @@ class Stories extends Component {
       <div className="stories fadeInFast">
         <header>
           <div className="header">
-            <h1 className="header-text color-1">Success Stories</h1>
+            <video src="/videos/camp.mp4" autoPlay muted loop />
+            <h1 className="header-text">Success Stories</h1>
             <div className="line" />
 
-            <h3 className="color-1">
+            <h3 className="">
               Every-day stories proving that refugees are investable
             </h3>
             <div className="go-down" onClick={this.goDown}>
-              <i className="fas fa-arrow-circle-down" />
+              <IconButton onClick={this.goDown}>
+                <i className="fas fa-arrow-down color-2" />
+              </IconButton>
             </div>
           </div>
         </header>

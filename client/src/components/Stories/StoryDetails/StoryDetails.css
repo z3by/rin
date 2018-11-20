@@ -20,7 +20,7 @@
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  background-size: 100%;
+  background-size: cover;
   background-attachment: fixed;
   position: relative;
 }
@@ -62,7 +62,7 @@
   margin: 0 10px;
 }
 
-.lens, .sdg{
+.lens,
+.sdg {
   height: 10vh;
 }
-

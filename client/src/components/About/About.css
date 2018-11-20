@@ -1,7 +1,7 @@
 .container {
   padding: 20px;
-  margin-left: calc(15% + 100px);
   width: 70%;
+  margin: 0 auto;
   -webkit-transition: all 1s ease;
   transition: all 1s ease;
 }
@@ -39,7 +39,7 @@
 
 .about-nav i {
   color: var(--color-1);
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
   font-size: 5vw;
   text-align: center;
 }
@@ -81,19 +81,24 @@
 
 .go-down,
 .back-to-top {
-  text-align: center;
   cursor: pointer;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.go-down button,
+.back-to-top button {
+  background: rgba(0, 0, 0, 0.5);
+  width: 50px;
+  height: 50px;
 }
 
 .go-down {
-  position: absolute;
-  bottom: 50px;
+  transform: translateY(10vh);
 }
 
-.go-down i,
-.back-to-top i {
-  position: relative;
-  font-size: 50px;
+.arrow-btn i {
   color: var(--color-2);
 }
 
@@ -170,44 +175,6 @@
   color: var(--color-1);
 }
 
-.heading-theme-2 {
-  color: var(--color-2);
-  font-family: var(--main-font);
-  margin: 10px;
-  margin-left: 0;
-  text-transform: uppercase;
-}
-
-.heading-theme-2 i {
-  font-size: 4rem;
-}
-
-.heading-theme-3 {
-  color: var(--color-5);
-  font-family: var(--main-font);
-  margin: 5px;
-  margin-left: 0;
-  font-weight: 500;
-}
-
-.heading-theme-4 {
-  color: var(--color-5);
-  font-family: var(--main-font);
-  margin: 10px;
-  margin-left: 0;
-}
-
-.team .p-theme-1 {
-  font-size: 1.5rem;
-}
-
-.p-theme-1 {
-  color: var(--color-5);
-  font-family: var(--main-font);
-  margin-bottom: 30px;
-  margin-left: 0;
-}
-
 .team-members {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -230,11 +197,19 @@
   text-transform: uppercase;
 }
 
+.about section {
+  margin: 0px;
+}
+
+.about section ul {
+  margin: 30px;
+}
+
 .about section ul li {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: var(--color-5);
   font-family: var(--main-font);
-  margin: 0px 0 70px 50px;
+  margin: 0px 0 20px 50px;
 }
 
 .key-strategy {

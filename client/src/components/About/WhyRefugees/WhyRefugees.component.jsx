@@ -11,11 +11,11 @@ export default props => {
         alt=""
         className="banner-img"
       />
-      <h1 className="heading-theme-2">
+      <h2 className="upper color-2">
         <i className="fab fa-accusoft" />
         Why Refugees
-      </h1>
-      <h3 className="heading-theme-3">
+      </h2>
+      <h3 className="color-3">
         Bridging the gap between the untapped potential of refugees and the
         capital markets.
       </h3>

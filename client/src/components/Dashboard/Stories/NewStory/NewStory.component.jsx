@@ -2,10 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./NewStory.css";
 import Paper from "@material-ui/core/Paper";
-import Select from "@material-ui/core/Select";
 import Checkbox from "@material-ui/core/Checkbox";
 import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
 import { MenuList } from "@material-ui/core";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
@@ -44,7 +42,6 @@ export default class NewProject extends Component {
       SDGs: [],
       title: "",
       pre_description: "",
-      lens: "",
       text: "",
       img: "",
       loading: false,
@@ -235,7 +232,7 @@ export default class NewProject extends Component {
             accept="image/*"
             onChange={this.onChangeImg}
           />
-          <img className="admin-img-update" src={this.state.img} />
+          <img className="admin-img-update" src={this.state.img} alt="" />
           <img
             src="/imgs/loading.gif"
             alt=""
