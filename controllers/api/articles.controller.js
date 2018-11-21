@@ -21,6 +21,29 @@ module.exports.getArticles = (req, res) => {
   });
 };
 
+module.exports.getArticlesCount = (req, res) => {
+  let qry = "select count(*) from articles;";
+  connection.query(qry, (err, result) => {
+    if (err) throw err;
+    res.send(result[0]);
+  });
+};
+
+module.exports.getSelectedPageArticles = (req, res) => {
+  const firstArticleIndex = req.query.first;
+  const lastArticleIndex = req.query.last;
+
+  connection.query("select * from articles", (err, result) => {
+    if (err) throw err;
+    const allArticles = result;
+    const selectPageArticles = allArticles.slice(
+      firstArticleIndex,
+      lastArticleIndex
+    );
+    res.send(selectPageArticles);
+  });
+};
+
 module.exports.getArticle = (req, res) => {
   let qry = `select * from articles where id=${req.params.id}`;
   connection.query(qry, (err, result) => {
