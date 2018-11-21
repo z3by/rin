@@ -15,12 +15,13 @@
 .admin-form textarea {
   display: block;
   border: none;
+  font-size: 1rem;
   border: 1px solid var(--color-3);
   background: transparent;
   outline: none;
   width: 80%;
   font-family: var(--main-font);
-  font-size: 16px;
+  font-size: 1rem;
   background: var(--color-1);
   border: none;
   border-radius: 20px;
@@ -29,7 +30,6 @@
 }
 
 .admin-form textarea::placeholder {
-  font-size: 24px;
   color: #333;
 }
 

@@ -7,82 +7,62 @@ export default class ArticleInfo extends Component {
     super(props);
     this.state = {
       id: this.props.match.params.id,
-      story: {
-        imgs: [],
-        SDGs: []
+      article: {
+        imgs: [""]
       }
     };
   }
 
   componentWillMount() {
-    this.getStory(this.state.id);
+    this.getarticle(this.state.id);
   }
 
   componentDidMount() {
     document.body.style.overflowY = "auto";
   }
 
-  getStory = id => {
+  getarticle = id => {
     axios.get(`/api/articles/${id}`).then(res => {
       this.setState({
-        story: res.data[0]
+        article: res.data[0]
       });
     });
   };
 
   render() {
-    let SDGs = this.state.story.SDGs.map(sdg => {
-      return (
-        <li>
-          <p className="p-theme-1-admin-info">{sdg}</p>
-        </li>
-      );
-    });
-
     return (
       <div className="admin-info-single">
         <table>
           <tr>
-            <th>Story ID</th>
+            <th>Article ID</th>
             <td>{this.state.id}</td>
           </tr>
           <tr>
-            <th>Story Tilte</th>
-            <td>{this.state.story.title}</td>
+            <th>Article Tilte</th>
+            <td>{this.state.article.title}</td>
           </tr>
           <tr>
-            <th>Story Pre-Description</th>
+            <th>Article Subtitle</th>
             <td>
               <p className="p-theme-1-admin-info">
-                {this.state.story.pre_description}
+                {this.state.article.subtitle}
               </p>
             </td>
           </tr>
           <tr>
-            <th>Story Details</th>
+            <th>Article Details</th>
             <td>
-              <p className="p-theme-1-admin-info">{this.state.story.text}</p>
+              <p className="p-theme-1-admin-info">{this.state.article.text}</p>
             </td>
           </tr>
+
           <tr>
-            <th>Story Lens</th>
-            <td>
-              <p className="p-theme-1-admin-info">{this.state.story.lens}</p>
-            </td>
-          </tr>
-          <tr>
-            <th>Story SDGs</th>
-            <td>
-              <ul>{SDGs}</ul>
-            </td>
-          </tr>
-          <tr>
-            <th>Story Images</th>
+            <th>Article Images</th>
             <td>
               <img
                 className="admin-img"
-                src={this.state.story.imgs[0]}
-                alt="Story"
+                src={this.state.article.imgs[0]}
+                alt="article"
               />
             </td>
           </tr>

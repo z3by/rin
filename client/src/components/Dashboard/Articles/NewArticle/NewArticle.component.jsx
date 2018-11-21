@@ -63,7 +63,8 @@ export default class NewArticle extends Component {
         document.querySelector(".admin-form form").reset();
         this.setState({
           uploaded: true,
-          formValid: false
+          formValid: false,
+          img: ""
         });
 
         setTimeout(() => {
