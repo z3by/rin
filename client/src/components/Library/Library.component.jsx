@@ -17,6 +17,13 @@ export default class Library extends Component {
           overflowY: "scroll"
         }}
       >
+        <header>
+          <div className="banner-full">
+            <h1>library</h1>
+            <div className="line" />
+            <h3>dig deeply and read more about impact investment</h3>
+          </div>
+        </header>
         <div className=" container ">
           <section>
             <h2 className="color-2 upper">Figures at a Glance</h2>
