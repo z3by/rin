@@ -85,7 +85,7 @@ export default class Landing extends Component {
   // change current context on the landing page;
   animateNext = () => {
     // if (this.state.index < 4) {
-    if (this.state.index < 4) {
+    if (this.state.index < 5) {
       this.setState(
         {
           index: this.state.index + 1
@@ -132,7 +132,7 @@ export default class Landing extends Component {
     } else {
       this.setState(
         {
-          index: 4
+          index: 5
         },
         () => {
           const divWidth = document.querySelector(".nav-item").offsetWidth;
@@ -176,7 +176,7 @@ export default class Landing extends Component {
     this.setState({
       navigating: true
     });
-    const routes = ["stories", "map", "data", "about", "library"];
+    const routes = ["stories", "map", "data", "about", "library", "blog"];
     setTimeout(() => {
       this.props.history.push(routes[this.state.index]);
     }, 2000);
@@ -211,6 +211,11 @@ export default class Landing extends Component {
               <li className="nav-item">
                 <a onClick={this.navigate} className="nav-link">
                   library
+                </a>
+              </li>
+              <li className="nav-item">
+                <a onClick={this.navigate} className="nav-link">
+                  blog
                 </a>
               </li>
             </ul>

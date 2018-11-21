@@ -72,7 +72,7 @@ export default class Navbar extends Component {
             </li>
 
             <li>
-              <Link className="navbar-link" index=" 4" to={"/members"}>
+              <Link className="navbar-link" index="4" to={"/members"}>
                 <div className="nav-rec rounded" />
                 <p className="nav-rec-text">members</p>
               </Link>
@@ -103,9 +103,15 @@ export default class Navbar extends Component {
               </Link>
             </li>
             <li>
-              <Link className="navbar-link" index=" 4" to={"/library"}>
+              <Link className="navbar-link" index="6" to={"/library"}>
                 <div className="nav-rec" />
                 <p className="nav-rec-text">library</p>
+              </Link>
+            </li>
+            <li>
+              <Link className="navbar-link" index="7" to={"/blog"}>
+                <div className="nav-rec" />
+                <p className="nav-rec-text">blog</p>
               </Link>
             </li>
           </ul>
