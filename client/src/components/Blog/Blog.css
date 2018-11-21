@@ -1,0 +1,17 @@
+.blog {
+  background: var(--color-1);
+  height: 100vh;
+}
+
+.blog .banner-full {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.blog header {
+  background: url(/imgs/backs6.jpg);
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-size: cover;
+}
