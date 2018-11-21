@@ -12,7 +12,8 @@ export default class NewArticle extends Component {
       text: "",
       img: "",
       loading: false,
-      formValid: false
+      formValid: false,
+      uploaded: false
     };
   }
 
@@ -60,9 +61,14 @@ export default class NewArticle extends Component {
       .post("/api/articles", articleData)
       .then(response => {
         document.querySelector(".admin-form form").reset();
-        document.querySelector(".done-img").style.display = "flex";
+        this.setState({
+          uploaded: true
+        });
+
         setTimeout(() => {
-          document.querySelector(".done-img").style.display = "none";
+          this.setState({
+            uploaded: false
+          });
         }, 3000);
       })
       .catch(error => {

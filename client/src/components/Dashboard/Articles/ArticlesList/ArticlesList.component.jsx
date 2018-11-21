@@ -15,7 +15,7 @@ export default class ArticlesList extends Component {
     super(props);
     this.state = {
       currentPage: 1,
-      ArticlesPerPage: 10,
+      articlesPerPage: 10,
       allArticlesCount: 0,
       selectedPageArticles: [],
       indexOfLastArticle: 0,
@@ -35,13 +35,13 @@ export default class ArticlesList extends Component {
   setAndRetrieveSelectedPageArticles = () => {
     this.setState(
       {
-        indexOfLastArticle: this.state.currentPage * this.state.ArticlesPerPage
+        indexOfLastArticle: this.state.currentPage * this.state.articlesPerPage
       },
       () => {
         this.setState(
           {
             indexOfFirstArticle:
-              this.state.indexOfLastArticle - this.state.ArticlesPerPage
+              this.state.indexOfLastArticle - this.state.articlesPerPage
           },
           () => {
             this.fetchSelectedPageArticles(
@@ -78,9 +78,9 @@ export default class ArticlesList extends Component {
       });
   };
 
-  deleteArticle = Article => {
+  deleteArticle = article => {
     axios
-      .delete(`/api/Articles/${Article.id}`)
+      .delete(`/api/articles/${article.id}`)
       .then(res => {
         this.fetchSelectedPageArticles(
           this.state.indexOfFirstArticle,
@@ -101,27 +101,28 @@ export default class ArticlesList extends Component {
   render() {
     const {
       allArticlesCount,
-      ArticlesPerPage,
+      articlesPerPage,
       selectedPageArticles
     } = this.state;
 
-    const Articles = selectedPageArticles.map(Article => {
+    const articles = selectedPageArticles.map(article => {
       return (
         <TableRow>
-          <TableCell>{Article.id}</TableCell>
-          <TableCell>{Article.title}</TableCell>
+          <TableCell>{article.id}</TableCell>
+          <TableCell>{article.title}</TableCell>
+          <TableCell>{article.subtitle}</TableCell>
           <TableCell numeric>
-            <Link to={`/dashboard/Articles/list/${Article.id}`}>
+            <Link to={`/dashboard/articles/list/${article.id}`}>
               <Button>
                 <i className="far fa-eye" />
               </Button>
             </Link>
-            <Link to={`/dashboard/Articles/list/updateArticle/${Article.id}`}>
+            <Link to={`/dashboard/articles/list/updateArticle/${article.id}`}>
               <Button>
                 <i className="fas fa-edit" style={{ color: "royalblue" }} />
               </Button>
             </Link>
-            <a onClick={() => this.deleteArticle(Article)}>
+            <a onClick={() => this.deleteArticle(article)}>
               <Button>
                 <i className="fas fa-trash-alt" style={{ color: "crimson" }} />
               </Button>
@@ -133,7 +134,7 @@ export default class ArticlesList extends Component {
 
     // Logic for displaying page numbers
     const pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(allArticlesCount / ArticlesPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(allArticlesCount / articlesPerPage); i++) {
       pageNumbers.push(i);
     }
 
@@ -157,16 +158,17 @@ export default class ArticlesList extends Component {
     });
 
     return (
-      <Paper className="ArticlesPages">
+      <Paper className="articlesPages">
         <Table>
           <TableHead>
             <TableRow>
               <TableCell>Article ID</TableCell>
               <TableCell>Article Title</TableCell>
+              <TableCell>Article Subtitle</TableCell>
               <TableCell />
             </TableRow>
           </TableHead>
-          <TableBody>{Articles}</TableBody>
+          <TableBody>{articles}</TableBody>
         </Table>
 
         <ul id="page-numbers">{allPagesNumbers}</ul>
