@@ -29,6 +29,12 @@ export default class Projects extends Component {
     });
   };
 
+  searchProjects = (e) => {
+    if (e.key === "Enter") {
+      const input = e.target.value;
+    }
+  }
+
   render() {
     return (
       <div className="projects-dashboard">
@@ -53,6 +59,7 @@ export default class Projects extends Component {
               type="search"
               className="search-input"
               placeholder="Search"
+              onKeyUp={this.searchProjects}
             />
             <i className="fas fa-search" />
           </div>

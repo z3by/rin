@@ -8,7 +8,17 @@ connection.connect(err => {
 });
 
 module.exports.getProjects = (req, res) => {
-  connection.query("select * from projects", (err, result) => {
+  const filterOption = req.query.input || null; //if admin searches projects in admin dashboard
+
+  let qry = "SELECT * FROM projects";
+  if (filterOption) {
+    qry += ` WHERE title like "%${filterOption}%" OR organization_name like "%${filterOption}%" OR type = "${filterOption}"`;
+    if (Number(filterOption)) {
+      qry += ` OR capacity = ${Number(filterOption)}`;
+    }
+  }
+
+  connection.query(qry, (err, result) => {
     if (err) throw err;
     res.send(result);
   });
