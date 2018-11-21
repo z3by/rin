@@ -121,7 +121,7 @@
 }
 
 .done-img {
-  display: none;
+  display: flex;
   background: var(white);
   -webkit-box-pack: center;
   -ms-flex-pack: center;

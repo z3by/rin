@@ -62,7 +62,8 @@ export default class NewArticle extends Component {
       .then(response => {
         document.querySelector(".admin-form form").reset();
         this.setState({
-          uploaded: true
+          uploaded: true,
+          formValid: false
         });
 
         setTimeout(() => {
@@ -139,7 +140,12 @@ export default class NewArticle extends Component {
             accept="image/*"
             onChange={this.onChangeImg}
           />
-          <img className="admin-img-update" src={this.state.img} alt="" />
+          <img
+            className="admin-img-update"
+            src={this.state.img}
+            alt=""
+            style={{ opacity: this.state.uploaded ? "0" : "1" }}
+          />
           <img
             src="/imgs/loading.gif"
             alt=""
@@ -153,7 +159,10 @@ export default class NewArticle extends Component {
           >
             <i className="fas fa-plus" /> Add Article
           </button>
-          <div className="done-img">
+          <div
+            className="done-img"
+            style={{ opacity: this.state.uploaded ? "1" : "0" }}
+          >
             <img src="/imgs/done.gif" alt="" />
           </div>
         </form>
