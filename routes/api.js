@@ -7,6 +7,7 @@ const AWS = require("aws-sdk");
 
 const countriesAPI = require("../controllers/api/countries.controller");
 const storiesAPI = require("../controllers/api/stories.controller");
+const articlesAPI = require("../controllers/api/articles.controller");
 const partnersAPI = require("../controllers/api/partners.controller");
 const locationsAPI = require("../controllers/api/locations.controller");
 const projectsAPI = require("../controllers/api/projects.controller");
@@ -57,6 +58,13 @@ router.get("/stories/:id", storiesAPI.getStory);
 router.post("/stories", storiesAPI.addStory);
 router.put("/stories/:id", storiesAPI.updateStory);
 router.delete("/stories/:id", storiesAPI.deleteStory);
+
+//articles routes
+router.get("/articles", articlesAPI.getArticles);
+router.get("/articles/:id", articlesAPI.getArticle);
+router.post("/articles", articlesAPI.addArticle);
+router.put("/articles/:id", articlesAPI.updateArticle);
+router.delete("/articles/:id", articlesAPI.deleteArticles);
 
 //partners routes
 router.get("/partners", partnersAPI.getPartners);

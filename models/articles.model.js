@@ -5,5 +5,5 @@ module.exports = `
     subtitle VARCHAR(3000) NOT NULL,
     text VARCHAR(3000),
     imgs JSON,
-    PRIMARY KEY (id),
+    PRIMARY KEY (id)
   )`;
