@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Library.css";
+import IconButton from "@material-ui/core/IconButton";
 
 export default class Library extends Component {
   constructor() {
@@ -8,6 +9,18 @@ export default class Library extends Component {
       pageNumber: 0
     };
   }
+
+  scrollToTop = () => {
+    document.querySelector(".library").scrollIntoView({
+      behavior: "smooth"
+    });
+  };
+
+  goDown = () => {
+    document.querySelector(".container").scrollIntoView({
+      behavior: "smooth"
+    });
+  };
 
   render() {
     return (
@@ -22,9 +35,14 @@ export default class Library extends Component {
             <h1>library</h1>
             <div className="line" />
             <h3>dig deeply and read more about impact investment</h3>
+            <div className="go-down" onClick={this.goDown}>
+              <IconButton>
+                <i className="fas fa-arrow-down color-2" />
+              </IconButton>
+            </div>
           </div>
         </header>
-        <div className=" container ">
+        <div className="container">
           <section>
             <h2 className="color-2 upper">Figures at a Glance</h2>
             <iframe

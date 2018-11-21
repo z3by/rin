@@ -89,11 +89,15 @@
 
 .go-down button,
 .back-to-top button {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.3);
   width: 50px;
   height: 50px;
 }
 
+.go-down button:hover,
+.back-to-top button:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
 .go-down {
   transform: translateY(10vh);
 }

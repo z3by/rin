@@ -113,7 +113,7 @@ export default class About extends Component {
             </li>
           </ul>
           <div className="go-down" onClick={this.goDown}>
-            <IconButton className="arrow-btn" onClick={this.scrollToTop}>
+            <IconButton className="arrow-btn">
               <i className="fas fa-arrow-down" />
             </IconButton>
           </div>
