@@ -2,46 +2,13 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./NewArticle.css";
 import Paper from "@material-ui/core/Paper";
-import Checkbox from "@material-ui/core/Checkbox";
-import MenuItem from "@material-ui/core/MenuItem";
-import { MenuList } from "@material-ui/core";
-import ExpansionPanel from "@material-ui/core/ExpansionPanel";
-import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
-import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
-
-const lenses = [
-  "Refugee-Owned",
-  "Refugee-Led",
-  "Refugee-Supporting",
-  "Refugee-Supporting-Host-Weighted",
-  "Lending-Facilities",
-  "Refugee-Funds"
-];
-
-const SDGs = [
-  "Climate-Action",
-  "Decent-Work-and-Economic-Growth",
-  "Gender-Equality",
-  "Good-Health-and-Well-Being",
-  "Industry-Innovation-and-Infrastructure",
-  "Life-on-Land",
-  "No-Poverty",
-  "Partnerships-for-the-Goals",
-  "Peace-Justice-and-Strong-Institutions",
-  "Quality-Education",
-  "Reduced-Inqualities",
-  "Sustainable-Cities-and-Communities",
-  "Zero-Hunger"
-];
 
 export default class NewArticle extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      lens: "",
-      SDGs: [],
       title: "",
-      pre_description: "",
+      subtitle: "",
       text: "",
       img: "",
       loading: false,
@@ -68,12 +35,7 @@ export default class NewArticle extends Component {
   checkButtonAvailability = () => {
     const state = this.state;
     // check if the user added all required input
-    const isValid =
-      state.title &&
-      state.pre_description &&
-      state.lens &&
-      state.text &&
-      state.img;
+    const isValid = state.title && state.subtitle && state.text && state.img;
 
     if (isValid) {
       this.enableAddButton();
@@ -89,39 +51,13 @@ export default class NewArticle extends Component {
     });
   };
 
-  // when checkboxes are checked;
-  onChangeSDG = e => {
-    const index = e.target.value;
-    const sdgVal = SDGs[index];
-    const checked = this.state.SDGs.includes(sdgVal);
-    let selectedSDGs;
-
-    if (!checked) {
-      selectedSDGs = [...this.state.SDGs, SDGs[index]];
-    } else {
-      selectedSDGs = this.state.SDGs.filter(sdg => {
-        return sdg !== sdgVal;
-      });
-    }
-
-    this.setState({
-      SDGs: selectedSDGs
-    });
-  };
-
-  addStory = e => {
+  addArticle = e => {
     e.preventDefault();
-    let storyData = {
-      title: this.state.title,
-      pre_description: this.state.pre_description,
-      text: this.state.text,
-      imgs: [this.state.img],
-      lens: this.state.lens,
-      SDGs: this.state.SDGs
-    };
+    let { title, subtitle, text, img } = this.state;
+    const articleData = { title, subtitle, text, imgs: [img] };
 
     axios
-      .post("/api/stories", storyData)
+      .post("/api/articles", articleData)
       .then(response => {
         document.querySelector(".admin-form form").reset();
         document.querySelector(".done-img").style.display = "flex";
@@ -163,67 +99,32 @@ export default class NewArticle extends Component {
   };
 
   render() {
-    let lensesUI = lenses.map((lens, i) => {
-      return (
-        <option value={lens} key={i}>
-          {lens}
-        </option>
-      );
-    });
-
-    let SDGsUI = SDGs.map((sdg, id) => {
-      return (
-        <MenuItem>
-          <Checkbox
-            checked={this.state.checked}
-            style={{ color: "var(--color-2)" }}
-            onChange={this.onChangeSDG}
-            value={id}
-          />
-          {sdg}
-        </MenuItem>
-      );
-    });
-
     return (
       <Paper className="admin-form">
-        <form onSubmit={this.addStory}>
+        <form onSubmit={this.addArticle}>
           <input
             type="text"
             name="title"
-            placeholder="Story Title"
-            id="story-title"
+            placeholder="Article Title"
+            id="Article-title"
             onChange={this.onChange}
           />
           <input
             type="text"
-            placeholder="Story Description"
-            name="pre_description"
-            id="story-pre_description"
+            placeholder="Article Description"
+            name="subtitle"
+            id="Article-subtitle"
             onChange={this.onChange}
           />
           <textarea
-            placeholder="Story Text"
+            placeholder="Article Text"
             rows="4"
             cols="50"
             type="text"
             name="text"
-            id="story-text"
+            id="Article-text"
             onChange={this.onChange}
           />
-          <select name="lens" id="lens" onChange={this.onChange}>
-            <option>Select Lens</option>
-            {lensesUI}
-          </select>
-          <br />
-          <ExpansionPanel id="checkboxes">
-            <ExpansionPanelSummary>
-              <p>Select SDGs</p>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              <MenuList className="menu-full-width">{SDGsUI}</MenuList>
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
 
           <br />
           <input
@@ -244,7 +145,7 @@ export default class NewArticle extends Component {
             className="btn-admin"
             disabled={!this.state.formValid}
           >
-            <i className="fas fa-plus" /> Add Story
+            <i className="fas fa-plus" /> Add Article
           </button>
           <div className="done-img">
             <img src="/imgs/done.gif" alt="" />
