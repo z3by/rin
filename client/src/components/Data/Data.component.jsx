@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Data.css";
+import IconButton from "@material-ui/core/IconButton";
 
 export default class Data extends Component {
   constructor() {
@@ -9,6 +10,18 @@ export default class Data extends Component {
 
   componentDidMount() {}
 
+  scrollToTop = () => {
+    document.querySelector(".library").scrollIntoView({
+      behavior: "smooth"
+    });
+  };
+
+  goDown = () => {
+    document.querySelector(".container").scrollIntoView({
+      behavior: "smooth"
+    });
+  };
+
   render() {
     return (
       <div
@@ -17,6 +30,18 @@ export default class Data extends Component {
           overflowY: "scroll"
         }}
       >
+        <header>
+          <div className="banner-full">
+            <h1>data</h1>
+            <div className="line" />
+            <h3>statistics proof that refugees are a great investment</h3>
+            <div className="go-down" onClick={this.goDown}>
+              <IconButton>
+                <i className="fas fa-arrow-down color-2" />
+              </IconButton>
+            </div>
+          </div>
+        </header>
         <div className=" container ">
           <section>
             <h2 className="color-2 upper">
