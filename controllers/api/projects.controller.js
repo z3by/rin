@@ -29,9 +29,8 @@ module.exports.getSelectedPageProjects = (req, res) => {
   connection.query("select * from projects", (err, result) => {
     if (err) throw err;
     const allProjects = result;
-    // const selectPageProjects = allProjects.slice(firstProjectIndex, lastProjectIndex);
-
-    res.send(result.slice(firstProjectIndex, lastProjectIndex));
+    const selectPageProjects = allProjects.slice(firstProjectIndex, lastProjectIndex);
+    res.send(selectPageProjects);
   });
 }
 

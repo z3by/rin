@@ -12,39 +12,64 @@ export default class UsersList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: [],
       currentPage: 1,
-      usersPerPage: 10
+      usersPerPage: 10,
+      allUsersCount: 0,
+      selectedPageUsers: [],
+      indexOfLastUser: 0,
+      indexOfFirstUser: 0
     };
   }
 
-  componentDidMount() {
-    this.fetchUsers();
+  componentWillMount() {
+    this.fetchAllUsersCount();
+    this.setAndRetrieveSelectedPageUsers();
   }
 
-  fetchUsers = () => {
-    Axios.get("/users/all").then(res => {
-      console.log(res);
+  componentDidMount() {
+  }
 
-      this.setState({
-        users: res.data
+  fetchAllUsersCount = () => {
+    Axios.get("/users/allusers/count").then(res => {
+      this.setState({ allUsersCount: res.data["count(*)"] });
+    });
+  }
+
+  fetchSelectedPageUsers = (firstUserIndex, lastUserIndex) => {
+    const indexes = {
+      first: firstUserIndex,
+      last: lastUserIndex
+    };
+
+    Axios.get("/users/allusers/selectedpage", {
+      params: indexes
+    })
+      .then(res => {
+        this.setState({ selectedPageUsers: res.data });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
+  setAndRetrieveSelectedPageUsers = () => {
+    this.setState({ indexOfLastUser: this.state.currentPage * this.state.usersPerPage }, () => {
+      this.setState({ indexOfFirstUser: this.state.indexOfLastUser - this.state.usersPerPage }, () => {
+        this.fetchSelectedPageUsers(this.state.indexOfFirstUser, this.state.indexOfLastUser);
       });
     });
-  };
+  }
 
   changeCurrentPage = (number) => {
-    this.setState({ currentPage: number })
+    this.setState({ currentPage: number }, () => {
+      this.setAndRetrieveSelectedPageUsers();
+    });
   }
 
   render() {
-    const { users, currentPage, usersPerPage } = this.state;
+    const { allUsersCount, currentPage, usersPerPage, selectedPageUsers } = this.state;
 
-    // Logic for displaying stories
-    const indexOfLastUser = currentPage * usersPerPage;
-    const indexOfFirstUser = indexOfLastUser - usersPerPage;
-    const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
-
-    const allUsers = currentUsers.map(user => {
+    const allUsers = selectedPageUsers.map(user => {
       return (
         <TableRow>
           <TableCell>{user.first_name}</TableCell>
@@ -59,7 +84,7 @@ export default class UsersList extends Component {
 
     // Logic for displaying page numbers
     const pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(users.length / usersPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(allUsersCount / usersPerPage); i++) {
       pageNumbers.push(i);
     }
 
