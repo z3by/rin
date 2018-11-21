@@ -46,6 +46,9 @@
 
 .nav-up a:hover i {
   background: var(--color-2);
+}
+
+.nav-up a:hover {
   color: var(--color-1);
 }
 
