@@ -33,7 +33,7 @@ var upload = multer({
     // Auto detect contet type
     contentType: multerS3.AUTO_CONTENT_TYPE,
     // Set key/ filename as original uploaded name
-    filename: function(req, file, cb) {
+    filename: function (req, file, cb) {
       cb(null, "IMAGE-" + Date.now() + path.extname(file.originalname));
     }
   }),
@@ -51,6 +51,8 @@ router.get("/countries/:id", countriesAPI.getCountry);
 
 //stories routes
 router.get("/stories", storiesAPI.getStories);
+router.get("/stories/selectedpage", storiesAPI.getSelectedPageStories);
+router.get("/stories/count", storiesAPI.getStoriesCount);
 router.get("/stories/:id", storiesAPI.getStory);
 router.post("/stories", storiesAPI.addStory);
 router.put("/stories/:id", storiesAPI.updateStory);
@@ -77,7 +79,9 @@ router.put("/requests", projectsAPI.acceptProjectRequest);
 //projects routes
 router.get("/projects", projectsAPI.getProjects);
 router.get("/projects/locations", projectsAPI.getLocations);
+router.get("/projects/selectedpage", projectsAPI.getSelectedPageProjects);
 router.get("/projects/location/:id", projectsAPI.getProjectCountry);
+router.get("/projects/count", projectsAPI.getProjectsCount);
 router.get("/projects/:id", projectsAPI.getProject);
 router.post("/projects", projectsAPI.addProject);
 router.put("/projects/:id", projectsAPI.updateProject);

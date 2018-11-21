@@ -64,6 +64,32 @@ module.exports.getStories = (req, res) => {
   });
 };
 
+module.exports.getStoriesCount = (req, res) => {
+  let qry = "select count(*) from stories;";
+  connection.query(qry, (err, result) => {
+    if (err) throw err;
+    res.send(result[0]);
+  });
+}
+
+module.exports.getSelectedPageStories = (req, res) => {
+  const firstStoryIndex = req.query.first;
+  const lastStoryIndex = req.query.last;
+
+  let qry = "select * from stories";
+  connection.query(qry, (err, result) => {
+    if (err) throw err;
+    const parsed = result.map(story => {
+      story.imgs = JSON.parse(story.imgs);
+      story.SDGs = JSON.parse(story.SDGs);
+      return story;
+    });
+
+    const allStories = parsed.slice(firstStoryIndex, lastStoryIndex);
+    res.send(allStories);
+  });
+};
+
 module.exports.getStory = (req, res) => {
   let qry = `select * from stories where id=${req.params.id}`;
   connection.query(qry, (err, result) => {

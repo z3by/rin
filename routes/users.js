@@ -12,5 +12,7 @@ router.post("/register", membersCtrl.registerNewMember);
 router.post("/login", membersCtrl.loginMember);
 
 router.get("/all", adminCtrl.getAllMembers);
+router.get("/allusers/count", adminCtrl.getUsersCount);
+router.get("/allusers/selectedpage", adminCtrl.getSelectedPageUsers);
 
 module.exports = router;
