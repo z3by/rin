@@ -189,7 +189,7 @@ i {
 }
 .header-text {
   font-size: 6rem;
-  color: var(--color-1);
+  color: var(--color-2);
   font-family: var(--main-font);
   text-transform: uppercase;
   position: relative;
