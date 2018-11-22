@@ -1,6 +1,19 @@
 import React, { Component } from "react";
 import "./Data.css";
 import IconButton from "@material-ui/core/IconButton";
+import { Line } from "react-chartjs-2";
+
+const data = {
+  labels: ["2009", "2010", "2011", "2012", "2013", "2014", "2015"],
+  datasets: [
+    {
+      label: "My First dataset",
+      backgroundColor: "#f90",
+      borderColor: "rgb(255, 99, 132)",
+      data: [0, 10, 5, 2, 20, 30, 45]
+    }
+  ]
+};
 
 export default class Data extends Component {
   constructor() {
@@ -42,17 +55,9 @@ export default class Data extends Component {
             </div>
           </div>
         </header>
-        <div className=" container ">
-          <section>
-            <h2 className="color-2 upper">
-              Watch UNHCR historical Refugee Data
-            </h2>
-            <iframe
-              title="iframe 1"
-              src="http://data.unhcr.org/dataviz/"
-              frameborder="0"
-            />
-          </section>
+        <div className="container">
+          <h1>hello</h1>
+          <Line data={data} />
         </div>
       </div>
     );
