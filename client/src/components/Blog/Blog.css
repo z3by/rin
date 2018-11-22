@@ -1,17 +1,24 @@
-.library {
+.blog {
   background: var(--color-1);
   height: 100vh;
 }
 
-.library .banner-full {
+.blog .banner-full {
   background: rgba(0, 0, 0, 0.7);
 }
 
-.library header {
-  background: url(/imgs/backs5.jpg);
+.blog header {
+  background: url(/imgs/backs6.jpg);
   height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
   background-size: cover;
+}
+.article-card {
+  margin: 20px;
+}
+
+.card-img {
+  height: 200px;
 }

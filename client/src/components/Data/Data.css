@@ -3,6 +3,20 @@
   height: 100vh;
   overflow: hidden;
 }
+
+.data .banner-full {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.data header {
+  background: url(/imgs/backs3.jpg);
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-size: cover;
+}
+
 .data section {
   margin: 100px 0;
 }

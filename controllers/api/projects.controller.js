@@ -14,6 +14,26 @@ module.exports.getProjects = (req, res) => {
   });
 };
 
+module.exports.getProjectsCount = (req, res) => {
+  let qry = "select count(*) from projects;";
+  connection.query(qry, (err, result) => {
+    if (err) throw err;
+    res.send(result[0]);
+  });
+};
+
+module.exports.getSelectedPageProjects = (req, res) => {
+  const firstProjectIndex = req.query.first;
+  const lastProjectIndex = req.query.last;
+
+  connection.query("select * from projects", (err, result) => {
+    if (err) throw err;
+    const allProjects = result;
+    const selectPageProjects = allProjects.slice(firstProjectIndex, lastProjectIndex);
+    res.send(selectPageProjects);
+  });
+}
+
 const getCountryIdByName = (countryName, cb) => {
   let qry = `select id from countries where name="${countryName}"`;
   connection.query(qry, (err, result) => {
@@ -68,7 +88,7 @@ module.exports.getLocations = (req, res) => {
 module.exports.getProjectCountry = (req, res) => {
   let qry = `select c.name from countries c inner join locations l where c.id = l.country_id and l.id=${
     req.params.id
-  };`;
+    };`;
   connection.query(qry, (err, result) => {
     if (err) throw err;
     res.send(result);
@@ -86,11 +106,11 @@ module.exports.getProject = (req, res) => {
 addProjInExistLoc = data => {
   let qry = `insert into projects(title, start_date, capacity, location_id, organization_name, img_url, type, project_description, pending) values("${
     data.title
-  }", '${data.start_date}', ${data.capacity}, ${data.location_id}, "${
+    }", '${data.start_date}', ${data.capacity}, ${data.location_id}, "${
     data.organization_name
-  }", "${data.img_url}", "${data.type}", "${data.project_description}", ${
+    }", "${data.img_url}", "${data.type}", "${data.project_description}", ${
     data.pending
-  });`;
+    });`;
   connection.query(qry, (err, result1) => {
     if (err) throw err;
   });
@@ -99,11 +119,11 @@ addProjInExistLoc = data => {
 addProjInNewLoc = data => {
   let qry = `insert into projects(title, start_date, capacity, location_id, organization_name, img_url, type, project_description, pending) values("${
     data.title
-  }", '${data.start_date}', ${data.capacity}, ${data.location_id}, "${
+    }", '${data.start_date}', ${data.capacity}, ${data.location_id}, "${
     data.organization_name
-  }", "${data.img_url}", "${data.type}", "${data.project_description}", ${
+    }", "${data.img_url}", "${data.type}", "${data.project_description}", ${
     data.pending
-  });`;
+    });`;
   connection.query(qry, (err, result) => {
     if (err) throw err;
   });
@@ -112,7 +132,7 @@ addProjInNewLoc = data => {
 getNewLocId = req => {
   let getNewLocationIDQry = `select id from locations where lat like ${
     req.body.lat
-  } AND lng like ${req.body.lng};`;
+    } AND lng like ${req.body.lng};`;
   let newID;
   connection.query(getNewLocationIDQry, (err, result) => {
     if (err) throw err;
@@ -141,7 +161,7 @@ addNewLoc = (req, countryId) => {
 
   let addNewLocationQry = `insert into locations(country_id, lng, lat) values(${
     locationData.country_id
-  }, ${locationData.lng}, ${locationData.lat});`;
+    }, ${locationData.lng}, ${locationData.lat});`;
   connection.query(addNewLocationQry, (err, result) => {
     if (err) throw err;
     getNewLocId(req);
@@ -151,7 +171,7 @@ addNewLoc = (req, countryId) => {
 getCountryId = req => {
   let getCountryIDQry = `select id from countries where name="${
     req.body.countryName
-  }"`;
+    }"`;
 
   connection.query(getCountryIDQry, (err, result) => {
     if (err) throw err;
@@ -164,7 +184,7 @@ getCountryId = req => {
 module.exports.addProject = (req, res) => {
   let getLocationIDQry = `select id from locations where lat like ${
     req.body.lat
-  } AND lng like ${req.body.lng};`;
+    } AND lng like ${req.body.lng};`;
   let id;
   connection.query(getLocationIDQry, (err, result) => {
     if (err) throw err;
@@ -202,7 +222,7 @@ module.exports.addProject = (req, res) => {
 module.exports.updateProject = (req, res) => {
   let getLocationIDQry = `select id from locations where lat like ${
     req.body.lat
-  } AND lng like ${req.body.lng};`;
+    } AND lng like ${req.body.lng};`;
   let id;
   connection.query(getLocationIDQry, (err, result) => {
     if (err) throw err;
@@ -224,11 +244,11 @@ module.exports.updateProject = (req, res) => {
       let qry = `UPDATE projects 
                   SET title="${data.title}", start_date='${
         data.start_date
-      }', capacity=${data.capacity}, organization_name="${
+        }', capacity=${data.capacity}, organization_name="${
         data.organization_name
-      }", img_url="${data.img_url}", type="${
+        }", img_url="${data.img_url}", type="${
         data.type
-      }", project_description="${data.project_description}"
+        }", project_description="${data.project_description}"
                   WHERE id=${req.params.id};`;
       connection.query(qry, (err, result) => {
         if (err) throw err;
@@ -239,7 +259,7 @@ module.exports.updateProject = (req, res) => {
       //get country id from country name returned by map api
       let getCountryIDQry = `select id from countries where name="${
         req.body.countryName
-      }"`;
+        }"`;
       let countryId;
       connection.query(getCountryIDQry, (err, result) => {
         if (err) throw err;
@@ -256,13 +276,13 @@ module.exports.updateProject = (req, res) => {
         //add the new location
         let addNewLocationQry = `insert into locations(country_id, lng, lat) values(${
           locationData.country_id
-        }, ${locationData.lng}, ${locationData.lat});`;
+          }, ${locationData.lng}, ${locationData.lat});`;
         connection.query(addNewLocationQry, (err, result) => {
           if (err) throw err;
 
           let getNewLocationIDQry = `select id from locations where lat like ${
             req.body.lat
-          } AND lng like ${req.body.lng};`;
+            } AND lng like ${req.body.lng};`;
           let newID;
           connection.query(getNewLocationIDQry, (err, result) => {
             if (err) throw err;
@@ -280,13 +300,13 @@ module.exports.updateProject = (req, res) => {
             let qry = `UPDATE projects 
                   SET title="${data.title}", start_date='${
               data.start_date
-            }', capacity=${data.capacity}, location_id=${
+              }', capacity=${data.capacity}, location_id=${
               data.location_id
-            }, organization_name="${data.organization_name}", img_url="${
+              }, organization_name="${data.organization_name}", img_url="${
               data.img_url
-            }", type="${data.type}", project_description="${
+              }", type="${data.type}", project_description="${
               data.project_description
-            }"
+              }"
                   WHERE id=${req.params.id};`;
             connection.query(qry, (err, result) => {
               if (err) throw err;

@@ -1,4 +1,13 @@
+const mysql = require("mysql");
+const dbConfig = require("../db.config");
 const helpers = require("../helpers/admin.helpers");
+
+const connection = mysql.createConnection(dbConfig);
+connection.connect(err => {
+  if (err) throw err;
+  console.log("connected");
+});
+
 
 module.exports.isAdmin = (req, res) => {
   if (req.session.adminLogged) {
@@ -30,3 +39,25 @@ module.exports.getAllMembers = (req, res) => {
       console.log(err);
     });
 };
+
+// get the count of all members
+module.exports.getUsersCount = (req, res) => {
+  connection.query("select count(*) from members", (err, result) => {
+    if (err) throw err;
+    res.send(result[0]);
+  });
+}
+
+//het selected page users in UsersList component
+module.exports.getSelectedPageUsers = (req, res) => {
+  const firstUserIndex = req.query.first;
+  const lastUserIndex = req.query.last;
+
+  connection.query("select * from members", (err, result) => {
+    if (err) throw err;
+    const allUsers = result;
+    const selectPageUsers = allUsers.slice(firstUserIndex, lastUserIndex);
+    res.send(selectPageUsers);
+  });
+}
+

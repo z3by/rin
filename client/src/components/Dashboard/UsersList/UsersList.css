@@ -1,0 +1,4 @@
+.all-users #page-numbers li Button.active-page-number {
+    background-color: var(--color-2);
+    color: #fff;
+}

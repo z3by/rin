@@ -9,6 +9,7 @@ import Members from "../Members/Members.component";
 import Data from "../Data/Data.component";
 import Landing from "../Landing/Landing.component";
 import Library from "../Library/Library.component";
+import Blog from "../Blog/Blog.component";
 import Login from "../Login/Login.component";
 import Navbar from "../Navbar/Navbar.component";
 import Dashboard from "../Dashboard/Dashboard.component";
@@ -31,12 +32,14 @@ export default class MyRouter extends Component {
             <Route path="/add-project" component={AddProject} />
             <Route path="/data" component={Data} />
             <Route path="/library" component={Library} />
+            <Route path="/blog" component={Blog} />
             <Route path="/about" component={About} />
             <Route path="/login" component={SignUpLogIn} />
             <Route path="/members" component={Members} />
             <Route path="/admin" component={Login} />
             <Route path="/dashboard" component={Dashboard} />
             <Route exact path="/" component={Landing} />
+            <Route component={Landing} />
           </Switch>
         </div>
       </HashRouter>

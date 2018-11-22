@@ -14,31 +14,60 @@ export default class ProjectsList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      allProject: [],
       currentPage: 1,
-      projectsPerPage: 10
+      projectsPerPage: 10,
+      allProjectsCount: 0,
+      selectedPageProjects: [],
+      indexOfLastProject: 0,
+      indexOfFirstProject: 0
     };
   }
 
   componentWillMount() {
-    this.fetchAllProjects();
+    this.fetchAllProjectsCount();
+    this.setAndRetrieveSelectedPageProjects();
   }
 
   componentDidMount() {
     document.body.style.overflowY = "auto";
   }
 
-  fetchAllProjects = () => {
-    axios.get("/api/projects").then(res => {
-      this.setState({ allProject: res.data });
+  fetchAllProjectsCount = () => {
+    axios.get("/api/projects/count").then(res => {
+      this.setState({ allProjectsCount: res.data["count(*)"] });
     });
   };
+
+  fetchSelectedPageProjects = (firstProjectIndex, lastProjectIndex) => {
+    const indexes = {
+      first: firstProjectIndex,
+      last: lastProjectIndex
+    };
+
+    axios.get("/api/projects/selectedpage", {
+      params: indexes
+    })
+      .then(res => {
+        this.setState({ selectedPageProjects: res.data });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
+  setAndRetrieveSelectedPageProjects = () => {
+    this.setState({ indexOfLastProject: this.state.currentPage * this.state.projectsPerPage }, () => {
+      this.setState({ indexOfFirstProject: this.state.indexOfLastProject - this.state.projectsPerPage }, () => {
+        this.fetchSelectedPageProjects(this.state.indexOfFirstProject, this.state.indexOfLastProject);
+      });
+    });
+  }
 
   deleteProject = project => {
     axios
       .delete(`/api/projects/${project.id}`)
       .then(res => {
-        this.fetchAllProjects();
+        this.fetchSelectedPageProjects(this.state.indexOfFirstProject, this.state.indexOfLastProject);
       })
       .catch(err => {
         console.log("Error deleting a table row");
@@ -46,18 +75,15 @@ export default class ProjectsList extends Component {
   };
 
   changeCurrentPage = (number) => {
-    this.setState({ currentPage: number })
+    this.setState({ currentPage: number }, () => {
+      this.setAndRetrieveSelectedPageProjects();
+    });
   }
 
   render() {
-    const { allProject, currentPage, projectsPerPage } = this.state;
+    const { allProjectsCount, projectsPerPage, selectedPageProjects } = this.state;
 
-    // Logic for displaying projects
-    const indexOfLastProject = currentPage * projectsPerPage;
-    const indexOfFirstProject = indexOfLastProject - projectsPerPage;
-    const currentProjects = allProject.slice(indexOfFirstProject, indexOfLastProject);
-
-    const projects = currentProjects.map(project => {
+    const projects = selectedPageProjects.map(project => {
       return (
         <TableRow>
           <TableCell>{project.id}</TableCell>
@@ -86,7 +112,7 @@ export default class ProjectsList extends Component {
 
     // Logic for displaying page numbers
     const pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(allProject.length / projectsPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(allProjectsCount / projectsPerPage); i++) {
       pageNumbers.push(i);
     }
 

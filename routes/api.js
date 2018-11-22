@@ -7,6 +7,7 @@ const AWS = require("aws-sdk");
 
 const countriesAPI = require("../controllers/api/countries.controller");
 const storiesAPI = require("../controllers/api/stories.controller");
+const articlesAPI = require("../controllers/api/articles.controller");
 const partnersAPI = require("../controllers/api/partners.controller");
 const locationsAPI = require("../controllers/api/locations.controller");
 const projectsAPI = require("../controllers/api/projects.controller");
@@ -51,10 +52,21 @@ router.get("/countries/:id", countriesAPI.getCountry);
 
 //stories routes
 router.get("/stories", storiesAPI.getStories);
+router.get("/stories/selectedpage", storiesAPI.getSelectedPageStories);
+router.get("/stories/count", storiesAPI.getStoriesCount);
 router.get("/stories/:id", storiesAPI.getStory);
 router.post("/stories", storiesAPI.addStory);
 router.put("/stories/:id", storiesAPI.updateStory);
 router.delete("/stories/:id", storiesAPI.deleteStory);
+
+//articles routes
+router.get("/articles", articlesAPI.getArticles);
+router.get("/articles/count", articlesAPI.getArticlesCount);
+router.get("/articles/selectedpage", articlesAPI.getSelectedPageArticles);
+router.get("/articles/:id", articlesAPI.getArticle);
+router.post("/articles", articlesAPI.addArticle);
+router.put("/articles/:id", articlesAPI.updateArticle);
+router.delete("/articles/:id", articlesAPI.deleteArticles);
 
 //partners routes
 router.get("/partners", partnersAPI.getPartners);
@@ -77,7 +89,9 @@ router.put("/requests", projectsAPI.acceptProjectRequest);
 //projects routes
 router.get("/projects", projectsAPI.getProjects);
 router.get("/projects/locations", projectsAPI.getLocations);
+router.get("/projects/selectedpage", projectsAPI.getSelectedPageProjects);
 router.get("/projects/location/:id", projectsAPI.getProjectCountry);
+router.get("/projects/count", projectsAPI.getProjectsCount);
 router.get("/projects/:id", projectsAPI.getProject);
 router.post("/projects", projectsAPI.addProject);
 router.put("/projects/:id", projectsAPI.updateProject);
