@@ -15,3 +15,10 @@
   padding: 0;
   background-size: cover;
 }
+.article-card {
+  margin: 20px;
+}
+
+.card-img {
+  height: 200px;
+}

@@ -1,14 +1,27 @@
 import React, { Component } from "react";
 import "./Blog.css";
+import ArticleCard from "./ArticleCard";
 import IconButton from "@material-ui/core/IconButton";
+import Axios from "axios";
 
 export default class Blog extends Component {
   constructor() {
     super();
     this.state = {
-      pageNumber: 0
+      pageNumber: 0,
+      articles: []
     };
   }
+
+  componentDidMount() {
+    this.fetchArticles();
+  }
+
+  fetchArticles = () => {
+    Axios.get("/api/articles").then(res => {
+      this.setState({ articles: res.data });
+    });
+  };
 
   scrollToTop = () => {
     document.querySelector(".library").scrollIntoView({
@@ -42,8 +55,10 @@ export default class Blog extends Component {
             </div>
           </div>
         </header>
-        <div className=" container ">
-          <h1>hello from blog</h1>
+        <div className="container">
+          {this.state.articles.map((article, id) => {
+            return <ArticleCard article={article} />;
+          })}
         </div>
       </div>
     );

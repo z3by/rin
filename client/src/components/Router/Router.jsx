@@ -39,6 +39,7 @@ export default class MyRouter extends Component {
             <Route path="/admin" component={Login} />
             <Route path="/dashboard" component={Dashboard} />
             <Route exact path="/" component={Landing} />
+            <Route component={Landing} />
           </Switch>
         </div>
       </HashRouter>
