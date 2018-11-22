@@ -81,10 +81,13 @@ module.exports.uploadImage = (req, res) => {
 module.exports.updateArticle = (req, res) => {
   let data = {
     title: req.body.title,
-    pre_description: req.body.subtitle,
+    subtitle: req.body.subtitle,
     text: req.body.text,
     imgs: JSON.stringify(req.body.imgs)
   };
+
+  console.log(data, "data");
+  console.log(req.params, "params");
 
   let qry = `UPDATE articles
                    SET title="${data.title}", subtitle="${

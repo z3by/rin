@@ -2,51 +2,19 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./UpdateArticle.css";
 import Paper from "@material-ui/core/Paper";
-import Checkbox from "@material-ui/core/Checkbox";
-import MenuItem from "@material-ui/core/MenuItem";
-import { MenuList } from "@material-ui/core";
-import ExpansionPanel from "@material-ui/core/ExpansionPanel";
-import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
-import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
-
-const lenses = [
-  "Refugee-Owned",
-  "Refugee-Led",
-  "Refugee-Supporting",
-  "Refugee-Supporting-Host-Weighted",
-  "Lending-Facilities",
-  "Refugee-Funds"
-];
-
-const SDGs = [
-  "Climate-Action",
-  "Decent-Work-and-Economic-Growth",
-  "Gender-Equality",
-  "Good-Health-and-Well-Being",
-  "Industry-Innovation-and-Infrastructure",
-  "Life-on-Land",
-  "No-Poverty",
-  "Partnerships-for-the-Goals",
-  "Peace-Justice-and-Strong-Institutions",
-  "Quality-Education",
-  "Reduced-Inqualities",
-  "Sustainable-Cities-and-Communities",
-  "Zero-Hunger"
-];
 
 export default class UpdateArticle extends Component {
   constructor(props) {
     super(props);
     this.state = {
       id: this.props.match.params.id,
-      Article: {},
       title: "",
-      pre_description: "",
-      lens: "",
+      subtitle: "",
       text: "",
-      imgs: [],
-      SDGs: [],
-      loading: false
+      img: "",
+      loading: false,
+      formValid: false,
+      uploaded: false
     };
   }
 
@@ -57,6 +25,12 @@ export default class UpdateArticle extends Component {
   componentDidMount() {
     document.body.style.overflowY = "auto";
   }
+  onChange = e => {
+    e.preventDefault();
+    this.setState({ [e.target.name]: e.target.value }, () => {
+      this.checkButtonAvailability();
+    });
+  };
 
   enableAddButton = () => {
     this.setState({
@@ -73,12 +47,7 @@ export default class UpdateArticle extends Component {
   checkButtonAvailability = () => {
     const state = this.state;
     // check if the user added all required input
-    const isValid =
-      state.title &&
-      state.pre_description &&
-      state.lens &&
-      state.text &&
-      state.imgs;
+    const isValid = state.title && state.subtitle && state.text && state.img;
 
     if (isValid) {
       this.enableAddButton();
@@ -87,54 +56,30 @@ export default class UpdateArticle extends Component {
     }
   };
 
-  getArticle = id => {
-    axios.get(`/api/stories/${id}`).then(res => {
-      this.setState(
-        {
-          Article: res.data[0]
-        },
-        () => {
+  updateArticle = (e, id) => {
+    e.preventDefault();
+    let { title, subtitle, text, img } = this.state;
+    const articleData = { title, subtitle, text, imgs: [img] };
+
+    axios
+      .put(`/api/articles/${id}`, articleData)
+      .then(response => {
+        document.querySelector(".admin-form form").reset();
+        this.setState({
+          uploaded: true,
+          formValid: false,
+          img: ""
+        });
+
+        setTimeout(() => {
           this.setState({
-            title: res.data[0]["title"],
-            pre_description: res.data[0]["pre_description"],
-            lens: res.data[0]["lens"],
-            text: res.data[0]["text"],
-            imgs: res.data[0]["imgs"],
-            SDGs: res.data[0]["SDGs"]
+            uploaded: false
           });
-        }
-      );
-    });
-  };
-
-  onChange = e => {
-    this.setState({ [e.target.name]: e.target.value }, () => {
-      this.checkButtonAvailability();
-    });
-  };
-
-  onChangeSDG = e => {
-    const index = e.target.value;
-    const sdgVal = SDGs[index];
-    const checked = this.state.SDGs.includes(sdgVal);
-    let selectedSDGs;
-
-    if (!checked) {
-      selectedSDGs = [...this.state.SDGs, SDGs[index]];
-    } else {
-      selectedSDGs = this.state.SDGs.filter(sdg => {
-        return sdg !== sdgVal;
+        }, 3000);
+      })
+      .catch(error => {
+        console.log(error);
       });
-    }
-
-    this.setState(
-      {
-        SDGs: selectedSDGs
-      },
-      () => {
-        this.checkButtonAvailability();
-      }
-    );
   };
 
   onChangeImg = e => {
@@ -145,7 +90,6 @@ export default class UpdateArticle extends Component {
     e.preventDefault();
     const formData = new FormData();
     formData.append("img", e.target.files[0]);
-
     const config = {
       headers: {
         "content-type": "multipart/form-data"
@@ -156,7 +100,7 @@ export default class UpdateArticle extends Component {
       const imageURL = res.data.location;
       this.setState(
         {
-          imgs: [imageURL],
+          img: imageURL,
           loading: false
         },
         () => {
@@ -166,126 +110,71 @@ export default class UpdateArticle extends Component {
     });
   };
 
-  onChangeText = e => {
-    let txtArr = [...this.state.text];
-    txtArr[0] = e.target.value;
-    this.setState({ text: txtArr }, () => {
-      this.checkButtonAvailability();
+  getArticle = id => {
+    axios.get(`/api/articles/${id}`).then(res => {
+      this.setState(
+        {
+          article: res.data[0]
+        },
+        () => {
+          this.setState({
+            title: res.data[0]["title"],
+            subtitle: res.data[0]["subtitle"],
+            text: res.data[0]["text"],
+            img: res.data[0]["imgs"][0]
+          });
+        }
+      );
     });
-  };
-
-  updateArticle = e => {
-    e.preventDefault();
-
-    let ArticleData = {
-      title: this.state.title,
-      pre_description: this.state.pre_description,
-      lens: this.state.lens,
-      text: this.state.text,
-      imgs: this.state.imgs,
-      SDGs: this.state.SDGs
-    };
-
-    axios
-      .put(`/api/stories/${this.state.id}`, ArticleData)
-      .then(function(response) {
-        document.querySelector(".done-img").style.display = "flex";
-        setTimeout(() => {
-          document.querySelector(".done-img").style.display = "none";
-        }, 3000);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
   };
 
   render() {
-    let lensesUI = lenses.map((lens, i) => {
-      if (lens === this.state.lens) {
-        return (
-          <option value={lens} key={i} selected>
-            {lens}
-          </option>
-        );
-      } else {
-        return (
-          <option value={lens} key={i}>
-            {lens}
-          </option>
-        );
-      }
-    });
-
-    let SDGsUI = SDGs.map((sdg, id) => {
-      return (
-        <MenuItem>
-          <Checkbox
-            checked={this.state.SDGs.includes(sdg) ? true : false}
-            style={{ color: "var(--color-2)" }}
-            onChange={this.onChangeSDG}
-            value={id}
-          />
-          {sdg}
-        </MenuItem>
-      );
-    });
-
     return (
       <Paper className="admin-form">
-        <form method="POST" onSubmit={this.updateArticle}>
-          <label htmlFor="Article-title">Article title</label>
+        <form
+          onSubmit={e => {
+            this.updateArticle(e, this.state.id);
+          }}
+        >
           <input
             type="text"
             name="title"
+            placeholder="Article Title"
             id="Article-title"
-            value={this.state.title}
             onChange={this.onChange}
+            value={this.state.title}
           />
-          <label htmlFor="Article-pre_description">
-            Article pre-description
-          </label>{" "}
           <input
             type="text"
-            name="pre_description"
-            id="Article-pre_description"
-            value={this.state.pre_description}
+            placeholder="Article Description"
+            name="subtitle"
+            id="Article-subtitle"
             onChange={this.onChange}
+            value={this.state.subtitle}
           />
-          <label htmlFor="Article-text">Article text</label>
           <textarea
+            placeholder="Article Text"
             rows="4"
             cols="50"
             type="text"
             name="text"
             id="Article-text"
-            value={this.state.text[0]}
-            onChange={this.onChangeText}
+            onChange={this.onChange}
+            value={this.state.text}
           />
-          <select name="lens" id="lens" onChange={this.onChange}>
-            <option>Select Lens</option>
-            {lensesUI}
-          </select>
+
           <br />
-          <ExpansionPanel id="checkboxes">
-            <ExpansionPanelSummary>
-              <p>Select SDGs</p>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              <MenuList className="menu-full-width">{SDGsUI}</MenuList>
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
-          <br />
-          <label htmlFor="image">Article image</label>
-          <img
-            className="admin-img-update"
-            src={this.state.imgs[0]}
-            alt="uploaded"
-          />
           <input
             type="file"
             name="img"
             accept="image/*"
             onChange={this.onChangeImg}
+          />
+          <img
+            className="admin-img-update"
+            src={this.state.img}
+            alt=""
+            style={{ opacity: this.state.uploaded ? "0" : "1" }}
           />
           <img
             src="/imgs/loading.gif"
@@ -295,12 +184,15 @@ export default class UpdateArticle extends Component {
           />
           <button
             type="submit"
-            className="btn"
+            className="btn-admin"
             disabled={!this.state.formValid}
           >
-            <i className="fas fa-edit" /> Update Article
+            <i className="fas fa-plus" /> Add Article
           </button>
-          <div className="done-img">
+          <div
+            className="done-img"
+            style={{ opacity: this.state.uploaded ? "1" : "0" }}
+          >
             <img src="/imgs/done.gif" alt="" />
           </div>
         </form>
