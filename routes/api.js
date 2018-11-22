@@ -7,6 +7,7 @@ const AWS = require("aws-sdk");
 
 const countriesAPI = require("../controllers/api/countries.controller");
 const storiesAPI = require("../controllers/api/stories.controller");
+const articlesAPI = require("../controllers/api/articles.controller");
 const partnersAPI = require("../controllers/api/partners.controller");
 const locationsAPI = require("../controllers/api/locations.controller");
 const projectsAPI = require("../controllers/api/projects.controller");
@@ -33,7 +34,7 @@ var upload = multer({
     // Auto detect contet type
     contentType: multerS3.AUTO_CONTENT_TYPE,
     // Set key/ filename as original uploaded name
-    filename: function (req, file, cb) {
+    filename: function(req, file, cb) {
       cb(null, "IMAGE-" + Date.now() + path.extname(file.originalname));
     }
   }),
@@ -57,6 +58,15 @@ router.get("/stories/:id", storiesAPI.getStory);
 router.post("/stories", storiesAPI.addStory);
 router.put("/stories/:id", storiesAPI.updateStory);
 router.delete("/stories/:id", storiesAPI.deleteStory);
+
+//articles routes
+router.get("/articles", articlesAPI.getArticles);
+router.get("/articles/count", articlesAPI.getArticlesCount);
+router.get("/articles/selectedpage", articlesAPI.getSelectedPageArticles);
+router.get("/articles/:id", articlesAPI.getArticle);
+router.post("/articles", articlesAPI.addArticle);
+router.put("/articles/:id", articlesAPI.updateArticle);
+router.delete("/articles/:id", articlesAPI.deleteArticles);
 
 //partners routes
 router.get("/partners", partnersAPI.getPartners);

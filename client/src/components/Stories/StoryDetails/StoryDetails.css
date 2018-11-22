@@ -27,8 +27,8 @@
 
 .banner-full h1 {
   font-size: 5rem;
-  text-transform: capitalize;
-  color: var(--color-1);
+  text-transform: uppercase;
+  color: var(--color-2);
 }
 
 .banner-full h3 {

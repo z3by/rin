@@ -78,7 +78,7 @@
 .nav-link {
   font-family: var(--main-font);
   color: var(--color-3);
-  font-size: 6vw;
+  font-size: 7vw;
   text-transform: uppercase;
   font-weight: bolder;
   margin: 0 auto;
@@ -99,8 +99,7 @@
 }
 
 .nav-link.active:hover {
-  filter: brightness(120%);
-  text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.4);
+  color: coral;
 }
 
 /* ------------------------------- navigation group end ------------------------- */

@@ -72,7 +72,7 @@ export default class Navbar extends Component {
             </li>
 
             <li>
-              <Link className="navbar-link" index=" 4" to={"/members"}>
+              <Link className="navbar-link" index="4" to={"/members"}>
                 <div className="nav-rec rounded" />
                 <p className="nav-rec-text">members</p>
               </Link>
@@ -102,25 +102,18 @@ export default class Navbar extends Component {
                 </p>
               </Link>
             </li>
-            {/* <Link to={"/library"}>
-               <div className="nav-rec" index="4" >
+            <li>
+              <Link className="navbar-link" index="6" to={"/library"}>
+                <div className="nav-rec" />
                 <p className="nav-rec-text">library</p>
-              </div>
-            </Link>
-            <Link to={"/members"}>
-              <div
-                className="nav-rec rounded"
-                index="5"
-                onClick={this.onClickCircle}
-              >
-                <p className="nav-rec-text">members</p>
-              </div>
-            </Link>
-            <Link to={"/about"}>
-              <div className="nav-rec" index="6" onClick={this.onClickCircle}>
-                <p className="nav-rec-text">about</p>
-              </div>
-            </Link> */}
+              </Link>
+            </li>
+            <li>
+              <Link className="navbar-link" index="7" to={"/blog"}>
+                <div className="nav-rec" />
+                <p className="nav-rec-text">blog</p>
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>

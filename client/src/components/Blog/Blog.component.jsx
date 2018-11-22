@@ -1,14 +1,27 @@
 import React, { Component } from "react";
-import "./Data.css";
+import "./Blog.css";
+import ArticleCard from "./ArticleCard";
 import IconButton from "@material-ui/core/IconButton";
+import Axios from "axios";
 
-export default class Data extends Component {
+export default class Blog extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      pageNumber: 0,
+      articles: []
+    };
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.fetchArticles();
+  }
+
+  fetchArticles = () => {
+    Axios.get("/api/articles").then(res => {
+      this.setState({ articles: res.data });
+    });
+  };
 
   scrollToTop = () => {
     document.querySelector(".library").scrollIntoView({
@@ -25,16 +38,16 @@ export default class Data extends Component {
   render() {
     return (
       <div
-        className="data fadeInFast"
+        className="blog fadeInFast"
         style={{
           overflowY: "scroll"
         }}
       >
         <header>
           <div className="banner-full">
-            <h1>data</h1>
+            <h1>blog</h1>
             <div className="line" />
-            <h3>statistics proof that refugees are a great investment</h3>
+            <h3>read the RIN latest articles</h3>
             <div className="go-down" onClick={this.goDown}>
               <IconButton>
                 <i className="fas fa-arrow-down color-2" />
@@ -42,17 +55,10 @@ export default class Data extends Component {
             </div>
           </div>
         </header>
-        <div className=" container ">
-          <section>
-            <h2 className="color-2 upper">
-              Watch UNHCR historical Refugee Data
-            </h2>
-            <iframe
-              title="iframe 1"
-              src="http://data.unhcr.org/dataviz/"
-              frameborder="0"
-            />
-          </section>
+        <div className="container">
+          {this.state.articles.map((article, id) => {
+            return <ArticleCard article={article} />;
+          })}
         </div>
       </div>
     );

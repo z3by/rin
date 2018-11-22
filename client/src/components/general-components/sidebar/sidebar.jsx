@@ -28,6 +28,12 @@ export default props => {
             Users
           </Link>
         </li>
+        <li>
+          <Link to={"/dashboard/articles/list"}>
+            <i className="fas fa-newspaper" />
+            Articles
+          </Link>
+        </li>
       </ul>
     </nav>
   );

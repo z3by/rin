@@ -1,7 +1,7 @@
 .sidebar {
   width: 200px;
   float: left;
-  background: white;
+  background: var(--color-4);
   height: 100vh;
   position: fixed;
   z-index: 10;
@@ -10,12 +10,14 @@
 
 .sidebar .admin-logo {
   width: 200px;
+  height: 80px;
+  background: white;
 }
 
 .sidebar .admin-logo img {
   width: 50%;
-  margin-left: 25%;
-  margin-top: 25%;
+  margin-left: 8%;
+  margin-top: 10%;
 }
 
 .sidebar ul {
@@ -28,21 +30,23 @@
 
 .sidebar ul li {
   font-family: var(--main-font);
-  font-size: 24px;
-  color: var(--color-1);
-  margin: 1px 0;
   width: 100%;
   cursor: pointer;
+  padding: 0;
   text-transform: uppercase;
-  background: var(--color-2);
   text-align: left;
+}
+.sidebar ul li:hover {
+  background: -webkit-gradient(linear, left top, right top, from(#ffaa33));
+  background: linear-gradient(90deg, #ffaa66, #ffaa55);
 }
 
 .sidebar ul li a {
-  color: white;
+  color: var(--color-2);
+  font-size: 1rem;
+  display: block;
 }
 
-.sidebar ul li:hover {
-  background: -webkit-gradient(linear, left top, right top, from(#ffaa33));
-  background: linear-gradient(90deg, #ffaa33);
+.sidebar ul li:hover a {
+  color: var(--color-1);
 }

@@ -6,6 +6,7 @@ import { Route, Link } from "react-router-dom";
 import Sidebar from "../general-components/sidebar/sidebar";
 import Axios from "axios";
 import Users from "./Users/Users.component";
+import Articles from "./Articles/Articles.component";
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -45,6 +46,7 @@ export default class Dashboard extends Component {
         </nav>
         <main>
           <Route path="/dashboard/projects" component={Projects} />
+          <Route path="/dashboard/Articles" component={Articles} />
           <Route path="/dashboard/stories" component={Stories} />
           <Route path="/dashboard/users" component={Users} />
         </main>

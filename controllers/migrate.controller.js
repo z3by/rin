@@ -8,6 +8,7 @@ const locationsModel = require("../models/locations.model");
 const storiesModel = require("../models/stories.model");
 const membersModel = require("../models/members.model");
 const lensesModel = require("../models/lenses.model");
+const articlesModel = require("../models/articles.model");
 
 const migrateHelpers = require("./helpers/migrate.helpers");
 
@@ -43,8 +44,10 @@ module.exports = () => {
   // create lenses table
   migrateHelpers.createTable(connection, lensesModel);
 
-  // fetch countries and insert them  into countries table
+  // create articles table
+  migrateHelpers.createTable(connection, articlesModel);
 
+  // fetch countries and insert them  into countries table
   countriesHelpers.checkIfCountriesExists(connection, res => {
     if (res === false) {
       countriesHelpers.addCountries(connection);
