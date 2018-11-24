@@ -9,18 +9,63 @@ export default class Blog extends Component {
     super();
     this.state = {
       pageNumber: 0,
-      articles: []
+      currentPage: 1,
+      articlesPerPage: 10,
+      allArticlesCount: 0,
+      selectedPagearticles: [],
+      indexOfLastArticle: 0,
+      indexOfFirstArticle: 0
     };
   }
 
   componentDidMount() {
-    this.fetchArticles();
+    this.fetchAllArticlesCount();
+    this.setAndRetrieveSelectedPageArticles();
   }
 
-  fetchArticles = () => {
-    Axios.get("/api/articles").then(res => {
-      this.setState({ articles: res.data });
+  setAndRetrieveSelectedPageArticles = () => {
+    this.setState(
+      {
+        indexOfLastArticle: this.state.currentPage * this.state.articlesPerPage
+      },
+      () => {
+        this.setState(
+          {
+            indexOfFirstArticle:
+              this.state.indexOfLastArticle - this.state.articlesPerPage
+          },
+          () => {
+            this.fetchSelectedPageArticles(
+              this.state.indexOfFirstArticle,
+              this.state.indexOfLastArticle
+            );
+          }
+        );
+      }
+    );
+  };
+
+  fetchAllArticlesCount = () => {
+    Axios.get("/api/articles/count").then(res => {
+      this.setState({ allArticlesCount: res.data["count(*)"] });
     });
+  };
+
+  fetchSelectedPageArticles = (firstArticleIndex, lastArticleIndex) => {
+    const indexes = {
+      first: firstArticleIndex,
+      last: lastArticleIndex
+    };
+
+    Axios.get("/api/articles/selectedpage", {
+      params: indexes
+    })
+      .then(res => {
+        this.setState({ selectedPageArticles: res.data });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   scrollToTop = () => {
