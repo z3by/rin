@@ -12,7 +12,7 @@ export default class Blog extends Component {
       currentPage: 1,
       articlesPerPage: 10,
       allArticlesCount: 0,
-      selectedPagearticles: [],
+      selectedPageArticles: [],
       indexOfLastArticle: 0,
       indexOfFirstArticle: 0
     };
@@ -101,8 +101,8 @@ export default class Blog extends Component {
           </div>
         </header>
         <div className="container">
-          {this.state.articles.map((article, id) => {
-            return <ArticleCard article={article} />;
+          {this.state.selectedPageArticles.map((article, id) => {
+            return <ArticleCard article={article} key={id} />;
           })}
         </div>
       </div>
