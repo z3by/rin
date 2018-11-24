@@ -61,6 +61,8 @@ export default class Blog extends Component {
       params: indexes
     })
       .then(res => {
+        console.log(res.data);
+
         this.setState({ selectedPageArticles: res.data });
       })
       .catch(err => {

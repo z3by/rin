@@ -40,7 +40,11 @@ module.exports.getSelectedPageArticles = (req, res) => {
       firstArticleIndex,
       lastArticleIndex
     );
-    res.send(selectPageArticles);
+    const parsed = selectPageArticles.map(article => {
+      article.imgs = JSON.parse(article.imgs);
+      return article;
+    });
+    res.send(parsed);
   });
 };
 
