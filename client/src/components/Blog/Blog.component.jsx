@@ -3,6 +3,7 @@ import "./Blog.css";
 import ArticleCard from "./ArticleCard";
 import IconButton from "@material-ui/core/IconButton";
 import Axios from "axios";
+import Button from "@material-ui/core/Button";
 
 export default class Blog extends Component {
   constructor() {
@@ -70,6 +71,12 @@ export default class Blog extends Component {
       });
   };
 
+  changeCurrentPage = number => {
+    this.setState({ currentPage: number }, () => {
+      this.setAndRetrieveSelectedPageArticles();
+    });
+  };
+
   scrollToTop = () => {
     document.querySelector(".library").scrollIntoView({
       behavior: "smooth"
@@ -83,6 +90,37 @@ export default class Blog extends Component {
   };
 
   render() {
+    // Logic for displaying page numbers
+    const {
+      allArticlesCount,
+      articlesPerPage,
+      selectedPageArticles
+    } = this.state;
+
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(allArticlesCount / articlesPerPage); i++) {
+      pageNumbers.push(i);
+    }
+
+    const allPagesNumbers = pageNumbers.map(number => {
+      return (
+        <li key={number}>
+          <Button
+            variant="fab"
+            mini
+            onClick={() => {
+              this.changeCurrentPage(number);
+            }}
+            className={
+              number === this.state.currentPage ? "active-page-number" : ""
+            }
+          >
+            {number}
+          </Button>
+        </li>
+      );
+    });
+
     return (
       <div
         className="blog fadeInFast"
@@ -107,6 +145,8 @@ export default class Blog extends Component {
             return <ArticleCard article={article} key={id} />;
           })}
         </div>
+
+        <ul id="page-numbers">{allPagesNumbers}</ul>
       </div>
     );
   }
