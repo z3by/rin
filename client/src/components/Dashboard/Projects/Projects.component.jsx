@@ -7,9 +7,7 @@ import UpdateProject from "./UpdateProject/UpdateProject.component";
 import "./Projects.css";
 import Axios from "axios";
 import ProjectRequests from "./ProjectRequest/ProjectRequest.component";
-import SearchResults from "./SearchResults/SearchResults.component";
-
-const searchProjectPath = "/dashboard/projects/searchresults";
+import ProjectsSearchResults from "./ProjectsSearchResults/ProjectsSearchResults.component";
 
 export default class Projects extends Component {
   constructor(props) {
@@ -105,7 +103,7 @@ export default class Projects extends Component {
           <Route
             exact
             path={"/dashboard/projects/search/:option"}
-            component={SearchResults}
+            component={ProjectsSearchResults}
           />
         </main>
       </div>
