@@ -108,10 +108,23 @@ router.put("/lenses/:id", lensesAPI.updateLens);
 router.delete("/lenses/:id", lensesAPI.deleteLens);
 
 // library routes
+
 // links routes
 router.get("/library/links/:index", libraryAPI.getLinks);
 router.post("/library/links", libraryAPI.addLink);
 router.put("/library/links/:id", libraryAPI.updateLink);
 router.delete("/library/links/:id", libraryAPI.deleteLink);
+
+// books routes
+router.get("/library/books/:index", libraryAPI.getLinks);
+router.post("/library/books", libraryAPI.addLink);
+router.put("/library/books/:id", libraryAPI.updateLink);
+router.delete("/library/books/:id", libraryAPI.deleteLink);
+
+// researches routes
+router.get("/library/researches/:index", libraryAPI.getLinks);
+router.post("/library/researches", libraryAPI.addLink);
+router.put("/library/researches/:id", libraryAPI.updateLink);
+router.delete("/library/researches/:id", libraryAPI.deleteLink);
 
 module.exports = router;
