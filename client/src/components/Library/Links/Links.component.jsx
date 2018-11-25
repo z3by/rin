@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import LibraryList from "../LibraryList/LibraryList.component";
+import LinkList from "./LinkList.component";
 
 export default class Links extends Component {
   render() {
     return (
       <div>
-        <LibraryList endpoint="/api/articles" />
+        <LinkList />
       </div>
     );
   }

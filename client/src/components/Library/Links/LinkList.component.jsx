@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import LinkItem from "../Links/LinkItem.component";
+import LinkItem from "./LinkItem.component";
 import Axios from "axios";
 import Button from "@material-ui/core/Button";
 
-export default class LibraryList extends Component {
+export default class LinkList extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,7 +17,7 @@ export default class LibraryList extends Component {
 
   // get more 10 items and append it to the current items
   fetchData = () => {
-    Axios.get(this.props.endpoint, {
+    Axios.get("/api/library/links", {
       headers: { index: this.state.items.length }
     }).then(res => {
       this.setState({
