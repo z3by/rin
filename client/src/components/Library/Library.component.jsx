@@ -22,6 +22,16 @@ export default class Library extends Component {
     });
   };
 
+  // navigate to specifec route
+  navigateTO = route => {
+    this.props.history.push(route);
+    setTimeout(() => {
+      document.querySelector("#scroll-sign").scrollIntoView({
+        behavior: "smooth"
+      });
+    });
+  };
+
   render() {
     return (
       <div
@@ -35,6 +45,40 @@ export default class Library extends Component {
             <h1>library</h1>
             <div className="line" />
             <h3>dig deeply and read more about impact investment</h3>
+            <ul className="header-nav">
+              <li>
+                <a
+                  onClick={() => {
+                    this.navigateTO("/library/books");
+                  }}
+                >
+                  <h5 className="upper">books</h5>
+                  <i className="fas fa-book-open" />
+                </a>
+              </li>
+
+              <li>
+                <a
+                  onClick={() => {
+                    this.navigateTO("/library/links");
+                  }}
+                >
+                  <h5 className="upper">useful links</h5>
+                  <i className="fas fa-link" />
+                </a>
+              </li>
+
+              <li>
+                <a
+                  onClick={() => {
+                    this.navigateTO("/library/reaserches");
+                  }}
+                >
+                  <h5 className="upper">reaserches</h5>
+                  <i className="fas fa-file-contract" />
+                </a>
+              </li>
+            </ul>
             <div className="go-down" onClick={this.goDown}>
               <IconButton>
                 <i className="fas fa-arrow-down color-2" />
@@ -43,6 +87,8 @@ export default class Library extends Component {
           </div>
         </header>
         <div className="container">
+          <div id="scroll-sign" />
+
           <section>
             <h2 className="color-2 upper">Figures at a Glance</h2>
             <iframe
