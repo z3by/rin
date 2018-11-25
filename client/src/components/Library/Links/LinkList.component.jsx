@@ -18,6 +18,8 @@ export default class LinkList extends Component {
   // get more 10 items and append it to the current items
   fetchData = () => {
     Axios.get("/api/library/links/" + this.state.items.length).then(res => {
+      console.log(res.data);
+
       this.setState({
         items: [...this.state.items, ...res.data]
       });

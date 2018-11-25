@@ -14,6 +14,23 @@ module.exports.getLinks = (req, res) => {
   connection.query(qry, (err, result) => {
     if (err) throw err;
     result = result.slice(index, index + 10);
-    req.send(result);
+    res.send(result);
+  });
+};
+
+module.exports.addLink = (req, res) => {
+  let data = {
+    title: req.body.title,
+    subtitle: req.body.subtitle,
+    text: req.body.url,
+    img: req.body.img
+  };
+
+  let qry = `insert into library_links (title, subtitle, url, img) values("${
+    data.title
+  }", "${data.subtitle}", '${data.url}', '${data.img}');`;
+  connection.query(qry, (err, result) => {
+    if (err) throw err;
+    res.sendStatus(201);
   });
 };
