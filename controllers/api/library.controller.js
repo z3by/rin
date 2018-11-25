@@ -43,11 +43,19 @@ module.exports.updateLink = (req, res) => {
     img: req.body.img
   };
 
-  let qry = `UPDATE articles SET title="${data.title}", subtitle="${
+  let qry = `UPDATE library_link SET title="${data.title}", subtitle="${
     data.subtitle
   }", url="${data.url}", img='${data.img}' WHERE id=${req.params.id};`;
   connection.query(qry, (err, result) => {
     if (err) throw err;
     res.sendStatus(201);
+  });
+};
+
+module.exports.deleteLink = (req, res) => {
+  let qry = `delete from library_link where id=${req.params.id}`;
+  connection.query(qry, (err, result) => {
+    if (err) throw err;
+    res.sendStatus(200);
   });
 };

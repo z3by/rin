@@ -112,5 +112,6 @@ router.delete("/lenses/:id", lensesAPI.deleteLens);
 router.get("/library/links/:index", libraryAPI.getLinks);
 router.post("/library/links", libraryAPI.addLink);
 router.put("/library/links/:id", libraryAPI.updateLink);
+router.delete("/library/links/:id", libraryAPI.deleteLink);
 
 module.exports = router;
