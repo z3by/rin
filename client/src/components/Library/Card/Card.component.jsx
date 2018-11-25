@@ -1,37 +1,59 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import CardActionArea from "@material-ui/core/CardActionArea";
 
-export default props => {
+const styles = theme => ({
+  card: {
+    display: "flex"
+  },
+  details: {
+    display: "flex",
+    flexDirection: "column",
+    width: "100%"
+  },
+  content: {
+    flex: "1 0 auto"
+  },
+  cover: {
+    width: 300
+  }
+});
+
+function MediaControlCard(props) {
+  const { classes, theme } = props;
+
   return (
-    <Card>
-      <CardActionArea>
-        <CardContent>
-          <div
-            className="card-header"
-            style={{
-              background: "url(" + props.info.img + "+"
-            }}
-          />
-          <Typography gutterBottom variant="h5" component="h2">
-            {props.info.title}
-          </Typography>
-          <Typography component="p">{props.info.subtitle}</Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions>
+    <Card className={classes.card}>
+      <div className={classes.details}>
+        <CardActionArea>
+          <CardContent className={classes.content}>
+            <Typography component="h5" variant="h5" className="capitalize">
+              {props.info.title}
+            </Typography>
+            <Typography variant="subtitle1" color="textSecondary">
+              {props.info.subtitle}
+            </Typography>
+            <a className="color-2">{props.info.url}</a>
+          </CardContent>
+        </CardActionArea>
+      </div>
+      <CardMedia
+        className={classes.cover}
+        image={props.info.img}
+        title={props.info.subtitle}
+      />
     </Card>
   );
+}
+
+MediaControlCard.propTypes = {
+  classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired
 };
+
+export default withStyles(styles, { withTheme: true })(MediaControlCard);

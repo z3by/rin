@@ -5,7 +5,14 @@ export default class Links extends Component {
   render() {
     return (
       <div>
-        <Card />
+        <Card
+          info={{
+            title: "title",
+            subtitle: "subtitle",
+            img: "https://picsum.photos/200/300?image=0",
+            url: "https://picsum.photos/200/300?image=0"
+          }}
+        />
       </div>
     );
   }
