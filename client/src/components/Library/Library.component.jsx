@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import "./Library.css";
 import IconButton from "@material-ui/core/IconButton";
+import { Route } from "react-router-dom";
+import Books from "./Books/Books.component";
+import Links from "./Links/Links.component";
+import Researches from "./Researches/Researches.component";
 
 export default class Library extends Component {
   constructor() {
@@ -89,48 +93,9 @@ export default class Library extends Component {
         <div className="container">
           <div id="scroll-sign" />
 
-          <section>
-            <h2 className="color-2 upper">Figures at a Glance</h2>
-            <iframe
-              title="iframe 1"
-              src="http://www.unhcr.org/figures-at-a-glance.html"
-              width="100%"
-              height="800"
-              frameborder="0"
-            />
-          </section>
-          <section>
-            <h2 className="color-2 upper">
-              How investment can unlock the potential of refugees
-            </h2>
-            <iframe
-              title="iframe 2"
-              src="https://static1.squarespace.com/static/5b280d6a620b85faae73af1a/t/5bd1e2b39140b788ed67c371/1540481747374/RIN+Investor+Report-Paradigm+Shift-FINAL.pdf"
-              width="100%"
-              height="800"
-              frameborder="0"
-            />
-          </section>
-          <section>
-            <h2 className="color-2 upper">Syrian situation statistics</h2>
-
-            <iframe
-              title="iframe 3"
-              src="https://data2.unhcr.org/en/situations/syria"
-              width="100%"
-              height="800"
-              frameborder="0"
-            />
-          </section>
-          <section>
-            <iframe
-              title="iframe 4"
-              src="https://data2.unhcr.org/en/countries/"
-              width="100%"
-              height="800"
-              frameborder="0"
-            />
-          </section>
+          <Route path="/library/books" component={Books} />
+          <Route path="/library/links" component={Links} />
+          <Route path="/library/reaserches" component={Researches} />
         </div>
       </div>
     );
