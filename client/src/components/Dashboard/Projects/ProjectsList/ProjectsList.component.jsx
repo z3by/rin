@@ -81,7 +81,7 @@ export default class ProjectsList extends Component {
   }
 
   render() {
-    const { allProjectsCount, projectsPerPage, selectedPageProjects } = this.state;
+    let { allProjectsCount, projectsPerPage, selectedPageProjects } = this.state;
 
     const projects = selectedPageProjects.map(project => {
       return (
