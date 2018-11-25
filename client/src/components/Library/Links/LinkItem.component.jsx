@@ -38,7 +38,6 @@ function MediaControlCard(props) {
             <Typography variant="subtitle1" color="textSecondary">
               {props.info.subtitle}
             </Typography>
-            <a className="color-2">{props.info.url}</a>
           </CardContent>
         </CardActionArea>
       </div>
