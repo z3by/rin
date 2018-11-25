@@ -1,25 +1,8 @@
 import React, { Component } from "react";
 import "./Data.css";
 import IconButton from "@material-ui/core/IconButton";
-import { Line } from "react-chartjs-2";
-
-const data = {
-  labels: ["2009", "2010", "2011", "2012", "2013", "2014", "2015"],
-  datasets: [
-    {
-      label: "My First dataset",
-      backgroundColor: "#f90",
-      borderColor: "grey",
-      data: [0, 10, 5, 2, 20, 30, 45]
-    },
-    {
-      label: "My Second dataset",
-      backgroundColor: "#90f",
-      borderColor: "grey",
-      data: [10, 40, 5, 8, 20, 5, 7]
-    }
-  ]
-};
+import Typography from "@material-ui/core/Typography";
+import { Chart } from "chart.js";
 
 export default class Data extends Component {
   constructor() {
@@ -27,7 +10,53 @@ export default class Data extends Component {
     this.state = {};
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    const canvas1 = document.querySelector("#canvas1");
+    const myChart = new Chart(canvas1, {
+      type: "bar",
+      data: {
+        labels: [
+          "Syrian Arab Republic",
+          "Afghanistan",
+          "South Sudan",
+          "Myanmar",
+          "Somalia"
+        ],
+        datasets: [
+          {
+            label: "# of Refugees",
+            data: [6.3, 2.6, 2.4, 1.2, 0.986],
+            backgroundColor: [
+              "rgba(255, 99, 132, 0.2)",
+              "rgba(54, 162, 235, 0.2)",
+              "rgba(255, 206, 86, 0.2)",
+              "rgba(75, 192, 192, 0.2)",
+              "rgba(153, 102, 255, 0.2)"
+            ],
+            borderColor: [
+              "rgba(255,99,132,1)",
+              "rgba(54, 162, 235, 1)",
+              "rgba(255, 206, 86, 1)",
+              "rgba(75, 192, 192, 1)",
+              "rgba(153, 102, 255, 1)"
+            ],
+            borderWidth: 1
+          }
+        ]
+      },
+      options: {
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true
+              }
+            }
+          ]
+        }
+      }
+    });
+  }
 
   scrollToTop = () => {
     document.querySelector(".library").scrollIntoView({
@@ -62,8 +91,13 @@ export default class Data extends Component {
           </div>
         </header>
         <div className="container">
-          <h1>hello</h1>
-          <Line data={data} />
+          <Typography component="h2" variant="h4" className="">
+            More than two-thirds (68 per cent) of all refugees worldwide came
+            from just five countries:
+          </Typography>
+          <div className="chart">
+            <canvas id="canvas1" width="100" height="50" />
+          </div>
         </div>
       </div>
     );
