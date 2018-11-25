@@ -34,3 +34,20 @@ module.exports.addLink = (req, res) => {
     res.sendStatus(201);
   });
 };
+
+module.exports.updateLink = (req, res) => {
+  let data = {
+    title: req.body.title,
+    subtitle: req.body.subtitle,
+    text: req.body.url,
+    img: req.body.img
+  };
+
+  let qry = `UPDATE articles SET title="${data.title}", subtitle="${
+    data.subtitle
+  }", url="${data.url}", img='${data.img}' WHERE id=${req.params.id};`;
+  connection.query(qry, (err, result) => {
+    if (err) throw err;
+    res.sendStatus(201);
+  });
+};
