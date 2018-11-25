@@ -34,7 +34,7 @@ var upload = multer({
     // Auto detect contet type
     contentType: multerS3.AUTO_CONTENT_TYPE,
     // Set key/ filename as original uploaded name
-    filename: function(req, file, cb) {
+    filename: function (req, file, cb) {
       cb(null, "IMAGE-" + Date.now() + path.extname(file.originalname));
     }
   }),
@@ -52,6 +52,7 @@ router.get("/countries/:id", countriesAPI.getCountry);
 
 //stories routes
 router.get("/stories", storiesAPI.getStories);
+router.get("/stories/search/:options", storiesAPI.getSearchedStories);
 router.get("/stories/selectedpage", storiesAPI.getSelectedPageStories);
 router.get("/stories/count", storiesAPI.getStoriesCount);
 router.get("/stories/:id", storiesAPI.getStory);

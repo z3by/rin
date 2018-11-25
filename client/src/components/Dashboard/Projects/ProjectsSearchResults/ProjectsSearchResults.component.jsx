@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "./SearchResults.css";
+import "./ProjectsSearchResults.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Button from "@material-ui/core/Button";
@@ -10,7 +10,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 
-export default class SearchResults extends Component {
+export default class ProjectsSearchResults extends Component {
     constructor(props) {
         super(props);
         this.state = {
