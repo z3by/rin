@@ -15,7 +15,7 @@ export default class StoriesSearchResults extends Component {
         super(props);
         this.state = {
             currentPage: 1,
-            storiesPerPage: 2,
+            storiesPerPage: 10,
             searchedStories: [],
             searchedStoriesCount: 0,
             searchInput: ""
@@ -113,22 +113,25 @@ export default class StoriesSearchResults extends Component {
 
 
         return (
-            <Paper className="storiesPages">
-                <Table>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Story ID</TableCell>
-                            <TableCell>Story Title</TableCell>
-                            <TableCell />
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>{stories}</TableBody>
-                </Table>
+            <div className="storiesPages">
+                <h5 className="heading-theme-2">{this.state.searchedStoriesCount} Result/s has been found</h5>
+                <Paper>
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Story ID</TableCell>
+                                <TableCell>Story Title</TableCell>
+                                <TableCell />
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>{stories}</TableBody>
+                    </Table>
 
-                <ul id="page-numbers">
-                    {allPagesNumbers}
-                </ul>
-            </Paper>
+                    <ul id="page-numbers">
+                        {allPagesNumbers}
+                    </ul>
+                </Paper>
+            </div>
         )
     }
 }
