@@ -116,15 +116,15 @@ router.put("/library/links/:id", libraryAPI.updateLink);
 router.delete("/library/links/:id", libraryAPI.deleteLink);
 
 // books routes
-router.get("/library/books/:index", libraryAPI.getLinks);
-router.post("/library/books", libraryAPI.addLink);
-router.put("/library/books/:id", libraryAPI.updateLink);
-router.delete("/library/books/:id", libraryAPI.deleteLink);
+router.get("/library/books/:index", libraryAPI.getBooks);
+router.post("/library/books", libraryAPI.addBook);
+router.put("/library/books/:id", libraryAPI.updateBook);
+router.delete("/library/books/:id", libraryAPI.deleteBook);
 
 // researches routes
-router.get("/library/researches/:index", libraryAPI.getLinks);
-router.post("/library/researches", libraryAPI.addLink);
-router.put("/library/researches/:id", libraryAPI.updateLink);
-router.delete("/library/researches/:id", libraryAPI.deleteLink);
+router.get("/library/researches/:index", libraryAPI.getResearches);
+router.post("/library/researches", libraryAPI.addResearch);
+router.put("/library/researches/:id", libraryAPI.updateResearch);
+router.delete("/library/researches/:id", libraryAPI.deleteResearch);
 
 module.exports = router;
