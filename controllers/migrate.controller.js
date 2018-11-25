@@ -9,6 +9,9 @@ const storiesModel = require("../models/stories.model");
 const membersModel = require("../models/members.model");
 const lensesModel = require("../models/lenses.model");
 const articlesModel = require("../models/articles.model");
+const library_links = require("../models/library_links.model");
+const library_books = require("../models/library_books.model");
+const library_researches = require("../models/library_researches.model");
 
 const migrateHelpers = require("./helpers/migrate.helpers");
 
@@ -46,6 +49,15 @@ module.exports = () => {
 
   // create articles table
   migrateHelpers.createTable(connection, articlesModel);
+
+  // create library links table
+  migrateHelpers.createTable(connection, library_links);
+
+  // create library books table
+  migrateHelpers.createTable(connection, library_books);
+
+  // create library researches table
+  migrateHelpers.createTable(connection, library_researches);
 
   // fetch countries and insert them  into countries table
   countriesHelpers.checkIfCountriesExists(connection, res => {
