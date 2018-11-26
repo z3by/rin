@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import ResearchList from "./BooksList.component";
 
-export default class Books extends Component {
+export default class Researches extends Component {
   render() {
     return (
       <div>
-        <h1> hello from books </h1>
+        <ResearchList />
       </div>
     );
   }

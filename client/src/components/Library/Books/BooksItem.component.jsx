@@ -24,7 +24,7 @@ const styles = theme => ({
   }
 });
 
-function BookItem(props) {
+function MediaControlCard(props) {
   const { classes, theme } = props;
 
   return (
@@ -33,26 +33,29 @@ function BookItem(props) {
         <CardActionArea>
           <CardContent className={classes.content}>
             <Typography component="h5" variant="h5" className="capitalize">
-              {props.book.title}
+              {props.info.title}
             </Typography>
             <Typography variant="subtitle1" color="textSecondary">
-              {props.book.subtitle}
+              {props.info.subtitle}
+            </Typography>
+            <Typography variant="subtitle2" color="textSecondary">
+              {props.info.url}
             </Typography>
           </CardContent>
         </CardActionArea>
       </div>
       <CardMedia
         className={classes.cover}
-        image={props.book.img}
-        title={props.book.subtitle}
+        image={props.info.img}
+        title={props.info.subtitle}
       />
     </Card>
   );
 }
 
-BookItem.propTypes = {
+MediaControlCard.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired
 };
 
-export default withStyles(styles, { withTheme: true })(BookItem);
+export default withStyles(styles, { withTheme: true })(MediaControlCard);
