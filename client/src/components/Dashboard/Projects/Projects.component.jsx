@@ -43,7 +43,7 @@ export default class Projects extends Component {
 
   render() {
     return (
-      <div className="projects-dashboard">
+      <div className="projects-dashboard fadeInFast">
         <nav className="nav-up">
           <Link to="/dashboard/projects/add">
             <i className="fas fa-plus" />

@@ -14,7 +14,7 @@ export default props => {
   };
 
   return (
-    <div className="team-member">
+    <div className="team-member fadeInFast">
       <figure class="effect-chico">
         <img src={info.img} alt="img15" />
         <figcaption>

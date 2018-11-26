@@ -32,7 +32,7 @@ export default class Dashboard extends Component {
 
   render() {
     return (
-      <div className="admin-dashboard">
+      <div className="admin-dashboard fadeInFast">
         <Sidebar />
         <nav className="nav-up main-nav">
           <Link to="/dashboard">

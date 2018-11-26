@@ -158,7 +158,7 @@ export default class ArticlesList extends Component {
     });
 
     return (
-      <Paper className="articlesPages">
+      <Paper className="articlesPages fadeInFast">
         <Table>
           <TableHead>
             <TableRow>

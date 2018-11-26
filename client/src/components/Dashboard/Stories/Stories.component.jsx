@@ -19,7 +19,7 @@ export default class Stories extends Component {
 
   render() {
     return (
-      <div className="projects-dashboard">
+      <div className="projects-dashboard fadeInFast">
         <nav className="nav-up">
           <Link to="/dashboard/stories/add">
             <i className="fas fa-plus" />

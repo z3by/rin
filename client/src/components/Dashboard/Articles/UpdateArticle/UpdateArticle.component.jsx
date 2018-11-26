@@ -130,7 +130,7 @@ export default class UpdateArticle extends Component {
 
   render() {
     return (
-      <Paper className="admin-form">
+      <Paper className="admin-form fadeInFast">
         <form
           onSubmit={e => {
             this.updateArticle(e, this.state.id);

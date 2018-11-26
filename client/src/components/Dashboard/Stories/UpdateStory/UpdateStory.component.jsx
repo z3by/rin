@@ -238,7 +238,7 @@ export default class UpdateStory extends Component {
     });
 
     return (
-      <Paper className="admin-form">
+      <Paper className="admin-form fadeInFast">
         <form method="POST" onSubmit={this.updateStory}>
           <label htmlFor="story-title">story title</label>
           <input

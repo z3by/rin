@@ -195,7 +195,7 @@ export default class NewProject extends Component {
     });
 
     return (
-      <Paper className="admin-form">
+      <Paper className="admin-form fadeInFast">
         <form onSubmit={this.addStory}>
           <input
             type="text"

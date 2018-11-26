@@ -31,7 +31,7 @@ export default class ArticleInfo extends Component {
 
   render() {
     return (
-      <div className="admin-info-single">
+      <div className="admin-info-single fadeInFast">
         <table>
           <tr>
             <th>Article ID</th>

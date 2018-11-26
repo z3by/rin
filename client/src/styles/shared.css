@@ -277,8 +277,8 @@ label {
 .fadeInFast {
   -webkit-animation-name: fade-in;
   animation-name: fade-in;
-  -webkit-animation-duration: 3s;
-  animation-duration: 3s;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
   -webkit-animation-timing-function: ease;
   animation-timing-function: ease;
 }

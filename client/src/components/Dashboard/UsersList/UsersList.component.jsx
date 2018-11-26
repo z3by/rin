@@ -123,7 +123,7 @@ export default class UsersList extends Component {
     });
 
     return (
-      <Paper className="all-users">
+      <Paper className="all-users fadeInFast">
         <Table>
           <TableHead>
             <TableRow>

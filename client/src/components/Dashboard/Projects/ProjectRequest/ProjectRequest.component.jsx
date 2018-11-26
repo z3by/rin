@@ -60,7 +60,7 @@ export default class ProjectRequests extends Component {
   render() {
     const rows = this.state.requests;
     return (
-      <Paper>
+      <Paper className="fadeInFast">
         <Table>
           <TableHead>
             <TableRow>

@@ -18,7 +18,7 @@ export default class Users extends Component {
 
   render() {
     return (
-      <div className="users-dashboard">
+      <div className="users-dashboard fadeInFast">
         <nav className="nav-up">
           <div className="search-group">
             <input

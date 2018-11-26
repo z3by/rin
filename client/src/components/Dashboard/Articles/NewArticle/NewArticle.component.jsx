@@ -108,7 +108,7 @@ export default class NewArticle extends Component {
 
   render() {
     return (
-      <Paper className="admin-form">
+      <Paper className="admin-form fadeInFast">
         <form onSubmit={this.addArticle}>
           <input
             type="text"
