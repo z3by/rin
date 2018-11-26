@@ -1,23 +1,27 @@
 import React, { Component } from "react";
-import { Link, Route } from "react-router-dom";
+import { Link, Route, Switch } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import LinksList from "./Links/LinksList.component";
 import BooksList from "./Books/BooksList.component";
 import ResearchesList from "./Researches/ResearchesList.component";
+import AddLink from "./Links/AddLink.component";
+import AddBook from "./Books/AddBook.component";
+import AddResearch from "./Researches/AddResearch.component";
 
 export default class Library extends Component {
   state = {
-    anchorEl: null
+    anchorEl: null,
+    currentPage: "links"
   };
 
   handleClick = event => {
     this.setState({ anchorEl: event.currentTarget });
   };
 
-  handleClose = () => {
-    this.setState({ anchorEl: null });
+  handleClose = e => {
+    this.setState({ anchorEl: null, currentPage: e.target.innerText });
   };
 
   render() {
@@ -54,7 +58,12 @@ export default class Library extends Component {
               </Link>
             </MenuItem>
           </Menu>
-
+          <Link
+            to={`/dashboard/library/${this.state.currentPage.toLowerCase()}/add`}
+          >
+            <i className="fas fa-plus" />
+            <span>New {this.state.currentPage.slice(0, -1)}</span>
+          </Link>
           <div className="search-group">
             <input
               type="search"
@@ -65,12 +74,20 @@ export default class Library extends Component {
           </div>
         </nav>
         <main>
-          <Route path="/dashboard/library/links" component={LinksList} />
-          <Route path="/dashboard/library/books" component={BooksList} />
-          <Route
-            path="/dashboard/library/researches"
-            component={ResearchesList}
-          />
+          <Switch>
+            <Route path="/dashboard/library/links/add" component={AddLink} />
+            <Route path="/dashboard/library/books/add" component={AddBook} />
+            <Route
+              path="/dashboard/library/researches/add"
+              component={AddResearch}
+            />
+            <Route path="/dashboard/library/links" component={LinksList} />
+            <Route path="/dashboard/library/books" component={BooksList} />
+            <Route
+              path="/dashboard/library/researches"
+              component={ResearchesList}
+            />
+          </Switch>
         </main>
       </div>
     );
