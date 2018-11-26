@@ -99,9 +99,9 @@ export default class StoriesList extends Component {
   render() {
     const { allStoriesCount, storiesPerPage, selectedPageStories } = this.state;
 
-    const stories = selectedPageStories.map(story => {
+    const stories = selectedPageStories.map((story, index) => {
       return (
-        <TableRow>
+        <TableRow key={index}>
           <TableCell>{story.id}</TableCell>
           <TableCell>{story.title}</TableCell>
           <TableCell numeric>

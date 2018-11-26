@@ -79,10 +79,10 @@ export default class Navbar extends Component {
             </li>
 
             <li>
-              <Link className="navbar-link" index="5" to={"/about"}>
+              <div className="navbar-link" index="5">
                 <div className="nav-rec" />
-                <p className="nav-rec-text">
-                  about
+                <div>
+                  <p className="nav-rec-text">about</p>
                   <ul className="nav-rec-menu">
                     <li>
                       <Link to={"/about/who-we-are"} hash={"#about-routes"}>
@@ -99,8 +99,8 @@ export default class Navbar extends Component {
                       <Link to={"/about/why-refugees"}>why refugees </Link>
                     </li>
                   </ul>
-                </p>
-              </Link>
+                </div>
+              </div>
             </li>
             <li>
               <Link className="navbar-link" index="6" to={"/library"}>

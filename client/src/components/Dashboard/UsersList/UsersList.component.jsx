@@ -86,9 +86,9 @@ export default class UsersList extends Component {
       selectedPageUsers
     } = this.state;
 
-    const allUsers = selectedPageUsers.map(user => {
+    const allUsers = selectedPageUsers.map((user, index) => {
       return (
-        <TableRow>
+        <TableRow key={index}>
           <TableCell>{user.first_name}</TableCell>
           <TableCell>{user.last_name}</TableCell>
           <TableCell>{user.organization_name}</TableCell>
