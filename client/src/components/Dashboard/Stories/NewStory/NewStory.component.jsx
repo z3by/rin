@@ -135,6 +135,7 @@ export default class NewProject extends Component {
           this.setState({
             uploaded: false
           });
+          this.props.history.push("/dashboard/stories/list");
         }, 3000);
       })
 

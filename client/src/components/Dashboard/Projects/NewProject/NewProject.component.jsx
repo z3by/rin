@@ -130,6 +130,7 @@ export default class NewProject extends Component {
           this.setState({
             uploaded: false
           });
+          this.props.history.push("/dashboard/projects/list");
         }, 3000);
       })
       .catch(error => {

@@ -71,6 +71,7 @@ export default class NewArticle extends Component {
           this.setState({
             uploaded: false
           });
+          this.props.history.push("/dashboard/articles/list");
         }, 3000);
       })
       .catch(error => {

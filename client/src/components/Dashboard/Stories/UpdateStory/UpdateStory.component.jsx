@@ -200,6 +200,7 @@ export default class UpdateStory extends Component {
             uploaded: false
           });
         }, 3000);
+        this.props.history.push("/dashboard/stories/list");
       })
       .catch(error => {
         console.log(error);
