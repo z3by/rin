@@ -185,7 +185,7 @@ export default class Landing extends Component {
   render() {
     return (
       <div className="landing-main">
-        <div className="landing fadeInFast">
+        <div className="landing fadeInSlow">
           <div className="nav">
             <ul className="nav-group">
               <li className="nav-item">
