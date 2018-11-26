@@ -91,11 +91,7 @@ export default class Blog extends Component {
 
   render() {
     // Logic for displaying page numbers
-    const {
-      allArticlesCount,
-      articlesPerPage,
-      selectedPageArticles
-    } = this.state;
+    const { allArticlesCount, articlesPerPage } = this.state;
 
     const pageNumbers = [];
     for (let i = 1; i <= Math.ceil(allArticlesCount / articlesPerPage); i++) {

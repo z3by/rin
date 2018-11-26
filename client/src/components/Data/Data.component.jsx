@@ -12,7 +12,7 @@ export default class Data extends Component {
 
   componentDidMount() {
     const canvas1 = document.querySelector("#canvas1");
-    const myChart = new Chart(canvas1, {
+    new Chart(canvas1, {
       type: "bar",
       data: {
         labels: [

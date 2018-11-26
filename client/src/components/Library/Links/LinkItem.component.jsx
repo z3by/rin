@@ -7,7 +7,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import CardActionArea from "@material-ui/core/CardActionArea";
 
-const styles = theme => ({
+const styles = () => ({
   card: {
     display: "flex"
   },
@@ -25,7 +25,7 @@ const styles = theme => ({
 });
 
 function MediaControlCard(props) {
-  const { classes, theme } = props;
+  const { classes } = props;
 
   return (
     <Card className={classes.card}>
