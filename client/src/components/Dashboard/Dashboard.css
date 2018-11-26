@@ -38,8 +38,8 @@
   display: flex;
   text-transform: capitalize;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
 }
 
@@ -55,10 +55,10 @@
 }
 
 .nav-up a:hover {
-  color: var(--color-4);
+  color: var(--color-3);
 }
 
-.nav-up.nav-up.main-nav a {
+.nav-up.main-nav a {
   font-size: 2rem;
 }
 
