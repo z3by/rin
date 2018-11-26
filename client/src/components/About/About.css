@@ -10,6 +10,10 @@
   margin-top: 0;
 }
 
+#scroll-sign {
+  position: fixed;
+  top: 200vh;
+}
 .heading-theme-1 {
   color: var(--color-5);
   font-family: var(--main-font);
@@ -75,7 +79,9 @@
 .header-nav li a:hover {
   -webkit-transform: scale(1) translateY(-5px);
   transform: scale(1) translateY(-5px);
+  -webkit-transition: cubic-bezier(0.165, 0.84, 0.44, 1);
   transition: cubic-bezier(0.165, 0.84, 0.44, 1);
+  -webkit-transition-duration: 0.2s;
   transition-duration: 0.2s;
 }
 
@@ -83,7 +89,11 @@
 .back-to-top {
   cursor: pointer;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -99,6 +109,7 @@
   background: rgba(0, 0, 0, 0.7);
 }
 .go-down {
+  -webkit-transform: translateY(10vh);
   transform: translateY(10vh);
 }
 

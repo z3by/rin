@@ -39,6 +39,7 @@
 
 .navbar.collapsed .navbar-middle li {
   height: 50px;
+  -webkit-transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
   transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
@@ -62,6 +63,7 @@
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
+  -webkit-transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
   transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
 .navbar-middle .navbar-link {
@@ -101,7 +103,7 @@
   list-style: none;
   position: absolute;
   font-family: var(--main-font);
-  width: 200px;
+  width: 160px;
   z-index: 10000;
   padding: 0;
   -webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
