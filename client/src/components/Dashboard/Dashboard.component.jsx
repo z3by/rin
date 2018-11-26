@@ -7,6 +7,7 @@ import Sidebar from "../general-components/sidebar/sidebar";
 import Axios from "axios";
 import Users from "./Users/Users.component";
 import Articles from "./Articles/Articles.component";
+import Library from "./Library/Library.component";
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -49,6 +50,7 @@ export default class Dashboard extends Component {
           <Route path="/dashboard/Articles" component={Articles} />
           <Route path="/dashboard/stories" component={Stories} />
           <Route path="/dashboard/users" component={Users} />
+          <Route path="/dashboard/library" component={Library} />
         </main>
       </div>
     );

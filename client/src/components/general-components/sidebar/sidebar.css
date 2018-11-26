@@ -5,6 +5,7 @@
   height: 100vh;
   position: fixed;
   z-index: 10;
+  -webkit-box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.3);
   box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.3);
 }
 
@@ -37,7 +38,12 @@
   text-align: left;
 }
 .sidebar ul li:hover {
-  background: -webkit-gradient(linear, left top, right top, from(#ffaa33));
+  background: -webkit-gradient(linear, left top, right top, from(#ffaa66), to(#ffaa55));
+  background: linear-gradient(90deg, #ffaa66, #ffaa55);
+}
+
+.sidebar ul li.tab-active {
+  background: -webkit-gradient(linear, left top, right top, from(#ffaa66), to(#ffaa55));
   background: linear-gradient(90deg, #ffaa66, #ffaa55);
 }
 
@@ -48,5 +54,9 @@
 }
 
 .sidebar ul li:hover a {
+  color: var(--color-1);
+}
+
+.sidebar ul li.tab-active a {
   color: var(--color-1);
 }
