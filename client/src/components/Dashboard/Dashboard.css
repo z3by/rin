@@ -10,6 +10,8 @@
   z-index: 1;
   -webkit-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   border-bottom: 1px solid rgba(0, 0, 0, 0.4);
 }
@@ -31,9 +33,13 @@
   height: 80px;
   margin-left: 30px;
   max-width: 120px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   text-transform: capitalize;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: relative;
 }
 
@@ -49,7 +55,7 @@
 }
 
 .nav-up a:hover {
-  color: var(--color-1);
+  color: var(--color-4);
 }
 
 .nav-up.nav-up.main-nav a {
