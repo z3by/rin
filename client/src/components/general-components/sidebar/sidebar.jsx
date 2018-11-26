@@ -26,7 +26,7 @@ const tabsData = [
   {
     title: "Library",
     icon: "book-open",
-    path: "/dashboard/library/list"
+    path: "/dashboard/library/links"
   }
 ];
 export default class componentName extends Component {

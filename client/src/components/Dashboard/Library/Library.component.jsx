@@ -33,7 +33,9 @@ export default class Library extends Component {
             aria-owns={anchorEl ? "simple-menu" : undefined}
             aria-haspopup="true"
             onClick={this.handleClick}
+            className="color-2"
           >
+            <i className="fas fa-list-ul" />
             Sections
           </Button>
           <Menu
@@ -42,18 +44,39 @@ export default class Library extends Component {
             open={Boolean(anchorEl)}
             onClose={this.handleClose}
           >
-            <MenuItem onClick={this.handleClose}>
-              <Link className="color-5" to="/dashboard/library/links">
+            <MenuItem
+              onClick={this.handleClose}
+              style={{ padding: 0, width: "160px", height: "50px" }}
+            >
+              <Link
+                className="color-5"
+                to="/dashboard/library/links"
+                style={{ width: "100%", display: "block", padding: "10px" }}
+              >
                 Links
               </Link>
             </MenuItem>
-            <MenuItem onClick={this.handleClose}>
-              <Link className="color-5" to="/dashboard/library/books">
+            <MenuItem
+              onClick={this.handleClose}
+              style={{ padding: 0, width: "160px", height: "50px" }}
+            >
+              <Link
+                className="color-5"
+                to="/dashboard/library/books"
+                style={{ width: "100%", display: "block", padding: "10px" }}
+              >
                 Books
               </Link>
             </MenuItem>
-            <MenuItem onClick={this.handleClose}>
-              <Link className="color-5" to="/dashboard/library/researches">
+            <MenuItem
+              onClick={this.handleClose}
+              style={{ padding: 0, width: "160px", height: "50px" }}
+            >
+              <Link
+                className="color-5"
+                to="/dashboard/library/researches"
+                style={{ width: "100%", display: "block", padding: "10px" }}
+              >
                 Researches
               </Link>
             </MenuItem>
