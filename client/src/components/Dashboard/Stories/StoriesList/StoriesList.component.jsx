@@ -20,6 +20,7 @@ export default class StoriesList extends Component {
         <AdminList
           itemName="story"
           pluralName="stories"
+          controls={true}
           wantedFields={["id", "title", "pre_description"]}
         />
       </Paper>

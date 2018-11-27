@@ -20,6 +20,7 @@ export default class ProjectsList extends Component {
         <AdminList
           itemName="project"
           pluralName="projects"
+          controls={true}
           wantedFields={[
             "id",
             "title",

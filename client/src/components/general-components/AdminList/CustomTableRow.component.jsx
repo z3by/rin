@@ -13,16 +13,11 @@ export default class CustomTableRow extends Component {
     const columns = [];
     const wantedFields = this.props.wantedFields;
 
-    // filter the data and keep only wanted fields
-    for (const key in this.props.data) {
-      if (this.props.data.hasOwnProperty(key)) {
-        if (wantedFields.includes(key)) {
-          const value = this.props.data[key];
-          columns.push(<TableCell key={key}>{value}</TableCell>);
-        }
+    wantedFields.forEach((field, i) => {
+      if (this.props.data.hasOwnProperty(field)) {
+        columns.push(<TableCell key={i}>{this.props.data[field]}</TableCell>);
       }
-    }
-
+    });
     if (this.props.controls) {
       columns.push(
         <CustomTableRowActions
