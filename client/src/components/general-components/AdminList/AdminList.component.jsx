@@ -53,11 +53,15 @@ export default class AdminList extends Component {
   };
 
   handleChangePage = (event, page) => {
-    this.setState({ page });
+    this.setState({ page }, () => {
+      this.fetchData();
+    });
   };
 
   handleChangeRowsPerPage = event => {
-    this.setState({ rowsPerPage: event.target.value });
+    this.setState({ rowsPerPage: event.target.value }, () => {
+      this.fetchData();
+    });
   };
 
   render() {
@@ -70,6 +74,7 @@ export default class AdminList extends Component {
           data={item}
           key={index}
           controls={this.props.controls}
+          handleDelete={this.fetchData}
           wantedFields={this.props.wantedFields}
         />
       );
