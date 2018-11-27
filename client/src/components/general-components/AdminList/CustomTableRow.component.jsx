@@ -18,13 +18,14 @@ export default class CustomTableRow extends Component {
       if (this.props.data.hasOwnProperty(key)) {
         if (wantedFields.includes(key)) {
           const value = this.props.data[key];
-          columns.push(<TableCell>{value}</TableCell>);
+          columns.push(<TableCell key={key}>{value}</TableCell>);
         }
       }
     }
 
     columns.push(
       <CustomTableRowActions
+        key="actions"
         itemName={this.props.itemName}
         pluralName={this.props.pluralName}
         itemID={this.props.data.id}

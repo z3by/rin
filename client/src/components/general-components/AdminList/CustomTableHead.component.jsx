@@ -7,7 +7,7 @@ export default function CustomTableHead(props) {
   const columns = props.data.map((title, index) => {
     return <TableCell key={index}>{title}</TableCell>;
   });
-  columns.push(<TableCell>Actions</TableCell>);
+  columns.push(<TableCell key="actions">Actions</TableCell>);
   return (
     <TableHead>
       <TableRow>{columns}</TableRow>

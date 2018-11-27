@@ -27,7 +27,7 @@ export default class CustomTableRowActions extends Component {
     };
     let { itemID, itemName, pluralName } = this.props;
     return (
-      <TableCell>
+      <TableCell key="buttons">
         <Link to={"/dashboard/" + pluralName + "/list/" + itemID}>
           <IconButton style={buttonStyle}>
             <i className="far fa-eye" style={{ fontSize: "1rem" }} />

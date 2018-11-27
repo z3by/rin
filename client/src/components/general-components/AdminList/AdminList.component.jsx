@@ -45,6 +45,7 @@ export default class AdminList extends Component {
     })
       .then(res => {
         this.setState({ data: res.data });
+        console.log(res.data);
       })
       .catch(err => {
         console.log(err);
