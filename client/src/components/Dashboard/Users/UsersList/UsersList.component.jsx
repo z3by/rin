@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./ArticlesList.css";
+import "./UsersList.css";
 import AdminList from "../../../general-components/AdminList/AdminList.component";
 
 import Paper from "@material-ui/core/Paper";
@@ -18,10 +18,17 @@ export default class StoriesList extends Component {
     return (
       <Paper className="StoriesPages fadeInFast">
         <AdminList
-          itemName="article"
-          pluralName="articles"
-          controls={true}
-          wantedFields={["id", "title", "subtitle"]}
+          itemName="member"
+          pluralName="members"
+          controls={false}
+          wantedFields={[
+            "id",
+            "first_name",
+            "last_name",
+            "email",
+            "user_role",
+            "organization_name"
+          ]}
         />
       </Paper>
     );

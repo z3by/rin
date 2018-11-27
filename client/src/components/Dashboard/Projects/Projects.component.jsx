@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, Route, Redirect } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import NewProject from "./NewProject/NewProject.component";
 import ProjectsList from "./ProjectsList/ProjectsList.component";
 import ProjectInfo from "./ProjectInfo/ProjectInfo.component";
@@ -30,16 +30,15 @@ export default class Projects extends Component {
     });
   };
 
-  searchProjects = (e) => {
+  searchProjects = e => {
     if (e.key === "Enter") {
       //a condition to avoid empty search input
       if (e.target.value) {
         const input = e.target.value;
         this.props.history.push(`/dashboard/projects/search/${input}`);
-      };
+      }
     }
-  }
-
+  };
 
   render() {
     return (

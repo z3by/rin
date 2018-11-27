@@ -10,6 +10,7 @@
 
 .admin-form form {
   padding: 100px;
+  width: 100%;
 }
 
 .admin-form textarea {
@@ -27,6 +28,14 @@
   border-radius: 20px;
   padding: 20px;
   margin: 40px auto;
+}
+
+.admin-form textarea::-webkit-input-placeholder {
+  color: #333;
+}
+
+.admin-form textarea:-ms-input-placeholder {
+  color: #333;
 }
 
 .admin-form textarea::placeholder {
@@ -81,6 +90,14 @@
   border-radius: 20px;
 }
 
+.admin-form input::-webkit-input-placeholder {
+  color: #333;
+}
+
+.admin-form input:-ms-input-placeholder {
+  color: #333;
+}
+
 .admin-form input::placeholder {
   color: #333;
 }
@@ -121,6 +138,8 @@
 }
 
 .done-img {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   background: var(white);
   -webkit-box-pack: center;
