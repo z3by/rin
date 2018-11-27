@@ -1,20 +1,19 @@
 import React, { Component } from "react";
 import "./Users.css";
 import { Route } from "react-router-dom";
-import UsersList from "../UsersList/UsersList.component";
+import UsersList from "./UsersList/UsersList.component";
 import UsersSearchResults from "./UsersSearchResults/UsersSearchResults.component";
 
 export default class Users extends Component {
-
   searchUsers = e => {
     if (e.key === "Enter") {
       //a condition to avoid empty search input
       if (e.target.value) {
         const input = e.target.value;
         this.props.history.push(`/dashboard/users/search/${input}`);
-      };
+      }
     }
-  }
+  };
 
   render() {
     return (
@@ -32,7 +31,11 @@ export default class Users extends Component {
         </nav>
         <main>
           <Route exact path={"/dashboard/users/list"} component={UsersList} />
-          <Route exact path={"/dashboard/users/search/:option"} component={UsersSearchResults} />
+          <Route
+            exact
+            path={"/dashboard/users/search/:option"}
+            component={UsersSearchResults}
+          />
         </main>
       </div>
     );

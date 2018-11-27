@@ -69,6 +69,7 @@ export default class AdminList extends Component {
           pluralName={this.props.pluralName}
           data={item}
           key={index}
+          controls={this.props.controls}
           wantedFields={this.props.wantedFields}
         />
       );
@@ -76,7 +77,10 @@ export default class AdminList extends Component {
     return (
       <Paper className="fadeInFast">
         <Table style={{ overflowX: "scroll" }}>
-          <CustomTableHead data={this.props.wantedFields} />
+          <CustomTableHead
+            data={this.props.wantedFields}
+            controls={this.props.controls}
+          />
           <TableBody>{rows}</TableBody>
         </Table>
         <TablePagination
