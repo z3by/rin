@@ -26,6 +26,7 @@ export default class CustomTableRow extends Component {
     columns.push(
       <CustomTableRowActions
         itemName={this.props.itemName}
+        pluralName={this.props.pluralName}
         itemID={this.props.data.id}
       />
     );

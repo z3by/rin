@@ -24,7 +24,7 @@ export default class AdminList extends Component {
   }
 
   getItemsCount = () => {
-    Axios.get(`/api/${this.props.itemName}s/count`).then(res => {
+    Axios.get(`/api/${this.props.pluralName}/count`).then(res => {
       this.setState({
         itemsCount: res.data["count(*)"]
       });
@@ -40,7 +40,7 @@ export default class AdminList extends Component {
       last: endIndex
     };
 
-    Axios.get(`/api/${this.props.itemName}s/selectedpage`, {
+    Axios.get(`/api/${this.props.pluralName}/selectedpage`, {
       params: indexes
     })
       .then(res => {
@@ -65,6 +65,7 @@ export default class AdminList extends Component {
       return (
         <CustomTableRow
           itemName={this.props.itemName}
+          pluralName={this.props.pluralName}
           data={item}
           key={index}
           wantedFields={this.props.wantedFields}

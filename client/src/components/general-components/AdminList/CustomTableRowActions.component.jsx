@@ -11,7 +11,7 @@ export default class CustomTableRowActions extends Component {
   }
 
   deleteItem = id => {
-    Axios.delete(`/api/${this.props.itemName}s/${id}`)
+    Axios.delete(`/api/${this.props.pluralName}/${id}`)
       .then(res => {
         console.log("deleted");
       })
@@ -25,15 +25,15 @@ export default class CustomTableRowActions extends Component {
       height: "40px",
       width: "40px"
     };
-    let { itemID, itemName } = this.props;
+    let { itemID, itemName, pluralName } = this.props;
     return (
       <TableCell>
-        <Link to={"/dashboard/" + itemName + "s/list/" + itemID}>
+        <Link to={"/dashboard/" + pluralName + "/list/" + itemID}>
           <IconButton style={buttonStyle}>
             <i className="far fa-eye" style={{ fontSize: "1rem" }} />
           </IconButton>
         </Link>
-        <Link to={`/dashboard/${itemName}s/list/update${itemName}/${itemID}`}>
+        <Link to={`/dashboard/${pluralName}/list/update${itemName}/${itemID}`}>
           <IconButton style={buttonStyle}>
             <i
               className="fas fa-edit"

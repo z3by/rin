@@ -19,6 +19,7 @@ export default class ProjectsList extends Component {
       <Paper className="projectsPages fadeInFast">
         <AdminList
           itemName="project"
+          pluralName="projects"
           wantedFields={[
             "id",
             "title",
