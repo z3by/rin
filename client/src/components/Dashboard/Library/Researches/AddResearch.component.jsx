@@ -116,7 +116,7 @@ export default class AddResearch extends Component {
       <div className="fadeInFast">
         <Paper className="admin-form">
           <form onSubmit={this.addLink}>
-            <h4 className="color-2">Fill the link info here</h4>
+            <h4 className="color-2">Fill the Research info here please...</h4>
             <input
               type="text"
               name="title"

@@ -146,7 +146,7 @@ export default class AddBook extends Component {
       <div className="fadeInFast">
         <Paper className="admin-form">
           <form onSubmit={this.addLink}>
-            <h4 className="color-2">Fill the book info here</h4>
+            <h4 className="color-2">Fill the Book info here please ... </h4>
             <input
               required
               type="text"
