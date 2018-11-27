@@ -6,7 +6,7 @@ export default props => {
     document.body.scrollTo(0, window.innerHeight);
   }, 200);
   return (
-    <div className="strategy">
+    <div className="strategy fadeInFast">
       <img
         src="/imgs/banners/lidya-nada-638295-unsplash.jpg"
         className="banner-img"

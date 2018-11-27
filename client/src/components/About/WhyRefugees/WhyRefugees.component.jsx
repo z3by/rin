@@ -5,7 +5,7 @@ export default props => {
   document.body.scrollTo(0, window.innerHeight);
 
   return (
-    <div className="">
+    <div className="fadeInFast">
       <img
         src="/imgs/banners/8120063305_1b6cd86e1a_o.jpg"
         alt=""

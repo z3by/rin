@@ -12,6 +12,7 @@ const partnersAPI = require("../controllers/api/partners.controller");
 const locationsAPI = require("../controllers/api/locations.controller");
 const projectsAPI = require("../controllers/api/projects.controller");
 const lensesAPI = require("../controllers/api/lenses.controller");
+const libraryAPI = require("../controllers/api/library.controller");
 
 // Configure aws s3 SDK (update authentication)
 AWS.config.update({
@@ -105,5 +106,25 @@ router.get("/lenses/:id", lensesAPI.getLens);
 router.post("/lenses", lensesAPI.addLens);
 router.put("/lenses/:id", lensesAPI.updateLens);
 router.delete("/lenses/:id", lensesAPI.deleteLens);
+
+// library routes
+
+// links routes
+router.get("/library/links/:index", libraryAPI.getLinks);
+router.post("/library/links", libraryAPI.addLink);
+router.put("/library/links/:id", libraryAPI.updateLink);
+router.delete("/library/links/:id", libraryAPI.deleteLink);
+
+// books routes
+router.get("/library/books/:index", libraryAPI.getBooks);
+router.post("/library/books", libraryAPI.addBook);
+router.put("/library/books/:id", libraryAPI.updateBook);
+router.delete("/library/books/:id", libraryAPI.deleteBook);
+
+// researches routes
+router.get("/library/researches/:index", libraryAPI.getResearches);
+router.post("/library/researches", libraryAPI.addResearch);
+router.put("/library/researches/:id", libraryAPI.updateResearch);
+router.delete("/library/researches/:id", libraryAPI.deleteResearch);
 
 module.exports = router;

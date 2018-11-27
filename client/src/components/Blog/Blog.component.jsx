@@ -3,23 +3,77 @@ import "./Blog.css";
 import ArticleCard from "./ArticleCard";
 import IconButton from "@material-ui/core/IconButton";
 import Axios from "axios";
+import Button from "@material-ui/core/Button";
 
 export default class Blog extends Component {
   constructor() {
     super();
     this.state = {
       pageNumber: 0,
-      articles: []
+      currentPage: 1,
+      articlesPerPage: 10,
+      allArticlesCount: 0,
+      selectedPageArticles: [],
+      indexOfLastArticle: 0,
+      indexOfFirstArticle: 0
     };
   }
 
   componentDidMount() {
-    this.fetchArticles();
+    this.fetchAllArticlesCount();
+    this.setAndRetrieveSelectedPageArticles();
   }
 
-  fetchArticles = () => {
-    Axios.get("/api/articles").then(res => {
-      this.setState({ articles: res.data });
+  setAndRetrieveSelectedPageArticles = () => {
+    this.setState(
+      {
+        indexOfLastArticle: this.state.currentPage * this.state.articlesPerPage
+      },
+      () => {
+        this.setState(
+          {
+            indexOfFirstArticle:
+              this.state.indexOfLastArticle - this.state.articlesPerPage
+          },
+          () => {
+            this.fetchSelectedPageArticles(
+              this.state.indexOfFirstArticle,
+              this.state.indexOfLastArticle
+            );
+          }
+        );
+      }
+    );
+  };
+
+  fetchAllArticlesCount = () => {
+    Axios.get("/api/articles/count").then(res => {
+      this.setState({ allArticlesCount: res.data["count(*)"] });
+    });
+  };
+
+  fetchSelectedPageArticles = (firstArticleIndex, lastArticleIndex) => {
+    const indexes = {
+      first: firstArticleIndex,
+      last: lastArticleIndex
+    };
+
+    Axios.get("/api/articles/selectedpage", {
+      params: indexes
+    })
+      .then(res => {
+        console.log(res.data);
+
+        this.setState({ selectedPageArticles: res.data });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  changeCurrentPage = number => {
+    this.setState({ currentPage: number }, () => {
+      this.setAndRetrieveSelectedPageArticles();
     });
   };
 
@@ -36,6 +90,33 @@ export default class Blog extends Component {
   };
 
   render() {
+    // Logic for displaying page numbers
+    const { allArticlesCount, articlesPerPage } = this.state;
+
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(allArticlesCount / articlesPerPage); i++) {
+      pageNumbers.push(i);
+    }
+
+    const allPagesNumbers = pageNumbers.map(number => {
+      return (
+        <li key={number}>
+          <Button
+            variant="fab"
+            mini
+            onClick={() => {
+              this.changeCurrentPage(number);
+            }}
+            className={
+              number === this.state.currentPage ? "active-page-number" : ""
+            }
+          >
+            {number}
+          </Button>
+        </li>
+      );
+    });
+
     return (
       <div
         className="blog fadeInFast"
@@ -56,10 +137,12 @@ export default class Blog extends Component {
           </div>
         </header>
         <div className="container">
-          {this.state.articles.map((article, id) => {
-            return <ArticleCard article={article} />;
+          {this.state.selectedPageArticles.map((article, id) => {
+            return <ArticleCard article={article} key={id} />;
           })}
         </div>
+
+        <ul id="page-numbers">{allPagesNumbers}</ul>
       </div>
     );
   }

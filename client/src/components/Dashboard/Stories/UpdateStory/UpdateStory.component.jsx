@@ -46,7 +46,8 @@ export default class UpdateStory extends Component {
       text: "",
       imgs: [],
       SDGs: [],
-      loading: false
+      loading: false,
+      uploaded: false
     };
   }
 
@@ -188,13 +189,20 @@ export default class UpdateStory extends Component {
 
     axios
       .put(`/api/stories/${this.state.id}`, storyData)
-      .then(function(response) {
-        document.querySelector(".done-img").style.display = "flex";
+      .then(response => {
+        this.setState({
+          uploaded: true,
+          formValid: false
+        });
+
         setTimeout(() => {
-          document.querySelector(".done-img").style.display = "none";
+          this.setState({
+            uploaded: false
+          });
         }, 3000);
+        this.props.history.push("/dashboard/stories/list");
       })
-      .catch(function(error) {
+      .catch(error => {
         console.log(error);
       });
   };
@@ -231,7 +239,7 @@ export default class UpdateStory extends Component {
     });
 
     return (
-      <Paper className="admin-form">
+      <Paper className="admin-form fadeInFast">
         <form method="POST" onSubmit={this.updateStory}>
           <label htmlFor="story-title">story title</label>
           <input
@@ -298,7 +306,10 @@ export default class UpdateStory extends Component {
           >
             <i className="fas fa-edit" /> Update Story
           </button>
-          <div className="done-img">
+          <div
+            className="done-img"
+            style={{ opacity: this.state.uploaded ? "1" : "0" }}
+          >
             <img src="/imgs/done.gif" alt="" />
           </div>
         </form>

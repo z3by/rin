@@ -105,9 +105,9 @@ export default class ArticlesList extends Component {
       selectedPageArticles
     } = this.state;
 
-    const articles = selectedPageArticles.map(article => {
+    const articles = selectedPageArticles.map((article, index) => {
       return (
-        <TableRow>
+        <TableRow key={index}>
           <TableCell>{article.id}</TableCell>
           <TableCell>{article.title}</TableCell>
           <TableCell>{article.subtitle}</TableCell>
@@ -158,7 +158,7 @@ export default class ArticlesList extends Component {
     });
 
     return (
-      <Paper className="articlesPages">
+      <Paper className="articlesPages fadeInFast">
         <Table>
           <TableHead>
             <TableRow>

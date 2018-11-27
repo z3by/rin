@@ -3,8 +3,8 @@ import "./Navbar.css";
 import { Link } from "react-router-dom";
 
 export default class Navbar extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       counter: "10,034,623",
       index: -1,
@@ -79,15 +79,16 @@ export default class Navbar extends Component {
             </li>
 
             <li>
-              <Link className="navbar-link" index="5" to={"/about"}>
+              <div className="navbar-link" index="5">
                 <div className="nav-rec" />
-                <p className="nav-rec-text">
-                  about
-                  <ul className="nav-rec-menu">
+                <div>
+                  <p className="nav-rec-text">about</p>
+                  <ul
+                    className="nav-rec-menu"
+                    style={{ opacity: this.state.collapsed ? "0" : "1" }}
+                  >
                     <li>
-                      <Link to={"/about/who-we-are"} hash={"#about-routes"}>
-                        who we are
-                      </Link>
+                      <Link to={"/about/who-we-are"}>who we are</Link>
                     </li>
                     <li>
                       <Link to={"/about/strategy"}>our strategy</Link>
@@ -99,8 +100,8 @@ export default class Navbar extends Component {
                       <Link to={"/about/why-refugees"}>why refugees </Link>
                     </li>
                   </ul>
-                </p>
-              </Link>
+                </div>
+              </div>
             </li>
             <li>
               <Link className="navbar-link" index="6" to={"/library"}>

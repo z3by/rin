@@ -277,11 +277,21 @@ label {
 .fadeInFast {
   -webkit-animation-name: fade-in;
   animation-name: fade-in;
-  -webkit-animation-duration: 3s;
-  animation-duration: 3s;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
   -webkit-animation-timing-function: ease;
   animation-timing-function: ease;
 }
+
+.fadeInSlow {
+  -webkit-animation-name: fade-in;
+  animation-name: fade-in;
+  -webkit-animation-duration: 5s;
+  animation-duration: 5s;
+  -webkit-animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+  animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+
 input[type="range"] {
   height: 25px;
   -webkit-appearance: none;

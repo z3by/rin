@@ -2,7 +2,7 @@ import React from "react";
 
 export default () => {
   return (
-    <div>
+    <div className="fadeInFast">
       <h2 className="color-2">
         <b> The Refugee Investment Network (RIN)</b>
       </h2>
