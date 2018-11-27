@@ -17,6 +17,7 @@ import SignUpLogIn from "../SignUpLogIn/SignUpLogIn.component";
 import StoryDetails from "../Stories/StoryDetails/StoryDetails.component";
 import MoreStories from "../Stories/MoreStories/MoreStories.component";
 import AddProject from "../AddProject/AddProject.component";
+import AdminList from "../general-components/AdminList/AdminList.component";
 
 export default class MyRouter extends Component {
   render() {
@@ -26,6 +27,7 @@ export default class MyRouter extends Component {
           <Navbar />
           <Switch>
             <Route path="/stories/:id" component={StoryDetails} />
+            <Route path="/list" component={AdminList} />
             <Route path="/stories" component={Stories} />
             <Route path="/all-stories" component={MoreStories} />
             <Route path="/map" component={Map} />
