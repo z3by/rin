@@ -33,12 +33,24 @@ export default class StoriesList extends Component {
   }
 
   setAndRetrieveSelectedPageStories = () => {
-    this.setState({ indexOfLastStory: this.state.currentPage * this.state.storiesPerPage }, () => {
-      this.setState({ indexOfFirstStory: this.state.indexOfLastStory - this.state.storiesPerPage }, () => {
-        this.fetchSelectedPageStories(this.state.indexOfFirstStory, this.state.indexOfLastStory);
-      });
-    });
-  }
+    this.setState(
+      { indexOfLastStory: this.state.currentPage * this.state.storiesPerPage },
+      () => {
+        this.setState(
+          {
+            indexOfFirstStory:
+              this.state.indexOfLastStory - this.state.storiesPerPage
+          },
+          () => {
+            this.fetchSelectedPageStories(
+              this.state.indexOfFirstStory,
+              this.state.indexOfLastStory
+            );
+          }
+        );
+      }
+    );
+  };
 
   fetchAllStoriesCount = () => {
     axios.get("/api/stories/count").then(res => {
@@ -52,42 +64,44 @@ export default class StoriesList extends Component {
       last: lastStoryIndex
     };
 
-    axios.get("/api/stories/selectedpage", {
-      params: indexes
-    })
+    axios
+      .get("/api/stories/selectedpage", {
+        params: indexes
+      })
       .then(res => {
         this.setState({ selectedPageStories: res.data });
       })
       .catch(err => {
         console.log(err);
       });
-  }
+  };
 
   deleteStory = story => {
     axios
       .delete(`/api/stories/${story.id}`)
       .then(res => {
-        this.fetchSelectedPageStories(this.state.indexOfFirstStory, this.state.indexOfLastStory);
+        this.fetchSelectedPageStories(
+          this.state.indexOfFirstStory,
+          this.state.indexOfLastStory
+        );
       })
       .catch(err => {
         console.log("Error deleting a table row");
       });
   };
 
-  changeCurrentPage = (number) => {
+  changeCurrentPage = number => {
     this.setState({ currentPage: number }, () => {
       this.setAndRetrieveSelectedPageStories();
-    })
-  }
-
-
+    });
+  };
 
   render() {
     const { allStoriesCount, storiesPerPage, selectedPageStories } = this.state;
 
-    const stories = selectedPageStories.map(story => {
+    const stories = selectedPageStories.map((story, index) => {
       return (
-        <TableRow>
+        <TableRow key={index}>
           <TableCell>{story.id}</TableCell>
           <TableCell>{story.title}</TableCell>
           <TableCell numeric>
@@ -119,12 +133,17 @@ export default class StoriesList extends Component {
 
     const allPagesNumbers = pageNumbers.map(number => {
       return (
-        <li
-          key={number}
-        >
-          <Button variant="fab" mini
-            onClick={() => { this.changeCurrentPage(number) }}
-            className={number === this.state.currentPage ? 'active-page-number' : ''}>
+        <li key={number}>
+          <Button
+            variant="fab"
+            mini
+            onClick={() => {
+              this.changeCurrentPage(number);
+            }}
+            className={
+              number === this.state.currentPage ? "active-page-number" : ""
+            }
+          >
             {number}
           </Button>
         </li>
@@ -132,7 +151,7 @@ export default class StoriesList extends Component {
     });
 
     return (
-      <Paper className="storiesPages">
+      <Paper className="storiesPages fadeInFast">
         <Table>
           <TableHead>
             <TableRow>
@@ -144,9 +163,7 @@ export default class StoriesList extends Component {
           <TableBody>{stories}</TableBody>
         </Table>
 
-        <ul id="page-numbers">
-          {allPagesNumbers}
-        </ul>
+        <ul id="page-numbers">{allPagesNumbers}</ul>
       </Paper>
     );
   }

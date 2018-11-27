@@ -9,7 +9,7 @@ export default props => {
     document.body.scrollTo(0, window.innerHeight);
   }, 200);
   return (
-    <div className="who-we-are">
+    <div className="who-we-are fadeInFast">
       <section>
         <h2 className="color-2 upper">
           <i className="fas fa-users" />

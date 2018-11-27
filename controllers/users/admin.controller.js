@@ -61,3 +61,16 @@ module.exports.getSelectedPageUsers = (req, res) => {
   });
 }
 
+// get the results of searching members in admin dashboard
+module.exports.getSearchedMembers = (req, res) => {
+  const filterOption = req.params.options;
+
+  let qry = `SELECT * FROM members WHERE email LIKE "%${filterOption}%" OR first_name LIKE "%${filterOption}%" OR last_name LIKE "%${filterOption}%" OR organization_name LIKE "%${filterOption}%" OR user_role LIKE "%${filterOption}%"`;
+  connection.query(qry, (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+};
+
+
+

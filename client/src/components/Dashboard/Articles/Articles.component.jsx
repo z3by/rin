@@ -8,7 +8,7 @@ import UpdateArticle from "./UpdateArticle/UpdateArticle.component";
 export default class Articles extends Component {
   render() {
     return (
-      <div className="projects-dashboard">
+      <div className="projects-dashboard fadeInFast">
         <nav className="nav-up">
           <Link to="/dashboard/articles/add">
             <i className="fas fa-plus" />

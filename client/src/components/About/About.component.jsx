@@ -67,7 +67,7 @@ export default class About extends Component {
           <h1 className="header-text color-1">About Us</h1>
           <div className="line" />
 
-          <ul className="about-nav">
+          <ul className="header-nav">
             <li>
               <a
                 onClick={() => {

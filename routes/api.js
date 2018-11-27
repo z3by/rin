@@ -12,6 +12,7 @@ const partnersAPI = require("../controllers/api/partners.controller");
 const locationsAPI = require("../controllers/api/locations.controller");
 const projectsAPI = require("../controllers/api/projects.controller");
 const lensesAPI = require("../controllers/api/lenses.controller");
+const libraryAPI = require("../controllers/api/library.controller");
 
 // Configure aws s3 SDK (update authentication)
 AWS.config.update({
@@ -34,7 +35,7 @@ var upload = multer({
     // Auto detect contet type
     contentType: multerS3.AUTO_CONTENT_TYPE,
     // Set key/ filename as original uploaded name
-    filename: function(req, file, cb) {
+    filename: function (req, file, cb) {
       cb(null, "IMAGE-" + Date.now() + path.extname(file.originalname));
     }
   }),
@@ -52,6 +53,7 @@ router.get("/countries/:id", countriesAPI.getCountry);
 
 //stories routes
 router.get("/stories", storiesAPI.getStories);
+router.get("/stories/search/:options", storiesAPI.getSearchedStories);
 router.get("/stories/selectedpage", storiesAPI.getSelectedPageStories);
 router.get("/stories/count", storiesAPI.getStoriesCount);
 router.get("/stories/:id", storiesAPI.getStory);
@@ -89,6 +91,7 @@ router.put("/requests", projectsAPI.acceptProjectRequest);
 //projects routes
 router.get("/projects", projectsAPI.getProjects);
 router.get("/projects/locations", projectsAPI.getLocations);
+router.get("/projects/search/:options", projectsAPI.getSearchedProjects);
 router.get("/projects/selectedpage", projectsAPI.getSelectedPageProjects);
 router.get("/projects/location/:id", projectsAPI.getProjectCountry);
 router.get("/projects/count", projectsAPI.getProjectsCount);
@@ -103,5 +106,25 @@ router.get("/lenses/:id", lensesAPI.getLens);
 router.post("/lenses", lensesAPI.addLens);
 router.put("/lenses/:id", lensesAPI.updateLens);
 router.delete("/lenses/:id", lensesAPI.deleteLens);
+
+// library routes
+
+// links routes
+router.get("/library/links/:index", libraryAPI.getLinks);
+router.post("/library/links", libraryAPI.addLink);
+router.put("/library/links/:id", libraryAPI.updateLink);
+router.delete("/library/links/:id", libraryAPI.deleteLink);
+
+// books routes
+router.get("/library/books/:index", libraryAPI.getBooks);
+router.post("/library/books", libraryAPI.addBook);
+router.put("/library/books/:id", libraryAPI.updateBook);
+router.delete("/library/books/:id", libraryAPI.deleteBook);
+
+// researches routes
+router.get("/library/researches/:index", libraryAPI.getResearches);
+router.post("/library/researches", libraryAPI.addResearch);
+router.put("/library/researches/:id", libraryAPI.updateResearch);
+router.delete("/library/researches/:id", libraryAPI.deleteResearch);
 
 module.exports = router;

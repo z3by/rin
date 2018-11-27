@@ -38,7 +38,8 @@ export default class NewProject extends Component {
       lat: 0,
       zoom: 0,
       loading: false,
-      formValid: false
+      formValid: false,
+      uploaded: false
     };
   }
 
@@ -117,15 +118,22 @@ export default class NewProject extends Component {
     };
     axios
       .post("/api/projects", projectData)
-      .then(function(response) {
+      .then(response => {
         document.querySelector(".admin-form form").reset();
-        document.querySelector(".done-img").style.display = "flex";
+        this.setState({
+          uploaded: true,
+          formValid: false,
+          img_url: ""
+        });
+
         setTimeout(() => {
-          this.disableAddButton();
-          document.querySelector(".done-img").style.display = "none";
-        }, 2000);
+          this.setState({
+            uploaded: false
+          });
+          this.props.history.push("/dashboard/projects/list");
+        }, 3000);
       })
-      .catch(function(error) {
+      .catch(error => {
         console.log(error);
       });
   };
@@ -176,7 +184,7 @@ export default class NewProject extends Component {
     });
 
     return (
-      <Paper className="admin-form">
+      <Paper className="admin-form fadeInFast">
         <form onSubmit={this.addProject}>
           <input
             type="text"
@@ -261,7 +269,10 @@ export default class NewProject extends Component {
           >
             <i className="fas fa-plus" /> Add Project
           </button>
-          <div className="done-img">
+          <div
+            className="done-img"
+            style={{ opacity: this.state.uploaded ? "1" : "0" }}
+          >
             <img src="/imgs/done.gif" alt="" />
           </div>
         </form>

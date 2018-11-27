@@ -1,17 +1,17 @@
 #page-numbers {
-    list-style: none;
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    padding: 10px;
-    margin: 0;
-  }
+  list-style: none;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding: 10px;
+  margin: 0;
+}
 
 #page-numbers li {
-    margin-right: 0.3em;
-  }
+  margin-right: 0.3em;
+}
 
-.storiesPages #page-numbers li Button.active-page-number {
-      background-color: var(--color-2);
-      color: #fff;
-  }
+#page-numbers li button.active-page-number {
+  background-color: var(--color-2);
+  color: #fff;
+}

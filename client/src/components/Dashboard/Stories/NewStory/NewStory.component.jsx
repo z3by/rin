@@ -45,7 +45,8 @@ export default class NewProject extends Component {
       text: "",
       img: "",
       loading: false,
-      formValid: false
+      formValid: false,
+      uploaded: false
     };
   }
 
@@ -124,11 +125,20 @@ export default class NewProject extends Component {
       .post("/api/stories", storyData)
       .then(response => {
         document.querySelector(".admin-form form").reset();
-        document.querySelector(".done-img").style.display = "flex";
+        this.setState({
+          uploaded: true,
+          formValid: false,
+          img: ""
+        });
+
         setTimeout(() => {
-          document.querySelector(".done-img").style.display = "none";
+          this.setState({
+            uploaded: false
+          });
+          this.props.history.push("/dashboard/stories/list");
         }, 3000);
       })
+
       .catch(error => {
         console.log(error);
       });
@@ -186,7 +196,7 @@ export default class NewProject extends Component {
     });
 
     return (
-      <Paper className="admin-form">
+      <Paper className="admin-form fadeInFast">
         <form onSubmit={this.addStory}>
           <input
             type="text"
@@ -246,7 +256,10 @@ export default class NewProject extends Component {
           >
             <i className="fas fa-plus" /> Add Story
           </button>
-          <div className="done-img">
+          <div
+            className="done-img"
+            style={{ opacity: this.state.uploaded ? "1" : "0" }}
+          >
             <img src="/imgs/done.gif" alt="" />
           </div>
         </form>

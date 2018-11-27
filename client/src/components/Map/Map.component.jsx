@@ -119,7 +119,7 @@ export default class Map extends Component {
     return (
       <div
         style={{ height: "100vh", width: "100%" }}
-        className="map fadeInFast"
+        className="map fadeInSlow"
       >
         <Filter
           filter={this.setFilterOptions}

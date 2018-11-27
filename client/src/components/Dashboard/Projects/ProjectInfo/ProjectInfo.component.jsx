@@ -38,7 +38,7 @@ export default class ProjectInfo extends Component {
 
   render() {
     return (
-      <div className="admin-info-single">
+      <div className="admin-info-single fadeInFast">
         <table>
           <tr>
             <th>Project ID</th>

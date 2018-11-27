@@ -40,7 +40,11 @@ module.exports.getSelectedPageArticles = (req, res) => {
       firstArticleIndex,
       lastArticleIndex
     );
-    res.send(selectPageArticles);
+    const parsed = selectPageArticles.map(article => {
+      article.imgs = JSON.parse(article.imgs);
+      return article;
+    });
+    res.send(parsed);
   });
 };
 
@@ -85,9 +89,6 @@ module.exports.updateArticle = (req, res) => {
     text: req.body.text,
     imgs: JSON.stringify(req.body.imgs)
   };
-
-  console.log(data, "data");
-  console.log(req.params, "params");
 
   let qry = `UPDATE articles
                    SET title="${data.title}", subtitle="${

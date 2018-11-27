@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import "./UsersList.css";
 import Table from "@material-ui/core/Table";
+import Button from "@material-ui/core/Button";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import Button from "@material-ui/core/Button";
 import Axios from "axios";
 
 export default class UsersList extends Component {
@@ -27,14 +27,13 @@ export default class UsersList extends Component {
     this.setAndRetrieveSelectedPageUsers();
   }
 
-  componentDidMount() {
-  }
+  componentDidMount() {}
 
   fetchAllUsersCount = () => {
     Axios.get("/users/allusers/count").then(res => {
       this.setState({ allUsersCount: res.data["count(*)"] });
     });
-  }
+  };
 
   fetchSelectedPageUsers = (firstUserIndex, lastUserIndex) => {
     const indexes = {
@@ -51,28 +50,45 @@ export default class UsersList extends Component {
       .catch(err => {
         console.log(err);
       });
-  }
+  };
 
   setAndRetrieveSelectedPageUsers = () => {
-    this.setState({ indexOfLastUser: this.state.currentPage * this.state.usersPerPage }, () => {
-      this.setState({ indexOfFirstUser: this.state.indexOfLastUser - this.state.usersPerPage }, () => {
-        this.fetchSelectedPageUsers(this.state.indexOfFirstUser, this.state.indexOfLastUser);
-      });
-    });
-  }
+    this.setState(
+      { indexOfLastUser: this.state.currentPage * this.state.usersPerPage },
+      () => {
+        this.setState(
+          {
+            indexOfFirstUser:
+              this.state.indexOfLastUser - this.state.usersPerPage
+          },
+          () => {
+            this.fetchSelectedPageUsers(
+              this.state.indexOfFirstUser,
+              this.state.indexOfLastUser
+            );
+          }
+        );
+      }
+    );
+  };
 
-  changeCurrentPage = (number) => {
+  changeCurrentPage = number => {
     this.setState({ currentPage: number }, () => {
       this.setAndRetrieveSelectedPageUsers();
     });
-  }
+  };
 
   render() {
-    const { allUsersCount, currentPage, usersPerPage, selectedPageUsers } = this.state;
+    const {
+      allUsersCount,
+      currentPage,
+      usersPerPage,
+      selectedPageUsers
+    } = this.state;
 
-    const allUsers = selectedPageUsers.map(user => {
+    const allUsers = selectedPageUsers.map((user, index) => {
       return (
-        <TableRow>
+        <TableRow key={index}>
           <TableCell>{user.first_name}</TableCell>
           <TableCell>{user.last_name}</TableCell>
           <TableCell>{user.organization_name}</TableCell>
@@ -91,12 +107,15 @@ export default class UsersList extends Component {
 
     const allPagesNumbers = pageNumbers.map(number => {
       return (
-        <li
-          key={number}
-        >
-          <Button variant="fab" mini
-            onClick={() => { this.changeCurrentPage(number) }}
-            className={number === currentPage ? 'active-page-number' : ''}>
+        <li key={number}>
+          <Button
+            variant="fab"
+            mini
+            onClick={() => {
+              this.changeCurrentPage(number);
+            }}
+            className={number === currentPage ? "active-page-number" : ""}
+          >
             {number}
           </Button>
         </li>
@@ -104,7 +123,7 @@ export default class UsersList extends Component {
     });
 
     return (
-      <Paper className="all-users">
+      <Paper className="all-users fadeInFast">
         <Table>
           <TableHead>
             <TableRow>
@@ -119,9 +138,7 @@ export default class UsersList extends Component {
           <TableBody>{allUsers}</TableBody>
         </Table>
 
-        <ul id="page-numbers">
-          {allPagesNumbers}
-        </ul>
+        <ul id="page-numbers">{allPagesNumbers}</ul>
       </Paper>
     );
   }

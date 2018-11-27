@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, Route } from "react-router-dom";
+import { Link, Route, Redirect } from "react-router-dom";
 import NewProject from "./NewProject/NewProject.component";
 import ProjectsList from "./ProjectsList/ProjectsList.component";
 import ProjectInfo from "./ProjectInfo/ProjectInfo.component";
@@ -7,6 +7,7 @@ import UpdateProject from "./UpdateProject/UpdateProject.component";
 import "./Projects.css";
 import Axios from "axios";
 import ProjectRequests from "./ProjectRequest/ProjectRequest.component";
+import ProjectsSearchResults from "./ProjectsSearchResults/ProjectsSearchResults.component";
 
 export default class Projects extends Component {
   constructor(props) {
@@ -29,9 +30,20 @@ export default class Projects extends Component {
     });
   };
 
+  searchProjects = (e) => {
+    if (e.key === "Enter") {
+      //a condition to avoid empty search input
+      if (e.target.value) {
+        const input = e.target.value;
+        this.props.history.push(`/dashboard/projects/search/${input}`);
+      };
+    }
+  }
+
+
   render() {
     return (
-      <div className="projects-dashboard">
+      <div className="projects-dashboard fadeInFast">
         <nav className="nav-up">
           <Link to="/dashboard/projects/add">
             <i className="fas fa-plus" />
@@ -53,6 +65,7 @@ export default class Projects extends Component {
               type="search"
               className="search-input"
               placeholder="Search"
+              onKeyUp={this.searchProjects}
             />
             <i className="fas fa-search" />
           </div>
@@ -85,6 +98,11 @@ export default class Projects extends Component {
             exact
             path={"/dashboard/projects/list/updateproject/:id"}
             component={UpdateProject}
+          />
+          <Route
+            exact
+            path={"/dashboard/projects/search/:option"}
+            component={ProjectsSearchResults}
           />
         </main>
       </div>

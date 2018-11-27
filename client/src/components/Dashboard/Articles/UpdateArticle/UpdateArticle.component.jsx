@@ -75,6 +75,7 @@ export default class UpdateArticle extends Component {
           this.setState({
             uploaded: false
           });
+          this.props.history.push("/dashboard/articles/list");
         }, 3000);
       })
       .catch(error => {
@@ -130,7 +131,7 @@ export default class UpdateArticle extends Component {
 
   render() {
     return (
-      <Paper className="admin-form">
+      <Paper className="admin-form fadeInFast">
         <form
           onSubmit={e => {
             this.updateArticle(e, this.state.id);

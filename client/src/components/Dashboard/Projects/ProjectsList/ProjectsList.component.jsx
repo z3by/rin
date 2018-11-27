@@ -44,48 +44,70 @@ export default class ProjectsList extends Component {
       last: lastProjectIndex
     };
 
-    axios.get("/api/projects/selectedpage", {
-      params: indexes
-    })
+    axios
+      .get("/api/projects/selectedpage", {
+        params: indexes
+      })
       .then(res => {
         this.setState({ selectedPageProjects: res.data });
       })
       .catch(err => {
         console.log(err);
       });
-  }
+  };
 
   setAndRetrieveSelectedPageProjects = () => {
-    this.setState({ indexOfLastProject: this.state.currentPage * this.state.projectsPerPage }, () => {
-      this.setState({ indexOfFirstProject: this.state.indexOfLastProject - this.state.projectsPerPage }, () => {
-        this.fetchSelectedPageProjects(this.state.indexOfFirstProject, this.state.indexOfLastProject);
-      });
-    });
-  }
+    this.setState(
+      {
+        indexOfLastProject: this.state.currentPage * this.state.projectsPerPage
+      },
+      () => {
+        this.setState(
+          {
+            indexOfFirstProject:
+              this.state.indexOfLastProject - this.state.projectsPerPage
+          },
+          () => {
+            this.fetchSelectedPageProjects(
+              this.state.indexOfFirstProject,
+              this.state.indexOfLastProject
+            );
+          }
+        );
+      }
+    );
+  };
 
   deleteProject = project => {
     axios
       .delete(`/api/projects/${project.id}`)
       .then(res => {
-        this.fetchSelectedPageProjects(this.state.indexOfFirstProject, this.state.indexOfLastProject);
+        this.fetchSelectedPageProjects(
+          this.state.indexOfFirstProject,
+          this.state.indexOfLastProject
+        );
       })
       .catch(err => {
         console.log("Error deleting a table row");
       });
   };
 
-  changeCurrentPage = (number) => {
+  changeCurrentPage = number => {
     this.setState({ currentPage: number }, () => {
       this.setAndRetrieveSelectedPageProjects();
     });
-  }
+  };
 
   render() {
-    const { allProjectsCount, projectsPerPage, selectedPageProjects } = this.state;
+    const {
+      allProjectsCount,
+      projectsPerPage,
+      selectedPageProjects
+    } = this.state;
 
-    const projects = selectedPageProjects.map(project => {
+    const projects = selectedPageProjects.map((project, index) => {
       return (
-        <TableRow>
+        <TableRow key={index}>
           <TableCell>{project.id}</TableCell>
           <TableCell>{project.title}</TableCell>
           <TableCell>{project.organization_name}</TableCell>
@@ -118,13 +140,17 @@ export default class ProjectsList extends Component {
 
     const allPagesNumbers = pageNumbers.map(number => {
       return (
-
-        <li
-          key={number}
-        >
-          <Button variant="fab" mini
-            onClick={() => { this.changeCurrentPage(number) }}
-            className={number === this.state.currentPage ? 'active-page-number' : ''}>
+        <li key={number}>
+          <Button
+            variant="fab"
+            mini
+            onClick={() => {
+              this.changeCurrentPage(number);
+            }}
+            className={
+              number === this.state.currentPage ? "active-page-number" : ""
+            }
+          >
             {number}
           </Button>
         </li>
@@ -132,7 +158,7 @@ export default class ProjectsList extends Component {
     });
 
     return (
-      <Paper className="projectsPages">
+      <Paper className="projectsPages fadeInFast">
         <Table>
           <TableHead>
             <TableRow>
@@ -145,9 +171,7 @@ export default class ProjectsList extends Component {
           <TableBody>{projects}</TableBody>
         </Table>
 
-        <ul id="page-numbers">
-          {allPagesNumbers}
-        </ul>
+        <ul id="page-numbers">{allPagesNumbers}</ul>
       </Paper>
     );
   }

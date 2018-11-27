@@ -39,7 +39,8 @@ export default class UpdateProject extends Component {
       lat: 0,
       zoom: 0,
       loading: false,
-      formValid: false
+      formValid: false,
+      uploaded: false
     };
   }
 
@@ -178,13 +179,21 @@ export default class UpdateProject extends Component {
 
     axios
       .put(`/api/projects/${this.state.id}`, projectData)
-      .then(function(response) {
+      .then(response => {
         document.querySelector(".done-img").style.display = "flex";
+        this.setState({
+          uploaded: true,
+          formValid: false
+        });
+
         setTimeout(() => {
-          document.querySelector(".done-img").style.display = "none";
-        }, 2000);
+          this.setState({
+            uploaded: false
+          });
+          this.props.history.push("/dashboard/projects/list");
+        }, 3000);
       })
-      .catch(function(error) {
+      .catch(error => {
         console.log(error);
       });
   };
@@ -327,7 +336,10 @@ export default class UpdateProject extends Component {
           >
             <i className="fas fa-edit" /> Update Project
           </button>
-          <div className="done-img">
+          <div
+            className="done-img"
+            style={{ opacity: this.state.uploaded ? "1" : "0" }}
+          >
             <img src="/imgs/done.gif" alt="" />
           </div>
         </form>

@@ -40,7 +40,7 @@ export default class StoryInfo extends Component {
     });
 
     return (
-      <div className="admin-info-single">
+      <div className="admin-info-single fadeInFast">
         <table>
           <tr>
             <th>Story ID</th>
@@ -53,7 +53,9 @@ export default class StoryInfo extends Component {
           <tr>
             <th>Story Pre-Description</th>
             <td>
-              <p className="p-theme-1-admin-info">{this.state.story.pre_description}</p>
+              <p className="p-theme-1-admin-info">
+                {this.state.story.pre_description}
+              </p>
             </td>
           </tr>
           <tr>
@@ -71,15 +73,17 @@ export default class StoryInfo extends Component {
           <tr>
             <th>Story SDGs</th>
             <td>
-              <ul>
-                {SDGs}
-              </ul>
+              <ul>{SDGs}</ul>
             </td>
           </tr>
           <tr>
             <th>Story Images</th>
             <td>
-              <img className="admin-img" src={this.state.story.imgs[0]} alt="Story" />
+              <img
+                className="admin-img"
+                src={this.state.story.imgs[0]}
+                alt="Story"
+              />
             </td>
           </tr>
         </table>

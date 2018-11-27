@@ -38,7 +38,8 @@ export default class AddProject extends Component {
       lat: 0,
       zoom: 0,
       loading: false,
-      formValid: false
+      formValid: false,
+      uploaded: false
     };
   }
 
@@ -117,15 +118,23 @@ export default class AddProject extends Component {
     };
     axios
       .post("/api/projects", projectData)
-      .then(function(response) {
+      .then(response => {
         document.querySelector(".admin-form form").reset();
-        document.querySelector(".done-img").style.display = "flex";
-        this.disableAddButton();
+
+        this.setState({
+          img_url: "",
+          uploaded: true,
+          formValid: false
+        });
+
         setTimeout(() => {
-          document.querySelector(".done-img").style.display = "none";
-        }, 2000);
+          this.setState({
+            uploaded: false
+          });
+          this.props.history.push("/map");
+        }, 3000);
       })
-      .catch(function(error) {
+      .catch(error => {
         console.log(error);
       });
   };
@@ -267,7 +276,10 @@ export default class AddProject extends Component {
             >
               <i className="fas fa-plus" /> Add Project
             </button>
-            <div className="done-img">
+            <div
+              className="done-img"
+              style={{ opacity: this.state.uploaded ? "1" : "0" }}
+            >
               <h4>Thanks! your project will be added after reviewing ...</h4>
             </div>
           </form>

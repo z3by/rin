@@ -49,10 +49,27 @@ module.exports.getStories = (req, res) => {
   const filterOptions = req.query;
 
   let qry = "select * from stories";
+  //check if a user has entered any search value
   if (filterOptions) {
     qry = checkInputAndModifyQuery(qry, filterOptions);
   }
 
+  connection.query(qry, (err, result) => {
+    if (err) throw err;
+    const parsed = result.map(story => {
+      story.imgs = JSON.parse(story.imgs);
+      story.SDGs = JSON.parse(story.SDGs);
+      return story;
+    });
+    res.send(parsed);
+  });
+};
+
+//this function enables the admin searching stories in admin dashboard
+module.exports.getSearchedStories = (req, res) => {
+  const filterOptions = req.params.options;
+
+  let qry = `SELECT * FROM stories WHERE title like "%${filterOptions}%" OR lens like "%${filterOptions}%" OR pre_description like "%${filterOptions}%"`;
   connection.query(qry, (err, result) => {
     if (err) throw err;
     const parsed = result.map(story => {
