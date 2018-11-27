@@ -105,9 +105,9 @@ export default class ProjectsList extends Component {
       selectedPageProjects
     } = this.state;
 
-    const projects = selectedPageProjects.map((project, index) => {
+    const projects = selectedPageProjects.map(project => {
       return (
-        <TableRow key={index}>
+        <TableRow>
           <TableCell>{project.id}</TableCell>
           <TableCell>{project.title}</TableCell>
           <TableCell>{project.organization_name}</TableCell>
