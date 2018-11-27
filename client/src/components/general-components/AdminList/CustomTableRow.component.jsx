@@ -11,20 +11,24 @@ export default class CustomTableRow extends Component {
 
   render() {
     const columns = [];
-    for (const name in this.props.data) {
-      if (this.props.data.hasOwnProperty(name)) {
-        const val = this.props.data[name];
-        columns.push(<TableCell>{val}</TableCell>);
+    const wantedFields = this.props.wantedFields;
+
+    // filter the data and keep only wanted fields
+    for (const key in this.props.data) {
+      if (this.props.data.hasOwnProperty(key)) {
+        if (wantedFields.includes(key)) {
+          const value = this.props.data[key];
+          columns.push(<TableCell>{value}</TableCell>);
+        }
       }
     }
-    return (
-      <TableRow>
-        {columns}
-        <CustomTableRowActions
-          itemName={this.props.itemName}
-          itemID={this.props.data.id}
-        />
-      </TableRow>
+
+    columns.push(
+      <CustomTableRowActions
+        itemName={this.props.itemName}
+        itemID={this.props.data.id}
+      />
     );
+    return <TableRow>{columns}</TableRow>;
   }
 }

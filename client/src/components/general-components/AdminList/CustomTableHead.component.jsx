@@ -4,12 +4,10 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 
 export default function CustomTableHead(props) {
-  const columns = [];
-  for (const key in props.data) {
-    if (props.data.hasOwnProperty(key)) {
-      columns.push(<TableCell>{key}</TableCell>);
-    }
-  }
+  const columns = props.data.map((title, index) => {
+    return <TableCell key={index}>{title}</TableCell>;
+  });
+  columns.push(<TableCell>Actions</TableCell>);
   return (
     <TableHead>
       <TableRow>{columns}</TableRow>

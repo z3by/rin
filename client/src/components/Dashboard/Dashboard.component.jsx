@@ -47,7 +47,6 @@ export default class Dashboard extends Component {
           </Link>
         </nav>
         <main>
-          <AdminList itemName="project" />
           <Route path="/dashboard/projects" component={Projects} />
           <Route path="/dashboard/Articles" component={Articles} />
           <Route path="/dashboard/stories" component={Stories} />

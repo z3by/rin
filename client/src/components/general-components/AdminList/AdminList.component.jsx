@@ -2,25 +2,54 @@ import React, { Component } from "react";
 import axios from "axios";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { TablePagination } from "@material-ui/core";
 import CustomTableHead from "./CustomTableHead.component";
 import CustomTableRow from "./CustomTableRow.component";
+import Axios from "axios";
 
 export default class AdminList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [
-        { id: 28, title: "this is the title", subtitle: "this is the subtitle" }
-      ],
+      data: [],
       page: 0,
       rowsPerPage: 5,
       itemsCount: 100
     };
   }
+
+  componentDidMount() {
+    this.getItemsCount();
+  }
+
+  getItemsCount = () => {
+    Axios.get(`/api/${this.props.itemName}s/count`).then(res => {
+      this.setState({
+        itemsCount: res.data["count(*)"]
+      });
+    });
+    this.fetchData();
+  };
+
+  fetchData = () => {
+    const startIndex = this.state.page * this.state.rowsPerPage;
+    const endIndex = startIndex + this.state.rowsPerPage;
+    const indexes = {
+      first: startIndex,
+      last: endIndex
+    };
+
+    Axios.get(`/api/${this.props.itemName}s/selectedpage`, {
+      params: indexes
+    })
+      .then(res => {
+        this.setState({ data: res.data });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   handleChangePage = (event, page) => {
     this.setState({ page });
@@ -32,30 +61,37 @@ export default class AdminList extends Component {
 
   render() {
     const { itemsCount, rowsPerPage, page, data } = this.state;
-
+    const rows = this.state.data.map((item, index) => {
+      return (
+        <CustomTableRow
+          itemName={this.props.itemName}
+          data={item}
+          key={index}
+          wantedFields={this.props.wantedFields}
+        />
+      );
+    });
     return (
       <Paper className="fadeInFast">
-        <Table>
-          <CustomTableHead data={data[0]} />
-          <TableBody>
-            <CustomTableRow itemName={this.props.itemName} data={data[0]} />
-          </TableBody>
-          <TablePagination
-            rowsPerPageOptions={[5, 10, 25]}
-            component="div"
-            count={itemsCount}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            backIconButtonProps={{
-              "aria-label": "Previous Page"
-            }}
-            nextIconButtonProps={{
-              "aria-label": "Next Page"
-            }}
-            onChangePage={this.handleChangePage}
-            onChangeRowsPerPage={this.handleChangeRowsPerPage}
-          />
+        <Table style={{ overflowX: "scroll" }}>
+          <CustomTableHead data={this.props.wantedFields} />
+          <TableBody>{rows}</TableBody>
         </Table>
+        <TablePagination
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={itemsCount}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          backIconButtonProps={{
+            "aria-label": "Previous Page"
+          }}
+          nextIconButtonProps={{
+            "aria-label": "Next Page"
+          }}
+          onChangePage={this.handleChangePage}
+          onChangeRowsPerPage={this.handleChangeRowsPerPage}
+        />
       </Paper>
     );
   }
