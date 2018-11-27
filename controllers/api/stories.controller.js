@@ -35,7 +35,9 @@ const checkInputAndModifyQuery = (qry, input) => {
       qry += ` WHERE JSON_SEARCH(SDGs, 'one', '${input.SDGs[0]}') IS NOT NULL`;
       if (input.SDGs.length > 1) {
         for (let i = 1; i < input.SDGs.length; i++) {
-          qry += ` AND JSON_SEARCH(SDGs, 'one', '${input.SDGs[i]}') IS NOT NULL`;
+          qry += ` AND JSON_SEARCH(SDGs, 'one', '${
+            input.SDGs[i]
+          }') IS NOT NULL`;
         }
       }
     }
@@ -43,7 +45,7 @@ const checkInputAndModifyQuery = (qry, input) => {
   }
 
   return qry;
-}
+};
 
 module.exports.getStories = (req, res) => {
   const filterOptions = req.query;
@@ -87,7 +89,7 @@ module.exports.getStoriesCount = (req, res) => {
     if (err) throw err;
     res.send(result[0]);
   });
-}
+};
 
 module.exports.getSelectedPageStories = (req, res) => {
   const firstStoryIndex = req.query.first;
@@ -138,9 +140,9 @@ module.exports.addStory = (req, res) => {
 
   let qry = `insert into stories(title, pre_description, lens, text, imgs, SDGs) values("${
     data.title
-    }", "${data.pre_description}", "${data.lens}", '${data.text}', '${
+  }", "${data.pre_description}", "${data.lens}", '${data.text}', '${
     data.imgs
-    }', '${data.SDGs}');`;
+  }', '${data.SDGs}');`;
   connection.query(qry, (err, result) => {
     if (err) throw err;
     res.send("story row inserted successfully");
@@ -151,6 +153,9 @@ module.exports.uploadImage = (req, res) => {
   res.send(req.file);
 };
 
+module.exports.uploadPDF = (req, res) => {
+  res.send(req.file);
+};
 module.exports.updateStory = (req, res) => {
   let data = {
     title: req.body.title,
@@ -169,9 +174,9 @@ module.exports.updateStory = (req, res) => {
   let qry = `UPDATE stories
                    SET title="${data.title}", pre_description="${
     data.pre_description
-    }", lens="${data.lens}", text="${data.text}", imgs='${data.imgs}', SDGs='${
+  }", lens="${data.lens}", text="${data.text}", imgs='${data.imgs}', SDGs='${
     data.SDGs
-    }'
+  }'
                    WHERE id=${req.params.id};`;
   connection.query(qry, (err, result) => {
     if (err) throw err;

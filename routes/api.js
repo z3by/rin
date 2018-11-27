@@ -13,6 +13,7 @@ const locationsAPI = require("../controllers/api/locations.controller");
 const projectsAPI = require("../controllers/api/projects.controller");
 const lensesAPI = require("../controllers/api/lenses.controller");
 const libraryAPI = require("../controllers/api/library.controller");
+const adminAPI = require("../controllers/users/admin.controller");
 
 // Configure aws s3 SDK (update authentication)
 AWS.config.update({
@@ -26,7 +27,7 @@ const s3 = new AWS.S3();
 const myBucket = "rin-2018";
 
 // Multer upload (Use multer-s3 to save directly to AWS instead of locally)
-var upload = multer({
+var uploadImg = multer({
   storage: multerS3({
     s3: s3,
     bucket: myBucket,
@@ -35,7 +36,7 @@ var upload = multer({
     // Auto detect contet type
     contentType: multerS3.AUTO_CONTENT_TYPE,
     // Set key/ filename as original uploaded name
-    filename: function (req, file, cb) {
+    filename: function(req, file, cb) {
       cb(null, "IMAGE-" + Date.now() + path.extname(file.originalname));
     }
   }),
@@ -44,8 +45,30 @@ var upload = multer({
   }
 }).single("img");
 
+// Multer upload (Use multer-s3 to save directly to AWS instead of locally)
+var uploadPDF = multer({
+  storage: multerS3({
+    s3: s3,
+    bucket: myBucket,
+    // Set public read permissions
+    acl: "public-read",
+    // Auto detect contet type
+    contentType: multerS3.AUTO_CONTENT_TYPE,
+    // Set key/ filename as original uploaded name
+    filename: function(req, file, cb) {
+      cb(null, "BOOK-" + Date.now() + path.extname(file.originalname));
+    }
+  }),
+  limits: {
+    fileSize: 1000000
+  }
+}).single("pdf");
+
 // upload image route
-router.post("/upload", upload, storiesAPI.uploadImage);
+router.post("/upload", uploadImg, storiesAPI.uploadImage);
+
+// upload image route
+router.post("/uploadpdf", uploadPDF, storiesAPI.uploadPDF);
 
 //countries routes
 router.get("/countries", countriesAPI.getCountries);
@@ -69,6 +92,11 @@ router.get("/articles/:id", articlesAPI.getArticle);
 router.post("/articles", articlesAPI.addArticle);
 router.put("/articles/:id", articlesAPI.updateArticle);
 router.delete("/articles/:id", articlesAPI.deleteArticles);
+
+// users routes
+router.get("/members", adminAPI.getAllMembers);
+router.get("/members/count", adminAPI.getUsersCount);
+router.get("/members/selectedpage", adminAPI.getSelectedPageUsers);
 
 //partners routes
 router.get("/partners", partnersAPI.getPartners);
