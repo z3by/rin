@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
+import CustomTableRowActions from "./CustomTableRowActions.component";
 
 export default class CustomTableRow extends Component {
   constructor(props) {
@@ -9,8 +10,6 @@ export default class CustomTableRow extends Component {
   }
 
   render() {
-    console.log(this.props.data);
-
     const columns = [];
     for (const name in this.props.data) {
       if (this.props.data.hasOwnProperty(name)) {
@@ -18,6 +17,14 @@ export default class CustomTableRow extends Component {
         columns.push(<TableCell>{val}</TableCell>);
       }
     }
-    return <TableRow>{columns}</TableRow>;
+    return (
+      <TableRow>
+        {columns}
+        <CustomTableRowActions
+          itemName={this.props.itemName}
+          itemID={this.props.data.id}
+        />
+      </TableRow>
+    );
   }
 }

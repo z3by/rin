@@ -14,7 +14,7 @@ export default class AdminList extends Component {
     super(props);
     this.state = {
       data: [
-        { id: 1, title: "this is the title", subtitle: "this is the subtitle" }
+        { id: 28, title: "this is the title", subtitle: "this is the subtitle" }
       ],
       page: 0,
       rowsPerPage: 5,
@@ -38,7 +38,7 @@ export default class AdminList extends Component {
         <Table>
           <CustomTableHead data={data[0]} />
           <TableBody>
-            <CustomTableRow data={data[0]} />
+            <CustomTableRow itemName={this.props.itemName} data={data[0]} />
           </TableBody>
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
