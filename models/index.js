@@ -14,12 +14,13 @@ const models = [
 
 const db = {};
 
-const createModels = () => {
+const migrate = () => {
   models.forEach(modelName => {
     const Model = require(`./${modelName}.model`);
     db[modelName] = sequelize.define(modelName.toLowerCase(), Model);
+    db[modelName].sync();
   });
 };
 
 module.exports.db = db;
-module.exports.createModels = createModels;
+module.exports.migrate = migrate;

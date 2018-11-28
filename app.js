@@ -11,7 +11,7 @@ const usersRouter = require("./routes/users");
 const indexRouter = require("./routes/index");
 const apiRouter = require("./routes/api");
 const sequelize = require("./config/sequelize.config");
-const createModels = require("./models/index").createModels;
+const migrate = require("./models/index").migrate;
 
 // init the database
 sequelize
@@ -24,7 +24,7 @@ sequelize
   });
 
 // initialize the models
-createModels();
+migrate();
 
 const app = express();
 
