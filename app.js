@@ -10,8 +10,7 @@ const session = require("express-session");
 const usersRouter = require("./routes/users");
 const indexRouter = require("./routes/index");
 const apiRouter = require("./routes/api");
-const migrateDB = require("./controllers/migrate.controller");
-const sequelize = require("./config/sequalize.config");
+const sequelize = require("./config/sequelize.config");
 
 // init the database
 sequelize
