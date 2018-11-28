@@ -2,9 +2,9 @@ const Sequelize = require("sequelize");
 
 module.exports = {
   lng: {
-    type: Sequelize.STRING
+    type: Sequelize.FLOAT
   },
   lat: {
-    type: Sequelize.STRING
+    type: Sequelize.FLOAT
   }
 };
