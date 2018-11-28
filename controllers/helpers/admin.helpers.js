@@ -1,6 +1,6 @@
 const mysql = require("mysql");
 
-const DBconfig = require("../db.config");
+const DBconfig = require("../../config/db.config");
 
 // get all the users in the db
 module.exports.getAllUsers = () => {

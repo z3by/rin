@@ -1,6 +1,6 @@
 const mysql = require("mysql");
 const countriesHelpers = require("./helpers/countries.helpers");
-const dbConfig = require("./db.config");
+const dbConfig = require("../config/db.config");
 
 const countriesModel = require("../models/countries.model");
 const projectsModel = require("../models/projects.model");

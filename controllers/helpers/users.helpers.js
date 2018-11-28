@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 
 const registerValidator = require("../validators/register.validator");
 const loginValidator = require("../validators/login.validator");
-const DBconfig = require("../db.config");
+const DBconfig = require("../../config/db.config");
 
 // check if user input is valid for register
 module.exports.validateUserRegister = userInfo => {

@@ -1,5 +1,5 @@
 const mysql = require("mysql");
-const dbConfig = require("../db.config");
+const dbConfig = require("../../config/db.config");
 const storyValidator = require("../validators/story.validator");
 
 const connection = mysql.createConnection(dbConfig);
