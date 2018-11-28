@@ -1,20 +1,17 @@
 const Sequelize = require("sequelize");
 
 module.exports = {
-  business: {
+  name: {
     type: Sequelize.STRING
   },
-  businessDescription: {
+  impact: {
     type: Sequelize.STRING
   },
-  storyText: {
+  thesis: {
     type: Sequelize.STRING
   },
-  founders: {
-    type: Sequelize.JSON
-  },
-  investors: {
-    type: Sequelize.JSON
+  structure: {
+    type: Sequelize.STRING
   },
   refugeeInvestementType: {
     type: Sequelize.STRING
