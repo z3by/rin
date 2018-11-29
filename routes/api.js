@@ -33,8 +33,7 @@ router.delete("/stories/:id", storiesAPI.deleteStory);
 
 //articles routes
 router.get("/articles", articlesAPI.getArticles);
-router.get("/articles/count", articlesAPI.getArticlesCount);
-router.get("/articles/selectedpage", articlesAPI.getSelectedPageArticles);
+router.get("/articles/page", articlesAPI.getArticlesPage);
 router.get("/articles/:id", articlesAPI.getArticle);
 router.post("/articles", articlesAPI.addArticle);
 router.put("/articles/:id", articlesAPI.updateArticle);
