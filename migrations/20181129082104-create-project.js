@@ -44,7 +44,7 @@ module.exports = {
       locationId: {
         type: Sequelize.INTEGER,
         references: {
-          model: "Location",
+          model: "locations",
           key: "id"
         }
       },
