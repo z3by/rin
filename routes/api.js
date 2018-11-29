@@ -19,6 +19,7 @@ router.post("/uploadpdf", s3Config.uploadPDF, storiesAPI.uploadPDF);
 
 //countries routes
 router.get("/countries", countriesAPI.getCountries);
+router.get("/countries/names", countriesAPI.getCountriesNames);
 
 //stories routes
 router.get("/stories", storiesAPI.getStories);
