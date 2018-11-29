@@ -1,36 +1,48 @@
 "use strict";
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable("researches", {
+    return queryInterface.createTable("stories", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      title: {
+      buisness: {
         type: Sequelize.STRING
       },
-      subtitle: {
+      buisnessDescription: {
         type: Sequelize.STRING
       },
-      researchUrl: {
+      storyText: {
         type: Sequelize.STRING
       },
-      imgUrl: {
-        type: Sequelize.STRING
-      },
-      researchers: {
+      founders: {
         type: Sequelize.JSON
       },
-      year: {
-        type: Sequelize.DATE
+      investors: {
+        type: Sequelize.JSON
       },
-      pages: {
+      refugeeInvestmentType: {
+        type: Sequelize.STRING
+      },
+      sdgs: {
+        type: Sequelize.JSON
+      },
+      investmentSize: {
         type: Sequelize.INTEGER
       },
-      publisher: {
+      countries: {
+        type: Sequelize.JSON
+      },
+      img: {
         type: Sequelize.STRING
+      },
+      logo: {
+        type: Sequelize.STRING
+      },
+      contactInfo: {
+        type: Sequelize.JSON
       },
       createdAt: {
         allowNull: false,
@@ -43,6 +55,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("Research");
+    return queryInterface.dropTable("Stories");
   }
 };
