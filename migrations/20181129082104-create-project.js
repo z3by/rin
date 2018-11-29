@@ -41,6 +41,13 @@ module.exports = {
       contactInfo: {
         type: Sequelize.JSON
       },
+      locationId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Location",
+          key: "id"
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -52,6 +59,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("Projects");
+    return queryInterface.dropTable("projects");
   }
 };
