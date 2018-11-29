@@ -78,17 +78,15 @@ module.exports.hashPassword = password => {
 // check if email is exists
 module.exports.checkEmail = email => {
   return new Promise((resolve, reject) => {
-    const connection = mysql.createConnection(DBconfig);
-    connection.connect(err => {
-      if (err) throw err;
-      connection.query(
-        `select exists(select * from members where members.email = "${email}" limit 1)`,
-        (err, exists) => {
-          if (err) throw reject(err);
-          connection.end();
-          resolve(!!exists);
-        }
-      );
+    db.Member.count({ where: { email: email } }).then(result => {
+      if (!result) {
+        const errors = {
+          email: "make sure the email is correct and try again"
+        };
+        reject(errors);
+      } else {
+        resolve(true);
+      }
     });
   });
 };
@@ -96,29 +94,24 @@ module.exports.checkEmail = email => {
 // check if password is correct
 module.exports.checkPassword = userInfo => {
   return new Promise((resolve, reject) => {
-    const connection = mysql.createConnection(DBconfig);
-
-    connection.connect(err => {
-      if (err) throw reject(err);
-      connection.query(
-        `select * from members where members.email = "${
-          userInfo.email
-        }" limit 1`,
-        (err, result) => {
-          if (err) {
-            reject(err);
-          }
-
-          const password = result[0].password;
-          bcrypt.compare(userInfo.password, password, (err, match) => {
-            if (err) reject(err);
-
-            connection.end();
+    db.Member.findAll({
+      where: {
+        email: userInfo.email
+      }
+    })
+      .then(result => {
+        const hashedPassword = result[0].dataValues.password;
+        bcrypt.compare(userInfo.password, hashedPassword, (err, match) => {
+          if (err) reject(err);
+          else {
             resolve(!!match);
-          });
-        }
-      );
-    });
+            console.log(!!match);
+          }
+        });
+      })
+      .catch(err => {
+        reject(err);
+      });
   });
 };
 
