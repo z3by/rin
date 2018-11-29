@@ -10,11 +10,12 @@ module.exports = (sequelize, DataTypes) => {
       lng: DataTypes.FLOAT,
       lat: DataTypes.FLOAT
     },
-    {}
+    {
+      tableName: "countries"
+    }
   );
   Country.associate = function(models) {
     // associations can be defined here
-    
   };
   return Country;
 };

@@ -8,7 +8,9 @@ module.exports = (sequelize, DataTypes) => {
       url: DataTypes.STRING,
       imgUrl: DataTypes.STRING
     },
-    {}
+    {
+      tableName: "links"
+    }
   );
   Link.associate = function(models) {
     // associations can be defined here

@@ -16,7 +16,9 @@ module.exports = (sequelize, DataTypes) => {
       logo: DataTypes.STRING,
       contactInfo: DataTypes.JSON
     },
-    {}
+    {
+      tableName: "stories"
+    }
   );
   Story.associate = function(models) {
     Story.belongsTo(models.Project);

@@ -15,7 +15,9 @@ module.exports = (sequelize, DataTypes) => {
       logo: DataTypes.STRING,
       contactInfo: DataTypes.JSON
     },
-    {}
+    {
+      tableName: "projects"
+    }
   );
   Project.associate = function(models) {
     Project.belongsTo(models.Location);

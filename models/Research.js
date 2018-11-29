@@ -12,7 +12,9 @@ module.exports = (sequelize, DataTypes) => {
       pages: DataTypes.INTEGER,
       publisher: DataTypes.STRING
     },
-    {}
+    {
+      tableName: "researches"
+    }
   );
   Research.associate = function(models) {
     // associations can be defined here

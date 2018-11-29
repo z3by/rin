@@ -1,4 +1,3 @@
-const mysql = require("mysql");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
@@ -49,29 +48,35 @@ module.exports.validateUserLogin = userInfo => {
 // check if email is taken
 module.exports.checkIfEmailTaken = email => {
   return new Promise((resolve, reject) => {
-    const connection = mysql.createConnection(DBconfig);
-    connection.connect(err => {
-      if (err) throw err;
-      connection.query(
-        `select email from members where members.email like "${email}"`,
-        (err, result) => {
-          if (err) {
-            connection.end();
-            reject(err);
-          }
-          if (result.length) {
-            const errors = {
-              email: "this email is already linked with another account"
-            };
-            connection.end();
-            reject(errors);
-          } else {
-            connection.end();
-            resolve(true);
-          }
-        }
-      );
-    });
+
+    db.Member.count({where: {email: email}}).then(result => {
+      console.log(result);
+      
+    })
+
+    // const connection = mysql.createConnection(DBconfig);
+    // connection.connect(err => {
+    //   if (err) throw err;
+    //   connection.query(
+    //     `select email from members where members.email like "${email}"`,
+    //     (err, result) => {
+    //       if (err) {
+    //         connection.end();
+    //         reject(err);
+    //       }
+    //       if (result.length) {
+    //         const errors = {
+    //           email: "this email is already linked with another account"
+    //         };
+    //         connection.end();
+    //         reject(errors);
+    //       } else {
+    //         connection.end();
+    //         resolve(true);
+    //       }
+    //     }
+    //   );
+    // });
   });
 };
 

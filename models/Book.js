@@ -8,7 +8,9 @@ module.exports = (sequelize, DataTypes) => {
       bookUrl: DataTypes.STRING,
       coverUrl: DataTypes.STRING
     },
-    {}
+    {
+      tableName: "books"
+    }
   );
   Book.associate = function(models) {
     // associations can be defined here

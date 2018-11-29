@@ -6,7 +6,9 @@ module.exports = (sequelize, DataTypes) => {
       lng: DataTypes.FLOAT,
       lat: DataTypes.FLOAT
     },
-    {}
+    {
+      tableName: "locations"
+    }
   );
   Location.associate = function(models) {
     Location.belongsTo(models.Country);
