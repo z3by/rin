@@ -1,64 +1,78 @@
-const mysql = require("mysql");
-const dbConfig = require("../../config/db.config");
-const connection = mysql.createConnection(dbConfig);
-connection.connect(err => {
-  if (err) throw err;
-});
+const db = require("../../models/index");
 
 module.exports.getLocations = (req, res) => {
-  connection.query("select * from locations", (err, result) => {
-    if (err) throw err;
-    res.send(result);
+  db.Location.findAll({}).then(result => {
+    res.json(result);
   });
+};
+
+module.exports.getLocationsPage = (req, res) => {
+  const firstLocationIndex = Number(req.query.first);
+  const lastLocationIndex = Number(req.query.last);
+
+  db.Location.findAndCountAll({
+    offset: firstLocationIndex,
+    limit: lastLocationIndex - firstLocationIndex
+  })
+    .then(result => {
+      res.json(result);
+    })
+    .catch(err => {
+      res.send(err);
+    });
 };
 
 module.exports.getLocation = (req, res) => {
-  let qry = `select * from locations where id=${req.params.id}`;
-  connection.query(qry, (err, result) => {
-    if (err) throw err;
-    res.send(result);
-  });
+  db.Location.findAll({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(result => {
+      res.json(result);
+    })
+    .catch(err => {
+      res.send(err);
+    });
 };
 
 module.exports.addLocation = (req, res) => {
-  let data = {
-    country_id: req.body.country_id,
-    lng: req.body.lng,
-    lat: req.body.lat
-  };
-
-  let qry = `insert into locations(country_id, lng, lat) values(${data.id},${
-    data.country_id
-  }, ${data.lng}, ${data.lat});`;
-
-  connection.query(qry, (err, result) => {
-    if (err) throw err;
-    res.send("location row inserted successfully");
-  });
+  let data = req.body;
+  db.Location.create(data)
+    .then(result => {
+      res.status(201).json(result);
+    })
+    .catch(err => {
+      res.send(err);
+    });
 };
 
 module.exports.updateLocation = (req, res) => {
-  let data = {
-    country_id: req.body.country_id,
-    lng: req.body.lng,
-    lat: req.body.lat
-  };
-
-  let qry = `UPDATE locations
-                    SET country_id=${data.country_id}, lng=${data.lng}, lat=${
-    data.lat
-  }
-                    WHERE id=${req.params.id};`;
-  connection.query(qry, (err, result) => {
-    if (err) throw err;
-    res.send("location row has been updated successfully");
-  });
+  let data = req.body;
+  db.Location.update(data, {
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(result => {
+      res.json(result);
+    })
+    .catch(err => {
+      res.status(400).send(err);
+    });
 };
 
-module.exports.deleteLocation = (req, res) => {
-  let qry = `delete from locations where id=${req.params.id}`;
-  connection.query(qry, (err, result) => {
-    if (err) throw err;
-    res.send("location row has been deleted successfully");
-  });
+module.exports.deleteLocations = (req, res) => {
+  let data = req.body;
+  db.Location.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(result => {
+      res.json(result);
+    })
+    .catch(err => {
+      res.status(400).send(err);
+    });
 };

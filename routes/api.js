@@ -5,7 +5,6 @@ const s3Config = require("../config/s3.config");
 const storiesAPI = require("../controllers/api/stories.controller");
 const articlesAPI = require("../controllers/api/articles.controller");
 const countriesAPI = require("../controllers/api/countries.controller");
-const partnersAPI = require("../controllers/api/partners.controller");
 const locationsAPI = require("../controllers/api/locations.controller");
 const projectsAPI = require("../controllers/api/projects.controller");
 const libraryAPI = require("../controllers/api/library.controller");
@@ -46,19 +45,13 @@ router.get("/members", adminAPI.getMembers);
 router.get("/members/page", adminAPI.getMembersPage);
 router.get("/members/:id", adminAPI.getMember);
 
-//partners routes
-router.get("/partners", partnersAPI.getPartners);
-router.get("/partners/:id", partnersAPI.getPartner);
-router.post("/partners", partnersAPI.addPartner);
-router.put("/partners/:id", partnersAPI.updatePartner);
-router.delete("/partners/:id", partnersAPI.deletePartner);
-
 //locations routes
 router.get("/locations", locationsAPI.getLocations);
+router.get("/locations/page", locationsAPI.getLocationsPage);
 router.get("/locations/:id", locationsAPI.getLocation);
 router.post("/locations", locationsAPI.addLocation);
 router.put("/locations/:id", locationsAPI.updateLocation);
-router.delete("/locations/:id", locationsAPI.deleteLocation);
+router.delete("/locations/:id", locationsAPI.deleteLocations);
 
 // project requests
 router.get("/requests", projectsAPI.getProjectRequests);
