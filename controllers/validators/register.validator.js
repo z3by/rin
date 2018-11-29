@@ -5,12 +5,12 @@ const strongPassword = require("./isStrongPassword");
 const validateRegisterInput = data => {
   let errors = {};
 
-  const inputOrgName = !isEmpty(data.organization_name)
-    ? data.organization_name
+  const inputOrgName = !isEmpty(data.organizationName)
+    ? data.organizationName
     : "";
-  const inputUserRole = !isEmpty(data.user_role) ? data.user_role : "";
-  const inputFiratName = !isEmpty(data.first_name) ? data.first_name : "";
-  const inputLastName = !isEmpty(data.last_name) ? data.last_name : "";
+  const inputUserRole = !isEmpty(data.userRole) ? data.userRole : "";
+  const inputFiratName = !isEmpty(data.firstName) ? data.firstName : "";
+  const inputLastName = !isEmpty(data.lastName) ? data.lastName : "";
   const inputPassword = !isEmpty(data.password) ? data.password : "";
   const inputPasswordConfirm = !isEmpty(data.password2) ? data.password2 : "";
   const inputEmail = !isEmpty(data.email) ? data.email : "";

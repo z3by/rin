@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 
 const registerValidator = require("../validators/register.validator");
 const loginValidator = require("../validators/login.validator");
-const DBconfig = require("../../config/db.config");
+const db = require("../../models/index");
 
 // check if user input is valid for register
 module.exports.validateUserRegister = userInfo => {
@@ -23,24 +23,11 @@ module.exports.validateUserRegister = userInfo => {
 // create new user in the database
 module.exports.register = userInfo => {
   return new Promise((resolve, reject) => {
-    const connection = mysql.createConnection(DBconfig);
-    connection.connect(err => {
-      if (err) throw err;
-      connection.query(
-        `insert into members (email, password, first_name, last_name, organization_name, user_role ) values ("${
-          userInfo.email
-        }", "${userInfo.password}", "${userInfo.first_name}","${
-          userInfo.last_name
-        }","${userInfo.organization_name}","${userInfo.user_role}")`,
-        (err, result) => {
-          if (err) reject(err);
-          else {
-            connection.end();
-            resolve(result);
-          }
-        }
-      );
+    db.Member.create(userInfo).then(result => {
+      resolve(result);
     });
+  }).catch(err => {
+    reject(err);
   });
 };
 
