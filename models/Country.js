@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
   );
   Country.associate = function(models) {
     // associations can be defined here
+    
   };
   return Country;
 };

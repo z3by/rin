@@ -1,15 +1,15 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
-  const location = sequelize.define(
-    "location",
+  const Location = sequelize.define(
+    "Location",
     {
       lng: DataTypes.FLOAT,
       lat: DataTypes.FLOAT
     },
     {}
   );
-  location.associate = function(models) {
-    // associations can be defined here
+  Location.associate = function(models) {
+    Location.belongsTo(models.Country);
   };
-  return location;
+  return Location;
 };

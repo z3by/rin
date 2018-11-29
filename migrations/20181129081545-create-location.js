@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('locations', {
+    return queryInterface.createTable("locations", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -14,6 +14,13 @@ module.exports = {
       lat: {
         type: Sequelize.FLOAT
       },
+      countryId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Country",
+          key: "id"
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -25,6 +32,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('locations');
+    return queryInterface.dropTable("locations");
   }
 };

@@ -11,7 +11,6 @@ const usersRouter = require("./routes/users");
 const indexRouter = require("./routes/index");
 const apiRouter = require("./routes/api");
 const sequelize = require("./config/sequelize.config");
-const migrate = require("./models/index").migrate;
 
 // init the database
 sequelize
@@ -22,9 +21,6 @@ sequelize
   .catch(err => {
     console.error("Unable to connect to the database:", err);
   });
-
-// initialize the models
-migrate();
 
 const app = express();
 
