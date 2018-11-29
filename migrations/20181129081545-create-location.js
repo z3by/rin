@@ -14,13 +14,6 @@ module.exports = {
       lat: {
         type: Sequelize.FLOAT
       },
-      countryId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: "countries",
-          key: "id"
-        }
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

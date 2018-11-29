@@ -1,13 +1,4 @@
-const mysql = require("mysql");
-const dbConfig = require("../../config/db.config");
-const helpers = require("../helpers/admin.helpers");
-
-const connection = mysql.createConnection(dbConfig);
-connection.connect(err => {
-  if (err) throw err;
-  console.log("connected");
-});
-
+const db = require("../../models/index");
 
 module.exports.isAdmin = (req, res) => {
   if (req.session.adminLogged) {
@@ -28,49 +19,38 @@ module.exports.loginAdmin = (req, res) => {
   }
 };
 
-// get all mmebers
-module.exports.getAllMembers = (req, res) => {
-  helpers
-    .getAllUsers()
+module.exports.getMembers = (req, res) => {
+  db.Member.findAll({}).then(result => {
+    res.json(result);
+  });
+};
+
+module.exports.getMember = (req, res) => {
+  db.Article.findAll({
+    where: {
+      id: req.params.id
+    }
+  })
     .then(result => {
-      res.status(200).json(result);
+      res.json(result);
     })
     .catch(err => {
-      console.log(err);
+      res.send(err);
     });
 };
 
-// get the count of all members
-module.exports.getUsersCount = (req, res) => {
-  connection.query("select count(*) from members", (err, result) => {
-    if (err) throw err;
-    res.send(result[0]);
-  });
-}
+module.exports.getMembersPage = (req, res) => {
+  const firstMemberIndex = Number(req.query.first);
+  const lastMemberIndex = Number(req.query.last);
 
-//het selected page users in UsersList component
-module.exports.getSelectedPageUsers = (req, res) => {
-  const firstUserIndex = req.query.first;
-  const lastUserIndex = req.query.last;
-
-  connection.query("select * from members", (err, result) => {
-    if (err) throw err;
-    const allUsers = result;
-    const selectPageUsers = allUsers.slice(firstUserIndex, lastUserIndex);
-    res.send(selectPageUsers);
-  });
-}
-
-// get the results of searching members in admin dashboard
-module.exports.getSearchedMembers = (req, res) => {
-  const filterOption = req.params.options;
-
-  let qry = `SELECT * FROM members WHERE email LIKE "%${filterOption}%" OR first_name LIKE "%${filterOption}%" OR last_name LIKE "%${filterOption}%" OR organization_name LIKE "%${filterOption}%" OR user_role LIKE "%${filterOption}%"`;
-  connection.query(qry, (err, result) => {
-    if (err) throw err;
-    res.send(result);
-  });
+  db.Member.findAndCountAll({
+    offset: firstMemberIndex,
+    limit: lastMemberIndex - firstMemberIndex
+  })
+    .then(result => {
+      res.json(result);
+    })
+    .catch(err => {
+      res.send(err);
+    });
 };
-
-
-

@@ -12,10 +12,14 @@ const libraryAPI = require("../controllers/api/library.controller");
 const adminAPI = require("../controllers/users/admin.controller");
 
 // upload image route
-router.post("/uploadimg", s3Config.uploadImg, storiesAPI.uploadImage);
+router.post("/uploadimg", s3Config.uploadImg, (req, res) => {
+  res.send(req.file);
+});
 
 // upload image route
-router.post("/uploadpdf", s3Config.uploadPDF, storiesAPI.uploadPDF);
+router.post("/uploadpdf", s3Config.uploadPDF, (req, res) => {
+  res.send(req.file);
+});
 
 //countries routes
 router.get("/countries", countriesAPI.getCountries);
@@ -23,9 +27,7 @@ router.get("/countries/names", countriesAPI.getCountriesNames);
 
 //stories routes
 router.get("/stories", storiesAPI.getStories);
-router.get("/stories/search/:options", storiesAPI.getSearchedStories);
-router.get("/stories/selectedpage", storiesAPI.getSelectedPageStories);
-router.get("/stories/count", storiesAPI.getStoriesCount);
+router.get("/stories/page", storiesAPI.getStoriesPage);
 router.get("/stories/:id", storiesAPI.getStory);
 router.post("/stories", storiesAPI.addStory);
 router.put("/stories/:id", storiesAPI.updateStory);
@@ -40,9 +42,9 @@ router.put("/articles/:id", articlesAPI.updateArticle);
 router.delete("/articles/:id", articlesAPI.deleteArticles);
 
 // users routes
-router.get("/members", adminAPI.getAllMembers);
-router.get("/members/count", adminAPI.getUsersCount);
-router.get("/members/selectedpage", adminAPI.getSelectedPageUsers);
+router.get("/members", adminAPI.getMembers);
+router.get("/members/page", adminAPI.getMembersPage);
+router.get("/members/:id", adminAPI.getMember);
 
 //partners routes
 router.get("/partners", partnersAPI.getPartners);
