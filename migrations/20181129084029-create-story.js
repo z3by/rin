@@ -44,6 +44,13 @@ module.exports = {
       contactInfo: {
         type: Sequelize.JSON
       },
+      projectId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Project",
+          key: "id"
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
