@@ -2,13 +2,12 @@ const express = require("express");
 const router = express.Router();
 
 const s3Config = require("../config/s3.config");
-const countriesAPI = require("../controllers/api/countries.controller");
 const storiesAPI = require("../controllers/api/stories.controller");
 const articlesAPI = require("../controllers/api/articles.controller");
+const countriesAPI = require("../controllers/api/countries.controller");
 const partnersAPI = require("../controllers/api/partners.controller");
 const locationsAPI = require("../controllers/api/locations.controller");
 const projectsAPI = require("../controllers/api/projects.controller");
-const lensesAPI = require("../controllers/api/lenses.controller");
 const libraryAPI = require("../controllers/api/library.controller");
 const adminAPI = require("../controllers/users/admin.controller");
 
@@ -20,7 +19,6 @@ router.post("/uploadpdf", s3Config.uploadPDF, storiesAPI.uploadPDF);
 
 //countries routes
 router.get("/countries", countriesAPI.getCountries);
-router.get("/countries/:id", countriesAPI.getCountry);
 
 //stories routes
 router.get("/stories", storiesAPI.getStories);
@@ -75,13 +73,6 @@ router.get("/projects/:id", projectsAPI.getProject);
 router.post("/projects", projectsAPI.addProject);
 router.put("/projects/:id", projectsAPI.updateProject);
 router.delete("/projects/:id", projectsAPI.deleteProject);
-
-//lenses routes
-router.get("/lenses", lensesAPI.getLenses);
-router.get("/lenses/:id", lensesAPI.getLens);
-router.post("/lenses", lensesAPI.addLens);
-router.put("/lenses/:id", lensesAPI.updateLens);
-router.delete("/lenses/:id", lensesAPI.deleteLens);
 
 // library routes
 

@@ -10,8 +10,6 @@ module.exports = (sequelize, DataTypes) => {
       tableName: "locations"
     }
   );
-  Location.associate = function(models) {
-    Location.belongsTo(models.Country);
-  };
+  Location.associate = function(models) {};
   return Location;
 };
