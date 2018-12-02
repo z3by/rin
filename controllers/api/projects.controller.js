@@ -2,6 +2,9 @@ const db = require("../../models/index");
 
 module.exports.getProjects = (req, res) => {
   db.Project.findAll({
+    where: {
+      pending: false
+    },
     include: [{ model: db.Location, as: "Location" }]
   }).then(result => {
     res.json(result);
@@ -109,4 +112,16 @@ module.exports.getProjectRequestsPage = (req, res) => {
     .catch(err => {
       res.send(err);
     });
+};
+
+module.exports.getProjectsLocations = (req, res) => {
+  db.Project.findAll({
+    where: {
+      pending: false
+    },
+    attributes: ["id", "sector"],
+    include: [{ model: db.Location, as: "Location" }]
+  }).then(result => {
+    res.json(result.Location);
+  });
 };

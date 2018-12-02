@@ -11,6 +11,9 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
+      sector: {
+        type: Sequelize.STRING
+      },
       pending: {
         type: Sequelize.BOOLEAN
       },

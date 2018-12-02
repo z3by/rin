@@ -5,6 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       pending: DataTypes.BOOLEAN,
       name: DataTypes.STRING,
+      sector: DataTypes.STRING,
       impact: DataTypes.STRING,
       thesis: DataTypes.STRING,
       structure: DataTypes.STRING,
