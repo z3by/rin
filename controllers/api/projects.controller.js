@@ -50,10 +50,11 @@ module.exports.addProject = (req, res) => {
   let data = req.body;
   // create location row in db
   let location = { lng: data.lng, lat: data.lng };
-  db.Location.create(location).then(result => {
+  db.Location.create(location).then(createdLocation => {
     // append the location id to the data
-    const locationId = result.dataValues.id;
-    data.LocationId = locationId;
+
+    const locationId = createdLocation.dataValues.id;
+    data.locationId = locationId;
 
     db.Project.create(data)
       .then(result => {
@@ -122,6 +123,6 @@ module.exports.getProjectsLocations = (req, res) => {
     attributes: ["id", "sector"],
     include: [{ model: db.Location, as: "Location" }]
   }).then(result => {
-    res.json(result.Location);
+    res.json(result);
   });
 };
