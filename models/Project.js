@@ -21,7 +21,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
   Project.associate = function(models) {
-    Project.belongsTo(models.Location);
+    Project.belongsTo(models.Location, {
+      foreignKey: "locationId",
+      as: "Location"
+    });
   };
   return Project;
 };

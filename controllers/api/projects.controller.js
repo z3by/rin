@@ -1,7 +1,9 @@
 const db = require("../../models/index");
 
 module.exports.getProjects = (req, res) => {
-  db.Project.findAll({}).then(result => {
+  db.Project.findAll({
+    include: [{ model: db.Location, as: "Location" }]
+  }).then(result => {
     res.json(result);
   });
 };
@@ -15,7 +17,8 @@ module.exports.getProjectsPage = (req, res) => {
       pending: false
     },
     offset: firstProjectIndex,
-    limit: lastProjectIndex - firstProjectIndex
+    limit: lastProjectIndex - firstProjectIndex,
+    include: [{ model: db.Location, as: "Location" }]
   })
     .then(result => {
       res.json(result);
@@ -29,7 +32,8 @@ module.exports.getProject = (req, res) => {
   db.Project.findAll({
     where: {
       id: req.params.id
-    }
+    },
+    include: [{ model: db.Location, as: "Location" }]
   })
     .then(result => {
       res.json(result);
