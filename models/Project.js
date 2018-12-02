@@ -3,6 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   const Project = sequelize.define(
     "Project",
     {
+      pending: DataTypes.BOOLEAN,
       name: DataTypes.STRING,
       impact: DataTypes.STRING,
       thesis: DataTypes.STRING,

@@ -11,6 +11,9 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
+      pending: {
+        type: Sequelize.BOOLEAN
+      },
       impact: {
         type: Sequelize.STRING
       },

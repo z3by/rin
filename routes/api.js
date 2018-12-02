@@ -53,24 +53,19 @@ router.post("/locations", locationsAPI.addLocation);
 router.put("/locations/:id", locationsAPI.updateLocation);
 router.delete("/locations/:id", locationsAPI.deleteLocations);
 
-// project requests
-router.get("/requests", projectsAPI.getProjectRequests);
-router.put("/requests", projectsAPI.acceptProjectRequest);
-
 //projects routes
 router.get("/projects", projectsAPI.getProjects);
-router.get("/projects/locations", projectsAPI.getLocations);
-router.get("/projects/search/:options", projectsAPI.getSearchedProjects);
-router.get("/projects/selectedpage", projectsAPI.getSelectedPageProjects);
-router.get("/projects/location/:id", projectsAPI.getProjectCountry);
-router.get("/projects/count", projectsAPI.getProjectsCount);
+router.get("/projects/page", projectsAPI.getProjectsPage);
 router.get("/projects/:id", projectsAPI.getProject);
 router.post("/projects", projectsAPI.addProject);
 router.put("/projects/:id", projectsAPI.updateProject);
-router.delete("/projects/:id", projectsAPI.deleteProject);
+router.delete("/projects/:id", projectsAPI.deleteProjects);
 
-// library routes
+// // project requests
+router.get("/requests", projectsAPI.getProjectRequests);
+router.put("/requests", projectsAPI.acceptProjectRequest);
 
+// library routes ---------------------------
 // links routes
 router.get("/library/links/:index", libraryAPI.getLinks);
 router.post("/library/links", libraryAPI.addLink);
