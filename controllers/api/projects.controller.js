@@ -1,5 +1,6 @@
 const db = require("../../models/index");
 const Op = db.Sequelize.Op;
+
 module.exports.getProjects = (req, res) => {
   db.Project.findAll({
     where: {
@@ -132,6 +133,13 @@ const checkProjectsFilterOptions = (clause, query) => {
   if (query.refugeeInvestmenType) {
     clause["refugeeInvestmentType"] = query.refugeeInvestmentType;
   }
+
+  if (query.investmentSize) {
+    clause["investmentSize"] = {
+      [Op.gt]: query.investmentSize
+    };
+  }
+
   return clause;
 };
 
