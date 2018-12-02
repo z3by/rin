@@ -45,14 +45,6 @@ router.get("/members", adminAPI.getMembers);
 router.get("/members/page", adminAPI.getMembersPage);
 router.get("/members/:id", adminAPI.getMember);
 
-//locations routes
-router.get("/locations", locationsAPI.getLocations);
-router.get("/locations/page", locationsAPI.getLocationsPage);
-router.get("/locations/:id", locationsAPI.getLocation);
-router.post("/locations", locationsAPI.addLocation);
-router.put("/locations/:id", locationsAPI.updateLocation);
-router.delete("/locations/:id", locationsAPI.deleteLocations);
-
 //projects routes
 router.get("/projects", projectsAPI.getProjects);
 router.get("/projects/page", projectsAPI.getProjectsPage);
