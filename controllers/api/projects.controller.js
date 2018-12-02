@@ -41,13 +41,21 @@ module.exports.getProject = (req, res) => {
 
 module.exports.addProject = (req, res) => {
   let data = req.body;
-  db.Project.create(data)
-    .then(result => {
-      res.status(201).json(result);
-    })
-    .catch(err => {
-      res.send(err);
-    });
+  // create location row in db
+  let location = { lng: data.lng, lat: data.lng };
+  db.Location.create(location).then(result => {
+    // append the location id to the data
+    const locationId = result.dataValues.id;
+    data.LocationId = locationId;
+
+    db.Project.create(data)
+      .then(result => {
+        res.status(201).json(result);
+      })
+      .catch(err => {
+        res.send(err);
+      });
+  });
 };
 
 module.exports.updateProject = (req, res) => {
