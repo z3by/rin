@@ -32,7 +32,7 @@ module.exports = {
       structure: {
         type: Sequelize.STRING
       },
-      refugeeInvestmenType: {
+      refugeeInvestmentType: {
         type: Sequelize.STRING
       },
       sdgs: {

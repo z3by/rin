@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       impact: DataTypes.STRING,
       thesis: DataTypes.STRING,
       structure: DataTypes.STRING,
-      refugeeInvestmenType: DataTypes.STRING,
+      refugeeInvestmentType: DataTypes.STRING,
       sdgs: DataTypes.JSON,
       investmentSize: DataTypes.INTEGER,
       countries: DataTypes.JSON,

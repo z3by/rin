@@ -1,5 +1,5 @@
 const db = require("../../models/index");
-
+const Op = db.Sequelize.Op;
 module.exports.getProjects = (req, res) => {
   db.Project.findAll({
     where: {
@@ -115,11 +115,35 @@ module.exports.getProjectRequestsPage = (req, res) => {
     });
 };
 
+const checkProjectsFilterOptions = (clause, query) => {
+  if (query.sector) {
+    clause["sector"] = query.sector;
+  }
+  if (query.name) {
+    clause["name"] = {
+      [Op.like]: `%${query.name}%`
+    };
+  }
+  if (query.organization) {
+    clause["organization"] = {
+      [Op.like]: `%${query.organization}%`
+    };
+  }
+  if (query.refugeeInvestmenType) {
+    clause["refugeeInvestmentType"] = query.refugeeInvestmentType;
+  }
+  return clause;
+};
+
 module.exports.getProjectsLocations = (req, res) => {
+  let whereClause = {
+    pending: false
+  };
+
+  whereClause = checkProjectsFilterOptions(whereClause, req.query);
+
   db.Project.findAll({
-    where: {
-      pending: false
-    },
+    where: whereClause,
     attributes: ["id", "sector"],
     include: [{ model: db.Location, as: "Location" }]
   }).then(result => {
