@@ -5,7 +5,6 @@ const s3Config = require("../config/s3.config");
 const storiesAPI = require("../controllers/api/stories.controller");
 const articlesAPI = require("../controllers/api/articles.controller");
 const countriesAPI = require("../controllers/api/countries.controller");
-const locationsAPI = require("../controllers/api/locations.controller");
 const projectsAPI = require("../controllers/api/projects.controller");
 const libraryAPI = require("../controllers/api/library.controller");
 const adminAPI = require("../controllers/users/admin.controller");
@@ -52,28 +51,31 @@ router.get("/projects/:id", projectsAPI.getProject);
 router.post("/projects", projectsAPI.addProject);
 router.put("/projects/:id", projectsAPI.updateProject);
 router.delete("/projects/:id", projectsAPI.deleteProjects);
-
 // // project requests
-router.get("/requests", projectsAPI.getProjectRequests);
-router.put("/requests", projectsAPI.acceptProjectRequest);
+router.get("/requests", projectsAPI.getProjectRequestsPage);
 
 // library routes ---------------------------
 // links routes
-router.get("/library/links/:index", libraryAPI.getLinks);
-router.post("/library/links", libraryAPI.addLink);
-router.put("/library/links/:id", libraryAPI.updateLink);
-router.delete("/library/links/:id", libraryAPI.deleteLink);
+router.get("/links", libraryAPI.getLinks);
+router.get("/links/page", libraryAPI.getLinksPage);
+router.get("/links/:id", libraryAPI.getLink);
+router.post("/links", libraryAPI.addLink);
+router.put("/links/:id", libraryAPI.updateLink);
+router.delete("/links/:id", libraryAPI.deleteLinks);
 
 // books routes
-router.get("/library/books/:index", libraryAPI.getBooks);
-router.post("/library/books", libraryAPI.addBook);
-router.put("/library/books/:id", libraryAPI.updateBook);
-router.delete("/library/books/:id", libraryAPI.deleteBook);
+router.get("/books", libraryAPI.getBooks);
+router.get("/books/page", libraryAPI.getBooksPage);
+router.get("/books/:id", libraryAPI.getBook);
+router.post("/books", libraryAPI.addBook);
+router.put("/books/:id", libraryAPI.updateBook);
+router.delete("/books/:id", libraryAPI.deleteBooks);
 
 // researches routes
-router.get("/library/researches/:index", libraryAPI.getResearches);
-router.post("/library/researches", libraryAPI.addResearch);
-router.put("/library/researches/:id", libraryAPI.updateResearch);
-router.delete("/library/researches/:id", libraryAPI.deleteResearch);
-
+router.get("/researches", libraryAPI.getResearches);
+router.get("/researches/page", libraryAPI.getResearchesPage);
+router.get("/researches/:id", libraryAPI.getResearch);
+router.post("/researches", libraryAPI.addResearch);
+router.put("/researches/:id", libraryAPI.updateResearch);
+router.delete("/researches/:id", libraryAPI.deleteResearches);
 module.exports = router;

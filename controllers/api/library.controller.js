@@ -1,170 +1,234 @@
-const mysql = require("mysql");
-const dbConfig = require("../../config/db.config");
+const db = require("../../models/index");
 
-const connection = mysql.createConnection(dbConfig);
-connection.connect(err => {
-  if (err) throw err;
-  console.log("connected");
-});
-
-//----------------- library links -------------------------
+// links handlers
 module.exports.getLinks = (req, res) => {
-  const index = req.params.index;
-
-  let qry = "select * from library_links";
-  connection.query(qry, (err, result) => {
-    if (err) throw err;
-    result = result.slice(index, index + 10);
-    res.send(result);
+  db.Link.findAll({}).then(result => {
+    res.json(result);
   });
+};
+
+module.exports.getLinksPage = (req, res) => {
+  const firstLinkIndex = Number(req.query.first);
+  const lastLinkIndex = Number(req.query.last);
+
+  db.Link.findAndCountAll({
+    offset: firstLinkIndex,
+    limit: lastLinkIndex - firstLinkIndex
+  })
+    .then(result => {
+      res.json(result);
+    })
+    .catch(err => {
+      res.send(err);
+    });
+};
+
+module.exports.getLink = (req, res) => {
+  db.Link.findAll({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(result => {
+      res.json(result);
+    })
+    .catch(err => {
+      res.send(err);
+    });
 };
 
 module.exports.addLink = (req, res) => {
-  let data = {
-    title: req.body.title,
-    subtitle: req.body.subtitle,
-    url: req.body.url,
-    img: req.body.img
-  };
-
-  let qry = `insert into library_links (title, subtitle, url, img) values("${
-    data.title
-  }", "${data.subtitle}", '${data.url}', '${data.img}');`;
-  connection.query(qry, (err, result) => {
-    if (err) throw err;
-    res.sendStatus(201);
-  });
+  let data = req.body;
+  db.Link.create(data)
+    .then(result => {
+      res.status(201).json(result);
+    })
+    .catch(err => {
+      res.send(err);
+    });
 };
 
 module.exports.updateLink = (req, res) => {
-  let data = {
-    title: req.body.title,
-    subtitle: req.body.subtitle,
-    url: req.body.url,
-    img: req.body.img
-  };
-
-  let qry = `UPDATE library_links SET title="${data.title}", subtitle="${
-    data.subtitle
-  }", url="${data.url}", img='${data.img}' WHERE id=${req.params.id};`;
-  connection.query(qry, (err, result) => {
-    if (err) throw err;
-    res.sendStatus(201);
-  });
+  let data = req.body;
+  db.Link.update(data, {
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(result => {
+      res.json(result);
+    })
+    .catch(err => {
+      res.status(400).send(err);
+    });
 };
 
-module.exports.deleteLink = (req, res) => {
-  let qry = `delete from library_links where id=${req.params.id}`;
-  connection.query(qry, (err, result) => {
-    if (err) throw err;
-    res.sendStatus(200);
-  });
+module.exports.deleteLinks = (req, res) => {
+  db.Link.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(result => {
+      res.json(result);
+    })
+    .catch(err => {
+      res.status(400).send(err);
+    });
 };
 
-//----------------- library books -------------------------
+// books handlers
 module.exports.getBooks = (req, res) => {
-  const index = req.params.index;
-
-  let qry = "select * from library_books";
-  connection.query(qry, (err, result) => {
-    if (err) throw err;
-    result = result.slice(index, index + 10);
-    res.send(result);
+  db.Book.findAll({}).then(result => {
+    res.json(result);
   });
+};
+
+module.exports.getBooksPage = (req, res) => {
+  const firstBookIndex = Number(req.query.first);
+  const lastBookIndex = Number(req.query.last);
+
+  db.Book.findAndCountAll({
+    offset: firstBookIndex,
+    limit: lastBookIndex - firstBookIndex
+  })
+    .then(result => {
+      res.json(result);
+    })
+    .catch(err => {
+      res.send(err);
+    });
+};
+
+module.exports.getBook = (req, res) => {
+  db.Book.findAll({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(result => {
+      res.json(result);
+    })
+    .catch(err => {
+      res.send(err);
+    });
 };
 
 module.exports.addBook = (req, res) => {
-  let data = {
-    title: req.body.title,
-    subtitle: req.body.subtitle,
-    url: req.body.url,
-    img: req.body.img
-  };
-
-  let qry = `insert into library_books (title, subtitle, url, img) values("${
-    data.title
-  }", "${data.subtitle}", '${data.url}', '${data.img}');`;
-  connection.query(qry, (err, result) => {
-    if (err) throw err;
-    res.sendStatus(201);
-  });
+  let data = req.body;
+  db.Book.create(data)
+    .then(result => {
+      res.status(201).json(result);
+    })
+    .catch(err => {
+      res.send(err);
+    });
 };
 
 module.exports.updateBook = (req, res) => {
-  let data = {
-    title: req.body.title,
-    subtitle: req.body.subtitle,
-    url: req.body.url,
-    img: req.body.img
-  };
-
-  let qry = `UPDATE library_books SET title="${data.title}", subtitle="${
-    data.subtitle
-  }", url="${data.url}", img='${data.img}' WHERE id=${req.params.id};`;
-  connection.query(qry, (err, result) => {
-    if (err) throw err;
-    res.sendStatus(201);
-  });
+  let data = req.body;
+  db.Book.update(data, {
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(result => {
+      res.json(result);
+    })
+    .catch(err => {
+      res.status(400).send(err);
+    });
 };
 
-module.exports.deleteBook = (req, res) => {
-  let qry = `delete from library_books where id=${req.params.id}`;
-  connection.query(qry, (err, result) => {
-    if (err) throw err;
-    res.sendStatus(200);
-  });
+module.exports.deleteBooks = (req, res) => {
+  let data = req.body;
+  db.Book.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(result => {
+      res.json(result);
+    })
+    .catch(err => {
+      res.status(400).send(err);
+    });
 };
 
-//----------------- library researches -------------------------
+// researches handlers
 module.exports.getResearches = (req, res) => {
-  const index = req.params.index;
-
-  let qry = "select * from library_researches";
-  connection.query(qry, (err, result) => {
-    if (err) throw err;
-    result = result.slice(index, index + 10);
-    res.send(result);
+  db.Research.findAll({}).then(result => {
+    res.json(result);
   });
+};
+
+module.exports.getResearchesPage = (req, res) => {
+  const firstResearchIndex = Number(req.query.first);
+  const lastResearchIndex = Number(req.query.last);
+
+  db.Research.findAndCountAll({
+    offset: firstResearchIndex,
+    limit: lastResearchIndex - firstResearchIndex
+  })
+    .then(result => {
+      res.json(result);
+    })
+    .catch(err => {
+      res.send(err);
+    });
+};
+
+module.exports.getResearch = (req, res) => {
+  db.Research.findAll({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(result => {
+      res.json(result);
+    })
+    .catch(err => {
+      res.send(err);
+    });
 };
 
 module.exports.addResearch = (req, res) => {
-  let data = {
-    title: req.body.title,
-    subtitle: req.body.subtitle,
-    url: req.body.url,
-    img: req.body.img
-  };
-
-  let qry = `insert into library_researches (title, subtitle, url, img) values("${
-    data.title
-  }", "${data.subtitle}", '${data.url}', '${data.img}');`;
-  connection.query(qry, (err, result) => {
-    if (err) throw err;
-    res.sendStatus(201);
-  });
+  let data = req.body;
+  db.Research.create(data)
+    .then(result => {
+      res.status(201).json(result);
+    })
+    .catch(err => {
+      res.send(err);
+    });
 };
 
 module.exports.updateResearch = (req, res) => {
-  let data = {
-    title: req.body.title,
-    subtitle: req.body.subtitle,
-    url: req.body.url,
-    img: req.body.img
-  };
-
-  let qry = `UPDATE library_researches SET title="${data.title}", subtitle="${
-    data.subtitle
-  }", url="${data.url}", img='${data.img}' WHERE id=${req.params.id};`;
-  connection.query(qry, (err, result) => {
-    if (err) throw err;
-    res.sendStatus(201);
-  });
+  let data = req.body;
+  db.Research.update(data, {
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(result => {
+      res.json(result);
+    })
+    .catch(err => {
+      res.status(400).send(err);
+    });
 };
 
-module.exports.deleteResearch = (req, res) => {
-  let qry = `delete from library_researches where id=${req.params.id}`;
-  connection.query(qry, (err, result) => {
-    if (err) throw err;
-    res.sendStatus(200);
-  });
+module.exports.deleteResearches = (req, res) => {
+  let data = req.body;
+  db.Research.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(result => {
+      res.json(result);
+    })
+    .catch(err => {
+      res.status(400).send(err);
+    });
 };
