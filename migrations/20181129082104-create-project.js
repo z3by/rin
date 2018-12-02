@@ -17,6 +17,12 @@ module.exports = {
       pending: {
         type: Sequelize.BOOLEAN
       },
+      organization: {
+        type: Sequelize.STRING
+      },
+      year: {
+        type: Sequelize.DATE
+      },
       impact: {
         type: Sequelize.STRING
       },

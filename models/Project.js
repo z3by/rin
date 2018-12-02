@@ -5,6 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       pending: DataTypes.BOOLEAN,
       name: DataTypes.STRING,
+      organization: DataTypes.STRING,
       sector: DataTypes.STRING,
       impact: DataTypes.STRING,
       thesis: DataTypes.STRING,
@@ -15,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       countries: DataTypes.JSON,
       img: DataTypes.STRING,
       logo: DataTypes.STRING,
+      year: DataTypes.Date,
       contactInfo: DataTypes.JSON
     },
     {
