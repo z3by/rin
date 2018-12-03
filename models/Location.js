@@ -10,6 +10,8 @@ module.exports = (sequelize, DataTypes) => {
       tableName: "locations"
     }
   );
-  Location.associate = function(models) {};
+  Location.associate = function(models) {
+    Location.belongsTo(models.project, { as: "project" });
+  };
   return Location;
 };
