@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     Project.hasMany(models.Story, { as: "stories" });
     Project.hasMany(models.Location, { as: "locations" });
     Project.hasOne(models.Contact, { as: "contact" });
+    Project.belongsToMany(models.Investor, { through: "ProjectInvestor" });
   };
 
   return Project;
