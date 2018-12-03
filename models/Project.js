@@ -11,23 +11,15 @@ module.exports = (sequelize, DataTypes) => {
       thesis: DataTypes.STRING,
       structure: DataTypes.STRING,
       refugeeInvestmentType: DataTypes.STRING,
-      sdgs: DataTypes.JSON,
       investmentSize: DataTypes.INTEGER,
-      countries: DataTypes.JSON,
       img: DataTypes.STRING,
       logo: DataTypes.STRING,
-      year: DataTypes.DATE,
-      contactInfo: DataTypes.JSON
+      year: DataTypes.DATE
     },
     {
       tableName: "projects"
     }
   );
-  Project.associate = function(models) {
-    Project.belongsTo(models.Location, {
-      foreignKey: "locationId",
-      as: "Location"
-    });
-  };
+  Project.associate = function(models) {};
   return Project;
 };

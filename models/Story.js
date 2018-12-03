@@ -6,22 +6,12 @@ module.exports = (sequelize, DataTypes) => {
       buisness: DataTypes.STRING,
       buisnessDescription: DataTypes.STRING,
       storyText: DataTypes.STRING,
-      founders: DataTypes.JSON,
-      investors: DataTypes.JSON,
-      refugeeInvestmentType: DataTypes.STRING,
-      sdgs: DataTypes.JSON,
-      investmentSize: DataTypes.INTEGER,
-      countries: DataTypes.JSON,
-      img: DataTypes.STRING,
-      logo: DataTypes.STRING,
-      contactInfo: DataTypes.JSON
+      img: DataTypes.STRING
     },
     {
       tableName: "stories"
     }
   );
-  Story.associate = function(models) {
-    Story.belongsTo(models.Project);
-  };
+  Story.associate = function(models) {};
   return Story;
 };

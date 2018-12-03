@@ -16,8 +16,6 @@ module.exports = (sequelize, DataTypes) => {
       tableName: "researches"
     }
   );
-  Research.associate = function(models) {
-    // associations can be defined here
-  };
+  Research.associate = function(models) {};
   return Research;
 };
