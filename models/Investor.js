@@ -11,7 +11,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
   Investor.associate = function(models) {
-    Investor.belongsToMany(models.Project, { through: "ProjectInvestor" });
+    Investor.belongsToMany(models.Project, {
+      as: "projects",
+      through: "project_investor",
+      foreignKey: "investorId"
+    });
   };
   return Investor;
 };

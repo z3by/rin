@@ -6,11 +6,15 @@ module.exports = (sequelize, DataTypes) => {
       name: DataTypes.STRING
     },
     {
-      tableName: "countires"
+      tableName: "countries"
     }
   );
   Country.associate = function(models) {
-    Country.belongsToMany(models.Project, { through: "ProjectCountry" });
+    Country.belongsToMany(models.Project, {
+      as: "projects",
+      through: "project_countries",
+      foreignKey: "countryId"
+    });
   };
   return Country;
 };
