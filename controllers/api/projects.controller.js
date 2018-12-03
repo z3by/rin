@@ -6,7 +6,10 @@ module.exports.getProjects = (req, res) => {
     where: {
       pending: false
     },
-    include: [{ model: db.Location, as: "Location" }]
+    include: [
+      { model: db.Location, as: "locations" },
+      { model: db.Story, as: "stories" }
+    ]
   }).then(result => {
     res.json(result);
   });
@@ -22,7 +25,10 @@ module.exports.getProjectsPage = (req, res) => {
     },
     offset: firstProjectIndex,
     limit: lastProjectIndex - firstProjectIndex,
-    include: [{ model: db.Location, as: "Location" }]
+    include: [
+      { model: db.Location, as: "locations" },
+      { model: db.Story, as: "stories" }
+    ]
   })
     .then(result => {
       res.json(result);
