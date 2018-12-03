@@ -9,7 +9,10 @@ module.exports.getProjects = (req, res) => {
     include: [
       { model: db.Location, as: "locations", attributes: ["lng", "lat"] },
       { model: db.Story, as: "stories" },
-      { model: db.Contact, as: "contact" }
+      { model: db.Contact, as: "contact" },
+      { model: db.Investor, through: { attributes: [] }, as: "investors" },
+      { model: db.Founder, through: { attributes: [] }, as: "founders" },
+      { model: db.Country, through: { attributes: [] }, as: "countries" }
     ]
   }).then(result => {
     res.json(result);

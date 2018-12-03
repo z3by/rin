@@ -27,15 +27,15 @@ module.exports = (sequelize, DataTypes) => {
     Project.belongsTo(models.Contact, { as: "contact" });
     Project.belongsToMany(models.Investor, {
       as: "investors",
-      through: "ProjectInvestor"
+      through: "project_investor"
     });
     Project.belongsToMany(models.Founder, {
       as: "founders",
-      through: "ProjectFounder"
+      through: "project_founder"
     });
     Project.belongsToMany(models.Country, {
       as: "countries",
-      through: "ProjectCountry"
+      through: "project_country"
     });
     Project.belongsToMany(models.Sdg, { as: "sdgs", through: "ProjectSdg" });
   };
