@@ -35,14 +35,8 @@ module.exports = {
       refugeeInvestmentType: {
         type: Sequelize.STRING
       },
-      sdgs: {
-        type: Sequelize.JSON
-      },
       investmentSize: {
         type: Sequelize.INTEGER
-      },
-      countries: {
-        type: Sequelize.JSON
       },
       img: {
         type: Sequelize.STRING
@@ -50,13 +44,10 @@ module.exports = {
       logo: {
         type: Sequelize.STRING
       },
-      contactInfo: {
-        type: Sequelize.JSON
-      },
-      locationId: {
+      contactId: {
         type: Sequelize.INTEGER,
         references: {
-          model: "locations",
+          model: "contacts",
           key: "id"
         }
       },

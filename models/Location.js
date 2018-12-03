@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
   Location.associate = function(models) {
-    Location.belongsTo(models.project, { as: "project" });
+    Location.belongsTo(models.Project);
   };
   return Location;
 };

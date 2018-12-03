@@ -14,6 +14,13 @@ module.exports = {
       lat: {
         type: Sequelize.FLOAT
       },
+      projectId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "projects",
+          key: "id"
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

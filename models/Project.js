@@ -23,7 +23,6 @@ module.exports = (sequelize, DataTypes) => {
 
   Project.associate = function(models) {
     Project.hasMany(models.Story, { as: "stories" });
-    Project.hasMany(models.Location, { as: "locations" });
     Project.hasOne(models.Contact, { as: "contact" });
     Project.belongsToMany(models.Investor, { through: "ProjectInvestor" });
     Project.belongsToMany(models.Founder, { through: "ProjectFounder" });
