@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
   Founder.associate = function(models) {
-    // associations can be defined here
+    Founder.belongsToMany(models.Project, { through: "ProjectFounder" });
   };
   return Founder;
 };
