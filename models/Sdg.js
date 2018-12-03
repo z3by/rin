@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
   Sdg.associate = function(models) {
-    // associations can be defined here
+    Sdg.belongsToMany(models.Project, { through: "ProjectSdg" });
   };
   return Sdg;
 };

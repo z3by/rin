@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
   Country.associate = function(models) {
-    // associations can be defined here
+    Country.belongsToMany(models.Project, { through: "ProjectCountry" });
   };
   return Country;
 };
