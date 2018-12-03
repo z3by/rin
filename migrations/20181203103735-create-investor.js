@@ -14,6 +14,13 @@ module.exports = {
       logo: {
         type: Sequelize.STRING
       },
+      contactId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "contacts",
+          key: "id"
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
