@@ -24,11 +24,20 @@ module.exports = (sequelize, DataTypes) => {
   Project.associate = function(models) {
     Project.hasMany(models.Story, { as: "stories" });
     Project.hasMany(models.Location, { as: "locations" });
-    Project.hasOne(models.Contact, { as: "contact" });
-    Project.belongsToMany(models.Investor, { through: "ProjectInvestor" });
-    Project.belongsToMany(models.Founder, { through: "ProjectFounder" });
-    Project.belongsToMany(models.Country, { through: "ProjectCountry" });
-    Project.belongsToMany(models.Sdg, { through: "ProjectSdg" });
+    Project.belongsTo(models.Contact, { as: "contact" });
+    Project.belongsToMany(models.Investor, {
+      as: "investors",
+      through: "ProjectInvestor"
+    });
+    Project.belongsToMany(models.Founder, {
+      as: "founders",
+      through: "ProjectFounder"
+    });
+    Project.belongsToMany(models.Country, {
+      as: "countries",
+      through: "ProjectCountry"
+    });
+    Project.belongsToMany(models.Sdg, { as: "sdgs", through: "ProjectSdg" });
   };
 
   return Project;

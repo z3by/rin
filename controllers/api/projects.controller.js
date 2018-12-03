@@ -7,8 +7,9 @@ module.exports.getProjects = (req, res) => {
       pending: false
     },
     include: [
-      { model: db.Location, as: "locations" },
-      { model: db.Story, as: "stories" }
+      { model: db.Location, as: "locations", attributes: ["lng", "lat"] },
+      { model: db.Story, as: "stories" },
+      { model: db.Contact, as: "contact" }
     ]
   }).then(result => {
     res.json(result);

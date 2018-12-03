@@ -18,8 +18,6 @@ module.exports = (sequelize, DataTypes) => {
       tableName: "contacts"
     }
   );
-  Contact.associate = function(models) {
-    Contact.belongsTo(models.Project, { as: "contact" });
-  };
+  Contact.associate = function(models) {};
   return Contact;
 };
