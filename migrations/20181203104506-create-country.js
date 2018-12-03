@@ -11,6 +11,13 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
+      projectId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "projects",
+          key: "id"
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
