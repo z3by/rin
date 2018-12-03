@@ -20,6 +20,11 @@ module.exports = (sequelize, DataTypes) => {
       tableName: "projects"
     }
   );
-  Project.associate = function(models) {};
+
+  Project.associate = function(models) {
+    Project.hasMany(models.Story, { as: "stories" });
+    Project.hasMany(models.Location, { as: "locations" });
+  };
+
   return Project;
 };

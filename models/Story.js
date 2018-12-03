@@ -12,6 +12,8 @@ module.exports = (sequelize, DataTypes) => {
       tableName: "stories"
     }
   );
-  Story.associate = function(models) {};
+  Story.associate = function(models) {
+    Story.belongsTo(models.Project, { as: "project" });
+  };
   return Story;
 };
