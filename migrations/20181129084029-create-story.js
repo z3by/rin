@@ -17,32 +17,8 @@ module.exports = {
       storyText: {
         type: Sequelize.STRING
       },
-      founders: {
-        type: Sequelize.JSON
-      },
-      investors: {
-        type: Sequelize.JSON
-      },
-      refugeeInvestmentType: {
-        type: Sequelize.STRING
-      },
-      sdgs: {
-        type: Sequelize.JSON
-      },
-      investmentSize: {
-        type: Sequelize.INTEGER
-      },
-      countries: {
-        type: Sequelize.JSON
-      },
       img: {
         type: Sequelize.STRING
-      },
-      logo: {
-        type: Sequelize.STRING
-      },
-      contactInfo: {
-        type: Sequelize.JSON
       },
       projectId: {
         type: Sequelize.INTEGER,
