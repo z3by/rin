@@ -71,10 +71,11 @@ module.exports.getProject = (req, res) => {
     });
 };
 
+// helper function for add project
 const addIfNotExistsAndJoinWithProject = (model, data, project) => {
   data.forEach(field => {
     model
-      .find({
+      .findOne({
         where: {
           name: field.name
         }
@@ -141,17 +142,24 @@ module.exports.addProject = (req, res) => {
 
 module.exports.updateProject = (req, res) => {
   let data = req.body;
-  db.Project.update(data, {
+  db.Project.findOne({
     where: {
       id: req.params.id
     }
-  })
-    .then(result => {
-      res.json(result);
-    })
-    .catch(err => {
-      res.status(400).send(err);
+  }).then(project => {
+    // update project info
+    project.update(data).then(updated => {
+      // update project location
+      db.Location.findAll({
+        where: { projectId: project.id }
+      }).then(result => {
+        result.map((location, i) => {
+          location.update(data.locations[i]);
+        });
+        res.send(result);
+      });
     });
+  });
 };
 
 module.exports.deleteProjects = (req, res) => {
