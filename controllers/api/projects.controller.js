@@ -10,9 +10,10 @@ module.exports.getProjects = (req, res) => {
       { model: db.Location, as: "locations", attributes: ["lng", "lat"] },
       { model: db.Story, as: "stories" },
       { model: db.Contact, as: "contact" },
-      { model: db.Investor, through: { attributes: [] }, as: "investors" },
-      { model: db.Founder, through: { attributes: [] }, as: "founders" },
-      { model: db.Country, through: { attributes: [] }, as: "countries" }
+      { model: db.Investor, through: { attributes: [] }, as: "Investors" },
+      { model: db.Founder, through: { attributes: [] }, as: "Founders" },
+      { model: db.Country, through: { attributes: [] }, as: "Countries" },
+      { model: db.Sdg, through: { attributes: [] }, as: "Sdgs" }
     ]
   }).then(result => {
     res.json(result);
@@ -27,12 +28,16 @@ module.exports.getProjectsPage = (req, res) => {
     where: {
       pending: false
     },
-    offset: firstProjectIndex,
-    limit: lastProjectIndex - firstProjectIndex,
     include: [
-      { model: db.Location, as: "locations" },
-      { model: db.Story, as: "stories" }
-    ]
+      { model: db.Location, as: "locations", attributes: ["lng", "lat"] },
+      { model: db.Story, as: "stories" },
+      { model: db.Contact, as: "contact" },
+      { model: db.Investor, through: { attributes: [] }, as: "investors" },
+      { model: db.Founder, through: { attributes: [] }, as: "founders" },
+      { model: db.Country, through: { attributes: [] }, as: "countries" }
+    ],
+    offset: firstProjectIndex,
+    limit: lastProjectIndex - firstProjectIndex
   })
     .then(result => {
       res.json(result);
@@ -47,7 +52,14 @@ module.exports.getProject = (req, res) => {
     where: {
       id: req.params.id
     },
-    include: [{ model: db.Location, as: "Location" }]
+    include: [
+      { model: db.Location, as: "locations", attributes: ["lng", "lat"] },
+      { model: db.Story, as: "stories" },
+      { model: db.Contact, as: "contact" },
+      { model: db.Investor, through: { attributes: [] }, as: "investors" },
+      { model: db.Founder, through: { attributes: [] }, as: "founders" },
+      { model: db.Country, through: { attributes: [] }, as: "countries" }
+    ]
   })
     .then(result => {
       res.json(result);
@@ -58,22 +70,16 @@ module.exports.getProject = (req, res) => {
 };
 
 module.exports.addProject = (req, res) => {
-  let data = req.body;
-  // create location row in db
-  let location = { lng: data.lng, lat: data.lng };
-  db.Location.create(location).then(createdLocation => {
-    // append the location id to the data
-
-    const locationId = createdLocation.dataValues.id;
-    data.locationId = locationId;
-
-    db.Project.create(data)
-      .then(result => {
-        res.status(201).json(result);
-      })
-      .catch(err => {
-        res.send(err);
-      });
+  // console.log(req.body.name);
+  // let data = req.body;
+  const project = new db.Project({ id: 1, name: "rin" });
+  const investor = new db.Investor({
+    id: 2,
+    name: "majd",
+    logo: ""
+  });
+  project.addInvestor([investor]).then(result => {
+    res.send(result);
   });
 };
 

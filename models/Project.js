@@ -26,21 +26,21 @@ module.exports = (sequelize, DataTypes) => {
     Project.hasMany(models.Location, { as: "locations" });
     Project.belongsTo(models.Contact, { as: "contact" });
     Project.belongsToMany(models.Investor, {
-      as: "investors",
+      as: "Investors",
       through: "project_investor",
       foreignKey: "projectId"
     });
     Project.belongsToMany(models.Founder, {
-      as: "founders",
+      as: "Founders",
       through: "project_founder",
       foreignKey: "projectId"
     });
     Project.belongsToMany(models.Country, {
-      as: "countries",
+      as: "Countries",
       through: "project_country",
       foreignKey: "projectId"
     });
-    Project.belongsToMany(models.Sdg, { as: "sdgs", through: "ProjectSdg" });
+    Project.belongsToMany(models.Sdg, { as: "Sdgs", through: "project_sdg" });
   };
 
   return Project;
