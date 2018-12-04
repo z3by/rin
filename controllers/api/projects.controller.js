@@ -34,6 +34,7 @@ module.exports.getProjectsPage = (req, res) => {
       { model: db.Contact, as: "contact" },
       { model: db.Investor, through: { attributes: [] }, as: "investors" },
       { model: db.Founder, through: { attributes: [] }, as: "founders" },
+      { model: db.Sdg, through: { attributes: [] }, as: "Sdgs" },
       { model: db.Country, through: { attributes: [] }, as: "countries" }
     ],
     offset: firstProjectIndex,
@@ -58,6 +59,7 @@ module.exports.getProject = (req, res) => {
       { model: db.Contact, as: "contact" },
       { model: db.Investor, through: { attributes: [] }, as: "investors" },
       { model: db.Founder, through: { attributes: [] }, as: "founders" },
+      { model: db.Sdg, through: { attributes: [] }, as: "Sdgs" },
       { model: db.Country, through: { attributes: [] }, as: "countries" }
     ]
   })
@@ -70,16 +72,13 @@ module.exports.getProject = (req, res) => {
 };
 
 module.exports.addProject = (req, res) => {
-  // console.log(req.body.name);
-  // let data = req.body;
-  const project = new db.Project({ id: 1, name: "rin" });
-  const investor = new db.Investor({
-    id: 2,
-    name: "majd",
-    logo: ""
-  });
-  project.addInvestor([investor]).then(result => {
-    res.send(result);
+  let data = req.body;
+  db.Contact.create(data.contact).then(contact => {
+    data.project.contactId = contact.id;
+    const project = db.Project.build(data.project);
+    project.save().then(added => {
+      res.json(added);
+    });
   });
 };
 
