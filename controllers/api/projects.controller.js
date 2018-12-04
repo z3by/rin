@@ -7,7 +7,7 @@ module.exports.getProjects = (req, res) => {
       pending: false
     },
     include: [
-      { model: db.Location, as: "locations", attributes: ["lng", "lat"] },
+      { model: db.Location, as: "locations" },
       { model: db.Story, as: "stories" },
       { model: db.Contact, as: "contact" },
       { model: db.Investor, through: { attributes: [] }, as: "Investors" },
@@ -73,13 +73,54 @@ module.exports.getProject = (req, res) => {
 
 module.exports.addProject = (req, res) => {
   let data = req.body;
-  db.Contact.create(data.contact).then(contact => {
-    data.project.contactId = contact.id;
-    const project = db.Project.build(data.project);
-    project.save().then(added => {
-      res.json(added);
+
+  // add contact record
+  db.Contact.create(data.contact)
+    .then(contact => {
+      // set the contact id to the project data;
+      data.project.contactId = contact.id;
+      // create project with the contact id included;
+      db.Project.create(data.project)
+        .then(project => {
+          // create location record with project id included;
+          data.location.ProjectId = project.id;
+          db.Location.create(data.location)
+            .then(result => {
+              // iterate over investors
+              data.investors.forEach(investorInfo => {
+                // check if the investor is already exists
+                db.Investor.find({
+                  where: {
+                    name: investorInfo.name
+                  }
+                })
+                  .then(investorExists => {
+                    if (!investorExists) {
+                      // create new investor
+                      db.Investor.create(investorInfo).then(investor => {
+                        investor.addProject(project);
+                      });
+                    } else {
+                      investorExists.addProject(project);
+                    }
+                  })
+                  .catch(err => {
+                    res.sendStatus(404);
+                  });
+              });
+            })
+            .catch(err => {
+              res.sendStatus(404);
+            });
+          res.sendStatus(201);
+        })
+        .catch(err => {
+          res.sendStatus(404);
+        });
+    })
+    .catch(err => {
+      res.sendStatus(404);
     });
-  });
 };
 
 module.exports.updateProject = (req, res) => {
