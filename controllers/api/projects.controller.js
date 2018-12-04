@@ -71,9 +71,29 @@ module.exports.getProject = (req, res) => {
     });
 };
 
+const addIfNotExistsAndJoinWithProject = (model, data, project) => {
+  data.forEach(field => {
+    model
+      .find({
+        where: {
+          name: field.name
+        }
+      })
+      .then(isExists => {
+        if (!isExists) {
+          // create new record
+          model.create(field).then(createdRecord => {
+            createdRecord.addProject(project);
+          });
+        } else {
+          isExists.addProject(project);
+        }
+      });
+  });
+};
+
 module.exports.addProject = (req, res) => {
   let data = req.body;
-
   // add contact record
   db.Contact.create(data.contact)
     .then(contact => {
@@ -86,28 +106,24 @@ module.exports.addProject = (req, res) => {
           data.location.ProjectId = project.id;
           db.Location.create(data.location)
             .then(result => {
-              // iterate over investors
-              data.investors.forEach(investorInfo => {
-                // check if the investor is already exists
-                db.Investor.find({
-                  where: {
-                    name: investorInfo.name
-                  }
-                })
-                  .then(investorExists => {
-                    if (!investorExists) {
-                      // create new investor
-                      db.Investor.create(investorInfo).then(investor => {
-                        investor.addProject(project);
-                      });
-                    } else {
-                      investorExists.addProject(project);
-                    }
-                  })
-                  .catch(err => {
-                    res.sendStatus(404);
-                  });
-              });
+              addIfNotExistsAndJoinWithProject(
+                db.Investor,
+                data.investors,
+                project
+              );
+              addIfNotExistsAndJoinWithProject(
+                db.Founder,
+                data.founders,
+                project
+              );
+
+              addIfNotExistsAndJoinWithProject(db.Sdg, data.sdgs, project);
+
+              addIfNotExistsAndJoinWithProject(
+                db.Country,
+                data.countries,
+                project
+              );
             })
             .catch(err => {
               res.sendStatus(404);

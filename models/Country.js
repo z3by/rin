@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
   Country.associate = function(models) {
     Country.belongsToMany(models.Project, {
       as: "projects",
-      through: "project_countries",
+      through: "project_country",
       foreignKey: "countryId"
     });
   };
