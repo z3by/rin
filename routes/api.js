@@ -11,6 +11,7 @@ const adminAPI = require("../controllers/users/admin.controller");
 const foundersAPI = require("../controllers/api/sdgs.controller");
 const investorsAPI = require("../controllers/api/investors.controller");
 const sdgsAPI = require("../controllers/api/sdgs.controller");
+const loactionAPI = require("../controllers/api/locations.controller");
 
 // upload image route
 router.post("/uploadimg", s3Config.uploadImg, (req, res) => {
@@ -26,6 +27,10 @@ router.post("/uploadpdf", s3Config.uploadPDF, (req, res) => {
 router.get("/countries", countriesAPI.getCountries);
 router.get("/countries/names", countriesAPI.getCountriesNames);
 router.get("/countries/migrate", countriesAPI.fillCountryTable);
+
+// locations routes
+router.get("/locations", loactionAPI.getLocations);
+router.post("/locations", loactionAPI.addLocation);
 
 //stories routes
 router.get("/stories", storiesAPI.getStories);
