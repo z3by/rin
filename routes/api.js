@@ -4,11 +4,12 @@ const router = express.Router();
 const s3Config = require("../config/s3.config");
 const storiesAPI = require("../controllers/api/stories.controller");
 const articlesAPI = require("../controllers/api/articles.controller");
-const investorAPI = require("../controllers/api/investors.controller");
 const countriesAPI = require("../controllers/api/countries.controller");
 const projectsAPI = require("../controllers/api/projects.controller");
 const libraryAPI = require("../controllers/api/library.controller");
 const adminAPI = require("../controllers/users/admin.controller");
+const foundersAPI = require("../controllers/api/founders.controller");
+const investorsAPI = require("../controllers/api/investors.controller");
 
 // upload image route
 router.post("/uploadimg", s3Config.uploadImg, (req, res) => {
@@ -56,13 +57,21 @@ router.delete("/projects/:id", projectsAPI.deleteProjects);
 // // project requests
 router.get("/requests", projectsAPI.getProjectRequestsPage);
 
-// investor routes
-router.get("/investors", investorAPI.getInvestors);
-router.get("/investors/page", investorAPI.getInvestorsPage);
-router.get("/investors/:id", investorAPI.getInvestor);
-router.post("/investors", investorAPI.addInvestor);
-router.put("/investors/:id", investorAPI.updateInvestor);
-router.delete("/investors/:id", investorAPI.deleteInvestors);
+// investors routes
+router.get("/investors", investorsAPI.getInvestors);
+router.get("/investors/page", investorsAPI.getInvestorsPage);
+router.get("/investors/:id", investorsAPI.getInvestor);
+router.post("/investors", investorsAPI.addInvestor);
+router.put("/investors/:id", investorsAPI.updateInvestor);
+router.delete("/investors/:id", investorsAPI.deleteInvestors);
+
+// founders routes
+router.get("/founders", foundersAPI.getFounders);
+router.get("/founders/page", foundersAPI.getFoundersPage);
+router.get("/founders/:id", foundersAPI.getFounder);
+router.post("/founders", foundersAPI.addFounder);
+router.put("/founders/:id", foundersAPI.updateFounder);
+router.delete("/founders/:id", foundersAPI.deleteFounders);
 
 // library routes ---------------------------
 // links routes
