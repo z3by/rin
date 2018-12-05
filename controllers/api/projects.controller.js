@@ -150,13 +150,12 @@ module.exports.updateProject = (req, res) => {
     // update project info
     project.update(data).then(updated => {
       // update project location
-      db.Location.findAll({
+      db.Location.findOne({
         where: { projectId: project.id }
-      }).then(result => {
-        result.map((location, i) => {
-          location.update(data.locations[i]);
+      }).then(location => {
+        location.update(data.locations[0]).then(newLocation => {
+          res.send(newLocation);
         });
-        res.send(result);
       });
     });
   });
