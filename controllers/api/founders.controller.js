@@ -1,7 +1,9 @@
 const db = require("../../models/index");
 
 module.exports.getFounders = (req, res) => {
-  db.Founder.findAll({}).then(result => {
+  db.Founder.findAll({
+    include: [{ model: db.Contact, as: "contact" }]
+  }).then(result => {
     res.json(result);
   });
 };
@@ -12,7 +14,8 @@ module.exports.getFoundersPage = (req, res) => {
 
   db.Founder.findAndCountAll({
     offset: firstFounderIndex,
-    limit: lastFounderIndex - firstFounderIndex
+    limit: lastFounderIndex - firstFounderIndex,
+    include: [{ model: db.Contact, as: "contact" }]
   })
     .then(result => {
       res.json(result);
@@ -26,7 +29,8 @@ module.exports.getFounder = (req, res) => {
   db.Founder.findAll({
     where: {
       id: req.params.id
-    }
+    },
+    include: [{ model: db.Contact, as: "contact" }]
   })
     .then(result => {
       res.json(result);

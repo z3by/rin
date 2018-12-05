@@ -1,7 +1,9 @@
 const db = require("../../models/index");
 
 module.exports.getInvestors = (req, res) => {
-  db.Investor.findAll({}).then(result => {
+  db.Investor.findAll({
+    include: [{ model: db.Contact, as: "contact" }]
+  }).then(result => {
     res.json(result);
   });
 };
@@ -12,7 +14,8 @@ module.exports.getInvestorsPage = (req, res) => {
 
   db.Investor.findAndCountAll({
     offset: firstInvestorIndex,
-    limit: lastInvestorIndex - firstInvestorIndex
+    limit: lastInvestorIndex - firstInvestorIndex,
+    include: [{ model: db.Contact, as: "contact" }]
   })
     .then(result => {
       res.json(result);
@@ -26,7 +29,8 @@ module.exports.getInvestor = (req, res) => {
   db.Investor.findAll({
     where: {
       id: req.params.id
-    }
+    },
+    include: [{ model: db.Contact, as: "contact" }]
   })
     .then(result => {
       res.json(result);
