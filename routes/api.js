@@ -8,8 +8,9 @@ const countriesAPI = require("../controllers/api/countries.controller");
 const projectsAPI = require("../controllers/api/projects.controller");
 const libraryAPI = require("../controllers/api/library.controller");
 const adminAPI = require("../controllers/users/admin.controller");
-const foundersAPI = require("../controllers/api/founders.controller");
+const foundersAPI = require("../controllers/api/sdgs.controller");
 const investorsAPI = require("../controllers/api/investors.controller");
+const sdgsAPI = require("../controllers/api/sdgs.controller");
 
 // upload image route
 router.post("/uploadimg", s3Config.uploadImg, (req, res) => {
@@ -73,6 +74,11 @@ router.get("/founders/:id", foundersAPI.getFounder);
 router.post("/founders", foundersAPI.addFounder);
 router.put("/founders/:id", foundersAPI.updateFounder);
 router.delete("/founders/:id", foundersAPI.deleteFounders);
+
+// sdgs routes
+router.get("/sdgs", sdgsAPI.getSdgs);
+router.get("/sdgs/:id", sdgsAPI.getSdg);
+router.post("/sdgs", sdgsAPI.addSdg);
 
 // library routes ---------------------------
 // links routes
