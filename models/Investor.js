@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
   Investor.associate = function(models) {
+    Investor.belongsTo(models.Contact, { as: "contact" });
     Investor.belongsToMany(models.Project, {
       as: "projects",
       through: "project_investor",

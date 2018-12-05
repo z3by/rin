@@ -4,6 +4,7 @@ const router = express.Router();
 const s3Config = require("../config/s3.config");
 const storiesAPI = require("../controllers/api/stories.controller");
 const articlesAPI = require("../controllers/api/articles.controller");
+const investorAPI = require("../controllers/api/investors.controller");
 const countriesAPI = require("../controllers/api/countries.controller");
 const projectsAPI = require("../controllers/api/projects.controller");
 const libraryAPI = require("../controllers/api/library.controller");
@@ -54,6 +55,14 @@ router.put("/projects/:id", projectsAPI.updateProject);
 router.delete("/projects/:id", projectsAPI.deleteProjects);
 // // project requests
 router.get("/requests", projectsAPI.getProjectRequestsPage);
+
+// investor routes
+router.get("/investors", investorAPI.getInvestors);
+router.get("/investors/page", investorAPI.getInvestorsPage);
+router.get("/investors/:id", investorAPI.getInvestor);
+router.post("/investors", investorAPI.addInvestor);
+router.put("/investors/:id", investorAPI.updateInvestor);
+router.delete("/investors/:id", investorAPI.deleteInvestors);
 
 // library routes ---------------------------
 // links routes
