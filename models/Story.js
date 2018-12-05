@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
   Story.associate = function(models) {
-    // Story.belongsTo(models.Project, { as: "project" });
+    Story.belongsTo(models.Project, { as: "project" });
   };
   return Story;
 };

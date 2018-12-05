@@ -2,7 +2,22 @@ const storyValidator = require("../validators/story.validator");
 const db = require("../../models/index");
 
 module.exports.getStories = (req, res) => {
-  db.Story.findAll({}).then(result => {
+  db.Story.findAll({
+    include: [
+      {
+        model: db.Project,
+        as: "project",
+        include: [
+          { model: db.Location, as: "locations" },
+          { model: db.Contact, as: "contact" },
+          { model: db.Investor, through: { attributes: [] }, as: "Investors" },
+          { model: db.Founder, through: { attributes: [] }, as: "Founders" },
+          { model: db.Country, through: { attributes: [] }, as: "Countries" },
+          { model: db.Sdg, through: { attributes: [] }, as: "Sdgs" }
+        ]
+      }
+    ]
+  }).then(result => {
     res.json(result);
   });
 };
@@ -13,7 +28,21 @@ module.exports.getStoriesPage = (req, res) => {
 
   db.Story.findAndCountAll({
     offset: firstStoryIndex,
-    limit: lastStoryIndex - firstStoryIndex
+    limit: lastStoryIndex - firstStoryIndex,
+    include: [
+      {
+        model: db.Project,
+        as: "project",
+        include: [
+          { model: db.Location, as: "locations" },
+          { model: db.Contact, as: "contact" },
+          { model: db.Investor, through: { attributes: [] }, as: "Investors" },
+          { model: db.Founder, through: { attributes: [] }, as: "Founders" },
+          { model: db.Country, through: { attributes: [] }, as: "Countries" },
+          { model: db.Sdg, through: { attributes: [] }, as: "Sdgs" }
+        ]
+      }
+    ]
   })
     .then(result => {
       res.json(result);
@@ -27,7 +56,21 @@ module.exports.getStory = (req, res) => {
   db.Story.findAll({
     where: {
       id: req.params.id
-    }
+    },
+    include: [
+      {
+        model: db.Project,
+        as: "project",
+        include: [
+          { model: db.Location, as: "locations" },
+          { model: db.Contact, as: "contact" },
+          { model: db.Investor, through: { attributes: [] }, as: "Investors" },
+          { model: db.Founder, through: { attributes: [] }, as: "Founders" },
+          { model: db.Country, through: { attributes: [] }, as: "Countries" },
+          { model: db.Sdg, through: { attributes: [] }, as: "Sdgs" }
+        ]
+      }
+    ]
   })
     .then(result => {
       res.json(result);
