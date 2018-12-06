@@ -12,6 +12,7 @@ const foundersAPI = require("../controllers/api/founders.controller");
 const investorsAPI = require("../controllers/api/investors.controller");
 const sdgsAPI = require("../controllers/api/sdgs.controller");
 const loactionAPI = require("../controllers/api/locations.controller");
+const contactsAPI = require("../controllers/api/contacts.controller");
 
 // upload image route
 router.post("/uploadimg", s3Config.uploadImg, (req, res) => {
@@ -71,6 +72,13 @@ router.get("/investors/:id", investorsAPI.getInvestor);
 router.post("/investors", investorsAPI.addInvestor);
 router.put("/investors/:id", investorsAPI.updateInvestor);
 router.delete("/investors/:id", investorsAPI.deleteInvestors);
+
+// contacts routes
+router.get("/contacts", contactsAPI.getContacts);
+router.get("/contacts/:id", contactsAPI.getContact);
+router.post("/contacts", contactsAPI.addContact);
+router.put("/contacts/:id", contactsAPI.updateContact);
+router.delete("/contacts/:id", contactsAPI.deleteContacts);
 
 // founders routes
 router.get("/founders", foundersAPI.getFounders);
