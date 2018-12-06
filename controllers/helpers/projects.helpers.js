@@ -92,3 +92,22 @@ module.exports.joinProjectWithFounders = (founders, project) => {
     });
   });
 };
+
+module.exports.updateProjectLocations = (project, locations) => {
+  return new Promise((resolve, reject) => {
+    db.Location.destroy({ where: { ProjectId: project.id } }).then(() => {
+      locations.forEach((location, i) => {
+        location["ProjectId"] = project.id;
+        db.Location.create(location)
+          .then(added => {
+            if (i === locations.length - 1) {
+              resolve(true);
+            }
+          })
+          .catch(err => {
+            return reject(err);
+          });
+      });
+    });
+  });
+};

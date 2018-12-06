@@ -134,13 +134,14 @@ module.exports.updateProject = (req, res) => {
     // update project info
     project.update(data).then(updated => {
       // update project location
-      db.Location.findOne({
-        where: { projectId: project.id }
-      }).then(location => {
-        location.update(data.locations[0]).then(newLocation => {
-          res.send(newLocation);
+      projectHelpers
+        .updateProjectLocations(project, data.locations)
+        .then(() => {
+          res.send(project);
+        })
+        .catch(err => {
+          res.send(err);
         });
-      });
     });
   });
 };
