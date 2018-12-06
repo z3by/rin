@@ -22,14 +22,15 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   Project.associate = function(models) {
-    Project.hasMany(models.Story, { as: "stories" });
-    Project.hasMany(models.Location, { as: "locations" });
-    Project.belongsTo(models.Contact, { as: "contact" });
+    Project.hasMany(models.Story, { as: "stories", onDelete: "cascade" });
+    Project.hasMany(models.Location, { as: "locations", onDelete: "cascade" });
+    Project.belongsTo(models.Contact, { as: "contact", onDelete: "cascade" });
     Project.belongsToMany(models.Investor, {
       as: "Investors",
       through: "project_investor",
       foreignKey: "projectId"
     });
+
     Project.belongsToMany(models.Founder, {
       as: "Founders",
       through: "project_founder",

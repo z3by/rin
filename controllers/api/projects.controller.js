@@ -188,16 +188,38 @@ module.exports.updateProject = (req, res) => {
 
 module.exports.deleteProjects = (req, res) => {
   let data = req.body;
-  db.Project.destroy({
-    where: {
-      id: req.params.id
-    }
-  })
-    .then(result => {
-      res.json(result);
+  db.Location.destroy({ where: { ProjectId: req.params.id } })
+    .then(() => {
+      db.findOne({ where: { id: req.params.id } })
+        .then(project => {
+          db.Contact.destroy({
+            where: {
+              id: project.contactId
+            }
+          })
+            .then(() => {
+              db.Project.destroy({
+                where: {
+                  id: req.params.id
+                }
+              })
+                .then(result => {
+                  res.json(result);
+                })
+                .catch(err => {
+                  res.status(400).send(err);
+                });
+            })
+            .catch(err => {
+              res.send(err);
+            });
+        })
+        .catch(err => {
+          res.send(err);
+        });
     })
     .catch(err => {
-      res.status(400).send(err);
+      res.send(err);
     });
 };
 
