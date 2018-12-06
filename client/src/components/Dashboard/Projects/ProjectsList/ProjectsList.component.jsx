@@ -23,11 +23,11 @@ export default class ProjectsList extends Component {
           controls={true}
           wantedFields={[
             "id",
-            "title",
-            "type",
-            "start_date",
-            "organization_name",
-            "project_description"
+            "name",
+            "organization",
+            "sector",
+            "investmentSize",
+            "year"
           ]}
         />
       </Paper>

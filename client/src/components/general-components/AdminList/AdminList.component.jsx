@@ -20,32 +20,23 @@ export default class AdminList extends Component {
   }
 
   componentDidMount() {
-    this.getItemsCount();
-  }
-
-  getItemsCount = () => {
-    Axios.get(`/api/${this.props.pluralName}/count`).then(res => {
-      this.setState({
-        itemsCount: res.data["count(*)"]
-      });
-    });
     this.fetchData();
-  };
+  }
 
   fetchData = () => {
     const startIndex = this.state.page * this.state.rowsPerPage;
-    const endIndex = startIndex + this.state.rowsPerPage;
+    const endIndex = startIndex + this.state.rowsPerPage - 1;
+
     const indexes = {
       first: startIndex,
       last: endIndex
     };
 
-    Axios.get(`/api/${this.props.pluralName}/selectedpage`, {
+    Axios.get(`/api/${this.props.pluralName}/page`, {
       params: indexes
     })
       .then(res => {
-        this.setState({ data: res.data });
-        console.log(res.data);
+        this.setState({ data: res.data.rows, itemsCount: res.data.count });
       })
       .catch(err => {
         console.log(err);
