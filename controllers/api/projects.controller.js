@@ -137,7 +137,50 @@ module.exports.updateProject = (req, res) => {
       projectHelpers
         .updateProjectLocations(project, data.locations)
         .then(() => {
-          res.send(project);
+          // update project investors
+          project.setInvestors([]).then(result => {
+            projectHelpers
+              .joinProjectWithInvestors(data.investors, project)
+              .then(result => {
+                res.send(result);
+              })
+              .catch(err => {
+                res.send(err);
+              });
+          });
+          // update project founders
+          project.setFounders([]).then(result => {
+            projectHelpers
+              .joinProjectWithFounders(data.founders, project)
+              .then(result => {
+                res.send(result);
+              })
+              .catch(err => {
+                res.send(err);
+              });
+          });
+          // update project countries
+          project.setCountries([]).then(result => {
+            projectHelpers
+              .joinProjectWithCountries(data.countries, project)
+              .then(result => {
+                res.send(result);
+              })
+              .catch(err => {
+                res.send(err);
+              });
+          });
+          // update project sdgs
+          project.setSdgs([]).then(result => {
+            projectHelpers
+              .joinProjectWithSdgs(data.sdgs, project)
+              .then(result => {
+                res.send(result);
+              })
+              .catch(err => {
+                res.send(err);
+              });
+          });
         })
         .catch(err => {
           res.send(err);
