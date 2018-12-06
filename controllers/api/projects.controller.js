@@ -1,5 +1,6 @@
 const db = require("../../models/index");
 const Op = db.Sequelize.Op;
+const projectHelpers = require("../helpers/projects.helpers");
 
 module.exports.getProjects = (req, res) => {
   db.Project.findAll({
@@ -71,73 +72,22 @@ module.exports.getProject = (req, res) => {
     });
 };
 
-// helper function for add project
-const addIfNotExistsAndJoinWithProject = (model, data, project) => {
-  data.forEach(field => {
-    model
-      .findOne({
-        where: {
-          name: field.name
-        }
-      })
-      .then(isExists => {
-        if (!isExists) {
-          // create new record
-          model.create(field).then(createdRecord => {
-            createdRecord.addProject(project);
-          });
-        } else {
-          isExists.addProject(project);
-        }
-      });
-  });
-};
-
 module.exports.addProject = (req, res) => {
   let data = req.body;
   // add contact record
-  db.Contact.create(data.contact)
-    .then(contact => {
-      // set the contact id to the project data;
-      data.project.contactId = contact.id;
-      // create project with the contact id included;
-      db.Project.create(data.project)
-        .then(project => {
-          // create location record with project id included;
-          data.location.ProjectId = project.id;
-          db.Location.create(data.location)
-            .then(result => {
-              addIfNotExistsAndJoinWithProject(
-                db.Investor,
-                data.investors,
-                project
-              );
-              addIfNotExistsAndJoinWithProject(
-                db.Founder,
-                data.founders,
-                project
-              );
-
-              addIfNotExistsAndJoinWithProject(db.Sdg, data.sdgs, project);
-
-              addIfNotExistsAndJoinWithProject(
-                db.Country,
-                data.countries,
-                project
-              );
-            })
-            .catch(err => {
-              res.sendStatus(404);
-            });
-          res.sendStatus(201);
-        })
-        .catch(err => {
-          res.sendStatus(404);
-        });
-    })
-    .catch(err => {
-      res.sendStatus(404);
-    });
+  db.Project.create(data).then(project => {
+    // create project locations records;
+    projectHelpers
+      .addLocations(data.locations, project.id)
+      .then(locationsAdded => {
+        // join project with countries;
+        projectHelpers
+          .joinProjectWithCountries(data.countries, project)
+          .then(() => {
+            res.send(project);
+          });
+      });
+  });
 };
 
 module.exports.updateProject = (req, res) => {
