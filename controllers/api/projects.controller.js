@@ -52,24 +52,21 @@ module.exports.getProjectsPage = (req, res) => {
 module.exports.getProject = (req, res) => {
   db.Project.findAll({
     where: {
+      pending: false,
       id: req.params.id
     },
     include: [
-      { model: db.Location, as: "locations", attributes: ["lng", "lat"] },
+      { model: db.Location, as: "locations" },
       { model: db.Story, as: "stories" },
       { model: db.Contact, as: "contact" },
-      { model: db.Investor, through: { attributes: [] }, as: "investors" },
-      { model: db.Founder, through: { attributes: [] }, as: "founders" },
-      { model: db.Sdg, through: { attributes: [] }, as: "Sdgs" },
-      { model: db.Country, through: { attributes: [] }, as: "countries" }
+      { model: db.Investor, through: { attributes: [] }, as: "Investors" },
+      { model: db.Founder, through: { attributes: [] }, as: "Founders" },
+      { model: db.Country, through: { attributes: [] }, as: "Countries" },
+      { model: db.Sdg, through: { attributes: [] }, as: "Sdgs" }
     ]
-  })
-    .then(result => {
-      res.json(result);
-    })
-    .catch(err => {
-      res.send(err);
-    });
+  }).then(result => {
+    res.json(result);
+  });
 };
 
 module.exports.addProject = (req, res) => {
