@@ -84,8 +84,42 @@ module.exports.addProject = (req, res) => {
         projectHelpers
           .joinProjectWithCountries(data.countries, project)
           .then(() => {
-            res.send(project);
+            // join project with sdgs
+            projectHelpers
+              .joinProjectWithSdgs(data.sdgs, project)
+              .then(() => {
+                res.send(201);
+              })
+              .catch(err => {
+                res.send(err);
+              });
+
+            // join project with investors
+            projectHelpers
+              .joinProjectWithInvestors(data.investors, project)
+              .then(() => {
+                res.send(201);
+              })
+              .catch(err => {
+                res.send(err);
+              });
+
+            // join project with founders
+            projectHelpers
+              .joinProjectWithFounders(data.founders, project)
+              .then(() => {
+                res.send(201);
+              })
+              .catch(err => {
+                res.send(err);
+              });
+          })
+          .catch(err => {
+            res.send(err);
           });
+      })
+      .catch(err => {
+        res.send(err);
       });
   });
 };
