@@ -1,18 +1,21 @@
 const db = require("../../models/index");
 
-module.exports.getArticles = (req, res) => {
-  db.Article.findAll({}).then(result => {
+module.exports.getFounders = (req, res) => {
+  db.Founder.findAll({
+    include: [{ model: db.Contact, as: "contact" }]
+  }).then(result => {
     res.json(result);
   });
 };
 
-module.exports.getArticlesPage = (req, res) => {
-  const firstArticleIndex = Number(req.query.first);
-  const lastArticleIndex = Number(req.query.last);
+module.exports.getFoundersPage = (req, res) => {
+  const firstFounderIndex = Number(req.query.first);
+  const lastFounderIndex = Number(req.query.last);
 
-  db.Article.findAndCountAll({
-    offset: firstArticleIndex,
-    limit: lastArticleIndex - firstArticleIndex
+  db.Founder.findAndCountAll({
+    offset: firstFounderIndex,
+    limit: lastFounderIndex - firstFounderIndex,
+    include: [{ model: db.Contact, as: "contact" }]
   })
     .then(result => {
       res.json(result);
@@ -22,11 +25,12 @@ module.exports.getArticlesPage = (req, res) => {
     });
 };
 
-module.exports.getArticle = (req, res) => {
-  db.Article.findAll({
+module.exports.getFounder = (req, res) => {
+  db.Founder.findAll({
     where: {
       id: req.params.id
-    }
+    },
+    include: [{ model: db.Contact, as: "contact" }]
   })
     .then(result => {
       res.json(result);
@@ -36,9 +40,9 @@ module.exports.getArticle = (req, res) => {
     });
 };
 
-module.exports.addArticle = (req, res) => {
+module.exports.addFounder = (req, res) => {
   let data = req.body;
-  db.Article.create(data)
+  db.Founder.create(data)
     .then(result => {
       res.status(201).json(result);
     })
@@ -47,9 +51,9 @@ module.exports.addArticle = (req, res) => {
     });
 };
 
-module.exports.updateArticle = (req, res) => {
+module.exports.updateFounder = (req, res) => {
   let data = req.body;
-  db.Article.update(data, {
+  db.Founder.update(data, {
     where: {
       id: req.params.id
     }
@@ -62,9 +66,9 @@ module.exports.updateArticle = (req, res) => {
     });
 };
 
-module.exports.deleteArticles = (req, res) => {
+module.exports.deleteFounders = (req, res) => {
   let data = req.body;
-  db.Article.destroy({
+  db.Founder.destroy({
     where: {
       id: req.params.id
     }

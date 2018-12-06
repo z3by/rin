@@ -1,18 +1,21 @@
 const db = require("../../models/index");
 
-module.exports.getArticles = (req, res) => {
-  db.Article.findAll({}).then(result => {
+module.exports.getInvestors = (req, res) => {
+  db.Investor.findAll({
+    include: [{ model: db.Contact, as: "contact" }]
+  }).then(result => {
     res.json(result);
   });
 };
 
-module.exports.getArticlesPage = (req, res) => {
-  const firstArticleIndex = Number(req.query.first);
-  const lastArticleIndex = Number(req.query.last);
+module.exports.getInvestorsPage = (req, res) => {
+  const firstInvestorIndex = Number(req.query.first);
+  const lastInvestorIndex = Number(req.query.last);
 
-  db.Article.findAndCountAll({
-    offset: firstArticleIndex,
-    limit: lastArticleIndex - firstArticleIndex
+  db.Investor.findAndCountAll({
+    offset: firstInvestorIndex,
+    limit: lastInvestorIndex - firstInvestorIndex,
+    include: [{ model: db.Contact, as: "contact" }]
   })
     .then(result => {
       res.json(result);
@@ -22,11 +25,12 @@ module.exports.getArticlesPage = (req, res) => {
     });
 };
 
-module.exports.getArticle = (req, res) => {
-  db.Article.findAll({
+module.exports.getInvestor = (req, res) => {
+  db.Investor.findAll({
     where: {
       id: req.params.id
-    }
+    },
+    include: [{ model: db.Contact, as: "contact" }]
   })
     .then(result => {
       res.json(result);
@@ -36,9 +40,9 @@ module.exports.getArticle = (req, res) => {
     });
 };
 
-module.exports.addArticle = (req, res) => {
+module.exports.addInvestor = (req, res) => {
   let data = req.body;
-  db.Article.create(data)
+  db.Investor.create(data)
     .then(result => {
       res.status(201).json(result);
     })
@@ -47,9 +51,9 @@ module.exports.addArticle = (req, res) => {
     });
 };
 
-module.exports.updateArticle = (req, res) => {
+module.exports.updateInvestor = (req, res) => {
   let data = req.body;
-  db.Article.update(data, {
+  db.Investor.update(data, {
     where: {
       id: req.params.id
     }
@@ -62,9 +66,9 @@ module.exports.updateArticle = (req, res) => {
     });
 };
 
-module.exports.deleteArticles = (req, res) => {
+module.exports.deleteInvestors = (req, res) => {
   let data = req.body;
-  db.Article.destroy({
+  db.Investor.destroy({
     where: {
       id: req.params.id
     }
