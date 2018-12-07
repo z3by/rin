@@ -25,7 +25,7 @@ export default class AdminList extends Component {
 
   fetchData = () => {
     const startIndex = this.state.page * this.state.rowsPerPage;
-    const endIndex = startIndex + this.state.rowsPerPage - 1;
+    const endIndex = startIndex + this.state.rowsPerPage;
 
     const indexes = {
       first: startIndex,
