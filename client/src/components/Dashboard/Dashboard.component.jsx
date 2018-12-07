@@ -75,6 +75,25 @@ export default class Dashboard extends Component {
               );
             }}
           />
+          <Route
+            path="/dashboard/users"
+            render={() => {
+              return (
+                <AdminList
+                  pluralName="members"
+                  controls={true}
+                  wantedFields={[
+                    "id",
+                    "firstName",
+                    "lastName",
+                    "userRole",
+                    "email",
+                    "oraganizationName"
+                  ]}
+                />
+              );
+            }}
+          />
         </main>
       </div>
     );
