@@ -45,7 +45,24 @@ export default class Dashboard extends Component {
         />
         <Navbar toggleDrawer={this.toggleDrawer} />
         <main>
-          <h1>hello</h1>
+          <Route
+            path="/dashboard/projects"
+            render={() => {
+              return (
+                <AdminList
+                  pluralName="projects"
+                  controls={true}
+                  wantedFields={[
+                    "id",
+                    "name",
+                    "organization",
+                    "sector",
+                    "investmentSize"
+                  ]}
+                />
+              );
+            }}
+          />
         </main>
       </div>
     );
