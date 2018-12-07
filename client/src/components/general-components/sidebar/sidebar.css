@@ -59,3 +59,16 @@
 .sidebar ul li.tab-active a {
   color: var(--color-2);
 }
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 50px;
+  }
+  .sidebar .admin-logo {
+    display: none;
+    background: white;
+  }
+  .sidebar-text {
+    display: none;
+  }
+}

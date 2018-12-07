@@ -63,7 +63,7 @@ export default class componentName extends Component {
               >
                 <Link to={tab.path}>
                   <i className={"fas fa-" + tab.icon} />
-                  {tab.title}
+                  <span className="sidebar-text">{tab.title}</span>
                 </Link>
               </li>
             );
