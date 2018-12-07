@@ -4,11 +4,14 @@ import { Route, Link } from "react-router-dom";
 import Axios from "axios";
 import AdminList from "../general-components/AdminList/AdminList.component";
 import Sidebar from "../general-components/sidebar/sidebar";
+import Navbar from "../general-components/navbar/Navbar";
 
 export default class Dashboard extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      sidebarToggled: false
+    };
   }
 
   componentDidMount() {
@@ -27,10 +30,20 @@ export default class Dashboard extends Component {
     });
   }
 
+  toggleDrawer = () => {
+    this.setState({
+      sidebarToggled: !this.state.sidebarToggled
+    });
+  };
+
   render() {
     return (
       <div className="admin-dashboard fadeInFast">
-        <Sidebar />
+        <Sidebar
+          toggleDrawer={this.toggleDrawer}
+          toggled={this.state.sidebarToggled}
+        />
+        <Navbar toggleDrawer={this.toggleDrawer} />
         <main>
           <h1>hello</h1>
         </main>

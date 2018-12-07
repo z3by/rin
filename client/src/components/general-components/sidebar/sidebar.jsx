@@ -20,14 +20,10 @@ const styles = {
 };
 
 class Sidebar extends React.Component {
-  state = {
-    toggled: false
-  };
+  state = {};
 
   toggleDrawer = () => () => {
-    this.setState({
-      toggled: !this.state.toggled
-    });
+    this.props.toggleDrawer();
   };
 
   render() {
@@ -37,8 +33,14 @@ class Sidebar extends React.Component {
       <div className={classes.list}>
         <List>
           <Link to="/dashboard/projects">
-            <ListItem button key={"projects"}>
-              <ListItemIcon>
+            <ListItem button key={"projects"} style={{ padding: 0 }}>
+              <ListItemIcon
+                style={{
+                  margin: 0,
+                  color: "var(--color-2)",
+                  fontSize: "1.3rem"
+                }}
+              >
                 <i class="fas fa-project-diagram" />
               </ListItemIcon>
               <ListItemText>Projects</ListItemText>
@@ -50,22 +52,12 @@ class Sidebar extends React.Component {
 
     return (
       <div>
-        <Button onClick={this.toggleDrawer()}>
-          <i
-            class="fas fa-bars"
-            style={{ fontSize: "2rem", color: "var(--color-4)" }}
-          />
-        </Button>
-        <Drawer open={this.state.toggled} onClose={this.toggleDrawer()}>
-          <div className="logo">
-            <img src="imgs/logo.png" alt="" style={{ width: "120px" }} />
-          </div>
+        <Drawer open={this.props.toggled} onClose={this.toggleDrawer()}>
           <div
             tabIndex={0}
             role="button"
             onClick={this.toggleDrawer()}
             onKeyDown={this.toggleDrawer()}
-            style={{ paddingTop: "100px" }}
           >
             {sideList}
           </div>
