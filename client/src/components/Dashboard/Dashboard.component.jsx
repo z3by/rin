@@ -50,6 +50,7 @@ export default class Dashboard extends Component {
             render={() => {
               return (
                 <AdminList
+                  itemName="project"
                   pluralName="projects"
                   controls={true}
                   wantedFields={[
@@ -68,6 +69,7 @@ export default class Dashboard extends Component {
             render={() => {
               return (
                 <AdminList
+                  itemName="story"
                   pluralName="stories"
                   controls={true}
                   wantedFields={["id", "buisness", "buisnessDescription"]}
@@ -80,8 +82,9 @@ export default class Dashboard extends Component {
             render={() => {
               return (
                 <AdminList
+                  itemName="member"
                   pluralName="members"
-                  controls={true}
+                  controls={false}
                   wantedFields={[
                     "id",
                     "firstName",
@@ -90,6 +93,19 @@ export default class Dashboard extends Component {
                     "email",
                     "oraganizationName"
                   ]}
+                />
+              );
+            }}
+          />
+          <Route
+            path="/dashboard/blog"
+            render={() => {
+              return (
+                <AdminList
+                  itemName="article"
+                  pluralName="articles"
+                  controls={true}
+                  wantedFields={["id", "title", "subtitle"]}
                 />
               );
             }}
