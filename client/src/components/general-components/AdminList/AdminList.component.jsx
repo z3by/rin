@@ -71,7 +71,7 @@ export default class AdminList extends Component {
       );
     });
     return (
-      <Paper className="fadeInFast">
+      <Paper className="fadeInFast" style={{ overflowX: "scroll" }}>
         <Table style={{ overflowX: "scroll" }}>
           <CustomTableHead
             data={this.props.wantedFields}

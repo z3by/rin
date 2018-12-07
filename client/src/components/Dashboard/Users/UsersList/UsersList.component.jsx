@@ -22,12 +22,11 @@ export default class StoriesList extends Component {
           pluralName="members"
           controls={false}
           wantedFields={[
-            "id",
-            "first_name",
-            "last_name",
+            "firstName",
+            "lastName",
             "email",
-            "user_role",
-            "organization_name"
+            "organizationName",
+            "userRole"
           ]}
         />
       </Paper>

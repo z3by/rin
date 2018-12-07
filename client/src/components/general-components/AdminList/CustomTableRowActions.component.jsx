@@ -27,17 +27,17 @@ export default class CustomTableRowActions extends Component {
     };
     let { itemID, itemName, pluralName } = this.props;
     return (
-      <TableCell key="buttons">
+      <TableCell key="buttons" style={{ display: "flex" }}>
         <Link to={"/dashboard/" + pluralName + "/list/" + itemID}>
           <IconButton style={buttonStyle}>
-            <i className="far fa-eye" style={{ fontSize: "1rem" }} />
+            <i className="far fa-eye" style={{ fontSize: "1rem", margin: 0 }} />
           </IconButton>
         </Link>
         <Link to={`/dashboard/${pluralName}/list/update${itemName}/${itemID}`}>
           <IconButton style={buttonStyle}>
             <i
               className="fas fa-edit"
-              style={{ color: "royalblue", fontSize: "1rem" }}
+              style={{ color: "royalblue", fontSize: "1rem", margin: 0 }}
             />
           </IconButton>
         </Link>
@@ -45,7 +45,7 @@ export default class CustomTableRowActions extends Component {
           <IconButton style={buttonStyle}>
             <i
               className="fas fa-trash-alt"
-              style={{ color: "crimson", fontSize: "1rem" }}
+              style={{ color: "crimson", fontSize: "1rem", margin: 0 }}
             />
           </IconButton>
         </a>
