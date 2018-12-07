@@ -63,6 +63,18 @@ export default class Dashboard extends Component {
               );
             }}
           />
+          <Route
+            path="/dashboard/stories"
+            render={() => {
+              return (
+                <AdminList
+                  pluralName="stories"
+                  controls={true}
+                  wantedFields={["id", "buisness", "buisnessDescription"]}
+                />
+              );
+            }}
+          />
         </main>
       </div>
     );
