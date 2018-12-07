@@ -16,6 +16,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
+import Avatar from "@material-ui/core/Avatar";
 
 const styles = theme => ({
   root: {
@@ -164,7 +165,7 @@ class Navbar extends React.Component {
 
     return (
       <div className={classes.root}>
-        <AppBar position="static">
+        <AppBar position="static" style={{ background: "var(--color-4)" }}>
           <Toolbar>
             <IconButton
               className={classes.menuButton}
@@ -180,7 +181,7 @@ class Navbar extends React.Component {
               color="inherit"
               noWrap
             >
-              RIN ADMIN
+              R <span style={{ color: "var(--color-2)" }}>I</span> N
             </Typography>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
