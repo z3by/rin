@@ -32,6 +32,20 @@ class Sidebar extends React.Component {
     const sideList = (
       <div className={classes.list}>
         <List>
+          <Link to="/">
+            <ListItem button key={"home"} style={{ padding: 0 }}>
+              <ListItemIcon
+                style={{
+                  margin: 0,
+                  color: "var(--color-2)",
+                  fontSize: "1.3rem"
+                }}
+              >
+                <i class="fas fa-home" />
+              </ListItemIcon>
+              <ListItemText>Home</ListItemText>
+            </ListItem>
+          </Link>
           <Link to="/dashboard/projects">
             <ListItem button key={"projects"} style={{ padding: 0 }}>
               <ListItemIcon
@@ -44,6 +58,48 @@ class Sidebar extends React.Component {
                 <i class="fas fa-project-diagram" />
               </ListItemIcon>
               <ListItemText>Projects</ListItemText>
+            </ListItem>
+          </Link>
+          <Link to="/dashboard/stories">
+            <ListItem button key={"stories"} style={{ padding: 0 }}>
+              <ListItemIcon
+                style={{
+                  margin: 0,
+                  color: "var(--color-2)",
+                  fontSize: "1.3rem"
+                }}
+              >
+                <i class="fas fa-bookmark" />
+              </ListItemIcon>
+              <ListItemText>Stories</ListItemText>
+            </ListItem>
+          </Link>
+          <Link to="/dashboard/blog">
+            <ListItem button key={"blog"} style={{ padding: 0 }}>
+              <ListItemIcon
+                style={{
+                  margin: 0,
+                  color: "var(--color-2)",
+                  fontSize: "1.3rem"
+                }}
+              >
+                <i class="fas fa-newspaper" />
+              </ListItemIcon>
+              <ListItemText>Blog</ListItemText>
+            </ListItem>
+          </Link>
+          <Link to="/dashboard/users">
+            <ListItem button key={"users"} style={{ padding: 0 }}>
+              <ListItemIcon
+                style={{
+                  margin: 0,
+                  color: "var(--color-2)",
+                  fontSize: "1.3rem"
+                }}
+              >
+                <i class="fas fa-users" />
+              </ListItemIcon>
+              <ListItemText>Users</ListItemText>
             </ListItem>
           </Link>
         </List>
