@@ -1,75 +1,82 @@
-import React, { Component } from "react";
-import "./sidebar.css";
+import React from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import Drawer from "@material-ui/core/Drawer";
+import Button from "@material-ui/core/Button";
+import List from "@material-ui/core/List";
+import Divider from "@material-ui/core/Divider";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
 import { Link } from "react-router-dom";
 
-const tabsData = [
-  {
-    icon: "building",
-    title: "Projects",
-    path: "/dashboard/projects/list"
+const styles = {
+  list: {
+    width: 250
   },
-  {
-    title: "Stories",
-    icon: "user-check",
-    path: "/dashboard/stories/list"
-  },
-  {
-    title: "Articles",
-    icon: "newspaper",
-    path: "/dashboard/articles/list"
-  },
-  {
-    title: "Users",
-    icon: "users",
-    path: "/dashboard/users/list"
-  },
-  {
-    title: "Library",
-    icon: "book-open",
-    path: "/dashboard/library/links"
+  fullList: {
+    width: "auto"
   }
-];
-export default class componentName extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentTab: 0
-    };
-  }
+};
 
-  activateTab = id => {
+class Sidebar extends React.Component {
+  state = {
+    toggled: false
+  };
+
+  toggleDrawer = () => () => {
     this.setState({
-      currentTab: id
+      toggled: !this.state.toggled
     });
   };
 
   render() {
-    return (
-      <nav id="ml-menu" className="sidebar">
-        <div className="admin-logo">
-          <Link to={"/"}>
-            <img src="/imgs/old-logo.png" alt="" className="logo-img" />
+    const { classes } = this.props;
+
+    const sideList = (
+      <div className={classes.list}>
+        <List>
+          <Link to="/dashboard/projects">
+            <ListItem button key={"projects"}>
+              <ListItemIcon>
+                <i class="fas fa-project-diagram" />
+              </ListItemIcon>
+              <ListItemText>Projects</ListItemText>
+            </ListItem>
           </Link>
-        </div>
-        <ul>
-          {tabsData.map((tab, id) => {
-            return (
-              <li
-                key={id}
-                onClick={() => {
-                  this.activateTab(id);
-                }}
-                className={this.state.currentTab === id ? "tab-active" : ""}
-              >
-                <Link to={tab.path}>
-                  <i className={"fas fa-" + tab.icon} />
-                  <span className="sidebar-text">{tab.title}</span>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
+        </List>
+      </div>
+    );
+
+    return (
+      <div>
+        <Button onClick={this.toggleDrawer()}>
+          <i
+            class="fas fa-bars"
+            style={{ fontSize: "2rem", color: "var(--color-4)" }}
+          />
+        </Button>
+        <Drawer open={this.state.toggled} onClose={this.toggleDrawer()}>
+          <div className="logo">
+            <img src="imgs/logo.png" alt="" style={{ width: "120px" }} />
+          </div>
+          <div
+            tabIndex={0}
+            role="button"
+            onClick={this.toggleDrawer()}
+            onKeyDown={this.toggleDrawer()}
+            style={{ paddingTop: "100px" }}
+          >
+            {sideList}
+          </div>
+        </Drawer>
+      </div>
     );
   }
 }
+
+Sidebar.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(Sidebar);
