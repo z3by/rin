@@ -79,31 +79,9 @@ export default class AdminList extends Component {
           to={"/dashboard/add" + this.props.itemName}
           style={{ display: this.props.controls ? "block" : "none" }}
         >
-          <Button
-            style={{
-              margin: 20,
-              border: "1px solid var(--color-2)",
-              color: "var(--color-2)"
-            }}
-          >
-            <IconButton
-              style={{
-                padding: 0,
-                background: "var(--color-2)",
-                marginRight: 10
-              }}
-            >
-              <i
-                className="fas fa-plus"
-                style={{
-                  padding: 0,
-                  color: "white",
-                  fontSize: "1rem",
-                  margin: 5
-                }}
-              />
-            </IconButton>
-            add {this.props.itemName}{" "}
+          <Button>
+            <i className="fas fa-plus color-2" />
+            add {this.props.itemName}
           </Button>
         </Link>
         <Divider />

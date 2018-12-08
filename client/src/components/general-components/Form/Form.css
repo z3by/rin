@@ -1,0 +1,8 @@
+.form-sbumit-button {
+  margin: 30px 0px 0 0 !important;
+  padding: 0px 20px 0 0 !important;
+}
+
+.form-sbumit-button i {
+  color: var(--color-2);
+}
