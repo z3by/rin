@@ -16,7 +16,8 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
-import Avatar from "@material-ui/core/Avatar";
+
+import { Link } from "react-router-dom";
 
 const styles = theme => ({
   root: {
@@ -175,14 +176,16 @@ class Navbar extends React.Component {
             >
               <MenuIcon />
             </IconButton>
-            <Typography
-              className={classes.title}
-              variant="h6"
-              color="inherit"
-              noWrap
-            >
-              R <span style={{ color: "var(--color-2)" }}>I</span> N
-            </Typography>
+            <Link to={"/"} style={{ color: "white" }}>
+              <Typography
+                className={classes.title}
+                variant="h6"
+                color="inherit"
+                noWrap
+              >
+                R <span style={{ color: "var(--color-2)" }}>I</span> N
+              </Typography>
+            </Link>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />

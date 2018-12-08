@@ -32,7 +32,7 @@ class Sidebar extends React.Component {
     const sideList = (
       <div className={classes.list}>
         <List>
-          <Link to="/">
+          <Link to="/dashboard">
             <ListItem button key={"home"} style={{ padding: 0 }}>
               <ListItemIcon
                 style={{
