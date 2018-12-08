@@ -75,7 +75,10 @@ export default class AdminList extends Component {
     });
     return (
       <Paper className="fadeInFast" style={{ overflowX: "scroll" }}>
-        <Link to={"/dashboard/add" + this.props.itemName}>
+        <Link
+          to={"/dashboard/add" + this.props.itemName}
+          style={{ display: this.props.controls ? "block" : "none" }}
+        >
           <Button
             style={{
               margin: 20,

@@ -5,6 +5,9 @@ import Axios from "axios";
 import AdminList from "../general-components/AdminList/AdminList.component";
 import Sidebar from "../general-components/sidebar/sidebar";
 import Navbar from "../general-components/navbar/Navbar";
+import StoryForm from "./StoryForm/StoryForm.component";
+import ProjectForm from "./ProjectForm/ProjectForm.component";
+import ArticleForm from "./ArticleForm/ArticleForm.component";
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -108,6 +111,24 @@ export default class Dashboard extends Component {
                   wantedFields={["id", "title", "subtitle"]}
                 />
               );
+            }}
+          />
+          <Route
+            path="/dashboard/addproject"
+            render={() => {
+              return <ProjectForm />;
+            }}
+          />
+          <Route
+            path="/dashboard/addstory"
+            render={() => {
+              return <StoryForm />;
+            }}
+          />
+          <Route
+            path="/dashboard/addarticle"
+            render={() => {
+              return <ArticleForm />;
             }}
           />
         </main>
