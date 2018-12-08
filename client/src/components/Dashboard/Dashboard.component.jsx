@@ -20,6 +20,7 @@ export default class Dashboard extends Component {
   componentDidMount() {
     document.querySelector(".navbar").style.display = "none";
     document.querySelector(".logo").style.display = "none";
+    document.body.style.overflowY = "scroll";
   }
   componentWillUnmount() {
     document.querySelector(".navbar").style.display = "block";

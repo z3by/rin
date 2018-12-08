@@ -1,8 +1,21 @@
 .form-sbumit-button {
   margin: 30px 0px 0 0 !important;
   padding: 0px 20px 0 0 !important;
+  display: block !important;
+  background: var(--color-1) !important;
+}
+.form-sbumit-button:hover {
+  background: var(--color-2) !important;
 }
 
 .form-sbumit-button i {
   color: var(--color-2);
+}
+.form-sbumit-button:hover i {
+  color: var(--color-1) !important;
+}
+
+.full-width-input {
+  width: 100%;
+  margin: 30px 0 !important;
 }

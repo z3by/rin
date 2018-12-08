@@ -8,6 +8,9 @@ import Axios from "axios";
 export default class Form extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      isFormValid: true
+    };
   }
 
   onSubmit = e => {
@@ -27,9 +30,16 @@ export default class Form extends Component {
         <Typography variant="h5">
           Add the project info here Please...
         </Typography>
-        <form>
+        <form
+          onSubmit={this.onSubmit}
+          style={{ width: "60%", position: "relative", left: "20%" }}
+        >
           {this.props.children}
-          <Button className="form-sbumit-button">
+          <Button
+            type="submit"
+            className="form-sbumit-button"
+            disabled={this.state.isFormValid}
+          >
             <i className="fas fa-check" />
             Submit
           </Button>
