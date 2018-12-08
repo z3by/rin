@@ -30,6 +30,7 @@
     "npm": "^6.4.1",
     "password-validator": "^4.1.1",
     "react-material-ui-form-validator": "^2.0.3",
+    "react-select": "^2.1.2",
     "react-slideshow-image": "^1.0.8",
     "sequelize": "^4.41.2",
     "validator": "^10.8.0"

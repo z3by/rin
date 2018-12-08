@@ -1,11 +1,25 @@
 import React, { Component } from "react";
 import Form from "../../general-components/Form/Form.component";
+import AutoComplete from "../../general-components/AutoComplete/AutoComplete.component";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
+import Axios from "axios";
 
 const sectors = ["health", "education"];
 export default class ProjectForm extends Component {
-  state = {};
+  state = {
+    allCountries: []
+  };
+
+  componentDidMount() {
+    this.fetchCountries();
+  }
+
+  fetchCountries = () => {
+    Axios.get("/api/countries/names").then(result => {
+      this.setState({ allCountries: result.data });
+    });
+  };
 
   onChange = e => {
     this.setState(
@@ -24,6 +38,16 @@ export default class ProjectForm extends Component {
     } else {
       return false;
     }
+  };
+
+  setChoosenCountries = value => {
+    const countriesIds = [];
+    value.forEach(country => {
+      countriesIds.push(country.id);
+    });
+    this.setState({
+      countries: countriesIds
+    });
   };
 
   render() {
@@ -107,6 +131,11 @@ export default class ProjectForm extends Component {
             required
             rowsMax="6"
             variant="outlined"
+          />
+          <AutoComplete
+            suggestions={this.state.allCountries}
+            label="countries"
+            handleChange={this.setChoosenCountries}
           />
         </Form>
       </div>

@@ -11,7 +11,7 @@ module.exports.getCountriesNames = (req, res) => {
   db.Country.findAll().then(result => {
     const countries = [];
     result.forEach(country => {
-      countries.push(country.name);
+      countries.push({ name: country.name, id: country.id });
     });
     res.status(200).json(countries);
   });
