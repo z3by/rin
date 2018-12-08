@@ -67,8 +67,8 @@ export default class Map extends Component {
         onClick={this.onMapClicked}
         onChildClick={this.onMarkerClicked}
       >
-        {this.state.dots.map(dot => {
-          return <MyGreatPlace lng={dot.lng} lat={dot.lat} />;
+        {this.state.dots.map((dot, key) => {
+          return <MyGreatPlace key={key} lng={dot.lng} lat={dot.lat} />;
         })}
       </GoogleMap>
     );

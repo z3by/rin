@@ -13,11 +13,10 @@ import { withStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
-
 import { Link } from "react-router-dom";
+import Axios from "axios";
 
 const styles = theme => ({
   root: {
@@ -92,7 +91,17 @@ const styles = theme => ({
 class Navbar extends React.Component {
   state = {
     anchorEl: null,
-    mobileMoreAnchorEl: null
+    mobileMoreAnchorEl: null,
+    requestsCount: 0
+  };
+  componentDidMount() {
+    this.fetchRequestsCount();
+  }
+
+  fetchRequestsCount = () => {
+    Axios.get("/api/requests").then(result => {
+      this.setState({ requestsCount: result.data.count });
+    });
   };
 
   handleProfileMenuOpen = event => {
@@ -110,6 +119,10 @@ class Navbar extends React.Component {
 
   handleMobileMenuClose = () => {
     this.setState({ mobileMoreAnchorEl: null });
+  };
+
+  handleRequestsClick = () => {
+    this.props.history.push("/requests");
   };
 
   render() {
@@ -139,17 +152,9 @@ class Navbar extends React.Component {
         open={isMobileMenuOpen}
         onClose={this.handleMobileMenuClose}
       >
-        <MenuItem>
+        <MenuItem onClick={this.handleRequestsClick}>
           <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <MailIcon />
-            </Badge>
-          </IconButton>
-          <p>Messages</p>
-        </MenuItem>
-        <MenuItem>
-          <IconButton color="inherit">
-            <Badge badgeContent={11} color="secondary">
+            <Badge badgeContent={this.state.requestsCount} color="secondary">
               <NotificationsIcon />
             </Badge>
           </IconButton>
@@ -201,12 +206,10 @@ class Navbar extends React.Component {
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
               <IconButton color="inherit">
-                <Badge badgeContent={4} color="secondary">
-                  <MailIcon />
-                </Badge>
-              </IconButton>
-              <IconButton color="inherit">
-                <Badge badgeContent={17} color="secondary">
+                <Badge
+                  badgeContent={this.state.requestsCount}
+                  color="secondary"
+                >
                   <NotificationsIcon />
                 </Badge>
               </IconButton>

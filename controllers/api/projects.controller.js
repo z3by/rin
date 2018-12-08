@@ -219,15 +219,10 @@ module.exports.deleteProjects = (req, res) => {
 };
 
 module.exports.getProjectRequestsPage = (req, res) => {
-  const firstProjectIndex = Number(req.query.first);
-  const lastProjectIndex = Number(req.query.last);
-
   db.Project.findAndCountAll({
     where: {
       pending: true
-    },
-    offset: firstProjectIndex,
-    limit: lastProjectIndex - firstProjectIndex
+    }
   })
     .then(result => {
       res.json(result);
