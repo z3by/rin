@@ -5,6 +5,7 @@ import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import Axios from "axios";
 import Typography from "@material-ui/core/Typography";
+import GoogleMap from "../../general-components/GoogleMap/GoogleMap.component";
 
 const sectors = ["health", "education"];
 const refugeeInvestmentTypes = [
@@ -76,6 +77,14 @@ export default class ProjectForm extends Component {
       project: {
         ...this.state.project,
         [fieldName]: fieldsIds
+      }
+    });
+  };
+
+  setLocations = locations => {
+    this.setState({
+      project: {
+        locations: locations
       }
     });
   };
@@ -346,6 +355,13 @@ export default class ProjectForm extends Component {
               name="address"
               onChange={this.onContactChange}
             />
+          </div>
+          <Typography variant="h5" style={{ marginTop: 50 }}>
+            click on the map to select the project locations, click on the dots
+            to remove the location
+          </Typography>
+          <div className="map-wrapper" style={{ height: 500, width: "100%" }}>
+            <GoogleMap setLocations={this.setLocations} />
           </div>
         </Form>
       </div>

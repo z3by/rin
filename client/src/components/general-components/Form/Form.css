@@ -42,7 +42,7 @@
   left: 20%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 968px) {
   .input-text-group {
     width: 100%;
   }

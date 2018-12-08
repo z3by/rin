@@ -17,7 +17,7 @@ export default class Form extends Component {
       <Paper className="admin-form-container" style={{ padding: 20 }}>
         <form
           onSubmit={this.props.onFormSubmit}
-          style={{ width: "60%", position: "relative", left: "20%" }}
+          style={{ width: "80%", position: "relative", left: "10%" }}
         >
           {this.props.children}
           <Button
