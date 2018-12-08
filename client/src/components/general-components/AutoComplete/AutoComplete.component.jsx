@@ -18,7 +18,7 @@ import Axios from "axios";
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    height: 250
+    height: 130
   },
   input: {
     display: "flex",

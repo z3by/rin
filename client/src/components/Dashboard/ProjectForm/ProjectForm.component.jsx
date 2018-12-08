@@ -8,11 +8,13 @@ import Axios from "axios";
 const sectors = ["health", "education"];
 export default class ProjectForm extends Component {
   state = {
-    allCountries: []
+    allCountries: [],
+    allFounders: []
   };
 
   componentDidMount() {
     this.fetchCountries();
+    this.fetchFounders();
   }
 
   fetchCountries = () => {
@@ -21,6 +23,13 @@ export default class ProjectForm extends Component {
     });
   };
 
+  fetchFounders = () => {
+    Axios.get("/api/founders").then(result => {
+      console.log(result);
+
+      this.setState({ allFounders: result.data });
+    });
+  };
   onChange = e => {
     this.setState(
       {
@@ -47,6 +56,16 @@ export default class ProjectForm extends Component {
     });
     this.setState({
       countries: countriesIds
+    });
+  };
+
+  setChoosenFounders = value => {
+    const foundersIds = [];
+    value.forEach(founder => {
+      foundersIds.push(founder.id);
+    });
+    this.setState({
+      founders: foundersIds
     });
   };
 
@@ -136,6 +155,11 @@ export default class ProjectForm extends Component {
             suggestions={this.state.allCountries}
             label="countries"
             handleChange={this.setChoosenCountries}
+          />
+          <AutoComplete
+            suggestions={this.state.allFounders}
+            label="founders"
+            handleChange={this.setChoosenFounders}
           />
         </Form>
       </div>
