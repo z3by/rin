@@ -18,13 +18,15 @@ export default class ProjectForm extends Component {
   state = {
     allCountries: [],
     allFounders: [],
-    allInvestors: []
+    allInvestors: [],
+    allSdgs: []
   };
 
   componentDidMount() {
     this.fetchCountries();
     this.fetchFounders();
     this.fetchInvestors();
+    this.fetchSdgs();
   }
 
   fetchCountries = () => {
@@ -41,11 +43,15 @@ export default class ProjectForm extends Component {
 
   fetchFounders = () => {
     Axios.get("/api/founders").then(result => {
-      console.log(result);
-
       this.setState({ allFounders: result.data });
     });
   };
+  fetchSdgs = () => {
+    Axios.get("/api/sdgs").then(result => {
+      this.setState({ allSdgs: result.data });
+    });
+  };
+
   onChange = e => {
     this.setState(
       {
@@ -82,6 +88,16 @@ export default class ProjectForm extends Component {
     });
     this.setState({
       founders: foundersIds
+    });
+  };
+
+  setChoosenSdgs = value => {
+    const sdgsIds = [];
+    value.forEach(sdg => {
+      sdgsIds.push(sdg.id);
+    });
+    this.setState({
+      sdgs: sdgsIds
     });
   };
 
@@ -202,6 +218,11 @@ export default class ProjectForm extends Component {
             suggestions={this.state.allInvestors}
             label="investors"
             handleChange={this.setChoosenInvestors}
+          />
+          <AutoComplete
+            suggestions={this.state.allSdgs}
+            label="SDGs"
+            handleChange={this.setChoosenSdgs}
           />
         </Form>
       </div>
