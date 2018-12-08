@@ -71,33 +71,13 @@ export default class ProjectForm extends Component {
     }
   };
 
-  setChoosenCountries = value => {
-    const countriesIds = [];
-    value.forEach(country => {
-      countriesIds.push(country.id);
+  setChoosenFields = (fieldName, value) => {
+    const fieldsIds = [];
+    value.forEach(field => {
+      fieldsIds.push(field.id);
     });
     this.setState({
-      countries: countriesIds
-    });
-  };
-
-  setChoosenFounders = value => {
-    const foundersIds = [];
-    value.forEach(founder => {
-      foundersIds.push(founder.id);
-    });
-    this.setState({
-      founders: foundersIds
-    });
-  };
-
-  setChoosenSdgs = value => {
-    const sdgsIds = [];
-    value.forEach(sdg => {
-      sdgsIds.push(sdg.id);
-    });
-    this.setState({
-      sdgs: sdgsIds
+      [fieldName]: fieldsIds
     });
   };
 
@@ -207,22 +187,30 @@ export default class ProjectForm extends Component {
           <AutoComplete
             suggestions={this.state.allCountries}
             label="countries"
-            handleChange={this.setChoosenCountries}
+            handleChange={value => {
+              this.setChoosenFields("countries", value);
+            }}
           />
           <AutoComplete
             suggestions={this.state.allFounders}
             label="founders"
-            handleChange={this.setChoosenFounders}
+            handleChange={value => {
+              this.setChoosenFields("founders", value);
+            }}
           />
           <AutoComplete
             suggestions={this.state.allInvestors}
             label="investors"
-            handleChange={this.setChoosenInvestors}
+            handleChange={value => {
+              this.setChoosenFields("investors", value);
+            }}
           />
           <AutoComplete
             suggestions={this.state.allSdgs}
             label="SDGs"
-            handleChange={this.setChoosenSdgs}
+            handleChange={value => {
+              this.setChoosenFields("sdgs", value);
+            }}
           />
         </Form>
       </div>
