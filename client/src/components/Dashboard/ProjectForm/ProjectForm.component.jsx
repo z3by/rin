@@ -9,17 +9,25 @@ const sectors = ["health", "education"];
 export default class ProjectForm extends Component {
   state = {
     allCountries: [],
-    allFounders: []
+    allFounders: [],
+    allInvestors: []
   };
 
   componentDidMount() {
     this.fetchCountries();
     this.fetchFounders();
+    this.fetchInvestors();
   }
 
   fetchCountries = () => {
     Axios.get("/api/countries/names").then(result => {
       this.setState({ allCountries: result.data });
+    });
+  };
+
+  fetchInvestors = () => {
+    Axios.get("/api/investors").then(result => {
+      this.setState({ allInvestors: result.data });
     });
   };
 
@@ -160,6 +168,11 @@ export default class ProjectForm extends Component {
             suggestions={this.state.allFounders}
             label="founders"
             handleChange={this.setChoosenFounders}
+          />
+          <AutoComplete
+            suggestions={this.state.allInvestors}
+            label="investors"
+            handleChange={this.setChoosenInvestors}
           />
         </Form>
       </div>
