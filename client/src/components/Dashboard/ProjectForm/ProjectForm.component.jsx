@@ -4,8 +4,16 @@ import AutoComplete from "../../general-components/AutoComplete/AutoComplete.com
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import Axios from "axios";
+import Avatar from "@material-ui/core/Avatar";
 
 const sectors = ["health", "education"];
+const refugeeInvestmentTypes = [
+  {
+    name: "refugee owned",
+    img:
+      "https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/1032686/1160/772/m1/fpnw/wm0/usb-flash-drive-flat-icon-01-.jpg?1456561868&s=0a614a61f233630542ee5a77c5baec30"
+  }
+];
 export default class ProjectForm extends Component {
   state = {
     allCountries: [],
@@ -108,7 +116,7 @@ export default class ProjectForm extends Component {
           />
           <TextField
             select
-            label="sector"
+            label={this.state.sector ? "" : "sector"}
             error={!this.checkIfFieldIsValid("sector")}
             required
             className="full-width-input"
@@ -121,6 +129,27 @@ export default class ProjectForm extends Component {
             {sectors.map(option => (
               <MenuItem key={option} value={option}>
                 {option}
+              </MenuItem>
+            ))}
+          </TextField>
+
+          <TextField
+            select
+            label={
+              this.state.refugeeInvestmentType ? "" : "refugee investment type"
+            }
+            error={!this.checkIfFieldIsValid("refugeeInvestmentType")}
+            required
+            className="full-width-input"
+            name="refugeeInvestmentType"
+            value={this.state.refugeeInvestmentType}
+            onChange={this.onChange}
+            helperText="Please select the refugee investment type"
+            margin="normal"
+          >
+            {refugeeInvestmentTypes.map(option => (
+              <MenuItem key={option.name} value={option.name}>
+                {option.name}
               </MenuItem>
             ))}
           </TextField>
