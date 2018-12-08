@@ -19,7 +19,9 @@ export default class ProjectForm extends Component {
     allCountries: [],
     allFounders: [],
     allInvestors: [],
-    allSdgs: []
+    allSdgs: [],
+    project: {},
+    contact: {}
   };
 
   componentDidMount() {
@@ -53,22 +55,16 @@ export default class ProjectForm extends Component {
   };
 
   onChange = e => {
-    this.setState(
-      {
+    this.setState({
+      project: {
+        ...this.state.project,
         [e.target.name]: e.target.value
-      },
-      () => {
-        console.log(this.state);
       }
-    );
+    });
   };
 
   checkIfFieldIsValid = name => {
-    if (this.state[name]) {
-      return true;
-    } else {
-      return false;
-    }
+    return true;
   };
 
   setChoosenFields = (fieldName, value) => {
@@ -77,14 +73,50 @@ export default class ProjectForm extends Component {
       fieldsIds.push(field.id);
     });
     this.setState({
-      [fieldName]: fieldsIds
+      project: {
+        ...this.state.project,
+        [fieldName]: fieldsIds
+      }
     });
+  };
+
+  onContactChange = e => {
+    this.setState({
+      contact: {
+        ...this.state.contact,
+        [e.target.name]: e.target.value
+      }
+    });
+  };
+
+  onFormSubmit = e => {
+    e.preventDefault();
+    Axios.post("/api/contacts", this.state.contact)
+      .then(result => {
+        this.setState({
+          project: { ...this.state.project, contactId: result.data.id }
+        });
+        this.createProject();
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  createProject = () => {
+    Axios.post("/api/projects", this.state.project)
+      .then(result => {
+        console.log("project created");
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   render() {
     return (
       <div>
-        <Form>
+        <Form data={this.state.project} onFormSubmit={this.onFormSubmit}>
           <TextField
             className="full-width-input"
             label="project name"
@@ -212,6 +244,106 @@ export default class ProjectForm extends Component {
               this.setChoosenFields("sdgs", value);
             }}
           />
+          <div className="input-text-group">
+            <i className="fas fa-phone" />
+            <TextField
+              className="half-width-input"
+              label="phone number"
+              name="phone1"
+              required
+              type="tel"
+              onChange={this.onContactChange}
+            />
+          </div>
+          <div className="input-text-group">
+            <i className="fas fa-mobile-alt" />
+            <TextField
+              className="half-width-input"
+              label="mobile number"
+              type="tel"
+              name="phone2"
+              onChange={this.onContactChange}
+            />
+          </div>
+          <div className="input-text-group">
+            <i className="fas fa-envelope" />
+            <TextField
+              className="half-width-input"
+              label="email"
+              name="email1"
+              type="email"
+              required
+              onChange={this.onContactChange}
+            />
+          </div>
+          <div className="input-text-group">
+            <i className="far fa-envelope" />
+            <TextField
+              className="half-width-input"
+              label="second email"
+              name="email2"
+              type="email"
+              onChange={this.onContactChange}
+            />
+          </div>
+          <div className="input-text-group">
+            <i className="fas fa-globe" />
+            <TextField
+              className="half-width-input"
+              label="website"
+              name="website"
+              type="url"
+              onChange={this.onContactChange}
+            />
+          </div>
+          <div className="input-text-group">
+            <i className="fab fa-facebook" />
+            <TextField
+              className="half-width-input"
+              label="facebook"
+              name="facebook"
+              type="url"
+              onChange={this.onContactChange}
+            />
+          </div>
+          <div className="input-text-group">
+            <i className="fab fa-twitter" />
+            <TextField
+              className="half-width-input"
+              label="twitter"
+              name="twitter"
+              type="url"
+              onChange={this.onContactChange}
+            />
+          </div>
+          <div className="input-text-group">
+            <i className="fab fa-instagram" />
+            <TextField
+              className="half-width-input"
+              label="instagram"
+              name="instagram"
+              type="url"
+              onChange={this.onContactChange}
+            />
+          </div>
+          <div className="input-text-group">
+            <i className="fas fa-fax" />
+            <TextField
+              className="half-width-input"
+              label="fax"
+              name="fax"
+              onChange={this.onContactChange}
+            />
+          </div>
+          <div className="input-text-group">
+            <i className="fas fa-address-card" />
+            <TextField
+              className="half-width-input"
+              label="address"
+              name="address"
+              onChange={this.onContactChange}
+            />
+          </div>
         </Form>
       </div>
     );

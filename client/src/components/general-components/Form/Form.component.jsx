@@ -9,20 +9,9 @@ export default class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isFormValid: true
+      isFormValid: false
     };
   }
-
-  onSubmit = e => {
-    e.prevenetDefault();
-    Axios.post(this.props.url, this.props.data)
-      .then(result => {
-        console.log("added successfully");
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
 
   render() {
     return (
@@ -31,7 +20,7 @@ export default class Form extends Component {
           Add the project info here Please...
         </Typography>
         <form
-          onSubmit={this.onSubmit}
+          onSubmit={this.props.onFormSubmit}
           style={{ width: "60%", position: "relative", left: "20%" }}
         >
           {this.props.children}
