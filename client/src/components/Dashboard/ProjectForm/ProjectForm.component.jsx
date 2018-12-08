@@ -4,7 +4,7 @@ import AutoComplete from "../../general-components/AutoComplete/AutoComplete.com
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import Axios from "axios";
-import Avatar from "@material-ui/core/Avatar";
+import Typography from "@material-ui/core/Typography";
 
 const sectors = ["health", "education"];
 const refugeeInvestmentTypes = [
@@ -117,6 +117,9 @@ export default class ProjectForm extends Component {
     return (
       <div>
         <Form data={this.state.project} onFormSubmit={this.onFormSubmit}>
+          <Typography variant="h5">
+            Add the project info here Please...
+          </Typography>
           <TextField
             className="full-width-input"
             label="project name"

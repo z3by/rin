@@ -36,11 +36,21 @@
   margin-bottom: 0;
 }
 
+.admin-form-container {
+  position: relative;
+  width: 60%;
+  left: 20%;
+}
+
 @media (max-width: 768px) {
   .input-text-group {
     width: 100%;
   }
   .half-width-input {
     width: 100%;
+  }
+  .admin-form-container {
+    width: 100%;
+    left: 0%;
   }
 }

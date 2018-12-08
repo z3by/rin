@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
 import "./Form.css";
 import Axios from "axios";
 
@@ -15,10 +14,7 @@ export default class Form extends Component {
 
   render() {
     return (
-      <Paper style={{ padding: 20 }}>
-        <Typography variant="h5">
-          Add the project info here Please...
-        </Typography>
+      <Paper className="admin-form-container" style={{ padding: 20 }}>
         <form
           onSubmit={this.props.onFormSubmit}
           style={{ width: "60%", position: "relative", left: "20%" }}
