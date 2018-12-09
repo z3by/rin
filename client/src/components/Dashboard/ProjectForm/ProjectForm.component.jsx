@@ -127,6 +127,27 @@ export default class ProjectForm extends Component {
       });
   };
 
+  uploadImage = e => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append(e.target.name, e.target.files[0]);
+    const config = {
+      headers: {
+        "content-type": "multipart/form-data"
+      }
+    };
+
+    Axios.post("/api/upload/" + e.target.name, formData, config).then(res => {
+      const imageURL = res.data.location;
+      this.setState({
+        project: {
+          ...this.state.project,
+          [e.target.name]: imageURL
+        }
+      });
+    });
+  };
+
   render() {
     return (
       <div>
@@ -371,6 +392,58 @@ export default class ProjectForm extends Component {
               onChange={this.onContactChange}
             />
           </div>
+          <Typography variant="h5" style={{ marginTop: 50 }}>
+            choose a good image for the project to upload
+          </Typography>
+
+          <div className="img-upload-group">
+            <div
+              className="img-upload-preveiw"
+              style={{
+                height: 40,
+                width: 40,
+                marginRight: 10,
+                background: this.state.project.img
+              }}
+            />
+
+            <TextField
+              style={{ marginTop: 0 }}
+              className=""
+              name="img"
+              required
+              type="file"
+              accept="image/*"
+              onChange={this.uploadImage}
+            />
+            <Typography variant="overline">max size 1.mb</Typography>
+          </div>
+          <Typography variant="h5" style={{ marginTop: 50 }}>
+            upload the buisness logo
+          </Typography>
+          <div className="img-upload-group">
+            <div
+              className="img-upload-preveiw"
+              style={{
+                height: 40,
+                width: 40,
+                marginRight: 10,
+                background: this.state.project.img
+              }}
+            />
+
+            <TextField
+              style={{ marginTop: 0 }}
+              className=""
+              name="logo"
+              required
+              accept="image/*"
+              type="file"
+              onChange={this.uploadImage}
+            />
+            <Typography variant="overline">max size 1.mb</Typography>
+          </div>
+
           <Typography variant="h5" style={{ marginTop: 50 }}>
             click on the map to select the project locations, click on the dots
             to remove the location

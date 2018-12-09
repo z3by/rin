@@ -15,12 +15,12 @@ const loactionAPI = require("../controllers/api/locations.controller");
 const contactsAPI = require("../controllers/api/contacts.controller");
 
 // upload image route
-router.post("/uploadimg", s3Config.uploadImg, (req, res) => {
+router.post("/upload/img", s3Config.uploadImg, (req, res) => {
   res.send(req.file);
 });
 
 // upload image route
-router.post("/uploadpdf", s3Config.uploadPDF, (req, res) => {
+router.post("/upload/pdf", s3Config.uploadPDF, (req, res) => {
   res.send(req.file);
 });
 

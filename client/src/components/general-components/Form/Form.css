@@ -42,7 +42,29 @@
   left: 20%;
 }
 
-@media (max-width: 968px) {
+.img-upload-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.img-upload-preveiw {
+  background-color: transparent;
+  background-image: url(https://svn.alfresco.com/repos/alfresco-open-mirror/alfresco/HEAD/root/projects/repository/config/alfresco/thumbnail/thumbnail_placeholder_256_ai.png);
+  background-size: cover;
+}
+
+@media (max-width: 1024px) {
+  .admin-form-container {
+    width: 100%;
+    left: 0%;
+  }
+}
+
+@media (max-width: 768px) {
   .input-text-group {
     width: 100%;
   }
