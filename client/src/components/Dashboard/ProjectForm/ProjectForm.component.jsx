@@ -51,7 +51,10 @@ export default class ProjectForm extends Component {
     Axios.get("/api/projects/ " + id).then(result => {
       this.setState(
         {
-          project: { ...result.data[0] },
+          project: {
+            ...result.data[0],
+            year: this.formatDate(new Date(result.data[0].year))
+          },
           adding: true,
           contact: result.data[0].contact
         },
@@ -60,6 +63,18 @@ export default class ProjectForm extends Component {
         }
       );
     });
+  };
+
+  formatDate = date => {
+    var d = new Date(date),
+      month = "" + (d.getMonth() + 1),
+      day = "" + d.getDate(),
+      year = d.getFullYear();
+
+    if (month.length < 2) month = "0" + month;
+    if (day.length < 2) day = "0" + day;
+
+    return [year, month, day].join("-");
   };
 
   fetchCountries = () => {
@@ -250,6 +265,7 @@ export default class ProjectForm extends Component {
             label="starting year"
             type="date"
             defaultValue={this.state.project.year}
+            value={this.state.project.year}
             required
             name="year"
             InputLabelProps={{
@@ -540,6 +556,7 @@ export default class ProjectForm extends Component {
               }}
               type="file"
               accept="image/*"
+              required={this.state.updating ? false : true}
               onChange={this.uploadImage}
             />
             <Typography variant="overline">max size 1.mb</Typography>
@@ -562,7 +579,7 @@ export default class ProjectForm extends Component {
               style={{ marginTop: 0 }}
               className=""
               name="logo"
-              required
+              required={this.state.updating ? false : true}
               InputLabelProps={{
                 shrink: this.state.updating
               }}
