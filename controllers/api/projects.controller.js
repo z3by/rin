@@ -187,26 +187,18 @@ module.exports.deleteProjects = (req, res) => {
     .then(() => {
       db.Project.findOne({ where: { id: req.params.id } })
         .then(project => {
-          db.Contact.destroy({
-            where: {
-              id: project.contactId
-            }
-          })
-            .then(() => {
-              db.Project.destroy({
+          project
+            .destroy()
+            .then(result => {
+              db.Contact.destroy({
                 where: {
-                  id: req.params.id
+                  id: project.contactId
                 }
-              })
-                .then(result => {
-                  res.json(result);
-                })
-                .catch(err => {
-                  res.status(400).send(err);
-                });
+              });
+              res.json(result);
             })
             .catch(err => {
-              res.send(err);
+              res.status(400).send(err);
             });
         })
         .catch(err => {

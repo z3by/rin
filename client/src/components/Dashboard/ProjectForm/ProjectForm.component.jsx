@@ -69,6 +69,7 @@ export default class ProjectForm extends Component {
     );
   };
 
+  // for demo ONLY
   checkIfFieldIsValid = name => {
     return true;
   };
@@ -89,6 +90,7 @@ export default class ProjectForm extends Component {
   setLocations = locations => {
     this.setState({
       project: {
+        ...this.state.project,
         locations: locations
       }
     });
@@ -107,10 +109,14 @@ export default class ProjectForm extends Component {
     e.preventDefault();
     Axios.post("/api/contacts", this.state.contact)
       .then(result => {
-        this.setState({
-          project: { ...this.state.project, contactId: result.data.id }
-        });
-        this.createProject();
+        this.setState(
+          {
+            project: { ...this.state.project, contactId: result.data.id }
+          },
+          () => {
+            this.createProject();
+          }
+        );
       })
       .catch(err => {
         console.log(err);
@@ -118,40 +124,54 @@ export default class ProjectForm extends Component {
   };
 
   createProject = () => {
-    Axios.post("/api/projects", this.state.project)
-      .then(result => {
-        console.log("project created");
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    this.setState(
+      { project: { ...this.state.project, pending: false } },
+      () => {
+        Axios.post("/api/projects", this.state.project)
+          .then(result => {
+            console.log(result);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      }
+    );
   };
 
   uploadImage = e => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append(e.target.name, e.target.files[0]);
+    const name = e.target.name;
+    formData.append("img", e.target.files[0]);
     const config = {
       headers: {
         "content-type": "multipart/form-data"
       }
     };
 
-    Axios.post("/api/upload/" + e.target.name, formData, config).then(res => {
-      const imageURL = res.data.location;
-      this.setState({
-        project: {
-          ...this.state.project,
-          [e.target.name]: imageURL
-        }
+    Axios.post("/api/upload/img", formData, config)
+      .then(res => {
+        const imageURL = res.data.location;
+        this.setState({
+          project: {
+            ...this.state.project,
+            [name]: imageURL
+          }
+        });
+      })
+      .catch(err => {
+        console.log(err);
       });
-    });
   };
 
   render() {
     return (
       <div>
-        <Form data={this.state.project} onFormSubmit={this.onFormSubmit}>
+        <Form
+          id="project-form"
+          data={this.state.project}
+          onFormSubmit={this.onFormSubmit}
+        >
           <Typography variant="h5">
             Add the project info here Please...
           </Typography>
@@ -174,7 +194,7 @@ export default class ProjectForm extends Component {
           <TextField
             className="full-width-input"
             error={!this.checkIfFieldIsValid("investmentSize")}
-            label="investment size"
+            label="investment size by us dollar $"
             onChange={this.onChange}
             name="investmentSize"
             type="number"
@@ -184,6 +204,7 @@ export default class ProjectForm extends Component {
             className="full-width-input"
             label="starting year"
             type="date"
+            required
             name="year"
             InputLabelProps={{
               shrink: true
@@ -192,12 +213,12 @@ export default class ProjectForm extends Component {
           />
           <TextField
             select
-            label={this.state.sector ? "" : "sector"}
+            label={this.state.project.sector ? "" : "sector"}
             error={!this.checkIfFieldIsValid("sector")}
             required
             className="full-width-input"
             name="sector"
-            value={this.state.sector}
+            value={this.state.project.sector}
             onChange={this.onChange}
             helperText="Please select the project sector"
             margin="normal"
@@ -212,13 +233,15 @@ export default class ProjectForm extends Component {
           <TextField
             select
             label={
-              this.state.refugeeInvestmentType ? "" : "refugee investment type"
+              this.state.project.refugeeInvestmentType
+                ? ""
+                : "refugee investment type"
             }
             error={!this.checkIfFieldIsValid("refugeeInvestmentType")}
             required
             className="full-width-input"
             name="refugeeInvestmentType"
-            value={this.state.refugeeInvestmentType}
+            value={this.state.project.refugeeInvestmentType}
             onChange={this.onChange}
             helperText="Please select the refugee investment type"
             margin="normal"
