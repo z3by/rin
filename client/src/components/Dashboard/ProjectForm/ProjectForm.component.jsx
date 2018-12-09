@@ -56,12 +56,17 @@ export default class ProjectForm extends Component {
   };
 
   onChange = e => {
-    this.setState({
-      project: {
-        ...this.state.project,
-        [e.target.name]: e.target.value
+    this.setState(
+      {
+        project: {
+          ...this.state.project,
+          [e.target.name]: e.target.value
+        }
+      },
+      () => {
+        console.log(this.state);
       }
-    });
+    );
   };
 
   checkIfFieldIsValid = name => {
@@ -153,6 +158,16 @@ export default class ProjectForm extends Component {
             name="investmentSize"
             type="number"
             required
+          />
+          <TextField
+            className="full-width-input"
+            label="starting year"
+            type="date"
+            name="year"
+            InputLabelProps={{
+              shrink: true
+            }}
+            onChange={this.onChange}
           />
           <TextField
             select
