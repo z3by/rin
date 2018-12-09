@@ -39,7 +39,7 @@ export default class CustomTableRowActions extends Component {
             <i className="far fa-eye" style={{ fontSize: "1rem", margin: 0 }} />
           </IconButton>
         </Link>
-        <Link to={`/dashboard/${pluralName}/list/update${itemName}/${itemID}`}>
+        <Link to={`/dashboard/update${itemName}/${itemID}`}>
           <IconButton style={buttonStyle}>
             <i
               className="fas fa-edit"

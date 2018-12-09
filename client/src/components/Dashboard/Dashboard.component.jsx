@@ -114,24 +114,10 @@ export default class Dashboard extends Component {
               );
             }}
           />
-          <Route
-            path="/dashboard/addproject"
-            render={() => {
-              return <ProjectForm {...this.props} />;
-            }}
-          />
-          <Route
-            path="/dashboard/addstory"
-            render={() => {
-              return <StoryForm {...this.props} />;
-            }}
-          />
-          <Route
-            path="/dashboard/addarticle"
-            render={() => {
-              return <ArticleForm {...this.props} />;
-            }}
-          />
+          <Route path="/dashboard/addproject" component={ProjectForm} />
+          <Route path="/dashboard/updateproject/:id" component={ProjectForm} />
+          <Route path="/dashboard/addstory" component={StoryForm} />
+          <Route path="/dashboard/addarticle" component={ArticleForm} />
         </main>
       </div>
     );

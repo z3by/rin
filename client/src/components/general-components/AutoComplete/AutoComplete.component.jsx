@@ -13,7 +13,6 @@ import Chip from "@material-ui/core/Chip";
 import MenuItem from "@material-ui/core/MenuItem";
 import CancelIcon from "@material-ui/icons/Cancel";
 import { emphasize } from "@material-ui/core/styles/colorManipulator";
-import Axios from "axios";
 
 const styles = theme => ({
   root: {
@@ -198,6 +197,8 @@ class AutoComplete extends React.Component {
         [name]: value
       },
       () => {
+        console.log(this.state);
+
         this.props.handleChange(value);
       }
     );
@@ -240,6 +241,7 @@ class AutoComplete extends React.Component {
             onChange={this.handleChange("multi")}
             placeholder={"Select multiple " + this.props.label}
             isMulti
+            set
           />
         </NoSsr>
       </div>

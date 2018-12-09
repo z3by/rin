@@ -27,14 +27,15 @@ export default class Map extends Component {
     super(props);
     this.state = {
       center: { lng: 32.2, lat: 33.5 },
-      dots: [{ lat: 59.955413, lng: 30.337844 }]
+      dots: []
     };
   }
 
   onMapClicked = props => {
     const { lng, lat } = props;
+
     this.setState(
-      { dots: [...this.state.dots, { lng: lng, lat, lat }] },
+      { dots: [...this.props.dots, { lng: lng, lat, lat }] },
       () => {
         this.props.setLocations(this.state.dots);
       }
@@ -57,7 +58,6 @@ export default class Map extends Component {
   render() {
     return (
       <GoogleMap
-        // apiKey={YOUR_GOOGLE_MAP_API_KEY} // set if you need stats etc ...
         center={this.props.center}
         zoom={this.props.zoom}
         options={options}
@@ -67,7 +67,7 @@ export default class Map extends Component {
         onClick={this.onMapClicked}
         onChildClick={this.onMarkerClicked}
       >
-        {this.state.dots.map((dot, key) => {
+        {this.props.dots.map((dot, key) => {
           return <MyGreatPlace key={key} lng={dot.lng} lat={dot.lat} />;
         })}
       </GoogleMap>

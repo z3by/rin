@@ -24,9 +24,12 @@ export default class ProjectForm extends Component {
       allFounders: [],
       allInvestors: [],
       allSdgs: [],
-      project: {},
+      project: {
+        locations: []
+      },
       contact: {},
-      adding: false
+      adding: false,
+      updating: false
     };
   }
   componentDidMount() {
@@ -34,7 +37,30 @@ export default class ProjectForm extends Component {
     this.fetchFounders();
     this.fetchInvestors();
     this.fetchSdgs();
+    this.checkIfProjectDateIsPassed();
   }
+
+  checkIfProjectDateIsPassed = () => {
+    if (!!this.props.match.params.id) {
+      this.fetchProjectInfo(this.props.match.params.id);
+      this.setState({ updating: true });
+    }
+  };
+
+  fetchProjectInfo = id => {
+    Axios.get("/api/projects/ " + id).then(result => {
+      this.setState(
+        {
+          project: { ...result.data[0] },
+          adding: true,
+          contact: result.data[0].contact
+        },
+        () => {
+          this.setState({ adding: false });
+        }
+      );
+    });
+  };
 
   fetchCountries = () => {
     Axios.get("/api/countries/names").then(result => {
@@ -90,7 +116,7 @@ export default class ProjectForm extends Component {
     this.setState({
       project: {
         ...this.state.project,
-        locations: locations
+        locations: [...locations]
       }
     });
   };
@@ -185,13 +211,21 @@ export default class ProjectForm extends Component {
           <TextField
             className="full-width-input"
             label="project name"
+            InputLabelProps={{
+              shrink: this.state.updating
+            }}
             name="name"
             required
+            value={this.state.project.name}
             error={!this.checkIfFieldIsValid("name")}
             onChange={this.onChange}
           />
           <TextField
             className="full-width-input"
+            value={this.state.project.organization}
+            InputLabelProps={{
+              shrink: this.state.updating
+            }}
             required
             error={!this.checkIfFieldIsValid("organization")}
             label="organization name"
@@ -199,9 +233,13 @@ export default class ProjectForm extends Component {
             name="organization"
           />
           <TextField
+            value={this.state.project.investmentSize}
             className="full-width-input"
             error={!this.checkIfFieldIsValid("investmentSize")}
             label="investment size by US dollar $"
+            InputLabelProps={{
+              shrink: this.state.updating
+            }}
             onChange={this.onChange}
             name="investmentSize"
             type="number"
@@ -211,19 +249,23 @@ export default class ProjectForm extends Component {
             className="full-width-input"
             label="starting year"
             type="date"
+            defaultValue={this.state.project.year}
             required
             name="year"
             InputLabelProps={{
-              shrink: true
+              shrink: this.state.updating
             }}
             onChange={this.onChange}
           />
           <TextField
             select
-            label={this.state.project.sector ? "" : "sector"}
+            label="sector"
             error={!this.checkIfFieldIsValid("sector")}
             required
             className="full-width-input"
+            InputLabelProps={{
+              shrink: this.state.updating
+            }}
             name="sector"
             value={this.state.project.sector}
             onChange={this.onChange}
@@ -239,13 +281,12 @@ export default class ProjectForm extends Component {
 
           <TextField
             select
-            label={
-              this.state.project.refugeeInvestmentType
-                ? ""
-                : "refugee investment type"
-            }
+            label="refugee investment type"
             error={!this.checkIfFieldIsValid("refugeeInvestmentType")}
             required
+            InputLabelProps={{
+              shrink: this.state.updating
+            }}
             className="full-width-input"
             name="refugeeInvestmentType"
             value={this.state.project.refugeeInvestmentType}
@@ -265,7 +306,11 @@ export default class ProjectForm extends Component {
             label="impact"
             name="impact"
             error={!this.checkIfFieldIsValid("impact")}
+            value={this.state.project.impact}
             multiline
+            InputLabelProps={{
+              shrink: this.state.updating
+            }}
             required
             onChange={this.onChange}
             rowsMax="6"
@@ -277,7 +322,11 @@ export default class ProjectForm extends Component {
             label="thesis"
             name="thesis"
             error={!this.checkIfFieldIsValid("thesis")}
+            value={this.state.project.thesis}
             multiline
+            InputLabelProps={{
+              shrink: this.state.updating
+            }}
             onChange={this.onChange}
             required
             rowsMax="6"
@@ -289,6 +338,10 @@ export default class ProjectForm extends Component {
             name="structure"
             error={!this.checkIfFieldIsValid("structure")}
             multiline
+            InputLabelProps={{
+              shrink: this.state.updating
+            }}
+            value={this.state.project.structure}
             onChange={this.onChange}
             required
             rowsMax="6"
@@ -329,7 +382,11 @@ export default class ProjectForm extends Component {
               label="phone number"
               name="phone1"
               required
+              value={this.state.contact.phone1}
               type="tel"
+              InputLabelProps={{
+                shrink: this.state.updating
+              }}
               onChange={this.onContactChange}
             />
           </div>
@@ -340,6 +397,10 @@ export default class ProjectForm extends Component {
               label="mobile number"
               type="tel"
               name="phone2"
+              value={this.state.contact.phone2}
+              InputLabelProps={{
+                shrink: this.state.updating
+              }}
               onChange={this.onContactChange}
             />
           </div>
@@ -348,8 +409,12 @@ export default class ProjectForm extends Component {
             <TextField
               className="half-width-input"
               label="email"
+              value={this.state.contact.email1}
               name="email1"
               type="email"
+              InputLabelProps={{
+                shrink: this.state.updating
+              }}
               required
               onChange={this.onContactChange}
             />
@@ -360,7 +425,11 @@ export default class ProjectForm extends Component {
               className="half-width-input"
               label="second email"
               name="email2"
+              value={this.state.contact.email2}
               type="email"
+              InputLabelProps={{
+                shrink: this.state.updating
+              }}
               onChange={this.onContactChange}
             />
           </div>
@@ -369,8 +438,12 @@ export default class ProjectForm extends Component {
             <TextField
               className="half-width-input"
               label="website"
+              value={this.state.contact.website}
               name="website"
               type="url"
+              InputLabelProps={{
+                shrink: this.state.updating
+              }}
               onChange={this.onContactChange}
             />
           </div>
@@ -380,7 +453,11 @@ export default class ProjectForm extends Component {
               className="half-width-input"
               label="facebook"
               name="facebook"
+              value={this.state.contact.facebook}
               type="url"
+              InputLabelProps={{
+                shrink: this.state.updating
+              }}
               onChange={this.onContactChange}
             />
           </div>
@@ -388,9 +465,13 @@ export default class ProjectForm extends Component {
             <i className="fab fa-twitter" />
             <TextField
               className="half-width-input"
+              value={this.state.contact.twitter}
               label="twitter"
               name="twitter"
               type="url"
+              InputLabelProps={{
+                shrink: this.state.updating
+              }}
               onChange={this.onContactChange}
             />
           </div>
@@ -400,7 +481,11 @@ export default class ProjectForm extends Component {
               className="half-width-input"
               label="instagram"
               name="instagram"
+              value={this.state.contact.instagram}
               type="url"
+              InputLabelProps={{
+                shrink: this.state.updating
+              }}
               onChange={this.onContactChange}
             />
           </div>
@@ -409,7 +494,11 @@ export default class ProjectForm extends Component {
             <TextField
               className="half-width-input"
               label="fax"
+              value={this.state.contact.fax}
               name="fax"
+              InputLabelProps={{
+                shrink: this.state.updating
+              }}
               onChange={this.onContactChange}
             />
           </div>
@@ -418,7 +507,11 @@ export default class ProjectForm extends Component {
             <TextField
               className="half-width-input"
               label="address"
+              value={this.state.contact.address}
               name="address"
+              InputLabelProps={{
+                shrink: this.state.updating
+              }}
               onChange={this.onContactChange}
             />
           </div>
@@ -433,7 +526,7 @@ export default class ProjectForm extends Component {
                 height: 40,
                 width: 40,
                 marginRight: 10,
-                background: this.state.project.img
+                backgroundImage: "url(" + this.state.project.img + ")"
               }}
             />
 
@@ -442,6 +535,9 @@ export default class ProjectForm extends Component {
               className=""
               name="img"
               required
+              InputLabelProps={{
+                shrink: this.state.updating
+              }}
               type="file"
               accept="image/*"
               onChange={this.uploadImage}
@@ -458,7 +554,7 @@ export default class ProjectForm extends Component {
                 height: 40,
                 width: 40,
                 marginRight: 10,
-                background: this.state.project.img
+                backgroundImage: "url(" + this.state.project.logo + ")"
               }}
             />
 
@@ -467,6 +563,9 @@ export default class ProjectForm extends Component {
               className=""
               name="logo"
               required
+              InputLabelProps={{
+                shrink: this.state.updating
+              }}
               accept="image/*"
               type="file"
               onChange={this.uploadImage}
@@ -479,7 +578,10 @@ export default class ProjectForm extends Component {
             to remove the location
           </Typography>
           <div className="map-wrapper" style={{ height: 500, width: "100%" }}>
-            <GoogleMap setLocations={this.setLocations} />
+            <GoogleMap
+              setLocations={this.setLocations}
+              dots={this.state.project.locations}
+            />
           </div>
         </Form>
       </div>
