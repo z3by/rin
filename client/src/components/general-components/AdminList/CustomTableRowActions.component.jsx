@@ -11,12 +11,18 @@ export default class CustomTableRowActions extends Component {
   }
 
   deleteItem = id => {
+    let sure = window.confirm(
+      "are you sure you want to delete this " + this.props.itemName
+    );
+    if (!sure) {
+      return;
+    }
     Axios.delete(`/api/${this.props.pluralName}/${id}`)
       .then(res => {
         this.props.handleDelete();
       })
       .catch(err => {
-        console.log("Error deleting a table row");
+        alert("Error deleting a " + this.props.itemName);
       });
   };
 

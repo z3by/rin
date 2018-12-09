@@ -16,15 +16,19 @@ const refugeeInvestmentTypes = [
   }
 ];
 export default class ProjectForm extends Component {
-  state = {
-    allCountries: [],
-    allFounders: [],
-    allInvestors: [],
-    allSdgs: [],
-    project: {},
-    contact: {}
-  };
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      allCountries: [],
+      allFounders: [],
+      allInvestors: [],
+      allSdgs: [],
+      project: {},
+      contact: {},
+      adding: false
+    };
+  }
   componentDidMount() {
     this.fetchCountries();
     this.fetchFounders();
@@ -56,17 +60,12 @@ export default class ProjectForm extends Component {
   };
 
   onChange = e => {
-    this.setState(
-      {
-        project: {
-          ...this.state.project,
-          [e.target.name]: e.target.value
-        }
-      },
-      () => {
-        console.log(this.state);
+    this.setState({
+      project: {
+        ...this.state.project,
+        [e.target.name]: e.target.value
       }
-    );
+    });
   };
 
   // for demo ONLY
@@ -119,23 +118,30 @@ export default class ProjectForm extends Component {
         );
       })
       .catch(err => {
-        console.log(err);
+        this.showErrorMessage(err);
       });
   };
 
   createProject = () => {
+    this.setState({ adding: true });
     this.setState(
       { project: { ...this.state.project, pending: false } },
       () => {
         Axios.post("/api/projects", this.state.project)
           .then(result => {
-            console.log(result);
+            this.setState({ adding: false }, () => {
+              this.props.history.push("/dashboard/projects");
+            });
           })
           .catch(err => {
-            console.log(err);
+            this.showErrorMessage(err);
           });
       }
     );
+  };
+
+  showErrorMessage = messge => {
+    alert(messge);
   };
 
   uploadImage = e => {
@@ -160,7 +166,7 @@ export default class ProjectForm extends Component {
         });
       })
       .catch(err => {
-        console.log(err);
+        this.showErrorMessage(err);
       });
   };
 
@@ -171,6 +177,7 @@ export default class ProjectForm extends Component {
           id="project-form"
           data={this.state.project}
           onFormSubmit={this.onFormSubmit}
+          adding={this.state.adding}
         >
           <Typography variant="h5">
             Add the project info here Please...
@@ -194,7 +201,7 @@ export default class ProjectForm extends Component {
           <TextField
             className="full-width-input"
             error={!this.checkIfFieldIsValid("investmentSize")}
-            label="investment size by us dollar $"
+            label="investment size by US dollar $"
             onChange={this.onChange}
             name="investmentSize"
             type="number"

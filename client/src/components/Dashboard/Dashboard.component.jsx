@@ -29,7 +29,7 @@ export default class Dashboard extends Component {
   componentWillMount() {
     Axios.get("/users/isadmin").then(res => {
       if (res.data === false) {
-        this.props.history.push("admin");
+        this.props.history.push("/admin");
       }
     });
   }
@@ -117,19 +117,19 @@ export default class Dashboard extends Component {
           <Route
             path="/dashboard/addproject"
             render={() => {
-              return <ProjectForm />;
+              return <ProjectForm {...this.props} />;
             }}
           />
           <Route
             path="/dashboard/addstory"
             render={() => {
-              return <StoryForm />;
+              return <StoryForm {...this.props} />;
             }}
           />
           <Route
             path="/dashboard/addarticle"
             render={() => {
-              return <ArticleForm />;
+              return <ArticleForm {...this.props} />;
             }}
           />
         </main>

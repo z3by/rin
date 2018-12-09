@@ -7,9 +7,7 @@ import Axios from "axios";
 export default class Form extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isFormValid: false
-    };
+    this.state = {};
   }
 
   render() {
@@ -23,10 +21,20 @@ export default class Form extends Component {
           <Button
             type="submit"
             className="form-sbumit-button"
-            disabled={this.state.isFormValid}
+            disabled={this.props.adding}
           >
-            <i className="fas fa-check" />
-            Submit
+            <div
+              style={{ display: !this.props.adding ? "inline-block" : "none" }}
+            >
+              <i className="fas fa-check" />
+              Submit
+            </div>
+            <img
+              style={{ display: this.props.adding ? "inline-block" : "none" }}
+              className="loading-img"
+              src="http://portal.paaet.edu.kw/DBPublic/img/loading2.gif"
+              alt=""
+            />
           </Button>
         </form>
       </Paper>
