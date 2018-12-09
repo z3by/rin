@@ -147,6 +147,31 @@ export default class ProjectForm extends Component {
 
   onFormSubmit = e => {
     e.preventDefault();
+    if (this.state.updating) {
+      this.updateContact();
+    } else {
+      this.createContact();
+    }
+  };
+
+  updateContact = () => {
+    Axios.put("/api/contacts/" + this.state.contact.id, this.state.contact)
+      .then(result => {
+        this.setState(
+          {
+            project: { ...this.state.project, contactId: result.data.id }
+          },
+          () => {
+            this.updateProject();
+          }
+        );
+      })
+      .catch(err => {
+        this.showErrorMessage(err);
+      });
+  };
+
+  createContact = () => {
     Axios.post("/api/contacts", this.state.contact)
       .then(result => {
         this.setState(
@@ -157,6 +182,19 @@ export default class ProjectForm extends Component {
             this.createProject();
           }
         );
+      })
+      .catch(err => {
+        this.showErrorMessage(err);
+      });
+  };
+
+  updateProject = () => {
+    this.setState({ adding: true });
+    Axios.put("/api/projects/" + this.state.project.id, this.state.project)
+      .then(result => {
+        this.setState({ adding: false }, () => {
+          this.props.history.push("/dashboard/projects");
+        });
       })
       .catch(err => {
         this.showErrorMessage(err);
