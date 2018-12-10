@@ -8,6 +8,7 @@ const countriesAPI = require("../controllers/api/countries.controller");
 const projectsAPI = require("../controllers/api/projects.controller");
 const libraryAPI = require("../controllers/api/library.controller");
 const adminAPI = require("../controllers/users/admin.controller");
+const membersAPI = require("../controllers/users/members.controller");
 const foundersAPI = require("../controllers/api/founders.controller");
 const investorsAPI = require("../controllers/api/investors.controller");
 const sdgsAPI = require("../controllers/api/sdgs.controller");
@@ -36,6 +37,7 @@ router.post("/locations", loactionAPI.addLocation);
 //stories routes
 router.get("/stories", storiesAPI.getStories);
 router.get("/stories/page", storiesAPI.getStoriesPage);
+router.get("/stories/search", storiesAPI.searchStories);
 router.get("/stories/:id", storiesAPI.getStory);
 router.post("/stories", storiesAPI.addStory);
 router.put("/stories/:id", storiesAPI.updateStory);
@@ -43,6 +45,7 @@ router.delete("/stories/:id", storiesAPI.deleteStory);
 
 //articles routes
 router.get("/articles", articlesAPI.getArticles);
+router.get("/articles/search", articlesAPI.searchArticles);
 router.get("/articles/page", articlesAPI.getArticlesPage);
 router.get("/articles/:id", articlesAPI.getArticle);
 router.post("/articles", articlesAPI.addArticle);
@@ -51,12 +54,14 @@ router.delete("/articles/:id", articlesAPI.deleteArticles);
 
 // users routes
 router.get("/members", adminAPI.getMembers);
+router.get("/users/search", membersAPI.searchMembers);
 router.get("/members/page", adminAPI.getMembersPage);
 router.get("/members/:id", adminAPI.getMember);
 
 //projects routes
 router.get("/projects", projectsAPI.getProjects);
 router.get("/projects/names", projectsAPI.getProjectsNames);
+router.get("/projects/search", projectsAPI.searchProjects);
 router.get("/projectslocations", projectsAPI.getProjectsLocations);
 router.get("/projects/page", projectsAPI.getProjectsPage);
 router.get("/projects/:id", projectsAPI.getProject);

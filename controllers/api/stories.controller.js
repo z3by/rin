@@ -1,5 +1,6 @@
 const storyValidator = require("../validators/story.validator");
 const db = require("../../models/index");
+const Op = db.Sequelize.Op;
 
 module.exports.getStories = (req, res) => {
   db.Story.findAll({
@@ -99,5 +100,22 @@ module.exports.deleteStory = (req, res) => {
     })
     .catch(err => {
       res.status(400).send(err);
+    });
+};
+
+module.exports.searchStories = (req, res) => {
+  db.Story.findAll({
+    where: {
+      buisness: {
+        [Op.like]: `%${req.query.value}%`
+      }
+    },
+    limit: 10
+  })
+    .then(result => {
+      res.status(200).json(result);
+    })
+    .catch(err => {
+      res.status(404).json(err);
     });
 };

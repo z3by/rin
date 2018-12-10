@@ -74,7 +74,7 @@ class Sidebar extends React.Component {
               <ListItemText>Stories</ListItemText>
             </ListItem>
           </Link>
-          <Link to="/dashboard/blog">
+          <Link to="/dashboard/articles">
             <ListItem button key={"blog"} style={{ padding: 0 }}>
               <ListItemIcon
                 style={{

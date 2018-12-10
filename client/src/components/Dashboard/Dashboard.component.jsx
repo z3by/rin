@@ -65,6 +65,7 @@ export default class Dashboard extends Component {
           fetchRequests={this.fetchRequests}
         />
         <Navbar
+          {...this.props}
           toggleDrawer={this.toggleDrawer}
           requestsCount={this.state.requestsCount}
         />
@@ -141,7 +142,7 @@ export default class Dashboard extends Component {
             }}
           />
           <Route
-            path="/dashboard/blog"
+            path="/dashboard/articles"
             render={() => {
               return (
                 <AdminList

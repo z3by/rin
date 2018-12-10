@@ -93,7 +93,8 @@ class Navbar extends React.Component {
     super(props);
     this.state = {
       anchorEl: null,
-      mobileMoreAnchorEl: null
+      mobileMoreAnchorEl: null,
+      currentTab: ""
     };
   }
   componentDidMount() {}
@@ -113,6 +114,26 @@ class Navbar extends React.Component {
 
   handleMobileMenuClose = () => {
     this.setState({ mobileMoreAnchorEl: null });
+  };
+
+  handleOnChange = e => {
+    let path = this.props.history.location.pathname.split("/");
+    const current = path[path.length - 1];
+    this.setState({ currentTab: current });
+  };
+
+  handleSearch = e => {
+    if (e.key === "Enter" && e.target.value.length) {
+      Axios.get("/api/" + this.state.currentTab + "/search", {
+        params: { value: e.target.value }
+      })
+        .then(result => {
+          console.log(result);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   };
 
   render() {
@@ -195,7 +216,9 @@ class Navbar extends React.Component {
                 <SearchIcon />
               </div>
               <InputBase
-                placeholder="Search…"
+                placeholder={"Search..."}
+                onChange={this.handleOnChange}
+                onKeyUp={this.handleSearch}
                 classes={{
                   root: classes.inputRoot,
                   input: classes.inputInput
