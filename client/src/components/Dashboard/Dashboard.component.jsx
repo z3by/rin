@@ -71,6 +71,9 @@ export default class Dashboard extends Component {
               );
             }}
           />
+          <Route path="/dashboard/addproject" component={ProjectForm} />
+          <Route path="/dashboard/updateproject/:id" component={ProjectForm} />
+
           <Route
             path="/dashboard/stories"
             render={() => {
@@ -84,6 +87,9 @@ export default class Dashboard extends Component {
               );
             }}
           />
+          <Route path="/dashboard/addstory" component={StoryForm} />
+          <Route path="/dashboard/updatestory/:id" component={StoryForm} />
+
           <Route
             path="/dashboard/users"
             render={() => {
@@ -117,9 +123,6 @@ export default class Dashboard extends Component {
               );
             }}
           />
-          <Route path="/dashboard/addproject" component={ProjectForm} />
-          <Route path="/dashboard/updateproject/:id" component={ProjectForm} />
-          <Route path="/dashboard/addstory" component={StoryForm} />
           <Route path="/dashboard/addarticle" component={ArticleForm} />
         </main>
       </div>

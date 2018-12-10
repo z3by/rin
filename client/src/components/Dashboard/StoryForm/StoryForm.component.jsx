@@ -74,17 +74,23 @@ export default class StoryForm extends Component {
   };
 
   updateStory = () => {
-    Axios.put("/api/stories/" + this.state.story.id, this.state.story).catch(
-      err => {
+    Axios.put("/api/stories/" + this.state.story.id, this.state.story)
+      .then(result => {
+        this.props.history.push("/dashboard/stories");
+      })
+      .catch(err => {
         this.showErrorMessage(err);
-      }
-    );
+      });
   };
 
   createStory = () => {
-    Axios.post("/api/stories", this.state.story).catch(err => {
-      this.showErrorMessage(err);
-    });
+    Axios.post("/api/stories", this.state.story)
+      .then(result => {
+        this.props.history.push("/dashboard/stories");
+      })
+      .catch(err => {
+        this.showErrorMessage(err);
+      });
   };
 
   showErrorMessage = messge => {
