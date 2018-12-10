@@ -21,6 +21,17 @@ module.exports.getProjects = (req, res) => {
   });
 };
 
+module.exports.getProjectsNames = (req, res) => {
+  db.Project.findAll({
+    where: {
+      pending: false
+    },
+    attributes: ["id", "name"]
+  }).then(result => {
+    res.json(result);
+  });
+};
+
 module.exports.getProjectsPage = (req, res) => {
   const firstProjectIndex = Number(req.query.first);
   const lastProjectIndex = Number(req.query.last);
@@ -30,23 +41,19 @@ module.exports.getProjectsPage = (req, res) => {
       pending: false
     },
     include: [
-      { model: db.Location, as: "locations", attributes: ["lng", "lat"] },
+      { model: db.Location, as: "locations" },
       { model: db.Story, as: "stories" },
       { model: db.Contact, as: "contact" },
-      { model: db.Investor, through: { attributes: [] }, as: "investors" },
-      { model: db.Founder, through: { attributes: [] }, as: "founders" },
-      { model: db.Sdg, through: { attributes: [] }, as: "Sdgs" },
-      { model: db.Country, through: { attributes: [] }, as: "countries" }
+      { model: db.Investor, through: { attributes: [] }, as: "Investors" },
+      { model: db.Founder, through: { attributes: [] }, as: "Founders" },
+      { model: db.Country, through: { attributes: [] }, as: "Countries" },
+      { model: db.Sdg, through: { attributes: [] }, as: "Sdgs" }
     ],
     offset: firstProjectIndex,
     limit: lastProjectIndex - firstProjectIndex
-  })
-    .then(result => {
-      res.json(result);
-    })
-    .catch(err => {
-      res.send(err);
-    });
+  }).then(result => {
+    res.json(result);
+  });
 };
 
 module.exports.getProject = (req, res) => {
@@ -186,25 +193,43 @@ module.exports.updateProject = (req, res) => {
   });
 };
 
+module.exports.acceptRequest = (req, res) => {
+  db.Project.update(
+    { pending: false },
+    {
+      where: {
+        id: req.params.id
+      }
+    }
+  )
+    .then(accepted => {
+      res.status(200).send(accepted);
+    })
+    .catch(err => {
+      res.send(err);
+    });
+};
+
 module.exports.deleteProjects = (req, res) => {
-  let data = req.body;
   db.Location.destroy({ where: { ProjectId: req.params.id } })
     .then(() => {
-      db.findOne({ where: { id: req.params.id } })
-        .then(project => {
-          db.Contact.destroy({
-            where: {
-              id: project.contactId
-            }
-          })
-            .then(() => {
-              db.Project.destroy({
-                where: {
-                  id: req.params.id
-                }
-              })
+      db.Story.destroy({
+        where: {
+          projectId: req.params.id
+        }
+      })
+        .then(deleted => {
+          db.Project.findOne({ where: { id: req.params.id } })
+            .then(project => {
+              project
+                .destroy()
                 .then(result => {
-                  res.json(result);
+                  db.Contact.destroy({
+                    where: {
+                      id: project.contactId
+                    }
+                  });
+                  res.sendStatus(200);
                 })
                 .catch(err => {
                   res.status(400).send(err);
@@ -224,15 +249,10 @@ module.exports.deleteProjects = (req, res) => {
 };
 
 module.exports.getProjectRequestsPage = (req, res) => {
-  const firstProjectIndex = Number(req.query.first);
-  const lastProjectIndex = Number(req.query.last);
-
   db.Project.findAndCountAll({
     where: {
       pending: true
-    },
-    offset: firstProjectIndex,
-    limit: lastProjectIndex - firstProjectIndex
+    }
   })
     .then(result => {
       res.json(result);
@@ -283,4 +303,19 @@ module.exports.getProjectsLocations = (req, res) => {
   }).then(result => {
     res.json(result);
   });
+};
+
+module.exports.searchProjects = (req, res) => {
+  db.Project.findAll({
+    where: {
+      name: { [Op.like]: `%${req.query.value}%` }
+    },
+    limit: 10
+  })
+    .then(result => {
+      res.status(200).json(result);
+    })
+    .catch(err => {
+      res.status(404).json(err);
+    });
 };
