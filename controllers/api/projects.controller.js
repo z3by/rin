@@ -213,20 +213,30 @@ module.exports.acceptRequest = (req, res) => {
 module.exports.deleteProjects = (req, res) => {
   db.Location.destroy({ where: { ProjectId: req.params.id } })
     .then(() => {
-      db.Project.findOne({ where: { id: req.params.id } })
-        .then(project => {
-          project
-            .destroy()
-            .then(result => {
-              db.Contact.destroy({
-                where: {
-                  id: project.contactId
-                }
-              });
-              res.json(result);
+      db.Story.destroy({
+        where: {
+          projectId: req.params.id
+        }
+      })
+        .then(deleted => {
+          db.Project.findOne({ where: { id: req.params.id } })
+            .then(project => {
+              project
+                .destroy()
+                .then(result => {
+                  db.Contact.destroy({
+                    where: {
+                      id: project.contactId
+                    }
+                  });
+                  res.sendStatus(200);
+                })
+                .catch(err => {
+                  res.status(400).send(err);
+                });
             })
             .catch(err => {
-              res.status(400).send(err);
+              res.send(err);
             });
         })
         .catch(err => {

@@ -100,6 +100,30 @@ export default class Requests extends Component {
       );
     });
 
-    return <div className="container">{requests}</div>;
+    return (
+      <div className="container">
+        {requests.length ? (
+          requests
+        ) : (
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center"
+            }}
+          >
+            <Typography variant="h3" className="color-3">
+              No requests yet
+            </Typography>
+            <img
+              src="http://icons.iconarchive.com/icons/iconsmind/outline/256/Inbox-Empty-icon.png"
+              alt=""
+              style={{ marginLeft: 20 }}
+            />
+          </div>
+        )}
+      </div>
+    );
   }
 }
