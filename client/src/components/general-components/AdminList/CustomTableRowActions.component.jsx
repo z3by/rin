@@ -11,12 +11,18 @@ export default class CustomTableRowActions extends Component {
   }
 
   deleteItem = id => {
+    let sure = window.confirm(
+      "are you sure you want to delete this " + this.props.itemName
+    );
+    if (!sure) {
+      return;
+    }
     Axios.delete(`/api/${this.props.pluralName}/${id}`)
       .then(res => {
         this.props.handleDelete();
       })
       .catch(err => {
-        console.log("Error deleting a table row");
+        alert("Error deleting a " + this.props.itemName);
       });
   };
 
@@ -27,17 +33,17 @@ export default class CustomTableRowActions extends Component {
     };
     let { itemID, itemName, pluralName } = this.props;
     return (
-      <TableCell key="buttons">
-        <Link to={"/dashboard/" + pluralName + "/list/" + itemID}>
+      <TableCell key="buttons" style={{ display: "flex" }}>
+        <Link to={"/dashboard/" + pluralName + "/" + itemID}>
           <IconButton style={buttonStyle}>
-            <i className="far fa-eye" style={{ fontSize: "1rem" }} />
+            <i className="far fa-eye" style={{ fontSize: "1rem", margin: 0 }} />
           </IconButton>
         </Link>
-        <Link to={`/dashboard/${pluralName}/list/update${itemName}/${itemID}`}>
+        <Link to={`/dashboard/update${itemName}/${itemID}`}>
           <IconButton style={buttonStyle}>
             <i
               className="fas fa-edit"
-              style={{ color: "royalblue", fontSize: "1rem" }}
+              style={{ color: "royalblue", fontSize: "1rem", margin: 0 }}
             />
           </IconButton>
         </Link>
@@ -45,7 +51,7 @@ export default class CustomTableRowActions extends Component {
           <IconButton style={buttonStyle}>
             <i
               className="fas fa-trash-alt"
-              style={{ color: "crimson", fontSize: "1rem" }}
+              style={{ color: "crimson", fontSize: "1rem", margin: 0 }}
             />
           </IconButton>
         </a>

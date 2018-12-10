@@ -1,110 +1,94 @@
-const mysql = require("mysql");
-const dbConfig = require("../db.config");
-const storyValidator = require("../validators/story.validator");
-
-const connection = mysql.createConnection(dbConfig);
-connection.connect(err => {
-  if (err) throw err;
-  console.log("connected");
-});
+const db = require("../../models/index");
+const Op = db.Sequelize.Op;
 
 module.exports.getArticles = (req, res) => {
-  let qry = "select * from articles";
-
-  connection.query(qry, (err, result) => {
-    if (err) throw err;
-    const parsed = result.map(article => {
-      article.imgs = JSON.parse(article.imgs);
-      return article;
-    });
-    res.send(parsed);
+  db.Article.findAll({}).then(result => {
+    res.json(result);
   });
 };
 
-module.exports.getArticlesCount = (req, res) => {
-  let qry = "select count(*) from articles;";
-  connection.query(qry, (err, result) => {
-    if (err) throw err;
-    res.send(result[0]);
-  });
-};
+module.exports.getArticlesPage = (req, res) => {
+  const firstArticleIndex = Number(req.query.first);
+  const lastArticleIndex = Number(req.query.last);
 
-module.exports.getSelectedPageArticles = (req, res) => {
-  const firstArticleIndex = req.query.first;
-  const lastArticleIndex = req.query.last;
-
-  connection.query("select * from articles", (err, result) => {
-    if (err) throw err;
-    const allArticles = result;
-    const selectPageArticles = allArticles.slice(
-      firstArticleIndex,
-      lastArticleIndex
-    );
-    const parsed = selectPageArticles.map(article => {
-      article.imgs = JSON.parse(article.imgs);
-      return article;
+  db.Article.findAndCountAll({
+    offset: firstArticleIndex,
+    limit: lastArticleIndex - firstArticleIndex
+  })
+    .then(result => {
+      res.json(result);
+    })
+    .catch(err => {
+      res.send(err);
     });
-    res.send(parsed);
-  });
 };
 
 module.exports.getArticle = (req, res) => {
-  let qry = `select * from articles where id=${req.params.id}`;
-  connection.query(qry, (err, result) => {
-    if (err) throw err;
-    const parsed = result.map(article => {
-      article.imgs = JSON.parse(article.imgs);
-      return article;
+  db.Article.findAll({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(result => {
+      res.json(result);
+    })
+    .catch(err => {
+      res.send(err);
     });
-
-    res.send(parsed);
-  });
 };
 
 module.exports.addArticle = (req, res) => {
-  let data = {
-    title: req.body.title,
-    subtitle: req.body.subtitle,
-    text: req.body.text,
-    imgs: JSON.stringify(req.body.imgs)
-  };
-
-  let qry = `insert into articles(title, subtitle, text, imgs) values("${
-    data.title
-  }", "${data.subtitle}", '${data.text}', '${data.imgs}');`;
-  connection.query(qry, (err, result) => {
-    if (err) throw err;
-    res.sendStatus(201);
-  });
-};
-
-module.exports.uploadImage = (req, res) => {
-  res.sendStatus(201);
+  let data = req.body;
+  db.Article.create(data)
+    .then(result => {
+      res.status(201).json(result);
+    })
+    .catch(err => {
+      res.send(err);
+    });
 };
 
 module.exports.updateArticle = (req, res) => {
-  let data = {
-    title: req.body.title,
-    subtitle: req.body.subtitle,
-    text: req.body.text,
-    imgs: JSON.stringify(req.body.imgs)
-  };
-
-  let qry = `UPDATE articles
-                   SET title="${data.title}", subtitle="${
-    data.subtitle
-  }", text="${data.text}", imgs='${data.imgs}'
-                   WHERE id=${req.params.id};`;
-  connection.query(qry, (err, result) => {
-    if (err) throw err;
-    res.sendStatus(201);
-  });
+  let data = req.body;
+  db.Article.update(data, {
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(result => {
+      res.json(result);
+    })
+    .catch(err => {
+      res.status(400).send(err);
+    });
 };
 
 module.exports.deleteArticles = (req, res) => {
-  let qry = `delete from articles where id=${req.params.id}`;
-  connection.query(qry, (err, result) => {
-    if (err) throw err;
-    res.sendStatus(200);
-  });
+  let data = req.body;
+  db.Article.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(result => {
+      res.json(result);
+    })
+    .catch(err => {
+      res.status(400).send(err);
+    });
+};
+
+module.exports.searchArticles = (req, res) => {
+  db.Article.findAll({
+    where: {
+      title: { [Op.like]: `%${req.query.value}%` }
+    },
+    limit: 10
+  })
+    .then(result => {
+      res.status(200).json(result);
+    })
+    .catch(err => {
+      res.status(404).json(err);
+    });
 };

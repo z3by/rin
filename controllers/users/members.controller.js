@@ -1,4 +1,6 @@
 const usersHelpers = require("../helpers/users.helpers");
+const db = require("../../models");
+const Op = db.Sequelize.Op;
 
 // sign up new user controller;
 module.exports.registerNewMember = (req, res) => {
@@ -89,5 +91,20 @@ module.exports.isLoggedin = (req, res) => {
       res.status(400).json({
         status: "expiered"
       });
+    });
+};
+
+module.exports.searchMembers = (req, res) => {
+  db.Member.findAll({
+    where: {
+      firstName: { [Op.like]: `%${req.query.value}%` }
+    },
+    limit: 10
+  })
+    .then(result => {
+      res.status(200).json(result);
+    })
+    .catch(err => {
+      res.status(404).json(err);
     });
 };

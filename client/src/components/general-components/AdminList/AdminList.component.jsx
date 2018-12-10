@@ -1,12 +1,15 @@
 import React, { Component } from "react";
-import axios from "axios";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import Paper from "@material-ui/core/Paper";
 import { TablePagination } from "@material-ui/core";
 import CustomTableHead from "./CustomTableHead.component";
 import CustomTableRow from "./CustomTableRow.component";
+import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
 import Axios from "axios";
+import Divider from "@material-ui/core/Divider";
+import { Link } from "react-router-dom";
 
 export default class AdminList extends Component {
   constructor(props) {
@@ -20,32 +23,23 @@ export default class AdminList extends Component {
   }
 
   componentDidMount() {
-    this.getItemsCount();
-  }
-
-  getItemsCount = () => {
-    Axios.get(`/api/${this.props.pluralName}/count`).then(res => {
-      this.setState({
-        itemsCount: res.data["count(*)"]
-      });
-    });
     this.fetchData();
-  };
+  }
 
   fetchData = () => {
     const startIndex = this.state.page * this.state.rowsPerPage;
     const endIndex = startIndex + this.state.rowsPerPage;
+
     const indexes = {
       first: startIndex,
       last: endIndex
     };
 
-    Axios.get(`/api/${this.props.pluralName}/selectedpage`, {
+    Axios.get(`/api/${this.props.pluralName}/page`, {
       params: indexes
     })
       .then(res => {
-        this.setState({ data: res.data });
-        console.log(res.data);
+        this.setState({ data: res.data.rows, itemsCount: res.data.count });
       })
       .catch(err => {
         console.log(err);
@@ -80,7 +74,18 @@ export default class AdminList extends Component {
       );
     });
     return (
-      <Paper className="fadeInFast">
+      <Paper className="fadeInFast" style={{ overflowX: "scroll" }}>
+        <Link
+          to={"/dashboard/add" + this.props.itemName}
+          style={{ display: this.props.controls ? "block" : "none" }}
+        >
+          <Button>
+            <i className="fas fa-plus color-2" />
+            add {this.props.itemName}
+          </Button>
+        </Link>
+        <Divider />
+
         <Table style={{ overflowX: "scroll" }}>
           <CustomTableHead
             data={this.props.wantedFields}

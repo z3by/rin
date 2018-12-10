@@ -52,7 +52,7 @@ html {
   height: 100vh;
   width: 100vw;
   padding: 0;
-  overflow: hidden;
+  overflow-x: hidden;
   font-family: var(--main-font);
 }
 
@@ -601,6 +601,9 @@ option:hover {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
 .grid-5 {
@@ -674,4 +677,12 @@ option:hover {
 
 .p-theme-2 {
   font-size: 0.9rem;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.text-center {
+  text-align: center;
 }
