@@ -41,7 +41,7 @@ class Sidebar extends React.Component {
                   fontSize: "1.3rem"
                 }}
               >
-                <i class="fas fa-home" />
+                <i className="fas fa-home" />
               </ListItemIcon>
               <ListItemText>Home</ListItemText>
             </ListItem>
@@ -55,7 +55,7 @@ class Sidebar extends React.Component {
                   fontSize: "1.3rem"
                 }}
               >
-                <i class="fas fa-project-diagram" />
+                <i className="fas fa-project-diagram" />
               </ListItemIcon>
               <ListItemText>Projects</ListItemText>
             </ListItem>
@@ -69,7 +69,7 @@ class Sidebar extends React.Component {
                   fontSize: "1.3rem"
                 }}
               >
-                <i class="fas fa-bookmark" />
+                <i className="fas fa-bookmark" />
               </ListItemIcon>
               <ListItemText>Stories</ListItemText>
             </ListItem>
@@ -83,7 +83,7 @@ class Sidebar extends React.Component {
                   fontSize: "1.3rem"
                 }}
               >
-                <i class="fas fa-newspaper" />
+                <i className="fas fa-newspaper" />
               </ListItemIcon>
               <ListItemText>Blog</ListItemText>
             </ListItem>
@@ -97,7 +97,7 @@ class Sidebar extends React.Component {
                   fontSize: "1.3rem"
                 }}
               >
-                <i class="fas fa-users" />
+                <i className="fas fa-users" />
               </ListItemIcon>
               <ListItemText>Users</ListItemText>
             </ListItem>

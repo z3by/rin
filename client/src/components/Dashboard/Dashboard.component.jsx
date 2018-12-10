@@ -129,7 +129,7 @@ export default class Dashboard extends Component {
           />
           <Route path="/dashboard/articles/:id" component={ArticleInfo} />
           <Route path="/dashboard/addarticle" component={ArticleForm} />
-          <Route path="/dashboard/updatestory/:id" component={StoryForm} />
+          <Route path="/dashboard/updatearticle/:id" component={ArticleForm} />
         </main>
       </div>
     );

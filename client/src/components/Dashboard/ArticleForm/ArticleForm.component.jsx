@@ -67,7 +67,7 @@ export default class ArticleForm extends Component {
   updateArticle = () => {
     Axios.put("/api/articles/" + this.state.article.id, this.state.article)
       .then(result => {
-        this.props.history.push;
+        this.props.history.push("/dashboard/blog");
       })
       .catch(err => {
         this.showErrorMessage(err);
