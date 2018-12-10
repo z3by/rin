@@ -11,12 +11,15 @@ import ArticleForm from "./ArticleForm/ArticleForm.component";
 import ProjectInfo from "./ProjectInfo/ProjectInfo.component";
 import StoryInfo from "./StoryInfo/StoryInfo.component";
 import ArticleInfo from "./ArticleInfo/ArticleInfo.component";
+import Requests from "./Requests/Requests.component";
 
 export default class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      sidebarToggled: false
+      sidebarToggled: false,
+      requestsCount: 0,
+      requests: []
     };
   }
 
@@ -24,6 +27,7 @@ export default class Dashboard extends Component {
     document.querySelector(".navbar").style.display = "none";
     document.querySelector(".logo").style.display = "none";
     document.body.style.overflowY = "scroll";
+    this.fetchRequests();
   }
   componentWillUnmount() {
     document.querySelector(".navbar").style.display = "block";
@@ -43,14 +47,27 @@ export default class Dashboard extends Component {
     });
   };
 
+  fetchRequests = () => {
+    Axios.get("/api/requests").then(result => {
+      this.setState({
+        requestsCount: result.data.count,
+        requests: result.data.rows
+      });
+    });
+  };
+
   render() {
     return (
       <div className="admin-dashboard fadeInFast">
         <Sidebar
           toggleDrawer={this.toggleDrawer}
           toggled={this.state.sidebarToggled}
+          fetchRequests={this.fetchRequests}
         />
-        <Navbar toggleDrawer={this.toggleDrawer} />
+        <Navbar
+          toggleDrawer={this.toggleDrawer}
+          requestsCount={this.state.requestsCount}
+        />
         <main>
           <Route path="/dashboard/projects/:id" component={ProjectInfo} />
           <Route
@@ -73,9 +90,18 @@ export default class Dashboard extends Component {
               );
             }}
           />
+          <Route
+            path="/dashboard/requests"
+            render={() => (
+              <Requests
+                {...this.props}
+                requests={this.state.requests}
+                fetchRequests={this.fetchRequests}
+              />
+            )}
+          />
           <Route path="/dashboard/addproject" component={ProjectForm} />
           <Route path="/dashboard/updateproject/:id" component={ProjectForm} />
-
           <Route
             path="/dashboard/stories"
             exact

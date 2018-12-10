@@ -89,20 +89,14 @@ const styles = theme => ({
 });
 
 class Navbar extends React.Component {
-  state = {
-    anchorEl: null,
-    mobileMoreAnchorEl: null,
-    requestsCount: 0
-  };
-  componentDidMount() {
-    this.fetchRequestsCount();
+  constructor(props) {
+    super(props);
+    this.state = {
+      anchorEl: null,
+      mobileMoreAnchorEl: null
+    };
   }
-
-  fetchRequestsCount = () => {
-    Axios.get("/api/requests").then(result => {
-      this.setState({ requestsCount: result.data.count });
-    });
-  };
+  componentDidMount() {}
 
   handleProfileMenuOpen = event => {
     this.setState({ anchorEl: event.currentTarget });
@@ -121,10 +115,6 @@ class Navbar extends React.Component {
     this.setState({ mobileMoreAnchorEl: null });
   };
 
-  handleRequestsClick = () => {
-    this.props.history.push("/requests");
-  };
-
   render() {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
     const { classes } = this.props;
@@ -139,8 +129,11 @@ class Navbar extends React.Component {
         open={isMenuOpen}
         onClose={this.handleMenuClose}
       >
-        <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
-        <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
+        <Link to="/dashboard/settings">
+          <MenuItem onClick={this.handleMenuClose}>
+            <i className="fas fa-sliders-h" /> Settings
+          </MenuItem>
+        </Link>
       </Menu>
     );
 
@@ -152,14 +145,20 @@ class Navbar extends React.Component {
         open={isMobileMenuOpen}
         onClose={this.handleMobileMenuClose}
       >
-        <MenuItem onClick={this.handleRequestsClick}>
-          <IconButton color="inherit">
-            <Badge badgeContent={this.state.requestsCount} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
-          <p>Notifications</p>
-        </MenuItem>
+        <Link to="/dashboard/requests" style={{ color: "var(--color-5)" }}>
+          <MenuItem>
+            <IconButton color="inherit">
+              <Badge
+                badgeContent={this.props.requestsCount}
+                style={{ opacity: this.props.requestsCount > 0 ? "1" : "0" }}
+                color="secondary"
+              >
+                <NotificationsIcon />
+              </Badge>
+            </IconButton>
+            <p>Notifications</p>
+          </MenuItem>
+        </Link>
         <MenuItem onClick={this.handleProfileMenuOpen}>
           <IconButton color="inherit">
             <AccountCircle />
@@ -205,14 +204,18 @@ class Navbar extends React.Component {
             </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              <IconButton color="inherit">
-                <Badge
-                  badgeContent={this.state.requestsCount}
-                  color="secondary"
-                >
+              <Link to="/dashboard/requests">
+                <IconButton className="color-2">
+                  <Badge
+                    style={{
+                      opacity: this.props.requestsCount > 0 ? "1" : "0"
+                    }}
+                    badgeContent={this.props.requestsCount}
+                    color="secondary"
+                  />
                   <NotificationsIcon />
-                </Badge>
-              </IconButton>
+                </IconButton>
+              </Link>
               <IconButton
                 aria-owns={isMenuOpen ? "material-appbar" : undefined}
                 aria-haspopup="true"

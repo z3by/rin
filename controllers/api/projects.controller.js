@@ -193,6 +193,23 @@ module.exports.updateProject = (req, res) => {
   });
 };
 
+module.exports.acceptRequest = (req, res) => {
+  db.Project.update(
+    { pending: false },
+    {
+      where: {
+        id: req.params.id
+      }
+    }
+  )
+    .then(accepted => {
+      res.status(200).send(accepted);
+    })
+    .catch(err => {
+      res.send(err);
+    });
+};
+
 module.exports.deleteProjects = (req, res) => {
   db.Location.destroy({ where: { ProjectId: req.params.id } })
     .then(() => {

@@ -65,6 +65,7 @@ router.put("/projects/:id", projectsAPI.updateProject);
 router.delete("/projects/:id", projectsAPI.deleteProjects);
 // // project requests
 router.get("/requests", projectsAPI.getProjectRequestsPage);
+router.get("/requests/accept/:id", projectsAPI.acceptRequest);
 
 // investors routes
 router.get("/investors", investorsAPI.getInvestors);
