@@ -35,7 +35,7 @@ export default class StoryForm extends Component {
   };
 
   fetchStoryInfo = id => {
-    Axios.get("/api/stories/ " + id).then(result => {
+    Axios.get("/api/stories/" + id).then(result => {
       this.setState(
         {
           story: {
