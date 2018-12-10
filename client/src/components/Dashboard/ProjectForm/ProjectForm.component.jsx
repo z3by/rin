@@ -265,7 +265,7 @@ export default class ProjectForm extends Component {
             className="full-width-input"
             label="project name"
             InputLabelProps={{
-              shrink: this.state.updating
+              shrink: true
             }}
             name="name"
             required
@@ -277,7 +277,7 @@ export default class ProjectForm extends Component {
             className="full-width-input"
             value={this.state.project.organization}
             InputLabelProps={{
-              shrink: this.state.updating
+              shrink: true
             }}
             required
             error={!this.checkIfFieldIsValid("organization")}
@@ -291,7 +291,7 @@ export default class ProjectForm extends Component {
             error={!this.checkIfFieldIsValid("investmentSize")}
             label="investment size by US dollar $"
             InputLabelProps={{
-              shrink: this.state.updating
+              shrink: true
             }}
             onChange={this.onChange}
             name="investmentSize"
@@ -307,7 +307,7 @@ export default class ProjectForm extends Component {
             required
             name="year"
             InputLabelProps={{
-              shrink: this.state.updating
+              shrink: true
             }}
             onChange={this.onChange}
           />
@@ -318,7 +318,7 @@ export default class ProjectForm extends Component {
             required
             className="full-width-input"
             InputLabelProps={{
-              shrink: this.state.updating
+              shrink: true
             }}
             name="sector"
             value={this.state.project.sector}
@@ -339,7 +339,7 @@ export default class ProjectForm extends Component {
             error={!this.checkIfFieldIsValid("refugeeInvestmentType")}
             required
             InputLabelProps={{
-              shrink: this.state.updating
+              shrink: true
             }}
             className="full-width-input"
             name="refugeeInvestmentType"
@@ -362,8 +362,9 @@ export default class ProjectForm extends Component {
             error={!this.checkIfFieldIsValid("impact")}
             value={this.state.project.impact}
             multiline
+            inputProps={{ maxLength: 1000 }}
             InputLabelProps={{
-              shrink: this.state.updating
+              shrink: true
             }}
             required
             onChange={this.onChange}
@@ -377,9 +378,10 @@ export default class ProjectForm extends Component {
             name="thesis"
             error={!this.checkIfFieldIsValid("thesis")}
             value={this.state.project.thesis}
+            inputProps={{ maxLength: 1000 }}
             multiline
             InputLabelProps={{
-              shrink: this.state.updating
+              shrink: true
             }}
             onChange={this.onChange}
             required
@@ -389,11 +391,12 @@ export default class ProjectForm extends Component {
           <TextField
             className="full-width-input"
             label="structure"
+            inputProps={{ maxLength: 1000 }}
             name="structure"
             error={!this.checkIfFieldIsValid("structure")}
             multiline
             InputLabelProps={{
-              shrink: this.state.updating
+              shrink: true
             }}
             value={this.state.project.structure}
             onChange={this.onChange}
@@ -439,7 +442,7 @@ export default class ProjectForm extends Component {
               value={this.state.contact.phone1}
               type="tel"
               InputLabelProps={{
-                shrink: this.state.updating
+                shrink: true
               }}
               onChange={this.onContactChange}
             />
@@ -453,7 +456,7 @@ export default class ProjectForm extends Component {
               name="phone2"
               value={this.state.contact.phone2}
               InputLabelProps={{
-                shrink: this.state.updating
+                shrink: true
               }}
               onChange={this.onContactChange}
             />
@@ -467,7 +470,7 @@ export default class ProjectForm extends Component {
               name="email1"
               type="email"
               InputLabelProps={{
-                shrink: this.state.updating
+                shrink: true
               }}
               required
               onChange={this.onContactChange}
@@ -482,7 +485,7 @@ export default class ProjectForm extends Component {
               value={this.state.contact.email2}
               type="email"
               InputLabelProps={{
-                shrink: this.state.updating
+                shrink: true
               }}
               onChange={this.onContactChange}
             />
@@ -496,7 +499,7 @@ export default class ProjectForm extends Component {
               name="website"
               type="url"
               InputLabelProps={{
-                shrink: this.state.updating
+                shrink: true
               }}
               onChange={this.onContactChange}
             />
@@ -510,7 +513,7 @@ export default class ProjectForm extends Component {
               value={this.state.contact.facebook}
               type="url"
               InputLabelProps={{
-                shrink: this.state.updating
+                shrink: true
               }}
               onChange={this.onContactChange}
             />
@@ -524,7 +527,7 @@ export default class ProjectForm extends Component {
               name="twitter"
               type="url"
               InputLabelProps={{
-                shrink: this.state.updating
+                shrink: true
               }}
               onChange={this.onContactChange}
             />
@@ -538,7 +541,7 @@ export default class ProjectForm extends Component {
               value={this.state.contact.instagram}
               type="url"
               InputLabelProps={{
-                shrink: this.state.updating
+                shrink: true
               }}
               onChange={this.onContactChange}
             />
@@ -551,7 +554,7 @@ export default class ProjectForm extends Component {
               value={this.state.contact.fax}
               name="fax"
               InputLabelProps={{
-                shrink: this.state.updating
+                shrink: true
               }}
               onChange={this.onContactChange}
             />
@@ -564,7 +567,7 @@ export default class ProjectForm extends Component {
               value={this.state.contact.address}
               name="address"
               InputLabelProps={{
-                shrink: this.state.updating
+                shrink: true
               }}
               onChange={this.onContactChange}
             />
@@ -590,7 +593,7 @@ export default class ProjectForm extends Component {
               name="img"
               required
               InputLabelProps={{
-                shrink: this.state.updating
+                shrink: true
               }}
               type="file"
               accept="image/*"
@@ -619,7 +622,7 @@ export default class ProjectForm extends Component {
               name="logo"
               required={this.state.updating ? false : true}
               InputLabelProps={{
-                shrink: this.state.updating
+                shrink: true
               }}
               accept="image/*"
               type="file"

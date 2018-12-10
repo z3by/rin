@@ -24,13 +24,13 @@ module.exports = {
         type: Sequelize.DATE
       },
       impact: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING({ length: 1000 })
       },
       thesis: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING({ length: 1000 })
       },
       structure: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING({ length: 1000 })
       },
       refugeeInvestmentType: {
         type: Sequelize.STRING

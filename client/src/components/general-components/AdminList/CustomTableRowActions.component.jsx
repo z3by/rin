@@ -34,7 +34,7 @@ export default class CustomTableRowActions extends Component {
     let { itemID, itemName, pluralName } = this.props;
     return (
       <TableCell key="buttons" style={{ display: "flex" }}>
-        <Link to={"/dashboard/" + pluralName + "/list/" + itemID}>
+        <Link to={"/dashboard/" + pluralName + "/" + itemID}>
           <IconButton style={buttonStyle}>
             <i className="far fa-eye" style={{ fontSize: "1rem", margin: 0 }} />
           </IconButton>

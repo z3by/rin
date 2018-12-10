@@ -8,6 +8,7 @@ import Navbar from "../general-components/navbar/Navbar";
 import StoryForm from "./StoryForm/StoryForm.component";
 import ProjectForm from "./ProjectForm/ProjectForm.component";
 import ArticleForm from "./ArticleForm/ArticleForm.component";
+import ProjectInfo from "./ProjectInfo/ProjectInfo.component";
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -49,8 +50,10 @@ export default class Dashboard extends Component {
         />
         <Navbar toggleDrawer={this.toggleDrawer} />
         <main>
+          <Route path="/dashboard/projects/:id" component={ProjectInfo} />
           <Route
             path="/dashboard/projects"
+            exact
             render={() => {
               return (
                 <AdminList
