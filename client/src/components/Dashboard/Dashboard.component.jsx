@@ -9,6 +9,7 @@ import StoryForm from "./StoryForm/StoryForm.component";
 import ProjectForm from "./ProjectForm/ProjectForm.component";
 import ArticleForm from "./ArticleForm/ArticleForm.component";
 import ProjectInfo from "./ProjectInfo/ProjectInfo.component";
+import StoryInfo from "./StoryInfo/StoryInfo.component";
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -76,6 +77,7 @@ export default class Dashboard extends Component {
 
           <Route
             path="/dashboard/stories"
+            exact
             render={() => {
               return (
                 <AdminList
@@ -87,6 +89,7 @@ export default class Dashboard extends Component {
               );
             }}
           />
+          <Route path="/dashboard/stories/:id" component={StoryInfo} />
           <Route path="/dashboard/addstory" component={StoryForm} />
           <Route path="/dashboard/updatestory/:id" component={StoryForm} />
 
