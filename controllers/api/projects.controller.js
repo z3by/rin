@@ -21,6 +21,17 @@ module.exports.getProjects = (req, res) => {
   });
 };
 
+module.exports.getProjectsNames = (req, res) => {
+  db.Project.findAll({
+    where: {
+      pending: false
+    },
+    attributes: ["id", "name"]
+  }).then(result => {
+    res.json(result);
+  });
+};
+
 module.exports.getProjectsPage = (req, res) => {
   const firstProjectIndex = Number(req.query.first);
   const lastProjectIndex = Number(req.query.last);

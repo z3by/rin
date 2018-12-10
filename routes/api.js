@@ -56,6 +56,7 @@ router.get("/members/:id", adminAPI.getMember);
 
 //projects routes
 router.get("/projects", projectsAPI.getProjects);
+router.get("/projects/names", projectsAPI.getProjectsNames);
 router.get("/projectslocations", projectsAPI.getProjectsLocations);
 router.get("/projects/page", projectsAPI.getProjectsPage);
 router.get("/projects/:id", projectsAPI.getProject);
