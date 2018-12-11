@@ -9,9 +9,7 @@ export default class Story extends Component {
     this.state = {};
   }
 
-  componentDidMount() {
-    document.body.style.overflowY = "auto";
-  }
+  componentDidMount() {}
 
   render() {
     return (

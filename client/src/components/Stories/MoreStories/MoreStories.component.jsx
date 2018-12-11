@@ -3,119 +3,68 @@ import { Link } from "react-router-dom";
 import "./MoreStories.css";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Axios from "axios";
-import StoriesFilter from "./StoriesFilter/StoriesFilter.component";
-
-const SDGs = [
-  "Climate-Action",
-  "Decent-Work-and-Economic-Growth",
-  "Gender-Equality",
-  "Good-Health-and-Well-Being",
-  "Industry-Innovation-and-Infrastructure",
-  "Life-on-Land",
-  "No-Poverty",
-  "Partnerships-for-the-Goals",
-  "Peace-Justice-and-Strong-Institutions",
-  "Quality-Education",
-  "Reduced-Inqualities",
-  "Sustainable-Cities-and-Communities",
-  "Zero-Hunger"
-];
 
 export default class MoreStories extends Component {
   constructor(props) {
     super(props);
     this.state = {
       stories: [],
-      filterOptions: {
-        SDGs: []
-      }
+      loading: false,
+      nomore: false
     };
   }
 
   componentDidMount() {
-    document.body.style.overflowY = "auto";
     this.fetchStories();
   }
 
-  //Get stories depending on entered filtering options by a user if there is any
   fetchStories = () => {
-    const options = this.state.filterOptions;
-
-    for (const key in options) {
-      if (!options[key]) {
-        delete options[key];
+    this.setState({ loading: true });
+    Axios.get("/api/stories/page", {
+      params: {
+        first: this.state.stories.length,
+        last: this.state.stories.length + 3
       }
-    }
-
-    Axios.get("/api/stories", {
-      params: options
-    }).then(res => {
-      this.setState({
-        stories: res.data
-      });
     })
+      .then(res => {
+        if (res.data.rows.length === 0) {
+          this.setState({ nomore: true });
+        }
+        this.setState({
+          stories: [...this.state.stories, ...res.data.rows],
+          loading: false
+        });
+      })
       .catch(err => {
         console.log(err);
       });
   };
 
-  // get the user filter input and call the filter by the options func
-  setFilterOptions = e => {
-    this.setState({
-      filterOptions: {
-        ...this.state.filterOptions,
-        [e.target.name]: e.target.value
-      }
-    });
-  };
-
-  //get the selected SDGs by the user
-  filterSDGs = e => {
-    const index = e.target.value;
-    const sdgVal = SDGs[index];
-    const checked = this.state.filterOptions.SDGs.includes(sdgVal);
-    let selectedSDGs;
-
-    if (!checked) {
-      selectedSDGs = [...this.state.filterOptions.SDGs, sdgVal];
-    } else {
-      selectedSDGs = this.state.filterOptions.SDGs.filter(sdg => {
-        return sdg !== sdgVal;
-      });
-    }
-
-    this.setState({
-      filterOptions: {
-        ...this.state.filterOptions,
-        SDGs: selectedSDGs
-      }
-    });
-  }
-
   render() {
     return (
       <div className="more-stories">
         <div className="container">
-          <StoriesFilter
-            filter={this.setFilterOptions}
-            filterSDGs={this.filterSDGs}
-            fetchStories={this.fetchStories}
-            options={this.state.filterOptions} />
-
-          {this.state.stories.map(story => {
+          {this.state.stories.map((story, i) => {
             return (
-              <Card className="story-card">
+              <Card key={i} style={{ marginBottom: 10 }} className="story-card">
                 <CardContent>
-                  <h4>{story.title}</h4>
-                  <h5>{story.pre_description}</h5>
-                  <div
-                    className="story-card-img"
-                    style={{ backgroundImage: "url(" + story.imgs[0] + ")" }}
-                  />
+                  <Typography variant="h6" className="capitalize">
+                    {story.buisness}
+                  </Typography>
+                  <Typography variant="subtitle1" className="color-3">
+                    {story.buisnessDescription}
+                  </Typography>
                 </CardContent>
+                <CardMedia
+                  image={story.img}
+                  style={{ height: 150, width: "100%" }}
+                />
                 <CardActions>
                   <Link to={`/stories/${story.id}`}>
                     <Button className="color-5">read this story</Button>
@@ -124,6 +73,33 @@ export default class MoreStories extends Component {
               </Card>
             );
           })}
+
+          <Typography
+            variant="h6"
+            style={{
+              display: this.state.nomore ? "block" : "none",
+              textAlign: "center"
+            }}
+          >
+            No more stories!
+          </Typography>
+          <Button
+            style={{
+              background: "var(--color-2)",
+              color: "white",
+              display: "block",
+              margin: "20px auto"
+            }}
+            onClick={this.fetchStories}
+          >
+            Show more stories...
+          </Button>
+          <CircularProgress
+            style={{
+              display: this.state.loading ? "block" : "none",
+              margin: "0 auto"
+            }}
+          />
         </div>
       </div>
     );
