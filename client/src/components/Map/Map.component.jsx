@@ -11,139 +11,64 @@ import Axios from "axios";
 
 export default class Map extends Component {
   state = {
-    position: {
-      lat: 31.95,
-      lng: 35.99
-    },
-    zoom: 0,
+    center: [0, 0],
+    zoom: 1,
     filterOptions: {},
-    projects: [],
+    locations: [],
     projectsInfo: [],
     currentProject: {}
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this.fetchProjects();
   }
 
   // get all the projects and map it to the state;
   fetchProjects = () => {
-    const options = this.state.filterOptions;
-    for (const key in options) {
-      if (!options[key]) {
-        delete options[key];
-      }
-    }
-    Axios.get("/api/projects/locations", {
-      params: options
-    }).then(res => {
-      this.setState({
-        projects: res.data
-      });
-    });
-  };
-
-  // get the user filter input and call the filter by the options func
-  setFilterOptions = e => {
-    this.setState({
-      filterOptions: {
-        ...this.state.filterOptions,
-        [e.target.name]: e.target.value
-      }
-    });
-  };
-
-  // filter projects by it own type
-  filterByType = type => {
-    this.setState(
-      {
-        filterOptions: {
-          ...this.state.filterOptions,
-          type: type
-        }
-      },
-      () => {
-        this.fetchProjects();
-      }
-    );
-  };
-
-  // get one project info
-  getProject = id => {
-    let projectLoaded = false;
-    this.state.projectsInfo.forEach(one => {
-      if (one.id === id) {
-        projectLoaded = true;
-      }
-    });
-    if (projectLoaded) {
-      return this.setCurrentProject(id);
-    }
-    Axios.get(`/api/projects/${id}`).then(res => {
-      this.setState(
-        {
-          projectsInfo: [...this.state.projectsInfo, res.data[0]]
-        },
-        () => {
-          this.setCurrentProject(id);
-        }
-      );
-    });
-  };
-
-  // set the current hovered project in the state
-  setCurrentProject = id => {
-    this.state.projectsInfo.forEach(one => {
-      if (one.id === id) {
-        this.setState({
-          currentProject: one
+    const locations = [];
+    Axios.get("/api/projectslocations").then(res => {
+      res.data.forEach(project => {
+        project.locations.forEach(location => {
+          location.sector = project.sector;
+          locations.push(location);
         });
-      }
+      });
+      this.setState({ locations: locations });
     });
+  };
+
+  _onChange = data => {
+    if (data.marginBounds.nw.lat >= 85 || data.marginBounds.se.lat <= -85) {
+      this.setState({
+        center: [this.state.center[0] + 0.001, this.state.center[1]]
+      });
+    }
   };
 
   render() {
-    const dots = this.state.projects.map((project, key) => {
-      return (
-        <Dot
-          hover={this.getProject}
-          lng={project.lng}
-          lat={project.lat}
-          key={key}
-          project={project}
-          info={this.state.currentProject}
-        />
-      );
-    });
-
     return (
       <div
         style={{ height: "100vh", width: "100%" }}
         className="map fadeInSlow"
       >
-        <Filter
-          filter={this.setFilterOptions}
-          fetchProjects={this.fetchProjects}
-          options={this.state.filterOptions}
-        />
-        <Link to="/add-project" className="map-add-project-btn">
-          <i className="fas fa-plus" />
-          Add Your Project
-        </Link>
-        <div className="spectrum-container">
-          <div className="spectrum-popup">
-            hover over different colors to filter by project type
-          </div>
-          <Spectrum className="" filterByType={this.filterByType} />
-        </div>
         <GoogleMapReact
           className="land-map"
           options={options}
           bootstrapURLKeys={{ key: mapApi }}
-          defaultCenter={this.state.position}
-          defaultZoom={this.state.zoom}
+          center={this.state.center}
+          zoom={this.state.zoom}
+          onChange={this._onChange}
         >
-          {[dots]}
+          {this.state.locations.map(location => {
+            return (
+              <Dot
+                lng={location.lng}
+                lat={location.lat}
+                key={location.id}
+                location={location}
+              />
+            );
+          })}
         </GoogleMapReact>
       </div>
     );

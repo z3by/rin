@@ -4,7 +4,6 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
-import Axios from "axios";
 import Button from "@material-ui/core/Button";
 
 export default class StoriesFilter extends Component {

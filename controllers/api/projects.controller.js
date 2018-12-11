@@ -262,44 +262,15 @@ module.exports.getProjectRequestsPage = (req, res) => {
     });
 };
 
-const checkProjectsFilterOptions = (clause, query) => {
-  if (query.sector) {
-    clause["sector"] = query.sector;
-  }
-  if (query.name) {
-    clause["name"] = {
-      [Op.like]: `%${query.name}%`
-    };
-  }
-  if (query.organization) {
-    clause["organization"] = {
-      [Op.like]: `%${query.organization}%`
-    };
-  }
-  if (query.refugeeInvestmenType) {
-    clause["refugeeInvestmentType"] = query.refugeeInvestmentType;
-  }
-
-  if (query.investmentSize) {
-    clause["investmentSize"] = {
-      [Op.gt]: query.investmentSize
-    };
-  }
-
-  return clause;
-};
-
 module.exports.getProjectsLocations = (req, res) => {
   let whereClause = {
     pending: false
   };
 
-  whereClause = checkProjectsFilterOptions(whereClause, req.query);
-
   db.Project.findAll({
     where: whereClause,
     attributes: ["id", "sector"],
-    include: [{ model: db.Location, as: "Location" }]
+    include: [{ model: db.Location, as: "locations" }]
   }).then(result => {
     res.json(result);
   });
