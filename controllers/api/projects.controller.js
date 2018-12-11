@@ -267,6 +267,10 @@ module.exports.getProjectsLocations = (req, res) => {
     pending: false
   };
 
+  if (!!req.query.sector) {
+    whereClause.sector = req.query.sector;
+  }
+
   db.Project.findAll({
     where: whereClause,
     attributes: ["id", "sector"],

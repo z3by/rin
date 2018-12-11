@@ -16,7 +16,10 @@ export default class Map extends Component {
     filterOptions: {},
     locations: [],
     projectsInfo: [],
-    currentProject: {}
+    currentProject: {},
+    filterOptions: {
+      sector: ""
+    }
   };
 
   componentDidMount() {
@@ -26,7 +29,9 @@ export default class Map extends Component {
   // get all the projects and map it to the state;
   fetchProjects = () => {
     const locations = [];
-    Axios.get("/api/projectslocations").then(res => {
+    Axios.get("/api/projectslocations", {
+      params: { ...this.state.filterOptions }
+    }).then(res => {
       res.data.forEach(project => {
         project.locations.forEach(location => {
           location.sector = project.sector;
@@ -45,13 +50,24 @@ export default class Map extends Component {
     }
   };
 
+  handleSpectrumHover = sector => {
+    this.setState(
+      {
+        filterOptions: { ...this.state.filterOptions, sector: sector }
+      },
+      () => {
+        this.fetchProjects();
+      }
+    );
+  };
+
   render() {
     return (
       <div
         style={{ height: "100vh", width: "100%" }}
         className="map fadeInSlow"
       >
-        <Spectrum />
+        <Spectrum handleMouseHover={this.handleSpectrumHover} />
         <GoogleMapReact
           className="land-map"
           options={options}
@@ -59,6 +75,7 @@ export default class Map extends Component {
           center={this.state.center}
           zoom={this.state.zoom}
           onChange={this._onChange}
+          handleMouseHover={this.handleSpectrumHover}
         >
           {this.state.locations.map(location => {
             return (

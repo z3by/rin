@@ -6,8 +6,7 @@ export default props => {
     <ul className="spectrum">
       <li
         className="spectrum-item"
-        data-index={0}
-        onMouseEnter={props.handleMouseHover}
+        onMouseEnter={() => props.handleMouseHover("housing")}
       >
         <div className="tooltip">
           <div className="tooltiptext spec">housing</div>
@@ -15,8 +14,7 @@ export default props => {
       </li>
       <li
         className="spectrum-item"
-        data-index={1}
-        onMouseEnter={props.handleMouseHover}
+        onMouseEnter={() => props.handleMouseHover("education")}
       >
         <div className="tooltip">
           <div className="tooltiptext spec">education</div>
@@ -24,8 +22,7 @@ export default props => {
       </li>
       <li
         className="spectrum-item"
-        data-index={2}
-        onMouseEnter={props.handleMouseHover}
+        onMouseEnter={() => props.handleMouseHover("agriculture")}
       >
         <div className="tooltip">
           <div className="tooltiptext spec">agriculture</div>
@@ -33,8 +30,7 @@ export default props => {
       </li>
       <li
         className="spectrum-item"
-        data-index={3}
-        onMouseEnter={props.handleMouseHover}
+        onMouseEnter={() => props.handleMouseHover("health")}
       >
         <div className="tooltip">
           <div className="tooltiptext spec">health</div>
@@ -42,8 +38,7 @@ export default props => {
       </li>
       <li
         className="spectrum-item"
-        data-index={4}
-        onMouseEnter={props.handleMouseHover}
+        onMouseEnter={() => props.handleMouseHover("water")}
       >
         <div className="tooltip">
           <div className="tooltiptext spec">water</div>
@@ -51,8 +46,7 @@ export default props => {
       </li>
       <li
         className="spectrum-item"
-        data-index={5}
-        onMouseEnter={props.handleMouseHover}
+        onMouseEnter={() => props.handleMouseHover("nutrition")}
       >
         <div className="tooltip">
           <div className="tooltiptext spec">nutrition </div>
@@ -60,8 +54,7 @@ export default props => {
       </li>
       <li
         className="spectrum-item"
-        data-index={6}
-        onMouseEnter={props.handleMouseHover}
+        onMouseEnter={() => props.handleMouseHover("infancy")}
       >
         <div className="tooltip">
           <div className="tooltiptext spec">infancy </div>

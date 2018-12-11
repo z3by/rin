@@ -1,8 +1,8 @@
 .spectrum {
   position: absolute;
   z-index: 1000;
-  left: 15%;
-  top: 30px;
+  left: 15vw;
+  top: 60px;
   width: 70vw;
 }
 
