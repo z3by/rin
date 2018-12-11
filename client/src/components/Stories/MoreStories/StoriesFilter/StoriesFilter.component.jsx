@@ -13,22 +13,13 @@ export default class StoriesFilter extends Component {
     this.state = {
       sector: "",
       year: "",
-      country: "",
       refugeeInvestmentType: "",
       countries: [],
       labelWidth: 0
     };
   }
 
-  componentWillMount() {
-    this.fetchCountries();
-  }
-
-  fetchCountries = () => {
-    Axios.get("/api/countries/names").then(result => {
-      this.setState({ countries: result.data });
-    });
-  };
+  componentWillMount() {}
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -46,23 +37,15 @@ export default class StoriesFilter extends Component {
       );
     }
 
-    const countries = this.state.countries.map((country, i) => {
-      return (
-        <MenuItem value={country.name} key={i}>
-          {country.name}
-        </MenuItem>
-      );
-    });
-
     const refugeeInvestmentTypes = [
-      <MenuItem value={"refugee owend"} key={1}>
-        refugee owened
+      <MenuItem value={"refugee owned"} key={1}>
+        refugee owned
       </MenuItem>
     ];
 
     const { sector, year, country, refugeeInvestmentType } = this.state;
 
-    const options = { sector, year, country, refugeeInvestmentType };
+    const options = { sector, year, refugeeInvestmentType };
 
     return (
       <Paper style={{ padding: 20 }}>
@@ -94,19 +77,7 @@ export default class StoriesFilter extends Component {
             {yearsItems}
           </Select>
         </FormControl>
-        <FormControl style={{ width: 150, marginLeft: 10 }}>
-          <InputLabel htmlFor="country-select">select country</InputLabel>
-          <Select
-            value={this.state.country}
-            onChange={this.handleChange}
-            inputProps={{
-              name: "country",
-              id: "country-select"
-            }}
-          >
-            {countries}
-          </Select>
-        </FormControl>
+
         <FormControl style={{ width: 150, marginLeft: 10 }}>
           <InputLabel htmlFor="refugee-investment-type-select">
             investment type
