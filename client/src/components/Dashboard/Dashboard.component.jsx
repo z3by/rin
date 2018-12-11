@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Dashboard.css";
-import { Route, Link } from "react-router-dom";
+import { Route } from "react-router-dom";
 import Axios from "axios";
 import AdminList from "../general-components/AdminList/AdminList.component";
 import Sidebar from "../general-components/sidebar/sidebar";
@@ -26,7 +26,6 @@ export default class Dashboard extends Component {
   componentDidMount() {
     document.querySelector(".navbar").style.display = "none";
     document.querySelector(".logo").style.display = "none";
-    document.body.style.overflowY = "scroll";
     this.fetchRequests();
   }
   componentWillUnmount() {
@@ -143,6 +142,7 @@ export default class Dashboard extends Component {
           />
           <Route
             path="/dashboard/articles"
+            exact
             render={() => {
               return (
                 <AdminList

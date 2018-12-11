@@ -13,13 +13,21 @@ export default class Landing extends Component {
       clientX: 0,
       clientY: 0,
       navigating: false,
-      wheelEventTime: 0
+      wheelEventTime: 0,
+      loading: false
     };
+  }
+
+  componentWillMount() {
+    this.setState({ loading: true });
   }
 
   componentDidMount() {
     this.bindEvents();
     this.startCounter();
+    setTimeout(() => {
+      this.setState({ loading: false });
+    }, 2000);
   }
 
   // bind the events to the local functions.
@@ -50,9 +58,9 @@ export default class Landing extends Component {
           wheelEventTime: fireDate
         },
         () => {
-          if (e.deltaY > 0 || e.deltaX < 0) {
+          if (e.deltaX < 0) {
             this.animatePrev();
-          } else if (e.deltaY < 0 || e.deltaX > 0) {
+          } else if (e.deltaX > 0) {
             this.animateNext();
           }
         }
@@ -185,7 +193,28 @@ export default class Landing extends Component {
   render() {
     return (
       <div className="landing-main">
-        <div className="landing fadeInSlow">
+        <div
+          className="wait-screen"
+          style={{
+            height: this.state.loading ? "100vh" : 0,
+            top: this.state.loading ? "0" : "50vh",
+            width: "100vw",
+            position: "absolute",
+            background: "var(--color-1)",
+            zIndex: 100000,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            opacity: this.state.loading ? "1" : "0"
+          }}
+        >
+          <img
+            src="/imgs/logo.png"
+            alt=""
+            style={{ display: this.state.loading ? "block" : "none" }}
+          />
+        </div>
+        <div className="landing">
           <div className="nav">
             <ul className="nav-group">
               <li className="nav-item">
@@ -226,6 +255,7 @@ export default class Landing extends Component {
             className={`circle fadeIn ${this.state.navigating ? "grow" : ""}`}
             style={{
               backgroundImage: `url(imgs/backs${this.state.index + 1}.jpg)`,
+              backgroundAttachment: "fixed",
               top: this.state.clientY / 12,
               left: this.state.clientX / 12 + window.innerWidth / 3
             }}

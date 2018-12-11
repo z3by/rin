@@ -35,6 +35,7 @@ router.get("/locations", loactionAPI.getLocations);
 router.post("/locations", loactionAPI.addLocation);
 
 //stories routes
+router.get("/stories/filter", storiesAPI.filterStories);
 router.get("/stories", storiesAPI.getStories);
 router.get("/stories/page", storiesAPI.getStoriesPage);
 router.get("/stories/search", storiesAPI.searchStories);

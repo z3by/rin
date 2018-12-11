@@ -14,7 +14,7 @@ import Login from "../Login/Login.component";
 import Navbar from "../Navbar/Navbar.component";
 import Dashboard from "../Dashboard/Dashboard.component";
 import SignUpLogIn from "../SignUpLogIn/SignUpLogIn.component";
-import StoryDetails from "../Stories/StoryDetails/StoryDetails.component";
+import StoryInfo from "../Dashboard/StoryInfo/StoryInfo.component";
 import MoreStories from "../Stories/MoreStories/MoreStories.component";
 import AddProject from "../AddProject/AddProject.component";
 import AdminList from "../general-components/AdminList/AdminList.component";
@@ -26,7 +26,7 @@ export default class MyRouter extends Component {
         <div className="App">
           <Navbar />
           <Switch>
-            <Route path="/stories/:id" component={StoryDetails} />
+            <Route path="/stories/:id" component={StoryInfo} />
             <Route path="/list" component={AdminList} />
             <Route path="/stories" component={Stories} />
             <Route path="/all-stories" component={MoreStories} />

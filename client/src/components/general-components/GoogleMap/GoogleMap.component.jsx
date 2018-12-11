@@ -17,7 +17,7 @@ export default class Map extends Component {
 
   static defaultProps = {
     center: [59.938043, 30.337157],
-    zoom: 9,
+    zoom: 1,
     greatPlaceCoords: { lat: 59.724465, lng: 30.080121 }
   };
 
@@ -34,12 +34,9 @@ export default class Map extends Component {
   onMapClicked = props => {
     const { lng, lat } = props;
 
-    this.setState(
-      { dots: [...this.props.dots, { lng: lng, lat, lat }] },
-      () => {
-        this.props.setLocations(this.state.dots);
-      }
-    );
+    this.setState({ dots: [...this.props.dots, { lng, lat }] }, () => {
+      this.props.setLocations(this.state.dots);
+    });
   };
 
   onMarkerClicked = index => {
@@ -62,8 +59,6 @@ export default class Map extends Component {
         zoom={this.props.zoom}
         options={options}
         bootstrapURLKeys={{ key: mapApi }}
-        center={this.state.center}
-        zoom={1}
         onClick={this.onMapClicked}
         onChildClick={this.onMarkerClicked}
       >

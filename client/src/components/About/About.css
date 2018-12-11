@@ -1,6 +1,7 @@
 .container {
   padding: 20px;
   width: 60%;
+  display: block;
   margin: 0 auto;
   -webkit-transition: all 1s ease;
   transition: all 1s ease;
