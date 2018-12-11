@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
 import "./Map.css";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import * as options from "./map-options";
 import Dot from "./Dot/Dot.component";
-import Filter from "./Filter/Filter.component";
+// import Filter from "./Filter/Filter.component";
 import Spectrum from "./Spectrum/Spectrum.component";
 import { mapApi } from "../../config/map.config";
 import Axios from "axios";
 
 export default class Map extends Component {
   state = {
-    center: [0, 0],
-    zoom: 1,
+    center: [40, 0],
+    zoom: 3,
     filterOptions: {},
     locations: [],
     projectsInfo: [],
@@ -51,6 +51,7 @@ export default class Map extends Component {
         style={{ height: "100vh", width: "100%" }}
         className="map fadeInSlow"
       >
+        <Spectrum />
         <GoogleMapReact
           className="land-map"
           options={options}

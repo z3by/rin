@@ -42,7 +42,7 @@ export default class StoriesFilter extends Component {
       </MenuItem>
     ];
 
-    const { sector, year, country, refugeeInvestmentType } = this.state;
+    const { sector, year, refugeeInvestmentType } = this.state;
 
     const options = { sector, year, refugeeInvestmentType };
 

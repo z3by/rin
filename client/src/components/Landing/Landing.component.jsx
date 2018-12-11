@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./Landing.css";
 import CountUp from "react-countup";
 import IconButton from "@material-ui/core/IconButton";
-import zIndex from "@material-ui/core/styles/zIndex";
 
 export default class Landing extends Component {
   constructor(props) {
