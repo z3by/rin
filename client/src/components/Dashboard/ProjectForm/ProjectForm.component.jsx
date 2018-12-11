@@ -591,7 +591,6 @@ export default class ProjectForm extends Component {
               style={{ marginTop: 0 }}
               className=""
               name="img"
-              required
               InputLabelProps={{
                 shrink: true
               }}

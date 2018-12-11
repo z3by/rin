@@ -6,7 +6,6 @@ import { TablePagination } from "@material-ui/core";
 import CustomTableHead from "./CustomTableHead.component";
 import CustomTableRow from "./CustomTableRow.component";
 import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
 import Axios from "axios";
 import Divider from "@material-ui/core/Divider";
 import { Link } from "react-router-dom";
@@ -59,7 +58,7 @@ export default class AdminList extends Component {
   };
 
   render() {
-    const { itemsCount, rowsPerPage, page, data } = this.state;
+    const { itemsCount, rowsPerPage, page } = this.state;
     const rows = this.state.data.map((item, index) => {
       return (
         <CustomTableRow

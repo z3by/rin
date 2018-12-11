@@ -29,7 +29,7 @@ export default class ArticleInfo extends Component {
   render() {
     const article = this.state.articleData;
     return (
-      <Paper style={{ padding: 20 }} style={{ position: "relative" }}>
+      <Paper style={{ padding: 20, position: "relative" }}>
         <img
           src={article.img}
           onLoad={this.handleImageLoading}

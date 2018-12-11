@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Dashboard.css";
-import { Route, Link } from "react-router-dom";
+import { Route } from "react-router-dom";
 import Axios from "axios";
 import AdminList from "../general-components/AdminList/AdminList.component";
 import Sidebar from "../general-components/sidebar/sidebar";
