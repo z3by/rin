@@ -9,6 +9,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Axios from "axios";
+import StoriesFilter from "./StoriesFilter/StoriesFilter.component";
 
 export default class MoreStories extends Component {
   constructor(props) {
@@ -16,7 +17,8 @@ export default class MoreStories extends Component {
     this.state = {
       stories: [],
       loading: false,
-      nomore: false
+      nomore: false,
+      nostories: false
     };
   }
 
@@ -46,10 +48,38 @@ export default class MoreStories extends Component {
       });
   };
 
+  filterStories = options => {
+    let valid = true;
+    for (const option in options) {
+      if (options.hasOwnProperty(option)) {
+        if (!!element) {
+          break;
+        }
+        const element = options[option];
+        valid = !!element && valid;
+      }
+      if (!valid) {
+        return;
+      }
+    }
+    Axios.get("/api/stories/filter", { params: options })
+      .then(result => {
+        this.setState({ stories: result.data }, () => {
+          if (!this.state.stories.length) {
+            this.setState({ nostories: true });
+          }
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
   render() {
     return (
       <div className="more-stories">
         <div className="container">
+          <StoriesFilter filterStories={this.filterStories} />
           {this.state.stories.map((story, i) => {
             return (
               <Card key={i} style={{ marginBottom: 10 }} className="story-card">
@@ -83,11 +113,22 @@ export default class MoreStories extends Component {
           >
             No more stories!
           </Typography>
+          <Typography
+            variant="h6"
+            style={{
+              display: this.state.nostories ? "block" : "none",
+              textAlign: "center",
+              margin: 100
+            }}
+          >
+            No stories for selected categories, please try to filter by
+            different categories!
+          </Typography>
           <Button
             style={{
               background: "var(--color-2)",
               color: "white",
-              display: "block",
+              display: this.state.nostories ? "none" : "block",
               margin: "20px auto"
             }}
             onClick={this.fetchStories}
