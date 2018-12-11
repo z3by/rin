@@ -26,7 +26,7 @@ export default class StoryInfo extends Component {
   render() {
     const story = this.state.storyData;
     return (
-      <Paper style={{ padding: 20, position: "relative" }}>
+      <Paper style={{ position: "relative" }}>
         <img src={story.img} className="w-100" alt="" />
         <div className="story-header">
           <Typography

@@ -73,7 +73,7 @@ export default class AdminList extends Component {
       );
     });
     return (
-      <Paper className="fadeInFast" style={{ overflowX: "scroll" }}>
+      <Paper className="fadeInFast" style={{ overflowX: "scroll", margin: 40 }}>
         <Link
           to={"/dashboard/add" + this.props.itemName}
           style={{ display: this.props.controls ? "block" : "none" }}

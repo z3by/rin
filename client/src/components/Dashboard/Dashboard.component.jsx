@@ -143,6 +143,7 @@ export default class Dashboard extends Component {
           />
           <Route
             path="/dashboard/articles"
+            exact
             render={() => {
               return (
                 <AdminList

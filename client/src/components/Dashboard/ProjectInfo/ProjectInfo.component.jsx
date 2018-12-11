@@ -28,7 +28,7 @@ export default class ProjectInfo extends Component {
   render() {
     const project = this.state.projectData;
     return (
-      <Paper style={{ padding: 20 }}>
+      <Paper style={{ padding: 20, margin: 40 }}>
         <div className="flex-centerd">
           <Avatar src={project.logo} style={{ marginRight: 10 }} />
           <Typography variant="title" className="color-3 text-center">

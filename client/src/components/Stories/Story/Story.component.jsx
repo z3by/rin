@@ -18,7 +18,7 @@ export default class Story extends Component {
       <div className="story bub">
         <div
           className="story-item"
-          style={{ backgroundImage: `url(${this.props.story.imgs[0]})` }}
+          style={{ backgroundImage: `url(${this.props.story.img})` }}
         >
           <Link
             className="link-read-more"
