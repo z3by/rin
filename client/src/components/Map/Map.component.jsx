@@ -3,14 +3,15 @@ import GoogleMapReact from "google-map-react";
 import "./Map.css";
 import * as options from "./map-options";
 import Dot from "./Dot/Dot.component";
-// import Filter from "./Filter/Filter.component";
+import Filter from "./Filter/Filter.component";
 import Spectrum from "./Spectrum/Spectrum.component";
 import { mapApi } from "../../config/map.config";
 import Axios from "axios";
+import Button from "@material-ui/core/Button";
 
 export default class Map extends Component {
   state = {
-    center: [40, 0],
+    center: [50, 0],
     zoom: 3,
     locadedProjects: [],
     locations: [],
@@ -24,7 +25,8 @@ export default class Map extends Component {
     projectsInfo: [],
     filterOptions: {
       sector: ""
-    }
+    },
+    filterOn: false
   };
 
   componentDidMount() {
@@ -88,9 +90,13 @@ export default class Map extends Component {
 
   onOutHover = () => {
     this.setState({
-      center: [0, 0],
+      center: [50, 0],
       zoom: 3
     });
+  };
+
+  handleFilterToggle = () => {
+    this.setState({ filterOn: !this.state.filterOn });
   };
 
   render() {
@@ -100,6 +106,18 @@ export default class Map extends Component {
         className="map fadeInSlow"
       >
         <Spectrum handleMouseHover={this.handleSpectrumHover} />
+        <Filter
+          handleFilterToggle={this.handleFilterToggle}
+          shown={this.state.filterOn}
+        />
+        <button
+          button
+          className="filter-btn"
+          onClick={this.handleFilterToggle}
+          style={{ display: this.state.filterOn ? "none" : "block" }}
+        >
+          filter
+        </button>
         <GoogleMapReact
           className="land-map"
           options={options}
