@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
 import "./Map.css";
-// import { Link } from "react-router-dom";
 import * as options from "./map-options";
 import Dot from "./Dot/Dot.component";
 // import Filter from "./Filter/Filter.component";
@@ -13,10 +12,10 @@ export default class Map extends Component {
   state = {
     center: [40, 0],
     zoom: 3,
-    filterOptions: {},
+    locadedProjects: [],
     locations: [],
+    hoveredProject: { Countries: [], Sdgs: [], Founders: [], Investors: [] },
     projectsInfo: [],
-    currentProject: {},
     filterOptions: {
       sector: ""
     }
@@ -61,6 +60,22 @@ export default class Map extends Component {
     );
   };
 
+  getProject = id => {
+    this.state.locadedProjects.forEach(project => {
+      if (project.id === id) {
+        this.setState({ hoveredProject: project });
+        return;
+      }
+    });
+
+    Axios.get("/api/projects/" + id).then(result => {
+      this.setState({
+        locadedProjects: [...this.state.locadedProjects, result.data[0]],
+        hoveredProject: result.data[0]
+      });
+    });
+  };
+
   render() {
     return (
       <div
@@ -84,6 +99,8 @@ export default class Map extends Component {
                 lat={location.lat}
                 key={location.id}
                 location={location}
+                project={this.state.hoveredProject}
+                onHover={this.getProject}
               />
             );
           })}
