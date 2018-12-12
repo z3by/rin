@@ -14,7 +14,13 @@ export default class Map extends Component {
     zoom: 3,
     locadedProjects: [],
     locations: [],
-    hoveredProject: { Countries: [], Sdgs: [], Founders: [], Investors: [] },
+    hoveredProject: {
+      Countries: [],
+      Sdgs: [],
+      Founders: [],
+      Investors: [],
+      contact: {}
+    },
     projectsInfo: [],
     filterOptions: {
       sector: ""

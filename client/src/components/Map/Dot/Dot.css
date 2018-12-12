@@ -155,3 +155,19 @@
     transform: scale3d(1, 1, 1);
   }
 }
+
+.contact-field {
+  display: block;
+  color: var(--color-3);
+  font-size: 1rem;
+  margin: 20px 0;
+}
+.contact-field:hover {
+  color: var(--color-2);
+}
+
+.contact-field i {
+  font-size: 1.3rem;
+  color: var(--color-2);
+  margin-right: 20px;
+}

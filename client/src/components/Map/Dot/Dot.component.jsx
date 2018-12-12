@@ -17,7 +17,9 @@ const Dot = props => {
 
   let sector = props.location.sector;
   let color = colors[sector];
+
   let refugeeInvestmentType = {};
+
   refugeeInvestmentTypes.forEach(rft => {
     if (rft.name === props.project.refugeeInvestmentType) {
       refugeeInvestmentType = rft;
@@ -146,13 +148,80 @@ const Dot = props => {
 
         {/* contact info */}
         <div className="project-info-popup">
-          <Typography
-            variant="h6"
-            style={{ marginTop: 20 }}
-            className="color-1 capitalize"
+          <a
+            href={"tel:" + props.project.contact.phone1}
+            className="contact-field"
           >
-            {/* {props.project.contact.webiste} */}
-          </Typography>
+            <i className="fas fa-phone" />
+            {props.project.contact.phone1}
+          </a>
+          <a
+            href={"tel:" + props.project.contact.phone2}
+            className="contact-field"
+          >
+            <i className="fas fa-mobile" />
+            {props.project.contact.phone2}
+          </a>
+          <a
+            href={"mailto:" + props.project.contact.email1}
+            className="contact-field"
+          >
+            <i
+              style={{ fontSize: "1.5rem" }}
+              className="color-2 fas fa-envelope"
+            />
+            {props.project.contact.email1}
+          </a>
+          <a
+            href={"mailto:" + props.project.contact.email2}
+            className="contact-field"
+          >
+            <i
+              style={{ fontSize: "1.5rem" }}
+              className="color-2 far fa-envelope"
+            />
+            {props.project.contact.email2}
+          </a>
+          <a href={props.project.contact.website} className="contact-field">
+            <i
+              style={{ fontSize: "1.5rem" }}
+              className="color-2 fas fa-globe"
+            />
+            visit the project website
+          </a>
+
+          <a href={props.project.contact.facebook} className="contact-field">
+            <i
+              style={{ fontSize: "1.5rem" }}
+              className="color-2 fab fa-facebook"
+            />
+            facebook contact
+          </a>
+          <a href={props.project.contact.twitter} className="contact-field">
+            <i
+              style={{ fontSize: "1.5rem" }}
+              className="color-2 fab fa-twitter"
+            />
+            twitter contact
+          </a>
+          <a href={props.project.contact.instagram} className="contact-field">
+            <i
+              style={{ fontSize: "1.5rem" }}
+              className="color-2 fab fa-instagram"
+            />
+            instagram contact
+          </a>
+          <a href={props.project.contact.fax} className="contact-field">
+            <i style={{ fontSize: "1.5rem" }} className="color-2 fas fa-fax" />
+            Fax: {props.project.contact.fax}
+          </a>
+          <address className="contact-field">
+            <i
+              style={{ fontSize: "1.5rem" }}
+              className="color-2 fas fa-address-card"
+            />
+            Address: {props.project.contact.address}
+          </address>
         </div>
         {/* full info */}
         <div className="project-info-popup">
