@@ -15,7 +15,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       storyText: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING({ length: 10000 })
       },
       img: {
         type: Sequelize.STRING
