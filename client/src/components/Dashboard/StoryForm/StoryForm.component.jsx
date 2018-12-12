@@ -4,6 +4,7 @@ import AutoComplete from "../../general-components/AutoComplete/SingleAutoComple
 import TextField from "@material-ui/core/TextField";
 import Axios from "axios";
 import Typography from "@material-ui/core/Typography";
+import MyEditor from "../../general-components/MyEditor/MyEditor.component";
 
 export default class StoryForm extends Component {
   constructor(props) {
@@ -58,6 +59,10 @@ export default class StoryForm extends Component {
       }
     });
   };
+
+  editText = (storyText) => {
+    this.setState({ story: { ...this.state.story, storyText: JSON.stringify(storyText) } });
+  }
 
   // for demo ONLY
   checkIfFieldIsValid = name => {
@@ -195,7 +200,8 @@ export default class StoryForm extends Component {
             />
             <Typography variant="overline">max size 1.mb</Typography>
           </div>
-          <TextField
+          <MyEditor editText={this.editText} />
+          {/* <TextField
             className="full-width-input"
             label="Story Text"
             name="storyText"
@@ -210,7 +216,7 @@ export default class StoryForm extends Component {
             onChange={this.onChange}
             rowsMax="6"
             variant="outlined"
-          />
+          /> */}
         </Form>
       </div>
     );

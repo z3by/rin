@@ -24,7 +24,6 @@ export default class Data extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      RINDealsData: {},
       asylumSeekersData: {},
       resettlementData: {},
       demographicsData: {},
@@ -40,7 +39,6 @@ export default class Data extends Component {
 
   componentWillMount() {
     this.getAllCounries();
-    this.getRINDealsData();
     this.getAsylumSeekersDataByYear();
     this.getResettlementData();
     this.getDemographicsData();
@@ -75,32 +73,6 @@ export default class Data extends Component {
       behavior: "smooth"
     });
   };
-
-  getRINDealsData = () => {
-    let labels = ["Housing", "Education", "Agriculture", "Health", "Water", "Nutrition", "Infancy"];
-    let datasets = [{}];
-    datasets[0].label = "Conducted Deals";
-    datasets[0].backgroundColor = [
-      'rgba(232, 51, 56, 0.6)',
-      'rgba(255, 144, 104, 0.6)',
-      'rgba(255, 183, 94, 0.6)',
-      'rgba(141, 194, 111, 0.6)',
-      'rgba(100, 179, 244, 0.6)',
-      'rgba(100, 65, 165, 0.6)',
-      'rgba(252, 103, 250, 0.6)'
-    ];
-    datasets[0].data = [];
-    labels.map(type => {
-      axios.get(`/api/projectscount/${type}`)
-        .then(res => {
-          datasets[0].data.push(res.data[0]["count(*)"]);
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    });
-    this.setState({ RINDealsData: { labels: labels, datasets: datasets } });
-  }
 
   getAsylumSeekersDataByYear = (e) => {
     const year = e && e.target.value > -1 ? e.target.value : this.state.asylumSeekersSelectedYear;
@@ -270,10 +242,6 @@ export default class Data extends Component {
           </div>
         </header>
         <div className="container">
-          <div className="rin-deals-chart">
-            <h3 className="chart-heading" style={{ marginTop: 0 }}>The RIN Deals</h3>
-            <PieChart data={this.state.RINDealsData} />
-          </div>
           <div className="asylum-seekers-chart">
             <h3 className="chart-heading">UNHCR Statistics of Asylum Seekers from Syria in {this.state.asylumSeekersSelectedYear}</h3>
             <select onChange={this.getAsylumSeekersDataByYear}>
