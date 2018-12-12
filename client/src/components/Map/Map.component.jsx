@@ -7,7 +7,6 @@ import Filter from "./Filter/Filter.component";
 import Spectrum from "./Spectrum/Spectrum.component";
 import { mapApi } from "../../config/map.config";
 import Axios from "axios";
-import Button from "@material-ui/core/Button";
 
 export default class Map extends Component {
   state = {

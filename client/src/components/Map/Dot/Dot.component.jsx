@@ -42,20 +42,22 @@ const Dot = props => {
         <div className="project-info-popup">
           <div className="flex-centerd">
             <Avatar src={props.project.logo} />
-            <Typography
-              variant="subtitle1"
-              className="color-1 capitalize"
-              style={{ marginLeft: 10 }}
-            >
-              {props.project.organization}
-            </Typography>
-            <Typography
-              style={{ marginLeft: 20 }}
-              variant="subtitle2"
-              className="color-3 capitalize"
-            >
-              {props.project.sector}
-            </Typography>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <Typography
+                variant="subtitle1"
+                className="color-1 capitalize"
+                style={{ marginLeft: 10 }}
+              >
+                {props.project.organization}
+              </Typography>
+              <Typography
+                variant="body1"
+                className="color-3 capitalize"
+                style={{ marginLeft: 10 }}
+              >
+                {props.project.sector}
+              </Typography>
+            </div>
           </div>
           <div
             style={{
@@ -68,7 +70,7 @@ const Dot = props => {
           />
 
           <Typography
-            variant="h6"
+            variant="subtitle1"
             style={{ marginTop: 20 }}
             className="color-2 capitalize text-center"
           >
@@ -76,14 +78,14 @@ const Dot = props => {
           </Typography>
 
           <Typography
-            variant="h6"
+            variant="subtitle1"
             style={{ marginTop: 20 }}
             className="color-2 capitalize"
           >
             countries:
           </Typography>
           <Typography
-            variant="h6"
+            variant="subtitle1"
             style={{ marginTop: 20 }}
             className="color-2 capitalize"
           >
@@ -96,7 +98,7 @@ const Dot = props => {
             })}
           </Typography>
           <Typography
-            variant="h6"
+            variant="subtitle1"
             style={{ marginTop: 20 }}
             className="color-2 capitalize"
           >
@@ -112,7 +114,7 @@ const Dot = props => {
             </Typography>
           </div>
           <Typography
-            variant="h6"
+            variant="subtitle1"
             style={{ marginTop: 20 }}
             className="color-2 capitalize"
           >
@@ -132,17 +134,14 @@ const Dot = props => {
             </Typography>
           </div>
           <Typography
-            variant="h6"
+            variant="subtitle1"
             style={{ marginTop: 20 }}
             className="color-2 capitalize"
           >
             Sustainable Ddevelopment Goals
           </Typography>
 
-          <div
-            className=""
-            style={{ display: "inline-flex", margin: "10px 0" }}
-          >
+          <div className="" style={{ display: "flex", margin: "10px 0" }}>
             {props.project.Sdgs.map(sdg => {
               return <Avatar src={sdg.logo} style={{ margin: "0 10px" }} />;
             })}
@@ -244,7 +243,7 @@ const Dot = props => {
         {/* full info */}
         <div className="project-info-popup">
           <Typography
-            variant="h6"
+            variant="subtitle1"
             style={{ marginTop: 20 }}
             className="color-2 capitalize"
           >
@@ -254,7 +253,7 @@ const Dot = props => {
             {props.project.thesis}
           </Typography>
           <Typography
-            variant="h6"
+            variant="subtitle1"
             style={{ marginTop: 20 }}
             className="color-2 capitalize"
           >
@@ -264,7 +263,7 @@ const Dot = props => {
             {props.project.structure}
           </Typography>
           <Typography
-            variant="h6"
+            variant="subtitle1"
             style={{ marginTop: 20 }}
             className="color-2 capitalize"
           >
