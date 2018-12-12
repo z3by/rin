@@ -98,12 +98,12 @@ export default class Map extends Component {
           onChange={this._onChange}
           handleMouseHover={this.handleSpectrumHover}
         >
-          {this.state.locations.map(location => {
+          {this.state.locations.map((location, key) => {
             return (
               <Dot
                 lng={location.lng}
                 lat={location.lat}
-                key={location.id}
+                key={key}
                 location={location}
                 project={this.state.hoveredProject}
                 onHover={this.getProject}

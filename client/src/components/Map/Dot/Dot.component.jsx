@@ -172,16 +172,19 @@ const Dot = props => {
             />
             {props.project.contact.email1}
           </a>
-          <a
-            href={"mailto:" + props.project.contact.email2}
-            className="contact-field"
-          >
-            <i
-              style={{ fontSize: "1.5rem" }}
-              className="color-2 far fa-envelope"
-            />
-            {props.project.contact.email2}
-          </a>
+          {!props.project.contact.email2 ? null : (
+            <a
+              href={"mailto:" + props.project.contact.email2}
+              className="contact-field"
+            >
+              <i
+                style={{ fontSize: "1.5rem" }}
+                className="color-2 far fa-envelope"
+              />
+              {props.project.contact.email2}
+            </a>
+          )}
+
           <a href={props.project.contact.website} className="contact-field">
             <i
               style={{ fontSize: "1.5rem" }}
@@ -189,39 +192,51 @@ const Dot = props => {
             />
             visit the project website
           </a>
-
-          <a href={props.project.contact.facebook} className="contact-field">
-            <i
-              style={{ fontSize: "1.5rem" }}
-              className="color-2 fab fa-facebook"
-            />
-            facebook contact
-          </a>
-          <a href={props.project.contact.twitter} className="contact-field">
-            <i
-              style={{ fontSize: "1.5rem" }}
-              className="color-2 fab fa-twitter"
-            />
-            twitter contact
-          </a>
-          <a href={props.project.contact.instagram} className="contact-field">
-            <i
-              style={{ fontSize: "1.5rem" }}
-              className="color-2 fab fa-instagram"
-            />
-            instagram contact
-          </a>
-          <a href={props.project.contact.fax} className="contact-field">
-            <i style={{ fontSize: "1.5rem" }} className="color-2 fas fa-fax" />
-            Fax: {props.project.contact.fax}
-          </a>
-          <address className="contact-field">
-            <i
-              style={{ fontSize: "1.5rem" }}
-              className="color-2 fas fa-address-card"
-            />
-            Address: {props.project.contact.address}
-          </address>
+          {!props.project.contact.facebook ? null : (
+            <a href={props.project.contact.facebook} className="contact-field">
+              <i
+                style={{ fontSize: "1.5rem" }}
+                className="color-2 fab fa-facebook"
+              />
+              facebook contact
+            </a>
+          )}
+          {!props.project.contact.twitter ? null : (
+            <a href={props.project.contact.twitter} className="contact-field">
+              <i
+                style={{ fontSize: "1.5rem" }}
+                className="color-2 fab fa-twitter"
+              />
+              twitter contact
+            </a>
+          )}
+          {!props.project.contact.instagram ? null : (
+            <a href={props.project.contact.instagram} className="contact-field">
+              <i
+                style={{ fontSize: "1.5rem" }}
+                className="color-2 fab fa-instagram"
+              />
+              instagram contact
+            </a>
+          )}
+          {!props.project.contact.fax ? null : (
+            <a href={props.project.contact.fax} className="contact-field">
+              <i
+                style={{ fontSize: "1.5rem" }}
+                className="color-2 fas fa-fax"
+              />
+              Fax: {props.project.contact.fax}
+            </a>
+          )}
+          {!props.project.contact.address ? null : (
+            <address className="contact-field">
+              <i
+                style={{ fontSize: "1.5rem" }}
+                className="color-2 fas fa-address-card"
+              />
+              Address: {props.project.contact.address}
+            </address>
+          )}
         </div>
         {/* full info */}
         <div className="project-info-popup">
