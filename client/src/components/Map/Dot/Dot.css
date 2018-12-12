@@ -44,7 +44,7 @@
 }
 
 .project-info-popup {
-  height: 20vw;
+  height: 30vh;
   width: 45%;
   padding: 20px;
   position: absolute;
@@ -52,6 +52,7 @@
   overflow-y: scroll;
   background: var(--dark-transparent);
   position: absolute;
+  border-radius: 20px;
 }
 .project-info-popup:nth-child(1) {
   left: 0;
@@ -170,4 +171,20 @@
   font-size: 1.3rem;
   color: var(--color-2);
   margin-right: 20px;
+}
+
+@media (max-width: 768px) {
+  .project-info {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    height: 65vh;
+    width: 90vw;
+    top: -30vh;
+    left: -45vw;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
 }

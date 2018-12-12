@@ -24,7 +24,7 @@
 }
 
 .filter-btn {
-  position: absolute;
+  position: fixed;
   bottom: 40px;
   z-index: 120;
   width: 100px;
