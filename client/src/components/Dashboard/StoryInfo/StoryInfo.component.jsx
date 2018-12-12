@@ -3,12 +3,15 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Axios from "axios";
 import "./StoryInfo.css";
+import draftToHtml from 'draftjs-to-html';
+import renderHTML from 'react-render-html';
 
 export default class StoryInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      storyData: {}
+      storyData: {},
+      myText: ""
     };
   }
 
@@ -19,12 +22,18 @@ export default class StoryInfo extends Component {
   fetchStory = () => {
     const StoryId = this.props.match.params.id;
     Axios.get("/api/stories/" + StoryId).then(result => {
-      this.setState({ storyData: result.data[0] });
+      this.setState({ storyData: result.data[0] }, () => {
+        // this.setState({ storyData: { ...this.state.storyData, storyText: draftToHtml(JSON.parse(this.state.storyData.storyText)) } }, () => {
+        // });
+        this.setState({ myText: draftToHtml(JSON.parse(this.state.storyData.storyText)) })
+      });
     });
   };
 
   render() {
-    const story = this.state.storyData;
+    let story = this.state.storyData;
+    let { myText } = this.state;
+
     return (
       <Paper style={{ position: "relative" }}>
         <img src={story.img} className="w-100" alt="" />
@@ -50,7 +59,7 @@ export default class StoryInfo extends Component {
         </div>
         <div className="container">
           <Typography variant="body1" className="color-5">
-            {story.storyText}
+            {renderHTML(myText)}
           </Typography>
         </div>
       </Paper>
