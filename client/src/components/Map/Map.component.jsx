@@ -106,6 +106,7 @@ export default class Map extends Component {
         className="map fadeInSlow"
       >
         <Spectrum handleMouseHover={this.handleSpectrumHover} />
+
         <Filter
           handleFilterToggle={this.handleFilterToggle}
           shown={this.state.filterOn}
