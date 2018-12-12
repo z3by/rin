@@ -66,10 +66,14 @@ export default class Map extends Component {
     );
   };
 
-  getProject = id => {
+  getProject = (id, location) => {
     this.state.locadedProjects.forEach(project => {
       if (project.id === id) {
-        this.setState({ hoveredProject: project });
+        this.setState({
+          hoveredProject: project,
+          center: [location.lat, location.lng],
+          zoom: 6
+        });
         return;
       }
     });
@@ -79,6 +83,13 @@ export default class Map extends Component {
         locadedProjects: [...this.state.locadedProjects, result.data[0]],
         hoveredProject: result.data[0]
       });
+    });
+  };
+
+  onOutHover = () => {
+    this.setState({
+      center: [0, 0],
+      zoom: 3
     });
   };
 
@@ -107,6 +118,7 @@ export default class Map extends Component {
                 location={location}
                 project={this.state.hoveredProject}
                 onHover={this.getProject}
+                onOutHover={this.onOutHover}
               />
             );
           })}

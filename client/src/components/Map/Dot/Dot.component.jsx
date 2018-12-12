@@ -31,7 +31,10 @@ const Dot = props => {
       className="dot"
       style={{ background: color }}
       onMouseEnter={() => {
-        props.onHover(props.location.ProjectId);
+        props.onHover(props.location.ProjectId, props.location);
+      }}
+      onMouseLeave={() => {
+        props.onOutHover();
       }}
     >
       {/* basic info */}
