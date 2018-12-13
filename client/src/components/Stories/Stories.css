@@ -139,6 +139,76 @@
   left: 64%;
   top: 59%;
 }
+.story-details {
+  background: var(--color-1);
+  height: 100vh;
+  width: 100vw;
+}
+
+.banner-full {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.banner-full h1 {
+  font-size: 5rem;
+  text-transform: uppercase;
+  color: var(--color-2);
+}
+
+.banner-full h3 {
+  text-transform: capitalize;
+  color: var(--color-1);
+  font-weight: 300;
+  margin: 30px 0;
+  width: 60%;
+  text-align: center;
+}
+
+.banner-full .line,
+.header .line {
+  width: 20%;
+  height: 2px;
+  background: white;
+}
+
+.story-details .container {
+  width: 60%;
+}
+
+.lensSDGs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  position: absolute;
+  bottom: 0;
+}
+
+.lensSDGs li {
+  margin: 0 10px;
+}
+
+.lens,
+.sdg {
+  height: 10vh;
+}
 
 @media (max-width: 768px) {
   .stories {

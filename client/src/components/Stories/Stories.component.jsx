@@ -13,7 +13,6 @@ class Stories extends Component {
     };
   }
   componentDidMount() {
-    document.body.style.overflowY = "auto";
     this.fetchStories();
   }
 

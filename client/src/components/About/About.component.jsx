@@ -15,13 +15,8 @@ export default class About extends Component {
   }
 
   componentDidMount() {
-    document.body.style.overflowY = "auto";
     document.querySelector(".header").style.backgroundImage =
       'url("/imgs/backs4.jpg")';
-  }
-
-  componentWillUnmount() {
-    document.body.style.overflowY = "hidden";
   }
 
   // navigate to specifec route

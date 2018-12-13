@@ -169,7 +169,6 @@ export default class ArticleForm extends Component {
               style={{ marginTop: 0 }}
               className=""
               name="img"
-              required
               InputLabelProps={{
                 shrink: true
               }}

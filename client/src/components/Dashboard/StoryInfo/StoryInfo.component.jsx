@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
-import Avatar from "@material-ui/core/Avatar";
 import Axios from "axios";
 import "./StoryInfo.css";
 
@@ -27,7 +26,7 @@ export default class StoryInfo extends Component {
   render() {
     const story = this.state.storyData;
     return (
-      <Paper style={{ padding: 20 }} style={{ position: "relative" }}>
+      <Paper style={{ position: "relative" }}>
         <img src={story.img} className="w-100" alt="" />
         <div className="story-header">
           <Typography

@@ -185,11 +185,11 @@ const components = {
 class AutoComplete extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      single: null,
+      multi: null
+    };
   }
-  state = {
-    single: null,
-    multi: null
-  };
 
   handleChange = name => value => {
     this.setState(

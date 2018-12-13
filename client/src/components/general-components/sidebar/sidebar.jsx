@@ -2,9 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
-import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -33,7 +31,7 @@ class Sidebar extends React.Component {
       <div className={classes.list}>
         <List>
           <Link to="/dashboard">
-            <ListItem button key={"home"} style={{ padding: 0 }}>
+            <ListItem button key={"home"} style={{ padding: 15 }}>
               <ListItemIcon
                 style={{
                   margin: 0,
@@ -47,7 +45,7 @@ class Sidebar extends React.Component {
             </ListItem>
           </Link>
           <Link to="/dashboard/projects">
-            <ListItem button key={"projects"} style={{ padding: 0 }}>
+            <ListItem button key={"projects"} style={{ padding: 15 }}>
               <ListItemIcon
                 style={{
                   margin: 0,
@@ -61,7 +59,7 @@ class Sidebar extends React.Component {
             </ListItem>
           </Link>
           <Link to="/dashboard/stories">
-            <ListItem button key={"stories"} style={{ padding: 0 }}>
+            <ListItem button key={"stories"} style={{ padding: 15 }}>
               <ListItemIcon
                 style={{
                   margin: 0,
@@ -75,7 +73,7 @@ class Sidebar extends React.Component {
             </ListItem>
           </Link>
           <Link to="/dashboard/articles">
-            <ListItem button key={"blog"} style={{ padding: 0 }}>
+            <ListItem button key={"blog"} style={{ padding: 15 }}>
               <ListItemIcon
                 style={{
                   margin: 0,
@@ -89,7 +87,7 @@ class Sidebar extends React.Component {
             </ListItem>
           </Link>
           <Link to="/dashboard/users">
-            <ListItem button key={"users"} style={{ padding: 0 }}>
+            <ListItem button key={"users"} style={{ padding: 15 }}>
               <ListItemIcon
                 style={{
                   margin: 0,

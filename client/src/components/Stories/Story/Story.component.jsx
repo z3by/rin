@@ -9,16 +9,14 @@ export default class Story extends Component {
     this.state = {};
   }
 
-  componentDidMount() {
-    document.body.style.overflowY = "auto";
-  }
+  componentDidMount() {}
 
   render() {
     return (
       <div className="story bub">
         <div
           className="story-item"
-          style={{ backgroundImage: `url(${this.props.story.imgs[0]})` }}
+          style={{ backgroundImage: `url(${this.props.story.img})` }}
         >
           <Link
             className="link-read-more"

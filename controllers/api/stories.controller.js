@@ -119,3 +119,44 @@ module.exports.searchStories = (req, res) => {
       res.status(404).json(err);
     });
 };
+
+module.exports.filterStories = (req, res) => {
+  const andQuery = [];
+
+  if (req.query.year) {
+    andQuery.push({
+      year: db.sequelize.where(
+        db.sequelize.fn("YEAR", db.sequelize.col("year")),
+        req.query.year
+      )
+    });
+  }
+
+  if (req.query.sector) {
+    andQuery.push({
+      sector: req.query.sector
+    });
+  }
+
+  if (req.query.refugeeInvestmentType) {
+    andQuery.push({
+      refugeeInvestmentType: req.query.refugeeInvestmentType
+    });
+  }
+  db.Project.findAll({
+    where: {
+      [Op.and]: andQuery
+    },
+    include: [{ model: db.Story, as: "stories" }],
+    limit: 10
+  }).then(result => {
+    const stories = [];
+    result.forEach(project => {
+      if (project.stories.length) {
+        stories.push(...project.stories);
+      }
+    });
+
+    res.status(200).json(stories);
+  });
+};

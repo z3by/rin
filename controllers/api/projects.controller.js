@@ -262,47 +262,75 @@ module.exports.getProjectRequestsPage = (req, res) => {
     });
 };
 
-const checkProjectsFilterOptions = (clause, query) => {
-  if (query.sector) {
-    clause["sector"] = query.sector;
-  }
-  if (query.name) {
-    clause["name"] = {
-      [Op.like]: `%${query.name}%`
-    };
-  }
-  if (query.organization) {
-    clause["organization"] = {
-      [Op.like]: `%${query.organization}%`
-    };
-  }
-  if (query.refugeeInvestmenType) {
-    clause["refugeeInvestmentType"] = query.refugeeInvestmentType;
-  }
-
-  if (query.investmentSize) {
-    clause["investmentSize"] = {
-      [Op.gt]: query.investmentSize
-    };
-  }
-
-  return clause;
-};
-
 module.exports.getProjectsLocations = (req, res) => {
-  let whereClause = {
-    pending: false
-  };
+  let andQuery = [
+    {
+      pending: false
+    }
+  ];
 
-  whereClause = checkProjectsFilterOptions(whereClause, req.query);
+  if (!!req.query.year) {
+    andQuery.push({
+      year: db.sequelize.where(
+        db.sequelize.fn("YEAR", db.sequelize.col("year")),
+        req.query.year
+      )
+    });
+  }
+
+  if (!!req.query.sector) {
+    andQuery.push({
+      sector: req.query.sector
+    });
+  }
+
+  if (!!req.query.refugeeInvestmentType) {
+    andQuery.push({
+      refugeeInvestmentType: req.query.refugeeInvestmentType
+    });
+  }
+
+  if (!!req.query.investmentSize) {
+    andQuery.push({
+      investmentSize: {
+        [Op.gte]: req.query.investmentSize
+      }
+    });
+  }
+
+  let opOr = [];
+  if (req.query.sdgs) {
+    req.query.sdgs.forEach(sdg => {
+      db.Sdg.findOne({ where: { name: sdg } }).then(sdg => {
+        opOr.push({ sdgId: sdg.id });
+      });
+    });
+  }
+  let sdgsWhere = opOr.length ? { [Op.or]: opOr } : {};
 
   db.Project.findAll({
-    where: whereClause,
+    where: { [Op.and]: andQuery },
     attributes: ["id", "sector"],
-    include: [{ model: db.Location, as: "Location" }]
-  }).then(result => {
-    res.json(result);
-  });
+    include: [
+      {
+        model: db.Location,
+        as: "locations",
+        attributes: ["id", "lng", "lat", "ProjectId"]
+      },
+      {
+        model: db.Sdg,
+        as: "Sdgs",
+        through: { attributes: [], where: sdgsWhere },
+        attributes: ["id", "name"]
+      }
+    ]
+  })
+    .then(result => {
+      res.status(200).json(result);
+    })
+    .catch(err => {
+      res.send(err);
+    });
 };
 
 module.exports.searchProjects = (req, res) => {

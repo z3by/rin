@@ -6,15 +6,9 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Axios from "axios";
 import Typography from "@material-ui/core/Typography";
 import GoogleMap from "../../general-components/GoogleMap/GoogleMap.component";
+import sectors from "../../../config/sectors";
+import refugeeInvestmentTypes from "../../../config/refugeeInvestmentTypes";
 
-const sectors = ["health", "education"];
-const refugeeInvestmentTypes = [
-  {
-    name: "refugee owned",
-    img:
-      "https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/1032686/1160/772/m1/fpnw/wm0/usb-flash-drive-flat-icon-01-.jpg?1456561868&s=0a614a61f233630542ee5a77c5baec30"
-  }
-];
 export default class ProjectForm extends Component {
   constructor(props) {
     super(props);
@@ -327,7 +321,11 @@ export default class ProjectForm extends Component {
             margin="normal"
           >
             {sectors.map(option => (
-              <MenuItem key={option} value={option}>
+              <MenuItem
+                key={option}
+                value={option}
+                style={{ textTransform: "capitalize" }}
+              >
                 {option}
               </MenuItem>
             ))}
@@ -349,7 +347,11 @@ export default class ProjectForm extends Component {
             margin="normal"
           >
             {refugeeInvestmentTypes.map(option => (
-              <MenuItem key={option.name} value={option.name}>
+              <MenuItem
+                key={option.name}
+                value={option.name}
+                style={{ textTransform: "capitalize" }}
+              >
                 {option.name}
               </MenuItem>
             ))}
@@ -591,7 +593,6 @@ export default class ProjectForm extends Component {
               style={{ marginTop: 0 }}
               className=""
               name="img"
-              required
               InputLabelProps={{
                 shrink: true
               }}
