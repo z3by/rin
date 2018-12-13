@@ -3,7 +3,7 @@ import "./WhoWeAre.css";
 import Team from "../Team/Team.component";
 import TeamInfo from "../team.json";
 import SteeringInfo from "../steering.json";
-import { Typography, Paper, Card } from "@material-ui/core";
+import { Typography, Paper } from "@material-ui/core";
 
 export default props => {
   setTimeout(() => {
@@ -52,14 +52,16 @@ export default props => {
             </Typography>
           </Paper>
         </div>
-        <Typography variant="h5" className="color-2">
+        <Typography variant="h4" className="color-2">
           <i className="start-icon fas fa-users" />
           Meet The Team
         </Typography>
-        <Team info={TeamInfo} />
+        <div className="grid-3">
+          <Team imgHeight={300} info={TeamInfo} />
+        </div>
       </section>
       <section>
-        <Typography variant="h5" className="color-2">
+        <Typography variant="h4" className="color-2">
           <i className="start-icon fas fa-user-friends" />
           Guided by a world-class Steering Committee.
         </Typography>
@@ -68,7 +70,9 @@ export default props => {
           of members who come from diverse backgrounds but share a commitment to
           creating long-term solutions to global forced migration.
         </Typography>
-        <Team info={SteeringInfo} />
+        <div className="grid-5">
+          <Team imgHeight={200} info={SteeringInfo} />
+        </div>
       </section>
     </div>
   );

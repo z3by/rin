@@ -4,7 +4,6 @@ import Strategy from "./Strategy/Strategy.component";
 import WhyRefugeesComponent from "./WhyRefugees/WhyRefugees.component";
 import WhoWeAreComponent from "./WhoWeAre/WhoWeAre.component";
 import { Route } from "react-router-dom";
-import AboutIntro from "./AboutIntro/AboutIntro";
 import IconButton from "@material-ui/core/IconButton";
 import { Typography } from "@material-ui/core";
 
