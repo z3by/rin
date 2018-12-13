@@ -10,28 +10,26 @@ export default props => {
   }, 200);
   return (
     <div className="strategy fadeInFast">
-      <Typography variant="h4" className="upper color-4">
+      <Typography variant="h4" className="upper color-4 text-center">
         <i class="fas fa-street-view start-icon color-2" />
         The RIN strategy has three pillars:
       </Typography>
       <ul
-        className="grid-3"
+        className="grid-3 stategy-cards"
         style={{ listStyle: "none", padding: 0, margin: "50px 0" }}
       >
-        <li>
-          <a href="#research">
-            <Card className="card-col">
-              <Typography variant="h6" className="upper color-1">
-                Research
-              </Typography>
-              <Typography variant="body1">
-                Create the first investor-centered knowledge hub targeting
-                business opportunities that support refugee self-reliance
-              </Typography>
-            </Card>
-          </a>
+        <li style={{ margin: 0 }}>
+          <Card className="card-col">
+            <Typography variant="h6" className="upper color-1">
+              Research
+            </Typography>
+            <Typography variant="body1">
+              Create the first investor-centered knowledge hub targeting
+              business opportunities that support refugee self-reliance
+            </Typography>
+          </Card>
         </li>
-        <li>
+        <li style={{ margin: 0 }}>
           <Card className="card-col">
             <Typography variant="h6" className="upper color-1">
               Facilitation
@@ -42,7 +40,7 @@ export default props => {
             </Typography>
           </Card>
         </li>
-        <li>
+        <li style={{ margin: 0 }}>
           <Card className="card-col">
             <Typography variant="h6" className="upper color-1">
               Policy and Advocacy
