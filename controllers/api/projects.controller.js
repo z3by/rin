@@ -290,13 +290,38 @@ module.exports.getProjectsLocations = (req, res) => {
     });
   }
 
+  let sdgsWhere = {};
+  // if (!!req.query.sdgs.length) {
+  //   let op = [];
+  //   req.query.sdgs.forEach(sdg => {
+  //     op.push({ name: sdg });
+  //   });
+  //   sdgsWhere = { [Op.or]: op };
+  // }
+
   db.Project.findAll({
     where: { [Op.and]: andQuery },
     attributes: ["id", "sector"],
-    include: [{ model: db.Location, as: "locations" }]
-  }).then(result => {
-    res.json(result);
-  });
+    include: [
+      {
+        model: db.Location,
+        as: "locations",
+        attributes: ["id", "lng", "lat", "ProjectId"]
+      },
+      {
+        model: db.Sdg,
+        as: "Sdgs",
+        through: { attributes: [], where: sdgsWhere },
+        attributes: ["id", "name"]
+      }
+    ]
+  })
+    .then(result => {
+      res.status(200).json(result);
+    })
+    .catch(err => {
+      res.send(err);
+    });
 };
 
 module.exports.searchProjects = (req, res) => {

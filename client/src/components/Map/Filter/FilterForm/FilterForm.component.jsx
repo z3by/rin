@@ -7,13 +7,13 @@ import Button from "@material-ui/core/Button";
 import refugeeInvestmentTypes from "../../../../config/refugeeInvestmentTypes";
 import { TextField } from "@material-ui/core";
 import Checkbox from "@material-ui/core/Checkbox";
-import sdgs from "../../../../config/sdgs";
+import sdgsData from "../../../../config/sdgs";
 
 export default class FilterForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      options: { year: "", refugeeInvestmentType: "", selectedSdgs: [] }
+      options: { year: "", refugeeInvestmentType: "", sdgs: [] }
     };
   }
 
@@ -27,12 +27,26 @@ export default class FilterForm extends Component {
   };
 
   handleSdgSelect = e => {
-    this.setState({
-      options: {
-        ...this.state.options,
-        selectedSdgs: [...this.state.options.selectedSdgs, e.target.value]
-      }
-    });
+    const sdgs = this.state.options.sdgs;
+    const val = e.target.value;
+    const options = this.state.options;
+    const i = sdgs.indexOf(val);
+    if (i >= 0) {
+      sdgs.splice(i, 1);
+      this.setState({
+        options: {
+          ...options,
+          sdgs
+        }
+      });
+    } else {
+      this.setState({
+        options: {
+          ...options,
+          sdgs: [...sdgs, val]
+        }
+      });
+    }
   };
 
   render() {
@@ -109,19 +123,19 @@ export default class FilterForm extends Component {
           />
         </FormControl>
         <div className="sdgs-checkboxes">
-          {sdgs.map((sdg, i) => {
+          {sdgsData.map((sdg, i) => {
             return (
               <div key={i}>
                 <Checkbox
                   style={{ color: "var(--color-2)" }}
-                  checked={this.state.options.selectedSdgs.includes(sdg.name)}
+                  checked={this.state.options.sdgs.includes(sdg.name)}
                   value={sdg.name}
                   onChange={this.handleSdgSelect}
                 />
                 <img
                   src={sdg.logo}
                   alt="sdg"
-                  style={{ width: 40, height: 40 }}
+                  style={{ width: 60, height: 60 }}
                 />
               </div>
             );
