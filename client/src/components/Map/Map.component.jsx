@@ -101,7 +101,7 @@ export default class Map extends Component {
   filterByGivenOptions = options => {
     this.setState(
       {
-        filterOptions: options
+        filterOptions: { ...options }
       },
       () => {
         this.fetchProjects();

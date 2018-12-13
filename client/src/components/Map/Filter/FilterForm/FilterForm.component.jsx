@@ -13,8 +13,7 @@ export default class FilterForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      options: { year: "", refugeeInvestmentType: "" },
-      selectedSdgs: []
+      options: { year: "", refugeeInvestmentType: "", selectedSdgs: [] }
     };
   }
 
@@ -29,7 +28,10 @@ export default class FilterForm extends Component {
 
   handleSdgSelect = e => {
     this.setState({
-      selectedSdgs: [...this.state.selectedSdgs, e.target.value]
+      options: {
+        ...this.state.options,
+        selectedSdgs: [...this.state.options.selectedSdgs, e.target.value]
+      }
     });
   };
 
@@ -112,7 +114,7 @@ export default class FilterForm extends Component {
               <div key={i}>
                 <Checkbox
                   style={{ color: "var(--color-2)" }}
-                  checked={this.state.selectedSdgs.includes(sdg.name)}
+                  checked={this.state.options.selectedSdgs.includes(sdg.name)}
                   value={sdg.name}
                   onChange={this.handleSdgSelect}
                 />
