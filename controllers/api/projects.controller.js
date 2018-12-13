@@ -290,14 +290,15 @@ module.exports.getProjectsLocations = (req, res) => {
     });
   }
 
-  let sdgsWhere = {};
-  // if (!!req.query.sdgs.length) {
-  //   let op = [];
-  //   req.query.sdgs.forEach(sdg => {
-  //     op.push({ name: sdg });
-  //   });
-  //   sdgsWhere = { [Op.or]: op };
-  // }
+  let opOr = [];
+  if (req.query.sdgs) {
+    req.query.sdgs.forEach(sdg => {
+      db.Sdg.findOne({ where: { name: sdg } }).then(sdg => {
+        opOr.push({ sdgId: sdg.id });
+      });
+    });
+  }
+  let sdgsWhere = opOr.length ? { [Op.or]: opOr } : {};
 
   db.Project.findAll({
     where: { [Op.and]: andQuery },
