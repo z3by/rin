@@ -263,16 +263,35 @@ module.exports.getProjectRequestsPage = (req, res) => {
 };
 
 module.exports.getProjectsLocations = (req, res) => {
-  let whereClause = {
-    pending: false
-  };
+  let andQuery = [
+    {
+      pending: false
+    }
+  ];
+
+  if (!!req.query.year) {
+    andQuery.push({
+      year: db.sequelize.where(
+        db.sequelize.fn("YEAR", db.sequelize.col("year")),
+        req.query.year
+      )
+    });
+  }
 
   if (!!req.query.sector) {
-    whereClause.sector = req.query.sector;
+    andQuery.push({
+      sector: req.query.sector
+    });
+  }
+
+  if (!!req.query.refugeeInvestmentType) {
+    andQuery.push({
+      refugeeInvestmentType: req.query.refugeeInvestmentType
+    });
   }
 
   db.Project.findAll({
-    where: whereClause,
+    where: { [Op.and]: andQuery },
     attributes: ["id", "sector"],
     include: [{ model: db.Location, as: "locations" }]
   }).then(result => {

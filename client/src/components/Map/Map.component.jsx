@@ -44,6 +44,8 @@ export default class Map extends Component {
           locations.push(location);
         });
       });
+      console.log(locations);
+
       this.setState({ locations: locations });
     });
   };
