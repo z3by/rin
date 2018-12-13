@@ -7,6 +7,10 @@
   transition: all 1s ease;
 }
 
+.about-intro {
+  padding: 20px;
+}
+
 #about-routes {
   margin-top: 0;
 }
@@ -15,6 +19,7 @@
   position: fixed;
   top: 200vh;
 }
+
 .heading-theme-1 {
   color: var(--color-5);
   font-family: var(--main-font);
