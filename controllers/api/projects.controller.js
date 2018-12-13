@@ -263,21 +263,74 @@ module.exports.getProjectRequestsPage = (req, res) => {
 };
 
 module.exports.getProjectsLocations = (req, res) => {
-  let whereClause = {
-    pending: false
-  };
+  let andQuery = [
+    {
+      pending: false
+    }
+  ];
 
-  if (!!req.query.sector) {
-    whereClause.sector = req.query.sector;
+  if (!!req.query.year) {
+    andQuery.push({
+      year: db.sequelize.where(
+        db.sequelize.fn("YEAR", db.sequelize.col("year")),
+        req.query.year
+      )
+    });
   }
 
+  if (!!req.query.sector) {
+    andQuery.push({
+      sector: req.query.sector
+    });
+  }
+
+  if (!!req.query.refugeeInvestmentType) {
+    andQuery.push({
+      refugeeInvestmentType: req.query.refugeeInvestmentType
+    });
+  }
+
+  if (!!req.query.investmentSize) {
+    andQuery.push({
+      investmentSize: {
+        [Op.gte]: req.query.investmentSize
+      }
+    });
+  }
+
+  let opOr = [];
+  if (req.query.sdgs) {
+    req.query.sdgs.forEach(sdg => {
+      db.Sdg.findOne({ where: { name: sdg } }).then(sdg => {
+        opOr.push({ sdgId: sdg.id });
+      });
+    });
+  }
+  let sdgsWhere = opOr.length ? { [Op.or]: opOr } : {};
+
   db.Project.findAll({
-    where: whereClause,
+    where: { [Op.and]: andQuery },
     attributes: ["id", "sector"],
-    include: [{ model: db.Location, as: "locations" }]
-  }).then(result => {
-    res.json(result);
-  });
+    include: [
+      {
+        model: db.Location,
+        as: "locations",
+        attributes: ["id", "lng", "lat", "ProjectId"]
+      },
+      {
+        model: db.Sdg,
+        as: "Sdgs",
+        through: { attributes: [], where: sdgsWhere },
+        attributes: ["id", "name"]
+      }
+    ]
+  })
+    .then(result => {
+      res.status(200).json(result);
+    })
+    .catch(err => {
+      res.send(err);
+    });
 };
 
 module.exports.searchProjects = (req, res) => {

@@ -211,7 +211,10 @@ export default class Landing extends Component {
           <img
             src="/imgs/logo.png"
             alt=""
-            style={{ display: this.state.loading ? "block" : "none" }}
+            style={{
+              display: this.state.loading ? "block" : "none",
+              width: "30vw"
+            }}
           />
         </div>
         <div className="landing">

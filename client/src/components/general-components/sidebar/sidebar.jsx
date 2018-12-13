@@ -31,7 +31,7 @@ class Sidebar extends React.Component {
       <div className={classes.list}>
         <List>
           <Link to="/dashboard">
-            <ListItem button key={"home"} style={{ padding: 0 }}>
+            <ListItem button key={"home"} style={{ padding: 15 }}>
               <ListItemIcon
                 style={{
                   margin: 0,
@@ -45,7 +45,7 @@ class Sidebar extends React.Component {
             </ListItem>
           </Link>
           <Link to="/dashboard/projects">
-            <ListItem button key={"projects"} style={{ padding: 0 }}>
+            <ListItem button key={"projects"} style={{ padding: 15 }}>
               <ListItemIcon
                 style={{
                   margin: 0,
@@ -59,7 +59,7 @@ class Sidebar extends React.Component {
             </ListItem>
           </Link>
           <Link to="/dashboard/stories">
-            <ListItem button key={"stories"} style={{ padding: 0 }}>
+            <ListItem button key={"stories"} style={{ padding: 15 }}>
               <ListItemIcon
                 style={{
                   margin: 0,
@@ -73,7 +73,7 @@ class Sidebar extends React.Component {
             </ListItem>
           </Link>
           <Link to="/dashboard/articles">
-            <ListItem button key={"blog"} style={{ padding: 0 }}>
+            <ListItem button key={"blog"} style={{ padding: 15 }}>
               <ListItemIcon
                 style={{
                   margin: 0,
@@ -87,7 +87,7 @@ class Sidebar extends React.Component {
             </ListItem>
           </Link>
           <Link to="/dashboard/users">
-            <ListItem button key={"users"} style={{ padding: 0 }}>
+            <ListItem button key={"users"} style={{ padding: 15 }}>
               <ListItemIcon
                 style={{
                   margin: 0,

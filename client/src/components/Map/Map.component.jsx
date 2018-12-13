@@ -1,25 +1,31 @@
 import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
 import "./Map.css";
-// import { Link } from "react-router-dom";
 import * as options from "./map-options";
 import Dot from "./Dot/Dot.component";
-// import Filter from "./Filter/Filter.component";
+import Filter from "./Filter/Filter.component";
 import Spectrum from "./Spectrum/Spectrum.component";
 import { mapApi } from "../../config/map.config";
 import Axios from "axios";
 
 export default class Map extends Component {
   state = {
-    center: [40, 0],
+    center: [50, 0],
     zoom: 3,
-    filterOptions: {},
+    locadedProjects: [],
     locations: [],
+    hoveredProject: {
+      Countries: [],
+      Sdgs: [],
+      Founders: [],
+      Investors: [],
+      contact: {}
+    },
     projectsInfo: [],
-    currentProject: {},
     filterOptions: {
       sector: ""
-    }
+    },
+    filterOn: false
   };
 
   componentDidMount() {
@@ -61,6 +67,48 @@ export default class Map extends Component {
     );
   };
 
+  getProject = (id, location) => {
+    this.state.locadedProjects.forEach(project => {
+      if (project.id === id) {
+        this.setState({
+          hoveredProject: project,
+          center: [location.lat, location.lng],
+          zoom: 6
+        });
+        return;
+      }
+    });
+
+    Axios.get("/api/projects/" + id).then(result => {
+      this.setState({
+        locadedProjects: [...this.state.locadedProjects, result.data[0]],
+        hoveredProject: result.data[0]
+      });
+    });
+  };
+
+  onOutHover = () => {
+    this.setState({
+      center: [50, 0],
+      zoom: 3
+    });
+  };
+
+  handleFilterToggle = () => {
+    this.setState({ filterOn: !this.state.filterOn });
+  };
+
+  filterByGivenOptions = options => {
+    this.setState(
+      {
+        filterOptions: { ...options }
+      },
+      () => {
+        this.fetchProjects();
+      }
+    );
+  };
+
   render() {
     return (
       <div
@@ -68,6 +116,20 @@ export default class Map extends Component {
         className="map fadeInSlow"
       >
         <Spectrum handleMouseHover={this.handleSpectrumHover} />
+
+        <Filter
+          filterProjects={this.filterByGivenOptions}
+          handleFilterToggle={this.handleFilterToggle}
+          shown={this.state.filterOn}
+        />
+        <button
+          button="true"
+          className="filter-btn"
+          onClick={this.handleFilterToggle}
+          style={{ display: this.state.filterOn ? "none" : "block" }}
+        >
+          filter
+        </button>
         <GoogleMapReact
           className="land-map"
           options={options}
@@ -77,13 +139,16 @@ export default class Map extends Component {
           onChange={this._onChange}
           handleMouseHover={this.handleSpectrumHover}
         >
-          {this.state.locations.map(location => {
+          {this.state.locations.map((location, key) => {
             return (
               <Dot
                 lng={location.lng}
                 lat={location.lat}
-                key={location.id}
+                key={key}
                 location={location}
+                project={this.state.hoveredProject}
+                onHover={this.getProject}
+                onOutHover={this.onOutHover}
               />
             );
           })}
