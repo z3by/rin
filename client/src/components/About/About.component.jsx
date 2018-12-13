@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./About.css";
 import Strategy from "./Strategy/Strategy.component";
-import HowItWorksComponent from "./HowItWorks/HowItWorks.component";
 import WhyRefugeesComponent from "./WhyRefugees/WhyRefugees.component";
 import WhoWeAreComponent from "./WhoWeAre/WhoWeAre.component";
 import { Route } from "react-router-dom";
@@ -76,20 +75,11 @@ export default class About extends Component {
               </IconButton>
               <h5 className="upper">our strategy</h5>
             </li>
+
             <li>
               <IconButton
                 onClick={() => {
-                  this.navigateTO("/about/how-it-works");
-                }}
-              >
-                <i className="far fa-sun" />
-              </IconButton>
-              <h5 className="upper">how it works</h5>
-            </li>
-            <li>
-              <IconButton
-                onClick={() => {
-                  this.navigateTO("/about/who-we-are");
+                  this.navigateTO("/about");
                 }}
               >
                 <i className="fas fa-users" />
@@ -118,21 +108,14 @@ export default class About extends Component {
         <main className="container">
           <div id="scroll-sign" />
           <section id="about-routes">
-            <Route exact path="/about" component={AboutIntro} />
             <Route path="/about/strategy" component={Strategy} />
-            <Route path="/about/how-it-works" component={HowItWorksComponent} />
             <Route
               path="/about/why-refugees"
               component={WhyRefugeesComponent}
             />
-            <Route path="/about/who-we-are" component={WhoWeAreComponent} />
+            <Route path="/about" exact component={WhoWeAreComponent} />
           </section>
         </main>
-        <div className="back-to-top">
-          <IconButton className="arrow-btn" onClick={this.scrollToTop}>
-            <i className="fas fa-arrow-up" />
-          </IconButton>
-        </div>
       </div>
     );
   }

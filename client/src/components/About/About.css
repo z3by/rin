@@ -1,12 +1,15 @@
 .container {
   padding: 20px;
-  width: 60%;
+  width: 70%;
   display: block;
   margin: 0 auto;
   -webkit-transition: all 1s ease;
   transition: all 1s ease;
 }
 
+.container:empty {
+  padding: 0;
+}
 .about-intro {
   padding: 20px;
 }
@@ -250,7 +253,7 @@
 
   .container {
     margin: 20px auto;
-    width: 90%;
+    width: 95%;
   }
 
   .go-down i,

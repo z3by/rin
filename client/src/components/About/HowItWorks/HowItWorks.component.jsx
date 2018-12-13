@@ -8,21 +8,21 @@ export default props => {
   }, 200);
   return (
     <div className="fadeInFast">
+      <Typography variant="h4" className="upper color-4">
+        <i className="far fa-sun color-2" style={{ marginRight: 20 }} />
+        How it works
+      </Typography>
       <Paper className="padding-20 margin-20">
-        <Typography variant="h4" className="upper color-4">
-          <i className="far fa-sun color-2" style={{ marginRight: 20 }} />
-          How it works
-        </Typography>
-        increased capital investments. Drawing on deep domain expertise on
         <Typography variant="body1">
+          increased capital investments. Drawing on deep domain expertise on
           Driving economic prosperity through improved investor networks and
           impact investing, development finance, and migration issues, and
           enabled through the thoughtful application of data science, the RIN
           provides its members with three core offerings:
         </Typography>
       </Paper>
-      <Paper className="padding-20 margin-20">
-        <Typography variant="h4">
+      <Paper className="padding-20 margin-20" id="research">
+        <Typography variant="h4" style={{ marginTop: 20 }}>
           <i className="color-2 start-icon fab fa-searchengin" />
           Research
         </Typography>
@@ -71,7 +71,7 @@ export default props => {
           </li>
         </ol>
       </Paper>
-      <Paper className="padding-20 margin-20">
+      <Paper className="padding-20 margin-20" id="facilitation">
         <Typography variant="h4">
           <i className="color-2 start-icon fab fa-leanpub" />
           Facilitation
@@ -127,7 +127,7 @@ export default props => {
           </li>
         </ol>
       </Paper>
-      <Paper className="padding-20 margin-20">
+      <Paper className="padding-20 margin-20" id="policy">
         <Typography variant="h4">
           <i className="color-2 start-icon fas fa-gavel" />
           Policy and Advocacy:
