@@ -290,6 +290,14 @@ module.exports.getProjectsLocations = (req, res) => {
     });
   }
 
+  if (!!req.query.investmentSize) {
+    andQuery.push({
+      investmentSize: {
+        [Op.gte]: req.query.investmentSize
+      }
+    });
+  }
+
   let opOr = [];
   if (req.query.sdgs) {
     req.query.sdgs.forEach(sdg => {

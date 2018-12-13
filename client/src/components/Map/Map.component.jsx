@@ -38,16 +38,12 @@ export default class Map extends Component {
     Axios.get("/api/projectslocations", {
       params: { ...this.state.filterOptions }
     }).then(res => {
-      console.log(res.data);
-
       res.data.forEach(project => {
         project.locations.forEach(location => {
           location.sector = project.sector;
           locations.push(location);
         });
       });
-      console.log(locations);
-
       this.setState({ locations: locations });
     });
   };
