@@ -98,6 +98,17 @@ export default class Map extends Component {
     this.setState({ filterOn: !this.state.filterOn });
   };
 
+  filterByGivenOptions = options => {
+    this.setState(
+      {
+        filterOptions: options
+      },
+      () => {
+        this.fetchProjects();
+      }
+    );
+  };
+
   render() {
     return (
       <div
@@ -107,11 +118,12 @@ export default class Map extends Component {
         <Spectrum handleMouseHover={this.handleSpectrumHover} />
 
         <Filter
+          filterProjects={this.filterByGivenOptions}
           handleFilterToggle={this.handleFilterToggle}
           shown={this.state.filterOn}
         />
         <button
-          button
+          button="true"
           className="filter-btn"
           onClick={this.handleFilterToggle}
           style={{ display: this.state.filterOn ? "none" : "block" }}

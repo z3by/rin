@@ -1,6 +1,7 @@
 import React from "react";
 import Paper from "@material-ui/core/Paper";
 import "./Filter.css";
+import FilterForm from "./FilterForm/FilterForm.component";
 
 export default function Filter(props) {
   return (
@@ -16,6 +17,7 @@ export default function Filter(props) {
         id="close-filter"
         onClick={props.handleFilterToggle}
       />
+      <FilterForm filterProjects={props.filterProjects} />
     </Paper>
   );
 }

@@ -89,9 +89,13 @@ const Dot = props => {
             style={{ marginTop: 20 }}
             className="color-2 capitalize"
           >
-            {props.project.Countries.map(country => {
+            {props.project.Countries.map((country, i) => {
               return (
-                <Typography variant="body1" className="color-2 capitalize">
+                <Typography
+                  key={i}
+                  variant="body1"
+                  className="color-2 capitalize"
+                >
                   - {country.name} -
                 </Typography>
               );

@@ -1,5 +1,6 @@
 .filter-modal {
   position: fixed;
+  padding: 20px;
   z-index: 100;
   height: 70vh;
   top: 15vh;
@@ -9,6 +10,17 @@
   -webkit-transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   background: var(--light-transparent) !important;
+}
+
+.sdgs-checkboxes {
+  max-width: 100%;
+}
+
+.sdgs-checkboxes > div {
+  margin: 10px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 #close-filter {
@@ -29,28 +41,39 @@
   z-index: 120;
   width: 100px;
   height: 40px;
-  background: var(--light-transparent);
   border: none;
   font-family: var(--main-font);
   text-transform: uppercase;
-  color: var(--color-5);
   left: calc(50vw - 50px);
   cursor: pointer;
   font-size: 1.2rem;
-}
-.filter-btn:hover {
-  background: var(--light-transparent);
-  font-family: var(--main-font);
-  text-transform: uppercase;
-  color: var(--color-5);
-  left: calc(50vw - 50px);
   background: var(--color-2);
   color: aliceblue;
 }
+.filter-btn:hover {
+  background: var(--light-transparent);
+  color: var(--color-5);
+  font-family: var(--main-font);
+  text-transform: uppercase;
+  left: calc(50vw - 50px);
+}
 
+.center-w-50 {
+  width: 50%;
+  margin-left: 25%;
+}
+
+.label-sm {
+  font-size: 1.1rem;
+  color: #666;
+}
 @media (max-width: 768px) {
   .filter-modal {
     left: 5vw;
     width: 90vw;
+  }
+  .center-w-50 {
+    width: 100%;
+    margin-left: 0;
   }
 }
