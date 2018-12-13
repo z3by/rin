@@ -1,0 +1,26 @@
+.p-heading {
+  height: 300px;
+  position: relative;
+  background-color: #222;
+  margin: 20px 0;
+}
+
+.p-heading-image {
+  background-size: cover;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  -webkit-filter: brightness(0.6);
+  filter: brightness(0.4);
+  z-index: 2 !important;
+  opacity: 0.8;
+}
+.p-heading-text {
+  color: var(--color-1) !important;
+  font-family: var(--main-font);
+  width: 70%;
+  position: relative;
+  z-index: 3;
+  top: 30%;
+  left: 10%;
+}
