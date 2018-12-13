@@ -34,25 +34,24 @@
   list-style: none;
 }
 
-.header-nav h3 {
-  text-transform: uppercase;
-  color: var(--color-5);
-  font-family: var(--main-font);
-}
-
 .header-nav h5 {
   text-transform: uppercase;
   color: var(--color-1);
   font-family: var(--main-font);
-  font-size: 1rem;
+  font-size: 1rem !important;
+  cursor: pointer;
 }
 
 .header-nav i {
   color: var(--color-1);
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-  font-size: 4rem;
+  font-size: 3rem !important;
+  text-align: center;
+  height: 4rem;
+  width: 4rem;
   text-align: center;
 }
+
 .header-nav li {
   margin: 0 20px;
   display: inline-block;
@@ -105,7 +104,7 @@
 
 .go-down button,
 .back-to-top button {
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--color-2);
   width: 50px;
   height: 50px;
 }
@@ -120,7 +119,7 @@
 }
 
 .arrow-btn i {
-  color: var(--color-2);
+  color: var(--color-1);
 }
 
 .read-more-popup {

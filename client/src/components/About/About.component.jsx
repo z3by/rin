@@ -7,6 +7,7 @@ import WhoWeAreComponent from "./WhoWeAre/WhoWeAre.component";
 import { Route } from "react-router-dom";
 import AboutIntro from "./AboutIntro/AboutIntro";
 import IconButton from "@material-ui/core/IconButton";
+import { Typography } from "@material-ui/core";
 
 export default class About extends Component {
   constructor() {
@@ -59,52 +60,52 @@ export default class About extends Component {
         </div>
 
         <header className="header">
-          <h1 className="header-text color-1">About Us</h1>
+          <Typography variant="h1" className="main-font upper color-1">
+            About Us
+          </Typography>
           <div className="line" />
 
           <ul className="header-nav">
             <li>
-              <a
+              <IconButton
                 onClick={() => {
                   this.navigateTO("/about/strategy");
                 }}
               >
-                <h5 className="upper">our strategy</h5>
                 <i className="fas fa-street-view" />
-              </a>
+              </IconButton>
+              <h5 className="upper">our strategy</h5>
             </li>
-
             <li>
-              <a
+              <IconButton
                 onClick={() => {
                   this.navigateTO("/about/how-it-works");
                 }}
               >
-                <h5 className="upper">how it works</h5>
                 <i className="far fa-sun" />
-              </a>
+              </IconButton>
+              <h5 className="upper">how it works</h5>
             </li>
-
             <li>
-              <a
+              <IconButton
                 onClick={() => {
                   this.navigateTO("/about/who-we-are");
                 }}
               >
-                <h5 className="upper">who we are</h5>
                 <i className="fas fa-users" />
-              </a>
+              </IconButton>
+              <h5 className="upper">who we are</h5>
             </li>
 
             <li>
-              <a
+              <IconButton
                 onClick={() => {
                   this.navigateTO("/about/why-refugees");
                 }}
               >
-                <h5 className="upper">why refugees</h5>
                 <i className="fab fa-accusoft" />
-              </a>
+              </IconButton>
+              <h5 className="upper">why refugees</h5>
             </li>
           </ul>
           <div className="go-down" onClick={this.goDown}>
