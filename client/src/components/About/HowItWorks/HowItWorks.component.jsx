@@ -1,5 +1,6 @@
 import React from "react";
 import "./HowItWorks.css";
+import { Typography, Paper } from "@material-ui/core";
 
 export default props => {
   setTimeout(() => {
@@ -7,114 +8,177 @@ export default props => {
   }, 200);
   return (
     <div className="fadeInFast">
-      <div className="key-strategy">
-        <img
-          src="/imgs/banners/5320649067_67a0728f12_o.jpg"
-          alt=""
-          className="banner-img"
-        />
-        <h2 className="color-2 upper">
-          <i className="far fa-sun" />
-          How it works
-        </h2>
-        <p>
-          Driving economic prosperity through improved investor networks and
+      <Typography variant="h4" className="upper color-4">
+        <i className="far fa-sun color-2" style={{ marginRight: 20 }} />
+        How it works
+      </Typography>
+      <Paper className="padding-20 margin-20">
+        <Typography variant="body1">
           increased capital investments. Drawing on deep domain expertise on
+          Driving economic prosperity through improved investor networks and
           impact investing, development finance, and migration issues, and
           enabled through the thoughtful application of data science, the RIN
           provides its members with three core offerings:
-        </p>
-
-        <h5>
-          <b>
-            <i className="color-4 fab fa-searchengin" />
-            Research{" "}
-          </b>{" "}
-          RIN creates the investment and impact proof points that serve as the
-          foundation of a vibrant refugee investment market. RIN members benefit
-          from:
-        </h5>
-
-        <ul>
+        </Typography>
+      </Paper>
+      <Paper className="padding-20 margin-20" id="research">
+        <Typography variant="h4" style={{ marginTop: 20 }}>
+          <i className="color-2 start-icon fab fa-searchengin" />
+          Research
+        </Typography>
+        <div className="p-heading">
+          <div
+            className="p-heading-image"
+            style={{
+              backgroundImage: "url(" + "/imgs/about/1.jpeg" + ")",
+              backgroundPositionY: "60%"
+            }}
+          />
+          <Typography variant="h6" className="p-heading-text">
+            RIN creates the investment and impact proof points that serve as the
+            foundation of a vibrant refugee investment market.
+          </Typography>
+        </div>
+        <Typography variant="h6" className="color-4" style={{ marginTop: 20 }}>
+          RIN members benefit from:
+        </Typography>
+        <ol>
           <li>
-            <b> Market intelligence:</b> The first knowledge hub containing
-            investor-centric research on the current business, investment, and
-            regulatory context of emerging and frontier markets that host large
-            numbers of refugees or forced migrant populations
+            <Typography variant="h6"> Market intelligence</Typography>
+            <Typography variant="body1">
+              The first knowledge hub containing investor-centric research on
+              the current business, investment, and regulatory context of
+              emerging and frontier markets that host large numbers of refugees
+              or forced migrant populations
+            </Typography>
           </li>
           <li>
-            <b>Expert insights:</b> Guidance on where and how to incorporate
-            displaced communities into investment strategies, with a focus on
-            understanding local realities, opportunities, and how to effectively
-            partner with governments and international financial institutions
+            <Typography variant="h6">Expert insights</Typography> Guidance on
+            <Typography variant="body1">
+              where and how to incorporate displaced communities into investment
+              strategies, with a focus on understanding local realities,
+              opportunities, and how to effectively partner with governments and
+              international financial institutions
+            </Typography>
           </li>
           <li>
-            <b>Deal scorecards: </b>
-            Access to independent and unbiased evaluations of the impact of
-            investments on displaced and host communities designed in
-            collaboration with investment and humanitarian partners
+            <Typography variant="h6">Deal scorecards: </Typography>
+            <Typography variant="body1">
+              Access to independent and unbiased evaluations of the impact of
+              investments on displaced and host communities designed in
+              collaboration with investment and humanitarian partners
+            </Typography>
           </li>
-        </ul>
-        <h5>
-          <b>
-            <i className="color-4 fab fa-leanpub" />
-            Facilitation:{" "}
-          </b>
-          RIN helps investors put their capital to work supporting displaced
-          people and the communities hosting them. This support includes:
-        </h5>
-
-        <ul>
+        </ol>
+      </Paper>
+      <Paper className="padding-20 margin-20" id="facilitation">
+        <Typography variant="h4">
+          <i className="color-2 start-icon fab fa-leanpub" />
+          Facilitation
+        </Typography>
+        <div className="p-heading">
+          <div
+            className="p-heading-image"
+            style={{
+              backgroundImage: "url(" + "/imgs/about/2.jpeg" + ")",
+              backgroundPositionY: "60%"
+            }}
+          />
+          <Typography
+            variant="h6"
+            className="color-3"
+            className="p-heading-text"
+          >
+            RIN helps investors put their capital to work supporting displaced
+            people and the communities hosting them.
+          </Typography>
+        </div>
+        <Typography variant="h6" className="color-4" style={{ marginTop: 20 }}>
+          This support includes:
+        </Typography>
+        <ol>
           <li>
-            <b>Deal flow:</b> A geographically diversified portfolio of
-            high-quality investment opportunities including deals that: (a) hire
-            and source from refugees and forced-migrant populations; (b) provide
-            goods and services to refugees and host communities; (c) expand the
-            number and quality of refugee-owned micro-, small-, and medium-sized
-            enterprises; (d) strengthen social enterprises that meet refugee and
-            host community needs; or (e) utilize development impact bonds
+            <Typography variant="h6">Deal flow</Typography>
+            <Typography variant="body1">
+              A geographically diversified portfolio of high-quality investment
+              opportunities including deals that: (a) hire and source from
+              refugees and forced-migrant populations; (b) provide goods and
+              services to refugees and host communities; (c) expand the number
+              and quality of refugee-owned micro-, small-, and medium-sized
+              enterprises; (d) strengthen social enterprises that meet refugee
+              and host community needs; or (e) utilize development impact bonds
+            </Typography>
           </li>
           <li>
-            <b>Co-investment facilitation:</b> Access to co-investment or
-            partners to move deals up the funding ladder and fill specific
-            investment gaps, particularly in blended finance and impact
-            investment deals
+            <Typography variant="h6">Co-investment facilitation</Typography>
+            <Typography variant="body1">
+              Access to co-investment or partners to move deals up the funding
+              ladder and fill specific investment gaps, particularly in blended
+              finance and impact investment deals
+            </Typography>
           </li>
           <li>
-            <b>Structuring assistance:</b> Navigation and design of de-risking
-            instruments, guarantees, or other innovative financial instruments
-            often necessary in markets hosting refugees
+            <Typography variant="h6">Structuring assistance</Typography>
+            <Typography variant="body1">
+              Navigation and design of de-risking instruments, guarantees, or
+              other innovative financial instruments often necessary in markets
+              hosting refugees
+            </Typography>
           </li>
-        </ul>
-        <h5>
-          <b>
-            <i className="color-4 fas fa-gavel" />
-            Policy and Advocacy:
-          </b>{" "}
-          RIN bridges the gap between private investors, international donors,
-          governments, and NGOs in the broader global development community.
+        </ol>
+      </Paper>
+      <Paper className="padding-20 margin-20" id="policy">
+        <Typography variant="h4">
+          <i className="color-2 start-icon fas fa-gavel" />
+          Policy and Advocacy:
+        </Typography>
+        <div className="p-heading">
+          <div
+            className="p-heading-image"
+            style={{
+              backgroundImage: "url(" + "/imgs/about/3.jpeg" + ")",
+              backgroundPositionY: "60%"
+            }}
+          />
+          <Typography
+            variant="h6"
+            className="color-3"
+            className="p-heading-text"
+          >
+            RIN bridges the gap between private investors, international donors,
+            governments, and NGOs in the broader global development community.
+          </Typography>
+        </div>
+        <Typography variant="h6" className="color-4" style={{ marginTop: 20 }}>
           These efforts focus on:
-        </h5>
-
-        <ul>
+        </Typography>
+        <ol>
           <li>
-            <b> Access and voice:</b> Streamlined access between private
-            investors, development finance institutions, and aid agencies to
-            convey investor needs and market barriers that need to be mitigated
-            to enhance capital entry and deal flow
+            <Typography variant="h6">Access and voice</Typography>
+            <Typography variant="body1">
+              Streamlined access between private investors, development finance
+              institutions, and aid agencies to convey investor needs and market
+              barriers that need to be mitigated to enhance capital entry and
+              deal flow
+            </Typography>
           </li>
           <li>
-            <b>National policy:</b> Strategic influence to reshape national
-            policies in target countries so they are more supportive to
-            investment and economic opportunities for refugees
+            <Typography variant="h6">National policy</Typography>
+            <Typography variant="body1">
+              Strategic influence to reshape national policies in target
+              countries so they are more supportive to investment and economic
+              opportunities for refugees
+            </Typography>
           </li>
           <li>
-            <b>Changing the narrative:</b> telling powerful stories of how
-            refugees are investable and are significant contributors to local
-            economies
+            <Typography variant="h6">Changing the narrative</Typography>
+            <Typography variant="body1">
+              telling powerful stories of how refugees are investable and are
+              significant contributors to local economies
+            </Typography>
           </li>
-        </ul>
-      </div>
+        </ol>
+      </Paper>
     </div>
   );
 };
