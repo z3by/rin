@@ -21,9 +21,9 @@
   --color-5: #8c8c8a; */
 
   /* 11111111111111111111111111111111111111111111 */
-  --color-1: #e9e9e9;
+  --color-1: #f9f9f9;
   --color-2: #f90;
-  --color-3: #aaa;
+  --color-3: #777;
   --color-4: #003049;
   --color-5: #444;
   /* 11111111111111111111111111111111111111111111 */
@@ -681,4 +681,19 @@ option:hover {
 
 .text-center {
   text-align: center;
+}
+
+.padding-20 {
+  padding: 20px;
+}
+.margin-20 {
+  margin: 20px;
+}
+
+.start-icon {
+  margin-right: 20px;
+}
+
+.main-font {
+  font-family: var(--main-font) !important;
 }

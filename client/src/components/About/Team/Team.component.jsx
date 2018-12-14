@@ -1,17 +1,21 @@
-import React from "react";
+import React, { Component } from "react";
 import "./Team.css";
-import TeamMember from "../TeamMember/TeamMember.component";
+import TeamMember from "./TeamMember.component";
 
-export default props => {
-  return (
-    <div
-      className={`${
-        props.info.length > 5 ? "grid-6" : "grid-5"
-      } team-grid fadeInFast`}
-    >
-      {props.info.map((ele, id) => {
-        return <TeamMember key={id} teamMemberInfo={ele} />;
-      })}
-    </div>
-  );
-};
+export default class Team extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  render() {
+    return (
+      <React.Fragment>
+        {this.props.info.map((guy, i) => {
+          return (
+            <TeamMember imgHeight={this.props.imgHeight} key={i} bio={guy} />
+          );
+        })}
+      </React.Fragment>
+    );
+  }
+}

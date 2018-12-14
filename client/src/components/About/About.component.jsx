@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import "./About.css";
 import Strategy from "./Strategy/Strategy.component";
-import HowItWorksComponent from "./HowItWorks/HowItWorks.component";
 import WhyRefugeesComponent from "./WhyRefugees/WhyRefugees.component";
 import WhoWeAreComponent from "./WhoWeAre/WhoWeAre.component";
 import { Route } from "react-router-dom";
-import AboutIntro from "./AboutIntro/AboutIntro";
 import IconButton from "@material-ui/core/IconButton";
+import { Typography } from "@material-ui/core";
 
 export default class About extends Component {
   constructor() {
@@ -59,52 +58,43 @@ export default class About extends Component {
         </div>
 
         <header className="header">
-          <h1 className="header-text color-1">About Us</h1>
+          <Typography variant="h1" className="main-font upper color-1">
+            About Us
+          </Typography>
           <div className="line" />
 
           <ul className="header-nav">
             <li>
-              <a
+              <IconButton
                 onClick={() => {
                   this.navigateTO("/about/strategy");
                 }}
               >
-                <h5 className="upper">our strategy</h5>
                 <i className="fas fa-street-view" />
-              </a>
+              </IconButton>
+              <h5 className="upper">our strategy</h5>
             </li>
 
             <li>
-              <a
+              <IconButton
                 onClick={() => {
-                  this.navigateTO("/about/how-it-works");
+                  this.navigateTO("/about");
                 }}
               >
-                <h5 className="upper">how it works</h5>
-                <i className="far fa-sun" />
-              </a>
-            </li>
-
-            <li>
-              <a
-                onClick={() => {
-                  this.navigateTO("/about/who-we-are");
-                }}
-              >
-                <h5 className="upper">who we are</h5>
                 <i className="fas fa-users" />
-              </a>
+              </IconButton>
+              <h5 className="upper">who we are</h5>
             </li>
 
             <li>
-              <a
+              <IconButton
                 onClick={() => {
                   this.navigateTO("/about/why-refugees");
                 }}
               >
-                <h5 className="upper">why refugees</h5>
                 <i className="fab fa-accusoft" />
-              </a>
+              </IconButton>
+              <h5 className="upper">why refugees</h5>
             </li>
           </ul>
           <div className="go-down" onClick={this.goDown}>
@@ -117,21 +107,14 @@ export default class About extends Component {
         <main className="container">
           <div id="scroll-sign" />
           <section id="about-routes">
-            <Route exact path="/about" component={AboutIntro} />
             <Route path="/about/strategy" component={Strategy} />
-            <Route path="/about/how-it-works" component={HowItWorksComponent} />
             <Route
               path="/about/why-refugees"
               component={WhyRefugeesComponent}
             />
-            <Route path="/about/who-we-are" component={WhoWeAreComponent} />
+            <Route path="/about" exact component={WhoWeAreComponent} />
           </section>
         </main>
-        <div className="back-to-top">
-          <IconButton className="arrow-btn" onClick={this.scrollToTop}>
-            <i className="fas fa-arrow-up" />
-          </IconButton>
-        </div>
       </div>
     );
   }

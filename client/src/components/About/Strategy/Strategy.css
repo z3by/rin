@@ -1,0 +1,36 @@
+.stategy-cards {
+  grid-gap: 0;
+  margin: 0 auto;
+}
+.card-col {
+  height: 300px;
+  width: 90%;
+  margin: 0;
+  cursor: default;
+}
+.card-col:hover {
+  -webkit-box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+}
+
+.card-col h6 {
+  padding: 20px;
+  font-size: 1rem;
+  height: 50px;
+  background: var(--color-2);
+}
+
+.card-col p {
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .stategy-cards {
+    grid-template-columns: 1fr;
+    grid-gap: 0;
+  }
+  .card-col {
+    margin: 20px 0;
+    height: 150px;
+  }
+}

@@ -1,12 +1,13 @@
 import React from "react";
+import { Typography, Paper } from "@material-ui/core";
 
 export default () => {
   return (
-    <div className="fadeInFast">
-      <h2 className="color-2">
-        <b> The Refugee Investment Network (RIN)</b>
-      </h2>
-      <p>
+    <Paper className="fadeInFast about-intro">
+      <Typography variant="h6" className="color-4">
+        What is The Refugee Investment Network (RIN) ?
+      </Typography>
+      <Typography variant="body1">
         is the first blended finance investment collaborative dedicated to
         creating long-term solutions to global forced migration. The RIN moves
         private capital from commitment to active investment by sourcing,
@@ -15,7 +16,7 @@ export default () => {
         bridge the gap between the untapped entrepreneurial potential of
         refugees and capital markets to spur economic growth, create jobs, and
         increase socio-economic stability among displaced people.
-      </p>
-    </div>
+      </Typography>
+    </Paper>
   );
 };

@@ -3,6 +3,7 @@ import "./WhoWeAre.css";
 import Team from "../Team/Team.component";
 import TeamInfo from "../team.json";
 import SteeringInfo from "../steering.json";
+import { Typography, Paper } from "@material-ui/core";
 
 export default props => {
   setTimeout(() => {
@@ -11,36 +12,36 @@ export default props => {
   return (
     <div className="who-we-are fadeInFast">
       <section>
-        <h2 className="color-2 upper">
-          <i className="fas fa-users" />
+        <Typography variant="h3" className="color-4 upper text-center">
+          <i className="fas fa-users start-icon color-2" />
           Who We Are
-        </h2>
-
-        <h4 className="color-3">
+        </Typography>
+        <Typography variant="h6" className="capitalize color-3 text-center">
           A commitment to courageous action, innovative economic solutions, and
           deep collaboration.
-        </h4>
+        </Typography>
+
         <div className="grid-2">
-          <div>
-            <h3 className="upper color-4">
-              <i className="fas fa-users-cog" />
+          <Paper className="margin-20">
+            <Typography variant="h6" className="upper color-1 bg-2 padding-20">
+              <i className="start-icon fas fa-users-cog" />
               Operating Team
-            </h3>
-            <p className="p-theme-1">
+            </Typography>
+            <Typography variant="body1" className="padding-20">
               RIN Members represent the full capital continuum: foundations and
               philanthropists, impact, institutional, and commercial
               investors--as well as international finance institutions,
               policymakers, and humanitarians. RIN members all share a
               commitment to courageous action, innovative economic solutions,
               and deep collaboration.
-            </p>
-          </div>
-          <div>
-            <h3 className="upper color-4">
-              <i className="fas fa-user-friends" />
+            </Typography>
+          </Paper>
+          <Paper className="margin-20">
+            <Typography variant="h6" className="upper color-1 bg-2 padding-20">
+              <i className="start-icon fas fa-user-friends" />
               Key Partners
-            </h3>
-            <p className="p-theme-1">
+            </Typography>
+            <Typography variant="body1" className="padding-20">
               Systems entrepreneurs John Kluge (Alight Fund & Toilet Hackers)
               and Tim Docking (IBM & Millennium Challenge Corporation) lead the
               RIN with support from the Global Development Incubator (GDI), a
@@ -48,26 +49,30 @@ export default props => {
               development challenges. GDI’s Founder and Executive Director
               Andrew Stern leads the organization’s strategic and operational
               support for the RIN.
-            </p>
-          </div>
+            </Typography>
+          </Paper>
         </div>
-        <h3 className="color-2 upper">
-          <i className="fas fa-users" />
+        <Typography variant="h4" className="color-2">
+          <i className="start-icon fas fa-users" />
           Meet The Team
-        </h3>
-        <Team info={TeamInfo} />
+        </Typography>
+        <div className="grid-3">
+          <Team imgHeight={300} info={TeamInfo} />
+        </div>
       </section>
       <section>
-        <h3 className="color-2 upper">
-          <i className="fas fa-user-friends" />
+        <Typography variant="h4" className="color-2">
+          <i className="start-icon fas fa-user-friends" />
           Guided by a world-class Steering Committee.
-        </h3>
-        <p className="">
+        </Typography>
+        <Typography variant="body1">
           We're proud to draw on the expertise of a Steering Committee made up
           of members who come from diverse backgrounds but share a commitment to
           creating long-term solutions to global forced migration.
-        </p>
-        <Team info={SteeringInfo} />
+        </Typography>
+        <div className="grid-5">
+          <Team imgHeight={200} info={SteeringInfo} />
+        </div>
       </section>
     </div>
   );
