@@ -3,7 +3,6 @@ import "./About.css";
 import Strategy from "./Strategy/Strategy.component";
 import WhyRefugeesComponent from "./WhyRefugees/WhyRefugees.component";
 import WhoWeAreComponent from "./WhoWeAre/WhoWeAre.component";
-import MemberInfo from "./Team/MemberInfo.component";
 import { Route } from "react-router-dom";
 import IconButton from "@material-ui/core/IconButton";
 import { Typography } from "@material-ui/core";
@@ -22,20 +21,19 @@ export default class About extends Component {
   // navigate to specifec route
   navigateTO = route => {
     this.props.history.push(route);
-    document.body.scrollBy({
-      top: window.innerHeight,
-      behavior: "smooth"
-    });
   };
 
   scrollToTop = () => {
-    document.querySelector(".about").scrollIntoView({
+    document.querySelector(".header").scrollIntoView({
       behavior: "smooth"
     });
   };
 
   goDown = () => {
-    document.body.scrollTo(0, window.innerHeight);
+    document.body.scrollBy({
+      top: window.innerHeight - document.body.scrollTop,
+      behavior: "smooth"
+    });
   };
 
   closePopup = () => {
@@ -115,6 +113,11 @@ export default class About extends Component {
             <Route path="/about" exact component={WhoWeAreComponent} />
           </section>
         </main>
+        <div className="back-to-top" style={{ margin: "20px 0" }}>
+          <IconButton className="arrow-btn" onClick={this.scrollToTop}>
+            <i className="fas fa-arrow-up" />
+          </IconButton>
+        </div>
       </div>
     );
   }

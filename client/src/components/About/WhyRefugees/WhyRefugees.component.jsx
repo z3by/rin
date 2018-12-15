@@ -3,7 +3,12 @@ import "./WhyRefugees.css";
 import { Typography, Paper } from "@material-ui/core";
 
 export default props => {
-  document.body.scrollTo(0, window.innerHeight);
+  setTimeout(() => {
+    document.body.scrollBy({
+      top: window.innerHeight - document.body.scrollTop,
+      behavior: "smooth"
+    });
+  }, 200);
 
   return (
     <div className="">

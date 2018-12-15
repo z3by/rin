@@ -7,15 +7,15 @@ import IconButton from "@material-ui/core/IconButton";
 export default props => {
   setTimeout(() => {
     document.body.scrollBy({
-      top: window.innerHeight,
+      top: window.innerHeight - document.body.scrollTop,
       behavior: "smooth"
     });
-  }, 200);
+  }, 500);
 
   return (
     <div className="strategy">
       <Typography variant="h4" className="upper color-4 text-center">
-        <i class="fas fa-street-view start-icon color-2" />
+        <i className="fas fa-street-view start-icon color-2" />
         The RIN strategy has three pillars:
       </Typography>
       <ul
@@ -65,11 +65,6 @@ export default props => {
         livelihood opportunities for refugees and their host communities.
       </Typography>
       <HowItWorksComponent />
-      <div className="back-to-top">
-        <IconButton className="arrow-btn" onClick={this.scrollToTop}>
-          <i className="fas fa-arrow-up" />
-        </IconButton>
-      </div>
     </div>
   );
 };

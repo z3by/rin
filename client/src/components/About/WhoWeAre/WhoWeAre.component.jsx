@@ -15,18 +15,22 @@ export default class WhoWeAre extends Component {
   }
 
   componentDidMount() {
-    this.scrollIfNotFirstTime();
+    setTimeout(() => {
+      this.scrollIfNotFirstTime();
+    }, 200);
   }
 
   scrollIfNotFirstTime = () => {
     document.body.scrollBy({
-      top: window.innerHeight,
+      top: window.innerHeight - document.body.scrollTop,
       behavior: "smooth"
     });
   };
 
   showMemberInfo = info => {
-    this.setState({ currentMemberInfo: info });
+    this.setState({ currentMemberInfo: info }, () => {
+      console.log(this.state);
+    });
   };
 
   render() {
@@ -83,7 +87,7 @@ export default class WhoWeAre extends Component {
             <i className="start-icon fas fa-users" />
             Meet The Team
           </Typography>
-          <div className="grid-5">
+          <div className="grid-4">
             <Team
               {...this.props}
               showMemberInfo={this.showMemberInfo}
@@ -102,7 +106,7 @@ export default class WhoWeAre extends Component {
             of members who come from diverse backgrounds but share a commitment
             to creating long-term solutions to global forced migration.
           </Typography>
-          <div className="grid-5">
+          <div className="grid-4">
             <Team
               showMemberInfo={this.showMemberInfo}
               {...this.props}

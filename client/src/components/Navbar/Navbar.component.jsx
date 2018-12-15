@@ -88,13 +88,10 @@ export default class Navbar extends Component {
                     style={{ opacity: this.state.collapsed ? "0" : "1" }}
                   >
                     <li>
-                      <Link to={"/about/who-we-are"}>who we are</Link>
+                      <Link to={"/about"}>who we are</Link>
                     </li>
                     <li>
                       <Link to={"/about/strategy"}>our strategy</Link>
-                    </li>
-                    <li>
-                      <Link to={"/about/how-it-works"}>how it works</Link>
                     </li>
                     <li>
                       <Link to={"/about/why-refugees"}>why refugees </Link>
