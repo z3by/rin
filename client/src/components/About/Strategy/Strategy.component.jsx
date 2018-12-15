@@ -6,10 +6,14 @@ import IconButton from "@material-ui/core/IconButton";
 
 export default props => {
   setTimeout(() => {
-    document.body.scrollTo(0, window.innerHeight);
+    document.body.scrollBy({
+      top: window.innerHeight,
+      behavior: "smooth"
+    });
   }, 200);
+
   return (
-    <div className="strategy fadeInFast">
+    <div className="strategy">
       <Typography variant="h4" className="upper color-4 text-center">
         <i class="fas fa-street-view start-icon color-2" />
         The RIN strategy has three pillars:

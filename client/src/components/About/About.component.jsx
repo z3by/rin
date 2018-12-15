@@ -3,6 +3,7 @@ import "./About.css";
 import Strategy from "./Strategy/Strategy.component";
 import WhyRefugeesComponent from "./WhyRefugees/WhyRefugees.component";
 import WhoWeAreComponent from "./WhoWeAre/WhoWeAre.component";
+import MemberInfo from "./Team/MemberInfo.component";
 import { Route } from "react-router-dom";
 import IconButton from "@material-ui/core/IconButton";
 import { Typography } from "@material-ui/core";
@@ -21,10 +22,9 @@ export default class About extends Component {
   // navigate to specifec route
   navigateTO = route => {
     this.props.history.push(route);
-    setTimeout(() => {
-      document.querySelector("#scroll-sign").scrollIntoView({
-        behavior: "smooth"
-      });
+    document.body.scrollBy({
+      top: window.innerHeight,
+      behavior: "smooth"
     });
   };
 

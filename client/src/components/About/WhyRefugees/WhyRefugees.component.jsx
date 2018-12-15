@@ -6,7 +6,7 @@ export default props => {
   document.body.scrollTo(0, window.innerHeight);
 
   return (
-    <div className="fadeInFast">
+    <div className="">
       <h2 className="upper color-2" />
       <Typography variant="h4" className="upper color-4 text-center">
         <i className="fab fa-accusoft start-icon color-2" />

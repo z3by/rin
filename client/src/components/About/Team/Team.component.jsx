@@ -7,12 +7,21 @@ export default class Team extends Component {
     super(props);
     this.state = {};
   }
+
   render() {
     return (
       <React.Fragment>
         {this.props.info.map((guy, i) => {
           return (
-            <TeamMember imgHeight={this.props.imgHeight} key={i} bio={guy} />
+            <TeamMember
+              showMemberInfo={() => {
+                this.props.showMemberInfo(guy);
+              }}
+              {...this.props}
+              imgHeight={this.props.imgHeight}
+              key={i}
+              bio={guy}
+            />
           );
         })}
       </React.Fragment>
