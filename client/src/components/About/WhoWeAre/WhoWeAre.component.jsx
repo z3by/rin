@@ -110,7 +110,7 @@ export default class WhoWeAre extends Component {
             <Team
               showMemberInfo={this.showMemberInfo}
               {...this.props}
-              imgHeight={150}
+              imgHeight={200}
               info={SteeringInfo}
             />
           </div>

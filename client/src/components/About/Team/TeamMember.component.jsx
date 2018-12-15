@@ -32,10 +32,7 @@ class RecipeReviewCard extends React.Component {
     const { classes } = this.props;
 
     return (
-      <Card
-        className="margin-20 member-card"
-        onClick={this.props.showMemberInfo}
-      >
+      <Card className="member-card" onClick={this.props.showMemberInfo}>
         <CardHeader
           avatar={
             <Avatar
@@ -49,7 +46,7 @@ class RecipeReviewCard extends React.Component {
           title={this.props.bio.name}
         />
         <CardMedia
-          style={{ height: this.props.imgHeight }}
+          className="card-img"
           image={this.props.bio.img}
           title="Paella dish"
         />
