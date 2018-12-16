@@ -5,3 +5,10 @@
   right: 0;
   top: 30%;
 }
+
+.header-img {
+  height: 100vh;
+  background-size: cover;
+  -webkit-filter: brightness(70%);
+  filter: brightness(70%);
+}

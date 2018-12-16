@@ -36,9 +36,16 @@ export default class StoryInfo extends Component {
     let story = this.state.storyData;
     let { myText } = this.state;
 
+    console.log(story);
+
     return (
       <Paper style={{ position: "relative" }}>
-        <img src={story.img} className="w-100 img-hero-darken" alt="" />
+        <div
+          className="header-img"
+          style={{
+            backgroundImage: "url(" + story.img + ")"
+          }}
+        />
         <div className="story-header">
           <Typography
             variant="h3"
@@ -58,11 +65,7 @@ export default class StoryInfo extends Component {
             {story.buisnessDescription}
           </Typography>
         </div>
-        <div className="container">
-          <Typography variant="body1" className="color-5">
-            {renderHTML(myText)}
-          </Typography>
-        </div>
+        <div className="container">{renderHTML(myText)}</div>
       </Paper>
     );
   }

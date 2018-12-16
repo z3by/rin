@@ -36,11 +36,11 @@ export default class ArticleInfo extends Component {
     const { articleText } = this.state;
     return (
       <Paper style={{ margin: 0, position: "relative" }}>
-        <img
-          src={article.img}
-          onLoad={this.handleImageLoading}
-          className="img-hero-darken w-100"
-          alt=""
+        <div
+          className="header-img"
+          style={{
+            backgroundImage: "url(" + article.img + ")"
+          }}
         />
         <div className="article-header">
           <Typography
@@ -61,11 +61,7 @@ export default class ArticleInfo extends Component {
             {article.subtitle}
           </Typography>
         </div>
-        <div className="container">
-          <Typography variant="body1" className="color-5">
-            {renderHTML(articleText)}
-          </Typography>
-        </div>
+        <div className="container">{renderHTML(articleText)}</div>
       </Paper>
     );
   }
