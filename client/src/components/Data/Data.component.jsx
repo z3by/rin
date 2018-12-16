@@ -2,14 +2,10 @@ import React, { Component } from "react";
 import "./Data.css";
 import axios from "axios";
 import IconButton from "@material-ui/core/IconButton";
-import { Doughnut, Polar, Radar } from 'react-chartjs-2';
 import BarChart from "./Charts/BarChart/BarChart.component";
 import LineChart from "./Charts/LineChart/LineChart.component";
-import PieChart from "./Charts/PieChart/PieChart.component";
 import HorizontalBarChart from "./Charts/HorizontalBarChart/HorizontalBarChart.component";
-import CircularProgress from '@material-ui/core/CircularProgress';
-import VisibilitySensor from 'react-visibility-sensor';
-
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 /*The structure of any chart data object is as the following:
   somethingData: {
@@ -37,7 +33,7 @@ export default class Data extends Component {
       allCountries: [],
       isAllCountriesRetrieved: false,
       isVisible1: false
-    }
+    };
   }
 
   componentWillMount() {
@@ -47,23 +43,32 @@ export default class Data extends Component {
     // this.getDemographicsData();
   }
 
-  componentDidMount() { }
+  componentDidMount() {}
 
   getAllCounries = () => {
-    axios.get("https://restcountries.eu/rest/v2/all")
+    axios
+      .get("https://restcountries.eu/rest/v2/all")
       .then(res => {
         res.data.forEach((oneData, i) => {
-          this.setState({ allCountries: [...this.state.allCountries, { name: oneData.name, alpha3Code: oneData.alpha3Code }] }, () => {
-            if (i === 249) {
-              this.setState({ isAllCountriesRetrieved: true });
+          this.setState(
+            {
+              allCountries: [
+                ...this.state.allCountries,
+                { name: oneData.name, alpha3Code: oneData.alpha3Code }
+              ]
+            },
+            () => {
+              if (i === 249) {
+                this.setState({ isAllCountriesRetrieved: true });
+              }
             }
-          });
+          );
         });
       })
       .catch(err => {
         console.log(err);
-      })
-  }
+      });
+  };
 
   scrollToTop = () => {
     document.querySelector(".library").scrollIntoView({
@@ -77,21 +82,37 @@ export default class Data extends Component {
     });
   };
 
-  getAsylumSeekersDataByYear = (e) => {
-    const year = e && e.target.value > -1 ? e.target.value : this.state.asylumSeekersSelectedYear;
-    this.setState({ asylumSeekersSelectedYear: year, isLoadingAsylumSeekersData: true });
+  getAsylumSeekersDataByYear = e => {
+    const year =
+      e && e.target.value > -1
+        ? e.target.value
+        : this.state.asylumSeekersSelectedYear;
+    this.setState({
+      asylumSeekersSelectedYear: year,
+      isLoadingAsylumSeekersData: true
+    });
 
-    axios.get(`http://popdata.unhcr.org/api/stats/asylum_seekers.json?year=${year}&&country_of_origin=SYR`)
+    axios
+      .get(
+        `http://popdata.unhcr.org/api/stats/asylum_seekers.json?year=${year}&&country_of_origin=SYR`
+      )
       .then(res => {
         this.setState({ isLoadingAsylumSeekersData: false }, () => {
           let labelsOfAsylumCountries = [];
           let dataOfAppliedCount = [];
           let dataOfAccepteddCount = [];
           for (let i = 0; i < 50; i++) {
-            if ((!labelsOfAsylumCountries.includes(res.data[i].country_of_asylum_en)) && (res.data[i].applied_during_year > 4)) {
+            if (
+              !labelsOfAsylumCountries.includes(
+                res.data[i].country_of_asylum_en
+              ) &&
+              res.data[i].applied_during_year > 4
+            ) {
               labelsOfAsylumCountries.push(res.data[i].country_of_asylum_en);
               dataOfAppliedCount.push(res.data[i].applied_during_year);
-              dataOfAccepteddCount.push(res.data[i].applied_during_year - res.data[i].rejected);
+              dataOfAccepteddCount.push(
+                res.data[i].applied_during_year - res.data[i].rejected
+              );
             }
           }
 
@@ -102,18 +123,29 @@ export default class Data extends Component {
           datasets[1].data = dataOfAccepteddCount;
           datasets[1].label = "Accepted Applications";
           datasets[1].backgroundColor = "#82ca9d";
-          this.setState({ asylumSeekersData: { labels: labelsOfAsylumCountries, datasets: datasets } });
+          this.setState({
+            asylumSeekersData: {
+              labels: labelsOfAsylumCountries,
+              datasets: datasets
+            }
+          });
         });
       })
       .catch(err => {
         console.log(err);
       });
-  }
+  };
 
   getResettlementData = () => {
     const labels = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018];
     const countriesOfAsylum = ["AUS", "CAN", "DEU", "GBR", "USA"];
-    const colors = ["rgb(232, 51, 56)", "rgb(141, 194, 111)", "rgb(100, 179, 244)", "rgb(100, 65, 165)", "rgb(255, 144, 104)"];
+    const colors = [
+      "rgb(232, 51, 56)",
+      "rgb(141, 194, 111)",
+      "rgb(100, 179, 244)",
+      "rgb(100, 65, 165)",
+      "rgb(255, 144, 104)"
+    ];
     let datasets = [];
     for (let i = 0; i < countriesOfAsylum.length; i++) {
       datasets.push({});
@@ -124,7 +156,12 @@ export default class Data extends Component {
       datasets[i].data = [];
 
       for (let j = 0; j < labels.length; j++) {
-        axios.get(`http://popdata.unhcr.org/api/stats/resettlement.json?year=${labels[j]}&country_of_asylum=${countriesOfAsylum[i]}`)
+        axios
+          .get(
+            `http://popdata.unhcr.org/api/stats/resettlement.json?year=${
+              labels[j]
+            }&country_of_asylum=${countriesOfAsylum[i]}`
+          )
           .then(res => {
             let totalValue = 0;
             for (let r = 0; r < res.data.length; r++) {
@@ -140,27 +177,26 @@ export default class Data extends Component {
       }
     }
     this.setState({ resettlementData: { labels, datasets } });
-  }
+  };
 
-  findCountryAlpha3Code = (countryName) => {
+  findCountryAlpha3Code = countryName => {
     if (this.state.isAllCountriesRetrieved) {
       for (let i = 0; i < this.state.allCountries.length; i++) {
         if (this.state.allCountries[i].name === countryName) {
           return this.state.allCountries[i].alpha3Code;
         }
       }
-    }
-    else {
+    } else {
       return "SYR";
     }
-  }
+  };
 
   //This function is triggered in two events; either in select year event || in select country event
-  getDemographicsData = (e) => {
+  getDemographicsData = e => {
     let year, country, alpha3Code;
     //check if the event triggered by select year
     if (e && Number(e.target.value) > -1) {
-      year = e.target.value
+      year = e.target.value;
       country = this.state.demographicsSelectedCountry;
     }
     //check if the event triggered by select country
@@ -173,11 +209,18 @@ export default class Data extends Component {
       year = this.state.demographicsSelectedYear;
       country = this.state.demographicsSelectedCountry;
     }
-    this.setState({ demographicsSelectedYear: year, demographicsSelectedCountry: country, isLoadingDmographicsData: true });
+    this.setState({
+      demographicsSelectedYear: year,
+      demographicsSelectedCountry: country,
+      isLoadingDmographicsData: true
+    });
     //find the alpha3Code of the country
     alpha3Code = this.findCountryAlpha3Code(country);
 
-    axios.get(`http://popdata.unhcr.org/api/stats/demographics.json?year=${year}&country_of_residence=${alpha3Code}`)
+    axios
+      .get(
+        `http://popdata.unhcr.org/api/stats/demographics.json?year=${year}&country_of_residence=${alpha3Code}`
+      )
       .then(res => {
         let labels = [];
         let femaleValueData = [];
@@ -203,15 +246,21 @@ export default class Data extends Component {
       .catch(err => {
         console.log(err);
       });
-  }
+  };
 
-  onChange = (isVisible) => {
-    console.log('Element is now %s', isVisible ? 'visible' : 'hidden');
+  onChange = isVisible => {
+    console.log("Element is now %s", isVisible ? "visible" : "hidden");
     this.setState({ isVisible1: isVisible });
-  }
+  };
 
   render() {
-    let { allCountries, isLoadingAsylumSeekersData, isLoadingDmographicsData, demographicsSelectedYear, demographicsSelectedCountry, isVisible1 } = this.state;
+    let {
+      allCountries,
+      isLoadingAsylumSeekersData,
+      isLoadingDmographicsData,
+      demographicsSelectedYear,
+      demographicsSelectedCountry
+    } = this.state;
 
     const years = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017];
     let allYears = years.map((year, i) => {
@@ -227,8 +276,8 @@ export default class Data extends Component {
         <option value={country.name} key={i}>
           {country.name}
         </option>
-      )
-    })
+      );
+    });
 
     return (
       <div
@@ -244,29 +293,50 @@ export default class Data extends Component {
             <h3>statistics proof that refugees are a great investment</h3>
             <div className="go-down" onClick={this.goDown}>
               <IconButton>
-                <i className="fas fa-arrow-down color-2" />
+                <i className="fas fa-arrow-down color-1" />
               </IconButton>
             </div>
           </div>
         </header>
         <div className="container">
           <div className="asylum-seekers-chart">
-            <h3 className="chart-heading">UNHCR Statistics of Asylum Seekers from Syria in {this.state.asylumSeekersSelectedYear}</h3>
+            <h3 className="chart-heading">
+              UNHCR Statistics of Asylum Seekers from Syria in{" "}
+              {this.state.asylumSeekersSelectedYear}
+            </h3>
             <select onChange={this.getAsylumSeekersDataByYear}>
               <option value={-1}>Select Year</option>
               {allYears}
             </select>
             <div className="chart-preloader">
-              <CircularProgress className="preloader" size={"7vw"} thickness={3} style={{ visibility: isLoadingAsylumSeekersData ? "visible" : "hidden" }} />
-              <BarChart data={this.state.asylumSeekersData} getAsylumSeekersDataByYear={this.getAsylumSeekersDataByYear} />
+              <CircularProgress
+                className="preloader"
+                size={"7vw"}
+                thickness={3}
+                style={{
+                  visibility: isLoadingAsylumSeekersData ? "visible" : "hidden"
+                }}
+              />
+              <BarChart
+                data={this.state.asylumSeekersData}
+                getAsylumSeekersDataByYear={this.getAsylumSeekersDataByYear}
+              />
             </div>
           </div>
           <div className="resettlement-chart">
-            <h3 className="chart-heading">UNHCR Statistics of Resettlement (2010 - 2018)</h3>
-            <LineChart data={this.state.resettlementData} getResettlementData={this.getResettlementData} />
+            <h3 className="chart-heading">
+              UNHCR Statistics of Resettlement (2010 - 2018)
+            </h3>
+            <LineChart
+              data={this.state.resettlementData}
+              getResettlementData={this.getResettlementData}
+            />
           </div>
           <div className="demographics-chart">
-            <h3 className="chart-heading">UNHCR Statistics of Demographics in {demographicsSelectedCountry} ({demographicsSelectedYear})</h3>
+            <h3 className="chart-heading">
+              UNHCR Statistics of Demographics in {demographicsSelectedCountry}{" "}
+              ({demographicsSelectedYear})
+            </h3>
             <select onChange={this.getDemographicsData}>
               <option value={-1}>Select Year</option>
               {allYears}
@@ -276,8 +346,18 @@ export default class Data extends Component {
               {countries}
             </select>
             <div className="chart-preloader">
-              <CircularProgress className="preloader" size={"7vw"} thickness={3} style={{ visibility: isLoadingDmographicsData ? "visible" : "hidden" }} />
-              <HorizontalBarChart data={this.state.demographicsData} getDemographicsData={this.getDemographicsData} />
+              <CircularProgress
+                className="preloader"
+                size={"7vw"}
+                thickness={3}
+                style={{
+                  visibility: isLoadingDmographicsData ? "visible" : "hidden"
+                }}
+              />
+              <HorizontalBarChart
+                data={this.state.demographicsData}
+                getDemographicsData={this.getDemographicsData}
+              />
             </div>
           </div>
         </div>

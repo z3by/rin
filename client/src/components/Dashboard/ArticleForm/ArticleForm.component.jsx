@@ -4,9 +4,9 @@ import TextField from "@material-ui/core/TextField";
 import Axios from "axios";
 import Typography from "@material-ui/core/Typography";
 import MyEditor from "../../general-components/MyEditor/MyEditor.component";
-import { EditorState, convertToRaw, ContentState } from 'draft-js';
-import htmlToDraft from 'html-to-draftjs';
-import draftToHtml from 'draftjs-to-html';
+import { EditorState, convertToRaw, ContentState } from "draft-js";
+import htmlToDraft from "html-to-draftjs";
+import draftToHtml from "draftjs-to-html";
 
 export default class ArticleForm extends Component {
   constructor(props) {
@@ -30,13 +30,15 @@ export default class ArticleForm extends Component {
     }
   };
 
-  convertToEditorState = (text) => {
+  convertToEditorState = text => {
     const html = draftToHtml(JSON.parse(text));
     const contentBlock = htmlToDraft(html);
-    const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
+    const contentState = ContentState.createFromBlockArray(
+      contentBlock.contentBlocks
+    );
     const editorState = EditorState.createWithContent(contentState);
     this.setState({ editorState });
-  }
+  };
 
   fetchArticleInfo = id => {
     Axios.get("/api/articles/" + id).then(result => {
@@ -49,7 +51,7 @@ export default class ArticleForm extends Component {
         },
         () => {
           this.setState({ adding: false });
-          this.convertToEditorState(this.state.article.text)
+          this.convertToEditorState(this.state.article.text);
         }
       );
     });
@@ -64,9 +66,11 @@ export default class ArticleForm extends Component {
     });
   };
 
-  editText = (text) => {
-    this.setState({ article: { ...this.state.article, text: JSON.stringify(text) } });
-  }
+  editText = text => {
+    this.setState({
+      article: { ...this.state.article, text: JSON.stringify(text) }
+    });
+  };
 
   // for demo ONLY
   checkIfFieldIsValid = name => {
@@ -85,7 +89,7 @@ export default class ArticleForm extends Component {
   updateArticle = () => {
     Axios.put("/api/articles/" + this.state.article.id, this.state.article)
       .then(result => {
-        this.props.history.push("/dashboard/blog");
+        this.props.history.push("/dashboard/articles");
       })
       .catch(err => {
         this.showErrorMessage(err);
@@ -96,7 +100,7 @@ export default class ArticleForm extends Component {
     this.setState({ adding: true });
     Axios.post("/api/articles", this.state.article)
       .then(result => {
-        this.props.history.push("/dashboard/blog");
+        this.props.history.push("/dashboard/articles");
       })
       .catch(err => {
         this.showErrorMessage(err);
@@ -132,12 +136,12 @@ export default class ArticleForm extends Component {
       });
   };
 
-  onEditorStateChange = (editorState) => {
+  onEditorStateChange = editorState => {
     this.setState({ editorState }, () => {
       const text = convertToRaw(editorState.getCurrentContent());
       this.editText(text);
     });
-  }
+  };
 
   render() {
     return (
@@ -205,7 +209,10 @@ export default class ArticleForm extends Component {
             <Typography variant="overline">max size 1.mb</Typography>
           </div>
 
-          <MyEditor editorState={this.state.editorState} onEditorStateChange={this.onEditorStateChange} />
+          <MyEditor
+            editorState={this.state.editorState}
+            onEditorStateChange={this.onEditorStateChange}
+          />
         </Form>
       </div>
     );

@@ -5,6 +5,7 @@ const Op = db.Sequelize.Op;
 // sign up new user controller;
 module.exports.registerNewMember = (req, res) => {
   const userInfo = req.body;
+  console.log(req.body);
 
   // validate user input;
   usersHelpers

@@ -7,14 +7,16 @@ export default class SignUpLogIn extends Component {
     super(props);
 
     this.state = {
-      roles: ["Inverstor", "Service Provider", "Media", "Other"],
-      first_name: "",
-      last_name: "",
-      organization_name: "",
-      user_role: "",
-      email: "",
-      password: "",
-      password2: "",
+      roles: ["investor", "entrepreneur", "humanitarian", "community"],
+      userInfo: {
+        firstName: "",
+        lastName: "",
+        organizationName: "",
+        userRole: "",
+        email: "",
+        password: "",
+        password2: ""
+      },
       errors: []
     };
   }
@@ -41,24 +43,21 @@ export default class SignUpLogIn extends Component {
   };
 
   onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({
+      userInfo: {
+        ...this.state.userInfo,
+        [e.target.name]: e.target.value
+      }
+    });
   };
 
   addUser = e => {
     e.preventDefault();
 
-    let userData = {
-      first_name: this.state.first_name,
-      last_name: this.state.last_name,
-      organization_name: this.state.organization_name,
-      user_role: this.state.user_role,
-      email: this.state.email,
-      password: this.state.password,
-      password2: this.state.password2
-    };
+    let { userInfo } = this.state;
 
     axios
-      .post("/users/register", userData)
+      .post("/users/register", userInfo)
       .then(res => {
         this.toggleClassBounce();
       })
@@ -69,7 +68,6 @@ export default class SignUpLogIn extends Component {
             errors.push(<li key={i}>{error.response.data[i]}</li>);
           }
         }
-
         this.setState({
           errors: errors
         });
@@ -80,8 +78,8 @@ export default class SignUpLogIn extends Component {
     e.preventDefault();
 
     let userData = {
-      email: this.state.email,
-      password: this.state.password
+      email: this.state.userInfo.email,
+      password: this.state.userInfo.password
     };
 
     axios
@@ -196,7 +194,7 @@ export default class SignUpLogIn extends Component {
                   <div className="forms_field">
                     <input
                       type="text"
-                      name="first_name"
+                      name="firstName"
                       placeholder="First Name"
                       className="forms_field-input"
                       onChange={this.onChange}
@@ -206,7 +204,7 @@ export default class SignUpLogIn extends Component {
                   <div className="forms_field">
                     <input
                       type="text"
-                      name="last_name"
+                      name="lastName"
                       placeholder="Last Name"
                       className="forms_field-input"
                       onChange={this.onChange}
@@ -217,7 +215,7 @@ export default class SignUpLogIn extends Component {
                   <div className="forms_field">
                     <input
                       type="text"
-                      name="organization_name"
+                      name="organizationName"
                       placeholder="Organization Name"
                       className="forms_field-input"
                       onChange={this.onChange}
@@ -226,7 +224,7 @@ export default class SignUpLogIn extends Component {
                   </div>
                   <div className="forms_field">
                     <select
-                      name="user_role"
+                      name="userRole"
                       className="forms_field-input"
                       onChange={this.onChange}
                       required

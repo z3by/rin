@@ -110,14 +110,6 @@ router.post("/links", libraryAPI.addLink);
 router.put("/links/:id", libraryAPI.updateLink);
 router.delete("/links/:id", libraryAPI.deleteLinks);
 
-// books routes
-router.get("/books", libraryAPI.getBooks);
-router.get("/books/page", libraryAPI.getBooksPage);
-router.get("/books/:id", libraryAPI.getBook);
-router.post("/books", libraryAPI.addBook);
-router.put("/books/:id", libraryAPI.updateBook);
-router.delete("/books/:id", libraryAPI.deleteBooks);
-
 // researches routes
 router.get("/researches", libraryAPI.getResearches);
 router.get("/researches/page", libraryAPI.getResearchesPage);

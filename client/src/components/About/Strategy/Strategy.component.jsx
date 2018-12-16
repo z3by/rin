@@ -1,17 +1,13 @@
 import React from "react";
 import "./Strategy.css";
-import { Typography, Paper, Card } from "@material-ui/core";
+import { Typography, Card } from "@material-ui/core";
 import HowItWorksComponent from "../HowItWorks/HowItWorks.component";
-import IconButton from "@material-ui/core/IconButton";
 
 export default props => {
-  setTimeout(() => {
-    document.body.scrollTo(0, window.innerHeight);
-  }, 200);
   return (
-    <div className="strategy fadeInFast">
+    <div className="strategy">
       <Typography variant="h4" className="upper color-4 text-center">
-        <i class="fas fa-street-view start-icon color-2" />
+        <i className="fas fa-street-view start-icon color-2" />
         The RIN strategy has three pillars:
       </Typography>
       <ul
@@ -61,11 +57,6 @@ export default props => {
         livelihood opportunities for refugees and their host communities.
       </Typography>
       <HowItWorksComponent />
-      <div className="back-to-top">
-        <IconButton className="arrow-btn" onClick={this.scrollToTop}>
-          <i className="fas fa-arrow-up" />
-        </IconButton>
-      </div>
     </div>
   );
 };
