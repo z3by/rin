@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "postinstall": "cd ./client && npm run build",
+    "postinstall": "cd ./client && npm install && npm run build",
     "start": "node ./bin/www",
     "watch": "nodemon ./bin/www",
     "server": "cd client && npm run build && cd .. && npm start",
