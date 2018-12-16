@@ -1,0 +1,29 @@
+.news {
+  background: var(--color-1);
+  height: 100vh;
+}
+
+.news .banner-full {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.news header {
+  background: url(/imgs/backs5.jpg);
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-size: cover;
+}
+
+ul.cards {
+  list-style: none;
+}
+ul.cards li {
+  margin: 20px 0;
+}
+
+.cards-container .show-more-btn {
+  display: block;
+  margin: 0 auto;
+}

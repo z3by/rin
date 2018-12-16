@@ -1,10 +1,9 @@
-const mysql = require("mysql");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const registerValidator = require("../validators/register.validator");
 const loginValidator = require("../validators/login.validator");
-const DBconfig = require("../db.config");
+const db = require("../../models/index");
 
 // check if user input is valid for register
 module.exports.validateUserRegister = userInfo => {
@@ -23,24 +22,11 @@ module.exports.validateUserRegister = userInfo => {
 // create new user in the database
 module.exports.register = userInfo => {
   return new Promise((resolve, reject) => {
-    const connection = mysql.createConnection(DBconfig);
-    connection.connect(err => {
-      if (err) throw err;
-      connection.query(
-        `insert into members (email, password, first_name, last_name, organization_name, user_role ) values ("${
-          userInfo.email
-        }", "${userInfo.password}", "${userInfo.first_name}","${
-          userInfo.last_name
-        }","${userInfo.organization_name}","${userInfo.user_role}")`,
-        (err, result) => {
-          if (err) reject(err);
-          else {
-            connection.end();
-            resolve(result);
-          }
-        }
-      );
+    db.Member.create(userInfo).then(result => {
+      resolve(result);
     });
+  }).catch(err => {
+    reject(err);
   });
 };
 
@@ -62,28 +48,15 @@ module.exports.validateUserLogin = userInfo => {
 // check if email is taken
 module.exports.checkIfEmailTaken = email => {
   return new Promise((resolve, reject) => {
-    const connection = mysql.createConnection(DBconfig);
-    connection.connect(err => {
-      if (err) throw err;
-      connection.query(
-        `select email from members where members.email like "${email}"`,
-        (err, result) => {
-          if (err) {
-            connection.end();
-            reject(err);
-          }
-          if (result.length) {
-            const errors = {
-              email: "this email is already linked with another account"
-            };
-            connection.end();
-            reject(errors);
-          } else {
-            connection.end();
-            resolve(true);
-          }
-        }
-      );
+    db.Member.count({ where: { email: email } }).then(result => {
+      if (result) {
+        const errors = {
+          email: "this email is already linked with another account"
+        };
+        reject(errors);
+      } else {
+        resolve(true);
+      }
     });
   });
 };
@@ -105,17 +78,15 @@ module.exports.hashPassword = password => {
 // check if email is exists
 module.exports.checkEmail = email => {
   return new Promise((resolve, reject) => {
-    const connection = mysql.createConnection(DBconfig);
-    connection.connect(err => {
-      if (err) throw err;
-      connection.query(
-        `select exists(select * from members where members.email = "${email}" limit 1)`,
-        (err, exists) => {
-          if (err) throw reject(err);
-          connection.end();
-          resolve(!!exists);
-        }
-      );
+    db.Member.count({ where: { email: email } }).then(result => {
+      if (!result) {
+        const errors = {
+          email: "make sure the email is correct and try again"
+        };
+        reject(errors);
+      } else {
+        resolve(true);
+      }
     });
   });
 };
@@ -123,29 +94,24 @@ module.exports.checkEmail = email => {
 // check if password is correct
 module.exports.checkPassword = userInfo => {
   return new Promise((resolve, reject) => {
-    const connection = mysql.createConnection(DBconfig);
-
-    connection.connect(err => {
-      if (err) throw reject(err);
-      connection.query(
-        `select * from members where members.email = "${
-          userInfo.email
-        }" limit 1`,
-        (err, result) => {
-          if (err) {
-            reject(err);
-          }
-
-          const password = result[0].password;
-          bcrypt.compare(userInfo.password, password, (err, match) => {
-            if (err) reject(err);
-
-            connection.end();
+    db.Member.findAll({
+      where: {
+        email: userInfo.email
+      }
+    })
+      .then(result => {
+        const hashedPassword = result[0].dataValues.password;
+        bcrypt.compare(userInfo.password, hashedPassword, (err, match) => {
+          if (err) reject(err);
+          else {
             resolve(!!match);
-          });
-        }
-      );
-    });
+            console.log(!!match);
+          }
+        });
+      })
+      .catch(err => {
+        reject(err);
+      });
   });
 };
 

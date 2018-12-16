@@ -21,9 +21,9 @@
   --color-5: #8c8c8a; */
 
   /* 11111111111111111111111111111111111111111111 */
-  --color-1: #e9e9e9;
+  --color-1: #efefef;
   --color-2: #f90;
-  --color-3: #aaa;
+  --color-3: #777;
   --color-4: #003049;
   --color-5: #444;
   /* 11111111111111111111111111111111111111111111 */
@@ -32,7 +32,7 @@
   --color-3: #dedede;
   --color-4: #313732;
   --color-5: #8aa8b0; */
-  --light-transparent: rgba(255, 255, 255, 0.8);
+  --light-transparent: rgba(255, 255, 255, 0.6);
   --dark-transparent: rgba(0, 0, 0, 0.8);
 
   /* 11111111111111111111111111111111111111111111 */
@@ -52,7 +52,7 @@ html {
   height: 100vh;
   width: 100vw;
   padding: 0;
-  overflow: hidden;
+  overflow-x: hidden;
   font-family: var(--main-font);
 }
 
@@ -116,10 +116,6 @@ section {
   margin: 50px auto;
 }
 
-i {
-  margin: 20px;
-}
-
 .btn {
   background: transparent;
   border: solid 1px var(--color-2);
@@ -179,7 +175,6 @@ i {
 
 .header h3 {
   font-weight: 300;
-  text-transform: capitalize;
   margin: 30px 0;
   position: relative;
   color: var(--color-3);
@@ -187,8 +182,12 @@ i {
   mix-blend-mode: screen;
   padding: 10px 30px;
 }
+
+.header-subtitle {
+  font-size: 1.7rem;
+}
 .header-text {
-  font-size: 6rem;
+  font-size: 4rem;
   color: var(--color-2);
   font-family: var(--main-font);
   text-transform: uppercase;
@@ -232,10 +231,6 @@ label {
   transition: all 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
   font-size: 20px;
   font-size: 1.5rem;
-}
-
-.arrows i:hover {
-  color: var(--color-1);
 }
 
 .slideInRight {
@@ -601,6 +596,9 @@ option:hover {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
 .grid-5 {
@@ -674,4 +672,27 @@ option:hover {
 
 .p-theme-2 {
   font-size: 0.9rem;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.padding-20 {
+  padding: 20px;
+}
+.margin-20 {
+  margin: 20px;
+}
+
+.start-icon {
+  margin-right: 20px;
+}
+
+.main-font {
+  font-family: var(--main-font) !important;
 }

@@ -5,7 +5,11 @@ import TableRow from "@material-ui/core/TableRow";
 
 export default function CustomTableHead(props) {
   const columns = props.data.map((title, index) => {
-    return <TableCell key={index}>{title}</TableCell>;
+    return (
+      <TableCell key={index}>
+        {title.replace(/([a-z])([A-Z])/g, "$1 $2").toLowerCase()}
+      </TableCell>
+    );
   });
   if (props.controls) {
     columns.push(<TableCell key="actions">Actions</TableCell>);

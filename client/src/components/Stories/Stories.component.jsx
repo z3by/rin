@@ -13,7 +13,6 @@ class Stories extends Component {
     };
   }
   componentDidMount() {
-    document.body.style.overflowY = "auto";
     this.fetchStories();
   }
 
@@ -32,7 +31,8 @@ class Stories extends Component {
   };
 
   goDown = () => {
-    document.querySelector("#scroll-sign").scrollIntoView({
+    document.body.scrollBy({
+      top: window.innerHeight - document.body.scrollTop,
       behavior: "smooth"
     });
   };
@@ -51,12 +51,12 @@ class Stories extends Component {
             <h1 className="header-text">Success Stories</h1>
             <div className="line" />
 
-            <h3 className="">
+            <h3 className="header-subtitle">
               Every-day stories proving that refugees are investable
             </h3>
             <div className="go-down" onClick={this.goDown}>
               <IconButton onClick={this.goDown}>
-                <i className="fas fa-arrow-down color-2" />
+                <i className="fas fa-arrow-down color-1" />
               </IconButton>
             </div>
           </div>

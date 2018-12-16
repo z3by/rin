@@ -2,11 +2,9 @@ import React from "react";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import Collapse from "@material-ui/core/Collapse";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { Link } from "react-router-dom";
 
 class ArticleCard extends React.Component {
   constructor(props) {
@@ -23,14 +21,14 @@ class ArticleCard extends React.Component {
       <Card className="article-card">
         <CardMedia
           className="card-img"
-          image={this.props.article.imgs[0]}
+          image={this.props.article.img}
           title="Paella dish"
         />
         <CardContent>
           <Typography
             gutterBottom
-            variant="h3"
-            component="h2"
+            variant="h5"
+            component="h4"
             className="capitalize"
           >
             {this.props.article.title}
@@ -44,26 +42,21 @@ class ArticleCard extends React.Component {
           >
             {this.props.article.subtitle}
           </Typography>
-          <Typography component="p">
-            {this.props.article.text.substr(0, 50)} ...
-          </Typography>
         </CardContent>
-        <CardActions className="" disableActionSpacing>
-          <Button
-            className=""
-            onClick={this.handleExpandClick}
-            aria-expanded={this.state.expanded}
-            aria-label="Show more"
-          >
-            Read More
-            <ExpandMoreIcon />
-          </Button>
-        </CardActions>
-        <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
-          <CardContent>
-            <Typography>{this.props.article.text}</Typography>
-          </CardContent>
-        </Collapse>
+        <Button
+          style={{
+            background: "var(--color-2)",
+            color: "white",
+            display: "block",
+            float: "right",
+            margin: "0 10px 10px 0"
+          }}
+          onClick={this.handleExpandClick}
+        >
+          <Link className="color-1" to={"/blog/" + this.props.article.id}>
+            Read More...
+          </Link>
+        </Button>
       </Card>
     );
   }

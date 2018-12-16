@@ -1,0 +1,82 @@
+.form-sbumit-button {
+  margin: 20px auto 0 auto !important;
+  padding: 0px 20px 0 0 !important;
+  display: block !important;
+  min-width: 300px !important;
+  background: var(--color-1) !important;
+}
+.form-sbumit-button:hover {
+  background: var(--color-2) !important;
+}
+
+.form-sbumit-button i {
+  color: var(--color-2);
+}
+.form-sbumit-button:hover i {
+  color: var(--color-1) !important;
+}
+
+.full-width-input {
+  width: 100%;
+  margin: 30px 0 !important;
+}
+
+.input-text-group {
+  width: 50%;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+.half-width-input {
+  width: 80%;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.input-text-group i {
+  color: var(--color-2);
+  font-size: 1.5rem;
+  margin-bottom: 0;
+}
+
+.admin-form-container {
+  position: relative;
+  width: 60%;
+  left: 20%;
+}
+
+.img-upload-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.img-upload-preveiw {
+  background-color: transparent;
+  background-image: url(https://svn.alfresco.com/repos/alfresco-open-mirror/alfresco/HEAD/root/projects/repository/config/alfresco/thumbnail/thumbnail_placeholder_256_ai.png);
+  background-size: cover;
+}
+
+@media (max-width: 1024px) {
+  .admin-form-container {
+    width: 100%;
+    left: 0%;
+  }
+}
+
+@media (max-width: 768px) {
+  .input-text-group {
+    width: 100%;
+  }
+  .half-width-input {
+    width: 100%;
+  }
+  .admin-form-container {
+    width: 100%;
+    left: 0%;
+  }
+}

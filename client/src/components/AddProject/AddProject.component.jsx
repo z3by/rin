@@ -47,9 +47,7 @@ export default class AddProject extends Component {
     this.fetchAllCountries();
   }
 
-  componentDidMount() {
-    document.body.style.overflowY = "auto";
-  }
+  componentDidMount() {}
 
   enableAddButton = () => {
     this.setState({

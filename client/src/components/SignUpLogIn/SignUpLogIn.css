@@ -143,7 +143,7 @@
   font-family: var(--main-font);
   font-size: 1rem;
   font-weight: 300;
-  color: gray;
+  color: var(--color-5);
   letter-spacing: 0.1rem;
   -webkit-transition: border-color 0.2s ease-in-out;
   transition: border-color 0.2s ease-in-out;
@@ -156,7 +156,7 @@
   font-family: var(--main-font);
   font-weight: 300;
   letter-spacing: 0.1rem;
-  color: #111;
+  color: #777;
 }
 
 .forms_field-input::-moz-input-placeholder {
@@ -164,7 +164,7 @@
   font-family: var(--main-font);
   font-weight: 300;
   letter-spacing: 0.1rem;
-  color: #111;
+  color: #777;
 }
 
 .forms_field-input::-ms-input-placeholder {
@@ -172,7 +172,7 @@
   font-family: var(--main-font);
   font-weight: 300;
   letter-spacing: 0.1rem;
-  color: #111;
+  color: #777;
 }
 
 .forms_field-input::-webkit-input-placeholder {
@@ -180,7 +180,7 @@
   font-family: var(--main-font);
   font-weight: 300;
   letter-spacing: 0.1rem;
-  color: #111;
+  color: #777;
 }
 
 .forms_field-input:-ms-input-placeholder {
@@ -188,7 +188,7 @@
   font-family: var(--main-font);
   font-weight: 300;
   letter-spacing: 0.1rem;
-  color: #111;
+  color: #777;
 }
 
 .forms_field-input::placeholder {
@@ -196,7 +196,7 @@
   font-family: var(--main-font);
   font-weight: 300;
   letter-spacing: 0.1rem;
-  color: #111;
+  color: #777;
 }
 
 .user_options-forms.bounceLeft {

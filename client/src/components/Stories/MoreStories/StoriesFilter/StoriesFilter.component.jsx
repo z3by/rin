@@ -1,148 +1,111 @@
 import React, { Component } from "react";
-import "./StoriesFilter.css";
-import Checkbox from "@material-ui/core/Checkbox";
+import Paper from "@material-ui/core/Paper";
 import MenuItem from "@material-ui/core/MenuItem";
-import { MenuList } from "@material-ui/core";
-import ExpansionPanel from "@material-ui/core/ExpansionPanel";
-import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
-import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
-
-const lenses = [
-  "Refugee-Owned",
-  "Refugee-Led",
-  "Refugee-Supporting",
-  "Refugee-Supporting-Host-Weighted",
-  "Lending-Facilities",
-  "Refugee-Funds"
-];
-
-const SDGs = [
-  "Climate-Action",
-  "Decent-Work-and-Economic-Growth",
-  "Gender-Equality",
-  "Good-Health-and-Well-Being",
-  "Industry-Innovation-and-Infrastructure",
-  "Life-on-Land",
-  "No-Poverty",
-  "Partnerships-for-the-Goals",
-  "Peace-Justice-and-Strong-Institutions",
-  "Quality-Education",
-  "Reduced-Inqualities",
-  "Sustainable-Cities-and-Communities",
-  "Zero-Hunger"
-];
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import InputLabel from "@material-ui/core/InputLabel";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 
 export default class StoriesFilter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isFilterToggled: false
+      sector: "",
+      year: "",
+      refugeeInvestmentType: "",
+      countries: [],
+      labelWidth: 0
     };
   }
 
-  toggleFilter = () => {
-    this.setState({ isFilterToggled: !this.state.isFilterToggled });
+  componentWillMount() {}
+
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
   };
 
   render() {
-    let show = this.state.isFilterToggled ? " show" : "";
-
-    let allLenses = lenses.map((lens, i) => {
-      return (
-        <option value={lens} key={i}>
-          {lens}
-        </option>
-      );
-    });
-
-    let allSDGs = SDGs.map((sdg, i) => {
-      return (
-        <MenuItem>
-          <Checkbox
-            checked={this.state.checked}
-            style={{ color: "var(--color-2)" }}
-            onChange={this.props.filterSDGs}
-            value={i}
-            key={i}
-            name="SDG"
-          />
-          {sdg}
+    const currentYear = new Date().getFullYear();
+    const firstYear = currentYear - 15;
+    const yearsItems = [];
+    for (let i = firstYear; i <= currentYear; i++) {
+      yearsItems.push(
+        <MenuItem value={i} key={i}>
+          {i}
         </MenuItem>
       );
-    });
+    }
+
+    const refugeeInvestmentTypes = [
+      <MenuItem value={"refugee owned"} key={1}>
+        refugee owned
+      </MenuItem>
+    ];
+
+    const { sector, year, refugeeInvestmentType } = this.state;
+
+    const options = { sector, year, refugeeInvestmentType };
 
     return (
-      <div className={"stories-filter" + show}>
-        <a onClick={this.toggleFilter}>
-          <i className="fas fa-search" /> Search
-        </a>
-
-        <a
-          className="close"
-          onClick={this.toggleFilter}
-          style={{ display: this.state.isFilterToggled ? "block" : "none" }}
-        >
-          <i className="fas fa-times" />
-        </a>
-
-        <div className="stories-filter-input">
-          <label htmlFor="story-title" className="stories-filter-label">
-            Filter by Story Title
-          </label>
-          <input
-            id="story-title"
-            type="text"
-            name="title"
-            placeholder="story title"
-            className="stories-filter-input-text"
-            onChange={this.props.filter}
-          />
-        </div>
-
-        <div className="stories-filter-input">
-          <label htmlFor="story-title" className="stories-filter-label">
-            Filter by Refugee Lens
-          </label>
-          <select
-            name="lens"
-            id="lens"
-            onChange={this.props.filter}
-            className="stories-lens-select"
+      <Paper className="filter-card" style={{ marginLeft: 0 }}>
+        <Typography variant="h6">Filter the stories</Typography>
+        <FormControl className="filter-form-control">
+          <InputLabel htmlFor="sector-select">select sector</InputLabel>
+          <Select
+            value={this.state.sector}
+            onChange={this.handleChange}
+            inputProps={{
+              name: "sector",
+              id: "sector-select"
+            }}
           >
-            <option>Select Lens</option>
-            {allLenses}
-          </select>
-        </div>
+            <MenuItem value={"health"}>health</MenuItem>
+            <MenuItem value={"education"}>education</MenuItem>
+            <MenuItem value={"agriculture"}>agriculture</MenuItem>
+          </Select>
+        </FormControl>
+        <FormControl className="filter-form-control">
+          <InputLabel htmlFor="year-select">select year</InputLabel>
+          <Select
+            value={this.state.year}
+            onChange={this.handleChange}
+            inputProps={{
+              name: "year",
+              id: "year-select"
+            }}
+          >
+            {yearsItems}
+          </Select>
+        </FormControl>
 
-        <div className="stories-filter-input">
-          <label htmlFor="story-title" className="stories-filter-label">
-            Filter by SDGs
-          </label>
-          <ExpansionPanel className="stories-filter-SDGs">
-            <ExpansionPanelSummary
-              style={{
-                backgroundColor: "rgba(255, 153, 0, 0.8)",
-                border: "1px solid #fff"
-              }}
-            >
-              <p>Select SDGs</p>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              <MenuList>{allSDGs}</MenuList>
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
-        </div>
-
-        <button
-          className="btn"
-          onClick={() => {
-            this.toggleFilter();
-            this.props.fetchStories();
+        <FormControl className="filter-form-control">
+          <InputLabel htmlFor="refugee-investment-type-select">
+            investment type
+          </InputLabel>
+          <Select
+            value={this.state.refugeeInvestmentType}
+            onChange={this.handleChange}
+            inputProps={{
+              name: "refugeeInvestmentType",
+              id: "refugee-investment-type-select"
+            }}
+          >
+            {refugeeInvestmentTypes}
+          </Select>
+        </FormControl>
+        <Button
+          style={{
+            background: "var(--color-2)",
+            color: "white",
+            display: "block",
+            margin: "20px auto"
           }}
+          onClick={() => this.props.filterStories(options)}
         >
-          Go
-        </button>
-      </div>
+          Filter Stories...
+        </Button>
+      </Paper>
     );
   }
 }

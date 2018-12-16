@@ -1,75 +1,128 @@
-import React, { Component } from "react";
-import "./sidebar.css";
+import React from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import Drawer from "@material-ui/core/Drawer";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
 import { Link } from "react-router-dom";
 
-const tabsData = [
-  {
-    icon: "building",
-    title: "Projects",
-    path: "/dashboard/projects/list"
+const styles = {
+  list: {
+    width: 250
   },
-  {
-    title: "Stories",
-    icon: "user-check",
-    path: "/dashboard/stories/list"
-  },
-  {
-    title: "Articles",
-    icon: "newspaper",
-    path: "/dashboard/articles/list"
-  },
-  {
-    title: "Users",
-    icon: "users",
-    path: "/dashboard/users/list"
-  },
-  {
-    title: "Library",
-    icon: "book-open",
-    path: "/dashboard/library/links"
+  fullList: {
+    width: "auto"
   }
-];
-export default class componentName extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentTab: 0
-    };
-  }
+};
 
-  activateTab = id => {
-    this.setState({
-      currentTab: id
-    });
+class Sidebar extends React.Component {
+  state = {};
+
+  toggleDrawer = () => () => {
+    this.props.toggleDrawer();
   };
 
   render() {
-    return (
-      <nav id="ml-menu" className="sidebar">
-        <div className="admin-logo">
-          <Link to={"/"}>
-            <img src="/imgs/old-logo.png" alt="" className="logo-img" />
-          </Link>
-        </div>
-        <ul>
-          {tabsData.map((tab, id) => {
-            return (
-              <li
-                key={id}
-                onClick={() => {
-                  this.activateTab(id);
+    const { classes } = this.props;
+
+    const sideList = (
+      <div className={classes.list}>
+        <List>
+          <Link to="/dashboard">
+            <ListItem button key={"home"} style={{ padding: 15 }}>
+              <ListItemIcon
+                style={{
+                  margin: 0,
+                  color: "var(--color-2)",
+                  fontSize: "1.3rem"
                 }}
-                className={this.state.currentTab === id ? "tab-active" : ""}
               >
-                <Link to={tab.path}>
-                  <i className={"fas fa-" + tab.icon} />
-                  {tab.title}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
+                <i className="fas fa-home" />
+              </ListItemIcon>
+              <ListItemText>Home</ListItemText>
+            </ListItem>
+          </Link>
+          <Link to="/dashboard/projects">
+            <ListItem button key={"projects"} style={{ padding: 15 }}>
+              <ListItemIcon
+                style={{
+                  margin: 0,
+                  color: "var(--color-2)",
+                  fontSize: "1.3rem"
+                }}
+              >
+                <i className="fas fa-project-diagram" />
+              </ListItemIcon>
+              <ListItemText>Projects</ListItemText>
+            </ListItem>
+          </Link>
+          <Link to="/dashboard/stories">
+            <ListItem button key={"stories"} style={{ padding: 15 }}>
+              <ListItemIcon
+                style={{
+                  margin: 0,
+                  color: "var(--color-2)",
+                  fontSize: "1.3rem"
+                }}
+              >
+                <i className="fas fa-bookmark" />
+              </ListItemIcon>
+              <ListItemText>Stories</ListItemText>
+            </ListItem>
+          </Link>
+          <Link to="/dashboard/articles">
+            <ListItem button key={"blog"} style={{ padding: 15 }}>
+              <ListItemIcon
+                style={{
+                  margin: 0,
+                  color: "var(--color-2)",
+                  fontSize: "1.3rem"
+                }}
+              >
+                <i className="fas fa-newspaper" />
+              </ListItemIcon>
+              <ListItemText>Blog</ListItemText>
+            </ListItem>
+          </Link>
+          <Link to="/dashboard/users">
+            <ListItem button key={"users"} style={{ padding: 15 }}>
+              <ListItemIcon
+                style={{
+                  margin: 0,
+                  color: "var(--color-2)",
+                  fontSize: "1.3rem"
+                }}
+              >
+                <i className="fas fa-users" />
+              </ListItemIcon>
+              <ListItemText>Users</ListItemText>
+            </ListItem>
+          </Link>
+        </List>
+      </div>
+    );
+
+    return (
+      <div>
+        <Drawer open={this.props.toggled} onClose={this.toggleDrawer()}>
+          <div
+            tabIndex={0}
+            role="button"
+            onClick={this.toggleDrawer()}
+            onKeyDown={this.toggleDrawer()}
+          >
+            {sideList}
+          </div>
+        </Drawer>
+      </div>
     );
   }
 }
+
+Sidebar.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(Sidebar);
