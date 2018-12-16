@@ -1,13 +1,13 @@
-.library {
+.news {
   background: var(--color-1);
   height: 100vh;
 }
 
-.library .banner-full {
+.news .banner-full {
   background: rgba(0, 0, 0, 0.7);
 }
 
-.library header {
+.news header {
   background: url(/imgs/backs5.jpg);
   height: 100%;
   width: 100%;

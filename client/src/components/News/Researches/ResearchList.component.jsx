@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import LinkItem from "./LinkItem.component";
+import ResearchItem from "./ResearchItem.component";
 import Axios from "axios";
 import Button from "@material-ui/core/Button";
 
-export default class LinkList extends Component {
+export default class ResearchList extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,20 +17,23 @@ export default class LinkList extends Component {
 
   // get more 10 items and append it to the current items
   fetchData = () => {
-    Axios.get("/api/library/links/" + this.state.items.length).then(res => {
-      console.log(res.data);
+    const first = this.state.items.length;
+    const last = first + 10;
 
+    Axios.get("/api/researches/page", {
+      params: { first, last }
+    }).then(res => {
       this.setState({
-        items: [...this.state.items, ...res.data]
+        items: [...this.state.items, ...res.data.rows]
       });
     });
   };
 
   render() {
-    const items = this.state.items.map((link, id) => {
+    const items = this.state.items.map((item, id) => {
       return (
         <li>
-          <LinkItem info={link} key={id} />
+          <ResearchItem info={item} key={id} />
         </li>
       );
     });

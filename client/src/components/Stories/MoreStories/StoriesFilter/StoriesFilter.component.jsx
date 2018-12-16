@@ -5,6 +5,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 
 export default class StoriesFilter extends Component {
   constructor(props) {
@@ -47,8 +48,9 @@ export default class StoriesFilter extends Component {
     const options = { sector, year, refugeeInvestmentType };
 
     return (
-      <Paper style={{ padding: 20 }}>
-        <FormControl style={{ width: 150, marginLeft: 10 }}>
+      <Paper className="filter-card" style={{ marginLeft: 0 }}>
+        <Typography variant="h6">Filter the stories</Typography>
+        <FormControl className="filter-form-control">
           <InputLabel htmlFor="sector-select">select sector</InputLabel>
           <Select
             value={this.state.sector}
@@ -63,7 +65,7 @@ export default class StoriesFilter extends Component {
             <MenuItem value={"agriculture"}>agriculture</MenuItem>
           </Select>
         </FormControl>
-        <FormControl style={{ width: 150, marginLeft: 10 }}>
+        <FormControl className="filter-form-control">
           <InputLabel htmlFor="year-select">select year</InputLabel>
           <Select
             value={this.state.year}
@@ -77,7 +79,7 @@ export default class StoriesFilter extends Component {
           </Select>
         </FormControl>
 
-        <FormControl style={{ width: 150, marginLeft: 10 }}>
+        <FormControl className="filter-form-control">
           <InputLabel htmlFor="refugee-investment-type-select">
             investment type
           </InputLabel>

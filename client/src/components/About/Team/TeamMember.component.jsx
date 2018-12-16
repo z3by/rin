@@ -4,9 +4,8 @@ import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
-import CardActions from "@material-ui/core/CardActions";
+import Typography from "@material-ui/core/Typography";
 import Avatar from "@material-ui/core/Avatar";
-import Button from "@material-ui/core/Button";
 import red from "@material-ui/core/colors/red";
 
 const styles = theme => ({
@@ -25,18 +24,26 @@ const styles = theme => ({
 class RecipeReviewCard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { expanded: false };
+    this.state = {
+      memberInfo: {
+        isDetailsShown: false
+      }
+    };
   }
 
-  handleExpandClick = () => {
-    this.setState(state => ({ expanded: !this.state.expanded }));
+  showMmeberInfo = () => {
+    this.setState({ isDetailsShown: !this.state.isDetailsShown });
   };
 
   render() {
     const { classes } = this.props;
-
+    const shown = this.state.isDetailsShown;
     return (
-      <Card className="margin-20">
+      <Card
+        className="member-card"
+        onClick={this.showMmeberInfo}
+        style={{ overflowY: shown ? "scroll" : "hidden" }}
+      >
         <CardHeader
           avatar={
             <Avatar
@@ -50,14 +57,25 @@ class RecipeReviewCard extends React.Component {
           title={this.props.bio.name}
         />
         <CardMedia
-          style={{ height: this.props.imgHeight }}
+          style={{ display: shown ? "none" : "block" }}
+          className="card-img"
           image={this.props.bio.img}
           title="Paella dish"
         />
-
-        <CardActions className={classes.actions} disableActionSpacing>
-          <Button onClick={this.handleExpandClick}>Read More...</Button>
-        </CardActions>
+        <Typography
+          className="padding-20"
+          variant="body1"
+          style={{ display: !shown ? "none" : "block" }}
+        >
+          <Typography
+            className="color-3"
+            variant="subtitle1"
+            style={{ display: !shown ? "none" : "block" }}
+          >
+            {this.props.bio.title}
+          </Typography>
+          {this.props.bio.description}
+        </Typography>
       </Card>
     );
   }

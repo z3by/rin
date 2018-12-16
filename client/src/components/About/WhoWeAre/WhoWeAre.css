@@ -1,6 +1,9 @@
+.who-we-are {
+}
 .who-we-are section {
   margin: 100px 0;
 }
+
 .who-we-are section:first-child {
   margin: 0 auto 0 auto;
 }

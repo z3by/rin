@@ -3,12 +3,15 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Axios from "axios";
 import "./StoryInfo.css";
+import draftToHtml from "draftjs-to-html";
+import renderHTML from "react-render-html";
 
 export default class StoryInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      storyData: {}
+      storyData: {},
+      myText: ""
     };
   }
 
@@ -19,40 +22,50 @@ export default class StoryInfo extends Component {
   fetchStory = () => {
     const StoryId = this.props.match.params.id;
     Axios.get("/api/stories/" + StoryId).then(result => {
-      this.setState({ storyData: result.data[0] });
+      this.setState({ storyData: result.data[0] }, () => {
+        // this.setState({ storyData: { ...this.state.storyData, storyText: draftToHtml(JSON.parse(this.state.storyData.storyText)) } }, () => {
+        // });
+        this.setState({
+          myText: draftToHtml(JSON.parse(this.state.storyData.storyText))
+        });
+      });
     });
   };
 
   render() {
-    const story = this.state.storyData;
+    let story = this.state.storyData;
+    let { myText } = this.state;
+
+    console.log(story);
+
     return (
       <Paper style={{ position: "relative" }}>
-        <img src={story.img} className="w-100" alt="" />
+        <div
+          className="header-img"
+          style={{
+            backgroundImage: "url(" + story.img + ")"
+          }}
+        />
         <div className="story-header">
           <Typography
-            variant="h1"
-            className="color-1 capitalize text-center"
+            variant="h3"
+            className="color-1 upper text-center"
             style={{
               fontWeight: "bolder",
-              background: "var(--color-2)",
               padding: 10
             }}
           >
             {story.buisness}
           </Typography>
           <Typography
-            variant="h3"
+            variant="h5"
             className="color-1 capitalize text-center"
-            style={{ background: "var(--color-4)", padding: 10 }}
+            style={{ padding: 10 }}
           >
             {story.buisnessDescription}
           </Typography>
         </div>
-        <div className="container">
-          <Typography variant="body1" className="color-5">
-            {story.storyText}
-          </Typography>
-        </div>
+        <div className="container">{renderHTML(myText)}</div>
       </Paper>
     );
   }

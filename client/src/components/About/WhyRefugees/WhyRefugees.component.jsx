@@ -3,16 +3,13 @@ import "./WhyRefugees.css";
 import { Typography, Paper } from "@material-ui/core";
 
 export default props => {
-  document.body.scrollTo(0, window.innerHeight);
-
   return (
-    <div className="fadeInFast">
-      <h2 className="upper color-2" />
+    <div className="">
       <Typography variant="h4" className="upper color-4 text-center">
         <i className="fab fa-accusoft start-icon color-2" />
         Why Refugees
       </Typography>
-      <Typography variant="h6" className="color-3">
+      <Typography variant="h6" className="color-3 text-center">
         Bridging the gap between the untapped potential of refugees and the
         capital markets.
       </Typography>

@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import "./Library.css";
+import "./News.css";
 import IconButton from "@material-ui/core/IconButton";
 import { Route } from "react-router-dom";
-import Books from "./Books/Books.component";
 import Links from "./Links/Links.component";
 import Researches from "./Researches/Researches.component";
 
-export default class Library extends Component {
+export default class News extends Component {
   constructor() {
     super();
     this.state = {
@@ -14,14 +13,16 @@ export default class Library extends Component {
     };
   }
 
+  // handle the down arrow btn
   scrollToTop = () => {
-    document.querySelector(".library").scrollIntoView({
+    document.querySelector(".header").scrollIntoView({
       behavior: "smooth"
     });
   };
 
   goDown = () => {
-    document.querySelector(".container").scrollIntoView({
+    document.body.scrollBy({
+      top: window.innerHeight - document.body.scrollTop,
       behavior: "smooth"
     });
   };
@@ -39,32 +40,21 @@ export default class Library extends Component {
   render() {
     return (
       <div
-        className="library fadeInFast"
+        className="news fadeInFast"
         style={{
           overflowY: "scroll"
         }}
       >
         <header>
           <div className="banner-full">
-            <h1>library</h1>
+            <h1>news</h1>
             <div className="line" />
             <h3>dig deeply and read more about impact investment</h3>
             <ul className="header-nav">
               <li>
                 <a
                   onClick={() => {
-                    this.navigateTO("/library/books");
-                  }}
-                >
-                  <h5 className="upper">books</h5>
-                  <i className="fas fa-book-open" />
-                </a>
-              </li>
-
-              <li>
-                <a
-                  onClick={() => {
-                    this.navigateTO("/library/links");
+                    this.navigateTO("/news");
                   }}
                 >
                   <h5 className="upper">useful links</h5>
@@ -75,7 +65,7 @@ export default class Library extends Component {
               <li>
                 <a
                   onClick={() => {
-                    this.navigateTO("/library/reaserches");
+                    this.navigateTO("/news/reaserches");
                   }}
                 >
                   <h5 className="upper">reaserches</h5>
@@ -85,7 +75,7 @@ export default class Library extends Component {
             </ul>
             <div className="go-down" onClick={this.goDown}>
               <IconButton>
-                <i className="fas fa-arrow-down color-2" />
+                <i className="fas fa-arrow-down color-1" />
               </IconButton>
             </div>
           </div>
@@ -93,9 +83,8 @@ export default class Library extends Component {
         <div className="container">
           <div id="scroll-sign" />
 
-          <Route path="/library/books" component={Books} />
-          <Route path="/library/links" component={Links} />
-          <Route path="/library/reaserches" component={Researches} />
+          <Route path="/news" exact component={Links} />
+          <Route path="/news/reaserches" component={Researches} />
         </div>
       </div>
     );

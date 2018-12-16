@@ -4,6 +4,11 @@ import AutoComplete from "../../general-components/AutoComplete/SingleAutoComple
 import TextField from "@material-ui/core/TextField";
 import Axios from "axios";
 import Typography from "@material-ui/core/Typography";
+import MyEditor from "../../general-components/MyEditor/MyEditor.component";
+import { EditorState, convertToRaw, ContentState } from 'draft-js';
+import htmlToDraft from 'html-to-draftjs';
+import draftToHtml from 'draftjs-to-html';
+
 
 export default class StoryForm extends Component {
   constructor(props) {
@@ -12,10 +17,12 @@ export default class StoryForm extends Component {
     this.state = {
       adding: false,
       updating: false,
+      editorState: EditorState.createEmpty(),
       story: {},
       projects: []
     };
   }
+
   componentDidMount() {
     this.checkIfDataIsPassed();
     this.fetchProjectsNames();
@@ -34,6 +41,14 @@ export default class StoryForm extends Component {
     }
   };
 
+  convertToEditorState = (text) => {
+    const html = draftToHtml(JSON.parse(text));
+    const contentBlock = htmlToDraft(html);
+    const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
+    const editorState = EditorState.createWithContent(contentState);
+    this.setState({ editorState });
+  }
+
   fetchStoryInfo = id => {
     Axios.get("/api/stories/" + id).then(result => {
       this.setState(
@@ -45,6 +60,7 @@ export default class StoryForm extends Component {
         },
         () => {
           this.setState({ adding: false });
+          this.convertToEditorState(this.state.story.storyText);
         }
       );
     });
@@ -58,6 +74,10 @@ export default class StoryForm extends Component {
       }
     });
   };
+
+  editText = (storyText) => {
+    this.setState({ story: { ...this.state.story, storyText: JSON.stringify(storyText) } });
+  }
 
   // for demo ONLY
   checkIfFieldIsValid = name => {
@@ -125,6 +145,13 @@ export default class StoryForm extends Component {
   setChoosenValue = project => {
     this.setState({ story: { ...this.state.story, projectId: project.id } });
   };
+
+  onEditorStateChange = (editorState) => {
+    this.setState({ editorState }, () => {
+      const text = convertToRaw(editorState.getCurrentContent());
+      this.editText(text);
+    });
+  }
 
   render() {
     return (
@@ -195,22 +222,7 @@ export default class StoryForm extends Component {
             />
             <Typography variant="overline">max size 1.mb</Typography>
           </div>
-          <TextField
-            className="full-width-input"
-            label="Story Text"
-            name="storyText"
-            error={!this.checkIfFieldIsValid("text")}
-            value={this.state.story.storyText}
-            multiline
-            inputProps={{ maxLength: 1000 }}
-            InputLabelProps={{
-              shrink: true
-            }}
-            required
-            onChange={this.onChange}
-            rowsMax="6"
-            variant="outlined"
-          />
+          <MyEditor editorState={this.state.editorState} onEditorStateChange={this.onEditorStateChange} />
         </Form>
       </div>
     );

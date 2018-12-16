@@ -5,7 +5,6 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
-import CardActionArea from "@material-ui/core/CardActionArea";
 
 const styles = () => ({
   card: {
@@ -30,23 +29,21 @@ function MediaControlCard(props) {
   return (
     <Card className={classes.card}>
       <div className={classes.details}>
-        <CardActionArea>
-          <CardContent className={classes.content}>
-            <Typography component="h5" variant="h5" className="capitalize">
-              {props.info.title}
-            </Typography>
-            <Typography variant="subtitle1" color="textSecondary">
-              {props.info.subtitle}
-            </Typography>
-            <Typography variant="subtitle2" color="textSecondary">
-              {props.info.url}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
+        <CardContent className={classes.content}>
+          <Typography component="h5" variant="h5" className="capitalize">
+            {props.info.title}
+          </Typography>
+          <Typography variant="subtitle1" color="textSecondary">
+            {props.info.subtitle}
+          </Typography>
+          <Typography variant="subtitle2" color="textSecondary">
+            <a href={props.info.researchUrl}>{props.info.researchUrl}</a>
+          </Typography>
+        </CardContent>
       </div>
       <CardMedia
         className={classes.cover}
-        image={props.info.img}
+        image={props.info.imgUrl}
         title={props.info.subtitle}
       />
     </Card>
