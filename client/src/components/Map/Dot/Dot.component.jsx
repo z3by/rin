@@ -191,7 +191,11 @@ const Dot = props => {
             </a>
           )}
 
-          <a href={props.project.contact.website} className="contact-field">
+          <a
+            target="_blank"
+            href={props.project.contact.website}
+            className="contact-field"
+          >
             <i
               style={{ fontSize: "1.5rem" }}
               className="color-2 fas fa-globe"
@@ -199,7 +203,11 @@ const Dot = props => {
             visit the project website
           </a>
           {!props.project.contact.facebook ? null : (
-            <a href={props.project.contact.facebook} className="contact-field">
+            <a
+              target="_blank"
+              href={props.project.contact.facebook}
+              className="contact-field"
+            >
               <i
                 style={{ fontSize: "1.5rem" }}
                 className="color-2 fab fa-facebook"
@@ -208,7 +216,11 @@ const Dot = props => {
             </a>
           )}
           {!props.project.contact.twitter ? null : (
-            <a href={props.project.contact.twitter} className="contact-field">
+            <a
+              target="_blank"
+              href={props.project.contact.twitter}
+              className="contact-field"
+            >
               <i
                 style={{ fontSize: "1.5rem" }}
                 className="color-2 fab fa-twitter"
@@ -217,7 +229,11 @@ const Dot = props => {
             </a>
           )}
           {!props.project.contact.instagram ? null : (
-            <a href={props.project.contact.instagram} className="contact-field">
+            <a
+              target="_blank"
+              href={props.project.contact.instagram}
+              className="contact-field"
+            >
               <i
                 style={{ fontSize: "1.5rem" }}
                 className="color-2 fab fa-instagram"
@@ -226,7 +242,11 @@ const Dot = props => {
             </a>
           )}
           {!props.project.contact.fax ? null : (
-            <a href={props.project.contact.fax} className="contact-field">
+            <a
+              target="_blank"
+              href={props.project.contact.fax}
+              className="contact-field"
+            >
               <i
                 style={{ fontSize: "1.5rem" }}
                 className="color-2 fas fa-fax"
