@@ -12,12 +12,11 @@ export default props => {
 
   return (
     <div className="">
-      <h2 className="upper color-2" />
       <Typography variant="h4" className="upper color-4 text-center">
         <i className="fab fa-accusoft start-icon color-2" />
         Why Refugees
       </Typography>
-      <Typography variant="h6" className="color-3">
+      <Typography variant="h6" className="color-3 text-center">
         Bridging the gap between the untapped potential of refugees and the
         capital markets.
       </Typography>

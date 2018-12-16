@@ -28,11 +28,13 @@ class RecipeReviewCard extends React.Component {
     };
   }
 
+  showMmeberInfo = () => {};
+
   render() {
     const { classes } = this.props;
 
     return (
-      <Card className="member-card" onClick={this.props.showMemberInfo}>
+      <Card className="member-card" onClick={this.showMmeberInfo}>
         <CardHeader
           avatar={
             <Avatar

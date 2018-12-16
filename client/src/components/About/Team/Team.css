@@ -7,8 +7,6 @@
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   background: var(--color-1);
-  -webkit-transform: scale(1.05);
-  transform: scale(1.05);
   -webkit-transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
   transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
 }

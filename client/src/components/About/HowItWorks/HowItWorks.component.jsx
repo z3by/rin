@@ -30,7 +30,7 @@ export default props => {
           <div
             className="p-heading-image"
             style={{
-              backgroundImage: "url(" + "/imgs/about/1.jpeg" + ")",
+              backgroundImage: "url(/imgs/about/1.jpeg)",
               backgroundPositionY: "60%"
             }}
           />
@@ -80,15 +80,11 @@ export default props => {
           <div
             className="p-heading-image"
             style={{
-              backgroundImage: "url(" + "/imgs/about/2.jpeg" + ")",
+              backgroundImage: "url(/imgs/about/2.jpeg)",
               backgroundPositionY: "60%"
             }}
           />
-          <Typography
-            variant="h6"
-            className="color-3"
-            className="p-heading-text"
-          >
+          <Typography variant="h6" className="color-3 p-heading-text">
             RIN helps investors put their capital to work supporting displaced
             people and the communities hosting them.
           </Typography>
@@ -136,15 +132,11 @@ export default props => {
           <div
             className="p-heading-image"
             style={{
-              backgroundImage: "url(" + "/imgs/about/3.jpeg" + ")",
+              backgroundImage: "url(/imgs/about/3.jpeg)",
               backgroundPositionY: "60%"
             }}
           />
-          <Typography
-            variant="h6"
-            className="color-3"
-            className="p-heading-text"
-          >
+          <Typography variant="h6" className="color-3 p-heading-text">
             RIN bridges the gap between private investors, international donors,
             governments, and NGOs in the broader global development community.
           </Typography>

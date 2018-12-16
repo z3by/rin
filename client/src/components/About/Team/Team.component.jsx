@@ -14,9 +14,6 @@ export default class Team extends Component {
         {this.props.info.map((guy, i) => {
           return (
             <TeamMember
-              showMemberInfo={() => {
-                this.props.showMemberInfo(guy);
-              }}
               {...this.props}
               imgHeight={this.props.imgHeight}
               key={i}

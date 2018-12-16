@@ -27,12 +27,6 @@ export default class WhoWeAre extends Component {
     });
   };
 
-  showMemberInfo = info => {
-    this.setState({ currentMemberInfo: info }, () => {
-      console.log(this.state);
-    });
-  };
-
   render() {
     return (
       <div className="who-we-are">
@@ -88,12 +82,7 @@ export default class WhoWeAre extends Component {
             Meet The Team
           </Typography>
           <div className="grid-4">
-            <Team
-              {...this.props}
-              showMemberInfo={this.showMemberInfo}
-              imgHeight={200}
-              info={TeamInfo}
-            />
+            <Team {...this.props} imgHeight={200} info={TeamInfo} />
           </div>
         </section>
         <section>
@@ -107,12 +96,7 @@ export default class WhoWeAre extends Component {
             to creating long-term solutions to global forced migration.
           </Typography>
           <div className="grid-4">
-            <Team
-              showMemberInfo={this.showMemberInfo}
-              {...this.props}
-              imgHeight={200}
-              info={SteeringInfo}
-            />
+            <Team {...this.props} imgHeight={200} info={SteeringInfo} />
           </div>
         </section>
       </div>

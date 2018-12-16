@@ -1,8 +1,7 @@
 import React from "react";
 import "./Strategy.css";
-import { Typography, Paper, Card } from "@material-ui/core";
+import { Typography, Card } from "@material-ui/core";
 import HowItWorksComponent from "../HowItWorks/HowItWorks.component";
-import IconButton from "@material-ui/core/IconButton";
 
 export default props => {
   setTimeout(() => {
