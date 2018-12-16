@@ -8,7 +8,7 @@ import Map from "../Map/Map.component";
 import Members from "../Members/Members.component";
 import Data from "../Data/Data.component";
 import Landing from "../Landing/Landing.component";
-import Library from "../Library/Library.component";
+import News from "../News/News.component";
 import Blog from "../Blog/Blog.component";
 import Login from "../Login/Login.component";
 import Navbar from "../Navbar/Navbar.component";
@@ -34,7 +34,7 @@ export default class MyRouter extends Component {
             <Route path="/map" component={Map} />
             <Route path="/add-project" component={AddProject} />
             <Route path="/data" component={Data} />
-            <Route path="/news" component={Library} />
+            <Route path="/news" component={News} />
             <Route path="/blog/:id" component={ArticleInfo} />
             <Route path="/blog" component={Blog} />
             <Route path="/about" component={About} />

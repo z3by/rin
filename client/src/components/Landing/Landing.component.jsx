@@ -184,7 +184,7 @@ export default class Landing extends Component {
     this.setState({
       navigating: true
     });
-    const routes = ["stories", "map", "data", "about", "library", "blog"];
+    const routes = ["stories", "map", "data", "about", "news", "blog"];
     setTimeout(() => {
       this.props.history.push(routes[this.state.index]);
     }, 2000);
@@ -242,7 +242,7 @@ export default class Landing extends Component {
               </li>
               <li className="nav-item">
                 <a onClick={this.navigate} className="nav-link">
-                  library
+                  news
                 </a>
               </li>
               <li className="nav-item">
