@@ -67,6 +67,13 @@ class RecipeReviewCard extends React.Component {
           variant="body1"
           style={{ display: !shown ? "none" : "block" }}
         >
+          <Typography
+            className="color-3"
+            variant="subtitle1"
+            style={{ display: !shown ? "none" : "block" }}
+          >
+            {this.props.bio.title}
+          </Typography>
           {this.props.bio.description}
         </Typography>
       </Card>

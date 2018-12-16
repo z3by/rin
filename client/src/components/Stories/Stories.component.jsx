@@ -31,7 +31,8 @@ class Stories extends Component {
   };
 
   goDown = () => {
-    document.querySelector("#scroll-sign").scrollIntoView({
+    document.body.scrollBy({
+      top: window.innerHeight - document.body.scrollTop,
       behavior: "smooth"
     });
   };
@@ -55,7 +56,7 @@ class Stories extends Component {
             </h3>
             <div className="go-down" onClick={this.goDown}>
               <IconButton onClick={this.goDown}>
-                <i className="fas fa-arrow-down color-2" />
+                <i className="fas fa-arrow-down color-1" />
               </IconButton>
             </div>
           </div>
