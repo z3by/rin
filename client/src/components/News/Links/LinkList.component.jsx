@@ -20,11 +20,11 @@ export default class LinkList extends Component {
     const first = this.state.items.length;
     const last = first + 10;
 
-    Axios.get("/api/books/page", {
+    Axios.get("/api/links/page", {
       params: { first, last }
     }).then(res => {
       this.setState({
-        items: [...this.state.items, ...res.data]
+        items: [...this.state.items, ...res.data.rows]
       });
     });
   };

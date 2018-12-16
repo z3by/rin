@@ -54,7 +54,7 @@ export default class News extends Component {
               <li>
                 <a
                   onClick={() => {
-                    this.navigateTO("/news/links");
+                    this.navigateTO("/news");
                   }}
                 >
                   <h5 className="upper">useful links</h5>
@@ -83,7 +83,7 @@ export default class News extends Component {
         <div className="container">
           <div id="scroll-sign" />
 
-          <Route path="/news" component={Links} />
+          <Route path="/news" exact component={Links} />
           <Route path="/news/reaserches" component={Researches} />
         </div>
       </div>

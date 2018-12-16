@@ -17,13 +17,16 @@ export default class ResearchList extends Component {
 
   // get more 10 items and append it to the current items
   fetchData = () => {
-    Axios.get("/api/library/researches/" + this.state.items.length).then(
-      res => {
-        this.setState({
-          items: [...this.state.items, ...res.data]
-        });
-      }
-    );
+    const first = this.state.items.length;
+    const last = first + 10;
+
+    Axios.get("/api/researches/page", {
+      params: { first, last }
+    }).then(res => {
+      this.setState({
+        items: [...this.state.items, ...res.data.rows]
+      });
+    });
   };
 
   render() {
