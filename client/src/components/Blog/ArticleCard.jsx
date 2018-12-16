@@ -2,11 +2,9 @@ import React from "react";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import Collapse from "@material-ui/core/Collapse";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { Link } from "react-router-dom";
 
 class ArticleCard extends React.Component {
   constructor(props) {
@@ -55,7 +53,9 @@ class ArticleCard extends React.Component {
           }}
           onClick={this.handleExpandClick}
         >
-          Read More...
+          <Link className="color-1" to={"/blog/" + this.props.article.id}>
+            Read More...
+          </Link>
         </Button>
       </Card>
     );

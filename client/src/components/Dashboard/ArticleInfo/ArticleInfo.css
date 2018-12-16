@@ -5,3 +5,8 @@
   right: 0;
   top: 40%;
 }
+
+.article-hero {
+  -webkit-filter: brightness(70%);
+  filter: brightness(70%);
+}
