@@ -6,10 +6,12 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import CardActionArea from "@material-ui/core/CardActionArea";
+import { Button } from "@material-ui/core";
 
 const styles = () => ({
   card: {
-    display: "flex"
+    display: "flex",
+    minHeight: 300
   },
   details: {
     display: "flex",
@@ -30,23 +32,32 @@ function MediaControlCard(props) {
   return (
     <Card className={classes.card}>
       <div className={classes.details}>
-        <CardActionArea>
-          <CardContent className={classes.content}>
-            <Typography component="h5" variant="h5" className="capitalize">
-              {props.info.title}
-            </Typography>
-            <Typography variant="subtitle1" color="textSecondary">
-              {props.info.subtitle}
-            </Typography>
-            <Typography variant="subtitle2" color="textSecondary">
-              {props.info.url}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
+        <CardContent className={classes.content}>
+          <Typography component="h5" variant="h5" className="capitalize">
+            {props.info.title}
+          </Typography>
+          <Typography variant="subtitle1" color="textSecondary">
+            {props.info.subtitle}
+          </Typography>
+          <a href={props.info.bookUrl} className="color-3">
+            {props.info.bookUrl}
+          </a>
+        </CardContent>
+        <Button
+          style={{
+            padding: "20px",
+            background: "var(--color-2)",
+            color: "white"
+          }}
+        >
+          <a href={props.info.bookUrl} download className="color-1">
+            download
+          </a>
+        </Button>
       </div>
       <CardMedia
         className={classes.cover}
-        image={props.info.img}
+        image={props.info.coverUrl}
         title={props.info.subtitle}
       />
     </Card>

@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import ResearchList from "./BooksList.component";
+import BooksList from "./BooksList.component";
 
-export default class Researches extends Component {
+export default class Books extends Component {
   render() {
     return (
       <div>
-        <ResearchList />
+        <BooksList />
       </div>
     );
   }

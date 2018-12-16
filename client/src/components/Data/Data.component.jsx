@@ -244,7 +244,7 @@ export default class Data extends Component {
             <h3>statistics proof that refugees are a great investment</h3>
             <div className="go-down" onClick={this.goDown}>
               <IconButton>
-                <i className="fas fa-arrow-down color-2" />
+                <i className="fas fa-arrow-down color-1" />
               </IconButton>
             </div>
           </div>

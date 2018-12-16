@@ -85,7 +85,7 @@ export default class Library extends Component {
             </ul>
             <div className="go-down" onClick={this.goDown}>
               <IconButton>
-                <i className="fas fa-arrow-down color-2" />
+                <i className="fas fa-arrow-down color-1" />
               </IconButton>
             </div>
           </div>

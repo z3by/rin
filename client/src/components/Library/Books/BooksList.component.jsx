@@ -2,12 +2,15 @@ import React, { Component } from "react";
 import BooksItem from "./BooksItem.component";
 import Axios from "axios";
 import Button from "@material-ui/core/Button";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Typography from "@material-ui/core/Typography";
 
 export default class BooksList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: []
+      items: [],
+      nomore: false
     };
   }
 
@@ -17,9 +20,17 @@ export default class BooksList extends Component {
 
   // get more 10 items and append it to the current items
   fetchData = () => {
-    Axios.get("/api/library/books/" + this.state.items.length).then(res => {
+    const first = this.state.items.length;
+    const last = first + 10;
+
+    Axios.get("/api/books/page", {
+      params: { first, last }
+    }).then(res => {
+      if (!res.data.rows.length) {
+        this.setState({ nomore: true });
+      }
       this.setState({
-        items: [...this.state.items, ...res.data]
+        items: [...this.state.items, ...res.data.rows]
       });
     });
   };
@@ -35,9 +46,30 @@ export default class BooksList extends Component {
     return (
       <div className="cards-container">
         <ul className="cards">{items}</ul>
-        <Button className="show-more-btn" onClick={this.fetchData}>
+        <Typography
+          variant="h6"
+          style={{
+            display: this.state.nomore ? "block" : "none",
+            textAlign: "center"
+          }}
+        >
+          No more Books!
+        </Typography>
+        <Button
+          className="show-more-btn"
+          style={{
+            display: !this.state.nomore ? "block" : "none"
+          }}
+          onClick={this.fetchData}
+        >
           show more ...
         </Button>
+        <CircularProgress
+          style={{
+            display: this.state.loading ? "block" : "none",
+            margin: "0 auto"
+          }}
+        />
       </div>
     );
   }
