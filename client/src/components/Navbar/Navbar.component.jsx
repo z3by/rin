@@ -131,9 +131,9 @@ export default class Navbar extends Component {
               </div>
             </li>
             <li>
-              <Link className="navbar-link" index="6" to={"/library"}>
+              <Link className="navbar-link" index="6" to={"/news"}>
                 <div className="nav-rec" />
-                <p className="nav-rec-text">library</p>
+                <p className="nav-rec-text">News</p>
               </Link>
             </li>
             <li>

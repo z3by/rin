@@ -34,7 +34,7 @@ export default class MyRouter extends Component {
             <Route path="/map" component={Map} />
             <Route path="/add-project" component={AddProject} />
             <Route path="/data" component={Data} />
-            <Route path="/library" component={Library} />
+            <Route path="/news" component={Library} />
             <Route path="/blog/:id" component={ArticleInfo} />
             <Route path="/blog" component={Blog} />
             <Route path="/about" component={About} />

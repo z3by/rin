@@ -233,10 +233,6 @@ label {
   font-size: 1.5rem;
 }
 
-.arrows i:hover {
-  color: var(--color-1);
-}
-
 .slideInRight {
   -webkit-animation-name: slideInRight;
   animation-name: slideInRight;
