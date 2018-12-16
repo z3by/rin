@@ -1,61 +1,65 @@
 import React, { Component } from "react";
 import "./Data.css";
+import axios from "axios";
 import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import { Chart } from "chart.js";
+import { Doughnut, Polar, Radar } from 'react-chartjs-2';
+import BarChart from "./Charts/BarChart/BarChart.component";
+import LineChart from "./Charts/LineChart/LineChart.component";
+import PieChart from "./Charts/PieChart/PieChart.component";
+import HorizontalBarChart from "./Charts/HorizontalBarChart/HorizontalBarChart.component";
+import CircularProgress from '@material-ui/core/CircularProgress';
+
+/*The structure of any chart data object is as the following:
+  somethingData: {
+        // labels: [],
+        // datasets: [{
+        //   label: "",
+        //   data: [],
+        //   backgroundColor: ''
+        // }]
+      }
+*/
 
 export default class Data extends Component {
-  constructor() {
-    super();
-    this.state = {};
+  constructor(props) {
+    super(props);
+    this.state = {
+      asylumSeekersData: {},
+      resettlementData: {},
+      demographicsData: {},
+      asylumSeekersSelectedYear: 2012,
+      demographicsSelectedYear: 2012,
+      demographicsSelectedCountry: "Syrian Arab Republic",
+      isLoadingAsylumSeekersData: true,
+      isLoadingDmographicsData: true,
+      allCountries: [],
+      isAllCountriesRetrieved: false
+    }
   }
 
-  componentDidMount() {
-    const canvas1 = document.querySelector("#canvas1");
-    new Chart(canvas1, {
-      type: "bar",
-      data: {
-        labels: [
-          "Syrian Arab Republic",
-          "Afghanistan",
-          "South Sudan",
-          "Myanmar",
-          "Somalia"
-        ],
-        datasets: [
-          {
-            label: "# of Refugees",
-            data: [6.3, 2.6, 2.4, 1.2, 0.986],
-            backgroundColor: [
-              "rgba(255, 99, 132, 0.2)",
-              "rgba(54, 162, 235, 0.2)",
-              "rgba(255, 206, 86, 0.2)",
-              "rgba(75, 192, 192, 0.2)",
-              "rgba(153, 102, 255, 0.2)"
-            ],
-            borderColor: [
-              "rgba(255,99,132,1)",
-              "rgba(54, 162, 235, 1)",
-              "rgba(255, 206, 86, 1)",
-              "rgba(75, 192, 192, 1)",
-              "rgba(153, 102, 255, 1)"
-            ],
-            borderWidth: 1
-          }
-        ]
-      },
-      options: {
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true
-              }
+  componentWillMount() {
+    this.getAllCounries();
+    this.getAsylumSeekersDataByYear();
+    this.getResettlementData();
+    this.getDemographicsData();
+  }
+
+  componentDidMount() { }
+
+  getAllCounries = () => {
+    axios.get("https://restcountries.eu/rest/v2/all")
+      .then(res => {
+        res.data.forEach((oneData, i) => {
+          this.setState({ allCountries: [...this.state.allCountries, { name: oneData.name, alpha3Code: oneData.alpha3Code }] }, () => {
+            if (i === 249) {
+              this.setState({ isAllCountriesRetrieved: true });
             }
-          ]
-        }
-      }
-    });
+          });
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
   scrollToTop = () => {
@@ -70,7 +74,154 @@ export default class Data extends Component {
     });
   };
 
+  getAsylumSeekersDataByYear = (e) => {
+    const year = e && e.target.value > -1 ? e.target.value : this.state.asylumSeekersSelectedYear;
+    this.setState({ asylumSeekersSelectedYear: year, isLoadingAsylumSeekersData: true });
+
+    axios.get(`http://popdata.unhcr.org/api/stats/asylum_seekers.json?year=${year}&&country_of_origin=SYR`)
+      .then(res => {
+        this.setState({ isLoadingAsylumSeekersData: false }, () => {
+          let labelsOfAsylumCountries = [];
+          let dataOfAppliedCount = [];
+          let dataOfAccepteddCount = [];
+          for (let i = 0; i < 50; i++) {
+            if ((!labelsOfAsylumCountries.includes(res.data[i].country_of_asylum_en)) && (res.data[i].applied_during_year > 4)) {
+              labelsOfAsylumCountries.push(res.data[i].country_of_asylum_en);
+              dataOfAppliedCount.push(res.data[i].applied_during_year);
+              dataOfAccepteddCount.push(res.data[i].applied_during_year - res.data[i].rejected);
+            }
+          }
+
+          let datasets = [{}, {}];
+          datasets[0].data = dataOfAppliedCount;
+          datasets[0].label = "Asylum Applications";
+          datasets[0].backgroundColor = "green";
+          datasets[1].data = dataOfAccepteddCount;
+          datasets[1].label = "Accepted Applications";
+          datasets[1].backgroundColor = "blue";
+          this.setState({ asylumSeekersData: { labels: labelsOfAsylumCountries, datasets: datasets } });
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
+  getResettlementData = () => {
+    const labels = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018];
+    const countriesOfAsylum = ["AUS", "CAN", "DEU", "GBR", "USA"];
+    const colors = ["rgb(232, 51, 56)", "rgb(141, 194, 111)", "rgb(100, 179, 244)", "rgb(100, 65, 165)", "rgb(255, 144, 104)"];
+    let datasets = [];
+    for (let i = 0; i < countriesOfAsylum.length; i++) {
+      datasets.push({});
+      datasets[i].label = countriesOfAsylum[i];
+      datasets[i].backgroundColor = colors[i];
+      datasets[i].borderColor = colors[i];
+      datasets[i].fill = false;
+      datasets[i].data = [];
+
+      for (let j = 0; j < labels.length; j++) {
+        axios.get(`http://popdata.unhcr.org/api/stats/resettlement.json?year=${labels[j]}&country_of_asylum=${countriesOfAsylum[i]}`)
+          .then(res => {
+            let totalValue = 0;
+            for (let r = 0; r < res.data.length; r++) {
+              if (typeof res.data[r].value === "number") {
+                totalValue += res.data[r].value;
+              }
+            }
+            datasets[i].data.push(totalValue);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      }
+    }
+    this.setState({ resettlementData: { labels, datasets } });
+  }
+
+  findCountryAlpha3Code = (countryName) => {
+    if (this.state.isAllCountriesRetrieved) {
+      for (let i = 0; i < this.state.allCountries.length; i++) {
+        if (this.state.allCountries[i].name === countryName) {
+          return this.state.allCountries[i].alpha3Code;
+        }
+      }
+    }
+    else {
+      return "SYR";
+    }
+  }
+
+  //This function is triggered in two events; either in select year event || in select country event
+  getDemographicsData = (e) => {
+    let year, country, alpha3Code;
+    //check if the event triggered by select year
+    if (e && Number(e.target.value) > -1) {
+      year = e.target.value
+      country = this.state.demographicsSelectedCountry;
+    }
+    //check if the event triggered by select country
+    else if (e && e.target.value) {
+      year = this.state.demographicsSelectedYear;
+      country = e.target.value;
+    }
+    //the initial values when the function is called in componentWillMount
+    else {
+      year = this.state.demographicsSelectedYear;
+      country = this.state.demographicsSelectedCountry;
+    }
+    this.setState({ demographicsSelectedYear: year, demographicsSelectedCountry: country, isLoadingDmographicsData: true });
+    //find the alpha3Code of the country
+    alpha3Code = this.findCountryAlpha3Code(country);
+
+    axios.get(`http://popdata.unhcr.org/api/stats/demographics.json?year=${year}&country_of_residence=${alpha3Code}`)
+      .then(res => {
+        let labels = [];
+        let femaleValueData = [];
+        let maleValueData = [];
+
+        this.setState({ isLoadingDmographicsData: false }, () => {
+          res.data.forEach(oneData => {
+            labels.push(oneData.location_name);
+            femaleValueData.push(oneData.female_total_value);
+            maleValueData.push(oneData.male_total_value);
+          });
+          let datasets = [{}, {}];
+          datasets[0].data = femaleValueData;
+          datasets[0].label = "Female Total Value";
+          datasets[0].backgroundColor = "pink";
+          datasets[1].data = maleValueData;
+          datasets[1].label = "Male Total Value";
+          datasets[1].backgroundColor = "#ADD8E6";
+
+          this.setState({ demographicsData: { labels, datasets } });
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
   render() {
+    let { allCountries, isLoadingAsylumSeekersData, isLoadingDmographicsData, demographicsSelectedYear, demographicsSelectedCountry } = this.state;
+
+    const years = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017];
+    let allYears = years.map((year, i) => {
+      return (
+        <option value={year} key={i}>
+          {year}
+        </option>
+      );
+    });
+
+    let countries = allCountries.map((country, i) => {
+      return (
+        <option value={country.name} key={i}>
+          {country.name}
+        </option>
+      )
+    })
+
     return (
       <div
         className="data fadeInFast"
@@ -91,12 +242,35 @@ export default class Data extends Component {
           </div>
         </header>
         <div className="container">
-          <Typography component="h2" variant="h4" className="">
-            More than two-thirds (68 per cent) of all refugees worldwide came
-            from just five countries:
-          </Typography>
-          <div className="chart">
-            <canvas id="canvas1" width="100" height="50" />
+          <div className="asylum-seekers-chart">
+            <h3 className="chart-heading">UNHCR Statistics of Asylum Seekers from Syria in {this.state.asylumSeekersSelectedYear}</h3>
+            <select onChange={this.getAsylumSeekersDataByYear}>
+              <option value={-1}>Select Year</option>
+              {allYears}
+            </select>
+            <div className="chart-preloader">
+              <CircularProgress className="preloader" size={"7vw"} thickness={3} style={{ visibility: isLoadingAsylumSeekersData ? "visible" : "hidden" }} />
+              <BarChart data={this.state.asylumSeekersData} />
+            </div>
+          </div>
+          <div className="resettlement-chart">
+            <h3 className="chart-heading">UNHCR Statistics of Resettlement (2010 - 2018)</h3>
+            <LineChart data={this.state.resettlementData} getResettlementData={this.getResettlementData} />
+          </div>
+          <div className="demographics-chart">
+            <h3 className="chart-heading">UNHCR Statistics of Demographics in {demographicsSelectedCountry} ({demographicsSelectedYear})</h3>
+            <select onChange={this.getDemographicsData}>
+              <option value={-1}>Select Year</option>
+              {allYears}
+            </select>
+            <select onChange={this.getDemographicsData}>
+              <option value={-1}>Select country</option>
+              {countries}
+            </select>
+            <div className="chart-preloader">
+              <CircularProgress className="preloader" size={"7vw"} thickness={3} style={{ visibility: isLoadingDmographicsData ? "visible" : "hidden" }} />
+              <HorizontalBarChart data={this.state.demographicsData} />
+            </div>
           </div>
         </div>
       </div>

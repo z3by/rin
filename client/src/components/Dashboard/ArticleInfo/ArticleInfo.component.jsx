@@ -3,13 +3,16 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Axios from "axios";
 import "./ArticleInfo.css";
+import draftToHtml from 'draftjs-to-html';
+import renderHTML from 'react-render-html';
 
 export default class ArticleInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
       articleData: {},
-      imageLoaded: false
+      imageLoaded: false,
+      articleText: ""
     };
   }
 
@@ -20,14 +23,15 @@ export default class ArticleInfo extends Component {
   fetchArticle = () => {
     const articleId = this.props.match.params.id;
     Axios.get("/api/articles/" + articleId).then(result => {
-      console.log(result);
-
-      this.setState({ articleData: result.data[0] });
+      this.setState({ articleData: result.data[0] }, () => {
+        this.setState({ articleText: draftToHtml(JSON.parse(this.state.articleData.text)) })
+      });
     });
   };
 
   render() {
     const article = this.state.articleData;
+    const { articleText } = this.state;
     return (
       <Paper style={{ padding: 20, position: "relative" }}>
         <img
@@ -58,7 +62,7 @@ export default class ArticleInfo extends Component {
         </div>
         <div className="container">
           <Typography variant="body1" className="color-5">
-            {article.text}
+            {renderHTML(articleText)}
           </Typography>
         </div>
       </Paper>
