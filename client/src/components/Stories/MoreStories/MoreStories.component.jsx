@@ -79,7 +79,6 @@ export default class MoreStories extends Component {
     return (
       <div className="more-stories">
         <div className="container">
-          <StoriesFilter filterStories={this.filterStories} />
           {this.state.stories.map((story, i) => {
             return (
               <Card key={i} style={{ marginBottom: 10 }} className="story-card">
@@ -142,6 +141,7 @@ export default class MoreStories extends Component {
             }}
           />
         </div>
+        <StoriesFilter filterStories={this.filterStories} />
       </div>
     );
   }
