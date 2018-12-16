@@ -22,7 +22,7 @@
     npm install
 ```
 
-###### the project uses environment variables you should define
+### the project uses environment variables you should define
 
 ```
     RDS_HOSTNAME=********
@@ -36,7 +36,7 @@
     HASH_SECRET=***********
 ```
 
-###### open config file in /config/config.js and change development settings to your local settings
+### open config file in /config/config.js and change development settings to your local settings
 
 ```
 development: {
@@ -50,6 +50,15 @@ development: {
 
 it will install the server dependencies and the client dependencies
 
+### you will need to provide the google map api key
+   - navigate to
+```
+    /client/src/config
+```
+   - rename the file map.config.1.js to map.config.js
+   and put the map api key inside it
+   
+   
 - to serve the static react app run this command
 
 ```
