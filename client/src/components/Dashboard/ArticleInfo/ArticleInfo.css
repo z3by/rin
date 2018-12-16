@@ -3,10 +3,10 @@
   z-index: 10;
   left: 0;
   right: 0;
-  top: 40%;
+  top: 35%;
 }
 
-.article-hero {
+.img-hero-darken {
   -webkit-filter: brightness(70%);
   filter: brightness(70%);
 }

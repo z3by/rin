@@ -51,7 +51,7 @@ class Stories extends Component {
             <h1 className="header-text">Success Stories</h1>
             <div className="line" />
 
-            <h3 className="">
+            <h3 className="header-subtitle">
               Every-day stories proving that refugees are investable
             </h3>
             <div className="go-down" onClick={this.goDown}>

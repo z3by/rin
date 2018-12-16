@@ -39,12 +39,12 @@ export default class ArticleInfo extends Component {
         <img
           src={article.img}
           onLoad={this.handleImageLoading}
-          className="article-hero w-100"
+          className="img-hero-darken w-100"
           alt=""
         />
         <div className="article-header">
           <Typography
-            variant="h1"
+            variant="h3"
             className="color-1 upper text-center"
             style={{
               fontWeight: "bolder",
