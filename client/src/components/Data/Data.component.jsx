@@ -258,16 +258,12 @@ export default class Data extends Component {
             </select>
             <div className="chart-preloader">
               <CircularProgress className="preloader" size={"7vw"} thickness={3} style={{ visibility: isLoadingAsylumSeekersData ? "visible" : "hidden" }} />
-              <VisibilitySensor onChange={this.onChange}>
-                <BarChart data={this.state.asylumSeekersData} getAsylumSeekersDataByYear={this.getAsylumSeekersDataByYear} />
-              </VisibilitySensor>
+              <BarChart data={this.state.asylumSeekersData} getAsylumSeekersDataByYear={this.getAsylumSeekersDataByYear} />
             </div>
           </div>
           <div className="resettlement-chart">
             <h3 className="chart-heading">UNHCR Statistics of Resettlement (2010 - 2018)</h3>
-            <VisibilitySensor onChange={this.onChange}>
-              <LineChart data={this.state.resettlementData} getResettlementData={this.getResettlementData} />
-            </VisibilitySensor>
+            <LineChart data={this.state.resettlementData} getResettlementData={this.getResettlementData} />
           </div>
           <div className="demographics-chart">
             <h3 className="chart-heading">UNHCR Statistics of Demographics in {demographicsSelectedCountry} ({demographicsSelectedYear})</h3>
@@ -281,9 +277,7 @@ export default class Data extends Component {
             </select>
             <div className="chart-preloader">
               <CircularProgress className="preloader" size={"7vw"} thickness={3} style={{ visibility: isLoadingDmographicsData ? "visible" : "hidden" }} />
-              <VisibilitySensor onChange={this.onChange}>
-                <HorizontalBarChart data={this.state.demographicsData} getDemographicsData={this.getDemographicsData} />
-              </VisibilitySensor>
+              <HorizontalBarChart data={this.state.demographicsData} getDemographicsData={this.getDemographicsData} />
             </div>
           </div>
         </div>
