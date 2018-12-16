@@ -48,7 +48,7 @@ export default class StoriesFilter extends Component {
     const options = { sector, year, refugeeInvestmentType };
 
     return (
-      <Paper className="filter-card">
+      <Paper className="filter-card" style={{ marginLeft: 0 }}>
         <Typography variant="h6">Filter the stories</Typography>
         <FormControl className="filter-form-control">
           <InputLabel htmlFor="sector-select">select sector</InputLabel>

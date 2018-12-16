@@ -78,7 +78,7 @@ export default class MoreStories extends Component {
   render() {
     return (
       <div className="more-stories">
-        <div className="container">
+        <div className="container" style={{ marginRight: 10 }}>
           {this.state.stories.map((story, i) => {
             return (
               <Card key={i} style={{ marginBottom: 10 }} className="story-card">

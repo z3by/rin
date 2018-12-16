@@ -4,77 +4,40 @@ import ArticleCard from "./ArticleCard";
 import IconButton from "@material-ui/core/IconButton";
 import Axios from "axios";
 import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 
 export default class Blog extends Component {
   constructor() {
     super();
     this.state = {
-      pageNumber: 0,
-      currentPage: 1,
-      articlesPerPage: 10,
-      allArticlesCount: 0,
-      selectedPageArticles: [],
-      indexOfLastArticle: 0,
-      indexOfFirstArticle: 0
+      articles: [],
+      nomore: false
     };
   }
 
   componentDidMount() {
-    this.fetchAllArticlesCount();
-    this.setAndRetrieveSelectedPageArticles();
+    this.fetcArticles();
   }
 
-  setAndRetrieveSelectedPageArticles = () => {
-    this.setState(
-      {
-        indexOfLastArticle: this.state.currentPage * this.state.articlesPerPage
-      },
-      () => {
-        this.setState(
-          {
-            indexOfFirstArticle:
-              this.state.indexOfLastArticle - this.state.articlesPerPage
-          },
-          () => {
-            this.fetchSelectedPageArticles(
-              this.state.indexOfFirstArticle,
-              this.state.indexOfLastArticle
-            );
-          }
-        );
-      }
-    );
-  };
+  fetcArticles = () => {
+    const first = this.state.articles.length;
+    const last = first + 10;
+    const indexes = { first, last };
 
-  fetchAllArticlesCount = () => {
-    Axios.get("/api/articles/count").then(res => {
-      this.setState({ allArticlesCount: res.data["count(*)"] });
-    });
-  };
-
-  fetchSelectedPageArticles = (firstArticleIndex, lastArticleIndex) => {
-    const indexes = {
-      first: firstArticleIndex,
-      last: lastArticleIndex
-    };
-
-    Axios.get("/api/articles/selectedpage", {
+    Axios.get("/api/articles/page", {
       params: indexes
     })
       .then(res => {
-        console.log(res.data);
-
-        this.setState({ selectedPageArticles: res.data });
+        if (!res.data.rows.length) {
+          this.setState({
+            nomore: true
+          });
+        }
+        this.setState({ articles: [...this.state.articles, ...res.data.rows] });
       })
       .catch(err => {
         console.log(err);
       });
-  };
-
-  changeCurrentPage = number => {
-    this.setState({ currentPage: number }, () => {
-      this.setAndRetrieveSelectedPageArticles();
-    });
   };
 
   scrollToTop = () => {
@@ -90,33 +53,6 @@ export default class Blog extends Component {
   };
 
   render() {
-    // Logic for displaying page numbers
-    const { allArticlesCount, articlesPerPage } = this.state;
-
-    const pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(allArticlesCount / articlesPerPage); i++) {
-      pageNumbers.push(i);
-    }
-
-    const allPagesNumbers = pageNumbers.map(number => {
-      return (
-        <li key={number}>
-          <Button
-            variant="fab"
-            mini
-            onClick={() => {
-              this.changeCurrentPage(number);
-            }}
-            className={
-              number === this.state.currentPage ? "active-page-number" : ""
-            }
-          >
-            {number}
-          </Button>
-        </li>
-      );
-    });
-
     return (
       <div
         className="blog fadeInFast"
@@ -131,18 +67,37 @@ export default class Blog extends Component {
             <h3>read the RIN latest articles</h3>
             <div className="go-down" onClick={this.goDown}>
               <IconButton>
-                <i className="fas fa-arrow-down color-2" />
+                <i className="fas fa-arrow-down color-1" />
               </IconButton>
             </div>
           </div>
         </header>
         <div className="container">
-          {this.state.selectedPageArticles.map((article, id) => {
+          {this.state.articles.map((article, id) => {
             return <ArticleCard article={article} key={id} />;
           })}
         </div>
-
-        <ul id="page-numbers">{allPagesNumbers}</ul>
+        <Typography
+          variant="h6"
+          style={{
+            display: this.state.nomore ? "block" : "none",
+            textAlign: "center",
+            margin: "20px 0"
+          }}
+        >
+          No more articles!
+        </Typography>
+        <Button
+          style={{
+            background: "var(--color-2)",
+            color: "white",
+            display: this.state.nomore ? "none" : "block",
+            margin: "20px auto"
+          }}
+          onClick={this.fetcArticles}
+        >
+          Show more stories...
+        </Button>
       </div>
     );
   }
