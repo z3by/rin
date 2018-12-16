@@ -41,7 +41,7 @@ export default class StoryForm extends Component {
     }
   };
 
-  converToEditorState = (text) => {
+  convertToEditorState = (text) => {
     const html = draftToHtml(JSON.parse(text));
     const contentBlock = htmlToDraft(html);
     const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
@@ -60,7 +60,7 @@ export default class StoryForm extends Component {
         },
         () => {
           this.setState({ adding: false });
-          this.converToEditorState(this.state.story.storyText)
+          this.convertToEditorState(this.state.story.storyText);
         }
       );
     });

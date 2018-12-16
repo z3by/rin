@@ -3,6 +3,10 @@ import Form from "../../general-components/Form/Form.component";
 import TextField from "@material-ui/core/TextField";
 import Axios from "axios";
 import Typography from "@material-ui/core/Typography";
+import MyEditor from "../../general-components/MyEditor/MyEditor.component";
+import { EditorState, convertToRaw, ContentState } from 'draft-js';
+import htmlToDraft from 'html-to-draftjs';
+import draftToHtml from 'draftjs-to-html';
 
 export default class ArticleForm extends Component {
   constructor(props) {
@@ -11,6 +15,7 @@ export default class ArticleForm extends Component {
     this.state = {
       adding: false,
       updating: false,
+      editorState: EditorState.createEmpty(),
       article: {}
     };
   }
@@ -25,6 +30,14 @@ export default class ArticleForm extends Component {
     }
   };
 
+  convertToEditorState = (text) => {
+    const html = draftToHtml(JSON.parse(text));
+    const contentBlock = htmlToDraft(html);
+    const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
+    const editorState = EditorState.createWithContent(contentState);
+    this.setState({ editorState });
+  }
+
   fetchArticleInfo = id => {
     Axios.get("/api/articles/" + id).then(result => {
       this.setState(
@@ -36,6 +49,7 @@ export default class ArticleForm extends Component {
         },
         () => {
           this.setState({ adding: false });
+          this.convertToEditorState(this.state.article.text)
         }
       );
     });
@@ -49,6 +63,10 @@ export default class ArticleForm extends Component {
       }
     });
   };
+
+  editText = (text) => {
+    this.setState({ article: { ...this.state.article, text: JSON.stringify(text) } });
+  }
 
   // for demo ONLY
   checkIfFieldIsValid = name => {
@@ -113,6 +131,13 @@ export default class ArticleForm extends Component {
         this.showErrorMessage(err);
       });
   };
+
+  onEditorStateChange = (editorState) => {
+    this.setState({ editorState }, () => {
+      const text = convertToRaw(editorState.getCurrentContent());
+      this.editText(text);
+    });
+  }
 
   render() {
     return (
@@ -180,22 +205,7 @@ export default class ArticleForm extends Component {
             <Typography variant="overline">max size 1.mb</Typography>
           </div>
 
-          <TextField
-            className="full-width-input"
-            label="article Text"
-            name="text"
-            error={!this.checkIfFieldIsValid("text")}
-            value={this.state.article.text}
-            multiline
-            inputProps={{ maxLength: 1000 }}
-            InputLabelProps={{
-              shrink: true
-            }}
-            required
-            onChange={this.onChange}
-            rowsMax="6"
-            variant="outlined"
-          />
+          <MyEditor editorState={this.state.editorState} onEditorStateChange={this.onEditorStateChange} />
         </Form>
       </div>
     );
