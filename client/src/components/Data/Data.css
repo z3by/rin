@@ -49,7 +49,12 @@ iframe {
   left: 47%;
 }
 
-.asylum-seekers-chart select, .demographics-chart select {
+.asylum-seekers-chart select {
   position: relative;
-  left: 4%;
+  left: 40%;
+}
+
+.demographics-chart select {
+  position: relative;
+  left: 25%;
 }
