@@ -1,4 +1,4 @@
-[The RIN](https://static1.squarespace.com/static/5b280d6a620b85faae73af1a/t/5b2d794970a6adb5d8314799/1544654520989/?format=1500w)
+![The RIN](https://static1.squarespace.com/static/5b280d6a620b85faae73af1a/t/5b2d794970a6adb5d8314799/1544654520989/?format=1500w)
 
 # THE RIN WEBSITE
 
