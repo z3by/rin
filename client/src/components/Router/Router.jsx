@@ -24,7 +24,7 @@ export default class MyRouter extends Component {
     return (
       <HashRouter>
         <div className="App">
-          <Navbar />
+          <Route path="" component={Navbar} />
           <Switch>
             <Route path="/stories/:id" component={StoryInfo} />
             <Route path="/list" component={AdminList} />

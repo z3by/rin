@@ -4,13 +4,6 @@ import { Typography, Card } from "@material-ui/core";
 import HowItWorksComponent from "../HowItWorks/HowItWorks.component";
 
 export default props => {
-  setTimeout(() => {
-    document.body.scrollBy({
-      top: window.innerHeight - document.body.scrollTop,
-      behavior: "smooth"
-    });
-  }, 500);
-
   return (
     <div className="strategy">
       <Typography variant="h4" className="upper color-4 text-center">

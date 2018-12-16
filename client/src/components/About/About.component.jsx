@@ -21,6 +21,7 @@ export default class About extends Component {
   // navigate to specifec route
   navigateTO = route => {
     this.props.history.push(route);
+    this.goDown();
   };
 
   scrollToTop = () => {

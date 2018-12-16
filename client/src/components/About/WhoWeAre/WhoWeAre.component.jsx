@@ -14,19 +14,6 @@ export default class WhoWeAre extends Component {
     };
   }
 
-  componentDidMount() {
-    setTimeout(() => {
-      this.scrollIfNotFirstTime();
-    }, 200);
-  }
-
-  scrollIfNotFirstTime = () => {
-    document.body.scrollBy({
-      top: window.innerHeight - document.body.scrollTop,
-      behavior: "smooth"
-    });
-  };
-
   render() {
     return (
       <div className="who-we-are">

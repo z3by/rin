@@ -3,13 +3,6 @@ import "./WhyRefugees.css";
 import { Typography, Paper } from "@material-ui/core";
 
 export default props => {
-  setTimeout(() => {
-    document.body.scrollBy({
-      top: window.innerHeight - document.body.scrollTop,
-      behavior: "smooth"
-    });
-  }, 200);
-
   return (
     <div className="">
       <Typography variant="h4" className="upper color-4 text-center">

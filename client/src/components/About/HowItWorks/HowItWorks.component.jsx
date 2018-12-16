@@ -3,9 +3,6 @@ import "./HowItWorks.css";
 import { Typography, Paper } from "@material-ui/core";
 
 export default props => {
-  setTimeout(() => {
-    document.body.scrollTo(0, window.innerHeight);
-  }, 200);
   return (
     <div className="fadeInFast">
       <Typography variant="h4" className="upper color-4">

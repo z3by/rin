@@ -41,6 +41,18 @@ export default class Navbar extends Component {
     });
   };
 
+  navigateTo = url => {
+    this.props.history.push(url);
+    this.scrollDown();
+  };
+
+  scrollDown = () => {
+    document.body.scrollBy({
+      top: window.innerHeight - document.body.scrollTop,
+      behavior: "smooth"
+    });
+  };
+
   render() {
     return (
       <div>
@@ -88,13 +100,31 @@ export default class Navbar extends Component {
                     style={{ opacity: this.state.collapsed ? "0" : "1" }}
                   >
                     <li>
-                      <Link to={"/about"}>who we are</Link>
+                      <a
+                        onClick={() => {
+                          this.navigateTo("/about");
+                        }}
+                      >
+                        who we are
+                      </a>
                     </li>
                     <li>
-                      <Link to={"/about/strategy"}>our strategy</Link>
+                      <a
+                        onClick={() => {
+                          this.navigateTo("/about/strategy");
+                        }}
+                      >
+                        our strategy
+                      </a>
                     </li>
                     <li>
-                      <Link to={"/about/why-refugees"}>why refugees </Link>
+                      <a
+                        onClick={() => {
+                          this.navigateTo("/about/why-refugees");
+                        }}
+                      >
+                        why refugees{" "}
+                      </a>
                     </li>
                   </ul>
                 </div>
