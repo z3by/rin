@@ -8,6 +8,8 @@ import LineChart from "./Charts/LineChart/LineChart.component";
 import PieChart from "./Charts/PieChart/PieChart.component";
 import HorizontalBarChart from "./Charts/HorizontalBarChart/HorizontalBarChart.component";
 import CircularProgress from '@material-ui/core/CircularProgress';
+import VisibilitySensor from 'react-visibility-sensor';
+
 
 /*The structure of any chart data object is as the following:
   somethingData: {
@@ -33,15 +35,16 @@ export default class Data extends Component {
       isLoadingAsylumSeekersData: true,
       isLoadingDmographicsData: true,
       allCountries: [],
-      isAllCountriesRetrieved: false
+      isAllCountriesRetrieved: false,
+      isVisible1: false
     }
   }
 
   componentWillMount() {
     this.getAllCounries();
-    this.getAsylumSeekersDataByYear();
-    this.getResettlementData();
-    this.getDemographicsData();
+    // this.getAsylumSeekersDataByYear();
+    // this.getResettlementData();
+    // this.getDemographicsData();
   }
 
   componentDidMount() { }
@@ -95,10 +98,10 @@ export default class Data extends Component {
           let datasets = [{}, {}];
           datasets[0].data = dataOfAppliedCount;
           datasets[0].label = "Asylum Applications";
-          datasets[0].backgroundColor = "green";
+          datasets[0].backgroundColor = "#8884d8";
           datasets[1].data = dataOfAccepteddCount;
           datasets[1].label = "Accepted Applications";
-          datasets[1].backgroundColor = "blue";
+          datasets[1].backgroundColor = "#82ca9d";
           this.setState({ asylumSeekersData: { labels: labelsOfAsylumCountries, datasets: datasets } });
         });
       })
@@ -202,8 +205,13 @@ export default class Data extends Component {
       });
   }
 
+  onChange = (isVisible) => {
+    console.log('Element is now %s', isVisible ? 'visible' : 'hidden');
+    this.setState({ isVisible1: isVisible });
+  }
+
   render() {
-    let { allCountries, isLoadingAsylumSeekersData, isLoadingDmographicsData, demographicsSelectedYear, demographicsSelectedCountry } = this.state;
+    let { allCountries, isLoadingAsylumSeekersData, isLoadingDmographicsData, demographicsSelectedYear, demographicsSelectedCountry, isVisible1 } = this.state;
 
     const years = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017];
     let allYears = years.map((year, i) => {
@@ -250,12 +258,16 @@ export default class Data extends Component {
             </select>
             <div className="chart-preloader">
               <CircularProgress className="preloader" size={"7vw"} thickness={3} style={{ visibility: isLoadingAsylumSeekersData ? "visible" : "hidden" }} />
-              <BarChart data={this.state.asylumSeekersData} />
+              <VisibilitySensor onChange={this.onChange}>
+                <BarChart data={this.state.asylumSeekersData} getAsylumSeekersDataByYear={this.getAsylumSeekersDataByYear} />
+              </VisibilitySensor>
             </div>
           </div>
           <div className="resettlement-chart">
             <h3 className="chart-heading">UNHCR Statistics of Resettlement (2010 - 2018)</h3>
-            <LineChart data={this.state.resettlementData} getResettlementData={this.getResettlementData} />
+            <VisibilitySensor onChange={this.onChange}>
+              <LineChart data={this.state.resettlementData} getResettlementData={this.getResettlementData} />
+            </VisibilitySensor>
           </div>
           <div className="demographics-chart">
             <h3 className="chart-heading">UNHCR Statistics of Demographics in {demographicsSelectedCountry} ({demographicsSelectedYear})</h3>
@@ -269,7 +281,9 @@ export default class Data extends Component {
             </select>
             <div className="chart-preloader">
               <CircularProgress className="preloader" size={"7vw"} thickness={3} style={{ visibility: isLoadingDmographicsData ? "visible" : "hidden" }} />
-              <HorizontalBarChart data={this.state.demographicsData} />
+              <VisibilitySensor onChange={this.onChange}>
+                <HorizontalBarChart data={this.state.demographicsData} getDemographicsData={this.getDemographicsData} />
+              </VisibilitySensor>
             </div>
           </div>
         </div>

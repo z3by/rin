@@ -8,11 +8,9 @@ export default class HorizontalBarChart extends Component {
         this.state = {}
     }
 
-    componentWillMount() { }
-
-    componentDidMount() { }
-
-    getChartData = () => { }
+    componentDidMount() {
+        this.props.getDemographicsData();
+    }
 
     render() {
         return (

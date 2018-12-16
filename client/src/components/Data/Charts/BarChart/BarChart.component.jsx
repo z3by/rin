@@ -8,9 +8,9 @@ export default class BarChart extends Component {
         this.state = {}
     }
 
-    componentWillMount() { }
-
-    componentDidMount() { }
+    componentDidMount() {
+        this.props.getAsylumSeekersDataByYear()
+    }
 
     render() {
         return (

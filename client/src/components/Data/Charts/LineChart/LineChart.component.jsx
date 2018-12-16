@@ -8,11 +8,9 @@ export default class LineChart extends Component {
         this.state = {}
     }
 
-    componentWillMount() { }
-
-    componentDidMount() { }
-
-    getChartData = () => { }
+    componentDidMount() {
+        this.props.getResettlementData();
+    }
 
     render() {
         return (
