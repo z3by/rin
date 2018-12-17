@@ -1,4 +1,6 @@
 module.exports = {
+  scrollwheel: false,
+  minZoom: 2,
   styles: [
     {
       elementType: "geometry",

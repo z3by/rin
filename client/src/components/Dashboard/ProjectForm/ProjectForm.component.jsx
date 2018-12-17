@@ -2,12 +2,11 @@ import React, { Component } from "react";
 import Form from "../../general-components/Form/Form.component";
 import AutoComplete from "../../general-components/AutoComplete/AutoComplete.component";
 import TextField from "@material-ui/core/TextField";
+import Avatar from "@material-ui/core/Avatar";
 import MenuItem from "@material-ui/core/MenuItem";
 import Axios from "axios";
 import Typography from "@material-ui/core/Typography";
 import GoogleMap from "../../general-components/GoogleMap/GoogleMap.component";
-import sectors from "../../../config/sectors";
-import refugeeInvestmentTypes from "../../../config/refugeeInvestmentTypes";
 
 export default class ProjectForm extends Component {
   constructor(props) {
@@ -18,9 +17,12 @@ export default class ProjectForm extends Component {
       allFounders: [],
       allInvestors: [],
       allSdgs: [],
+      allRefugeeInvestmentTypes: [],
+      allSectors: [],
       project: {
         locations: []
       },
+      uploading: {},
       contact: {},
       adding: false,
       updating: false
@@ -31,6 +33,8 @@ export default class ProjectForm extends Component {
     this.fetchFounders();
     this.fetchInvestors();
     this.fetchSdgs();
+    this.fetchRefugeeInvestmentTypes();
+    this.fetchSectors();
     this.checkIfProjectDateIsPassed();
   }
 
@@ -91,6 +95,18 @@ export default class ProjectForm extends Component {
   fetchSdgs = () => {
     Axios.get("/api/sdgs").then(result => {
       this.setState({ allSdgs: result.data });
+    });
+  };
+
+  fetchRefugeeInvestmentTypes = () => {
+    Axios.get("/api/refugeeInvestmentTypes").then(result => {
+      this.setState({ allRefugeeInvestmentTypes: result.data });
+    });
+  };
+
+  fetchSectors = () => {
+    Axios.get("/api/sectors").then(result => {
+      this.setState({ allSectors: result.data });
     });
   };
 
@@ -219,8 +235,16 @@ export default class ProjectForm extends Component {
 
   uploadImage = e => {
     e.preventDefault();
+    const imgSize = e.target.files[0].size;
+    if (imgSize > 1000000) {
+      return this.showErrorMessage(
+        "this image is too large ! max size is 1 mb"
+      );
+    }
+
     const formData = new FormData();
     const name = e.target.name;
+    this.setState({ uploading: { [name]: true } });
     formData.append("img", e.target.files[0]);
     const config = {
       headers: {
@@ -235,7 +259,8 @@ export default class ProjectForm extends Component {
           project: {
             ...this.state.project,
             [name]: imageURL
-          }
+          },
+          uploading: { [name]: false }
         });
       })
       .catch(err => {
@@ -245,195 +270,203 @@ export default class ProjectForm extends Component {
 
   render() {
     return (
-      <div>
-        <Form
-          id="project-form"
-          data={this.state.project}
-          onFormSubmit={this.onFormSubmit}
-          adding={this.state.adding}
+      <Form
+        id="project-form"
+        data={this.state.project}
+        onFormSubmit={this.onFormSubmit}
+        adding={this.state.adding}
+      >
+        <Typography variant="h5" style={{ marginTop: 50 }}>
+          Add the project info here Please...
+        </Typography>
+        <TextField
+          className="full-width-input"
+          label="project name"
+          InputLabelProps={{
+            shrink: true
+          }}
+          name="name"
+          variant="outlined"
+          required
+          value={this.state.project.name}
+          error={!this.checkIfFieldIsValid("name")}
+          onChange={this.onChange}
+        />
+        <TextField
+          className="full-width-input"
+          value={this.state.project.organization}
+          InputLabelProps={{
+            shrink: true
+          }}
+          variant="outlined"
+          required
+          error={!this.checkIfFieldIsValid("organization")}
+          label="organization name"
+          onChange={this.onChange}
+          name="organization"
+        />
+        <TextField
+          value={this.state.project.investmentSize}
+          className="full-width-input"
+          inputProps={{
+            min: 0
+          }}
+          error={!this.checkIfFieldIsValid("investmentSize")}
+          label="investment size by US dollar $"
+          InputLabelProps={{
+            shrink: true
+          }}
+          onChange={this.onChange}
+          variant="outlined"
+          name="investmentSize"
+          type="number"
+          required
+        />
+        <TextField
+          className="full-width-input"
+          label="starting year"
+          type="date"
+          variant="outlined"
+          defaultValue={this.state.project.year}
+          value={this.state.project.year}
+          required
+          name="year"
+          InputLabelProps={{
+            shrink: true
+          }}
+          onChange={this.onChange}
+        />
+
+        <TextField
+          className="full-width-input"
+          label="impact"
+          name="impact"
+          error={!this.checkIfFieldIsValid("impact")}
+          value={this.state.project.impact}
+          multiline
+          inputProps={{ maxLength: 1000 }}
+          InputLabelProps={{
+            shrink: true
+          }}
+          required
+          onChange={this.onChange}
+          rowsMax="6"
+          variant="outlined"
+        />
+
+        <TextField
+          className="full-width-input"
+          label="thesis"
+          name="thesis"
+          error={!this.checkIfFieldIsValid("thesis")}
+          value={this.state.project.thesis}
+          inputProps={{ maxLength: 1000 }}
+          multiline
+          InputLabelProps={{
+            shrink: true
+          }}
+          onChange={this.onChange}
+          required
+          rowsMax="6"
+          variant="outlined"
+        />
+        <TextField
+          className="full-width-input"
+          label="structure"
+          inputProps={{ maxLength: 1000 }}
+          name="structure"
+          error={!this.checkIfFieldIsValid("structure")}
+          multiline
+          InputLabelProps={{
+            shrink: true
+          }}
+          value={this.state.project.structure}
+          onChange={this.onChange}
+          required
+          rowsMax="6"
+          variant="outlined"
+        />
+        <TextField
+          select
+          label="sector"
+          error={!this.checkIfFieldIsValid("sector")}
+          required
+          className="full-width-input"
+          InputLabelProps={{
+            shrink: this.state.project.sector ? true : false
+          }}
+          name="sector"
+          value={this.state.project.sector}
+          onChange={this.onChange}
+          helperText="Please select the project sector"
+          margin="normal"
         >
-          <Typography variant="h5">
-            Add the project info here Please...
-          </Typography>
-          <TextField
-            className="full-width-input"
-            label="project name"
-            InputLabelProps={{
-              shrink: true
-            }}
-            name="name"
-            required
-            value={this.state.project.name}
-            error={!this.checkIfFieldIsValid("name")}
-            onChange={this.onChange}
-          />
-          <TextField
-            className="full-width-input"
-            value={this.state.project.organization}
-            InputLabelProps={{
-              shrink: true
-            }}
-            required
-            error={!this.checkIfFieldIsValid("organization")}
-            label="organization name"
-            onChange={this.onChange}
-            name="organization"
-          />
-          <TextField
-            value={this.state.project.investmentSize}
-            className="full-width-input"
-            error={!this.checkIfFieldIsValid("investmentSize")}
-            label="investment size by US dollar $"
-            InputLabelProps={{
-              shrink: true
-            }}
-            onChange={this.onChange}
-            name="investmentSize"
-            type="number"
-            required
-          />
-          <TextField
-            className="full-width-input"
-            label="starting year"
-            type="date"
-            defaultValue={this.state.project.year}
-            value={this.state.project.year}
-            required
-            name="year"
-            InputLabelProps={{
-              shrink: true
-            }}
-            onChange={this.onChange}
-          />
-          <TextField
-            select
-            label="sector"
-            error={!this.checkIfFieldIsValid("sector")}
-            required
-            className="full-width-input"
-            InputLabelProps={{
-              shrink: true
-            }}
-            name="sector"
-            value={this.state.project.sector}
-            onChange={this.onChange}
-            helperText="Please select the project sector"
-            margin="normal"
-          >
-            {sectors.map(option => (
-              <MenuItem
-                key={option}
-                value={option}
-                style={{ textTransform: "capitalize" }}
-              >
-                {option}
-              </MenuItem>
-            ))}
-          </TextField>
+          {this.state.allSectors.map(option => (
+            <MenuItem
+              key={option.id}
+              value={option.name}
+              style={{ textTransform: "capitalize" }}
+            >
+              {option.name}
+            </MenuItem>
+          ))}
+        </TextField>
 
-          <TextField
-            select
-            label="refugee investment type"
-            error={!this.checkIfFieldIsValid("refugeeInvestmentType")}
-            required
-            InputLabelProps={{
-              shrink: true
-            }}
-            className="full-width-input"
-            name="refugeeInvestmentType"
-            value={this.state.project.refugeeInvestmentType}
-            onChange={this.onChange}
-            helperText="Please select the refugee investment type"
-            margin="normal"
-          >
-            {refugeeInvestmentTypes.map(option => (
-              <MenuItem
-                key={option.name}
-                value={option.name}
-                style={{ textTransform: "capitalize" }}
-              >
-                {option.name}
-              </MenuItem>
-            ))}
-          </TextField>
+        <TextField
+          select
+          label="refugee investment type"
+          error={!this.checkIfFieldIsValid("refugeeInvestmentType")}
+          required
+          InputLabelProps={{
+            shrink: this.state.project.refugeeInvestmentType ? true : false
+          }}
+          className="full-width-input"
+          name="refugeeInvestmentType"
+          value={this.state.project.refugeeInvestmentType}
+          onChange={this.onChange}
+          helperText="Please select the refugee investment type"
+          margin="normal"
+        >
+          {this.state.allRefugeeInvestmentTypes.map(option => (
+            <MenuItem
+              key={option.name}
+              value={option.name}
+              style={{ textTransform: "capitalize" }}
+            >
+              {option.name}
+            </MenuItem>
+          ))}
+        </TextField>
+        <AutoComplete
+          suggestions={this.state.allCountries}
+          label="countries"
+          handleChange={value => {
+            this.setChoosenFields("countries", value);
+          }}
+        />
+        <AutoComplete
+          suggestions={this.state.allFounders}
+          label="founders"
+          handleChange={value => {
+            this.setChoosenFields("founders", value);
+          }}
+        />
+        <AutoComplete
+          suggestions={this.state.allInvestors}
+          label="investors"
+          handleChange={value => {
+            this.setChoosenFields("investors", value);
+          }}
+        />
+        <AutoComplete
+          suggestions={this.state.allSdgs}
+          label="SDGs"
+          handleChange={value => {
+            this.setChoosenFields("sdgs", value);
+          }}
+        />
 
-          <TextField
-            className="full-width-input"
-            label="impact"
-            name="impact"
-            error={!this.checkIfFieldIsValid("impact")}
-            value={this.state.project.impact}
-            multiline
-            inputProps={{ maxLength: 1000 }}
-            InputLabelProps={{
-              shrink: true
-            }}
-            required
-            onChange={this.onChange}
-            rowsMax="6"
-            variant="outlined"
-          />
-
-          <TextField
-            className="full-width-input"
-            label="thesis"
-            name="thesis"
-            error={!this.checkIfFieldIsValid("thesis")}
-            value={this.state.project.thesis}
-            inputProps={{ maxLength: 1000 }}
-            multiline
-            InputLabelProps={{
-              shrink: true
-            }}
-            onChange={this.onChange}
-            required
-            rowsMax="6"
-            variant="outlined"
-          />
-          <TextField
-            className="full-width-input"
-            label="structure"
-            inputProps={{ maxLength: 1000 }}
-            name="structure"
-            error={!this.checkIfFieldIsValid("structure")}
-            multiline
-            InputLabelProps={{
-              shrink: true
-            }}
-            value={this.state.project.structure}
-            onChange={this.onChange}
-            required
-            rowsMax="6"
-            variant="outlined"
-          />
-          <AutoComplete
-            suggestions={this.state.allCountries}
-            label="countries"
-            handleChange={value => {
-              this.setChoosenFields("countries", value);
-            }}
-          />
-          <AutoComplete
-            suggestions={this.state.allFounders}
-            label="founders"
-            handleChange={value => {
-              this.setChoosenFields("founders", value);
-            }}
-          />
-          <AutoComplete
-            suggestions={this.state.allInvestors}
-            label="investors"
-            handleChange={value => {
-              this.setChoosenFields("investors", value);
-            }}
-          />
-          <AutoComplete
-            suggestions={this.state.allSdgs}
-            label="SDGs"
-            handleChange={value => {
-              this.setChoosenFields("sdgs", value);
-            }}
-          />
+        <div className="contact-section">
           <div className="input-text-group">
             <i className="fas fa-phone" />
             <TextField
@@ -574,76 +607,78 @@ export default class ProjectForm extends Component {
               onChange={this.onContactChange}
             />
           </div>
-          <Typography variant="h5" style={{ marginTop: 50 }}>
-            choose a good image for the project to upload
-          </Typography>
+        </div>
 
-          <div className="img-upload-group">
-            <div
-              className="img-upload-preveiw"
-              style={{
-                height: 40,
-                width: 40,
-                marginRight: 10,
-                backgroundImage: "url(" + this.state.project.img + ")"
-              }}
-            />
+        <div className="img-upload-group">
+          <Avatar
+            className="img-upload-preveiw"
+            src={
+              this.state.uploading.img
+                ? "/imgs/loading.gif"
+                : this.state.project.img
+                ? this.state.project.img
+                : "https://beedie.sfu.ca/corporate-governance-blog/wp-content/themes/newsroom13/img/placeholder.png"
+            }
+          />
 
-            <TextField
-              style={{ marginTop: 0 }}
-              className=""
-              name="img"
-              InputLabelProps={{
-                shrink: true
-              }}
-              type="file"
-              accept="image/*"
-              required={this.state.updating ? false : true}
-              onChange={this.uploadImage}
-            />
-            <Typography variant="overline">max size 1.mb</Typography>
-          </div>
-          <Typography variant="h5" style={{ marginTop: 50 }}>
-            upload the buisness logo
-          </Typography>
-          <div className="img-upload-group">
-            <div
-              className="img-upload-preveiw"
-              style={{
-                height: 40,
-                width: 40,
-                marginRight: 10,
-                backgroundImage: "url(" + this.state.project.logo + ")"
-              }}
-            />
+          <TextField
+            style={{ marginTop: 0 }}
+            className=""
+            label="upload good image for your project"
+            className="full-width-input"
+            name="img"
+            InputLabelProps={{
+              shrink: true
+            }}
+            variant="filled"
+            helperText="max size 1.mb"
+            type="file"
+            accept="image/*"
+            required={this.state.updating ? false : true}
+            onChange={this.uploadImage}
+          />
+        </div>
 
-            <TextField
-              style={{ marginTop: 0 }}
-              className=""
-              name="logo"
-              required={this.state.updating ? false : true}
-              InputLabelProps={{
-                shrink: true
-              }}
-              accept="image/*"
-              type="file"
-              onChange={this.uploadImage}
-            />
-            <Typography variant="overline">max size 1.mb</Typography>
-          </div>
+        <div className="img-upload-group">
+          <Avatar
+            className="img-upload-preveiw"
+            src={
+              this.state.uploading.logo
+                ? "/imgs/loading.gif"
+                : this.state.project.logo
+                ? this.state.project.logo
+                : "https://beedie.sfu.ca/corporate-governance-blog/wp-content/themes/newsroom13/img/placeholder.png"
+            }
+          />
 
-          <Typography variant="h5" style={{ marginTop: 50 }}>
-            click on the map to select the project locations, click on the dots
-            to remove the location
-          </Typography>
-          <div className="map-wrapper" style={{ height: 500, width: "100%" }}>
-            <GoogleMap
-              setLocations={this.setLocations}
-              dots={this.state.project.locations}
-            />
-          </div>
-        </Form>
-      </div>
+          <TextField
+            style={{ marginTop: 0 }}
+            className="full-width-input"
+            helperText="max size 1.mb"
+            name="logo"
+            label="upload logo image for your business"
+            variant="filled"
+            required={this.state.updating ? false : true}
+            InputLabelProps={{
+              shrink: true
+            }}
+            accept="image/*"
+            type="file"
+            onChange={this.uploadImage}
+          />
+        </div>
+
+        <Typography variant="body2" style={{ marginTop: 50 }}>
+          click on the map to select the project locations, click on the dots to
+          remove the location
+        </Typography>
+        <div className="map-wrapper" style={{ height: 300, width: "100%" }}>
+          <GoogleMap
+            setLocations={this.setLocations}
+            dots={this.state.project.locations}
+          />
+        </div>
+      </Form>
     );
   }
 }

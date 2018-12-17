@@ -11,7 +11,7 @@ export default class Form extends Component {
 
   render() {
     return (
-      <Paper className="admin-form-container" style={{ padding: 20 }}>
+      <Paper className="admin-form-container">
         <form
           onSubmit={this.props.onFormSubmit}
           style={{ width: "80%", position: "relative", left: "10%" }}
