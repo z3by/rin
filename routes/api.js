@@ -12,6 +12,7 @@ const membersAPI = require("../controllers/users/members.controller");
 const foundersAPI = require("../controllers/api/founders.controller");
 const investorsAPI = require("../controllers/api/investors.controller");
 const sdgsAPI = require("../controllers/api/sdgs.controller");
+const sectorsAPI = require("../controllers/api/sectors.controller");
 const refugeeInvestmentTypesAPI = require("../controllers/api/refugeeInvestmentTypes.controller");
 const loactionAPI = require("../controllers/api/locations.controller");
 const contactsAPI = require("../controllers/api/contacts.controller");
@@ -100,6 +101,11 @@ router.delete("/founders/:id", foundersAPI.deleteFounders);
 router.get("/sdgs", sdgsAPI.getSdgs);
 router.get("/sdgs/:id", sdgsAPI.getSdg);
 router.post("/sdgs", sdgsAPI.addSdg);
+
+// sectors routes
+router.get("/sectors", sectorsAPI.getSectors);
+router.get("/sectors/:id", sectorsAPI.getSector);
+router.post("/sectors", sectorsAPI.addSector);
 
 // Refugee Investment Types routes
 router.get(
