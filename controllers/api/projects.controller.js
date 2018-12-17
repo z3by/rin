@@ -15,7 +15,7 @@ module.exports.getProjects = (req, res) => {
       {
         model: db.RefugeeInvestmentType,
         as: "refugeeInvestmentType",
-        attributes: ["id", "name"]
+        attributes: ["id", "name", "img"]
       },
       { model: db.Investor, through: { attributes: [] }, as: "Investors" },
       { model: db.Founder, through: { attributes: [] }, as: "Founders" },
@@ -52,7 +52,7 @@ module.exports.getProjectsPage = (req, res) => {
       {
         model: db.RefugeeInvestmentType,
         as: "refugeeInvestmentType",
-        attributes: ["id", "name"]
+        attributes: ["id", "name", "img"]
       },
       { model: db.Contact, as: "contact" },
       { model: db.Sector, as: "sector", attributes: ["id", "name"] },
@@ -80,7 +80,7 @@ module.exports.getProject = (req, res) => {
       {
         model: db.RefugeeInvestmentType,
         as: "refugeeInvestmentType",
-        attributes: ["id", "name"]
+        attributes: ["id", "name", "img"]
       },
       { model: db.Contact, as: "contact" },
       { model: db.Sector, as: "sector", attributes: ["id", "name"] },
