@@ -1,7 +1,7 @@
 "use strict";
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable("countries", {
+    return queryInterface.createTable("refugeeInvestmentTypes", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -11,15 +11,8 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      flag: {
+      img: {
         type: Sequelize.STRING
-      },
-      projectId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: "projects",
-          key: "id"
-        }
       },
       createdAt: {
         allowNull: false,
@@ -32,6 +25,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("countries");
+    return queryInterface.dropTable("refugeeInvestmentTypes");
   }
 };

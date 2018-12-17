@@ -5,10 +5,11 @@ import Paper from "@material-ui/core/Paper";
 import { TablePagination } from "@material-ui/core";
 import CustomTableHead from "./CustomTableHead.component";
 import CustomTableRow from "./CustomTableRow.component";
-import Button from "@material-ui/core/Button";
 import Axios from "axios";
 import Divider from "@material-ui/core/Divider";
 import { Link } from "react-router-dom";
+import AddIcon from "@material-ui/icons/Add";
+import Fab from "@material-ui/core/Fab";
 
 export default class AdminList extends Component {
   constructor(props) {
@@ -78,10 +79,20 @@ export default class AdminList extends Component {
           to={"/dashboard/add" + this.props.itemName}
           style={{ display: this.props.controls ? "block" : "none" }}
         >
-          <Button>
-            <i className="fas fa-plus color-2" />
-            add {this.props.itemName}
-          </Button>
+          <Fab
+            style={{
+              backgroundColor: "var(--color-2)",
+              color: "white",
+              height: 70,
+              width: 70,
+              position: "absolute",
+              right: 50,
+              bottom: 50
+            }}
+            aria-label="Add"
+          >
+            <AddIcon />
+          </Fab>
         </Link>
         <Divider />
 

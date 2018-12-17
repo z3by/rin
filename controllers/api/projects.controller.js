@@ -8,9 +8,15 @@ module.exports.getProjects = (req, res) => {
       pending: false
     },
     include: [
-      { model: db.Location, as: "locations" },
+      { model: db.Location, as: "locations", attributes: ["id", "lng", "lat"] },
       { model: db.Story, as: "stories" },
       { model: db.Contact, as: "contact" },
+      { model: db.Sector, as: "sector", attributes: ["id", "name"] },
+      {
+        model: db.RefugeeInvestmentType,
+        as: "refugeeInvestmentType",
+        attributes: ["id", "name", "img"]
+      },
       { model: db.Investor, through: { attributes: [] }, as: "Investors" },
       { model: db.Founder, through: { attributes: [] }, as: "Founders" },
       { model: db.Country, through: { attributes: [] }, as: "Countries" },
@@ -41,9 +47,15 @@ module.exports.getProjectsPage = (req, res) => {
       pending: false
     },
     include: [
-      { model: db.Location, as: "locations" },
+      { model: db.Location, as: "locations", attributes: ["id", "lng", "lat"] },
       { model: db.Story, as: "stories" },
+      {
+        model: db.RefugeeInvestmentType,
+        as: "refugeeInvestmentType",
+        attributes: ["id", "name", "img"]
+      },
       { model: db.Contact, as: "contact" },
+      { model: db.Sector, as: "sector", attributes: ["id", "name"] },
       { model: db.Investor, through: { attributes: [] }, as: "Investors" },
       { model: db.Founder, through: { attributes: [] }, as: "Founders" },
       { model: db.Country, through: { attributes: [] }, as: "Countries" },
@@ -63,9 +75,15 @@ module.exports.getProject = (req, res) => {
       id: req.params.id
     },
     include: [
-      { model: db.Location, as: "locations" },
+      { model: db.Location, as: "locations", attributes: ["id", "lng", "lat"] },
       { model: db.Story, as: "stories" },
+      {
+        model: db.RefugeeInvestmentType,
+        as: "refugeeInvestmentType",
+        attributes: ["id", "name", "img"]
+      },
       { model: db.Contact, as: "contact" },
+      { model: db.Sector, as: "sector", attributes: ["id", "name"] },
       { model: db.Investor, through: { attributes: [] }, as: "Investors" },
       { model: db.Founder, through: { attributes: [] }, as: "Founders" },
       { model: db.Country, through: { attributes: [] }, as: "Countries" },
@@ -78,7 +96,7 @@ module.exports.getProject = (req, res) => {
 
 module.exports.addProject = (req, res) => {
   let data = req.body;
-  // add contact record
+
   db.Project.create(data).then(project => {
     // create project locations records;
     projectHelpers

@@ -16,18 +16,3 @@ module.exports.getCountriesNames = (req, res) => {
     res.status(200).json(countries);
   });
 };
-
-module.exports.fillCountryTable = (req, res) => {
-  db.Country.count().then(count => {
-    if (!!count) {
-      return;
-    }
-  });
-  countriesData.forEach((country, i) => {
-    db.Country.create(country).then(created => {
-      if (i === countriesData.length - 1) {
-        res.send(201);
-      }
-    });
-  });
-};

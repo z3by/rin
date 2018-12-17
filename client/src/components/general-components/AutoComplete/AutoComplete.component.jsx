@@ -197,8 +197,6 @@ class AutoComplete extends React.Component {
         [name]: value
       },
       () => {
-        console.log(this.state);
-
         this.props.handleChange(value);
       }
     );
