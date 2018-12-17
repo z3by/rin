@@ -6,8 +6,6 @@
 # testing
 /coverage
 
-# production
-/build
 
 # map config
 map.config.js
