@@ -28,7 +28,6 @@ router.post("/upload/pdf", s3Config.uploadPDF, (req, res) => {
 //countries routes
 router.get("/countries", countriesAPI.getCountries);
 router.get("/countries/names", countriesAPI.getCountriesNames);
-router.get("/countries/migrate", countriesAPI.fillCountryTable);
 
 // locations routes
 router.get("/locations", loactionAPI.getLocations);

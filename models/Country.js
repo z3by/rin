@@ -3,7 +3,8 @@ module.exports = (sequelize, DataTypes) => {
   const Country = sequelize.define(
     "Country",
     {
-      name: DataTypes.STRING
+      name: DataTypes.STRING,
+      flag: DataTypes.STRING
     },
     {
       tableName: "countries"
