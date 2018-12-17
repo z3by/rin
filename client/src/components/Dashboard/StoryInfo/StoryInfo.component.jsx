@@ -36,8 +36,6 @@ export default class StoryInfo extends Component {
     let story = this.state.storyData;
     let { myText } = this.state;
 
-    console.log(story);
-
     return (
       <Paper style={{ position: "relative" }}>
         <div

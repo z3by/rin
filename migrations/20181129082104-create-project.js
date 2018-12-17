@@ -51,6 +51,20 @@ module.exports = {
           key: "id"
         }
       },
+      refugeeInvestmentTypeId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "refugeeInvestmentTypes",
+          key: "id"
+        }
+      },
+      sectorId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "sectors",
+          key: "id"
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

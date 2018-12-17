@@ -108,6 +108,7 @@ export default class Requests extends Component {
           <div
             style={{
               width: "100%",
+              height: "100%",
               display: "flex",
               justifyContent: "center",
               alignItems: "center"
@@ -119,7 +120,7 @@ export default class Requests extends Component {
             <img
               src="http://icons.iconarchive.com/icons/iconsmind/outline/256/Inbox-Empty-icon.png"
               alt=""
-              style={{ marginLeft: 20 }}
+              style={{ marginLeft: 20, width: "100px" }}
             />
           </div>
         )}
