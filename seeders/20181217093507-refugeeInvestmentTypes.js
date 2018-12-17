@@ -1,6 +1,5 @@
 "use strict";
 const refugeeInvestmentTypesData = require("../data/refugeeInvestmentTypes");
-const db = require("../models");
 
 const filterData = refugeeInvestmentTypesData.map(rft => {
   return {
