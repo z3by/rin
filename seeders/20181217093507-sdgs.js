@@ -1,6 +1,5 @@
 "use strict";
 const sdgsData = require("../data/sdgs");
-const db = require("../models");
 
 const filterData = sdgsData.map(sdg => {
   return {
