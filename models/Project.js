@@ -10,7 +10,6 @@ module.exports = (sequelize, DataTypes) => {
       impact: DataTypes.STRING,
       thesis: DataTypes.STRING,
       structure: DataTypes.STRING,
-      refugeeInvestmentType: DataTypes.STRING,
       investmentSize: DataTypes.INTEGER,
       img: DataTypes.STRING,
       logo: DataTypes.STRING,
@@ -25,6 +24,9 @@ module.exports = (sequelize, DataTypes) => {
     Project.hasMany(models.Story, { as: "stories", onDelete: "cascade" });
     Project.hasMany(models.Location, { as: "locations", onDelete: "cascade" });
     Project.belongsTo(models.Contact, { as: "contact", onDelete: "cascade" });
+    Project.belongsTo(models.RefugeeInvestmentType, {
+      as: "refugeeInvestmentType"
+    });
     Project.belongsToMany(models.Investor, {
       as: "Investors",
       through: "project_investor",

@@ -26,7 +26,7 @@ export default class Login extends Component {
     const userInfo = this.state;
     Axios.post("/users/loginadmin", userInfo).then(res => {
       if (res.data === true) {
-        this.props.history.push("dashboard");
+        this.props.history.push("/dashboard");
       } else {
         alert("user name or password is wrong");
       }

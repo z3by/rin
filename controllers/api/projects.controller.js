@@ -11,6 +11,7 @@ module.exports.getProjects = (req, res) => {
       { model: db.Location, as: "locations" },
       { model: db.Story, as: "stories" },
       { model: db.Contact, as: "contact" },
+      { model: db.RefugeeInvestmentType, as: "refugeeInvestmentType" },
       { model: db.Investor, through: { attributes: [] }, as: "Investors" },
       { model: db.Founder, through: { attributes: [] }, as: "Founders" },
       { model: db.Country, through: { attributes: [] }, as: "Countries" },
@@ -43,6 +44,7 @@ module.exports.getProjectsPage = (req, res) => {
     include: [
       { model: db.Location, as: "locations" },
       { model: db.Story, as: "stories" },
+      { model: db.RefugeeInvestmentType, as: "refugeeInvestmentType" },
       { model: db.Contact, as: "contact" },
       { model: db.Investor, through: { attributes: [] }, as: "Investors" },
       { model: db.Founder, through: { attributes: [] }, as: "Founders" },
@@ -65,6 +67,7 @@ module.exports.getProject = (req, res) => {
     include: [
       { model: db.Location, as: "locations" },
       { model: db.Story, as: "stories" },
+      { model: db.RefugeeInvestmentType, as: "refugeeInvestmentType" },
       { model: db.Contact, as: "contact" },
       { model: db.Investor, through: { attributes: [] }, as: "Investors" },
       { model: db.Founder, through: { attributes: [] }, as: "Founders" },
@@ -78,7 +81,7 @@ module.exports.getProject = (req, res) => {
 
 module.exports.addProject = (req, res) => {
   let data = req.body;
-  // add contact record
+
   db.Project.create(data).then(project => {
     // create project locations records;
     projectHelpers
