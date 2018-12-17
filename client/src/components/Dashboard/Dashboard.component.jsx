@@ -83,7 +83,6 @@ export default class Dashboard extends Component {
                     "id",
                     "name",
                     "organization",
-                    "sector",
                     "investmentSize"
                   ]}
                 />

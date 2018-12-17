@@ -20,7 +20,6 @@ export default class ProjectInfo extends Component {
   fetchProject = () => {
     const projectId = this.props.match.params.id;
     Axios.get("/api/projects/" + projectId).then(result => {
-      console.log(result.data[0]);
       this.setState({ projectData: result.data[0] });
     });
   };
