@@ -13,7 +13,12 @@ export default class FilterForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      options: { year: "", refugeeInvestmentTypeId: 0, sdgs: [] },
+      options: {
+        year: "",
+        refugeeInvestmentTypeId: 0,
+        sdgs: [],
+        investmentSize: ""
+      },
       refugeeInvestmentTypes: []
     };
   }
@@ -21,6 +26,7 @@ export default class FilterForm extends Component {
   componentDidMount() {
     this.fetchRFTs();
   }
+
   handleChange = e => {
     this.setState({
       options: {

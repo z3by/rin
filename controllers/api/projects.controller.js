@@ -299,7 +299,11 @@ module.exports.getProjectsLocations = (req, res) => {
     }
   ];
 
-  if (!!req.query.year) {
+  let ProjectWhere = {
+    [Op.and]: andQuery
+  };
+
+  if (req.query.year) {
     andQuery.push({
       year: db.sequelize.where(
         db.sequelize.fn("YEAR", db.sequelize.col("year")),
@@ -308,23 +312,15 @@ module.exports.getProjectsLocations = (req, res) => {
     });
   }
 
-  if (!!req.query.sectorId) {
+  if (req.query.sectorId > 0) {
     andQuery.push({
       sectorId: req.query.sectorId
     });
   }
 
-  if (!!req.query.refugeeInvestmentTypeId) {
+  if (req.query.refugeeInvestmentTypeId > 0) {
     andQuery.push({
       refugeeInvestmentTypeId: req.query.refugeeInvestmentTypeId
-    });
-  }
-
-  if (!!req.query.investmentSize) {
-    andQuery.push({
-      investmentSize: {
-        [Op.gte]: req.query.investmentSize
-      }
     });
   }
 
@@ -339,7 +335,7 @@ module.exports.getProjectsLocations = (req, res) => {
   let sdgsWhere = opOr.length ? { [Op.or]: opOr } : {};
 
   db.Project.findAll({
-    where: { [Op.and]: andQuery },
+    where: ProjectWhere,
     attributes: ["id"],
     include: [
       {
@@ -362,6 +358,7 @@ module.exports.getProjectsLocations = (req, res) => {
   })
     .then(result => {
       res.status(200).json(result);
+      console.log(result);
     })
     .catch(err => {
       res.send(err);

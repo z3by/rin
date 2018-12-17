@@ -25,7 +25,8 @@ export default class Map extends Component {
     },
     projectsInfo: [],
     filterOptions: {
-      sectorId: 0
+      sectorId: 0,
+      investmentSize: ""
     },
     filterOn: false
   };
@@ -39,15 +40,21 @@ export default class Map extends Component {
     const locations = [];
     Axios.get("/api/projectslocations", {
       params: { ...this.state.filterOptions }
-    }).then(res => {
-      res.data.forEach(project => {
-        project.locations.forEach(location => {
-          location.sector = project.sector.name;
-          locations.push(location);
+    })
+      .then(res => {
+        console.log(this.state.filterOptions);
+
+        res.data.forEach(project => {
+          project.locations.forEach(location => {
+            location.sector = project.sector.name;
+            locations.push(location);
+          });
         });
+        this.setState({ locations: locations });
+      })
+      .catch(err => {
+        console.log(err);
       });
-      this.setState({ locations: locations });
-    });
   };
 
   _onChange = data => {
@@ -110,7 +117,7 @@ export default class Map extends Component {
   filterByGivenOptions = options => {
     this.setState(
       {
-        filterOptions: { ...options }
+        filterOptions: { ...this.state.filterOptions, ...options }
       },
       () => {
         this.fetchProjects();
