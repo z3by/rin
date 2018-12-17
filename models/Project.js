@@ -6,7 +6,6 @@ module.exports = (sequelize, DataTypes) => {
       pending: DataTypes.BOOLEAN,
       name: DataTypes.STRING,
       organization: DataTypes.STRING,
-      sector: DataTypes.STRING,
       impact: DataTypes.STRING,
       thesis: DataTypes.STRING,
       structure: DataTypes.STRING,
@@ -24,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     Project.hasMany(models.Story, { as: "stories", onDelete: "cascade" });
     Project.hasMany(models.Location, { as: "locations", onDelete: "cascade" });
     Project.belongsTo(models.Contact, { as: "contact", onDelete: "cascade" });
+    Project.belongsTo(models.Sector, { as: "sector" });
     Project.belongsTo(models.RefugeeInvestmentType, {
       as: "refugeeInvestmentType"
     });
