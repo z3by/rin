@@ -8,7 +8,11 @@ module.exports.getProjects = (req, res) => {
       pending: false
     },
     include: [
-      { model: db.Location, as: "locations", attributes: ["id", "lng", "lat"] },
+      {
+        model: db.Location,
+        as: "locations",
+        attributes: ["id", "lng", "lat", "ProjectId"]
+      },
       { model: db.Story, as: "stories" },
       { model: db.Contact, as: "contact" },
       { model: db.Sector, as: "sector", attributes: ["id", "name"] },
@@ -47,7 +51,11 @@ module.exports.getProjectsPage = (req, res) => {
       pending: false
     },
     include: [
-      { model: db.Location, as: "locations", attributes: ["id", "lng", "lat"] },
+      {
+        model: db.Location,
+        as: "locations",
+        attributes: ["id", "lng", "lat", "ProjectId"]
+      },
       { model: db.Story, as: "stories" },
       {
         model: db.RefugeeInvestmentType,
@@ -75,7 +83,11 @@ module.exports.getProject = (req, res) => {
       id: req.params.id
     },
     include: [
-      { model: db.Location, as: "locations", attributes: ["id", "lng", "lat"] },
+      {
+        model: db.Location,
+        as: "locations",
+        attributes: ["id", "lng", "lat", "ProjectId"]
+      },
       { model: db.Story, as: "stories" },
       {
         model: db.RefugeeInvestmentType,
@@ -287,7 +299,11 @@ module.exports.getProjectsLocations = (req, res) => {
     }
   ];
 
-  if (!!req.query.year) {
+  let ProjectWhere = {
+    [Op.and]: andQuery
+  };
+
+  if (req.query.year) {
     andQuery.push({
       year: db.sequelize.where(
         db.sequelize.fn("YEAR", db.sequelize.col("year")),
@@ -296,23 +312,15 @@ module.exports.getProjectsLocations = (req, res) => {
     });
   }
 
-  if (!!req.query.sector) {
+  if (req.query.sectorId > 0) {
     andQuery.push({
-      sector: req.query.sector
+      sectorId: req.query.sectorId
     });
   }
 
-  if (!!req.query.refugeeInvestmentType) {
+  if (req.query.refugeeInvestmentTypeId > 0) {
     andQuery.push({
-      refugeeInvestmentType: req.query.refugeeInvestmentType
-    });
-  }
-
-  if (!!req.query.investmentSize) {
-    andQuery.push({
-      investmentSize: {
-        [Op.gte]: req.query.investmentSize
-      }
+      refugeeInvestmentTypeId: req.query.refugeeInvestmentTypeId
     });
   }
 
@@ -327,8 +335,8 @@ module.exports.getProjectsLocations = (req, res) => {
   let sdgsWhere = opOr.length ? { [Op.or]: opOr } : {};
 
   db.Project.findAll({
-    where: { [Op.and]: andQuery },
-    attributes: ["id", "sector"],
+    where: ProjectWhere,
+    attributes: ["id"],
     include: [
       {
         model: db.Location,
@@ -340,11 +348,17 @@ module.exports.getProjectsLocations = (req, res) => {
         as: "Sdgs",
         through: { attributes: [], where: sdgsWhere },
         attributes: ["id", "name"]
+      },
+      {
+        model: db.Sector,
+        as: "sector",
+        attributes: ["id", "name"]
       }
     ]
   })
     .then(result => {
       res.status(200).json(result);
+      console.log(result);
     })
     .catch(err => {
       res.send(err);

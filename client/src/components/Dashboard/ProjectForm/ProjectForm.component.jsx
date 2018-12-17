@@ -622,7 +622,6 @@ export default class ProjectForm extends Component {
 
           <TextField
             style={{ marginTop: 0 }}
-            className=""
             label="upload good image for your project"
             className="full-width-input"
             name="img"

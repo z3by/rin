@@ -19,11 +19,14 @@ export default class Map extends Component {
       Sdgs: [],
       Founders: [],
       Investors: [],
-      contact: {}
+      contact: {},
+      sector: {},
+      refugeeInvestmentType: {}
     },
     projectsInfo: [],
     filterOptions: {
-      sector: ""
+      sectorId: 0,
+      investmentSize: ""
     },
     filterOn: false
   };
@@ -37,15 +40,21 @@ export default class Map extends Component {
     const locations = [];
     Axios.get("/api/projectslocations", {
       params: { ...this.state.filterOptions }
-    }).then(res => {
-      res.data.forEach(project => {
-        project.locations.forEach(location => {
-          location.sector = project.sector;
-          locations.push(location);
+    })
+      .then(res => {
+        console.log(this.state.filterOptions);
+
+        res.data.forEach(project => {
+          project.locations.forEach(location => {
+            location.sector = project.sector.name;
+            locations.push(location);
+          });
         });
+        this.setState({ locations: locations });
+      })
+      .catch(err => {
+        console.log(err);
       });
-      this.setState({ locations: locations });
-    });
   };
 
   _onChange = data => {
@@ -56,15 +65,22 @@ export default class Map extends Component {
     }
   };
 
-  handleSpectrumHover = sector => {
-    this.setState(
-      {
-        filterOptions: { ...this.state.filterOptions, sector: sector }
-      },
-      () => {
-        this.fetchProjects();
-      }
-    );
+  handleSpectrumHover = sectorName => {
+    Axios.get("/api/sectors").then(res => {
+      const currentSector = res.data.filter(sector => {
+        return sector.name === sectorName;
+      });
+
+      const sectorId = currentSector[0].id;
+      this.setState(
+        {
+          filterOptions: { ...this.state.filterOptions, sectorId: sectorId }
+        },
+        () => {
+          this.fetchProjects();
+        }
+      );
+    });
   };
 
   getProject = (id, location) => {
@@ -101,7 +117,7 @@ export default class Map extends Component {
   filterByGivenOptions = options => {
     this.setState(
       {
-        filterOptions: { ...options }
+        filterOptions: { ...this.state.filterOptions, ...options }
       },
       () => {
         this.fetchProjects();
