@@ -8,7 +8,11 @@ module.exports.getProjects = (req, res) => {
       pending: false
     },
     include: [
-      { model: db.Location, as: "locations", attributes: ["id", "lng", "lat"] },
+      {
+        model: db.Location,
+        as: "locations",
+        attributes: ["id", "lng", "lat", "ProjectId"]
+      },
       { model: db.Story, as: "stories" },
       { model: db.Contact, as: "contact" },
       { model: db.Sector, as: "sector", attributes: ["id", "name"] },
@@ -47,7 +51,11 @@ module.exports.getProjectsPage = (req, res) => {
       pending: false
     },
     include: [
-      { model: db.Location, as: "locations", attributes: ["id", "lng", "lat"] },
+      {
+        model: db.Location,
+        as: "locations",
+        attributes: ["id", "lng", "lat", "ProjectId"]
+      },
       { model: db.Story, as: "stories" },
       {
         model: db.RefugeeInvestmentType,
@@ -75,7 +83,11 @@ module.exports.getProject = (req, res) => {
       id: req.params.id
     },
     include: [
-      { model: db.Location, as: "locations", attributes: ["id", "lng", "lat"] },
+      {
+        model: db.Location,
+        as: "locations",
+        attributes: ["id", "lng", "lat", "ProjectId"]
+      },
       { model: db.Story, as: "stories" },
       {
         model: db.RefugeeInvestmentType,
@@ -296,9 +308,9 @@ module.exports.getProjectsLocations = (req, res) => {
     });
   }
 
-  if (!!req.query.sector) {
+  if (!!req.query.sectorId) {
     andQuery.push({
-      sector: req.query.sector
+      sectorId: req.query.sectorId
     });
   }
 
@@ -328,7 +340,7 @@ module.exports.getProjectsLocations = (req, res) => {
 
   db.Project.findAll({
     where: { [Op.and]: andQuery },
-    attributes: ["id", "sector"],
+    attributes: ["id"],
     include: [
       {
         model: db.Location,
@@ -339,6 +351,11 @@ module.exports.getProjectsLocations = (req, res) => {
         model: db.Sdg,
         as: "Sdgs",
         through: { attributes: [], where: sdgsWhere },
+        attributes: ["id", "name"]
+      },
+      {
+        model: db.Sector,
+        as: "sector",
         attributes: ["id", "name"]
       }
     ]

@@ -16,6 +16,7 @@ const Dot = props => {
   };
 
   let sector = props.location.sector;
+
   let color = colors[sector];
 
   let refugeeInvestmentType = {};
@@ -55,7 +56,7 @@ const Dot = props => {
                 className="color-3 capitalize"
                 style={{ marginLeft: 10 }}
               >
-                {props.project.sector}
+                {props.project.sector.name}
               </Typography>
             </div>
           </div>
@@ -146,8 +147,10 @@ const Dot = props => {
           </Typography>
 
           <div className="" style={{ display: "flex", margin: "10px 0" }}>
-            {props.project.Sdgs.map(sdg => {
-              return <Avatar src={sdg.logo} style={{ margin: "0 10px" }} />;
+            {props.project.Sdgs.map((sdg, i) => {
+              return (
+                <Avatar src={sdg.logo} key={i} style={{ margin: "0 10px" }} />
+              );
             })}
           </div>
         </div>

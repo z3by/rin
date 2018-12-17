@@ -19,11 +19,12 @@ export default class Map extends Component {
       Sdgs: [],
       Founders: [],
       Investors: [],
-      contact: {}
+      contact: {},
+      sector: {}
     },
     projectsInfo: [],
     filterOptions: {
-      sector: ""
+      sectorId: 0
     },
     filterOn: false
   };
@@ -40,7 +41,7 @@ export default class Map extends Component {
     }).then(res => {
       res.data.forEach(project => {
         project.locations.forEach(location => {
-          location.sector = project.sector;
+          location.sector = project.sector.name;
           locations.push(location);
         });
       });
@@ -56,15 +57,22 @@ export default class Map extends Component {
     }
   };
 
-  handleSpectrumHover = sector => {
-    this.setState(
-      {
-        filterOptions: { ...this.state.filterOptions, sector: sector }
-      },
-      () => {
-        this.fetchProjects();
-      }
-    );
+  handleSpectrumHover = sectorName => {
+    Axios.get("/api/sectors").then(res => {
+      const currentSector = res.data.filter(sector => {
+        return sector.name === sectorName;
+      });
+
+      const sectorId = currentSector[0].id;
+      this.setState(
+        {
+          filterOptions: { ...this.state.filterOptions, sectorId: sectorId }
+        },
+        () => {
+          this.fetchProjects();
+        }
+      );
+    });
   };
 
   getProject = (id, location) => {
