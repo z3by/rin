@@ -20,7 +20,8 @@ export default class Map extends Component {
       Founders: [],
       Investors: [],
       contact: {},
-      sector: {}
+      sector: {},
+      refugeeInvestmentType: {}
     },
     projectsInfo: [],
     filterOptions: {

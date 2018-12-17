@@ -314,9 +314,9 @@ module.exports.getProjectsLocations = (req, res) => {
     });
   }
 
-  if (!!req.query.refugeeInvestmentType) {
+  if (!!req.query.refugeeInvestmentTypeId) {
     andQuery.push({
-      refugeeInvestmentType: req.query.refugeeInvestmentType
+      refugeeInvestmentTypeId: req.query.refugeeInvestmentTypeId
     });
   }
 
