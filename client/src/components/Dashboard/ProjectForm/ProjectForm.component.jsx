@@ -212,9 +212,8 @@ export default class ProjectForm extends Component {
   };
 
   createProject = () => {
-    this.setState({ adding: true });
     this.setState(
-      { project: { ...this.state.project, pending: false } },
+      { project: { ...this.state.project, pending: false }, adding: true },
       () => {
         Axios.post("/api/projects", this.state.project)
           .then(result => {
@@ -393,10 +392,10 @@ export default class ProjectForm extends Component {
           required
           className="full-width-input"
           InputLabelProps={{
-            shrink: this.state.project.sector ? true : false
+            shrink: this.state.project.sectorId ? true : false
           }}
-          name="sector"
-          value={this.state.project.sector}
+          name="sectorId"
+          value={this.state.project.sectorId}
           onChange={this.onChange}
           helperText="Please select the project sector"
           margin="normal"
@@ -404,7 +403,7 @@ export default class ProjectForm extends Component {
           {this.state.allSectors.map(option => (
             <MenuItem
               key={option.id}
-              value={option.name}
+              value={option.id}
               style={{ textTransform: "capitalize" }}
             >
               {option.name}
@@ -418,19 +417,19 @@ export default class ProjectForm extends Component {
           error={!this.checkIfFieldIsValid("refugeeInvestmentType")}
           required
           InputLabelProps={{
-            shrink: this.state.project.refugeeInvestmentType ? true : false
+            shrink: this.state.project.refugeeInvestmentTypeId ? true : false
           }}
           className="full-width-input"
-          name="refugeeInvestmentType"
-          value={this.state.project.refugeeInvestmentType}
+          name="refugeeInvestmentTypeId"
+          value={this.state.project.refugeeInvestmentTypeId}
           onChange={this.onChange}
           helperText="Please select the refugee investment type"
           margin="normal"
         >
           {this.state.allRefugeeInvestmentTypes.map(option => (
             <MenuItem
-              key={option.name}
-              value={option.name}
+              key={option.id}
+              value={option.id}
               style={{ textTransform: "capitalize" }}
             >
               {option.name}
