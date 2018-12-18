@@ -11,6 +11,12 @@ module.exports.getStories = (req, res) => {
         include: [
           { model: db.Location, as: "locations" },
           { model: db.Contact, as: "contact" },
+          { model: db.Sector, as: "sector", attributes: ["id", "name"] },
+          {
+            model: db.RefugeeInvestmentType,
+            as: "refugeeInvestmentType",
+            attributes: ["id", "name", "img"]
+          },
           { model: db.Investor, through: { attributes: [] }, as: "Investors" },
           { model: db.Founder, through: { attributes: [] }, as: "Founders" },
           { model: db.Country, through: { attributes: [] }, as: "Countries" },
@@ -46,6 +52,12 @@ module.exports.getStory = (req, res) => {
         as: "project",
         include: [
           { model: db.Location, as: "locations" },
+          { model: db.Sector, as: "sector", attributes: ["id", "name"] },
+          {
+            model: db.RefugeeInvestmentType,
+            as: "refugeeInvestmentType",
+            attributes: ["id", "name", "img"]
+          },
           { model: db.Contact, as: "contact" },
           { model: db.Investor, through: { attributes: [] }, as: "Investors" },
           { model: db.Founder, through: { attributes: [] }, as: "Founders" },
@@ -132,17 +144,18 @@ module.exports.filterStories = (req, res) => {
     });
   }
 
-  if (req.query.sector) {
+  if (req.query.sectorId) {
     andQuery.push({
-      sector: req.query.sector
+      sectorId: req.query.sectorId
     });
   }
 
-  if (req.query.refugeeInvestmentType) {
+  if (req.query.refugeeInvestmentTypeId) {
     andQuery.push({
-      refugeeInvestmentType: req.query.refugeeInvestmentType
+      refugeeInvestmentTypeId: req.query.refugeeInvestmentTypeId
     });
   }
+
   db.Project.findAll({
     where: {
       [Op.and]: andQuery

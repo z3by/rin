@@ -6,23 +6,57 @@ import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import Axios from "axios";
 
 export default class StoriesFilter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      sector: "",
-      year: "",
-      refugeeInvestmentType: "",
+      filterOptions: {
+        sectorId: "",
+        refugeeInvestmentTypeId: "",
+        year: ""
+      },
+      sectors: [],
+      refugeeInvestmentTypes: [],
       countries: [],
       labelWidth: 0
     };
   }
 
-  componentWillMount() {}
+  componentWillMount() {
+    this.fetchSectors();
+    this.fetchRFTs();
+  }
+
+  fetchSectors = () => {
+    Axios.get("/api/sectors").then(result => {
+      this.setState({
+        sectors: result.data
+      });
+    });
+  };
+
+  fetchRFTs = () => {
+    Axios.get("/api/refugeeinvestmenttypes").then(result => {
+      this.setState({
+        refugeeInvestmentTypes: result.data
+      });
+    });
+  };
 
   handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState(
+      {
+        filterOptions: {
+          ...this.state.filterOptions,
+          [event.target.name]: event.target.value
+        }
+      },
+      () => {
+        console.log(this.state.filterOptions);
+      }
+    );
   };
 
   render() {
@@ -37,38 +71,44 @@ export default class StoriesFilter extends Component {
       );
     }
 
-    const refugeeInvestmentTypes = [
-      <MenuItem value={"refugee owned"} key={1}>
-        refugee owned
-      </MenuItem>
-    ];
+    const refugeeInvestmentTypes = this.state.refugeeInvestmentTypes.map(
+      (rft, i) => {
+        return (
+          <MenuItem key={i} value={rft.id}>
+            {rft.name}
+          </MenuItem>
+        );
+      }
+    );
 
-    const { sector, year, refugeeInvestmentType } = this.state;
-
-    const options = { sector, year, refugeeInvestmentType };
+    const sectors = this.state.sectors.map((sector, i) => {
+      return (
+        <MenuItem value={sector.id} key={i}>
+          {sector.name}
+        </MenuItem>
+      );
+    });
 
     return (
-      <Paper className="filter-card" style={{ marginLeft: 0 }}>
+      <Paper className="filter-card" style={{}}>
         <Typography variant="h6">Filter the stories</Typography>
         <FormControl className="filter-form-control">
           <InputLabel htmlFor="sector-select">select sector</InputLabel>
           <Select
-            value={this.state.sector}
+            value={this.state.filterOptions.sectorId}
             onChange={this.handleChange}
             inputProps={{
-              name: "sector",
+              name: "sectorId",
               id: "sector-select"
             }}
           >
-            <MenuItem value={"health"}>health</MenuItem>
-            <MenuItem value={"education"}>education</MenuItem>
-            <MenuItem value={"agriculture"}>agriculture</MenuItem>
+            {sectors}
           </Select>
         </FormControl>
         <FormControl className="filter-form-control">
           <InputLabel htmlFor="year-select">select year</InputLabel>
           <Select
-            value={this.state.year}
+            value={this.state.filterOptions.year}
             onChange={this.handleChange}
             inputProps={{
               name: "year",
@@ -84,10 +124,10 @@ export default class StoriesFilter extends Component {
             investment type
           </InputLabel>
           <Select
-            value={this.state.refugeeInvestmentType}
+            value={this.state.filterOptions.refugeeInvestmentTypeId}
             onChange={this.handleChange}
             inputProps={{
-              name: "refugeeInvestmentType",
+              name: "refugeeInvestmentTypeId",
               id: "refugee-investment-type-select"
             }}
           >
@@ -101,9 +141,10 @@ export default class StoriesFilter extends Component {
             display: "block",
             margin: "20px auto"
           }}
-          onClick={() => this.props.filterStories(options)}
+          onClick={() => this.props.filterStories(this.state.filterOptions)}
         >
-          Filter Stories...
+          <i className="fas fa-filter" style={{ marginRight: 10 }} />
+          Filter Stories
         </Button>
       </Paper>
     );
