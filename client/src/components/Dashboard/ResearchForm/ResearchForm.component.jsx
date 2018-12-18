@@ -103,7 +103,6 @@ export default class ResearchForm extends Component {
     }
 
     const formData = new FormData();
-    const name = e.target.name;
     this.setState({ uploading: { imgUrl: true } });
     formData.append("img", e.target.files[0]);
     const config = {

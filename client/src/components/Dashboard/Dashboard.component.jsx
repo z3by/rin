@@ -13,6 +13,7 @@ import ProjectInfo from "./ProjectInfo/ProjectInfo.component";
 import StoryInfo from "./StoryInfo/StoryInfo.component";
 import ArticleInfo from "./ArticleInfo/ArticleInfo.component";
 import Requests from "./Requests/Requests.component";
+import ResearchInfo from "./ResearchInfo/ResearchInfo.component";
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -134,7 +135,7 @@ export default class Dashboard extends Component {
                     "lastName",
                     "userRole",
                     "email",
-                    "oraganizationName"
+                    "organizationName"
                   ]}
                 />
               );
@@ -179,6 +180,7 @@ export default class Dashboard extends Component {
             path="/dashboard/updateresearch/:id"
             component={ResearchForm}
           />
+          <Route path="/dashboard/researches/:id" component={ResearchInfo} />
           <Route path="/dashboard/articles/:id" component={ArticleInfo} />
           <Route path="/dashboard/addarticle" component={ArticleForm} />
           <Route path="/dashboard/updatearticle/:id" component={ArticleForm} />
