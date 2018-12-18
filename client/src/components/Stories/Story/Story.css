@@ -2,14 +2,16 @@
   height: 130px;
   width: 130px;
   cursor: pointer;
+  overflow: hidden;
+  border-radius: 50%;
+  background-size: cover;
+  -webkit-transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .story-item {
   height: 100%;
   width: 100%;
-  background-color: var(--color-4);
-  border-radius: 50%;
-  background-size: cover;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -21,15 +23,19 @@
   justify-content: center;
 }
 
+.story:hover {
+  height: 150px;
+  width: 150px;
+}
+.story:hover .story-item {
+  background-color: rgba(0, 0, 0, 0.5);
+}
 .story:hover .link-read-more {
   opacity: 1;
 }
 
 .link-read-more {
-  text-decoration: underline;
   position: absolute;
-  line-height: 160px;
-  color: var(--color-2);
   opacity: 0;
 }
 

@@ -6,13 +6,19 @@ import Axios from "axios";
 import "./StoryInfo.css";
 import draftToHtml from "draftjs-to-html";
 import renderHTML from "react-render-html";
+import IconButton from "@material-ui/core/IconButton";
 
 export default class StoryInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
       storyData: {
-        project: { Sdgs: [], refugeeInvestmentType: {}, Countries: [] }
+        project: {
+          Sdgs: [],
+          refugeeInvestmentType: {},
+          Countries: [],
+          contact: {}
+        }
       },
       myText: ""
     };
@@ -26,8 +32,6 @@ export default class StoryInfo extends Component {
     const StoryId = this.props.match.params.id;
     Axios.get("/api/stories/" + StoryId).then(result => {
       this.setState({ storyData: result.data[0] }, () => {
-        // this.setState({ storyData: { ...this.state.storyData, storyText: draftToHtml(JSON.parse(this.state.storyData.storyText)) } }, () => {
-        // });
         this.setState({
           myText: draftToHtml(JSON.parse(this.state.storyData.storyText))
         });
@@ -35,13 +39,22 @@ export default class StoryInfo extends Component {
     });
   };
 
+  goDown = () => {
+    document.body.scrollBy({
+      top: window.innerHeight - document.body.scrollTop,
+      behavior: "smooth"
+    });
+  };
+
   render() {
     let story = this.state.storyData;
     let { myText } = this.state;
-    console.log(story);
-
+    const project = story.project;
     return (
-      <Paper style={{ position: "relative" }}>
+      <Paper
+        style={{ position: "relative" }}
+        className="fadeInFast story-info-details"
+      >
         <div
           className="header-img"
           style={{
@@ -75,17 +88,11 @@ export default class StoryInfo extends Component {
             }}
           >
             <Avatar
-              style={{ borderRadius: 0, height: 50, width: 50 }}
+              className="lens-square"
               src={story.project.refugeeInvestmentType.img}
             />
             {this.state.storyData.project.Sdgs.map((sdg, i) => {
-              return (
-                <Avatar
-                  style={{ borderRadius: 0, height: 50, width: 50, margin: 10 }}
-                  src={sdg.logo}
-                  key={i}
-                />
-              );
+              return <Avatar className="lens-square" src={sdg.logo} key={i} />;
             })}
           </div>
           <div
@@ -114,8 +121,112 @@ export default class StoryInfo extends Component {
               return <Avatar src={country.flag} style={{ marginLeft: 10 }} />;
             })}
           </div>
+          <div className="go-down" onClick={this.goDown}>
+            <IconButton onClick={this.goDown}>
+              <i className="fas fa-arrow-down color-1" />
+            </IconButton>
+          </div>
         </div>
-        <div className="container">{renderHTML(myText)}</div>
+        <div className="container">
+          {renderHTML(myText)}
+
+          <div className="contact-links flex-centerd">
+            <a href={"tel:" + project.contact.phone1} className="contact-field">
+              <i className="fas fa-phone" />
+            </a>
+            <a href={"tel:" + project.contact.phone2} className="contact-field">
+              <i className="fas fa-mobile" />
+            </a>
+            <a
+              href={"mailto:" + project.contact.email1}
+              className="contact-field"
+            >
+              <i
+                style={{ fontSize: "1.5rem" }}
+                className="color-2 fas fa-envelope"
+              />
+            </a>
+            {!project.contact.email2 ? null : (
+              <a
+                href={"mailto:" + project.contact.email2}
+                className="contact-field"
+              >
+                <i
+                  style={{ fontSize: "1.5rem" }}
+                  className="color-2 far fa-envelope"
+                />
+              </a>
+            )}
+
+            <a
+              target="_blank"
+              href={project.contact.website}
+              className="contact-field"
+            >
+              <i
+                style={{ fontSize: "1.5rem" }}
+                className="color-2 fas fa-globe"
+              />
+            </a>
+            {!project.contact.facebook ? null : (
+              <a
+                target="_blank"
+                href={project.contact.facebook}
+                className="contact-field"
+              >
+                <i
+                  style={{ fontSize: "1.5rem" }}
+                  className="color-2 fab fa-facebook"
+                />
+              </a>
+            )}
+            {!project.contact.twitter ? null : (
+              <a
+                target="_blank"
+                href={project.contact.twitter}
+                className="contact-field"
+              >
+                <i
+                  style={{ fontSize: "1.5rem" }}
+                  className="color-2 fab fa-twitter"
+                />
+              </a>
+            )}
+            {!project.contact.instagram ? null : (
+              <a
+                target="_blank"
+                href={project.contact.instagram}
+                className="contact-field"
+              >
+                <i
+                  style={{ fontSize: "1.5rem" }}
+                  className="color-2 fab fa-instagram"
+                />
+              </a>
+            )}
+            {!project.contact.fax ? null : (
+              <a
+                target="_blank"
+                href={project.contact.fax}
+                className="contact-field"
+              >
+                <i
+                  style={{ fontSize: "1.5rem" }}
+                  className="color-2 fas fa-fax"
+                />
+              </a>
+            )}
+            {!project.contact.address ? null : (
+              <address className="contact-field">
+                <i
+                  style={{ fontSize: "1.5rem" }}
+                  className="color-2 fas fa-address-card"
+                />
+                Address: {project.contact.address}
+              </address>
+            )}
+          </div>
+        </div>
       </Paper>
     );
   }
