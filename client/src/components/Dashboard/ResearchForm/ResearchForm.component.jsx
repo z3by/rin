@@ -37,6 +37,8 @@ export default class ResearchForm extends Component {
           adding: true
         },
         () => {
+          console.log(this.state.research);
+
           this.setState({ adding: false });
         }
       );
@@ -102,7 +104,7 @@ export default class ResearchForm extends Component {
 
     const formData = new FormData();
     const name = e.target.name;
-    this.setState({ uploading: { [name]: true } });
+    this.setState({ uploading: { imgUrl: true } });
     formData.append("img", e.target.files[0]);
     const config = {
       headers: {
@@ -116,9 +118,9 @@ export default class ResearchForm extends Component {
         this.setState({
           research: {
             ...this.state.research,
-            [name]: imageURL
+            imgUrl: imageURL
           },
-          uploading: { [e.target.name]: false }
+          uploading: { imgUrl: false }
         });
       })
       .catch(err => {
@@ -270,13 +272,6 @@ export default class ResearchForm extends Component {
                   ? "/imgs/loading.gif"
                   : "/imgs/book_placeholder.png"
               }
-              style={{
-                display:
-                  this.state.research.researchUrl ||
-                  this.state.uploading.researchUrl
-                    ? "inline-block"
-                    : "none"
-              }}
             />
             <TextField
               style={{ marginTop: 0 }}

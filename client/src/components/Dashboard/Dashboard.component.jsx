@@ -175,6 +175,10 @@ export default class Dashboard extends Component {
             }}
           />
           <Route path="/dashboard/addresearch" component={ResearchForm} />
+          <Route
+            path="/dashboard/updateresearch/:id"
+            component={ResearchForm}
+          />
           <Route path="/dashboard/articles/:id" component={ArticleInfo} />
           <Route path="/dashboard/addarticle" component={ArticleForm} />
           <Route path="/dashboard/updatearticle/:id" component={ArticleForm} />
