@@ -299,10 +299,6 @@ module.exports.getProjectsLocations = (req, res) => {
     }
   ];
 
-  let ProjectWhere = {
-    [Op.and]: andQuery
-  };
-
   if (req.query.year) {
     andQuery.push({
       year: db.sequelize.where(
@@ -331,6 +327,10 @@ module.exports.getProjectsLocations = (req, res) => {
       }
     });
   }
+
+  let ProjectWhere = {
+    [Op.and]: andQuery
+  };
 
   db.Project.findAll({
     where: ProjectWhere,

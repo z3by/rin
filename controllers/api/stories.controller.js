@@ -132,17 +132,18 @@ module.exports.filterStories = (req, res) => {
     });
   }
 
-  if (req.query.sector) {
+  if (req.query.sectorId) {
     andQuery.push({
-      sector: req.query.sector
+      sectorId: req.query.sectorId
     });
   }
 
-  if (req.query.refugeeInvestmentType) {
+  if (req.query.refugeeInvestmentTypeId) {
     andQuery.push({
-      refugeeInvestmentType: req.query.refugeeInvestmentType
+      refugeeInvestmentTypeId: req.query.refugeeInvestmentTypeId
     });
   }
+
   db.Project.findAll({
     where: {
       [Op.and]: andQuery

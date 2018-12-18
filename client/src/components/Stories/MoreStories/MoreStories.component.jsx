@@ -62,6 +62,8 @@ export default class MoreStories extends Component {
         this.setState({ stories: result.data }, () => {
           if (!this.state.stories.length) {
             this.setState({ nostories: true });
+          } else {
+            this.setState({ nostories: false });
           }
         });
       })
