@@ -19,6 +19,7 @@ import MoreStories from "../Stories/MoreStories/MoreStories.component";
 import AddProject from "../AddProject/AddProject.component";
 import AdminList from "../general-components/AdminList/AdminList.component";
 import ArticleInfo from "../Dashboard/ArticleInfo/ArticleInfo.component";
+import Data2 from "../Data2/Data2.component";
 
 export default class MyRouter extends Component {
   render() {
@@ -34,6 +35,7 @@ export default class MyRouter extends Component {
             <Route path="/map" component={Map} />
             <Route path="/add-project" component={AddProject} />
             <Route path="/data" component={Data} />
+            <Route path="/data2" component={Data2} />
             <Route path="/news" component={News} />
             <Route path="/blog/:id" component={ArticleInfo} />
             <Route path="/blog" component={Blog} />
