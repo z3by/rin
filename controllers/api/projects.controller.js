@@ -324,6 +324,14 @@ module.exports.getProjectsLocations = (req, res) => {
     });
   }
 
+  if (req.query.investmentSize) {
+    andQuery.push({
+      investmentSize: {
+        [Op.gte]: Number(req.query.investmentSize)
+      }
+    });
+  }
+
   let opOr = [];
   if (req.query.sdgs) {
     req.query.sdgs.forEach(sdg => {
@@ -332,6 +340,7 @@ module.exports.getProjectsLocations = (req, res) => {
       });
     });
   }
+
   let sdgsWhere = opOr.length ? { [Op.or]: opOr } : {};
 
   db.Project.findAll({
@@ -358,7 +367,6 @@ module.exports.getProjectsLocations = (req, res) => {
   })
     .then(result => {
       res.status(200).json(result);
-      console.log(result);
     })
     .catch(err => {
       res.send(err);

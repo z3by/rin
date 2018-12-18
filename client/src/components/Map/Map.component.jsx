@@ -35,15 +35,15 @@ export default class Map extends Component {
     this.fetchProjects();
   }
 
-  // get all the projects and map it to the state;
+  // get all the projects by given filter options and map it to the state;
   fetchProjects = () => {
     const locations = [];
+
+    console.log(this.state.filterOptions);
     Axios.get("/api/projectslocations", {
       params: { ...this.state.filterOptions }
     })
       .then(res => {
-        console.log(this.state.filterOptions);
-
         res.data.forEach(project => {
           project.locations.forEach(location => {
             location.sector = project.sector.name;
