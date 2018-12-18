@@ -6,7 +6,6 @@ import InputLabel from "@material-ui/core/InputLabel";
 import Button from "@material-ui/core/Button";
 import { TextField } from "@material-ui/core";
 import Checkbox from "@material-ui/core/Checkbox";
-import sdgsData from "../../../../config/sdgs";
 import Axios from "axios";
 
 export default class FilterForm extends Component {
@@ -19,12 +18,14 @@ export default class FilterForm extends Component {
         sdgs: [],
         investmentSize: ""
       },
-      refugeeInvestmentTypes: []
+      refugeeInvestmentTypes: [],
+      sdgs: []
     };
   }
 
   componentDidMount() {
     this.fetchRFTs();
+    this.fetchSDGs();
   }
 
   handleChange = e => {
@@ -66,6 +67,12 @@ export default class FilterForm extends Component {
     });
   };
 
+  // fetch sustainable development goals
+  fetchSDGs = () => {
+    Axios.get("/api/sdgs").then(res => {
+      this.setState({ sdgs: res.data });
+    });
+  };
   render() {
     const currentYear = new Date().getFullYear();
     const firstYear = currentYear - 15;
@@ -140,11 +147,10 @@ export default class FilterForm extends Component {
           />
         </FormControl>
         <div className="sdgs-checkboxes">
-          {sdgsData.map((sdg, i) => {
+          {this.state.sdgs.map((sdg, i) => {
             return (
               <div key={i}>
                 <Checkbox
-                  style={{ color: "var(--color-2)" }}
                   checked={this.state.options.sdgs.includes(sdg.name)}
                   value={sdg.name}
                   onChange={this.handleSdgSelect}
@@ -158,19 +164,35 @@ export default class FilterForm extends Component {
             );
           })}
         </div>
-        <Button
-          style={{
-            background: "var(--color-2)",
-            color: "white",
-            display: "block",
-            margin: "20px auto"
-          }}
-          onClick={() => {
-            this.props.filterProjects(this.state.options);
-          }}
-        >
-          Filter Projects...
-        </Button>
+        <div className="flex-col">
+          <Button
+            style={{
+              background: "var(--color-2)",
+              color: "white",
+              display: "block",
+              margin: "20px 10px"
+            }}
+            onClick={() => {
+              this.props.toggleFilter();
+              this.props.filterProjects(this.state.options);
+            }}
+          >
+            <i className="fas fa-filter" /> Filter Projects...
+          </Button>
+          <Button
+            style={{
+              background: "var(--color-4)",
+              color: "white",
+              display: "block",
+              margin: "20px 10px"
+            }}
+            onClick={() => {
+              this.props.resetFilter();
+            }}
+          >
+            <i className="fas fa-redo-alt" /> Reset Filter
+          </Button>
+        </div>
       </div>
     );
   }

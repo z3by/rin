@@ -653,6 +653,16 @@ option:hover {
 .center {
   text-align: center;
 }
+
+.flex-col {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
 .bg-1 {
   background-color: var(--color-1);
 }

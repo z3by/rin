@@ -12,7 +12,7 @@ export default class Map extends Component {
   state = {
     center: [50, 0],
     zoom: 3,
-    locadedProjects: [],
+    loadedProjects: [],
     locations: [],
     hoveredProject: {
       Countries: [],
@@ -84,7 +84,7 @@ export default class Map extends Component {
   };
 
   getProject = (id, location) => {
-    this.state.locadedProjects.forEach(project => {
+    this.state.loadedProjects.forEach(project => {
       if (project.id === id) {
         this.setState({
           hoveredProject: project,
@@ -97,7 +97,7 @@ export default class Map extends Component {
 
     Axios.get("/api/projects/" + id).then(result => {
       this.setState({
-        locadedProjects: [...this.state.locadedProjects, result.data[0]],
+        loadedProjects: [...this.state.loadedProjects, result.data[0]],
         hoveredProject: result.data[0]
       });
     });
@@ -125,6 +125,12 @@ export default class Map extends Component {
     );
   };
 
+  resetFilter = () => {
+    this.setState({ filterOptions: {} }, () => {
+      this.fetchProjects();
+    });
+  };
+
   render() {
     return (
       <div
@@ -137,6 +143,7 @@ export default class Map extends Component {
           filterProjects={this.filterByGivenOptions}
           handleFilterToggle={this.handleFilterToggle}
           shown={this.state.filterOn}
+          resetFilter={this.resetFilter}
         />
         <button
           button="true"

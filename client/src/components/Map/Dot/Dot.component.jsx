@@ -275,7 +275,7 @@ const Dot = props => {
             style={{ marginTop: 20 }}
             className="color-2 capitalize"
           >
-            Thesis
+            Investment Thesis
           </Typography>
           <Typography variant="body1" className="color-1">
             {props.project.thesis}
