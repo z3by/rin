@@ -41,23 +41,21 @@ export default class FilterForm extends Component {
     const sdgs = this.state.options.sdgs;
     const val = e.target.value;
     const options = this.state.options;
-    const i = sdgs.indexOf(val);
+    const i = sdgs.indexOf(Number(val));
+    // check if the sdg is already selected
+
     if (i >= 0) {
       sdgs.splice(i, 1);
-      this.setState({
-        options: {
-          ...options,
-          sdgs
-        }
-      });
     } else {
-      this.setState({
-        options: {
-          ...options,
-          sdgs: [...sdgs, val]
-        }
-      });
+      sdgs.push(Number(val));
     }
+
+    this.setState({
+      options: {
+        ...options,
+        sdgs
+      }
+    });
   };
 
   // fetch refugee investment types
@@ -151,8 +149,8 @@ export default class FilterForm extends Component {
             return (
               <div key={i}>
                 <Checkbox
-                  checked={this.state.options.sdgs.includes(sdg.name)}
-                  value={sdg.name}
+                  checked={this.state.options.sdgs.includes(sdg.id)}
+                  value={sdg.id}
                   onChange={this.handleSdgSelect}
                 />
                 <img

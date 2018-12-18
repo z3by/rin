@@ -332,17 +332,6 @@ module.exports.getProjectsLocations = (req, res) => {
     });
   }
 
-  let opOr = [];
-  if (req.query.sdgs) {
-    req.query.sdgs.forEach(sdg => {
-      db.Sdg.findOne({ where: { name: sdg } }).then(sdg => {
-        opOr.push({ sdgId: sdg.id });
-      });
-    });
-  }
-
-  let sdgsWhere = opOr.length ? { [Op.or]: opOr } : {};
-
   db.Project.findAll({
     where: ProjectWhere,
     attributes: ["id"],
@@ -353,20 +342,34 @@ module.exports.getProjectsLocations = (req, res) => {
         attributes: ["id", "lng", "lat", "ProjectId"]
       },
       {
-        model: db.Sdg,
-        as: "Sdgs",
-        through: { attributes: [], where: sdgsWhere },
-        attributes: ["id", "name"]
-      },
-      {
         model: db.Sector,
         as: "sector",
         attributes: ["id", "name"]
+      },
+      {
+        model: db.Sdg,
+        as: "Sdgs",
+        through: { attributes: [] },
+        attributes: ["id"]
       }
     ]
   })
     .then(result => {
-      res.status(200).json(result);
+      if (!req.query.sdgs) {
+        res.status(200).json(result);
+      } else {
+        let filteredLocations = result.filter(project => {
+          let valid = true;
+          project.Sdgs.forEach(sdg => {
+            if (!req.query.sdgs.includes(String(sdg.id))) {
+              valid = false;
+            }
+          });
+          return valid;
+        });
+
+        res.status(200).json(filteredLocations);
+      }
     })
     .catch(err => {
       res.send(err);

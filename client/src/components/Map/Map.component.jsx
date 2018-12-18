@@ -39,11 +39,11 @@ export default class Map extends Component {
   fetchProjects = () => {
     const locations = [];
 
-    console.log(this.state.filterOptions);
     Axios.get("/api/projectslocations", {
       params: { ...this.state.filterOptions }
     })
       .then(res => {
+        console.log(res.data);
         res.data.forEach(project => {
           project.locations.forEach(location => {
             location.sector = project.sector.name;
@@ -66,21 +66,25 @@ export default class Map extends Component {
   };
 
   handleSpectrumHover = sectorName => {
-    Axios.get("/api/sectors").then(res => {
-      const currentSector = res.data.filter(sector => {
-        return sector.name === sectorName;
-      });
+    Axios.get("/api/sectors")
+      .then(res => {
+        const currentSector = res.data.filter(sector => {
+          return sector.name === sectorName;
+        });
 
-      const sectorId = currentSector[0].id;
-      this.setState(
-        {
-          filterOptions: { ...this.state.filterOptions, sectorId: sectorId }
-        },
-        () => {
-          this.fetchProjects();
-        }
-      );
-    });
+        const sectorId = currentSector[0].id;
+        this.setState(
+          {
+            filterOptions: { ...this.state.filterOptions, sectorId: sectorId }
+          },
+          () => {
+            this.fetchProjects();
+          }
+        );
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   getProject = (id, location) => {
