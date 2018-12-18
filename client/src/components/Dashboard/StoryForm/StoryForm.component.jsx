@@ -9,8 +9,8 @@ import { EditorState, convertToRaw, ContentState } from 'draft-js';
 import htmlToDraft from 'html-to-draftjs';
 import draftToHtml from 'draftjs-to-html';
 
-const maxLength = 5000;
-const minLength = 50;
+const maxLength = 30;
+const minLength = 25;
 
 export default class StoryForm extends Component {
   constructor(props) {
@@ -98,7 +98,7 @@ export default class StoryForm extends Component {
   };
 
   isValidEditorContent = () => {
-    let { editorState, enteredChars } = this.state;
+    let { enteredChars } = this.state;
 
     if (enteredChars >= minLength && enteredChars <= maxLength) {
       return true;
@@ -174,8 +174,6 @@ export default class StoryForm extends Component {
   };
 
   onEditorStateChange = (editorState) => {
-    let { enteredChars } = this.state;
-
     this.setState({ editorState }, () => {
       let charsCount = 0;
       const text = convertToRaw(editorState.getCurrentContent());
