@@ -12,18 +12,21 @@ export default class Map extends Component {
   state = {
     center: [50, 0],
     zoom: 3,
-    locadedProjects: [],
+    loadedProjects: [],
     locations: [],
     hoveredProject: {
       Countries: [],
       Sdgs: [],
       Founders: [],
       Investors: [],
-      contact: {}
+      contact: {},
+      sector: {},
+      refugeeInvestmentType: {}
     },
     projectsInfo: [],
     filterOptions: {
-      sector: ""
+      sectorId: 0,
+      investmentSize: ""
     },
     filterOn: false
   };
@@ -32,20 +35,25 @@ export default class Map extends Component {
     this.fetchProjects();
   }
 
-  // get all the projects and map it to the state;
+  // get all the projects by given filter options and map it to the state;
   fetchProjects = () => {
     const locations = [];
+
     Axios.get("/api/projectslocations", {
       params: { ...this.state.filterOptions }
-    }).then(res => {
-      res.data.forEach(project => {
-        project.locations.forEach(location => {
-          location.sector = project.sector;
-          locations.push(location);
+    })
+      .then(res => {
+        res.data.forEach(project => {
+          project.locations.forEach(location => {
+            location.sector = project.sector.name;
+            locations.push(location);
+          });
         });
+        this.setState({ locations: locations });
+      })
+      .catch(err => {
+        console.log(err);
       });
-      this.setState({ locations: locations });
-    });
   };
 
   _onChange = data => {
@@ -56,19 +64,30 @@ export default class Map extends Component {
     }
   };
 
-  handleSpectrumHover = sector => {
-    this.setState(
-      {
-        filterOptions: { ...this.state.filterOptions, sector: sector }
-      },
-      () => {
-        this.fetchProjects();
-      }
-    );
+  handleSpectrumHover = sectorName => {
+    Axios.get("/api/sectors")
+      .then(res => {
+        const currentSector = res.data.filter(sector => {
+          return sector.name === sectorName;
+        });
+
+        const sectorId = currentSector[0].id;
+        this.setState(
+          {
+            filterOptions: { ...this.state.filterOptions, sectorId: sectorId }
+          },
+          () => {
+            this.fetchProjects();
+          }
+        );
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   getProject = (id, location) => {
-    this.state.locadedProjects.forEach(project => {
+    this.state.loadedProjects.forEach(project => {
       if (project.id === id) {
         this.setState({
           hoveredProject: project,
@@ -81,7 +100,7 @@ export default class Map extends Component {
 
     Axios.get("/api/projects/" + id).then(result => {
       this.setState({
-        locadedProjects: [...this.state.locadedProjects, result.data[0]],
+        loadedProjects: [...this.state.loadedProjects, result.data[0]],
         hoveredProject: result.data[0]
       });
     });
@@ -101,12 +120,18 @@ export default class Map extends Component {
   filterByGivenOptions = options => {
     this.setState(
       {
-        filterOptions: { ...options }
+        filterOptions: { ...this.state.filterOptions, ...options }
       },
       () => {
         this.fetchProjects();
       }
     );
+  };
+
+  resetFilter = () => {
+    this.setState({ filterOptions: {} }, () => {
+      this.fetchProjects();
+    });
   };
 
   render() {
@@ -121,6 +146,7 @@ export default class Map extends Component {
           filterProjects={this.filterByGivenOptions}
           handleFilterToggle={this.handleFilterToggle}
           shown={this.state.filterOn}
+          resetFilter={this.resetFilter}
         />
         <button
           button="true"

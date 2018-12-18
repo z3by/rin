@@ -50,23 +50,20 @@ export default class MoreStories extends Component {
 
   filterStories = options => {
     const selectedOptions = {};
+
     for (const option in options) {
-      if (options[option] !== "") {
+      if (!!options[option]) {
         selectedOptions[option] = options[option];
       }
     }
-
-    if (Object.keys(selectedOptions).length === 0) {
-      return;
-    }
-
+    if (!Object.keys(selectedOptions).length) return;
     Axios.get("/api/stories/filter", { params: selectedOptions })
       .then(result => {
-        console.log(result.data);
-
         this.setState({ stories: result.data }, () => {
           if (!this.state.stories.length) {
             this.setState({ nostories: true });
+          } else {
+            this.setState({ nostories: false });
           }
         });
       })

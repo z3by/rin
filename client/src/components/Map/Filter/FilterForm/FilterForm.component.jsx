@@ -4,17 +4,28 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import Button from "@material-ui/core/Button";
-import refugeeInvestmentTypes from "../../../../config/refugeeInvestmentTypes";
 import { TextField } from "@material-ui/core";
 import Checkbox from "@material-ui/core/Checkbox";
-import sdgsData from "../../../../config/sdgs";
+import Axios from "axios";
 
 export default class FilterForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      options: { year: "", refugeeInvestmentType: "", sdgs: [] }
+      options: {
+        year: "",
+        refugeeInvestmentTypeId: 0,
+        sdgs: [],
+        investmentSize: ""
+      },
+      refugeeInvestmentTypes: [],
+      sdgs: []
     };
+  }
+
+  componentDidMount() {
+    this.fetchRFTs();
+    this.fetchSDGs();
   }
 
   handleChange = e => {
@@ -30,25 +41,36 @@ export default class FilterForm extends Component {
     const sdgs = this.state.options.sdgs;
     const val = e.target.value;
     const options = this.state.options;
-    const i = sdgs.indexOf(val);
+    const i = sdgs.indexOf(Number(val));
+    // check if the sdg is already selected
+
     if (i >= 0) {
       sdgs.splice(i, 1);
-      this.setState({
-        options: {
-          ...options,
-          sdgs
-        }
-      });
     } else {
-      this.setState({
-        options: {
-          ...options,
-          sdgs: [...sdgs, val]
-        }
-      });
+      sdgs.push(Number(val));
     }
+
+    this.setState({
+      options: {
+        ...options,
+        sdgs
+      }
+    });
   };
 
+  // fetch refugee investment types
+  fetchRFTs = () => {
+    Axios.get("/api/refugeeinvestmenttypes").then(res => {
+      this.setState({ refugeeInvestmentTypes: res.data });
+    });
+  };
+
+  // fetch sustainable development goals
+  fetchSDGs = () => {
+    Axios.get("/api/sdgs").then(res => {
+      this.setState({ sdgs: res.data });
+    });
+  };
   render() {
     const currentYear = new Date().getFullYear();
     const firstYear = currentYear - 15;
@@ -88,20 +110,20 @@ export default class FilterForm extends Component {
             shrink={this.state.options.refugeeInvestmentType ? true : false}
             htmlFor="refugee-investment-type-select"
           >
-            investment type
+            refugee investment type
           </InputLabel>
           <Select
             className="full-width-input"
-            value={this.state.options.refugeeInvestmentType}
+            value={this.state.options.refugeeInvestmentTypeId}
             onChange={this.handleChange}
             inputProps={{
-              name: "refugeeInvestmentType",
+              name: "refugeeInvestmentTypeId",
               id: "refugee-investment-type-select"
             }}
           >
-            {refugeeInvestmentTypes.map((rft, i) => {
+            {this.state.refugeeInvestmentTypes.map((rft, i) => {
               return (
-                <MenuItem value={rft.name} key={i}>
+                <MenuItem value={rft.id} key={i}>
                   {rft.name}
                 </MenuItem>
               );
@@ -123,13 +145,12 @@ export default class FilterForm extends Component {
           />
         </FormControl>
         <div className="sdgs-checkboxes">
-          {sdgsData.map((sdg, i) => {
+          {this.state.sdgs.map((sdg, i) => {
             return (
               <div key={i}>
                 <Checkbox
-                  style={{ color: "var(--color-2)" }}
-                  checked={this.state.options.sdgs.includes(sdg.name)}
-                  value={sdg.name}
+                  checked={this.state.options.sdgs.includes(sdg.id)}
+                  value={sdg.id}
                   onChange={this.handleSdgSelect}
                 />
                 <img
@@ -141,19 +162,35 @@ export default class FilterForm extends Component {
             );
           })}
         </div>
-        <Button
-          style={{
-            background: "var(--color-2)",
-            color: "white",
-            display: "block",
-            margin: "20px auto"
-          }}
-          onClick={() => {
-            this.props.filterProjects(this.state.options);
-          }}
-        >
-          Filter Projects...
-        </Button>
+        <div className="flex-col">
+          <Button
+            style={{
+              background: "var(--color-2)",
+              color: "white",
+              display: "block",
+              margin: "20px 10px"
+            }}
+            onClick={() => {
+              this.props.toggleFilter();
+              this.props.filterProjects(this.state.options);
+            }}
+          >
+            <i className="fas fa-filter" /> Filter Projects...
+          </Button>
+          <Button
+            style={{
+              background: "var(--color-4)",
+              color: "white",
+              display: "block",
+              margin: "20px 10px"
+            }}
+            onClick={() => {
+              this.props.resetFilter();
+            }}
+          >
+            <i className="fas fa-redo-alt" /> Reset Filter
+          </Button>
+        </div>
       </div>
     );
   }

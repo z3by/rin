@@ -2,7 +2,6 @@ import React from "react";
 import "./Dot.css";
 import Typography from "@material-ui/core/Typography";
 import { Avatar } from "@material-ui/core";
-import refugeeInvestmentTypes from "../../../config/refugeeInvestmentTypes";
 
 const Dot = props => {
   const colors = {
@@ -16,15 +15,8 @@ const Dot = props => {
   };
 
   let sector = props.location.sector;
+
   let color = colors[sector];
-
-  let refugeeInvestmentType = {};
-
-  refugeeInvestmentTypes.forEach(rft => {
-    if (rft.name === props.project.refugeeInvestmentType) {
-      refugeeInvestmentType = rft;
-    }
-  });
 
   return (
     <div
@@ -55,7 +47,7 @@ const Dot = props => {
                 className="color-3 capitalize"
                 style={{ marginLeft: 10 }}
               >
-                {props.project.sector}
+                {props.project.sector.name}
               </Typography>
             </div>
           </div>
@@ -96,7 +88,17 @@ const Dot = props => {
                   variant="body1"
                   className="color-2 capitalize"
                 >
-                  - {country.name} -
+                  - {country.name} -{" "}
+                  <img
+                    src={country.flag}
+                    style={{
+                      height: 30,
+                      width: 30,
+                      marginLeft: 10,
+                      borderRadius: 20
+                    }}
+                    alt=""
+                  />
                 </Typography>
               );
             })}
@@ -126,7 +128,7 @@ const Dot = props => {
           </Typography>
           <div className="flex-centerd">
             <Avatar
-              src={refugeeInvestmentType.img}
+              src={props.project.refugeeInvestmentType.img}
               style={{ margin: "0 10px" }}
             />
             <Typography
@@ -134,7 +136,7 @@ const Dot = props => {
               className="color-3 capitalize"
               style={{ margin: "0 20px" }}
             >
-              {refugeeInvestmentType.name}
+              {props.project.refugeeInvestmentType.name}
             </Typography>
           </div>
           <Typography
@@ -146,8 +148,10 @@ const Dot = props => {
           </Typography>
 
           <div className="" style={{ display: "flex", margin: "10px 0" }}>
-            {props.project.Sdgs.map(sdg => {
-              return <Avatar src={sdg.logo} style={{ margin: "0 10px" }} />;
+            {props.project.Sdgs.map((sdg, i) => {
+              return (
+                <Avatar src={sdg.logo} key={i} style={{ margin: "0 10px" }} />
+              );
             })}
           </div>
         </div>
@@ -271,7 +275,7 @@ const Dot = props => {
             style={{ marginTop: 20 }}
             className="color-2 capitalize"
           >
-            Thesis
+            Investment Thesis
           </Typography>
           <Typography variant="body1" className="color-1">
             {props.project.thesis}

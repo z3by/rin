@@ -100,6 +100,20 @@ class Sidebar extends React.Component {
               <ListItemText>Users</ListItemText>
             </ListItem>
           </Link>
+          <Link to="/dashboard/researches">
+            <ListItem button key={"researches"} style={{ padding: 15 }}>
+              <ListItemIcon
+                style={{
+                  margin: 0,
+                  color: "var(--color-2)",
+                  fontSize: "1.3rem"
+                }}
+              >
+                <i className="fas fa-search" />
+              </ListItemIcon>
+              <ListItemText>Researches</ListItemText>
+            </ListItem>
+          </Link>
         </List>
       </div>
     );
