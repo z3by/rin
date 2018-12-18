@@ -43,7 +43,6 @@ export default class Map extends Component {
       params: { ...this.state.filterOptions }
     })
       .then(res => {
-        console.log(res.data);
         res.data.forEach(project => {
           project.locations.forEach(location => {
             location.sector = project.sector.name;
