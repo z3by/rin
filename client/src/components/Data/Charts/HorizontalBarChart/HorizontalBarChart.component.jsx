@@ -31,7 +31,6 @@ export default class HorizontalBarChart extends Component {
                             }
                         }
                     }}
-                    key={Math.random()}
                 // redraw={true}
                 />
             </div>

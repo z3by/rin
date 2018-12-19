@@ -195,7 +195,7 @@ export default class SignUpLogIn extends Component {
 
             {/******************** signup form  *******************************/}
             <div className="user_forms-signup">
-              <h2 className="forms_title">Sign Up</h2>
+              <Typography variant="h2" className="forms_title">Signup</Typography>
               <form className="forms_form" onSubmit={this.addUser}>
                 <fieldset className="forms_fieldset">
                   <div className="forms_field">

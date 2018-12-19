@@ -79,6 +79,10 @@ export default class Data extends Component {
   };
 
   getAsylumSeekersDataByYear = e => {
+    if (this.state.asylumSeekersData.datasets.length) {
+      return;
+    }
+
     const year =
       e && e.target.value > -1
         ? e.target.value
@@ -133,6 +137,10 @@ export default class Data extends Component {
   };
 
   getResettlementData = () => {
+    if (this.state.resettlementData.datasets.length) {
+      return;
+    }
+
     const labels = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018];
     const countriesOfAsylum = ["AUS", "CAN", "DEU", "GBR", "USA"];
     const colors = [
@@ -192,6 +200,10 @@ export default class Data extends Component {
 
   //This function is triggered in two events; either in select year event || in select country event
   getDemographicsData = e => {
+    if (this.state.demographicsData.datasets.length) {
+      return;
+    }
+
     let year, country, alpha3Code;
     //check if the event triggered by select year
     if (e && Number(e.target.value) > -1) {
@@ -254,7 +266,10 @@ export default class Data extends Component {
       isLoadingResettlementData,
       isLoadingDmographicsData,
       demographicsSelectedYear,
-      demographicsSelectedCountry
+      demographicsSelectedCountry,
+      asylumSeekersData,
+      resettlementData,
+      demographicsData
     } = this.state;
 
     const years = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017];
@@ -315,7 +330,7 @@ export default class Data extends Component {
               <VisibilitySensor onChange={this.onChange} partialVisibility={true}>
                 {({ isVisible }) =>
                   <div style={{ height: "600px" }}>{isVisible ? <BarChart
-                    data={this.state.asylumSeekersData}
+                    data={asylumSeekersData}
                     getAsylumSeekersDataByYear={this.getAsylumSeekersDataByYear}
                   /> : null}</div>
                 }
@@ -338,7 +353,7 @@ export default class Data extends Component {
               <VisibilitySensor onChange={this.onChange} partialVisibility={true}>
                 {({ isVisible }) =>
                   <div style={{ height: "450px" }}>{isVisible ? <LineChart
-                    data={this.state.resettlementData}
+                    data={resettlementData}
                     getResettlementData={this.getResettlementData}
                   /> : null}</div>
                 }
@@ -367,10 +382,14 @@ export default class Data extends Component {
                   visibility: isLoadingDmographicsData ? "visible" : "hidden"
                 }}
               />
-              <HorizontalBarChart
-                data={this.state.demographicsData}
-                getDemographicsData={this.getDemographicsData}
-              />
+              <VisibilitySensor onChange={this.onChange} partialVisibility={true}>
+                {({ isVisible }) =>
+                  <div style={{ height: "450px" }}>{isVisible ? <HorizontalBarChart
+                    data={demographicsData}
+                    getDemographicsData={this.getDemographicsData}
+                  /> : null}</div>
+                }
+              </VisibilitySensor>
             </div>
           </div>
         </div>

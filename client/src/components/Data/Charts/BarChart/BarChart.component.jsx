@@ -33,7 +33,6 @@ export default class BarChart extends Component {
                     }
                     }
                     height={200}
-                    key={Math.random()}
                 // redraw={true}
                 />
             </div>
