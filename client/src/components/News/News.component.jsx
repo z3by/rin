@@ -27,7 +27,7 @@ export default class News extends Component {
     });
   };
 
-  // navigate to specifec route
+  // navigate to specific route
   navigateTO = route => {
     this.props.history.push(route);
     document.body.scrollBy({
@@ -61,11 +61,11 @@ export default class News extends Component {
               <li>
                 <a
                   onClick={() => {
-                    this.navigateTO("/news/reaserches");
+                    this.navigateTO("/news/researches");
                   }}
                 >
                   <i className="fas fa-file-contract" />
-                  <h5 className="upper">reaserches</h5>
+                  <h5 className="upper">researches</h5>
                 </a>
               </li>
             </ul>
@@ -78,7 +78,7 @@ export default class News extends Component {
         </header>
         <div className="container">
           <Route path="/news" exact component={Links} />
-          <Route path="/news/reaserches" component={Researches} />
+          <Route path="/news/researches" component={Researches} />
         </div>
       </div>
     );

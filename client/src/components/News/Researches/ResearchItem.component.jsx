@@ -1,51 +1,52 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
+import CardActions from "@material-ui/core/CardActions";
 import CardMedia from "@material-ui/core/CardMedia";
+import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
-const styles = () => ({
-  card: {
-    display: "flex"
-  },
-  details: {
-    display: "flex",
-    flexDirection: "column",
-    width: "100%"
-  },
-  content: {
-    flex: "1 0 auto"
-  },
-  cover: {
-    width: 300
-  }
-});
-
 function MediaControlCard(props) {
-  const { classes } = props;
+  let year = new Date(props.info.year).getFullYear();
 
   return (
-    <Card className={classes.card}>
-      <div className={classes.details}>
-        <CardContent className={classes.content}>
-          <Typography component="h5" variant="h5" className="capitalize">
-            {props.info.title}
-          </Typography>
-          <Typography variant="subtitle1" color="textSecondary">
-            {props.info.subtitle}
-          </Typography>
-          <Typography variant="subtitle2" color="textSecondary">
-            <a href={props.info.researchUrl}>{props.info.researchUrl}</a>
-          </Typography>
-        </CardContent>
-      </div>
-      <CardMedia
-        className={classes.cover}
-        image={props.info.imgUrl}
-        title={props.info.subtitle}
-      />
+    <Card
+      style={{
+        margin: 0,
+        position: "relative",
+        display: "flex",
+        justifyContent: "space-between"
+      }}
+    >
+      <CardContent style={{ width: "100%" }}>
+        <Typography variant="h6" className="capitalize text-center">
+          {props.info.title}
+        </Typography>
+        <Typography variant="subtitle1" className="color-3 text-center">
+          {props.info.subtitle}
+        </Typography>
+        <Typography variant="body2" className="color-3">
+          Publisher: {props.info.publisher}
+        </Typography>
+        <Typography variant="body2" className="color-3">
+          Year: {year}
+        </Typography>
+        <Typography variant="body2" className="color-3">
+          Pages: {props.info.pages}
+        </Typography>
+        <CardActions style={{ padding: 0, margin: "20px 0" }}>
+          <a href={props.info.researchUrl} target="_blank" download>
+            <Button
+              style={{ background: "var(--color-2)" }}
+              className="color-1"
+            >
+              Download
+            </Button>
+          </a>
+        </CardActions>
+      </CardContent>
+      <CardMedia image={props.info.imgUrl} style={{ width: "40%" }} />
     </Card>
   );
 }
@@ -55,4 +56,4 @@ MediaControlCard.propTypes = {
   theme: PropTypes.object.isRequired
 };
 
-export default withStyles(styles, { withTheme: true })(MediaControlCard);
+export default MediaControlCard;
