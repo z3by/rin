@@ -196,6 +196,7 @@ export default class Dashboard extends Component {
               );
             }}
           />
+          <Route path="/dashboard/updatenews/:id" component={NewsForm} />
           <Route path="/dashboard/addnews" component={NewsForm} />
 
           <Route path="/dashboard/articles/:id" component={ArticleInfo} />

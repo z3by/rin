@@ -37,8 +37,6 @@ export default class ResearchForm extends Component {
           adding: true
         },
         () => {
-          console.log(this.state.research);
-
           this.setState({ adding: false });
         }
       );
@@ -140,8 +138,6 @@ export default class ResearchForm extends Component {
 
     Axios.post("/api/upload/pdf", formData, config)
       .then(res => {
-        console.log(res.data);
-
         const pdfUrl = res.data.location;
         this.setState({
           research: {
