@@ -24,8 +24,8 @@
 
 .social-links-fixed {
   position: fixed;
-  right: 20px;
-  top: 20px;
+  right: 30px;
+  top: 30px;
   list-style: none;
   z-index: 1000;
 }

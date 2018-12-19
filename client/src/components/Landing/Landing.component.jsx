@@ -27,7 +27,7 @@ export default class Landing extends Component {
     this.startCounter();
     setTimeout(() => {
       this.setState({ loading: false });
-    }, 4000);
+    }, 2000);
   }
 
   // bind the events to the local functions.
@@ -187,7 +187,7 @@ export default class Landing extends Component {
     const routes = ["stories", "map", "data", "about", "news", "blog"];
     setTimeout(() => {
       this.props.history.push(routes[this.state.index]);
-    }, 4000);
+    }, 2000);
   };
 
   render() {
