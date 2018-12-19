@@ -71,7 +71,8 @@ export default class Data extends Component {
       behavior: "smooth"
     });
   };
-  getAsylumSeekersDataByYear = e => {
+
+  getAsylumSeekersDataByYear1 = e => {
     if (this.state.asylumSeekersData.datasets.length) {
       return;
     }
@@ -126,7 +127,62 @@ export default class Data extends Component {
         console.log(err);
       });
   };
-  getResettlementData = () => {
+
+  getAsylumSeekersDataByYear = e => {
+    const year =
+      e && e.target.value > -1
+        ? e.target.value
+        : this.state.asylumSeekersSelectedYear;
+    this.setState({
+      asylumSeekersSelectedYear: year,
+      isLoadingAsylumSeekersData: true
+    });
+
+    axios
+      .get(
+        `http://popdata.unhcr.org/api/stats/asylum_seekers.json?year=${year}&&country_of_origin=SYR`
+      )
+      .then(res => {
+        this.setState({ isLoadingAsylumSeekersData: false }, () => {
+          let labelsOfAsylumCountries = [];
+          let dataOfAppliedCount = [];
+          let dataOfAccepteddCount = [];
+          for (let i = 0; i < 50; i++) {
+            if (
+              !labelsOfAsylumCountries.includes(
+                res.data[i].country_of_asylum_en
+              ) &&
+              res.data[i].applied_during_year > 4
+            ) {
+              labelsOfAsylumCountries.push(res.data[i].country_of_asylum_en);
+              dataOfAppliedCount.push(res.data[i].applied_during_year);
+              dataOfAccepteddCount.push(
+                res.data[i].applied_during_year - res.data[i].rejected
+              );
+            }
+          }
+
+          let datasets = [{}, {}];
+          datasets[0].data = dataOfAppliedCount;
+          datasets[0].label = "Asylum Applications";
+          datasets[0].backgroundColor = "#8884d8";
+          datasets[1].data = dataOfAccepteddCount;
+          datasets[1].label = "Accepted Applications";
+          datasets[1].backgroundColor = "#82ca9d";
+          this.setState({
+            asylumSeekersData: {
+              labels: labelsOfAsylumCountries,
+              datasets: datasets
+            }
+          });
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  getResettlementData1 = () => {
     if (this.state.resettlementData.datasets.length) {
       return;
     }
@@ -153,7 +209,7 @@ export default class Data extends Component {
         axios
           .get(
             `http://popdata.unhcr.org/api/stats/resettlement.json?year=${
-              labels[j]
+            labels[j]
             }&country_of_asylum=${countriesOfAsylum[i]}`
           )
           .then(res => {
@@ -174,6 +230,53 @@ export default class Data extends Component {
     }
     this.setState({ resettlementData: { labels, datasets } });
   };
+
+  getResettlementData = () => {
+    const labels = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018];
+    const countriesOfAsylum = ["AUS", "CAN", "DEU", "GBR", "USA"];
+    const colors = [
+      "rgb(232, 51, 56)",
+      "rgb(141, 194, 111)",
+      "rgb(100, 179, 244)",
+      "rgb(100, 65, 165)",
+      "rgb(255, 144, 104)"
+    ];
+    this.setState({ isLoadingResettlementData: true });
+    let datasets = [];
+    for (let i = 0; i < countriesOfAsylum.length; i++) {
+      datasets.push({});
+      datasets[i].label = countriesOfAsylum[i];
+      datasets[i].backgroundColor = colors[i];
+      datasets[i].borderColor = colors[i];
+      datasets[i].fill = false;
+      datasets[i].data = [];
+
+      for (let j = 0; j < labels.length; j++) {
+        axios
+          .get(
+            `http://popdata.unhcr.org/api/stats/resettlement.json?year=${
+            labels[j]
+            }&country_of_asylum=${countriesOfAsylum[i]}`
+          )
+          .then(res => {
+            this.setState({ isLoadingResettlementData: false }, () => {
+              let totalValue = 0;
+              for (let r = 0; r < res.data.length; r++) {
+                if (typeof res.data[r].value === "number") {
+                  totalValue += res.data[r].value;
+                }
+              }
+              datasets[i].data.push(totalValue);
+            })
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      }
+    }
+    this.setState({ resettlementData: { labels, datasets } });
+  };
+
   findCountryAlpha3Code = countryName => {
     if (this.state.isAllCountriesRetrieved) {
       for (let i = 0; i < this.state.allCountries.length; i++) {
@@ -186,7 +289,7 @@ export default class Data extends Component {
     }
   };
   //This function is triggered in two events; either in select year event || in select country event
-  getDemographicsData = e => {
+  getDemographicsData1 = e => {
     if (this.state.demographicsData.datasets.length) {
       return;
     }
@@ -242,6 +345,63 @@ export default class Data extends Component {
         console.log(err);
       });
   };
+
+  getDemographicsData = e => {
+    let year, country, alpha3Code;
+    //check if the event triggered by select year
+    if (e && Number(e.target.value) > -1) {
+      year = e.target.value;
+      country = this.state.demographicsSelectedCountry;
+    }
+    //check if the event triggered by select country
+    else if (e && e.target.value) {
+      year = this.state.demographicsSelectedYear;
+      country = e.target.value;
+    }
+    //the initial values when the function is called in componentWillMount
+    else {
+      year = this.state.demographicsSelectedYear;
+      country = this.state.demographicsSelectedCountry;
+    }
+    this.setState({
+      demographicsSelectedYear: year,
+      demographicsSelectedCountry: country,
+      isLoadingDmographicsData: true
+    });
+    //find the alpha3Code of the country
+    alpha3Code = this.findCountryAlpha3Code(country);
+
+    axios
+      .get(
+        `http://popdata.unhcr.org/api/stats/demographics.json?year=${year}&country_of_residence=${alpha3Code}`
+      )
+      .then(res => {
+        let labels = [];
+        let femaleValueData = [];
+        let maleValueData = [];
+
+        this.setState({ isLoadingDmographicsData: false }, () => {
+          res.data.forEach(oneData => {
+            labels.push(oneData.location_name);
+            femaleValueData.push(oneData.female_total_value);
+            maleValueData.push(oneData.male_total_value);
+          });
+          let datasets = [{}, {}];
+          datasets[0].data = femaleValueData;
+          datasets[0].label = "Female Total Value";
+          datasets[0].backgroundColor = "pink";
+          datasets[1].data = maleValueData;
+          datasets[1].label = "Male Total Value";
+          datasets[1].backgroundColor = "#ADD8E6";
+
+          this.setState({ demographicsData: { labels, datasets } });
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
   render() {
     let {
       allCountries,
@@ -307,22 +467,13 @@ export default class Data extends Component {
                   visibility: isLoadingAsylumSeekersData ? "visible" : "hidden"
                 }}
               />
-              <VisibilitySensor
-                onChange={this.onChange}
-                partialVisibility={true}
-              >
-                {({ isVisible }) => (
-                  <div style={{ height: "600px" }}>
-                    {isVisible ? (
-                      <BarChart
-                        data={asylumSeekersData}
-                        getAsylumSeekersDataByYear={
-                          this.getAsylumSeekersDataByYear
-                        }
-                      />
-                    ) : null}
-                  </div>
-                )}
+              <VisibilitySensor onChange={this.onChange} partialVisibility={true}>
+                {({ isVisible }) =>
+                  <div style={{ height: "600px" }}>{isVisible ? <BarChart
+                    data={asylumSeekersData}
+                    getAsylumSeekersDataByYear={this.getAsylumSeekersDataByYear1}
+                  /> : null}</div>
+                }
               </VisibilitySensor>
             </div>
           </div>
@@ -339,20 +490,13 @@ export default class Data extends Component {
                   visibility: isLoadingResettlementData ? "visible" : "hidden"
                 }}
               />
-              <VisibilitySensor
-                onChange={this.onChange}
-                partialVisibility={true}
-              >
-                {({ isVisible }) => (
-                  <div style={{ height: "450px" }}>
-                    {isVisible ? (
-                      <LineChart
-                        data={resettlementData}
-                        getResettlementData={this.getResettlementData}
-                      />
-                    ) : null}
-                  </div>
-                )}
+              <VisibilitySensor onChange={this.onChange} partialVisibility={true}>
+                {({ isVisible }) =>
+                  <div style={{ height: "450px" }}>{isVisible ? <LineChart
+                    data={resettlementData}
+                    getResettlementData={this.getResettlementData1}
+                  /> : null}</div>
+                }
               </VisibilitySensor>
             </div>
           </div>
@@ -378,20 +522,13 @@ export default class Data extends Component {
                   visibility: isLoadingDmographicsData ? "visible" : "hidden"
                 }}
               />
-              <VisibilitySensor
-                onChange={this.onChange}
-                partialVisibility={true}
-              >
-                {({ isVisible }) => (
-                  <div style={{ height: "450px" }}>
-                    {isVisible ? (
-                      <HorizontalBarChart
-                        data={this.state.demographicsData}
-                        getDemographicsData={this.getDemographicsData}
-                      />
-                    ) : null}
-                  </div>
-                )}
+              <VisibilitySensor onChange={this.onChange} partialVisibility={true}>
+                {({ isVisible }) =>
+                  <div style={{ height: "450px" }}>{isVisible ? <HorizontalBarChart
+                    data={demographicsData}
+                    getDemographicsData={this.getDemographicsData1}
+                  /> : null}</div>
+                }
               </VisibilitySensor>
             </div>
           </div>
