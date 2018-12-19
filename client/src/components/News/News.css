@@ -18,12 +18,26 @@
 
 ul.cards {
   list-style: none;
-}
-ul.cards li {
-  margin: 20px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 0;
+  padding: 0;
+  grid-gap: 10px;
 }
 
 .cards-container .show-more-btn {
   display: block;
   margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  ul.cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 425) {
+  ul.cards {
+    grid-template-columns: 1fr;
+  }
 }

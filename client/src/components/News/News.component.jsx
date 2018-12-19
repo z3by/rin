@@ -30,26 +30,22 @@ export default class News extends Component {
   // navigate to specifec route
   navigateTO = route => {
     this.props.history.push(route);
-    setTimeout(() => {
-      document.querySelector("#scroll-sign").scrollIntoView({
-        behavior: "smooth"
-      });
+    document.body.scrollBy({
+      top: window.innerHeight - document.body.scrollTop,
+      behavior: "smooth"
     });
   };
 
   render() {
     return (
-      <div
-        className="news fadeInFast"
-        style={{
-          overflowY: "scroll"
-        }}
-      >
+      <div className="news fadeInFast">
         <header>
           <div className="banner-full">
             <h1>news</h1>
             <div className="line" />
-            <h3>dig deeply and read more about impact investment</h3>
+            <h3>
+              RIN press and other latest resources around refugee investment
+            </h3>
             <ul className="header-nav">
               <li>
                 <a
@@ -57,8 +53,8 @@ export default class News extends Component {
                     this.navigateTO("/news");
                   }}
                 >
-                  <h5 className="upper">useful links</h5>
-                  <i className="fas fa-link" />
+                  <i className="fas fa-newspaper" />
+                  <h5 className="upper">Press</h5>
                 </a>
               </li>
 
@@ -68,8 +64,8 @@ export default class News extends Component {
                     this.navigateTO("/news/reaserches");
                   }}
                 >
-                  <h5 className="upper">reaserches</h5>
                   <i className="fas fa-file-contract" />
+                  <h5 className="upper">reaserches</h5>
                 </a>
               </li>
             </ul>
@@ -81,8 +77,6 @@ export default class News extends Component {
           </div>
         </header>
         <div className="container">
-          <div id="scroll-sign" />
-
           <Route path="/news" exact component={Links} />
           <Route path="/news/reaserches" component={Researches} />
         </div>
