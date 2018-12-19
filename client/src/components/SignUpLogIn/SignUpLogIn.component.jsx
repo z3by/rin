@@ -5,6 +5,9 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
+import TextField from "@material-ui/core/TextField";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
 
 export default class SignUpLogIn extends Component {
   constructor(props) {
@@ -151,43 +154,43 @@ export default class SignUpLogIn extends Component {
           </div>
           {/******************** login form  *******************************/}
           <div className="user_options-forms bounceRight">
+
             <div className="user_forms-login">
-              <h2 className="forms_title">Login</h2>
-              <form className="forms_form">
+              <Typography variant="h2" className="forms_title">Login</Typography>
+              <FormControl className="forms_form">
                 <fieldset className="forms_fieldset">
                   <div className="forms_field">
-                    <input
+                    <TextField
+                      label="Email"
                       type="email"
                       name="email"
+                      autoComplete="email"
+                      onChange={this.onChange}
                       value={this.state.email}
                       placeholder="Email"
-                      className="forms_field-input"
-                      onChange={this.onChange}
+                      margin="normal"
                       required
-                      autoFocus
                     />
                   </div>
                   <div className="forms_field">
-                    <input
+                    <TextField
+                      label="Password"
                       type="password"
                       name="password"
-                      placeholder="Password"
-                      className="forms_field-input"
+                      autoComplete="current-password"
                       onChange={this.onChange}
                       value={this.state.password}
+                      margin="normal"
                       required
                     />
                   </div>
                 </fieldset>
                 <div className="forms_buttons">
-                  <input
-                    type="submit"
-                    value="Log In"
-                    className="forms_buttons-action"
-                    onClick={this.login}
-                  />
+                  <Button variant="contained" onClick={this.login} style={{ color: "var(--color-2)" }}>
+                    Log In
+                  </Button>
                 </div>
-              </form>
+              </FormControl>
             </div>
 
             {/******************** signup form  *******************************/}
