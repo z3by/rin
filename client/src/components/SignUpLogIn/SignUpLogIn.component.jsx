@@ -1,13 +1,17 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./SignUpLogIn.css";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import InputLabel from "@material-ui/core/InputLabel";
 
 export default class SignUpLogIn extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      roles: ["investor", "entrepreneur", "humanitarian", "community"],
+      roles: ["Investor", "Entrepreneur", "Humanitarian Community"],
       userInfo: {
         firstName: "",
         lastName: "",
