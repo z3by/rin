@@ -3,6 +3,7 @@ import Form from "../../general-components/Form/Form.component";
 import TextField from "@material-ui/core/TextField";
 import Axios from "axios";
 import Typography from "@material-ui/core/Typography";
+import Avatar from "@material-ui/core/Avatar";
 import MyEditor from "../../general-components/MyEditor/MyEditor.component";
 import { EditorState, convertToRaw, ContentState } from "draft-js";
 import htmlToDraft from "html-to-draftjs";
@@ -20,7 +21,8 @@ export default class ArticleForm extends Component {
       updating: false,
       editorState: EditorState.createEmpty(),
       enteredChars: 0,
-      article: {}
+      article: {},
+      uploading: { img: false }
     };
   }
   componentDidMount() {
@@ -44,14 +46,14 @@ export default class ArticleForm extends Component {
     this.setState({ editorState });
   };
 
-  getEnteredCharsCount = (text) => {
+  getEnteredCharsCount = text => {
     let enteredChars = 0;
     const allBlocks = JSON.parse(text).blocks;
     allBlocks.forEach(block => {
       enteredChars += block.text.length;
     });
     this.setState({ enteredChars });
-  }
+  };
 
   fetchArticleInfo = id => {
     Axios.get("/api/articles/" + id).then(result => {
@@ -96,12 +98,11 @@ export default class ArticleForm extends Component {
 
     if (enteredChars >= minLength && enteredChars <= maxLength) {
       return true;
-    }
-    else {
+    } else {
       alert(`Article text length must be between ${minLength}-${maxLength}`);
       return false;
     }
-  }
+  };
 
   onFormSubmit = e => {
     e.preventDefault();
@@ -164,7 +165,7 @@ export default class ArticleForm extends Component {
       });
   };
 
-  onEditorStateChange = (editorState) => {
+  onEditorStateChange = editorState => {
     this.setState({ editorState }, () => {
       let charsCount = 0;
       const text = convertToRaw(editorState.getCurrentContent());
@@ -176,15 +177,19 @@ export default class ArticleForm extends Component {
       this.setState({ enteredChars: charsCount });
       this.editText(text);
     });
-  }
+  };
 
   render() {
     let { enteredChars } = this.state;
 
-    let captionCounterBody = enteredChars === 0 ? `enter at least ${minLength} characters`
-      : enteredChars < minLength ? `${minLength - enteredChars} more to go...`
-        : enteredChars > maxLength ? `too long by ${enteredChars - maxLength} characters`
-          : `${maxLength - enteredChars} characters left`;
+    let captionCounterBody =
+      enteredChars === 0
+        ? `enter at least ${minLength} characters`
+        : enteredChars < minLength
+        ? `${minLength - enteredChars} more to go...`
+        : enteredChars > maxLength
+        ? `too long by ${enteredChars - maxLength} characters`
+        : `${maxLength - enteredChars} characters left`;
 
     return (
       <div>
@@ -226,38 +231,39 @@ export default class ArticleForm extends Component {
           </Typography>
 
           <div className="img-upload-group">
-            <div
+            <Avatar
               className="img-upload-preveiw"
-              style={{
-                height: 40,
-                width: 40,
-                marginRight: 10,
-                backgroundImage: "url(" + this.state.article.img + ")"
-              }}
+              src={
+                this.state.uploading.img
+                  ? "/imgs/loading.gif"
+                  : this.state.article.img
+                  ? this.state.article.img
+                  : "https://beedie.sfu.ca/corporate-governance-blog/wp-content/themes/newsroom13/img/placeholder.png"
+              }
             />
 
             <TextField
               style={{ marginTop: 0 }}
-              className=""
+              className="full-width-input"
+              helperText="max size 1.mb"
               name="img"
+              label="upload image for your article"
+              variant="filled"
+              required={this.state.updating ? false : true}
               InputLabelProps={{
                 shrink: true
               }}
-              type="file"
               accept="image/*"
-              required={this.state.updating ? false : true}
+              type="file"
               onChange={this.uploadImage}
             />
-            <Typography variant="overline">max size 1.mb</Typography>
           </div>
 
           <MyEditor
             editorState={this.state.editorState}
             onEditorStateChange={this.onEditorStateChange}
           />
-          <Typography variant="caption">
-            {captionCounterBody}
-          </Typography>
+          <Typography variant="caption">{captionCounterBody}</Typography>
         </Form>
       </div>
     );
