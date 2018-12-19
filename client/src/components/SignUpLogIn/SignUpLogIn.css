@@ -34,6 +34,7 @@
   background: url("/imgs/bg-signup-login.jpg") no-repeat center;
   background-size: cover;
   padding: 10%;
+  overflow: hidden;
 }
 
 .user_options-container {

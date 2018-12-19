@@ -17,7 +17,11 @@ export default function Filter(props) {
         id="close-filter"
         onClick={props.handleFilterToggle}
       />
-      <FilterForm filterProjects={props.filterProjects} />
+      <FilterForm
+        toggleFilter={props.handleFilterToggle}
+        filterProjects={props.filterProjects}
+        resetFilter={props.resetFilter}
+      />
     </Paper>
   );
 }

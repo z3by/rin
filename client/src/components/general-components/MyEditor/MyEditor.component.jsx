@@ -8,8 +8,7 @@ const editorStyle = {
     padding: '5px',
     borderRadius: '2px',
     height: '300px',
-    width: '100%',
-    marginBottom: '20px'
+    width: '100%'
 };
 
 const toolbarStyle = {

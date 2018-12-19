@@ -1,58 +1,40 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 
-const styles = () => ({
-  card: {
-    display: "flex"
-  },
-  details: {
-    display: "flex",
-    flexDirection: "column",
-    width: "100%"
-  },
-  content: {
-    flex: "1 0 auto"
-  },
-  cover: {
-    width: 300
-  }
-});
-
 function MediaControlCard(props) {
-  const { classes } = props;
+  console.log(props.info);
 
   return (
-    <Card className={classes.card}>
-      <div className={classes.details}>
-        <CardContent className={classes.content}>
-          <Typography component="h5" variant="h5" className="capitalize">
-            {props.info.title}
-          </Typography>
-          <Typography variant="subtitle1" color="textSecondary">
-            {props.info.subtitle}
-          </Typography>
-          <Typography variant="subtitle2" color="textSecondary">
-            {props.info.imgUrl}
-          </Typography>
-        </CardContent>
-      </div>
-      <CardMedia
-        className={classes.cover}
-        image={props.info.imgUrl}
-        title={props.info.subtitle}
-      />
+    <Card style={{ background: "transparent", boxShadow: "none" }}>
+      <Typography component="h5" variant="h5">
+        {props.info.title}
+      </Typography>
+      <Typography
+        component="p"
+        color="textSecondary"
+        variant="body1"
+        className="capitalize"
+      >
+        {new Date(props.info.createdAt).toDateString()}
+      </Typography>
+
+      <Typography variant="body1">{props.info.subtitle}</Typography>
+      <Typography style={{ paddingTop: 20 }}>
+        <a
+          style={{
+            color: "var(--color-2)",
+            width: "100%",
+            marginTop: 30
+          }}
+          href={props.info.url}
+          target="_blank"
+        >
+          Read More...
+        </a>
+      </Typography>
     </Card>
   );
 }
 
-MediaControlCard.propTypes = {
-  classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired
-};
-
-export default withStyles(styles, { withTheme: true })(MediaControlCard);
+export default MediaControlCard;

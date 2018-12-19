@@ -12,7 +12,7 @@ export default class Map extends Component {
   state = {
     center: [50, 0],
     zoom: 3,
-    locadedProjects: [],
+    loadedProjects: [],
     locations: [],
     hoveredProject: {
       Countries: [],
@@ -35,15 +35,14 @@ export default class Map extends Component {
     this.fetchProjects();
   }
 
-  // get all the projects and map it to the state;
+  // get all the projects by given filter options and map it to the state;
   fetchProjects = () => {
     const locations = [];
+
     Axios.get("/api/projectslocations", {
       params: { ...this.state.filterOptions }
     })
       .then(res => {
-        console.log(this.state.filterOptions);
-
         res.data.forEach(project => {
           project.locations.forEach(location => {
             location.sector = project.sector.name;
@@ -66,25 +65,29 @@ export default class Map extends Component {
   };
 
   handleSpectrumHover = sectorName => {
-    Axios.get("/api/sectors").then(res => {
-      const currentSector = res.data.filter(sector => {
-        return sector.name === sectorName;
-      });
+    Axios.get("/api/sectors")
+      .then(res => {
+        const currentSector = res.data.filter(sector => {
+          return sector.name === sectorName;
+        });
 
-      const sectorId = currentSector[0].id;
-      this.setState(
-        {
-          filterOptions: { ...this.state.filterOptions, sectorId: sectorId }
-        },
-        () => {
-          this.fetchProjects();
-        }
-      );
-    });
+        const sectorId = currentSector[0].id;
+        this.setState(
+          {
+            filterOptions: { ...this.state.filterOptions, sectorId: sectorId }
+          },
+          () => {
+            this.fetchProjects();
+          }
+        );
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   getProject = (id, location) => {
-    this.state.locadedProjects.forEach(project => {
+    this.state.loadedProjects.forEach(project => {
       if (project.id === id) {
         this.setState({
           hoveredProject: project,
@@ -97,7 +100,7 @@ export default class Map extends Component {
 
     Axios.get("/api/projects/" + id).then(result => {
       this.setState({
-        locadedProjects: [...this.state.locadedProjects, result.data[0]],
+        loadedProjects: [...this.state.loadedProjects, result.data[0]],
         hoveredProject: result.data[0]
       });
     });
@@ -125,18 +128,22 @@ export default class Map extends Component {
     );
   };
 
+  resetFilter = () => {
+    this.setState({ filterOptions: {} }, () => {
+      this.fetchProjects();
+    });
+  };
+
   render() {
     return (
-      <div
-        style={{ height: "100vh", width: "100%" }}
-        className="map fadeInSlow"
-      >
+      <div style={{ height: "100vh", width: "100%" }} className="map">
         <Spectrum handleMouseHover={this.handleSpectrumHover} />
 
         <Filter
           filterProjects={this.filterByGivenOptions}
           handleFilterToggle={this.handleFilterToggle}
           shown={this.state.filterOn}
+          resetFilter={this.resetFilter}
         />
         <button
           button="true"

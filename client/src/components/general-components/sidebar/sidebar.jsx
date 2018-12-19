@@ -31,73 +31,59 @@ class Sidebar extends React.Component {
       <div className={classes.list}>
         <List>
           <Link to="/dashboard">
-            <ListItem button key={"home"} style={{ padding: 15 }}>
-              <ListItemIcon
-                style={{
-                  margin: 0,
-                  color: "var(--color-2)",
-                  fontSize: "1.3rem"
-                }}
-              >
+            <ListItem button key={"home"} style={{ padding: "7px 20px" }}>
+              <ListItemIcon style={{ margin: 0, width: 30 }}>
                 <i className="fas fa-home" />
               </ListItemIcon>
-              <ListItemText>Home</ListItemText>
+              <ListItemText className="upper">Home</ListItemText>
             </ListItem>
           </Link>
           <Link to="/dashboard/projects">
-            <ListItem button key={"projects"} style={{ padding: 15 }}>
-              <ListItemIcon
-                style={{
-                  margin: 0,
-                  color: "var(--color-2)",
-                  fontSize: "1.3rem"
-                }}
-              >
+            <ListItem button key={"projects"} style={{ padding: "7px 20px" }}>
+              <ListItemIcon style={{ margin: 0, width: 30 }}>
                 <i className="fas fa-project-diagram" />
               </ListItemIcon>
-              <ListItemText>Projects</ListItemText>
+              <ListItemText className="upper">Projects</ListItemText>
             </ListItem>
           </Link>
           <Link to="/dashboard/stories">
-            <ListItem button key={"stories"} style={{ padding: 15 }}>
-              <ListItemIcon
-                style={{
-                  margin: 0,
-                  color: "var(--color-2)",
-                  fontSize: "1.3rem"
-                }}
-              >
+            <ListItem button key={"stories"} style={{ padding: "7px 20px" }}>
+              <ListItemIcon style={{ margin: 0, width: 30 }}>
                 <i className="fas fa-bookmark" />
               </ListItemIcon>
-              <ListItemText>Stories</ListItemText>
+              <ListItemText className="upper">Stories</ListItemText>
             </ListItem>
           </Link>
           <Link to="/dashboard/articles">
-            <ListItem button key={"blog"} style={{ padding: 15 }}>
-              <ListItemIcon
-                style={{
-                  margin: 0,
-                  color: "var(--color-2)",
-                  fontSize: "1.3rem"
-                }}
-              >
-                <i className="fas fa-newspaper" />
+            <ListItem button key={"blog"} style={{ padding: "7px 20px" }}>
+              <ListItemIcon style={{ margin: 0, width: 30 }}>
+                <i className="fab fa-blogger-b" />
               </ListItemIcon>
-              <ListItemText>Blog</ListItemText>
+              <ListItemText className="upper">Blog</ListItemText>
             </ListItem>
           </Link>
           <Link to="/dashboard/users">
-            <ListItem button key={"users"} style={{ padding: 15 }}>
-              <ListItemIcon
-                style={{
-                  margin: 0,
-                  color: "var(--color-2)",
-                  fontSize: "1.3rem"
-                }}
-              >
+            <ListItem button key={"users"} style={{ padding: "7px 20px" }}>
+              <ListItemIcon style={{ margin: 0, width: 30 }}>
                 <i className="fas fa-users" />
               </ListItemIcon>
-              <ListItemText>Users</ListItemText>
+              <ListItemText className="upper">Users</ListItemText>
+            </ListItem>
+          </Link>
+          <Link to="/dashboard/researches">
+            <ListItem button key={"researches"} style={{ padding: "7px 20px" }}>
+              <ListItemIcon style={{ margin: 0, width: 30 }}>
+                <i className="fas fa-search" />
+              </ListItemIcon>
+              <ListItemText className="upper">Researches</ListItemText>
+            </ListItem>
+          </Link>
+          <Link to="/dashboard/news">
+            <ListItem button key={"news"} style={{ padding: "7px 20px" }}>
+              <ListItemIcon style={{ margin: 0, width: 30 }}>
+                <i className="fas fa-newspaper" />
+              </ListItemIcon>
+              <ListItemText className="upper">news</ListItemText>
             </ListItem>
           </Link>
         </List>

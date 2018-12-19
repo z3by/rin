@@ -263,10 +263,12 @@ label {
 .grow {
   -webkit-animation-name: grow;
   animation-name: grow;
-  -webkit-animation-duration: 2s;
-  animation-duration: 2s;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
   -webkit-animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
   animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
 }
 
 .fadeInFast {
@@ -653,6 +655,16 @@ option:hover {
 .center {
   text-align: center;
 }
+
+.flex-col {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
 .bg-1 {
   background-color: var(--color-1);
 }
