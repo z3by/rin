@@ -15,6 +15,7 @@ import StoryInfo from "./StoryInfo/StoryInfo.component";
 import ArticleInfo from "./ArticleInfo/ArticleInfo.component";
 import Requests from "./Requests/Requests.component";
 import ResearchInfo from "./ResearchInfo/ResearchInfo.component";
+import NewsInfo from "./NewsInfo/NewsInfo.component";
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -198,6 +199,7 @@ export default class Dashboard extends Component {
           />
           <Route path="/dashboard/updatenews/:id" component={NewsForm} />
           <Route path="/dashboard/addnews" component={NewsForm} />
+          <Route path="/dashboard/news/:id" component={NewsInfo} />
 
           <Route path="/dashboard/articles/:id" component={ArticleInfo} />
           <Route path="/dashboard/addarticle" component={ArticleForm} />
