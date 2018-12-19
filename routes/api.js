@@ -122,13 +122,13 @@ router.post(
 );
 
 // library routes ---------------------------
-// links routes
-router.get("/links", libraryAPI.getLinks);
-router.get("/links/page", libraryAPI.getLinksPage);
-router.get("/links/:id", libraryAPI.getLink);
-router.post("/links", libraryAPI.addLink);
-router.put("/links/:id", libraryAPI.updateLink);
-router.delete("/links/:id", libraryAPI.deleteLinks);
+// news routes
+router.get("/news", libraryAPI.getLinks);
+router.get("/news/page", libraryAPI.getLinksPage);
+router.get("/news/:id", libraryAPI.getLink);
+router.post("/news", libraryAPI.addLink);
+router.put("/news/:id", libraryAPI.updateLink);
+router.delete("/news/:id", libraryAPI.deleteLinks);
 
 // researches routes
 router.get("/researches", libraryAPI.getResearches);

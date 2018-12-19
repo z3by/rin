@@ -181,6 +181,21 @@ export default class Dashboard extends Component {
             component={ResearchForm}
           />
           <Route path="/dashboard/researches/:id" component={ResearchInfo} />
+          <Route
+            path="/dashboard/news"
+            exact
+            render={() => {
+              return (
+                <AdminList
+                  itemName="news"
+                  pluralName="news"
+                  controls={true}
+                  wantedFields={["id", "title", "subtitle"]}
+                />
+              );
+            }}
+          />
+
           <Route path="/dashboard/articles/:id" component={ArticleInfo} />
           <Route path="/dashboard/addarticle" component={ArticleForm} />
           <Route path="/dashboard/updatearticle/:id" component={ArticleForm} />
