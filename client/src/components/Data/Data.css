@@ -49,6 +49,10 @@ iframe {
   left: 47%;
 }
 
+.asylum-seekers-chart, .resettlement-chart, .demographics-chart {
+  height: 100vh;
+}
+
 .asylum-seekers-chart select {
   position: relative;
   left: 40%;
