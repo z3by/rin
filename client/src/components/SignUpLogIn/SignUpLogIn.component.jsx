@@ -19,7 +19,7 @@ export default class SignUpLogIn extends Component {
         firstName: "",
         lastName: "",
         organizationName: "",
-        userRole: "",
+        userRole: "hhhhh",
         email: "",
         password: "",
         password2: ""
@@ -54,7 +54,11 @@ export default class SignUpLogIn extends Component {
       userInfo: {
         ...this.state.userInfo,
         [e.target.name]: e.target.value
+
       }
+    }, () => {
+      console.log(e.target.value, this.state.userInfo.userRole);
+
     });
   };
 
@@ -108,11 +112,10 @@ export default class SignUpLogIn extends Component {
   render() {
     let roles = this.state.roles.map((role, i) => {
       return (
-        <option value={role} key={i}>
-          {role}
-        </option>
+        <MenuItem value={role} key={i}> {role}</MenuItem>
       );
     });
+
 
     return (
       <div className="user">
@@ -187,7 +190,7 @@ export default class SignUpLogIn extends Component {
                 </fieldset>
                 <div className="forms_buttons">
                   <Button variant="contained" onClick={this.login} style={{ color: "var(--color-2)" }}>
-                    Log In
+                    Login
                   </Button>
                 </div>
               </FormControl>
@@ -196,90 +199,101 @@ export default class SignUpLogIn extends Component {
             {/******************** signup form  *******************************/}
             <div className="user_forms-signup">
               <Typography variant="h2" className="forms_title">Signup</Typography>
-              <form className="forms_form" onSubmit={this.addUser}>
+              <FormControl className="forms_form" onSubmit={this.addUser}>
                 <fieldset className="forms_fieldset">
                   <div className="forms_field">
-                    <input
-                      type="text"
+                    <TextField
+                      label="First Name"
                       name="firstName"
-                      placeholder="First Name"
-                      className="forms_field-input"
+                      autoComplete="firstName"
                       onChange={this.onChange}
+                      value={this.state.firstName}
+                      margin="normal"
                       required
                     />
                   </div>
                   <div className="forms_field">
-                    <input
-                      type="text"
+                    <TextField
+                      label="Last Name"
                       name="lastName"
-                      placeholder="Last Name"
-                      className="forms_field-input"
+                      autoComplete="lastName"
                       onChange={this.onChange}
+                      value={this.state.lastName}
+                      margin="normal"
                       required
                     />
                   </div>
-
                   <div className="forms_field">
-                    <input
-                      type="text"
+                    <TextField
+                      label="Organization Name"
                       name="organizationName"
-                      placeholder="Organization Name"
-                      className="forms_field-input"
+                      autoComplete="organizationName"
                       onChange={this.onChange}
+                      value={this.state.organizationName}
+                      margin="normal"
                       required
                     />
                   </div>
                   <div className="forms_field">
-                    <select
-                      name="userRole"
-                      className="forms_field-input"
-                      onChange={this.onChange}
-                      required
-                    >
-                      <option>User Role</option>
-                      {roles}
-                    </select>
+                    <FormControl style={{ width: "100%" }}>
+                      <InputLabel htmlFor="role-select">select role</InputLabel>
+                      <Select
+                        value={this.state.userInfo.userRole}
+                        onChange={this.onChange}
+                        inputProps={{
+                          name: "userRole",
+                          id: "role-select",
+                          value: this.state.userInfo.userRole
+                        }}
+                      >
+                        {roles}
+                      </Select>
+                    </FormControl>
                   </div>
                   <div className="forms_field">
-                    <input
+                    <TextField
+                      label="Email"
                       type="email"
                       name="email"
-                      placeholder="Email"
-                      className="forms_field-input"
+                      autoComplete="email"
                       onChange={this.onChange}
+                      value={this.state.email}
+                      placeholder="Email"
+                      margin="normal"
                       required
                     />
                   </div>
                   <div className="forms_field">
-                    <input
+                    <TextField
+                      label="Password"
                       type="password"
                       name="password"
-                      placeholder="Password"
-                      className="forms_field-input"
+                      autoComplete="current-password"
                       onChange={this.onChange}
+                      value={this.state.password}
+                      margin="normal"
                       required
                     />
                   </div>
                   <div className="forms_field">
-                    <input
+                    <TextField
+                      label="Confirm Password"
                       type="password"
                       name="password2"
-                      placeholder="Confirm Password"
-                      className="forms_field-input"
+                      autoComplete="current-password"
                       onChange={this.onChange}
+                      value={this.state.password}
+                      margin="normal"
                       required
                     />
                   </div>
                 </fieldset>
                 <div className="forms_buttons">
-                  <input
-                    type="submit"
-                    value="Sign Up"
-                    className="forms_buttons-action"
-                    onClick={this.addUser}
-                  />
+                  <Button variant="contained" onClick={this.addUser} style={{ color: "var(--color-2)" }}>
+                    Signup
+                </Button>
                 </div>
-              </form>
+              </FormControl>
             </div>
           </div>
         </div>
