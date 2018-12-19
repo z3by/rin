@@ -9,6 +9,7 @@ import StoryForm from "./StoryForm/StoryForm.component";
 import ProjectForm from "./ProjectForm/ProjectForm.component";
 import ArticleForm from "./ArticleForm/ArticleForm.component";
 import ResearchForm from "./ResearchForm/ResearchForm.component";
+import NewsForm from "./NewsForm/NewsForm.component";
 import ProjectInfo from "./ProjectInfo/ProjectInfo.component";
 import StoryInfo from "./StoryInfo/StoryInfo.component";
 import ArticleInfo from "./ArticleInfo/ArticleInfo.component";
@@ -195,6 +196,7 @@ export default class Dashboard extends Component {
               );
             }}
           />
+          <Route path="/dashboard/addnews" component={NewsForm} />
 
           <Route path="/dashboard/articles/:id" component={ArticleInfo} />
           <Route path="/dashboard/addarticle" component={ArticleForm} />
