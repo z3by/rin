@@ -9,7 +9,7 @@ import { EditorState, convertToRaw, ContentState } from 'draft-js';
 import htmlToDraft from 'html-to-draftjs';
 import draftToHtml from 'draftjs-to-html';
 
-const maxLength = 30;
+const maxLength = 5000;
 const minLength = 25;
 
 export default class StoryForm extends Component {
