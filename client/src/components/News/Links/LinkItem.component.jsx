@@ -9,12 +9,19 @@ function MediaControlCard(props) {
 
   return (
     <Card style={{ background: "transparent", boxShadow: "none" }}>
-      <Typography component="h5" variant="h5" className="capitalize">
+      <Typography component="h5" variant="h5">
         {props.info.title}
       </Typography>
-      <Typography variant="body1" color="textSecondary">
-        {props.info.subtitle}
+      <Typography
+        component="p"
+        color="textSecondary"
+        variant="body1"
+        className="capitalize"
+      >
+        {new Date(props.info.createdAt).toDateString()}
       </Typography>
+
+      <Typography variant="body1">{props.info.subtitle}</Typography>
       <Typography style={{ paddingTop: 20 }}>
         <a
           style={{
