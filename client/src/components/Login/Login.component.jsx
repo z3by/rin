@@ -35,7 +35,7 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div className="admin-login fadeInFast">
+      <div className="admin-login">
         <div className="loginbox">
           <img src="/imgs/login.png" alt="login icon" className="avatar" />
           <h1 className="login-title">Admin Dashboard</h1>

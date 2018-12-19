@@ -136,10 +136,7 @@ export default class Map extends Component {
 
   render() {
     return (
-      <div
-        style={{ height: "100vh", width: "100%" }}
-        className="map fadeInSlow"
-      >
+      <div style={{ height: "100vh", width: "100%" }} className="map">
         <Spectrum handleMouseHover={this.handleSpectrumHover} />
 
         <Filter

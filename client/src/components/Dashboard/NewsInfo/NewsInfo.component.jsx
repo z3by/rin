@@ -30,8 +30,6 @@ export default class NewsInfo extends Component {
 
   render() {
     const news = this.state.newsData;
-    let year = new Date().getFullYear();
-
     return (
       <div className="container">
         <Card

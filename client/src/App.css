@@ -21,3 +21,21 @@
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-3);
 }
+
+.social-links-fixed {
+  position: fixed;
+  right: 30px;
+  top: 0px;
+  list-style: none;
+  z-index: 1000;
+}
+
+.social-links-fixed a {
+  font-size: 2rem;
+  color: var(--color-2);
+}
+
+.social-links-fixed a:hover {
+  font-size: 2rem;
+  color: var(--color-4);
+}

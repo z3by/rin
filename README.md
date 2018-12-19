@@ -14,6 +14,17 @@
 
 - install node.js and npm latest version globlally
 
+### you will need to provide the google map api key
+
+- navigate to
+
+```
+    /client/src/config
+```
+
+- rename the file map.config.1.js to map.config.js
+  and put the map api key inside it
+
 - navigate to the project directory
 
 - run this commands to install node dependencies
@@ -21,6 +32,8 @@
 ```
     npm install
 ```
+
+it will install the server dependencies and the client dependencies
 
 ### the project uses environment variables you should define
 
@@ -48,17 +61,33 @@ development: {
 }
 ```
 
-it will install the server dependencies and the client dependencies
+### now you need to setup the database
 
-### you will need to provide the google map api key
-   - navigate to
+    ##### start by installing sequelize cli globally on you computer
+
 ```
-    /client/src/config
+    $ npm install -g sequelize-cli
+
 ```
-   - rename the file map.config.1.js to map.config.js
-   and put the map api key inside it
-   
-   
+
+#### create the database using this command
+
+```
+    $ sequelize db:create
+```
+
+#### create the tables using this command
+
+```
+    $ sequelize db:migrate
+```
+
+#### fill the tables with content using this command
+
+```
+    $ sequelize db:seed:all
+```
+
 - to serve the static react app run this command
 
 ```

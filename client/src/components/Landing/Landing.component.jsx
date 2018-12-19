@@ -209,11 +209,12 @@ export default class Landing extends Component {
           }}
         >
           <img
-            src="/imgs/logo.png"
+            src="https://i.stack.imgur.com/AfStP.gif"
             alt=""
             style={{
               display: this.state.loading ? "block" : "none",
-              width: "30vw"
+              width: "5vw",
+              position: "absolute"
             }}
           />
         </div>
@@ -255,12 +256,12 @@ export default class Landing extends Component {
 
           <div className="circle-overlay" />
           <div
-            className={`circle fadeIn ${this.state.navigating ? "grow" : ""}`}
+            className={`circle ${this.state.navigating ? "grow" : ""}`}
             style={{
               backgroundImage: `url(imgs/backs${this.state.index + 1}.jpg)`,
               backgroundAttachment: "fixed",
-              top: this.state.clientY / 12,
-              left: this.state.clientX / 12 + window.innerWidth / 3
+              top: this.state.clientY / 10,
+              left: this.state.clientX / 10 + window.innerWidth / 3
             }}
           >
             <div

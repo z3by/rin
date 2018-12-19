@@ -54,7 +54,6 @@ export default class SignUpLogIn extends Component {
       userInfo: {
         ...this.state.userInfo,
         [e.target.name]: e.target.value
-
       }
     });
   };
@@ -109,10 +108,12 @@ export default class SignUpLogIn extends Component {
   render() {
     let roles = this.state.roles.map((role, i) => {
       return (
-        <MenuItem value={role} key={i}> {role}</MenuItem>
+        <MenuItem value={role} key={i}>
+          {" "}
+          {role}
+        </MenuItem>
       );
     });
-
 
     return (
       <div className="user">
@@ -154,9 +155,10 @@ export default class SignUpLogIn extends Component {
           </div>
           {/******************** login form  *******************************/}
           <div className="user_options-forms bounceRight">
-
             <div className="user_forms-login">
-              <Typography variant="h2" className="forms_title">Login</Typography>
+              <Typography variant="h2" className="forms_title">
+                Login
+              </Typography>
               <FormControl className="forms_form">
                 <fieldset className="forms_fieldset">
                   <div className="forms_field">
@@ -186,7 +188,11 @@ export default class SignUpLogIn extends Component {
                   </div>
                 </fieldset>
                 <div className="forms_buttons">
-                  <Button variant="contained" onClick={this.login} style={{ color: "var(--color-2)" }}>
+                  <Button
+                    variant="contained"
+                    onClick={this.login}
+                    style={{ color: "var(--color-2)" }}
+                  >
                     Login
                   </Button>
                 </div>
@@ -195,7 +201,9 @@ export default class SignUpLogIn extends Component {
 
             {/******************** signup form  *******************************/}
             <div className="user_forms-signup">
-              <Typography variant="h2" className="forms_title">Signup</Typography>
+              <Typography variant="h2" className="forms_title">
+                Signup
+              </Typography>
               <FormControl className="forms_form" onSubmit={this.addUser}>
                 <fieldset className="forms_fieldset">
                   <div className="forms_field">
@@ -286,9 +294,13 @@ export default class SignUpLogIn extends Component {
                   </div>
                 </fieldset>
                 <div className="forms_buttons">
-                  <Button variant="contained" onClick={this.addUser} style={{ color: "var(--color-2)" }}>
+                  <Button
+                    variant="contained"
+                    onClick={this.addUser}
+                    style={{ color: "var(--color-2)" }}
+                  >
                     Signup
-                </Button>
+                  </Button>
                 </div>
               </FormControl>
             </div>
