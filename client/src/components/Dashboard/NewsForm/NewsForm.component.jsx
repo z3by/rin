@@ -37,8 +37,6 @@ export default class NewsForm extends Component {
           adding: true
         },
         () => {
-          console.log(this.state.news);
-
           this.setState({ adding: false });
         }
       );
@@ -140,8 +138,6 @@ export default class NewsForm extends Component {
 
     Axios.post("/api/upload/pdf", formData, config)
       .then(res => {
-        console.log(res.data);
-
         const pdfUrl = res.data.location;
         this.setState({
           news: {
