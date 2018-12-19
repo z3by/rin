@@ -6,6 +6,7 @@ import BarChart from "./Charts/BarChart/BarChart.component";
 import LineChart from "./Charts/LineChart/LineChart.component";
 import HorizontalBarChart from "./Charts/HorizontalBarChart/HorizontalBarChart.component";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import VisibilitySensor from 'react-visibility-sensor';
 
 /*The structure of any chart data object is as the following:
   somethingData: {
@@ -29,21 +30,16 @@ export default class Data extends Component {
       demographicsSelectedYear: 2012,
       demographicsSelectedCountry: "Syrian Arab Republic",
       isLoadingAsylumSeekersData: true,
+      isLoadingResettlementData: true,
       isLoadingDmographicsData: true,
       allCountries: [],
-      isAllCountriesRetrieved: false,
-      isVisible1: false
+      isAllCountriesRetrieved: false
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getAllCounries();
-    // this.getAsylumSeekersDataByYear();
-    // this.getResettlementData();
-    // this.getDemographicsData();
   }
-
-  componentDidMount() {}
 
   getAllCounries = () => {
     axios
@@ -146,6 +142,7 @@ export default class Data extends Component {
       "rgb(100, 65, 165)",
       "rgb(255, 144, 104)"
     ];
+    this.setState({ isLoadingResettlementData: true });
     let datasets = [];
     for (let i = 0; i < countriesOfAsylum.length; i++) {
       datasets.push({});
@@ -159,17 +156,19 @@ export default class Data extends Component {
         axios
           .get(
             `http://popdata.unhcr.org/api/stats/resettlement.json?year=${
-              labels[j]
+            labels[j]
             }&country_of_asylum=${countriesOfAsylum[i]}`
           )
           .then(res => {
-            let totalValue = 0;
-            for (let r = 0; r < res.data.length; r++) {
-              if (typeof res.data[r].value === "number") {
-                totalValue += res.data[r].value;
+            this.setState({ isLoadingResettlementData: false }, () => {
+              let totalValue = 0;
+              for (let r = 0; r < res.data.length; r++) {
+                if (typeof res.data[r].value === "number") {
+                  totalValue += res.data[r].value;
+                }
               }
-            }
-            datasets[i].data.push(totalValue);
+              datasets[i].data.push(totalValue);
+            })
           })
           .catch(err => {
             console.log(err);
@@ -248,15 +247,11 @@ export default class Data extends Component {
       });
   };
 
-  onChange = isVisible => {
-    console.log("Element is now %s", isVisible ? "visible" : "hidden");
-    this.setState({ isVisible1: isVisible });
-  };
-
   render() {
     let {
       allCountries,
       isLoadingAsylumSeekersData,
+      isLoadingResettlementData,
       isLoadingDmographicsData,
       demographicsSelectedYear,
       demographicsSelectedCountry
@@ -317,20 +312,38 @@ export default class Data extends Component {
                   visibility: isLoadingAsylumSeekersData ? "visible" : "hidden"
                 }}
               />
-              <BarChart
-                data={this.state.asylumSeekersData}
-                getAsylumSeekersDataByYear={this.getAsylumSeekersDataByYear}
-              />
+              <VisibilitySensor onChange={this.onChange} partialVisibility={true}>
+                {({ isVisible }) =>
+                  <div style={{ height: "600px" }}>{isVisible ? <BarChart
+                    data={this.state.asylumSeekersData}
+                    getAsylumSeekersDataByYear={this.getAsylumSeekersDataByYear}
+                  /> : null}</div>
+                }
+              </VisibilitySensor>
             </div>
           </div>
           <div className="resettlement-chart">
             <h3 className="chart-heading">
               UNHCR Statistics of Resettlement (2010 - 2018)
             </h3>
-            <LineChart
-              data={this.state.resettlementData}
-              getResettlementData={this.getResettlementData}
-            />
+            <div className="chart-preloader">
+              <CircularProgress
+                className="preloader"
+                size={"7vw"}
+                thickness={3}
+                style={{
+                  visibility: isLoadingResettlementData ? "visible" : "hidden"
+                }}
+              />
+              <VisibilitySensor onChange={this.onChange} partialVisibility={true}>
+                {({ isVisible }) =>
+                  <div style={{ height: "450px" }}>{isVisible ? <LineChart
+                    data={this.state.resettlementData}
+                    getResettlementData={this.getResettlementData}
+                  /> : null}</div>
+                }
+              </VisibilitySensor>
+            </div>
           </div>
           <div className="demographics-chart">
             <h3 className="chart-heading">

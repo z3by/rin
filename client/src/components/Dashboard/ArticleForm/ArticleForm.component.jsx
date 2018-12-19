@@ -8,6 +8,9 @@ import { EditorState, convertToRaw, ContentState } from "draft-js";
 import htmlToDraft from "html-to-draftjs";
 import draftToHtml from "draftjs-to-html";
 
+const maxLength = 5000;
+const minLength = 25;
+
 export default class ArticleForm extends Component {
   constructor(props) {
     super(props);
@@ -16,6 +19,7 @@ export default class ArticleForm extends Component {
       adding: false,
       updating: false,
       editorState: EditorState.createEmpty(),
+      enteredChars: 0,
       article: {}
     };
   }
@@ -40,6 +44,15 @@ export default class ArticleForm extends Component {
     this.setState({ editorState });
   };
 
+  getEnteredCharsCount = (text) => {
+    let enteredChars = 0;
+    const allBlocks = JSON.parse(text).blocks;
+    allBlocks.forEach(block => {
+      enteredChars += block.text.length;
+    });
+    this.setState({ enteredChars });
+  }
+
   fetchArticleInfo = id => {
     Axios.get("/api/articles/" + id).then(result => {
       this.setState(
@@ -52,6 +65,7 @@ export default class ArticleForm extends Component {
         () => {
           this.setState({ adding: false });
           this.convertToEditorState(this.state.article.text);
+          this.getEnteredCharsCount(this.state.article.text);
         }
       );
     });
@@ -77,12 +91,26 @@ export default class ArticleForm extends Component {
     return true;
   };
 
+  isValidEditorContent = () => {
+    let { enteredChars } = this.state;
+
+    if (enteredChars >= minLength && enteredChars <= maxLength) {
+      return true;
+    }
+    else {
+      alert(`Article text length must be between ${minLength}-${maxLength}`);
+      return false;
+    }
+  }
+
   onFormSubmit = e => {
     e.preventDefault();
-    if (this.state.updating) {
-      this.updateArticle();
-    } else {
-      this.createArticle();
+    if (this.isValidEditorContent()) {
+      if (this.state.updating) {
+        this.updateArticle();
+      } else {
+        this.createArticle();
+      }
     }
   };
 
@@ -136,14 +164,28 @@ export default class ArticleForm extends Component {
       });
   };
 
-  onEditorStateChange = editorState => {
+  onEditorStateChange = (editorState) => {
     this.setState({ editorState }, () => {
+      let charsCount = 0;
       const text = convertToRaw(editorState.getCurrentContent());
+
+      text.blocks.forEach(block => {
+        charsCount += block.text.length;
+      });
+
+      this.setState({ enteredChars: charsCount });
       this.editText(text);
     });
-  };
+  }
 
   render() {
+    let { enteredChars } = this.state;
+
+    let captionCounterBody = enteredChars === 0 ? `enter at least ${minLength} characters`
+      : enteredChars < minLength ? `${minLength - enteredChars} more to go...`
+        : enteredChars > maxLength ? `too long by ${enteredChars - maxLength} characters`
+          : `${maxLength - enteredChars} characters left`;
+
     return (
       <div>
         <Form
@@ -213,6 +255,9 @@ export default class ArticleForm extends Component {
             editorState={this.state.editorState}
             onEditorStateChange={this.onEditorStateChange}
           />
+          <Typography variant="caption">
+            {captionCounterBody}
+          </Typography>
         </Form>
       </div>
     );
