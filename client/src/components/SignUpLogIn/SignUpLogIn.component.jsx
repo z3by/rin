@@ -19,7 +19,7 @@ export default class SignUpLogIn extends Component {
         firstName: "",
         lastName: "",
         organizationName: "",
-        userRole: "hhhhh",
+        userRole: "",
         email: "",
         password: "",
         password2: ""
@@ -56,9 +56,6 @@ export default class SignUpLogIn extends Component {
         [e.target.name]: e.target.value
 
       }
-    }, () => {
-      console.log(e.target.value, this.state.userInfo.userRole);
-
     });
   };
 
