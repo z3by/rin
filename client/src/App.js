@@ -15,6 +15,26 @@ class App extends Component {
 
     return (
       <div>
+        <div>
+          <ul className="social-links-fixed">
+            <li>
+              <a
+                href="https://www.linkedin.com/company/refugee-investment-network/"
+                target="_blank"
+              >
+                <i className="fab fa-linkedin-in" />
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://twitter.com/refugeeinvest?lang=en"
+                target="_blank"
+              >
+                <i className="fab fa-twitter" />
+              </a>
+            </li>
+          </ul>
+        </div>
         <MyRouter />
       </div>
     );

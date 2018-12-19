@@ -212,7 +212,7 @@ export default class Landing extends Component {
             src="https://i.stack.imgur.com/AfStP.gif"
             alt=""
             style={{
-              opacity: this.state.loading ? "1" : "0",
+              display: this.state.loading ? "block" : "none",
               width: "5vw",
               position: "absolute"
             }}
