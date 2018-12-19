@@ -5,14 +5,14 @@ import Axios from "axios";
 import Typography from "@material-ui/core/Typography";
 import Avatar from "@material-ui/core/Avatar";
 
-export default class ResearchForm extends Component {
+export default class NewsForm extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       adding: false,
       updating: false,
-      research: {},
+      news: {},
       uploading: {}
     };
   }
@@ -22,16 +22,16 @@ export default class ResearchForm extends Component {
 
   checkIfDataIsPassed = () => {
     if (!!this.props.match.params.id) {
-      this.fetchResearchInfo(this.props.match.params.id);
+      this.fetchNewsInfo(this.props.match.params.id);
       this.setState({ updating: true });
     }
   };
 
-  fetchResearchInfo = id => {
-    Axios.get("/api/researches/" + id).then(result => {
+  fetchNewsInfo = id => {
+    Axios.get("/api/news/" + id).then(result => {
       this.setState(
         {
-          research: {
+          news: {
             ...result.data[0]
           },
           adding: true
@@ -45,8 +45,8 @@ export default class ResearchForm extends Component {
 
   onChange = e => {
     this.setState({
-      research: {
-        ...this.state.research,
+      news: {
+        ...this.state.news,
         [e.target.name]: e.target.value
       }
     });
@@ -60,27 +60,27 @@ export default class ResearchForm extends Component {
   onFormSubmit = e => {
     e.preventDefault();
     if (this.state.updating) {
-      this.updateResearch();
+      this.updateNews();
     } else {
-      this.createResearch();
+      this.createNews();
     }
   };
 
-  updateResearch = () => {
-    Axios.put("/api/researches/" + this.state.research.id, this.state.research)
+  updateNews = () => {
+    Axios.put("/api/news/" + this.state.news.id, this.state.news)
       .then(result => {
-        this.props.history.push("/dashboard/researches");
+        this.props.history.push("/dashboard/news");
       })
       .catch(err => {
         this.showErrorMessage(err);
       });
   };
 
-  createResearch = () => {
+  createNews = () => {
     this.setState({ adding: true });
-    Axios.post("/api/researches", this.state.research)
+    Axios.post("/api/news", this.state.news)
       .then(result => {
-        this.props.history.push("/dashboard/researches");
+        this.props.history.push("/dashboard/news");
       })
       .catch(err => {
         this.showErrorMessage(err);
@@ -113,8 +113,8 @@ export default class ResearchForm extends Component {
       .then(res => {
         const imageURL = res.data.location;
         this.setState({
-          research: {
-            ...this.state.research,
+          news: {
+            ...this.state.news,
             imgUrl: imageURL
           },
           uploading: { imgUrl: false }
@@ -125,9 +125,9 @@ export default class ResearchForm extends Component {
       });
   };
 
-  uploadResearch = e => {
+  uploadNews = e => {
     e.preventDefault();
-    this.setState({ uploading: { researchUrl: true } });
+    this.setState({ uploading: { newsUrl: true } });
     const formData = new FormData();
     formData.append("pdf", e.target.files[0]);
     const config = {
@@ -140,11 +140,11 @@ export default class ResearchForm extends Component {
       .then(res => {
         const pdfUrl = res.data.location;
         this.setState({
-          research: {
-            ...this.state.research,
-            researchUrl: pdfUrl
+          news: {
+            ...this.state.news,
+            newsUrl: pdfUrl
           },
-          uploading: { researchUrl: false }
+          uploading: { newsUrl: false }
         });
       })
       .catch(err => {
@@ -156,79 +156,50 @@ export default class ResearchForm extends Component {
     return (
       <div>
         <Form
-          id="research-form"
+          id="news-form"
           onFormSubmit={this.onFormSubmit}
           adding={this.state.adding}
         >
           <Typography variant="h5" style={{ marginBottom: 50 }}>
-            Add the research info here Please...
+            Add the the article info here Please...
           </Typography>
 
           <TextField
             className="full-width-input"
-            label="research title"
+            label="news article title"
             InputLabelProps={{
               shrink: true
             }}
             name="title"
             required
-            value={this.state.research.title}
+            value={this.state.news.title}
             error={!this.checkIfFieldIsValid("title")}
             onChange={this.onChange}
           />
           <TextField
             className="full-width-input"
-            value={this.state.research.subtitle}
+            value={this.state.news.subtitle}
             InputLabelProps={{
               shrink: true
             }}
             required
             error={!this.checkIfFieldIsValid("subtitle")}
-            label="research subtitle"
+            label="news article subtitle"
             onChange={this.onChange}
             name="subtitle"
           />
           <TextField
             className="full-width-input"
-            value={this.state.research.publisher}
+            value={this.state.news.url}
             InputLabelProps={{
               shrink: true
             }}
             required
-            error={!this.checkIfFieldIsValid("publisher")}
-            label="research publisher"
+            type="url"
+            error={!this.checkIfFieldIsValid("url")}
+            label="news article link"
             onChange={this.onChange}
-            name="publisher"
-          />
-          <TextField
-            className="full-width-input"
-            label="year"
-            type="date"
-            variant="outlined"
-            defaultValue={this.state.research.year}
-            value={this.state.research.year}
-            required
-            name="year"
-            InputLabelProps={{
-              shrink: true
-            }}
-            onChange={this.onChange}
-          />
-          <TextField
-            className="full-width-input"
-            label="pages number"
-            type="number"
-            variant="outlined"
-            value={this.state.research.pages}
-            required
-            name="pages"
-            InputLabelProps={{
-              shrink: true
-            }}
-            inputProps={{
-              min: 0
-            }}
-            onChange={this.onChange}
+            name="url"
           />
           <div className="img-upload-group">
             <Avatar
@@ -236,8 +207,8 @@ export default class ResearchForm extends Component {
               src={
                 this.state.uploading.imgUrl
                   ? "/imgs/loading.gif"
-                  : this.state.research.imgUrl
-                  ? this.state.research.imgUrl
+                  : this.state.news.imgUrl
+                  ? this.state.news.imgUrl
                   : "https://beedie.sfu.ca/corporate-governance-blog/wp-content/themes/newsroom13/img/placeholder.png"
               }
             />
@@ -256,31 +227,6 @@ export default class ResearchForm extends Component {
               accept="image/*"
               type="file"
               onChange={this.uploadImage}
-            />
-          </div>
-
-          <div className="img-upload-group">
-            <Avatar
-              className="img-upload-preveiw"
-              src={
-                this.state.uploading.researchUrl
-                  ? "/imgs/loading.gif"
-                  : "/imgs/book_placeholder.png"
-              }
-            />
-            <TextField
-              style={{ marginTop: 0 }}
-              className="full-width-input"
-              name="researchUrl"
-              label="upload research as pdf"
-              variant="filled"
-              required={this.state.updating ? false : true}
-              InputLabelProps={{
-                shrink: true
-              }}
-              accept="application/pdf"
-              type="file"
-              onChange={this.uploadResearch}
             />
           </div>
         </Form>

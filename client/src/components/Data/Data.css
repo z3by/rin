@@ -3,7 +3,11 @@
   height: 100vh;
   overflow: hidden;
 }
-
+.asylum-seekers-chart,
+.resettlement-chart,
+.demographics-chart {
+  height: 100vh;
+}
 .data .banner-full {
   background: rgba(0, 0, 0, 0.7);
 }
@@ -36,10 +40,17 @@ iframe {
 }
 
 .data .chart-preloader {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
-  position: relative; 
+  position: relative;
 }
 
 .chart-preloader .preloader {
@@ -47,6 +58,10 @@ iframe {
   position: absolute;
   top: 25%;
   left: 47%;
+}
+
+.asylum-seekers-chart, .resettlement-chart, .demographics-chart {
+  height: 100vh;
 }
 
 .asylum-seekers-chart select {

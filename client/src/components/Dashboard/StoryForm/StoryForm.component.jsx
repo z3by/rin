@@ -9,6 +9,8 @@ import { EditorState, convertToRaw, ContentState } from 'draft-js';
 import htmlToDraft from 'html-to-draftjs';
 import draftToHtml from 'draftjs-to-html';
 
+const maxLength = 5000;
+const minLength = 25;
 
 export default class StoryForm extends Component {
   constructor(props) {
@@ -18,6 +20,7 @@ export default class StoryForm extends Component {
       adding: false,
       updating: false,
       editorState: EditorState.createEmpty(),
+      enteredChars: 0,
       story: {},
       projects: []
     };
@@ -49,6 +52,15 @@ export default class StoryForm extends Component {
     this.setState({ editorState });
   }
 
+  getEnteredCharsCount = (text) => {
+    let enteredChars = 0;
+    const allBlocks = JSON.parse(text).blocks;
+    allBlocks.forEach(block => {
+      enteredChars += block.text.length;
+    });
+    this.setState({ enteredChars });
+  }
+
   fetchStoryInfo = id => {
     Axios.get("/api/stories/" + id).then(result => {
       this.setState(
@@ -61,6 +73,7 @@ export default class StoryForm extends Component {
         () => {
           this.setState({ adding: false });
           this.convertToEditorState(this.state.story.storyText);
+          this.getEnteredCharsCount(this.state.story.storyText);
         }
       );
     });
@@ -84,12 +97,26 @@ export default class StoryForm extends Component {
     return true;
   };
 
+  isValidEditorContent = () => {
+    let { enteredChars } = this.state;
+
+    if (enteredChars >= minLength && enteredChars <= maxLength) {
+      return true;
+    }
+    else {
+      alert(`Story text length must be between ${minLength}-${maxLength}`);
+      return false;
+    }
+  }
+
   onFormSubmit = e => {
     e.preventDefault();
-    if (this.state.updating) {
-      this.updateStory();
-    } else {
-      this.createStory();
+    if (this.isValidEditorContent()) {
+      if (this.state.updating) {
+        this.updateStory();
+      } else {
+        this.createStory();
+      }
     }
   };
 
@@ -148,12 +175,26 @@ export default class StoryForm extends Component {
 
   onEditorStateChange = (editorState) => {
     this.setState({ editorState }, () => {
+      let charsCount = 0;
       const text = convertToRaw(editorState.getCurrentContent());
+
+      text.blocks.forEach(block => {
+        charsCount += block.text.length;
+      });
+
+      this.setState({ enteredChars: charsCount });
       this.editText(text);
     });
   }
 
   render() {
+    let { enteredChars } = this.state;
+
+    let captionCounterBody = enteredChars === 0 ? `enter at least ${minLength} characters`
+      : enteredChars < minLength ? `${minLength - enteredChars} more to go...`
+        : enteredChars > maxLength ? `too long by ${enteredChars - maxLength} characters`
+          : `${maxLength - enteredChars} characters left`;
+
     return (
       <div>
         <Form
@@ -223,6 +264,9 @@ export default class StoryForm extends Component {
             <Typography variant="overline">max size 1.mb</Typography>
           </div>
           <MyEditor editorState={this.state.editorState} onEditorStateChange={this.onEditorStateChange} />
+          <Typography variant="caption">
+            {captionCounterBody}
+          </Typography>
         </Form>
       </div>
     );
