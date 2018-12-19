@@ -27,7 +27,7 @@ export default class Landing extends Component {
     this.startCounter();
     setTimeout(() => {
       this.setState({ loading: false });
-    }, 2000);
+    }, 4000);
   }
 
   // bind the events to the local functions.
@@ -187,7 +187,7 @@ export default class Landing extends Component {
     const routes = ["stories", "map", "data", "about", "news", "blog"];
     setTimeout(() => {
       this.props.history.push(routes[this.state.index]);
-    }, 2000);
+    }, 4000);
   };
 
   render() {
@@ -209,11 +209,12 @@ export default class Landing extends Component {
           }}
         >
           <img
-            src="/imgs/logo.png"
+            src="https://i.stack.imgur.com/AfStP.gif"
             alt=""
             style={{
-              display: this.state.loading ? "block" : "none",
-              width: "30vw"
+              opacity: this.state.loading ? "1" : "0",
+              width: "5vw",
+              position: "absolute"
             }}
           />
         </div>

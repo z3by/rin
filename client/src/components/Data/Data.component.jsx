@@ -6,8 +6,7 @@ import BarChart from "./Charts/BarChart/BarChart.component";
 import LineChart from "./Charts/LineChart/LineChart.component";
 import HorizontalBarChart from "./Charts/HorizontalBarChart/HorizontalBarChart.component";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import VisibilitySensor from 'react-visibility-sensor';
-
+import VisibilitySensor from "react-visibility-sensor";
 /*The structure of any chart data object is as the following:
   somethingData: {
         // labels: [],
@@ -18,7 +17,6 @@ import VisibilitySensor from 'react-visibility-sensor';
         // }]
       }
 */
-
 export default class Data extends Component {
   constructor(props) {
     super(props);
@@ -36,11 +34,9 @@ export default class Data extends Component {
       isAllCountriesRetrieved: false
     };
   }
-
   componentDidMount() {
     this.getAllCounries();
   }
-
   getAllCounries = () => {
     axios
       .get("https://restcountries.eu/rest/v2/all")
@@ -65,19 +61,16 @@ export default class Data extends Component {
         console.log(err);
       });
   };
-
   scrollToTop = () => {
     document.querySelector(".library").scrollIntoView({
       behavior: "smooth"
     });
   };
-
   goDown = () => {
     document.querySelector(".container").scrollIntoView({
       behavior: "smooth"
     });
   };
-
   getAsylumSeekersDataByYear = e => {
     if (this.state.asylumSeekersData.datasets.length) {
       return;
@@ -91,7 +84,6 @@ export default class Data extends Component {
       asylumSeekersSelectedYear: year,
       isLoadingAsylumSeekersData: true
     });
-
     axios
       .get(
         `http://popdata.unhcr.org/api/stats/asylum_seekers.json?year=${year}&&country_of_origin=SYR`
@@ -115,7 +107,6 @@ export default class Data extends Component {
               );
             }
           }
-
           let datasets = [{}, {}];
           datasets[0].data = dataOfAppliedCount;
           datasets[0].label = "Asylum Applications";
@@ -135,7 +126,6 @@ export default class Data extends Component {
         console.log(err);
       });
   };
-
   getResettlementData = () => {
     if (this.state.resettlementData.datasets.length) {
       return;
@@ -159,12 +149,11 @@ export default class Data extends Component {
       datasets[i].borderColor = colors[i];
       datasets[i].fill = false;
       datasets[i].data = [];
-
       for (let j = 0; j < labels.length; j++) {
         axios
           .get(
             `http://popdata.unhcr.org/api/stats/resettlement.json?year=${
-            labels[j]
+              labels[j]
             }&country_of_asylum=${countriesOfAsylum[i]}`
           )
           .then(res => {
@@ -176,7 +165,7 @@ export default class Data extends Component {
                 }
               }
               datasets[i].data.push(totalValue);
-            })
+            });
           })
           .catch(err => {
             console.log(err);
@@ -185,7 +174,6 @@ export default class Data extends Component {
     }
     this.setState({ resettlementData: { labels, datasets } });
   };
-
   findCountryAlpha3Code = countryName => {
     if (this.state.isAllCountriesRetrieved) {
       for (let i = 0; i < this.state.allCountries.length; i++) {
@@ -197,7 +185,6 @@ export default class Data extends Component {
       return "SYR";
     }
   };
-
   //This function is triggered in two events; either in select year event || in select country event
   getDemographicsData = e => {
     if (this.state.demographicsData.datasets.length) {
@@ -227,7 +214,6 @@ export default class Data extends Component {
     });
     //find the alpha3Code of the country
     alpha3Code = this.findCountryAlpha3Code(country);
-
     axios
       .get(
         `http://popdata.unhcr.org/api/stats/demographics.json?year=${year}&country_of_residence=${alpha3Code}`
@@ -236,7 +222,6 @@ export default class Data extends Component {
         let labels = [];
         let femaleValueData = [];
         let maleValueData = [];
-
         this.setState({ isLoadingDmographicsData: false }, () => {
           res.data.forEach(oneData => {
             labels.push(oneData.location_name);
@@ -250,7 +235,6 @@ export default class Data extends Component {
           datasets[1].data = maleValueData;
           datasets[1].label = "Male Total Value";
           datasets[1].backgroundColor = "#ADD8E6";
-
           this.setState({ demographicsData: { labels, datasets } });
         });
       })
@@ -258,7 +242,6 @@ export default class Data extends Component {
         console.log(err);
       });
   };
-
   render() {
     let {
       allCountries,
@@ -271,7 +254,6 @@ export default class Data extends Component {
       resettlementData,
       demographicsData
     } = this.state;
-
     const years = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017];
     let allYears = years.map((year, i) => {
       return (
@@ -280,7 +262,6 @@ export default class Data extends Component {
         </option>
       );
     });
-
     let countries = allCountries.map((country, i) => {
       return (
         <option value={country.name} key={i}>
@@ -288,7 +269,6 @@ export default class Data extends Component {
         </option>
       );
     });
-
     return (
       <div
         className="data fadeInFast"
@@ -327,13 +307,22 @@ export default class Data extends Component {
                   visibility: isLoadingAsylumSeekersData ? "visible" : "hidden"
                 }}
               />
-              <VisibilitySensor onChange={this.onChange} partialVisibility={true}>
-                {({ isVisible }) =>
-                  <div style={{ height: "600px" }}>{isVisible ? <BarChart
-                    data={asylumSeekersData}
-                    getAsylumSeekersDataByYear={this.getAsylumSeekersDataByYear}
-                  /> : null}</div>
-                }
+              <VisibilitySensor
+                onChange={this.onChange}
+                partialVisibility={true}
+              >
+                {({ isVisible }) => (
+                  <div style={{ height: "600px" }}>
+                    {isVisible ? (
+                      <BarChart
+                        data={asylumSeekersData}
+                        getAsylumSeekersDataByYear={
+                          this.getAsylumSeekersDataByYear
+                        }
+                      />
+                    ) : null}
+                  </div>
+                )}
               </VisibilitySensor>
             </div>
           </div>
@@ -350,13 +339,20 @@ export default class Data extends Component {
                   visibility: isLoadingResettlementData ? "visible" : "hidden"
                 }}
               />
-              <VisibilitySensor onChange={this.onChange} partialVisibility={true}>
-                {({ isVisible }) =>
-                  <div style={{ height: "450px" }}>{isVisible ? <LineChart
-                    data={resettlementData}
-                    getResettlementData={this.getResettlementData}
-                  /> : null}</div>
-                }
+              <VisibilitySensor
+                onChange={this.onChange}
+                partialVisibility={true}
+              >
+                {({ isVisible }) => (
+                  <div style={{ height: "450px" }}>
+                    {isVisible ? (
+                      <LineChart
+                        data={resettlementData}
+                        getResettlementData={this.getResettlementData}
+                      />
+                    ) : null}
+                  </div>
+                )}
               </VisibilitySensor>
             </div>
           </div>
@@ -382,13 +378,20 @@ export default class Data extends Component {
                   visibility: isLoadingDmographicsData ? "visible" : "hidden"
                 }}
               />
-              <VisibilitySensor onChange={this.onChange} partialVisibility={true}>
-                {({ isVisible }) =>
-                  <div style={{ height: "450px" }}>{isVisible ? <HorizontalBarChart
-                    data={demographicsData}
-                    getDemographicsData={this.getDemographicsData}
-                  /> : null}</div>
-                }
+              <VisibilitySensor
+                onChange={this.onChange}
+                partialVisibility={true}
+              >
+                {({ isVisible }) => (
+                  <div style={{ height: "450px" }}>
+                    {isVisible ? (
+                      <HorizontalBarChart
+                        data={this.state.demographicsData}
+                        getDemographicsData={this.getDemographicsData}
+                      />
+                    ) : null}
+                  </div>
+                )}
               </VisibilitySensor>
             </div>
           </div>
