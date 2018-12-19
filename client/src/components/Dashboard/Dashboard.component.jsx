@@ -9,11 +9,13 @@ import StoryForm from "./StoryForm/StoryForm.component";
 import ProjectForm from "./ProjectForm/ProjectForm.component";
 import ArticleForm from "./ArticleForm/ArticleForm.component";
 import ResearchForm from "./ResearchForm/ResearchForm.component";
+import NewsForm from "./NewsForm/NewsForm.component";
 import ProjectInfo from "./ProjectInfo/ProjectInfo.component";
 import StoryInfo from "./StoryInfo/StoryInfo.component";
 import ArticleInfo from "./ArticleInfo/ArticleInfo.component";
 import Requests from "./Requests/Requests.component";
 import ResearchInfo from "./ResearchInfo/ResearchInfo.component";
+import NewsInfo from "./NewsInfo/NewsInfo.component";
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -181,6 +183,24 @@ export default class Dashboard extends Component {
             component={ResearchForm}
           />
           <Route path="/dashboard/researches/:id" component={ResearchInfo} />
+          <Route
+            path="/dashboard/news"
+            exact
+            render={() => {
+              return (
+                <AdminList
+                  itemName="news"
+                  pluralName="news"
+                  controls={true}
+                  wantedFields={["id", "title", "subtitle"]}
+                />
+              );
+            }}
+          />
+          <Route path="/dashboard/updatenews/:id" component={NewsForm} />
+          <Route path="/dashboard/addnews" component={NewsForm} />
+          <Route path="/dashboard/news/:id" component={NewsInfo} />
+
           <Route path="/dashboard/articles/:id" component={ArticleInfo} />
           <Route path="/dashboard/addarticle" component={ArticleForm} />
           <Route path="/dashboard/updatearticle/:id" component={ArticleForm} />

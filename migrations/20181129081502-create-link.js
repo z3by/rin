@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       subtitle: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING({ length: 500 })
       },
       url: {
         type: Sequelize.STRING
