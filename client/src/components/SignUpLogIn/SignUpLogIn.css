@@ -42,6 +42,14 @@
   width: 80%;
 }
 
+.forms_fieldset {
+  width: 100%;
+  border: none;
+}
+.forms_form {
+  width: 100%;
+}
+
 .user_options-text {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -106,7 +114,9 @@
 .user_options-forms {
   position: absolute;
   top: 50%;
+  overflow-y: scroll;
   left: 30px;
+  overflow-x: hidden;
   width: calc(50% - 30px);
   min-height: 350px;
   background-color: var(--color-1);
@@ -134,7 +144,7 @@
   color: var(--color-2);
   letter-spacing: 0.1rem;
   position: relative;
-    bottom: 20px;
+  bottom: 20px;
 }
 
 .user_options-forms .forms_field-input {
@@ -202,9 +212,8 @@
 }
 
 .field-style {
-margin-bottom: "5px";
+  margin-bottom: "5px";
 }
-
 
 .user_options-forms .forms_field-input:focus {
   border-color: gray;
@@ -309,7 +318,7 @@ margin-bottom: "5px";
   animation: bounceRight 1s forwards;
 }
 
-.forms_fieldset{
+.forms_fieldset {
   border: none;
 }
 
