@@ -108,7 +108,7 @@
   top: 50%;
   left: 30px;
   width: calc(50% - 30px);
-  min-height: 420px;
+  min-height: 350px;
   background-color: var(--color-1);
   border-radius: 3px;
   -webkit-box-shadow: 2px 0 15px rgba(0, 0, 0, 0.25);
@@ -127,13 +127,14 @@
 }
 
 .user_options-forms .forms_title {
-  margin-bottom: 45px;
   font-size: 1.5rem;
   font-weight: 500;
   line-height: 1em;
   text-transform: uppercase;
   color: var(--color-2);
   letter-spacing: 0.1rem;
+  position: relative;
+    bottom: 20px;
 }
 
 .user_options-forms .forms_field-input {
@@ -200,10 +201,10 @@
   color: #777;
 }
 
-.user_options-forms.bounceLeft {
-  overflow-x: hidden;
-  overflow-y: scroll;
+.field-style {
+margin-bottom: "5px";
 }
+
 
 .user_options-forms .forms_field-input:focus {
   border-color: gray;
@@ -306,6 +307,10 @@
 .user_options-forms.bounceRight {
   -webkit-animation: bounceRight 1s forwards;
   animation: bounceRight 1s forwards;
+}
+
+.forms_fieldset{
+  border: none;
 }
 
 /**
