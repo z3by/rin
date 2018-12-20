@@ -47,7 +47,7 @@ export default class SignUpLogIn extends Component {
       document
         .querySelector(".user_options-forms")
         .classList.add("bounceRight");
-      document.querySelector(".user_options-forms").style.height = "420px";
+      document.querySelector(".user_options-forms").style.height = "350px";
 
     }
   };

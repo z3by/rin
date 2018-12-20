@@ -108,7 +108,7 @@
   top: 50%;
   left: 30px;
   width: calc(50% - 30px);
-  min-height: 420px;
+  min-height: 350px;
   background-color: var(--color-1);
   border-radius: 3px;
   -webkit-box-shadow: 2px 0 15px rgba(0, 0, 0, 0.25);
