@@ -39,6 +39,7 @@ export default class SignUpLogIn extends Component {
         .querySelector(".user_options-forms")
         .classList.remove("bounceRight");
       document.querySelector(".user_options-forms").classList.add("bounceLeft");
+      document.querySelector(".user_options-forms").style.height = "600px";
     } else {
       document
         .querySelector(".user_options-forms")
@@ -46,6 +47,8 @@ export default class SignUpLogIn extends Component {
       document
         .querySelector(".user_options-forms")
         .classList.add("bounceRight");
+      document.querySelector(".user_options-forms").style.height = "420px";
+
     }
   };
 
@@ -168,9 +171,9 @@ export default class SignUpLogIn extends Component {
                       name="email"
                       autoComplete="email"
                       onChange={this.onChange}
-                      value={this.state.email}
+                      value={this.state.userInfo.email}
                       placeholder="Email"
-                      margin="normal"
+                      style={{ marginBottom: "5px" }}
                       required
                     />
                   </div>
@@ -181,8 +184,8 @@ export default class SignUpLogIn extends Component {
                       name="password"
                       autoComplete="current-password"
                       onChange={this.onChange}
-                      value={this.state.password}
-                      margin="normal"
+                      value={this.state.userInfo.password}
+                      style={{ height: "48px" }}
                       required
                     />
                   </div>
@@ -212,8 +215,8 @@ export default class SignUpLogIn extends Component {
                       name="firstName"
                       autoComplete="firstName"
                       onChange={this.onChange}
-                      value={this.state.firstName}
-                      margin="normal"
+                      value={this.state.userInfo.firstName}
+                      style={{ marginBottom: "5px" }}
                       required
                     />
                   </div>
@@ -223,8 +226,8 @@ export default class SignUpLogIn extends Component {
                       name="lastName"
                       autoComplete="lastName"
                       onChange={this.onChange}
-                      value={this.state.lastName}
-                      margin="normal"
+                      value={this.state.userInfo.lastName}
+                      style={{ marginBottom: "5px" }}
                       required
                     />
                   </div>
@@ -234,8 +237,8 @@ export default class SignUpLogIn extends Component {
                       name="organizationName"
                       autoComplete="organizationName"
                       onChange={this.onChange}
-                      value={this.state.organizationName}
-                      margin="normal"
+                      value={this.state.userInfo.organizationName}
+                      style={{ marginBottom: "5px" }}
                       required
                     />
                   </div>
@@ -262,9 +265,9 @@ export default class SignUpLogIn extends Component {
                       name="email"
                       autoComplete="email"
                       onChange={this.onChange}
-                      value={this.state.email}
+                      value={this.state.userInfo.email}
                       placeholder="Email"
-                      margin="normal"
+                      style={{ marginBottom: "5px" }}
                       required
                     />
                   </div>
@@ -275,8 +278,8 @@ export default class SignUpLogIn extends Component {
                       name="password"
                       autoComplete="current-password"
                       onChange={this.onChange}
-                      value={this.state.password}
-                      margin="normal"
+                      value={this.state.userInfo.password}
+                      style={{ height: "48px" }}
                       required
                     />
                   </div>
@@ -287,8 +290,8 @@ export default class SignUpLogIn extends Component {
                       name="password2"
                       autoComplete="current-password"
                       onChange={this.onChange}
-                      value={this.state.password}
-                      margin="normal"
+                      value={this.state.userInfo.password2}
+                      style={{ height: "48px" }}
                       required
                     />
                   </div>
@@ -306,7 +309,7 @@ export default class SignUpLogIn extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </div >
     );
   }
 }
