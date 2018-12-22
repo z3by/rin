@@ -2,18 +2,11 @@ import React, { Component } from "react";
 import "./Data.css";
 import axios from "axios";
 import IconButton from "@material-ui/core/IconButton";
-import BarChart from "./Charts/BarChart/BarChart.component";
-import LineChart from "./Charts/LineChart/LineChart.component";
-import HorizontalBarChart from "./Charts/HorizontalBarChart/HorizontalBarChart.component";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import VisibilitySensor from "react-visibility-sensor";
-import Researches from "./Researches/Researches.component";
 import { Route } from "react-router-dom";
 import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import InputLabel from "@material-ui/core/InputLabel";
 import Typography from "@material-ui/core/Typography";
+import DataCharts from "./DataCharts/DataCharts.component";
+import Researches from "./Researches/Researches.component";
 
 /*The structure of any chart data object is as the following:
   somethingData: {
@@ -45,6 +38,7 @@ export default class Data extends Component {
   componentDidMount() {
     this.getAllCounries();
   }
+
   getAllCounries = () => {
     axios
       .get("https://restcountries.eu/rest/v2/all")
@@ -69,11 +63,7 @@ export default class Data extends Component {
         console.log(err);
       });
   };
-  scrollToTop = () => {
-    document.querySelector(".library").scrollIntoView({
-      behavior: "smooth"
-    });
-  };
+
   goDown = () => {
     document.querySelector(".container").scrollIntoView({
       behavior: "smooth"
@@ -345,108 +335,7 @@ export default class Data extends Component {
           </div>
         </header>
         <div className="container">
-          <div className="asylum-seekers-chart">
-            <Typography variant="h4" className="chart-heading color-2">
-              UNHCR Statistics of Asylum Seekers from Syria in{" "}
-              {this.state.asylumSeekersSelectedYear}
-            </Typography>
-            <FormControl style={{ width: "20%" }} className="chart-select-control">
-              <InputLabel htmlFor="year-select">select year</InputLabel>
-              <Select onChange={this.getAsylumSeekersDataByYear}
-                value={this.state.asylumSeekersSelectedYear}
-                inputProps={{
-                  id: "year-select"
-                }}>
-                {allYears}
-              </Select>
-            </FormControl>
-            <div className="chart-preloader">
-              <CircularProgress
-                className="preloader"
-                size={"7vw"}
-                thickness={3}
-                style={{
-                  visibility: isLoadingAsylumSeekersData ? "visible" : "hidden"
-                }}
-              />
-              <VisibilitySensor onChange={this.onChange} partialVisibility={true}>
-                {({ isVisible }) =>
-                  <div style={{ height: "600px" }}>{isVisible ? <BarChart
-                    data={asylumSeekersData}
-                    getAsylumSeekersDataByYear={this.getAsylumSeekersDataByYear}
-                  /> : null}</div>
-                }
-              </VisibilitySensor>
-            </div>
-          </div>
-          <div className="resettlement-chart">
-            <Typography variant="h4" className="chart-heading color-2">
-              UNHCR Statistics of Resettlement (2010 - 2018)
-            </Typography>
-            <div className="chart-preloader">
-              <CircularProgress
-                className="preloader"
-                size={"7vw"}
-                thickness={3}
-                style={{
-                  visibility: isLoadingResettlementData ? "visible" : "hidden"
-                }}
-              />
-              <VisibilitySensor onChange={this.onChange} partialVisibility={true}>
-                {({ isVisible }) =>
-                  <div style={{ height: "450px" }}>{isVisible ? <LineChart
-                    data={resettlementData}
-                    getResettlementData={this.getResettlementData}
-                  /> : null}</div>
-                }
-              </VisibilitySensor>
-            </div>
-          </div>
-          <div className="demographics-chart">
-            <Typography variant="h4" className="chart-heading color-2">
-              UNHCR Statistics of Demographics in {demographicsSelectedCountry}{" "}
-              ({demographicsSelectedYear})
-            </Typography>
-            <FormControl style={{ width: "20%" }} id="year-select-control">
-              <InputLabel htmlFor="year-select">select year</InputLabel>
-              <Select onChange={this.getDemographicsData}
-                value={this.state.demographicsSelectedYear}
-                inputProps={{
-                  id: "year-select"
-                }}>
-                >
-              {allYears}
-              </Select>
-            </FormControl>
-            <FormControl style={{ width: "40%" }} id="country-select-control">
-              <InputLabel htmlFor="country-select">select country</InputLabel>
-              <Select onChange={this.getDemographicsData}
-                value={this.state.demographicsSelectedCountry}
-                inputProps={{
-                  id: "country-select"
-                }}>>
-              {countries}
-              </Select>
-            </FormControl>
-            <div className="chart-preloader">
-              <CircularProgress
-                className="preloader"
-                size={"7vw"}
-                thickness={3}
-                style={{
-                  visibility: isLoadingDmographicsData ? "visible" : "hidden"
-                }}
-              />
-              <VisibilitySensor onChange={this.onChange} partialVisibility={true}>
-                {({ isVisible }) =>
-                  <div style={{ height: "450px" }}>{isVisible ? <HorizontalBarChart
-                    data={demographicsData}
-                    getDemographicsData={this.getDemographicsData}
-                  /> : null}</div>
-                }
-              </VisibilitySensor>
-            </div>
-          </div>
+          <Route exact path="/data" component={DataCharts} />
           <Route path="/data/researches" component={Researches} />
         </div>
       </div>
