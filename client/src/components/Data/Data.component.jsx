@@ -7,6 +7,14 @@ import LineChart from "./Charts/LineChart/LineChart.component";
 import HorizontalBarChart from "./Charts/HorizontalBarChart/HorizontalBarChart.component";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import VisibilitySensor from "react-visibility-sensor";
+import Researches from "./Researches/Researches.component";
+import { Route } from "react-router-dom";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import InputLabel from "@material-ui/core/InputLabel";
+import Typography from "@material-ui/core/Typography";
+
 /*The structure of any chart data object is as the following:
   somethingData: {
         // labels: [],
@@ -254,6 +262,15 @@ export default class Data extends Component {
       });
   };
 
+  // navigate to specific route
+  navigateTO = route => {
+    this.props.history.push(route);
+    document.body.scrollBy({
+      top: window.innerHeight - document.body.scrollTop,
+      behavior: "smooth"
+    });
+  };
+
   render() {
     let {
       allCountries,
@@ -266,19 +283,21 @@ export default class Data extends Component {
       resettlementData,
       demographicsData
     } = this.state;
+
     const years = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017];
     let allYears = years.map((year, i) => {
       return (
-        <option value={year} key={i}>
+        <MenuItem value={year} key={i}>
           {year}
-        </option>
+        </MenuItem>
       );
     });
+
     let countries = allCountries.map((country, i) => {
       return (
-        <option value={country.name} key={i}>
+        <MenuItem value={country.name} key={i}>
           {country.name}
-        </option>
+        </MenuItem>
       );
     });
     return (
@@ -290,9 +309,34 @@ export default class Data extends Component {
       >
         <header>
           <div className="banner-full">
-            <h1>data</h1>
+            <Typography variant="h1" className="main-font upper color-2">
+              data
+            </Typography>
             <div className="line" />
             <h3>statistics proof that refugees are a great investment</h3>
+            <ul className="header-nav">
+              <li>
+                <a
+                  onClick={() => {
+                    this.navigateTO("/data");
+                  }}
+                >
+                  <i className="fas fa-chart-bar" />
+                  <h5 className="upper">Data</h5>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  onClick={() => {
+                    this.navigateTO("/data/researches");
+                  }}
+                >
+                  <i className="fas fa-file-contract" />
+                  <h5 className="upper">researches</h5>
+                </a>
+              </li>
+            </ul>
             <div className="go-down" onClick={this.goDown}>
               <IconButton>
                 <i className="fas fa-arrow-down color-1" />
@@ -302,14 +346,20 @@ export default class Data extends Component {
         </header>
         <div className="container">
           <div className="asylum-seekers-chart">
-            <h3 className="chart-heading">
+            <Typography variant="h4" className="chart-heading color-2">
               UNHCR Statistics of Asylum Seekers from Syria in{" "}
               {this.state.asylumSeekersSelectedYear}
-            </h3>
-            <select onChange={this.getAsylumSeekersDataByYear}>
-              <option value={-1}>Select Year</option>
-              {allYears}
-            </select>
+            </Typography>
+            <FormControl style={{ width: "20%" }} className="chart-select-control">
+              <InputLabel htmlFor="year-select">select year</InputLabel>
+              <Select onChange={this.getAsylumSeekersDataByYear}
+                value={this.state.asylumSeekersSelectedYear}
+                inputProps={{
+                  id: "year-select"
+                }}>
+                {allYears}
+              </Select>
+            </FormControl>
             <div className="chart-preloader">
               <CircularProgress
                 className="preloader"
@@ -330,9 +380,9 @@ export default class Data extends Component {
             </div>
           </div>
           <div className="resettlement-chart">
-            <h3 className="chart-heading">
+            <Typography variant="h4" className="chart-heading color-2">
               UNHCR Statistics of Resettlement (2010 - 2018)
-            </h3>
+            </Typography>
             <div className="chart-preloader">
               <CircularProgress
                 className="preloader"
@@ -353,18 +403,31 @@ export default class Data extends Component {
             </div>
           </div>
           <div className="demographics-chart">
-            <h3 className="chart-heading">
+            <Typography variant="h4" className="chart-heading color-2">
               UNHCR Statistics of Demographics in {demographicsSelectedCountry}{" "}
               ({demographicsSelectedYear})
-            </h3>
-            <select onChange={this.getDemographicsData}>
-              <option value={-1}>Select Year</option>
+            </Typography>
+            <FormControl style={{ width: "20%" }} id="year-select-control">
+              <InputLabel htmlFor="year-select">select year</InputLabel>
+              <Select onChange={this.getDemographicsData}
+                value={this.state.demographicsSelectedYear}
+                inputProps={{
+                  id: "year-select"
+                }}>
+                >
               {allYears}
-            </select>
-            <select onChange={this.getDemographicsData}>
-              <option value={-1}>Select country</option>
+              </Select>
+            </FormControl>
+            <FormControl style={{ width: "40%" }} id="country-select-control">
+              <InputLabel htmlFor="country-select">select country</InputLabel>
+              <Select onChange={this.getDemographicsData}
+                value={this.state.demographicsSelectedCountry}
+                inputProps={{
+                  id: "country-select"
+                }}>>
               {countries}
-            </select>
+              </Select>
+            </FormControl>
             <div className="chart-preloader">
               <CircularProgress
                 className="preloader"
@@ -384,6 +447,7 @@ export default class Data extends Component {
               </VisibilitySensor>
             </div>
           </div>
+          <Route path="/data/researches" component={Researches} />
         </div>
       </div>
     );
