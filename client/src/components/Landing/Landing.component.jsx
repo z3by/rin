@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Landing.css";
 import CountUp from "react-countup";
 import IconButton from "@material-ui/core/IconButton";
+import SocialLinks from "./socialLinks.component";
 
 export default class Landing extends Component {
   constructor(props) {
@@ -218,6 +219,7 @@ export default class Landing extends Component {
             }}
           />
         </div>
+        <SocialLinks style={{ zIndex: 1000 }} />
         <div className="landing">
           <div className="nav">
             <ul className="nav-group">

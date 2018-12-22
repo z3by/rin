@@ -106,6 +106,23 @@
   color: coral;
 }
 
+.social-links {
+  position: absolute;
+  z-index: 100;
+  list-style: none;
+  right: 20px;
+  top: 0;
+}
+.social-links a {
+  color: var(--color-2);
+  font-size: 2rem;
+}
+
+.social-links a:hover {
+  -webkit-filter: brightness(120%);
+  filter: brightness(120%);
+}
+
 /* ------------------------------- navigation group end ------------------------- */
 
 .circle {
@@ -207,9 +224,10 @@
 .counter {
   height: 50px;
   width: 120px;
+  padding: 0;
   position: absolute;
-  left: 30px;
-  bottom: 50px;
+  left: 20px;
+  bottom: 20px;
   z-index: 200;
 }
 
