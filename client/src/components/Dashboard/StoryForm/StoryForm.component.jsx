@@ -5,9 +5,9 @@ import TextField from "@material-ui/core/TextField";
 import Axios from "axios";
 import Typography from "@material-ui/core/Typography";
 import MyEditor from "../../general-components/MyEditor/MyEditor.component";
-import { EditorState, convertToRaw, ContentState } from 'draft-js';
-import htmlToDraft from 'html-to-draftjs';
-import draftToHtml from 'draftjs-to-html';
+import { EditorState, convertToRaw, ContentState } from "draft-js";
+import htmlToDraft from "html-to-draftjs";
+import draftToHtml from "draftjs-to-html";
 
 const maxLength = 5000;
 const minLength = 25;
@@ -44,22 +44,24 @@ export default class StoryForm extends Component {
     }
   };
 
-  convertToEditorState = (text) => {
+  convertToEditorState = text => {
     const html = draftToHtml(JSON.parse(text));
     const contentBlock = htmlToDraft(html);
-    const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
+    const contentState = ContentState.createFromBlockArray(
+      contentBlock.contentBlocks
+    );
     const editorState = EditorState.createWithContent(contentState);
     this.setState({ editorState });
-  }
+  };
 
-  getEnteredCharsCount = (text) => {
+  getEnteredCharsCount = text => {
     let enteredChars = 0;
     const allBlocks = JSON.parse(text).blocks;
     allBlocks.forEach(block => {
       enteredChars += block.text.length;
     });
     this.setState({ enteredChars });
-  }
+  };
 
   fetchStoryInfo = id => {
     Axios.get("/api/stories/" + id).then(result => {
@@ -88,9 +90,11 @@ export default class StoryForm extends Component {
     });
   };
 
-  editText = (storyText) => {
-    this.setState({ story: { ...this.state.story, storyText: JSON.stringify(storyText) } });
-  }
+  editText = storyText => {
+    this.setState({
+      story: { ...this.state.story, storyText: JSON.stringify(storyText) }
+    });
+  };
 
   // for demo ONLY
   checkIfFieldIsValid = name => {
@@ -102,12 +106,11 @@ export default class StoryForm extends Component {
 
     if (enteredChars >= minLength && enteredChars <= maxLength) {
       return true;
-    }
-    else {
+    } else {
       alert(`Story text length must be between ${minLength}-${maxLength}`);
       return false;
     }
-  }
+  };
 
   onFormSubmit = e => {
     e.preventDefault();
@@ -123,7 +126,7 @@ export default class StoryForm extends Component {
   updateStory = () => {
     Axios.put("/api/stories/" + this.state.story.id, this.state.story)
       .then(result => {
-        this.props.history.push("/dashboard/stories");
+        this.props.history.goBack();
       })
       .catch(err => {
         this.showErrorMessage(err);
@@ -133,7 +136,7 @@ export default class StoryForm extends Component {
   createStory = () => {
     Axios.post("/api/stories", this.state.story)
       .then(result => {
-        this.props.history.push("/dashboard/stories");
+        this.props.history.goBack();
       })
       .catch(err => {
         this.showErrorMessage(err);
@@ -173,7 +176,7 @@ export default class StoryForm extends Component {
     this.setState({ story: { ...this.state.story, projectId: project.id } });
   };
 
-  onEditorStateChange = (editorState) => {
+  onEditorStateChange = editorState => {
     this.setState({ editorState }, () => {
       let charsCount = 0;
       const text = convertToRaw(editorState.getCurrentContent());
@@ -185,15 +188,19 @@ export default class StoryForm extends Component {
       this.setState({ enteredChars: charsCount });
       this.editText(text);
     });
-  }
+  };
 
   render() {
     let { enteredChars } = this.state;
 
-    let captionCounterBody = enteredChars === 0 ? `enter at least ${minLength} characters`
-      : enteredChars < minLength ? `${minLength - enteredChars} more to go...`
-        : enteredChars > maxLength ? `too long by ${enteredChars - maxLength} characters`
-          : `${maxLength - enteredChars} characters left`;
+    let captionCounterBody =
+      enteredChars === 0
+        ? `enter at least ${minLength} characters`
+        : enteredChars < minLength
+        ? `${minLength - enteredChars} more to go...`
+        : enteredChars > maxLength
+        ? `too long by ${enteredChars - maxLength} characters`
+        : `${maxLength - enteredChars} characters left`;
 
     return (
       <div>
@@ -263,10 +270,11 @@ export default class StoryForm extends Component {
             />
             <Typography variant="overline">max size 1.mb</Typography>
           </div>
-          <MyEditor editorState={this.state.editorState} onEditorStateChange={this.onEditorStateChange} />
-          <Typography variant="caption">
-            {captionCounterBody}
-          </Typography>
+          <MyEditor
+            editorState={this.state.editorState}
+            onEditorStateChange={this.onEditorStateChange}
+          />
+          <Typography variant="caption">{captionCounterBody}</Typography>
         </Form>
       </div>
     );

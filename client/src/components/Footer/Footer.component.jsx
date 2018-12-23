@@ -8,6 +8,14 @@ export default () => {
     <footer>
       <div className="footer-col">
         <img src="/imgs/logo.png" className="footer-logo" alt="" />
+        <Typography
+          variant="body1"
+          className="footer-col-title capitalize text-center color-2"
+        >
+          Refugee investment network
+          {"  "}
+          <span className="color-1">{new Date().getFullYear()}</span>
+        </Typography>
       </div>
       <div className="footer-col">
         <Typography variant="h6" className="footer-col-title upper color-2">

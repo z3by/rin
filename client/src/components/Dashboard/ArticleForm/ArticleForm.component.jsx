@@ -118,7 +118,7 @@ export default class ArticleForm extends Component {
   updateArticle = () => {
     Axios.put("/api/articles/" + this.state.article.id, this.state.article)
       .then(result => {
-        this.props.history.push("/dashboard/articles");
+        this.props.history.goBack();
       })
       .catch(err => {
         this.showErrorMessage(err);
@@ -129,7 +129,7 @@ export default class ArticleForm extends Component {
     this.setState({ adding: true });
     Axios.post("/api/articles", this.state.article)
       .then(result => {
-        this.props.history.push("/dashboard/articles");
+        this.props.history.goBack();
       })
       .catch(err => {
         this.showErrorMessage(err);

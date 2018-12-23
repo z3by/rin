@@ -21,6 +21,7 @@ import AdminList from "../general-components/AdminList/AdminList.component";
 import ArticleInfo from "../Dashboard/ArticleInfo/ArticleInfo.component";
 import InvestorForm from "../Dashboard/InvestorForm/InvestorForm.component";
 import FounderForm from "../Dashboard/FounderForm/FounderForm.component";
+import ArticleForm from "../Dashboard/ArticleForm/ArticleForm.component";
 
 export default class MyRouter extends Component {
   render() {
@@ -45,6 +46,7 @@ export default class MyRouter extends Component {
             <Route path="/admin" component={Login} />
             <Route path="/addfounder" component={FounderForm} />
             <Route path="/addinvestor" component={InvestorForm} />
+            <Route path="/addblog" component={ArticleForm} />
             <Route path="/dashboard" component={Dashboard} />
             <Route exact path="/" component={Landing} />
             <Route component={Landing} />

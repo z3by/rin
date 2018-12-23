@@ -6,6 +6,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Axios from "axios";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import { Link } from "react-router-dom";
 
 export default class Blog extends Component {
   constructor() {
@@ -74,10 +75,24 @@ export default class Blog extends Component {
           </div>
         </header>
         <div className="container">
+          <Link to="/addblog">
+            <Button
+              style={{
+                background: "var(--color-2)",
+                color: "white",
+                display: this.state.nomore ? "none" : "block",
+                margin: "20px"
+              }}
+              onClick={this.fetchArticle}
+            >
+              Add your Article...
+            </Button>
+          </Link>
           {this.state.articles.map((article, id) => {
             return <ArticleCard article={article} key={id} />;
           })}
         </div>
+
         <Typography
           variant="h6"
           style={{
@@ -95,10 +110,10 @@ export default class Blog extends Component {
             display: this.state.nomore ? "none" : "block",
             margin: "20px auto"
           }}
-          onClick={this.fetchArticle}
         >
-          Show more stories...
+          Show more articles...
         </Button>
+
         <Footer />
       </div>
     );
