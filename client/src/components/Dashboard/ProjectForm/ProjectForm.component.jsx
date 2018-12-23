@@ -305,6 +305,39 @@ export default class ProjectForm extends Component {
           onChange={this.onChange}
           name="organization"
         />
+        <div className="flex">
+          <AutoComplete
+            suggestions={this.state.allFounders}
+            label="founders"
+            handleChange={value => {
+              this.setChoosenFields("founders", value);
+            }}
+          />
+          <Link
+            to="/addfounder"
+            className="color-2-link"
+            style={{ paddingTop: 38, paddingLeft: 10 }}
+          >
+            not There?
+          </Link>
+        </div>
+        <div className="flex">
+          <AutoComplete
+            suggestions={this.state.allInvestors}
+            label="investors"
+            handleChange={value => {
+              this.setChoosenFields("investors", value);
+            }}
+          />
+
+          <Link
+            className="color-2-link"
+            to="/addfounder"
+            style={{ paddingTop: 38, paddingLeft: 10 }}
+          >
+            not There?
+          </Link>
+        </div>
         <TextField
           value={this.state.project.investmentSize}
           className="full-width-input"
@@ -444,30 +477,6 @@ export default class ProjectForm extends Component {
             this.setChoosenFields("countries", value);
           }}
         />
-        <div className="flex">
-          <AutoComplete
-            suggestions={this.state.allFounders}
-            label="founders"
-            handleChange={value => {
-              this.setChoosenFields("founders", value);
-            }}
-          />
-          <Link to="/addfounder" style={{ paddingTop: 38, paddingLeft: 10 }}>
-            not There?
-          </Link>
-        </div>
-        <div className="flex">
-          <AutoComplete
-            suggestions={this.state.allInvestors}
-            label="investors"
-            handleChange={value => {
-              this.setChoosenFields("investors", value);
-            }}
-          />
-          <Link to="/addfounder" style={{ paddingTop: 38, paddingLeft: 10 }}>
-            not There?
-          </Link>
-        </div>
 
         <AutoComplete
           suggestions={this.state.allSdgs}

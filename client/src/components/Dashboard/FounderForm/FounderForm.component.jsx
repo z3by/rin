@@ -69,7 +69,7 @@ export default class FounderForm extends Component {
       this.state.founderInfo
     )
       .then(result => {
-        this.props.history.push("/");
+        this.props.history.goBack();
       })
       .catch(err => {
         this.showErrorMessage(err);
@@ -88,7 +88,7 @@ export default class FounderForm extends Component {
         () => {
           Axios.post("/api/founders", this.state.founderInfo)
             .then(result => {
-              this.props.history.push("/");
+              this.props.history.goBack();
             })
             .catch(err => {
               this.showErrorMessage(err);

@@ -69,7 +69,7 @@ export default class InvestorForm extends Component {
       this.state.investorInfo
     )
       .then(result => {
-        this.props.history.push("/");
+        this.props.history.goBack();
       })
       .catch(err => {
         this.showErrorMessage(err);
@@ -88,7 +88,7 @@ export default class InvestorForm extends Component {
         () => {
           Axios.post("/api/investors", this.state.investorInfo)
             .then(result => {
-              this.props.history.push("/");
+              this.props.history.goBack();
             })
             .catch(err => {
               this.showErrorMessage(err);
