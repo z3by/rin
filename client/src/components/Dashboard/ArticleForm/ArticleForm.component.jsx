@@ -21,7 +21,7 @@ export default class ArticleForm extends Component {
       updating: false,
       editorState: EditorState.createEmpty(),
       enteredChars: 0,
-      article: {},
+      article: { pending: true },
       uploading: { img: false }
     };
   }
@@ -127,6 +127,10 @@ export default class ArticleForm extends Component {
 
   createArticle = () => {
     this.setState({ adding: true });
+    Axios.get("/users/isadmin").then(res => {
+      this.setState({ article: { ...this.state.article, pending: !res.data } });
+    });
+
     Axios.post("/api/articles", this.state.article)
       .then(result => {
         this.props.history.goBack();
