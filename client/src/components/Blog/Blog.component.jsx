@@ -88,9 +88,11 @@ export default class Blog extends Component {
               Add your Article...
             </Button>
           </Link>
-          {this.state.articles.map((article, id) => {
-            return <ArticleCard article={article} key={id} />;
-          })}
+          <div className="grid-3">
+            {this.state.articles.map((article, id) => {
+              return <ArticleCard article={article} key={id} />;
+            })}
+          </div>
         </div>
 
         <Typography
