@@ -43,20 +43,20 @@ class ArticleCard extends React.Component {
             {this.props.article.subtitle}
           </Typography>
         </CardContent>
-        <Button
-          style={{
-            background: "var(--color-2)",
-            color: "white",
-            display: "block",
-            float: "right",
-            margin: "0 10px 10px 0"
-          }}
-          onClick={this.handleExpandClick}
-        >
-          <Link className="color-1" to={"/blog/" + this.props.article.id}>
+        <Link className="color-1" to={"/blog/" + this.props.article.id}>
+          <Button
+            style={{
+              background: "var(--color-2)",
+              color: "white",
+              display: "block",
+              float: "right",
+              margin: "0 10px 10px 0"
+            }}
+            onClick={this.handleExpandClick}
+          >
             Read More...
-          </Link>
-        </Button>
+          </Button>
+        </Link>
       </Card>
     );
   }

@@ -80,7 +80,6 @@ export default class Blog extends Component {
               style={{
                 background: "var(--color-2)",
                 color: "white",
-                display: this.state.nomore ? "none" : "block",
                 margin: "20px"
               }}
               onClick={this.fetchArticle}
@@ -112,6 +111,7 @@ export default class Blog extends Component {
             display: this.state.nomore ? "none" : "block",
             margin: "20px auto"
           }}
+          onClick={this.fetchArticle}
         >
           Show more articles...
         </Button>
