@@ -261,9 +261,7 @@ export default class Landing extends Component {
             className={`circle ${this.state.navigating ? "grow" : ""}`}
             style={{
               backgroundImage: `url(imgs/backs${this.state.index + 1}.jpg)`,
-              backgroundAttachment: "fixed",
-              top: this.state.clientY / 10,
-              left: this.state.clientX / 10 + window.innerWidth / 3
+              backgroundAttachment: "fixed"
             }}
           >
             <div

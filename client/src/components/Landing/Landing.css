@@ -130,7 +130,7 @@
   opacity: 0.4;
   height: 500px;
   width: 500px;
-  left: 35vw;
+  left: calc(50vw - 225px);
   bottom: 0;
   top: 0;
   background-attachment: fixed;
@@ -279,15 +279,11 @@
 }
 
 @media (max-width: 769px) {
-  .circle video {
-    display: none;
-    opacity: 0;
-  }
   .circle {
     position: absolute;
     height: 400px;
     width: 400px;
-    left: calc(50vw - 300px);
+    left: calc(50vw - 200px);
     background-size: 1000px;
     opacity: 0.5;
   }
@@ -355,9 +351,10 @@
     font-size: 8vw;
   }
   .circle {
+    position: absolute;
     height: 250px;
     width: 250px;
-    left: calc(50vw - 225px);
+    left: calc(50vw - 125px);
   }
 }
 
