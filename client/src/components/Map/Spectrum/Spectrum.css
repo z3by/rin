@@ -20,7 +20,29 @@
   -ms-flex-pack: center;
   justify-content: center;
 }
+.spectrum-info {
+  position: absolute;
+  top: 20px;
+  padding: 10px;
+  z-index: 100;
+  width: 20%;
+  left: 40%;
+  color: var(--color-5);
+  text-align: center;
+  background: white;
+  border-radius: 10px;
+}
 
+.spectrum-info::after {
+  content: " ";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -10px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+}
 .spectrum-item {
   background: white;
   height: 17px;
@@ -32,16 +54,6 @@
   -moz-transition: all 0.5s ease;
   -ms-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
-}
-
-.spectrum-item:hover .tooltip {
-  visibility: visible;
-  opacity: 1;
-  width: 10%;
-}
-
-.spectrum-item:hover .tooltiptext {
-  font-size: 18px;
 }
 
 .spectrum-item:first-child {
@@ -75,43 +87,6 @@
   background: -webkit-gradient(linear, left top, right top, from(#fc67fa), to(#f4c4f3));
   background: linear-gradient(90deg, #fc67fa, #f4c4f3);
   border-bottom-right-radius: 10px;
-}
-
-.tooltip {
-  text-align: center;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  visibility: hidden;
-  background-color: var(--dark-transparent);
-  width: 0;
-  z-index: 1;
-  position: absolute;
-  top: 30px;
-  padding: 10px 20px;
-  opacity: 0;
-  -webkit-transition: opacity 1s;
-  transition: opacity 1s;
-  margin-left: 0;
-  text-transform: capitalize;
-}
-
-.tooltip .tooltiptext {
-  font-family: var(--main-font);
-  color: #fff;
-  font-family: var(--main-font);
-  font-size: 6px;
-}
-
-.tooltip .tooltiptext::after {
-  content: "";
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  margin-left: -10px;
-  border-width: 10px;
-  border-style: solid;
-  border-color: transparent transparent rgba(0, 0, 0, 0.3) transparent;
 }
 
 @media (max-width: 768px) {

@@ -145,6 +145,11 @@
   -o-border-radius: 50%;
 }
 
+.circle.grow {
+  opacity: 1;
+  -webkit-transition: opacity 1s ease;
+  transition: opacity 1s ease;
+}
 .circle img {
   position: fixed;
   top: 0;

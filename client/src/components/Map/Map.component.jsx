@@ -28,7 +28,8 @@ export default class Map extends Component {
       sectorId: 0,
       investmentSize: ""
     },
-    filterOn: false
+    filterOn: false,
+    isIndicatorHidden: false
   };
 
   componentDidMount() {
@@ -134,10 +135,24 @@ export default class Map extends Component {
     });
   };
 
+  hideSpectrumIndicator = () => {
+    if (!this.state.isIndicatorHidden) {
+      this.setState({ isIndicatorHidden: true });
+    }
+  };
+
   render() {
     return (
       <div style={{ height: "100vh", width: "100%" }} className="map">
-        <Spectrum handleMouseHover={this.handleSpectrumHover} />
+        <div className="spectrum-info" hidden={this.state.isIndicatorHidden}>
+          hover over the spectrum to filter projects by sector
+        </div>
+        <div
+          className="spectrum-wrapper"
+          onMouseEnter={this.hideSpectrumIndicator}
+        >
+          <Spectrum handleMouseHover={this.handleSpectrumHover} />
+        </div>
 
         <Filter
           filterProjects={this.filterByGivenOptions}

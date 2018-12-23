@@ -1,5 +1,6 @@
 import React from "react";
 import "./Spectrum.css";
+import ToolTipComponent from "./ToolTip.component";
 
 export default props => {
   return (
@@ -8,57 +9,43 @@ export default props => {
         className="spectrum-item"
         onMouseEnter={() => props.handleMouseHover("housing")}
       >
-        <div className="tooltip">
-          <div className="tooltiptext spec">housing</div>
-        </div>
+        <ToolTipComponent tooltipText="housing" />
       </li>
       <li
         className="spectrum-item"
         onMouseEnter={() => props.handleMouseHover("education")}
       >
-        <div className="tooltip">
-          <div className="tooltiptext spec">education</div>
-        </div>
+        <ToolTipComponent tooltipText="education" />
       </li>
       <li
         className="spectrum-item"
         onMouseEnter={() => props.handleMouseHover("agriculture")}
       >
-        <div className="tooltip">
-          <div className="tooltiptext spec">agriculture</div>
-        </div>
+        <ToolTipComponent tooltipText="agriculture" />
       </li>
       <li
         className="spectrum-item"
         onMouseEnter={() => props.handleMouseHover("health")}
       >
-        <div className="tooltip">
-          <div className="tooltiptext spec">health</div>
-        </div>
+        <ToolTipComponent tooltipText="health" />
       </li>
       <li
         className="spectrum-item"
         onMouseEnter={() => props.handleMouseHover("water")}
       >
-        <div className="tooltip">
-          <div className="tooltiptext spec">water</div>
-        </div>
+        <ToolTipComponent tooltipText="water" />
       </li>
       <li
         className="spectrum-item"
         onMouseEnter={() => props.handleMouseHover("nutrition")}
       >
-        <div className="tooltip">
-          <div className="tooltiptext spec">nutrition </div>
-        </div>
+        <ToolTipComponent tooltipText="nutrition" />
       </li>
       <li
         className="spectrum-item"
         onMouseEnter={() => props.handleMouseHover("infancy")}
       >
-        <div className="tooltip">
-          <div className="tooltiptext spec">infancy </div>
-        </div>
+        <ToolTipComponent tooltipText="infancy" />
       </li>
     </ul>
   );
