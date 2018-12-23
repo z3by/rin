@@ -7,6 +7,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Axios from "axios";
 import Typography from "@material-ui/core/Typography";
 import GoogleMap from "../../general-components/GoogleMap/GoogleMap.component";
+import { Link } from "react-router-dom";
 
 export default class ProjectForm extends Component {
   constructor(props) {
@@ -443,20 +444,31 @@ export default class ProjectForm extends Component {
             this.setChoosenFields("countries", value);
           }}
         />
-        <AutoComplete
-          suggestions={this.state.allFounders}
-          label="founders"
-          handleChange={value => {
-            this.setChoosenFields("founders", value);
-          }}
-        />
-        <AutoComplete
-          suggestions={this.state.allInvestors}
-          label="investors"
-          handleChange={value => {
-            this.setChoosenFields("investors", value);
-          }}
-        />
+        <div className="flex">
+          <AutoComplete
+            suggestions={this.state.allFounders}
+            label="founders"
+            handleChange={value => {
+              this.setChoosenFields("founders", value);
+            }}
+          />
+          <Link to="/addfounder" style={{ paddingTop: 38, paddingLeft: 10 }}>
+            not There?
+          </Link>
+        </div>
+        <div className="flex">
+          <AutoComplete
+            suggestions={this.state.allInvestors}
+            label="investors"
+            handleChange={value => {
+              this.setChoosenFields("investors", value);
+            }}
+          />
+          <Link to="/addfounder" style={{ paddingTop: 38, paddingLeft: 10 }}>
+            not There?
+          </Link>
+        </div>
+
         <AutoComplete
           suggestions={this.state.allSdgs}
           label="SDGs"

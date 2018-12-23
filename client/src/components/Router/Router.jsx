@@ -19,6 +19,7 @@ import MoreStories from "../Stories/MoreStories/MoreStories.component";
 import AddProject from "../AddProject/AddProject.component";
 import AdminList from "../general-components/AdminList/AdminList.component";
 import ArticleInfo from "../Dashboard/ArticleInfo/ArticleInfo.component";
+import InvestorForm from "../Dashboard/InvestorForm/InvestorForm.component";
 
 export default class MyRouter extends Component {
   render() {
@@ -42,6 +43,7 @@ export default class MyRouter extends Component {
             <Route path="/members" component={Members} />
             <Route path="/admin" component={Login} />
             <Route path="/dashboard" component={Dashboard} />
+            <Route path="/addinvestor" component={InvestorForm} />
             <Route exact path="/" component={Landing} />
             <Route component={Landing} />
           </Switch>
