@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Blog.css";
+import Footer from "../Footer/Footer.component";
 import ArticleCard from "./ArticleCard";
 import IconButton from "@material-ui/core/IconButton";
 import Axios from "axios";
@@ -16,10 +17,10 @@ export default class Blog extends Component {
   }
 
   componentDidMount() {
-    this.fetcArticles();
+    this.fetchArticle();
   }
 
-  fetcArticles = () => {
+  fetchArticle = () => {
     const first = this.state.articles.length;
     const last = first + 10;
     const indexes = { first, last };
@@ -94,10 +95,11 @@ export default class Blog extends Component {
             display: this.state.nomore ? "none" : "block",
             margin: "20px auto"
           }}
-          onClick={this.fetcArticles}
+          onClick={this.fetchArticle}
         >
           Show more stories...
         </Button>
+        <Footer />
       </div>
     );
   }
