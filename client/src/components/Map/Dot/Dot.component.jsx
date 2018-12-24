@@ -32,7 +32,7 @@ const Dot = props => {
       {/* basic info */}
       <div className="project-info">
         <div className="project-info-popup">
-          <div className="flex-centerd">
+          <div className="flex">
             <Avatar src={props.project.logo} />
             <div style={{ display: "flex", flexDirection: "column" }}>
               <Typography
@@ -56,13 +56,13 @@ const Dot = props => {
               margin: "10px 0",
               backgroundImage: "url(" + props.project.img + ")",
               backgroundSize: "cover",
-              height: 100,
+              height: 400,
               width: "100%"
             }}
           />
 
           <Typography
-            variant="subtitle1"
+            variant="h6"
             style={{ marginTop: 20 }}
             className="color-2 capitalize text-center"
           >
@@ -74,32 +74,12 @@ const Dot = props => {
             style={{ marginTop: 20 }}
             className="color-2 capitalize"
           >
-            countries:
-          </Typography>
-          <Typography
-            variant="subtitle1"
-            style={{ marginTop: 20 }}
-            className="color-2 capitalize"
-          >
+            <b>countries: </b>
             {props.project.Countries.map((country, i) => {
               return (
-                <Typography
-                  key={i}
-                  variant="body1"
-                  className="color-2 capitalize"
-                >
-                  - {country.name} -{" "}
-                  <img
-                    src={country.flag}
-                    style={{
-                      height: 30,
-                      width: 30,
-                      marginLeft: 10,
-                      borderRadius: 20
-                    }}
-                    alt=""
-                  />
-                </Typography>
+                <span key={i} className="color-1 capitalize">
+                  {country.name},{"   "}
+                </span>
               );
             })}
           </Typography>
@@ -108,56 +88,76 @@ const Dot = props => {
             style={{ marginTop: 20 }}
             className="color-2 capitalize"
           >
-            Refugee Investment size
+            <b> Refugee Investment size:</b>{" "}
+            <span className="color-1"> {props.project.investmentSize} $</span>
           </Typography>
-          <div className="flex-centerd">
-            <Typography
-              variant="subtitle1"
-              className="color-3 capitalize"
-              style={{ margin: "0 20px" }}
-            >
-              {props.project.investmentSize} $
+          <div className="flex align-center" style={{ marginTop: 20 }}>
+            <Typography variant="subtitle1" className="color-2 capitalize">
+              <b> Refugee Investment Type: </b>
             </Typography>
-          </div>
-          <Typography
-            variant="subtitle1"
-            style={{ marginTop: 20 }}
-            className="color-2 capitalize"
-          >
-            Refugee Investment Type
-          </Typography>
-          <div className="flex-centerd">
             <Avatar
               src={props.project.refugeeInvestmentType.img}
-              style={{ margin: "0 10px" }}
+              style={{
+                margin: "0 10px",
+                borderRadius: 0
+              }}
             />
-            <Typography
-              variant="subtitle1"
-              className="color-3 capitalize"
-              style={{ margin: "0 20px" }}
-            >
-              {props.project.refugeeInvestmentType.name}
-            </Typography>
           </div>
-          <Typography
-            variant="subtitle1"
-            style={{ marginTop: 20 }}
-            className="color-2 capitalize"
-          >
-            Sustainable Ddevelopment Goals
-          </Typography>
 
-          <div className="" style={{ display: "flex", margin: "10px 0" }}>
+          <div className="flex" style={{ marginTop: 20 }}>
+            <Typography variant="subtitle1" className="color-2 capitalize">
+              <b> Sustainable Development Goals: </b> {"  "}
+            </Typography>
             {props.project.Sdgs.map((sdg, i) => {
               return (
-                <Avatar src={sdg.logo} key={i} style={{ margin: "0 10px" }} />
+                <Avatar
+                  src={sdg.logo}
+                  key={i}
+                  style={{
+                    borderRadius: 0,
+                    margin: "0 5px"
+                  }}
+                />
               );
             })}
           </div>
         </div>
 
-        {/* contact info */}
+        {/* full info */}
         <div className="project-info-popup">
+          <Typography
+            variant="subtitle1"
+            style={{ marginTop: 20 }}
+            className="color-2 capitalize"
+          >
+            <b>Investment Thesis</b>
+          </Typography>
+          <Typography variant="body1" className="color-1">
+            {props.project.thesis}
+          </Typography>
+          <Typography
+            variant="subtitle1"
+            style={{ marginTop: 20 }}
+            className="color-2 capitalize"
+          >
+            <b> Project Description </b>
+          </Typography>
+          <Typography variant="body1" className="color-1">
+            {props.project.structure}
+          </Typography>
+          <Typography
+            variant="subtitle1"
+            style={{ marginTop: 20 }}
+            className="color-2 capitalize"
+          >
+            <b> Investment Impact </b>
+          </Typography>
+          <Typography variant="body1" className="color-1">
+            {props.project.impact}
+          </Typography>
+        </div>
+        {/* contact info */}
+        <div className="popup-contact">
           <a
             href={"tel:" + props.project.contact.phone1}
             className="contact-field"
@@ -267,39 +267,6 @@ const Dot = props => {
               Address: {props.project.contact.address}
             </address>
           )}
-        </div>
-        {/* full info */}
-        <div className="project-info-popup">
-          <Typography
-            variant="subtitle1"
-            style={{ marginTop: 20 }}
-            className="color-2 capitalize"
-          >
-            Investment Thesis
-          </Typography>
-          <Typography variant="body1" className="color-1">
-            {props.project.thesis}
-          </Typography>
-          <Typography
-            variant="subtitle1"
-            style={{ marginTop: 20 }}
-            className="color-2 capitalize"
-          >
-            Structure
-          </Typography>
-          <Typography variant="body1" className="color-1">
-            {props.project.structure}
-          </Typography>
-          <Typography
-            variant="subtitle1"
-            style={{ marginTop: 20 }}
-            className="color-2 capitalize"
-          >
-            Impact
-          </Typography>
-          <Typography variant="body1" className="color-1">
-            {props.project.impact}
-          </Typography>
         </div>
       </div>
     </div>

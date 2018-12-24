@@ -216,8 +216,8 @@ label {
 
 .arrows {
   position: absolute;
-  bottom: 30px;
-  right: 50px;
+  bottom: 20px;
+  right: 20px;
   z-index: 11;
   cursor: pointer;
   margin: 0;
@@ -229,8 +229,7 @@ label {
   color: var(--color-2);
   -webkit-transition: all 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
   transition: all 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
-  font-size: 20px;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 .slideInRight {
@@ -238,8 +237,8 @@ label {
   animation-name: slideInRight;
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
-  -webkit-animation-timing-function: ease;
-  animation-timing-function: ease;
+  -webkit-animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 
 .fadeIn {
@@ -707,4 +706,31 @@ option:hover {
 
 .main-font {
   font-family: var(--main-font) !important;
+}
+
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.justify-center {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.align-center {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.color-2-link {
+  color: var(--color-4);
+}
+
+.color-2-link:hover {
+  color: var(--color-2);
+  text-decoration: underline;
 }

@@ -166,6 +166,7 @@ export default class SignUpLogIn extends Component {
                 <fieldset className="forms_fieldset">
                   <div className="forms_field">
                     <TextField
+                      className="full-width-input"
                       label="Email"
                       type="email"
                       name="email"
@@ -179,6 +180,7 @@ export default class SignUpLogIn extends Component {
                   </div>
                   <div className="forms_field">
                     <TextField
+                      className="full-width-input"
                       label="Password"
                       type="password"
                       name="password"
@@ -211,6 +213,7 @@ export default class SignUpLogIn extends Component {
                 <fieldset className="forms_fieldset">
                   <div className="forms_field">
                     <TextField
+                      className="full-width-input"
                       label="First Name"
                       name="firstName"
                       autoComplete="firstName"
@@ -222,6 +225,7 @@ export default class SignUpLogIn extends Component {
                   </div>
                   <div className="forms_field">
                     <TextField
+                      className="full-width-input"
                       label="Last Name"
                       name="lastName"
                       autoComplete="lastName"
@@ -233,6 +237,7 @@ export default class SignUpLogIn extends Component {
                   </div>
                   <div className="forms_field">
                     <TextField
+                      className="full-width-input"
                       label="Organization Name"
                       name="organizationName"
                       autoComplete="organizationName"
@@ -260,6 +265,7 @@ export default class SignUpLogIn extends Component {
                   </div>
                   <div className="forms_field">
                     <TextField
+                      className="full-width-input"
                       label="Email"
                       type="email"
                       name="email"
@@ -273,6 +279,7 @@ export default class SignUpLogIn extends Component {
                   </div>
                   <div className="forms_field">
                     <TextField
+                      className="full-width-input"
                       label="Password"
                       type="password"
                       name="password"
@@ -285,6 +292,7 @@ export default class SignUpLogIn extends Component {
                   </div>
                   <div className="forms_field">
                     <TextField
+                      className="full-width-input"
                       label="Confirm Password"
                       type="password"
                       name="password2"

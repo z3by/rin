@@ -39,14 +39,11 @@ module.exports.uploadPDF = multer({
     bucket: myBucket,
     // Set public read permissions
     acl: "public-read",
-    // Auto detect contet type
+    // Auto detect content type
     contentType: multerS3.AUTO_CONTENT_TYPE,
     // Set key/ filename as original uploaded name
     filename: function(req, file, cb) {
       cb(null, "BOOK-" + Date.now() + path.extname(file.originalname));
     }
-  }),
-  limits: {
-    fileSize: 1000000
-  }
+  })
 }).single("pdf");
