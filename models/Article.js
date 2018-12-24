@@ -6,7 +6,8 @@ module.exports = (sequelize, DataTypes) => {
       title: DataTypes.STRING,
       subtitle: DataTypes.STRING,
       text: DataTypes.STRING,
-      img: DataTypes.STRING
+      img: DataTypes.STRING,
+      pending: DataTypes.BOOLEAN
     },
     {
       tableName: "articles"

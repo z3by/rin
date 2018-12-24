@@ -39,6 +39,7 @@ export default class SignUpLogIn extends Component {
         .querySelector(".user_options-forms")
         .classList.remove("bounceRight");
       document.querySelector(".user_options-forms").classList.add("bounceLeft");
+      document.querySelector(".user_options-forms").style.height = "600px";
     } else {
       document
         .querySelector(".user_options-forms")
@@ -46,6 +47,8 @@ export default class SignUpLogIn extends Component {
       document
         .querySelector(".user_options-forms")
         .classList.add("bounceRight");
+      document.querySelector(".user_options-forms").style.height = "350px";
+
     }
   };
 
@@ -163,26 +166,28 @@ export default class SignUpLogIn extends Component {
                 <fieldset className="forms_fieldset">
                   <div className="forms_field">
                     <TextField
+                      className="full-width-input"
                       label="Email"
                       type="email"
                       name="email"
                       autoComplete="email"
                       onChange={this.onChange}
-                      value={this.state.email}
+                      value={this.state.userInfo.email}
                       placeholder="Email"
-                      margin="normal"
+                      style={{ marginBottom: "5px" }}
                       required
                     />
                   </div>
                   <div className="forms_field">
                     <TextField
+                      className="full-width-input"
                       label="Password"
                       type="password"
                       name="password"
                       autoComplete="current-password"
                       onChange={this.onChange}
-                      value={this.state.password}
-                      margin="normal"
+                      value={this.state.userInfo.password}
+                      style={{ height: "48px" }}
                       required
                     />
                   </div>
@@ -208,34 +213,37 @@ export default class SignUpLogIn extends Component {
                 <fieldset className="forms_fieldset">
                   <div className="forms_field">
                     <TextField
+                      className="full-width-input"
                       label="First Name"
                       name="firstName"
                       autoComplete="firstName"
                       onChange={this.onChange}
-                      value={this.state.firstName}
-                      margin="normal"
+                      value={this.state.userInfo.firstName}
+                      style={{ marginBottom: "5px" }}
                       required
                     />
                   </div>
                   <div className="forms_field">
                     <TextField
+                      className="full-width-input"
                       label="Last Name"
                       name="lastName"
                       autoComplete="lastName"
                       onChange={this.onChange}
-                      value={this.state.lastName}
-                      margin="normal"
+                      value={this.state.userInfo.lastName}
+                      style={{ marginBottom: "5px" }}
                       required
                     />
                   </div>
                   <div className="forms_field">
                     <TextField
+                      className="full-width-input"
                       label="Organization Name"
                       name="organizationName"
                       autoComplete="organizationName"
                       onChange={this.onChange}
-                      value={this.state.organizationName}
-                      margin="normal"
+                      value={this.state.userInfo.organizationName}
+                      style={{ marginBottom: "5px" }}
                       required
                     />
                   </div>
@@ -257,38 +265,41 @@ export default class SignUpLogIn extends Component {
                   </div>
                   <div className="forms_field">
                     <TextField
+                      className="full-width-input"
                       label="Email"
                       type="email"
                       name="email"
                       autoComplete="email"
                       onChange={this.onChange}
-                      value={this.state.email}
+                      value={this.state.userInfo.email}
                       placeholder="Email"
-                      margin="normal"
+                      style={{ marginBottom: "5px" }}
                       required
                     />
                   </div>
                   <div className="forms_field">
                     <TextField
+                      className="full-width-input"
                       label="Password"
                       type="password"
                       name="password"
                       autoComplete="current-password"
                       onChange={this.onChange}
-                      value={this.state.password}
-                      margin="normal"
+                      value={this.state.userInfo.password}
+                      style={{ height: "48px" }}
                       required
                     />
                   </div>
                   <div className="forms_field">
                     <TextField
+                      className="full-width-input"
                       label="Confirm Password"
                       type="password"
                       name="password2"
                       autoComplete="current-password"
                       onChange={this.onChange}
-                      value={this.state.password}
-                      margin="normal"
+                      value={this.state.userInfo.password2}
+                      style={{ height: "48px" }}
                       required
                     />
                   </div>
@@ -306,7 +317,7 @@ export default class SignUpLogIn extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </div >
     );
   }
 }

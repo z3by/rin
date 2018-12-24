@@ -59,17 +59,6 @@
   margin-bottom: 20px;
 }
 
-.loginbox input[type="text"],
-input[type="password"] {
-  border: none;
-  border-bottom: 1px solid #fff;
-  background: transparent;
-  outline: none;
-  height: 40px;
-  color: #fff;
-  font-size: 16px;
-}
-
 .loginbox input[type="submit"],
 .loginbox button {
   border: none;

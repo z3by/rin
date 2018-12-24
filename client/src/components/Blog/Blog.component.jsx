@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import "./Blog.css";
+import Footer from "../Footer/Footer.component";
 import ArticleCard from "./ArticleCard";
 import IconButton from "@material-ui/core/IconButton";
 import Axios from "axios";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import { Link } from "react-router-dom";
 
 export default class Blog extends Component {
   constructor() {
@@ -16,10 +18,10 @@ export default class Blog extends Component {
   }
 
   componentDidMount() {
-    this.fetcArticles();
+    this.fetchArticle();
   }
 
-  fetcArticles = () => {
+  fetchArticle = () => {
     const first = this.state.articles.length;
     const last = first + 10;
     const indexes = { first, last };
@@ -73,10 +75,25 @@ export default class Blog extends Component {
           </div>
         </header>
         <div className="container">
-          {this.state.articles.map((article, id) => {
-            return <ArticleCard article={article} key={id} />;
-          })}
+          <Link to="/addblog">
+            <Button
+              style={{
+                background: "var(--color-2)",
+                color: "white",
+                margin: "20px"
+              }}
+              onClick={this.fetchArticle}
+            >
+              Add your Article...
+            </Button>
+          </Link>
+          <div className="grid-3">
+            {this.state.articles.map((article, id) => {
+              return <ArticleCard article={article} key={id} />;
+            })}
+          </div>
         </div>
+
         <Typography
           variant="h6"
           style={{
@@ -94,10 +111,12 @@ export default class Blog extends Component {
             display: this.state.nomore ? "none" : "block",
             margin: "20px auto"
           }}
-          onClick={this.fetcArticles}
+          onClick={this.fetchArticle}
         >
-          Show more stories...
+          Show more articles...
         </Button>
+
+        <Footer />
       </div>
     );
   }

@@ -69,7 +69,7 @@ export default class NewsForm extends Component {
   updateNews = () => {
     Axios.put("/api/news/" + this.state.news.id, this.state.news)
       .then(result => {
-        this.props.history.push("/dashboard/news");
+        this.props.history.goBack();
       })
       .catch(err => {
         this.showErrorMessage(err);
@@ -80,7 +80,7 @@ export default class NewsForm extends Component {
     this.setState({ adding: true });
     Axios.post("/api/news", this.state.news)
       .then(result => {
-        this.props.history.push("/dashboard/news");
+        this.props.history.goBack();
       })
       .catch(err => {
         this.showErrorMessage(err);

@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import "./Data.css";
 import axios from "axios";
 import IconButton from "@material-ui/core/IconButton";
-import BarChart from "./Charts/BarChart/BarChart.component";
-import LineChart from "./Charts/LineChart/LineChart.component";
-import HorizontalBarChart from "./Charts/HorizontalBarChart/HorizontalBarChart.component";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import VisibilitySensor from "react-visibility-sensor";
+import { Route } from "react-router-dom";
+import MenuItem from "@material-ui/core/MenuItem";
+import Typography from "@material-ui/core/Typography";
+import DataCharts from "./DataCharts/DataCharts.component";
+import Researches from "./Researches/Researches.component";
+
 /*The structure of any chart data object is as the following:
   somethingData: {
         // labels: [],
@@ -37,6 +38,7 @@ export default class Data extends Component {
   componentDidMount() {
     this.getAllCounries();
   }
+
   getAllCounries = () => {
     axios
       .get("https://restcountries.eu/rest/v2/all")
@@ -61,21 +63,19 @@ export default class Data extends Component {
         console.log(err);
       });
   };
-  scrollToTop = () => {
-    document.querySelector(".library").scrollIntoView({
-      behavior: "smooth"
-    });
-  };
+
   goDown = () => {
     document.querySelector(".container").scrollIntoView({
       behavior: "smooth"
     });
   };
-  getAsylumSeekersDataByYear = e => {
-    if (this.state.asylumSeekersData.datasets.length) {
-      return;
-    }
 
+  getAsylumSeekersDataByYear = e => {
+    if (!e) {
+      if (this.state.asylumSeekersData.datasets.length) {
+        return;
+      }
+    }
     const year =
       e && e.target.value > -1
         ? e.target.value
@@ -84,6 +84,7 @@ export default class Data extends Component {
       asylumSeekersSelectedYear: year,
       isLoadingAsylumSeekersData: true
     });
+
     axios
       .get(
         `http://popdata.unhcr.org/api/stats/asylum_seekers.json?year=${year}&&country_of_origin=SYR`
@@ -107,6 +108,7 @@ export default class Data extends Component {
               );
             }
           }
+
           let datasets = [{}, {}];
           datasets[0].data = dataOfAppliedCount;
           datasets[0].label = "Asylum Applications";
@@ -126,6 +128,7 @@ export default class Data extends Component {
         console.log(err);
       });
   };
+
   getResettlementData = () => {
     if (this.state.resettlementData.datasets.length) {
       return;
@@ -149,11 +152,12 @@ export default class Data extends Component {
       datasets[i].borderColor = colors[i];
       datasets[i].fill = false;
       datasets[i].data = [];
+
       for (let j = 0; j < labels.length; j++) {
         axios
           .get(
             `http://popdata.unhcr.org/api/stats/resettlement.json?year=${
-              labels[j]
+            labels[j]
             }&country_of_asylum=${countriesOfAsylum[i]}`
           )
           .then(res => {
@@ -165,7 +169,7 @@ export default class Data extends Component {
                 }
               }
               datasets[i].data.push(totalValue);
-            });
+            })
           })
           .catch(err => {
             console.log(err);
@@ -174,6 +178,7 @@ export default class Data extends Component {
     }
     this.setState({ resettlementData: { labels, datasets } });
   };
+
   findCountryAlpha3Code = countryName => {
     if (this.state.isAllCountriesRetrieved) {
       for (let i = 0; i < this.state.allCountries.length; i++) {
@@ -185,12 +190,13 @@ export default class Data extends Component {
       return "SYR";
     }
   };
-  //This function is triggered in two events; either in select year event || in select country event
-  getDemographicsData = e => {
-    if (this.state.demographicsData.datasets.length) {
-      return;
-    }
 
+  getDemographicsData = e => {
+    if (!e) {
+      if (this.state.demographicsData.datasets.length) {
+        return;
+      }
+    }
     let year, country, alpha3Code;
     //check if the event triggered by select year
     if (e && Number(e.target.value) > -1) {
@@ -214,6 +220,7 @@ export default class Data extends Component {
     });
     //find the alpha3Code of the country
     alpha3Code = this.findCountryAlpha3Code(country);
+
     axios
       .get(
         `http://popdata.unhcr.org/api/stats/demographics.json?year=${year}&country_of_residence=${alpha3Code}`
@@ -222,6 +229,7 @@ export default class Data extends Component {
         let labels = [];
         let femaleValueData = [];
         let maleValueData = [];
+
         this.setState({ isLoadingDmographicsData: false }, () => {
           res.data.forEach(oneData => {
             labels.push(oneData.location_name);
@@ -235,6 +243,7 @@ export default class Data extends Component {
           datasets[1].data = maleValueData;
           datasets[1].label = "Male Total Value";
           datasets[1].backgroundColor = "#ADD8E6";
+
           this.setState({ demographicsData: { labels, datasets } });
         });
       })
@@ -242,6 +251,16 @@ export default class Data extends Component {
         console.log(err);
       });
   };
+
+  // navigate to specific route
+  navigateTO = route => {
+    this.props.history.push(route);
+    document.body.scrollBy({
+      top: window.innerHeight - document.body.scrollTop,
+      behavior: "smooth"
+    });
+  };
+
   render() {
     let {
       allCountries,
@@ -254,19 +273,21 @@ export default class Data extends Component {
       resettlementData,
       demographicsData
     } = this.state;
+
     const years = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017];
     let allYears = years.map((year, i) => {
       return (
-        <option value={year} key={i}>
+        <MenuItem value={year} key={i}>
           {year}
-        </option>
+        </MenuItem>
       );
     });
+
     let countries = allCountries.map((country, i) => {
       return (
-        <option value={country.name} key={i}>
+        <MenuItem value={country.name} key={i}>
           {country.name}
-        </option>
+        </MenuItem>
       );
     });
     return (
@@ -278,9 +299,34 @@ export default class Data extends Component {
       >
         <header>
           <div className="banner-full">
-            <h1>data</h1>
+            <Typography variant="h1" className="main-font upper color-2">
+              data
+            </Typography>
             <div className="line" />
             <h3>statistics proof that refugees are a great investment</h3>
+            <ul className="header-nav">
+              <li>
+                <a
+                  onClick={() => {
+                    this.navigateTO("/data");
+                  }}
+                >
+                  <i className="fas fa-chart-bar" />
+                  <h5 className="upper">Data</h5>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  onClick={() => {
+                    this.navigateTO("/data/researches");
+                  }}
+                >
+                  <i className="fas fa-file-contract" />
+                  <h5 className="upper">researches</h5>
+                </a>
+              </li>
+            </ul>
             <div className="go-down" onClick={this.goDown}>
               <IconButton>
                 <i className="fas fa-arrow-down color-1" />
@@ -289,112 +335,8 @@ export default class Data extends Component {
           </div>
         </header>
         <div className="container">
-          <div className="asylum-seekers-chart">
-            <h3 className="chart-heading">
-              UNHCR Statistics of Asylum Seekers from Syria in{" "}
-              {this.state.asylumSeekersSelectedYear}
-            </h3>
-            <select onChange={this.getAsylumSeekersDataByYear}>
-              <option value={-1}>Select Year</option>
-              {allYears}
-            </select>
-            <div className="chart-preloader">
-              <CircularProgress
-                className="preloader"
-                size={"7vw"}
-                thickness={3}
-                style={{
-                  visibility: isLoadingAsylumSeekersData ? "visible" : "hidden"
-                }}
-              />
-              <VisibilitySensor
-                onChange={this.onChange}
-                partialVisibility={true}
-              >
-                {({ isVisible }) => (
-                  <div style={{ height: "600px" }}>
-                    {isVisible ? (
-                      <BarChart
-                        data={asylumSeekersData}
-                        getAsylumSeekersDataByYear={
-                          this.getAsylumSeekersDataByYear
-                        }
-                      />
-                    ) : null}
-                  </div>
-                )}
-              </VisibilitySensor>
-            </div>
-          </div>
-          <div className="resettlement-chart">
-            <h3 className="chart-heading">
-              UNHCR Statistics of Resettlement (2010 - 2018)
-            </h3>
-            <div className="chart-preloader">
-              <CircularProgress
-                className="preloader"
-                size={"7vw"}
-                thickness={3}
-                style={{
-                  visibility: isLoadingResettlementData ? "visible" : "hidden"
-                }}
-              />
-              <VisibilitySensor
-                onChange={this.onChange}
-                partialVisibility={true}
-              >
-                {({ isVisible }) => (
-                  <div style={{ height: "450px" }}>
-                    {isVisible ? (
-                      <LineChart
-                        data={resettlementData}
-                        getResettlementData={this.getResettlementData}
-                      />
-                    ) : null}
-                  </div>
-                )}
-              </VisibilitySensor>
-            </div>
-          </div>
-          <div className="demographics-chart">
-            <h3 className="chart-heading">
-              UNHCR Statistics of Demographics in {demographicsSelectedCountry}{" "}
-              ({demographicsSelectedYear})
-            </h3>
-            <select onChange={this.getDemographicsData}>
-              <option value={-1}>Select Year</option>
-              {allYears}
-            </select>
-            <select onChange={this.getDemographicsData}>
-              <option value={-1}>Select country</option>
-              {countries}
-            </select>
-            <div className="chart-preloader">
-              <CircularProgress
-                className="preloader"
-                size={"7vw"}
-                thickness={3}
-                style={{
-                  visibility: isLoadingDmographicsData ? "visible" : "hidden"
-                }}
-              />
-              <VisibilitySensor
-                onChange={this.onChange}
-                partialVisibility={true}
-              >
-                {({ isVisible }) => (
-                  <div style={{ height: "450px" }}>
-                    {isVisible ? (
-                      <HorizontalBarChart
-                        data={this.state.demographicsData}
-                        getDemographicsData={this.getDemographicsData}
-                      />
-                    ) : null}
-                  </div>
-                )}
-              </VisibilitySensor>
-            </div>
-          </div>
+          <Route exact path="/data" component={DataCharts} />
+          <Route path="/data/researches" component={Researches} />
         </div>
       </div>
     );

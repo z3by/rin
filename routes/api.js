@@ -14,7 +14,7 @@ const investorsAPI = require("../controllers/api/investors.controller");
 const sdgsAPI = require("../controllers/api/sdgs.controller");
 const sectorsAPI = require("../controllers/api/sectors.controller");
 const refugeeInvestmentTypesAPI = require("../controllers/api/refugeeInvestmentTypes.controller");
-const loactionAPI = require("../controllers/api/locations.controller");
+const locationAPI = require("../controllers/api/locations.controller");
 const contactsAPI = require("../controllers/api/contacts.controller");
 
 // upload image route
@@ -32,8 +32,8 @@ router.get("/countries", countriesAPI.getCountries);
 router.get("/countries/names", countriesAPI.getCountriesNames);
 
 // locations routes
-router.get("/locations", loactionAPI.getLocations);
-router.post("/locations", loactionAPI.addLocation);
+router.get("/locations", locationAPI.getLocations);
+router.post("/locations", locationAPI.addLocation);
 
 //stories routes
 router.get("/stories/filter", storiesAPI.filterStories);

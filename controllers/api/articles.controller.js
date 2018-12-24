@@ -2,7 +2,11 @@ const db = require("../../models/index");
 const Op = db.Sequelize.Op;
 
 module.exports.getArticles = (req, res) => {
-  db.Article.findAll({}).then(result => {
+  db.Article.findAll({
+    where: {
+      pending: false
+    }
+  }).then(result => {
     res.json(result);
   });
 };
@@ -12,6 +16,9 @@ module.exports.getArticlesPage = (req, res) => {
   const lastArticleIndex = Number(req.query.last);
 
   db.Article.findAndCountAll({
+    where: {
+      pending: false
+    },
     offset: firstArticleIndex,
     limit: lastArticleIndex - firstArticleIndex
   })
@@ -26,7 +33,8 @@ module.exports.getArticlesPage = (req, res) => {
 module.exports.getArticle = (req, res) => {
   db.Article.findAll({
     where: {
-      id: req.params.id
+      id: req.params.id,
+      pending: false
     }
   })
     .then(result => {

@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import "./Login.css";
 import Axios from "axios";
+import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 export default class Login extends Component {
   constructor(props) {
@@ -36,19 +40,42 @@ export default class Login extends Component {
   render() {
     return (
       <div className="admin-login">
-        <div className="loginbox">
-          <img src="/imgs/login.png" alt="login icon" className="avatar" />
-          <h1 className="login-title">Admin Dashboard</h1>
-          <form method="POST">
-            <label>Username</label>
-            <input type="text" onChange={this.onChange} name="username" />
-            <label>Password</label>
-            <input type="password" onChange={this.onChange} name="password" />
-            <button onClick={this._onSubmit} className="login">
+        <Paper className="admin-form-login">
+          <img src="/imgs/admin.png" alt="" />
+          <Typography variant="h6" className="text-center">
+            Login as admin
+          </Typography>
+          <form onSubmit={this._onSubmit}>
+            <TextField
+              className="full-width-input"
+              label="admin user name"
+              InputLabelProps={{
+                shrink: true
+              }}
+              name="username"
+              variant="outlined"
+              required
+              value={this.state.username}
+              onChange={this.onChange}
+            />
+            <TextField
+              className="full-width-input"
+              label="admin password"
+              type="password"
+              InputLabelProps={{
+                shrink: true
+              }}
+              name="password"
+              variant="outlined"
+              required
+              value={this.state.password}
+              onChange={this.onChange}
+            />
+            <Button className="login-admin-btn" type="submit">
               Login
-            </button>
+            </Button>
           </form>
-        </div>
+        </Paper>
       </div>
     );
   }

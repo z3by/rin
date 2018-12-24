@@ -17,6 +17,9 @@ module.exports = {
       text: {
         type: Sequelize.STRING({ length: 10000 })
       },
+      pending: {
+        type: Sequelize.BOOLEAN
+      },
       img: {
         type: Sequelize.STRING
       },

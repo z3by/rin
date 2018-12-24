@@ -1,5 +1,6 @@
 import React from "react";
 import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
 import "./Filter.css";
 import FilterForm from "./FilterForm/FilterForm.component";
 
@@ -17,6 +18,9 @@ export default function Filter(props) {
         id="close-filter"
         onClick={props.handleFilterToggle}
       />
+      <Typography variant="h6" className="text-center">
+        Filter project to reach out your exact needs
+      </Typography>
       <FilterForm
         toggleFilter={props.handleFilterToggle}
         filterProjects={props.filterProjects}
