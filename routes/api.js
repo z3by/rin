@@ -73,7 +73,9 @@ router.delete("/projects/:id", projectsAPI.deleteProjects);
 
 //// requests routes ////
 router.get("/requests/projects", projectsAPI.getProjectRequestsPage);
-router.get("/requests/projects/accept/:id", projectsAPI.acceptRequest);
+router.put("/requests/projects/accept/:id", projectsAPI.acceptRequest);
+router.get("/requests/articles", articlesAPI.getArticlesRequests);
+router.put("/requests/articles/accept/:id", articlesAPI.acceptArticle);
 
 // investors routes
 router.get("/investors", investorsAPI.getInvestors);

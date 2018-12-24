@@ -281,7 +281,7 @@ export default class ProjectForm extends Component {
         </Typography>
         <TextField
           className="full-width-input"
-          label="project name"
+          label="Project Name"
           InputLabelProps={{
             shrink: true
           }}
@@ -301,14 +301,14 @@ export default class ProjectForm extends Component {
           variant="outlined"
           required
           error={!this.checkIfFieldIsValid("organization")}
-          label="organization name"
+          label="Organization Name"
           onChange={this.onChange}
           name="organization"
         />
         <div className="flex">
           <AutoComplete
             suggestions={this.state.allFounders}
-            label="founders"
+            label="Founders"
             handleChange={value => {
               this.setChoosenFields("founders", value);
             }}
@@ -324,7 +324,7 @@ export default class ProjectForm extends Component {
         <div className="flex">
           <AutoComplete
             suggestions={this.state.allInvestors}
-            label="investors"
+            label="Investors"
             handleChange={value => {
               this.setChoosenFields("investors", value);
             }}
@@ -345,7 +345,7 @@ export default class ProjectForm extends Component {
             min: 0
           }}
           error={!this.checkIfFieldIsValid("investmentSize")}
-          label="investment size by US dollar $"
+          label="Investment Size By US Dollar $"
           InputLabelProps={{
             shrink: true
           }}
@@ -357,7 +357,7 @@ export default class ProjectForm extends Component {
         />
         <TextField
           className="full-width-input"
-          label="starting year"
+          label="Starting Year"
           type="date"
           variant="outlined"
           defaultValue={this.state.project.year}
@@ -372,7 +372,8 @@ export default class ProjectForm extends Component {
 
         <TextField
           className="full-width-input"
-          label="impact"
+          label="Impact"
+          helperText="max 1000 character"
           name="impact"
           error={!this.checkIfFieldIsValid("impact")}
           value={this.state.project.impact}
@@ -389,8 +390,9 @@ export default class ProjectForm extends Component {
 
         <TextField
           className="full-width-input"
-          label="thesis"
+          label="Investment Thesis"
           name="thesis"
+          helperText="max 1000 character"
           error={!this.checkIfFieldIsValid("thesis")}
           value={this.state.project.thesis}
           inputProps={{ maxLength: 1000 }}
@@ -405,9 +407,10 @@ export default class ProjectForm extends Component {
         />
         <TextField
           className="full-width-input"
-          label="structure"
+          label="Project Description"
           inputProps={{ maxLength: 1000 }}
           name="structure"
+          helperText="max 1000 character"
           error={!this.checkIfFieldIsValid("structure")}
           multiline
           InputLabelProps={{
@@ -421,7 +424,7 @@ export default class ProjectForm extends Component {
         />
         <TextField
           select
-          label="sector"
+          label="Sector"
           error={!this.checkIfFieldIsValid("sector")}
           required
           className="full-width-input"
@@ -447,7 +450,7 @@ export default class ProjectForm extends Component {
 
         <TextField
           select
-          label="refugee investment type"
+          label="Refugee Investment Type"
           error={!this.checkIfFieldIsValid("refugeeInvestmentType")}
           required
           InputLabelProps={{
@@ -472,7 +475,7 @@ export default class ProjectForm extends Component {
         </TextField>
         <AutoComplete
           suggestions={this.state.allCountries}
-          label="countries"
+          label="Countries"
           handleChange={value => {
             this.setChoosenFields("countries", value);
           }}

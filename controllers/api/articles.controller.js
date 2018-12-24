@@ -30,6 +30,36 @@ module.exports.getArticlesPage = (req, res) => {
     });
 };
 
+module.exports.getArticlesRequests = (req, res) => {
+  db.Article.findAndCountAll({
+    where: {
+      pending: true
+    }
+  })
+    .then(result => {
+      res.json(result);
+    })
+    .catch(err => {
+      res.send(err);
+    });
+};
+
+module.exports.acceptArticle = (req, res) => {
+  db.Article.findOne({
+    where: {
+      id: req.query.id
+    }
+  })
+    .then(result => {
+      result.update({ pending: false }).then(result => {
+        res.json(result);
+      });
+    })
+    .catch(err => {
+      res.send(err);
+    });
+};
+
 module.exports.getArticle = (req, res) => {
   db.Article.findAll({
     where: {
