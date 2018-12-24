@@ -5,7 +5,8 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import "./requests.css";
-import { Paper, CardMedia } from "@material-ui/core";
+import { CardMedia } from "@material-ui/core";
+import Axios from "axios";
 
 const NoRequests = props => {
   return (
@@ -89,9 +90,26 @@ export default class Requests extends Component {
     super(props);
     this.state = {
       projectRequests: [],
-      blogRequests: []
+      articleRequests: []
     };
   }
+
+  componentDidMount() {
+    this.fetchRequests("article");
+    this.fetchRequests("project");
+  }
+
+  fetchRequests = itemName => {
+    const url = `/api/requests/${itemName}s`;
+    Axios.get(url)
+      .then(result => {
+        const stateKey = itemName + "Requests";
+        this.setState({ [stateKey]: result.data.rows });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   render() {
     return (
@@ -100,7 +118,11 @@ export default class Requests extends Component {
           requests={this.state.projectRequests}
           itemName={"project"}
         />
-        <RequestsList requests={this.state.blogRequests} itemName={"blog"} />
+        <RequestsList
+          requests={this.state.articleRequests}
+          handleAccept={this.handleAccept}
+          itemName={"blog"}
+        />
       </div>
     );
   }
