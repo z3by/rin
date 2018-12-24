@@ -70,9 +70,10 @@ router.get("/projects/:id", projectsAPI.getProject);
 router.post("/projects", projectsAPI.addProject);
 router.put("/projects/:id", projectsAPI.updateProject);
 router.delete("/projects/:id", projectsAPI.deleteProjects);
-// // project requests
-router.get("/requests", projectsAPI.getProjectRequestsPage);
-router.get("/requests/accept/:id", projectsAPI.acceptRequest);
+
+//// requests routes ////
+router.get("/requests/projects", projectsAPI.getProjectRequestsPage);
+router.get("/requests/projects/accept/:id", projectsAPI.acceptRequest);
 
 // investors routes
 router.get("/investors", investorsAPI.getInvestors);
