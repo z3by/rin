@@ -112,16 +112,34 @@ export default class Requests extends Component {
   };
 
   render() {
+    const projectRequests = [];
+    const articleRequests = [];
+    this.state.projectRequests.forEach(project => {
+      const request = {
+        id: project.id,
+        title: project.name,
+        subtitle: project.organization,
+        img: project.img
+      };
+      projectRequests.push(request);
+    });
+
+    this.state.articleRequests.forEach(article => {
+      const request = {
+        id: article.id,
+        title: article.title,
+        subtitle: article.subtitle,
+        img: article.img
+      };
+      articleRequests.push(request);
+    });
     return (
       <div>
+        <RequestsList requests={projectRequests} itemName={"project"} />
         <RequestsList
-          requests={this.state.projectRequests}
-          itemName={"project"}
-        />
-        <RequestsList
-          requests={this.state.articleRequests}
+          requests={articleRequests}
           handleAccept={this.handleAccept}
-          itemName={"blog"}
+          itemName={"article"}
         />
       </div>
     );
