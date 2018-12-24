@@ -1,13 +1,13 @@
 const db = require("../../models/index");
 
-module.exports.getUsers = (req, res) => {
-    db.User.findAll({}).then(result => {
+module.exports.getPermissions = (req, res) => {
+    db.Permission.findAll({}).then(result => {
         res.json(result);
     });
 };
 
-module.exports.getUser = (req, res) => {
-    db.User.findAll({
+module.exports.getPermission = (req, res) => {
+    db.Permission.findAll({
         where: {
             id: req.params.id
         }
@@ -20,10 +20,9 @@ module.exports.getUser = (req, res) => {
         });
 };
 
-module.exports.addUser = (req, res) => {
+module.exports.addPermission = (req, res) => {
     let data = req.body;
-
-    db.User.create(data)
+    db.Permission.create(data)
         .then(result => {
             res.status(201).json(result);
         })
