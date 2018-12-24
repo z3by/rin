@@ -17,6 +17,7 @@ const refugeeInvestmentTypesAPI = require("../controllers/api/refugeeInvestmentT
 const locationAPI = require("../controllers/api/locations.controller");
 const contactsAPI = require("../controllers/api/contacts.controller");
 const rolesAPI = require("../controllers/api/roles.controller");
+const usersAPI = require("../controllers/api/users.controller");
 
 // upload image route
 router.post("/upload/img", s3Config.uploadImg, (req, res) => {
@@ -147,4 +148,8 @@ router.get("/roles", rolesAPI.getRoles);
 router.get("/roles/:id", rolesAPI.getRole);
 router.post("/roles", rolesAPI.addRole);
 
+// users routes
+router.get("/users", usersAPI.getUsers);
+router.get("/users/:id", usersAPI.getUser);
+router.post("/users", usersAPI.addUser);
 module.exports = router;
