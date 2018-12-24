@@ -1,4 +1,7 @@
 import React from "react";
+import Typography from "@material-ui/core/Typography";
+import Request from "./RequestCard.component";
+import NoRequests from "./NoRequests.component";
 
 export default props => {
   return (
@@ -10,7 +13,7 @@ export default props => {
       {!props.requests.length ? (
         <NoRequests show={true} />
       ) : (
-        <ul style={{ listStyle: "none", padding: 0 }} className="grid-4">
+        <ul style={{ listStyle: "none", padding: 0 }}>
           {props.requests.map((request, i) => {
             return (
               <li key={i}>

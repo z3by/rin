@@ -1,4 +1,10 @@
 import React from "react";
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import Button from "@material-ui/core/Button";
+import { CardMedia } from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
 
 export default props => {
   return (
@@ -10,7 +16,7 @@ export default props => {
           {props.request.subtitle}
         </Typography>
       </CardContent>
-      <CardActions style={{ display: "flex", justifyContent: "center" }}>
+      <CardActions style={{ display: "flex", justifyContent: "flex-end" }}>
         <Button
           onClick={() => {
             props.handleAccept(props.request.id, props.itemName);
