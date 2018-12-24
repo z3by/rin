@@ -16,6 +16,7 @@ const sectorsAPI = require("../controllers/api/sectors.controller");
 const refugeeInvestmentTypesAPI = require("../controllers/api/refugeeInvestmentTypes.controller");
 const locationAPI = require("../controllers/api/locations.controller");
 const contactsAPI = require("../controllers/api/contacts.controller");
+const rolesAPI = require("../controllers/api/roles.controller");
 
 // upload image route
 router.post("/upload/img", s3Config.uploadImg, (req, res) => {
@@ -140,4 +141,10 @@ router.get("/researches/:id", libraryAPI.getResearch);
 router.post("/researches", libraryAPI.addResearch);
 router.put("/researches/:id", libraryAPI.updateResearch);
 router.delete("/researches/:id", libraryAPI.deleteResearches);
+
+// roles routes
+router.get("/roles", rolesAPI.getRoles);
+router.get("/roles/:id", rolesAPI.getRole);
+router.post("/roles", rolesAPI.addRole);
+
 module.exports = router;
