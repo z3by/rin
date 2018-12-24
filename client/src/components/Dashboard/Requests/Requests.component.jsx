@@ -75,7 +75,11 @@ const RequestsList = props => {
           {props.requests.map((request, i) => {
             return (
               <li key={i}>
-                <Request request={request} itemName={props.itemName} />
+                <Request
+                  request={request}
+                  handleAccept={props.handleAccept}
+                  itemName={props.itemName}
+                />
               </li>
             );
           })}
@@ -94,17 +98,12 @@ export default class Requests extends Component {
     };
   }
 
-  componentDidMount() {
-    this.fetchRequests("article");
-    this.fetchRequests("project");
-  }
+  handleAccept = (id, itemName) => {
+    const url = `/api/${itemName}s/${id}`;
 
-  fetchRequests = itemName => {
-    const url = `/api/requests/${itemName}s`;
-    Axios.get(url)
-      .then(result => {
-        const stateKey = itemName + "Requests";
-        this.setState({ [stateKey]: result.data.rows });
+    Axios.put(url, { pending: false })
+      .then(() => {
+        this.props.fetchRequests(itemName);
       })
       .catch(err => {
         console.log(err);
@@ -112,32 +111,15 @@ export default class Requests extends Component {
   };
 
   render() {
-    const projectRequests = [];
-    const articleRequests = [];
-    this.state.projectRequests.forEach(project => {
-      const request = {
-        id: project.id,
-        title: project.name,
-        subtitle: project.organization,
-        img: project.img
-      };
-      projectRequests.push(request);
-    });
-
-    this.state.articleRequests.forEach(article => {
-      const request = {
-        id: article.id,
-        title: article.title,
-        subtitle: article.subtitle,
-        img: article.img
-      };
-      articleRequests.push(request);
-    });
     return (
       <div>
-        <RequestsList requests={projectRequests} itemName={"project"} />
         <RequestsList
-          requests={articleRequests}
+          handleAccept={this.handleAccept}
+          requests={this.props.projectRequests}
+          itemName={"project"}
+        />
+        <RequestsList
+          requests={this.props.articleRequests}
           handleAccept={this.handleAccept}
           itemName={"article"}
         />

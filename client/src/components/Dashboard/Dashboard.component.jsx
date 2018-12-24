@@ -23,14 +23,14 @@ export default class Dashboard extends Component {
     this.state = {
       sidebarToggled: false,
       requestsCount: 0,
-      requests: []
+      projectRequests: [],
+      articleRequests: []
     };
   }
 
   componentDidMount() {
     document.querySelector(".navbar").style.display = "none";
     document.querySelector(".logo").style.display = "none";
-    this.fetchRequests();
   }
   componentWillUnmount() {
     document.querySelector(".navbar").style.display = "block";
@@ -42,6 +42,8 @@ export default class Dashboard extends Component {
         this.props.history.push("/admin");
       }
     });
+    this.fetchProjectsRequests();
+    this.fetchArticlesRequests();
   }
 
   toggleDrawer = () => {
@@ -50,13 +52,34 @@ export default class Dashboard extends Component {
     });
   };
 
-  fetchRequests = () => {
-    Axios.get("/api/requests").then(result => {
-      this.setState({
-        requestsCount: result.data.count,
-        requests: result.data.rows
+  fetchProjectsRequests = () => {
+    const url = `/api/requests/projects`;
+    Axios.get(url)
+      .then(result => {
+        const ProjectData = result.data.rows.map(project => {
+          return {
+            id: project.id,
+            title: project.name,
+            subtitle: project.organization,
+            img: project.img
+          };
+        });
+        this.setState({ projectRequests: ProjectData });
+      })
+      .catch(err => {
+        console.log(err);
       });
-    });
+  };
+
+  fetchArticlesRequests = () => {
+    const url = `/api/requests/articles`;
+    Axios.get(url)
+      .then(result => {
+        this.setState({ articleRequests: result.data.rows });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   render() {
@@ -98,7 +121,8 @@ export default class Dashboard extends Component {
             render={() => (
               <Requests
                 {...this.props}
-                requests={this.state.requests}
+                projectRequests={this.state.projectRequests}
+                articleRequests={this.state.articleRequests}
                 fetchRequests={this.fetchRequests}
               />
             )}
