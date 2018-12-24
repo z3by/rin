@@ -118,11 +118,6 @@ export default class Requests extends Component {
           requests={this.props.projectRequests}
           itemName={"project"}
         />
-        <RequestsList
-          requests={this.props.articleRequests}
-          handleAccept={this.handleAccept}
-          itemName={"article"}
-        />
       </div>
     );
   }
