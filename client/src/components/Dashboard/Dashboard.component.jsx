@@ -22,15 +22,14 @@ export default class Dashboard extends Component {
     super(props);
     this.state = {
       sidebarToggled: false,
-      requestsCount: 0,
-      requests: []
+      requestsCount: 0
     };
   }
 
   componentDidMount() {
     document.querySelector(".navbar").style.display = "none";
     document.querySelector(".logo").style.display = "none";
-    this.fetchRequests();
+    this.fetchReqCount();
   }
   componentWillUnmount() {
     document.querySelector(".navbar").style.display = "block";
@@ -50,11 +49,14 @@ export default class Dashboard extends Component {
     });
   };
 
-  fetchRequests = () => {
-    Axios.get("/api/requests").then(result => {
-      this.setState({
-        requestsCount: result.data.count,
-        requests: result.data.rows
+  fetchReqCount = () => {
+    Axios.get("/api/requests/projects").then(res => {
+      this.setState({ requestsCount: res.data.count }, () => {
+        Axios.get("/api/requests/articles").then(res => {
+          this.setState({
+            requestsCount: this.state.requestsCount + res.data.count
+          });
+        });
       });
     });
   };
@@ -65,7 +67,6 @@ export default class Dashboard extends Component {
         <Sidebar
           toggleDrawer={this.toggleDrawer}
           toggled={this.state.sidebarToggled}
-          fetchRequests={this.fetchRequests}
         />
         <Navbar
           {...this.props}
@@ -96,11 +97,7 @@ export default class Dashboard extends Component {
           <Route
             path="/dashboard/requests"
             render={() => (
-              <Requests
-                {...this.props}
-                requests={this.state.requests}
-                fetchRequests={this.fetchRequests}
-              />
+              <Requests {...this.props} fetchReqCount={this.fetchReqCount} />
             )}
           />
           <Route path="/dashboard/addproject" component={ProjectForm} />

@@ -16,12 +16,12 @@ import Dashboard from "../Dashboard/Dashboard.component";
 import SignUpLogIn from "../SignUpLogIn/SignUpLogIn.component";
 import StoryInfo from "../Dashboard/StoryInfo/StoryInfo.component";
 import MoreStories from "../Stories/MoreStories/MoreStories.component";
-import AddProject from "../AddProject/AddProject.component";
 import AdminList from "../general-components/AdminList/AdminList.component";
 import ArticleInfo from "../Dashboard/ArticleInfo/ArticleInfo.component";
 import InvestorForm from "../Dashboard/InvestorForm/InvestorForm.component";
 import FounderForm from "../Dashboard/FounderForm/FounderForm.component";
 import ArticleForm from "../Dashboard/ArticleForm/ArticleForm.component";
+import ProjectForm from "../Dashboard/ProjectForm/ProjectForm.component";
 
 export default class MyRouter extends Component {
   render() {
@@ -35,7 +35,6 @@ export default class MyRouter extends Component {
             <Route path="/stories" component={Stories} />
             <Route path="/all-stories" component={MoreStories} />
             <Route path="/map" component={Map} />
-            <Route path="/add-project" component={AddProject} />
             <Route path="/data" component={Data} />
             <Route path="/news" component={News} />
             <Route path="/blog/:id" component={ArticleInfo} />
@@ -47,6 +46,7 @@ export default class MyRouter extends Component {
             <Route path="/addfounder" component={FounderForm} />
             <Route path="/addinvestor" component={InvestorForm} />
             <Route path="/addblog" component={ArticleForm} />
+            <Route path="/addproject" component={ProjectForm} />
             <Route path="/dashboard" component={Dashboard} />
             <Route exact path="/" component={Landing} />
             <Route component={Landing} />
