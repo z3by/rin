@@ -57,24 +57,19 @@ module.exports.deleteRole = (req, res) => {
         });
 };
 
-module.exports.addRolePermissions = (req, res) => {
+module.exports.setRolePermissions = (req, res) => {
     let data = req.body;
     db.Role.findOne({ where: { id: data.roleId } })
         .then(role => {
-            data.permissionsIds.forEach(permissionId => {
-                db.Permission.find({ where: { id: permissionId } }).then(permission => {
-                    role.addPermission(permission)
-                        .then(result => {
-                            console.log("Permission has been added");
-                        })
-                        .catch(err => {
-                            console.log(err);
-                        });
+            role.setPermissions(data.permissionsIds)
+                .then(result => {
+                    res.json(result);
                 })
-            });
-            res.send(201);
+                .catch(err => {
+                    res.status(400).send(err);
+                });
         })
         .catch(err => {
-            console.log(err);
-        })
+            res.send(err);
+        });
 };
