@@ -149,6 +149,9 @@ router.get("/roles", rolesAPI.getRoles);
 router.get("/roles/:id", rolesAPI.getRole);
 router.post("/roles", rolesAPI.addRole);
 router.post("/roles/addpermissions", rolesAPI.addRolePermissions);
+router.put("/roles/:id", rolesAPI.updateRole);
+router.delete("/roles/:id", rolesAPI.deleteRole);
+
 
 // users routes
 router.get("/users", usersAPI.getUsers);

@@ -31,6 +31,34 @@ module.exports.addRole = (req, res) => {
         });
 };
 
+module.exports.updateRole = (req, res) => {
+    let data = req.body;
+    db.Role.update(data, { where: { id: req.params.id } })
+        .then(result => {
+            res.json(result);
+        })
+        .catch(err => {
+            res.status(400).send(err);
+        });
+};
+
+
+
+module.exports.deleteRole = (req, res) => {
+    let data = req.body;
+    db.Role.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+        .then(result => {
+            res.json(result);
+        })
+        .catch(err => {
+            res.status(400).send(err);
+        });
+}
+
 module.exports.addRolePermissions = (req, res) => {
     let data = req.body;
     db.Role.findOne({ where: { id: data.roleId } })
