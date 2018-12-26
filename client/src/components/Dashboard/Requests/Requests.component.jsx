@@ -77,6 +77,7 @@ class Requests extends React.Component {
           <TabContainer>
             {
               <RequestList
+                {...this.props}
                 itemName="project"
                 requests={this.state.projectRequests}
               />
@@ -87,6 +88,7 @@ class Requests extends React.Component {
           <TabContainer>
             {
               <RequestList
+                {...this.props}
                 itemName="article"
                 requests={this.state.articleRequests}
               />
