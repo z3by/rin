@@ -16,6 +16,7 @@ import ArticleInfo from "./ArticleInfo/ArticleInfo.component";
 import Requests from "./Requests/Requests.component";
 import ResearchInfo from "./ResearchInfo/ResearchInfo.component";
 import NewsInfo from "./NewsInfo/NewsInfo.component";
+import DashboardHome from "./DashboardHome/DashboardHome.component";
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -74,6 +75,7 @@ export default class Dashboard extends Component {
           requestsCount={this.state.requestsCount}
         />
         <main>
+          <Route path="/dashboard" exact component={DashboardHome} />
           <Route path="/dashboard/projects/:id" component={ProjectInfo} />
           <Route
             path="/dashboard/projects"

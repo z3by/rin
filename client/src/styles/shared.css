@@ -734,3 +734,7 @@ option:hover {
   color: var(--color-2);
   text-decoration: underline;
 }
+
+.py-10 {
+  padding: 10px auto;
+}
