@@ -157,6 +157,8 @@ router.delete("/roles/:id", rolesAPI.deleteRole);
 router.get("/users", usersAPI.getUsers);
 router.get("/users/:id", usersAPI.getUser);
 router.post("/users", usersAPI.addUser);
+router.put("/users/:id", usersAPI.updateUser);
+router.delete("/users/:id", usersAPI.deleteUser);
 
 // permissions routes
 router.get("/permissions", permissionsAPI.getPermissions);

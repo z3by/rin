@@ -42,8 +42,6 @@ module.exports.updateRole = (req, res) => {
         });
 };
 
-
-
 module.exports.deleteRole = (req, res) => {
     let data = req.body;
     db.Role.destroy({
@@ -57,7 +55,7 @@ module.exports.deleteRole = (req, res) => {
         .catch(err => {
             res.status(400).send(err);
         });
-}
+};
 
 module.exports.addRolePermissions = (req, res) => {
     let data = req.body;

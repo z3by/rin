@@ -31,3 +31,29 @@ module.exports.addUser = (req, res) => {
             res.send(err);
         });
 };
+
+module.exports.updateUser = (req, res) => {
+    let data = req.body;
+    db.User.update(data, { where: { id: req.params.id } })
+        .then(result => {
+            res.json(result);
+        })
+        .catch(err => {
+            res.status(400).send(err);
+        });
+};
+
+module.exports.deleteUser = (req, res) => {
+    let data = req.body;
+    db.User.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+        .then(result => {
+            res.json(result);
+        })
+        .catch(err => {
+            res.status(400).send(err);
+        });
+};
