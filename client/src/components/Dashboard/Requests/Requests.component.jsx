@@ -78,6 +78,11 @@ class Requests extends React.Component {
             {
               <RequestList
                 {...this.props}
+                fetchReqCount={() => {
+                  this.props.fetchReqCount();
+                  this.fetchArticlesRequests();
+                  this.fetchProjectsRequests();
+                }}
                 itemName="project"
                 requests={this.state.projectRequests}
               />
@@ -90,6 +95,11 @@ class Requests extends React.Component {
               <RequestList
                 {...this.props}
                 itemName="article"
+                fetchReqCount={() => {
+                  this.props.fetchReqCount();
+                  this.fetchArticlesRequests();
+                  this.fetchProjectsRequests();
+                }}
                 requests={this.state.articleRequests}
               />
             }

@@ -16,10 +16,9 @@ class RequestCard extends React.Component {
     const id = this.props.request.id;
     const url = `/api/requests/${this.props.itemName}s/accept/${id}`;
 
-    Axios.put(url, {})
+    Axios.put(url)
       .then(res => {
-        alert("accepted");
-        console.log(res.data);
+        this.props.fetchReqCount();
       })
       .catch(err => {
         alert(err);
@@ -44,7 +43,7 @@ class RequestCard extends React.Component {
 
     Axios.delete(url)
       .then(res => {
-        alert("deleted");
+        this.props.fetchReqCount();
       })
       .catch(err => {
         alert(err);

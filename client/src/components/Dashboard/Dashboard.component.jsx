@@ -22,15 +22,14 @@ export default class Dashboard extends Component {
     super(props);
     this.state = {
       sidebarToggled: false,
-      requestsCount: 0,
-      projectRequests: [],
-      articleRequests: []
+      requestsCount: 0
     };
   }
 
   componentDidMount() {
     document.querySelector(".navbar").style.display = "none";
     document.querySelector(".logo").style.display = "none";
+    this.fetchReqCount();
   }
   componentWillUnmount() {
     document.querySelector(".navbar").style.display = "block";
@@ -42,8 +41,6 @@ export default class Dashboard extends Component {
         this.props.history.push("/admin");
       }
     });
-    this.fetchProjectsRequests();
-    this.fetchArticlesRequests();
   }
 
   toggleDrawer = () => {
@@ -52,34 +49,16 @@ export default class Dashboard extends Component {
     });
   };
 
-  fetchProjectsRequests = () => {
-    const url = `/api/requests/projects`;
-    Axios.get(url)
-      .then(result => {
-        const ProjectData = result.data.rows.map(project => {
-          return {
-            id: project.id,
-            title: project.name,
-            subtitle: project.organization,
-            img: project.img
-          };
+  fetchReqCount = () => {
+    Axios.get("/api/requests/projects").then(res => {
+      this.setState({ requestsCount: res.data.count }, () => {
+        Axios.get("/api/requests/articles").then(res => {
+          this.setState({
+            requestsCount: this.state.requestsCount + res.data.count
+          });
         });
-        this.setState({ projectRequests: ProjectData });
-      })
-      .catch(err => {
-        console.log(err);
       });
-  };
-
-  fetchArticlesRequests = () => {
-    const url = `/api/requests/articles`;
-    Axios.get(url)
-      .then(result => {
-        this.setState({ articleRequests: result.data.rows });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    });
   };
 
   render() {
@@ -88,7 +67,6 @@ export default class Dashboard extends Component {
         <Sidebar
           toggleDrawer={this.toggleDrawer}
           toggled={this.state.sidebarToggled}
-          fetchRequests={this.fetchRequests}
         />
         <Navbar
           {...this.props}
@@ -119,12 +97,7 @@ export default class Dashboard extends Component {
           <Route
             path="/dashboard/requests"
             render={() => (
-              <Requests
-                {...this.props}
-                projectRequests={this.state.projectRequests}
-                articleRequests={this.state.articleRequests}
-                fetchRequests={this.fetchRequests}
-              />
+              <Requests {...this.props} fetchReqCount={this.fetchReqCount} />
             )}
           />
           <Route path="/dashboard/addproject" component={ProjectForm} />
