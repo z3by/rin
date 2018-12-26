@@ -7,6 +7,8 @@ import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
+import Axios from "axios";
+import RequestList from "./RequsetList.component";
 
 function TabContainer(props) {
   return (
@@ -28,7 +30,26 @@ const styles = theme => ({
 
 class Requests extends React.Component {
   state = {
-    value: 0
+    value: 0,
+    projectRequests: [],
+    articleRequests: []
+  };
+
+  componentDidMount() {
+    this.fetchArticlesRequests();
+    this.fetchProjectsRequests();
+  }
+
+  fetchArticlesRequests = () => {
+    Axios.get("/api/requests/articles").then(res => {
+      this.setState({ articleRequests: res.data.rows });
+    });
+  };
+
+  fetchProjectsRequests = () => {
+    Axios.get("/api/requests/projects").then(res => {
+      this.setState({ projectRequests: res.data.rows });
+    });
   };
 
   handleChange = (event, value) => {
@@ -52,8 +73,26 @@ class Requests extends React.Component {
           </Tabs>
         </AppBar>
 
-        {value === 0 && <TabContainer>project requests</TabContainer>}
-        {value === 1 && <TabContainer>article requests</TabContainer>}
+        {value === 0 && (
+          <TabContainer>
+            {
+              <RequestList
+                itemName="project"
+                requests={this.state.projectRequests}
+              />
+            }
+          </TabContainer>
+        )}
+        {value === 1 && (
+          <TabContainer>
+            {
+              <RequestList
+                itemName="article"
+                requests={this.state.articleRequests}
+              />
+            }
+          </TabContainer>
+        )}
       </div>
     );
   }

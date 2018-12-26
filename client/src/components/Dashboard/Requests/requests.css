@@ -19,8 +19,20 @@
 
 .requests-list {
   margin: 40px auto;
+  list-style: none;
 }
 
 .no-requests img {
   height: 200px;
+}
+
+.req-card {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.req-card-btn {
+  height: 50px !important;
+  width: 50px !important;
 }
