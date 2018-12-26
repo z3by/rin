@@ -385,3 +385,52 @@ module.exports.searchProjects = (req, res) => {
       res.status(404).json(err);
     });
 };
+
+module.exports.projectStatistics = (req, res) => {
+  const data = {
+    labels: [],
+    datasets: [
+      {
+        data: []
+      }
+    ]
+  };
+  db.Sector.findAll({}).then(sectors => {
+    const sectorNames = sectors.map(sector => {
+      return sector.name;
+    });
+    data["labels"] = sectorNames;
+    const counts = [];
+    sectors.forEach((sector, i) => {
+      db.Project.count({ where: { sectorId: sector.id } }).then(count => {
+        counts.push(count);
+        if (counts.length == sectorNames.length) {
+          data.datasets = [
+            {
+              data: counts,
+              backgroundColor: [
+                "#e83338",
+                "#ff9068",
+                "#ffb75e",
+                "#8dc26f",
+                "#64b3f4",
+                "#6441a5",
+                "#fc67fa"
+              ],
+              hoverBackgroundColor: [
+                "#e83338",
+                "#ff9068",
+                "#ffb75e",
+                "#8dc26f",
+                "#64b3f4",
+                "#6441a5",
+                "#fc67fa"
+              ]
+            }
+          ];
+          res.send(data);
+        }
+      });
+    });
+  });
+};

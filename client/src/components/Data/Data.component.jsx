@@ -3,21 +3,10 @@ import "./Data.css";
 import axios from "axios";
 import IconButton from "@material-ui/core/IconButton";
 import { Route } from "react-router-dom";
-import MenuItem from "@material-ui/core/MenuItem";
 import Typography from "@material-ui/core/Typography";
 import DataCharts from "./DataCharts/DataCharts.component";
 import Researches from "./Researches/Researches.component";
 
-/*The structure of any chart data object is as the following:
-  somethingData: {
-        // labels: [],
-        // datasets: [{
-        //   label: "",
-        //   data: [],
-        //   backgroundColor: ''
-        // }]
-      }
-*/
 export default class Data extends Component {
   constructor(props) {
     super(props);
@@ -157,7 +146,7 @@ export default class Data extends Component {
         axios
           .get(
             `http://popdata.unhcr.org/api/stats/resettlement.json?year=${
-            labels[j]
+              labels[j]
             }&country_of_asylum=${countriesOfAsylum[i]}`
           )
           .then(res => {
@@ -169,7 +158,7 @@ export default class Data extends Component {
                 }
               }
               datasets[i].data.push(totalValue);
-            })
+            });
           })
           .catch(err => {
             console.log(err);
@@ -262,34 +251,6 @@ export default class Data extends Component {
   };
 
   render() {
-    let {
-      allCountries,
-      isLoadingAsylumSeekersData,
-      isLoadingResettlementData,
-      isLoadingDmographicsData,
-      demographicsSelectedYear,
-      demographicsSelectedCountry,
-      asylumSeekersData,
-      resettlementData,
-      demographicsData
-    } = this.state;
-
-    const years = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017];
-    let allYears = years.map((year, i) => {
-      return (
-        <MenuItem value={year} key={i}>
-          {year}
-        </MenuItem>
-      );
-    });
-
-    let countries = allCountries.map((country, i) => {
-      return (
-        <MenuItem value={country.name} key={i}>
-          {country.name}
-        </MenuItem>
-      );
-    });
     return (
       <div
         className="data fadeInFast"
