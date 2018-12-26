@@ -224,17 +224,16 @@ module.exports.updateProject = (req, res) => {
 };
 
 module.exports.acceptProjectRequest = (req, res) => {
-  const id = req.query.id;
-  Project.findOne({ where: { id } })
+  const id = req.params.id;
+  db.Project.findOne({ where: { id: id } })
     .then(project => {
-      project
-        .update({ pending: false })
-        .then(updated => {
-          res.sendStatus(201);
-        })
-        .catch(err => res.send(err));
+      project.update({ pending: false }).then(result => {
+        res.status(201).json(result);
+      });
     })
-    .catch(err => res.send(err));
+    .catch(err => {
+      res.send(err);
+    });
 };
 
 module.exports.deleteProjects = (req, res) => {
