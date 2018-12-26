@@ -114,3 +114,17 @@ module.exports.searchArticles = (req, res) => {
       res.status(404).json(err);
     });
 };
+
+module.exports.acceptArticleRequest = (req, res) => {
+  const id = req.query.id;
+  Article.findOne({ where: { id } })
+    .then(article => {
+      article
+        .update({ pending: false })
+        .then(updated => {
+          res.sendStatus(201);
+        })
+        .catch(err => res.send(err));
+    })
+    .catch(err => res.send(err));
+};

@@ -223,6 +223,20 @@ module.exports.updateProject = (req, res) => {
   });
 };
 
+module.exports.acceptProjectRequest = (req, res) => {
+  const id = req.query.id;
+  Project.findOne({ where: { id } })
+    .then(project => {
+      project
+        .update({ pending: false })
+        .then(updated => {
+          res.sendStatus(201);
+        })
+        .catch(err => res.send(err));
+    })
+    .catch(err => res.send(err));
+};
+
 module.exports.deleteProjects = (req, res) => {
   db.Location.destroy({ where: { ProjectId: req.params.id } })
     .then(() => {
