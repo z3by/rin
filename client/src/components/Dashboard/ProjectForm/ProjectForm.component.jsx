@@ -21,7 +21,8 @@ export default class ProjectForm extends Component {
       allRefugeeInvestmentTypes: [],
       allSectors: [],
       project: {
-        locations: []
+        locations: [],
+        pending: false
       },
       uploading: {},
       contact: {},
@@ -37,7 +38,17 @@ export default class ProjectForm extends Component {
     this.fetchRefugeeInvestmentTypes();
     this.fetchSectors();
     this.checkIfProjectDateIsPassed();
+    this.checkAuth();
   }
+
+  checkAuth = () => {
+    Axios.get("/users/isadmin").then(result => {
+      const authorized = result.data; // boolean
+      this.setState({
+        project: { ...this.state.project, pending: !authorized }
+      });
+    });
+  };
 
   checkIfProjectDateIsPassed = () => {
     if (!!this.props.match.params.id) {
@@ -204,7 +215,7 @@ export default class ProjectForm extends Component {
     Axios.put("/api/projects/" + this.state.project.id, this.state.project)
       .then(result => {
         this.setState({ adding: false }, () => {
-          this.props.history.push("/dashboard/projects");
+          this.props.history.goBack();
         });
       })
       .catch(err => {
@@ -213,20 +224,17 @@ export default class ProjectForm extends Component {
   };
 
   createProject = () => {
-    this.setState(
-      { project: { ...this.state.project, pending: false }, adding: true },
-      () => {
-        Axios.post("/api/projects", this.state.project)
-          .then(result => {
-            this.setState({ adding: false }, () => {
-              this.props.history.push("/dashboard/projects");
-            });
-          })
-          .catch(err => {
-            this.showErrorMessage(err);
+    this.setState({ project: { ...this.state.project }, adding: true }, () => {
+      Axios.post("/api/projects", this.state.project)
+        .then(result => {
+          this.setState({ adding: false }, () => {
+            this.props.history.goBack();
           });
-      }
-    );
+        })
+        .catch(err => {
+          this.showErrorMessage(err);
+        });
+    });
   };
 
   showErrorMessage = messge => {

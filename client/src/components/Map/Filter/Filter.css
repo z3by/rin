@@ -35,29 +35,37 @@
   color: var(--color-2);
 }
 
-.filter-btn {
+.filter-btns {
   position: fixed;
   bottom: 40px;
   z-index: 120;
-  width: 100px;
-  height: 40px;
-  border: none;
-  font-family: var(--main-font);
-  text-transform: uppercase;
-  left: calc(50vw - 50px);
-  cursor: pointer;
-  font-size: 1.2rem;
-  background: var(--color-2);
-  color: aliceblue;
-}
-.filter-btn:hover {
-  background: var(--light-transparent);
-  color: var(--color-5);
-  font-family: var(--main-font);
-  text-transform: uppercase;
-  left: calc(50vw - 50px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  left: 50vw;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 
+.filter-btn {
+  background: var(--color-2);
+  color: var(--color-1);
+  border: none;
+  margin: 0 10px;
+  padding: 5px 20px;
+  font-size: 1.5rem;
+  text-transform: capitalize;
+}
+
+.filter-btn:hover {
+  background: var(--color-1);
+  color: var(--color-5);
+  cursor: pointer;
+}
+.filter-btn i {
+  padding-right: 10px;
+  font-size: 1.2rem;
+}
 .center-w-50 {
   width: 80%;
   margin-left: 10%;

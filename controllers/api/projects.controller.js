@@ -79,7 +79,6 @@ module.exports.getProjectsPage = (req, res) => {
 module.exports.getProject = (req, res) => {
   db.Project.findAll({
     where: {
-      pending: false,
       id: req.params.id
     },
     include: [
