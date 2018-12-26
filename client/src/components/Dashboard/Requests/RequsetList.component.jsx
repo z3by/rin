@@ -40,7 +40,10 @@ class RequestCard extends React.Component {
   handleReject = () => {
     const id = this.props.request.id;
     const url = `/api/${this.props.itemName}s/${id}`;
-
+    const sure = window.confirm(
+      "are you sure you want to reject this request??"
+    );
+    if (!sure) return;
     Axios.delete(url)
       .then(res => {
         this.props.fetchReqCount();

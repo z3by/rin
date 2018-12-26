@@ -47,8 +47,7 @@ module.exports.getArticlesRequests = (req, res) => {
 module.exports.getArticle = (req, res) => {
   db.Article.findAll({
     where: {
-      id: req.params.id,
-      pending: false
+      id: req.params.id
     }
   })
     .then(result => {
