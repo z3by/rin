@@ -79,7 +79,6 @@ module.exports.getProjectsPage = (req, res) => {
 module.exports.getProject = (req, res) => {
   db.Project.findAll({
     where: {
-      pending: false,
       id: req.params.id
     },
     include: [
@@ -223,17 +222,13 @@ module.exports.updateProject = (req, res) => {
   });
 };
 
-module.exports.acceptRequest = (req, res) => {
-  db.Project.update(
-    { pending: false },
-    {
-      where: {
-        id: req.params.id
-      }
-    }
-  )
-    .then(accepted => {
-      res.status(200).send(accepted);
+module.exports.acceptProjectRequest = (req, res) => {
+  const id = req.params.id;
+  db.Project.findOne({ where: { id: id } })
+    .then(project => {
+      project.update({ pending: false }).then(result => {
+        res.status(201).json(result);
+      });
     })
     .catch(err => {
       res.send(err);

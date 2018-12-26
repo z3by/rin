@@ -57,7 +57,7 @@ export default class Blog extends Component {
   render() {
     return (
       <div
-        className="blog fadeInFast"
+        className="blog"
         style={{
           overflowY: "scroll"
         }}
@@ -84,7 +84,7 @@ export default class Blog extends Component {
               }}
               onClick={this.fetchArticle}
             >
-              Add your Article...
+              Submit your Article...
             </Button>
           </Link>
           <div className="grid-3">

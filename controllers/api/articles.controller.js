@@ -30,11 +30,24 @@ module.exports.getArticlesPage = (req, res) => {
     });
 };
 
+module.exports.getArticlesRequests = (req, res) => {
+  db.Article.findAndCountAll({
+    where: {
+      pending: true
+    }
+  })
+    .then(result => {
+      res.json(result);
+    })
+    .catch(err => {
+      res.send(err);
+    });
+};
+
 module.exports.getArticle = (req, res) => {
   db.Article.findAll({
     where: {
-      id: req.params.id,
-      pending: false
+      id: req.params.id
     }
   })
     .then(result => {
@@ -98,5 +111,18 @@ module.exports.searchArticles = (req, res) => {
     })
     .catch(err => {
       res.status(404).json(err);
+    });
+};
+
+module.exports.acceptArticleRequest = (req, res) => {
+  const id = req.params.id;
+  db.Article.findOne({ where: { id: id } })
+    .then(article => {
+      article.update({ pending: false }).then(result => {
+        res.status(201).json(result);
+      });
+    })
+    .catch(err => {
+      res.send(err);
     });
 };

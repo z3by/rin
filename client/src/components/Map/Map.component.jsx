@@ -7,6 +7,7 @@ import Filter from "./Filter/Filter.component";
 import Spectrum from "./Spectrum/Spectrum.component";
 import { mapApi } from "../../config/map.config";
 import Axios from "axios";
+import { Link } from "react-router-dom";
 
 export default class Map extends Component {
   state = {
@@ -160,14 +161,29 @@ export default class Map extends Component {
           shown={this.state.filterOn}
           resetFilter={this.resetFilter}
         />
-        <button
-          button="true"
-          className="filter-btn"
-          onClick={this.handleFilterToggle}
-          style={{ display: this.state.filterOn ? "none" : "block" }}
-        >
-          filter
-        </button>
+        <div className="filter-btns">
+          <button
+            button="true"
+            className="filter-btn"
+            onClick={this.handleFilterToggle}
+            style={{ display: this.state.filterOn ? "none" : "block" }}
+          >
+            <i className="fas fa-filter" />
+            filter
+          </button>
+          <Link to="/addproject">
+            <button
+              button="true"
+              className="filter-btn"
+              onClick={this.handleFilterToggle}
+              style={{ display: this.state.filterOn ? "none" : "block" }}
+            >
+              <i className="fas fa-plus" />
+              Add Your Project
+            </button>
+          </Link>
+        </div>
+
         <GoogleMapReact
           className="land-map"
           options={options}
