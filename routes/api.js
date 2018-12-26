@@ -148,6 +148,7 @@ router.delete("/researches/:id", libraryAPI.deleteResearches);
 router.get("/roles", rolesAPI.getRoles);
 router.get("/roles/:id", rolesAPI.getRole);
 router.post("/roles", rolesAPI.addRole);
+router.post("/roles/addpermissions", rolesAPI.addRolePermissions);
 
 // users routes
 router.get("/users", usersAPI.getUsers);
