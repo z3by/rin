@@ -164,5 +164,7 @@ router.delete("/users/:id", usersAPI.deleteUser);
 router.get("/permissions", permissionsAPI.getPermissions);
 router.get("/permissions/:id", permissionsAPI.getPermission);
 router.post("/permissions", permissionsAPI.addPermission);
+router.put("/permissions/:id", permissionsAPI.updatePermission);
+router.delete("/permissions/:id", permissionsAPI.deletePermission);
 
 module.exports = router;

@@ -30,3 +30,29 @@ module.exports.addPermission = (req, res) => {
             res.send(err);
         });
 };
+
+module.exports.updatePermission = (req, res) => {
+    let data = req.body;
+    db.Permission.update(data, { where: { id: req.params.id } })
+        .then(result => {
+            res.json(result);
+        })
+        .catch(err => {
+            res.status(400).send(err);
+        });
+};
+
+module.exports.deletePermission = (req, res) => {
+    let data = req.body;
+    db.Permission.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+        .then(result => {
+            res.json(result);
+        })
+        .catch(err => {
+            res.status(400).send(err);
+        });
+};
