@@ -21,7 +21,9 @@ const Dot = props => {
   return (
     <div
       className="dot"
-      style={{ background: color }}
+      style={{
+        background: color
+      }}
       onMouseEnter={() => {
         props.onHover(props.location.ProjectId, props.location);
       }}
@@ -97,10 +99,7 @@ const Dot = props => {
             </Typography>
             <Avatar
               src={props.project.refugeeInvestmentType.img}
-              style={{
-                margin: "0 10px",
-                borderRadius: 0
-              }}
+              style={{ margin: "0 10px", borderRadius: 0 }}
             />
           </div>
 
@@ -113,10 +112,7 @@ const Dot = props => {
                 <Avatar
                   src={sdg.logo}
                   key={i}
-                  style={{
-                    borderRadius: 0,
-                    margin: "0 5px"
-                  }}
+                  style={{ borderRadius: 0, margin: "0 5px" }}
                 />
               );
             })}

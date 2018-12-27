@@ -51,9 +51,12 @@
   background: var(--color-2);
   color: var(--color-1);
   border: none;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   margin: 0 10px;
   padding: 5px 20px;
-  font-size: 1.5rem;
+  font-size: 1rem;
   text-transform: capitalize;
 }
 
@@ -63,8 +66,7 @@
   cursor: pointer;
 }
 .filter-btn i {
-  padding-right: 10px;
-  font-size: 1.2rem;
+  padding-right: 5px;
 }
 .center-w-50 {
   width: 80%;
@@ -84,5 +86,15 @@
   .center-w-50 {
     width: 100%;
     margin-left: 0;
+  }
+
+  .filter-btn {
+    background: var(--color-2);
+    color: var(--color-1);
+    border: none;
+    margin: 0 10px;
+    padding: 5px 5px;
+    font-size: 1rem;
+    text-transform: capitalize;
   }
 }
