@@ -99,21 +99,6 @@ module.exports.deleteArticles = (req, res) => {
     });
 };
 
-module.exports.searchArticles = (req, res) => {
-  db.Article.findAll({
-    where: {
-      title: { [Op.like]: `%${req.query.value}%` }
-    },
-    limit: 10
-  })
-    .then(result => {
-      res.status(200).json(result);
-    })
-    .catch(err => {
-      res.status(404).json(err);
-    });
-};
-
 module.exports.acceptArticleRequest = (req, res) => {
   const id = req.params.id;
   db.Article.findOne({ where: { id: id } })

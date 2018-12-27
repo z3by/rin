@@ -115,23 +115,6 @@ module.exports.deleteStory = (req, res) => {
     });
 };
 
-module.exports.searchStories = (req, res) => {
-  db.Story.findAll({
-    where: {
-      buisness: {
-        [Op.like]: `%${req.query.value}%`
-      }
-    },
-    limit: 10
-  })
-    .then(result => {
-      res.status(200).json(result);
-    })
-    .catch(err => {
-      res.status(404).json(err);
-    });
-};
-
 module.exports.filterStories = (req, res) => {
   const andQuery = [];
 
