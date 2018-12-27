@@ -16,6 +16,10 @@ const sectorsAPI = require("../controllers/api/sectors.controller");
 const refugeeInvestmentTypesAPI = require("../controllers/api/refugeeInvestmentTypes.controller");
 const locationAPI = require("../controllers/api/locations.controller");
 const contactsAPI = require("../controllers/api/contacts.controller");
+const rolesAPI = require("../controllers/api/roles.controller");
+const usersAPI = require("../controllers/api/users.controller");
+const permissionsAPI = require("../controllers/api/permissions.controller");
+const sectionsAPI = require("../controllers/api/sections.controller");
 
 // upload image route
 router.post("/upload/img", s3Config.uploadImg, (req, res) => {
@@ -140,4 +144,36 @@ router.get("/researches/:id", libraryAPI.getResearch);
 router.post("/researches", libraryAPI.addResearch);
 router.put("/researches/:id", libraryAPI.updateResearch);
 router.delete("/researches/:id", libraryAPI.deleteResearches);
+
+// roles routes
+router.get("/roles", rolesAPI.getRoles);
+router.get("/roles/:id", rolesAPI.getRole);
+router.post("/roles", rolesAPI.addRole);
+router.post("/roles/setpermissions", rolesAPI.setRolePermissions);
+router.put("/roles/:id", rolesAPI.updateRole);
+router.delete("/roles/:id", rolesAPI.deleteRole);
+
+
+// users routes
+router.get("/users", usersAPI.getUsers);
+router.get("/users/:id", usersAPI.getUser);
+router.post("/users", usersAPI.addUser);
+router.put("/users/:id", usersAPI.updateUser);
+router.delete("/users/:id", usersAPI.deleteUser);
+
+// permissions routes
+router.get("/permissions", permissionsAPI.getPermissions);
+router.get("/permissions/:id", permissionsAPI.getPermission);
+router.post("/permissions", permissionsAPI.addPermission);
+router.put("/permissions/:id", permissionsAPI.updatePermission);
+router.delete("/permissions/:id", permissionsAPI.deletePermission);
+
+// sections routes
+router.get("/sections", sectionsAPI.getSections);
+router.get("/sections/:id", sectionsAPI.getSectionById);
+router.get("/sectiontitle/:title", sectionsAPI.getSectionByTitle);
+router.post("/sections", sectionsAPI.addSection);
+router.put("/sections/:id", sectionsAPI.updateSection);
+router.delete("/sections/:id", sectionsAPI.deleteSection);
+
 module.exports = router;

@@ -267,6 +267,7 @@ export default class DataCharts extends Component {
 
     render() {
         let {
+            sectionInfo,
             allCountries,
             isLoadingAsylumSeekersData,
             isLoadingResettlementData,
@@ -277,6 +278,8 @@ export default class DataCharts extends Component {
             resettlementData,
             demographicsData
         } = this.state;
+
+        const { body } = this.props;
 
         const years = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017];
         let allYears = years.map((year, i) => {
@@ -296,6 +299,7 @@ export default class DataCharts extends Component {
         });
         return (
             <div>
+                <div>{body}</div>
                 <div className="asylum-seekers-chart">
                     <Typography variant="h4" className="chart-heading color-2">
                         UNHCR Statistics of Asylum Seekers from Syria in{" "}
