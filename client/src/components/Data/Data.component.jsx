@@ -25,7 +25,7 @@ export default class Data extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.getSectionInfo("data");
   }
 
