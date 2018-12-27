@@ -19,6 +19,7 @@ const contactsAPI = require("../controllers/api/contacts.controller");
 const rolesAPI = require("../controllers/api/roles.controller");
 const usersAPI = require("../controllers/api/users.controller");
 const permissionsAPI = require("../controllers/api/permissions.controller");
+const sectionsAPI = require("../controllers/api/section.controller");
 
 // upload image route
 router.post("/upload/img", s3Config.uploadImg, (req, res) => {
@@ -166,5 +167,12 @@ router.get("/permissions/:id", permissionsAPI.getPermission);
 router.post("/permissions", permissionsAPI.addPermission);
 router.put("/permissions/:id", permissionsAPI.updatePermission);
 router.delete("/permissions/:id", permissionsAPI.deletePermission);
+
+// sections routes
+router.get("/sections", sectionsAPI.getSections);
+router.get("/sections/:id", sectionsAPI.getSection);
+router.post("/sections", sectionsAPI.addSection);
+router.put("/sections", sectionsAPI.updateSection);
+router.delete("/sections/:id", sectionsAPI.deleteSection);
 
 module.exports = router;
