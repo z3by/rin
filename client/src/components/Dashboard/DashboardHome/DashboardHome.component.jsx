@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Doughnut } from "react-chartjs-2";
-import { Typography, Card } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import Axios from "axios";
 
 export default class DashboardHome extends Component {

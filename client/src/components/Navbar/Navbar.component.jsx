@@ -19,7 +19,7 @@ export default class Navbar extends Component {
   }
 
   //start counter
-  startCounter = () => { };
+  startCounter = () => {};
 
   onMouseMove = e => {
     const mousePosition = e.clientX;
@@ -97,7 +97,10 @@ export default class Navbar extends Component {
                   <p className="nav-rec-text">about</p>
                   <ul
                     className="nav-rec-menu"
-                    style={{ textAlign: "center", opacity: this.state.collapsed ? "0" : "1" }}
+                    style={{
+                      textAlign: "center",
+                      opacity: this.state.collapsed ? "0" : "1"
+                    }}
                   >
                     <li>
                       <a
