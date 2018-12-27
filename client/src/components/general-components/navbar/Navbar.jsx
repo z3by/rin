@@ -215,6 +215,7 @@ class Navbar extends React.Component {
               <div className={classes.searchIcon}>
                 <SearchIcon />
               </div>
+
               <InputBase
                 placeholder={"Search..."}
                 onChange={this.handleOnChange}
