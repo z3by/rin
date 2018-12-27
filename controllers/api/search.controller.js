@@ -1,11 +1,10 @@
-const suggestions = [
-  { label: "Afghanistan" },
-  { label: "Aland Islands" },
-  { label: "Albania" },
-  { label: "Algeria" },
-  { label: "American Samoa" },
-  { label: "Andorra" }
-];
+const db = require("../../models/index");
+
 module.exports.search = (req, res) => {
-  res.json(suggestions);
+  res.send([{ label: "ahamd", type: "project", id: "1" }, { label: "shatha" }]);
+};
+
+module.exports.searchProjects = (req, res, next) => {
+  console.log(req.query);
+  next();
 };

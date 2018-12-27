@@ -127,10 +127,10 @@ class Navbar extends React.Component {
 
   handleSearch = e => {
     if (e.target.value.length < 3) {
-      return;
+      return this.setState({ suggestions: [] });
     }
     Axios.get("/api/search", {
-      params: e.target.value
+      params: { inputValue: e.target.value }
     })
       .then(result => {
         this.setState({ suggestions: result.data });
@@ -228,8 +228,8 @@ class Navbar extends React.Component {
                   }}
                 >
                   <MenuList>
-                    {this.state.suggestions.map(suggestion => {
-                      return <MenuItem>{suggestion.label}</MenuItem>;
+                    {this.state.suggestions.map((suggestion, i) => {
+                      return <MenuItem key={i}>{suggestion.label}</MenuItem>;
                     })}
                   </MenuList>
                 </Paper>
