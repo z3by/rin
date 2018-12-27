@@ -139,6 +139,8 @@ router.get("/researches/:id", libraryAPI.getResearch);
 router.post("/researches", libraryAPI.addResearch);
 router.put("/researches/:id", libraryAPI.updateResearch);
 router.delete("/researches/:id", libraryAPI.deleteResearches);
-module.exports = router;
 
+router.use("/search", searchAPI.searchProjects);
 router.get("/search", searchAPI.search);
+
+module.exports = router;
