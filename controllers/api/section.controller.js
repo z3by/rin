@@ -6,10 +6,24 @@ module.exports.getSections = (req, res) => {
     });
 };
 
-module.exports.getSection = (req, res) => {
+module.exports.getSectionById = (req, res) => {
     db.Section.findAll({
         where: {
             id: req.params.id
+        }
+    })
+        .then(result => {
+            res.json(result);
+        })
+        .catch(err => {
+            res.send(err);
+        });
+};
+
+module.exports.getSectionByTitle = (req, res) => {
+    db.Section.findAll({
+        where: {
+            title: req.params.title
         }
     })
         .then(result => {

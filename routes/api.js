@@ -170,7 +170,8 @@ router.delete("/permissions/:id", permissionsAPI.deletePermission);
 
 // sections routes
 router.get("/sections", sectionsAPI.getSections);
-router.get("/sections/:id", sectionsAPI.getSection);
+router.get("/sections/:id", sectionsAPI.getSectionById);
+router.get("/sectiontitle/:title", sectionsAPI.getSectionByTitle);
 router.post("/sections", sectionsAPI.addSection);
 router.put("/sections", sectionsAPI.updateSection);
 router.delete("/sections/:id", sectionsAPI.deleteSection);
