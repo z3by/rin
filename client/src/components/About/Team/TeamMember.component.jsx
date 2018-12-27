@@ -24,11 +24,7 @@ const styles = theme => ({
 class RecipeReviewCard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      memberInfo: {
-        isDetailsShown: false
-      }
-    };
+    this.state = {};
   }
 
   showMmeberInfo = () => {
@@ -41,7 +37,6 @@ class RecipeReviewCard extends React.Component {
     return (
       <Card
         className="member-card"
-        onClick={this.showMmeberInfo}
         style={{ overflowY: shown ? "scroll" : "hidden" }}
       >
         <CardHeader
@@ -56,22 +51,9 @@ class RecipeReviewCard extends React.Component {
           }
           title={this.props.bio.name}
         />
-        <CardMedia
-          style={{ display: shown ? "none" : "block" }}
-          className="card-img"
-          image={this.props.bio.img}
-          title="Paella dish"
-        />
-        <Typography
-          className="padding-20"
-          variant="body1"
-          style={{ display: !shown ? "none" : "block" }}
-        >
-          <Typography
-            className="color-3"
-            variant="subtitle1"
-            style={{ display: !shown ? "none" : "block" }}
-          >
+        <img src={this.props.bio.img} alt="" className="member-img" />
+        <Typography className="padding-20 bio-info" variant="body1">
+          <Typography className="color-3" variant="subtitle1">
             {this.props.bio.title}
           </Typography>
           {this.props.bio.description}

@@ -1,27 +1,58 @@
 .member-card {
   height: 300px;
   width: 100%;
+  position: relative;
+  margin: 10px;
 }
+.member-card img {
+  width: 100%;
+
+  -webkit-transition: all 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: all 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
 .member-card:hover {
   -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
   cursor: pointer;
+  overflow-y: auto !important;
   background: var(--color-1);
   -webkit-transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
   transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.card-img {
-  height: 200px !important;
-  background-size: cover !important;
+.member-card:hover .member-img {
+  width: 110%;
+  opacity: 0;
+  display: none;
+}
+
+.member-card .bio-info {
+  opacity: 0;
+  display: none;
+  -webkit-transition: all 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition: all 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.member-card:hover .bio-info {
+  opacity: 1;
+  display: block;
+}
+
+@media (max-width: 1024px) {
+  .member-card {
+    height: 400px !important;
+  }
 }
 
 @media (max-width: 768px) {
   .member-card {
-    height: 600px;
+    height: 600px !important;
   }
+}
 
-  .card-img {
-    height: 500px !important;
+@media (max-width: 500px) {
+  .member-card {
+    height: 400px !important;
   }
 }

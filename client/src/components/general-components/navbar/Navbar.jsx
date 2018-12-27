@@ -240,6 +240,7 @@ class Navbar extends React.Component {
                 <InputBase
                   placeholder={"Search..."}
                   onChange={this.handleOnChange}
+                  onBlur={() => this.setState({ suggestions: [] })}
                   onKeyUp={this.handleSearch}
                   classes={{
                     root: classes.inputRoot,
