@@ -45,7 +45,7 @@ export default class Roles extends Component {
               </CardContent>
               <CardActions className="role-card-actions">
               
-                <Link to={`/dashboard/update`}>
+                <Link to={`/dashboard/updaterole/${role.id}`}>
                   <IconButton>
                     <i
                       className="fas fa-edit"

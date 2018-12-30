@@ -82,6 +82,7 @@ export default class Dashboard extends Component {
           <Route path="/dashboard/settings" exact component={Settings} />
           <Route path="/dashboard/roles" component={Roles} />
           <Route path="/dashboard/addrole" component={RoleForm} />
+          <Route path="/dashboard/updaterole/:id" component={RoleForm} />
           <Route path="/dashboard/projects/:id" component={ProjectInfo} />
           <Route
             path="/dashboard/projects"
