@@ -629,6 +629,11 @@ option:hover {
   justify-content: center;
 }
 
+.justify-content-between {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
 .bg-1 {
   background-color: var(--color-1);
 }
