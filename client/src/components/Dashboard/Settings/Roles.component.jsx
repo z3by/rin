@@ -4,10 +4,12 @@ import {
   IconButton,
   CardContent,
   Typography,
-  CardActions
+  CardActions,
+  Fab
 } from "@material-ui/core";
 import Axios from "axios";
 import { Link } from "react-router-dom";
+import AddIcon from "@material-ui/icons/Add";
 
 export default class Roles extends Component {
   state = {
@@ -24,26 +26,25 @@ export default class Roles extends Component {
     });
   };
 
+  deleteRole = id => {
+    Axios.delete("/api/roles/" + id).then(res => {
+      this.fetchRoles();
+    });
+  };
+
   render() {
     return (
       <div className="container">
         {this.state.roles.map((role, i) => {
           return (
-            <Card style={{ margin: 5 }} className="role-card">
+            <Card style={{ margin: 5 }} key={i} className="role-card">
               <CardContent>
                 <Typography variant="h6" className="color-3">
                   Role Name: <span>{role.name}</span>
                 </Typography>
               </CardContent>
               <CardActions className="role-card-actions">
-                <Link to={"/dashboard/"}>
-                  <IconButton>
-                    <i
-                      className="far fa-eye"
-                      style={{ fontSize: "1rem", margin: 0 }}
-                    />
-                  </IconButton>
-                </Link>
+              
                 <Link to={`/dashboard/update`}>
                   <IconButton>
                     <i
@@ -56,7 +57,11 @@ export default class Roles extends Component {
                     />
                   </IconButton>
                 </Link>
-                <a>
+                <a
+                  onClick={() => {
+                    this.deleteRole(role.id);
+                  }}
+                >
                   <IconButton>
                     <i
                       className="fas fa-trash-alt"
@@ -68,6 +73,11 @@ export default class Roles extends Component {
             </Card>
           );
         })}
+        <Link to="/dashboard/addrole">
+          <Fab  aria-label="Add" style={{backgroundColor: 'var(--color-2)'}} className="fab-add-btn">
+            <AddIcon style={{ color: 'var(--color-1)' }}/>
+          </Fab>
+        </Link>
       </div>
     );
   }
