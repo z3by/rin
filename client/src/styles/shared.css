@@ -124,12 +124,15 @@ section {
   cursor: pointer;
 }
 
+.btn:hover {
+  background: var(--color-2);
+  color: var(--color-1);
+}
 .grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 50px;
 }
-
 .upper {
   text-transform: uppercase;
 }
