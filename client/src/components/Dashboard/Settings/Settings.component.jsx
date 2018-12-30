@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import AccordionComponent from '../../general-components/Accordion/Accordion.component';
-import { Route } from 'react-router-dom'
+import AccordionComponent from '../Settings/Accordion/Accordion.component';
 
 
 export default class Settings extends Component {
