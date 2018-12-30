@@ -21,6 +21,7 @@ const usersAPI = require("../controllers/api/users.controller");
 const permissionsAPI = require("../controllers/api/permissions.controller");
 const sectionsAPI = require("../controllers/api/sections.controller");
 const maillistAPI = require("../controllers/api/maillist.controller");
+const dashboardAPI = require("../controllers/api/dashboard.controller");
 
 // upload image route
 router.post("/upload/img", s3Config.uploadImg, (req, res) => {
@@ -180,5 +181,8 @@ router.get("/maillist", maillistAPI.getMails);
 router.get("/maillist/:id", maillistAPI.getMail);
 router.post("/maillist", maillistAPI.addMail);
 router.delete("/maillist/:id", maillistAPI.deleteMail);
+
+// dashboard routes
+router.get("/dashboardsearch", dashboardAPI.searchDashboard);
 
 module.exports = router;
