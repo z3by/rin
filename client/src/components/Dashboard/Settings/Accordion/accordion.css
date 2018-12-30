@@ -6,7 +6,7 @@
   margin: 0 10px;
 }
 
-.role-card-actions {
+.role-card-actions, .permission-card-actions {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -15,7 +15,7 @@
   justify-content: end;
 }
 
-.role-card {
+.role-card, .permission-card {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -23,3 +23,5 @@
   -ms-flex-pack: justify;
   justify-content: space-between;
 }
+
+

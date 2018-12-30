@@ -21,6 +21,7 @@ import Settings from "./Settings/Settings.component";
 import Roles from "./Settings/Roles.component";
 import RoleForm from "./Settings/RolesForm.component";
 import Permissions from "./Settings/Permissions.component.1";
+import PermissionsForm from "./Settings/PermissionsForm.component";
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -77,8 +78,8 @@ export default class Dashboard extends Component {
           <Route path="/dashboard/addrole" component={RoleForm} />
           <Route path="/dashboard/updaterole/:id" component={RoleForm} />
           <Route path="/dashboard/permissions" component={Permissions} />
-          <Route path="/dashboard/addpermission" component={RoleForm} />
-          <Route path="/dashboard/updatepermission/:id" component={RoleForm} />
+          <Route path="/dashboard/addpermission" component={PermissionsForm} />
+        <Route path="/dashboard/updatepermission/:id" component={PermissionsForm} />
           <Route path="/dashboard/projects/:id" component={ProjectInfo} />
           <Route path="/dashboard/projects" exact render={() => {
               return <AdminList itemName="project" pluralName="projects" controls={true} wantedFields={["id", "name", "organization", "investmentSize"]} />;
