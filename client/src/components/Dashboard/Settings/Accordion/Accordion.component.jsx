@@ -40,13 +40,8 @@ class ControlledExpansionPanels extends React.Component {
     const { classes } = this.props;
     const { expanded } = this.state;
 
-    return (
-      <div className={classes.root}>
-        <ExpansionPanel
-          expanded={expanded === "panel1"}
-          onChange={this.handleChange("panel1")}
-          className='accordion'
-        >
+    return <div className={classes.root}>
+        <ExpansionPanel expanded={expanded === "panel1"} onChange={this.handleChange("panel1")} className="accordion">
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
             <Typography className={classes.heading}>
               <i className="fas fa-user acc-icon" /> Users Settings
@@ -56,10 +51,12 @@ class ControlledExpansionPanels extends React.Component {
             <Link to="/dashboard/roles" className="btn">
               Roles
             </Link>
+            <Link to="/dashboard/permissions" className="btn">
+              Permissions
+            </Link>
           </ExpansionPanelDetails>
         </ExpansionPanel>
-      </div>
-    );
+      </div>;
   }
 }
 
