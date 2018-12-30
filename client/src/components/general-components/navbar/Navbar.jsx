@@ -8,6 +8,7 @@ import InputBase from "@material-ui/core/InputBase";
 import Badge from "@material-ui/core/Badge";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
+import MenuList from "@material-ui/core/MenuList";
 import { fade } from "@material-ui/core/styles/colorManipulator";
 import { withStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -17,6 +18,7 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import { Link } from "react-router-dom";
 import Axios from "axios";
+import { Paper } from "@material-ui/core";
 
 const styles = theme => ({
   root: {
@@ -94,7 +96,8 @@ class Navbar extends React.Component {
     this.state = {
       anchorEl: null,
       mobileMoreAnchorEl: null,
-      currentTab: ""
+      currentTab: "",
+      suggestions: []
     };
   }
   componentDidMount() {}
@@ -123,17 +126,18 @@ class Navbar extends React.Component {
   };
 
   handleSearch = e => {
-    if (e.key === "Enter" && e.target.value.length) {
-      Axios.get("/api/" + this.state.currentTab + "/search", {
-        params: { value: e.target.value }
-      })
-        .then(result => {
-          console.log(result);
-        })
-        .catch(err => {
-          console.log(err);
-        });
+    if (e.target.value.length < 3) {
+      return this.setState({ suggestions: [] });
     }
+    Axios.get("/api/search", {
+      params: { inputValue: e.target.value }
+    })
+      .then(result => {
+        this.setState({ suggestions: result.data });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   render() {
@@ -211,19 +215,39 @@ class Navbar extends React.Component {
                 R <span style={{ color: "var(--color-2)" }}>I</span> N
               </Typography>
             </Link>
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
+            <div className="search-group">
+              <div className={classes.search}>
+                <Paper
+                  style={{
+                    position: "absolute",
+                    width: "100%",
+                    top: "100%",
+                    maxHeight: 300,
+                    overflowY: "scroll",
+                    display: this.state.suggestions.length ? "block" : "none"
+                  }}
+                >
+                  <MenuList>
+                    {this.state.suggestions.map((suggestion, i) => {
+                      return <MenuItem key={i}>{suggestion.label}</MenuItem>;
+                    })}
+                  </MenuList>
+                </Paper>
+                <div className={classes.searchIcon}>
+                  <SearchIcon />
+                </div>
+
+                <InputBase
+                  placeholder={"Search..."}
+                  onChange={this.handleOnChange}
+                  onBlur={() => this.setState({ suggestions: [] })}
+                  onKeyUp={this.handleSearch}
+                  classes={{
+                    root: classes.inputRoot,
+                    input: classes.inputInput
+                  }}
+                />
               </div>
-              <InputBase
-                placeholder={"Search..."}
-                onChange={this.handleOnChange}
-                onKeyUp={this.handleSearch}
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput
-                }}
-              />
             </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>

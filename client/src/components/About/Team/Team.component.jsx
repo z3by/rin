@@ -12,14 +12,7 @@ export default class Team extends Component {
     return (
       <React.Fragment>
         {this.props.info.map((guy, i) => {
-          return (
-            <TeamMember
-              {...this.props}
-              imgHeight={this.props.imgHeight}
-              key={i}
-              bio={guy}
-            />
-          );
+          return <TeamMember {...this.props} key={i} bio={guy} />;
         })}
       </React.Fragment>
     );

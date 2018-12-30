@@ -33,6 +33,7 @@
     "prompt": "^1.0.0",
     "prompts": "^2.0.0",
     "react-material-ui-form-validator": "^2.0.3",
+    "react-owl-carousel2": "^0.3.0",
     "react-select": "^2.1.2",
     "react-slideshow-image": "^1.0.8",
     "sequelize": "^4.41.2",

@@ -44,7 +44,6 @@ router.post("/locations", locationAPI.addLocation);
 router.get("/stories/filter", storiesAPI.filterStories);
 router.get("/stories", storiesAPI.getStories);
 router.get("/stories/page", storiesAPI.getStoriesPage);
-router.get("/stories/search", storiesAPI.searchStories);
 router.get("/stories/:id", storiesAPI.getStory);
 router.post("/stories", storiesAPI.addStory);
 router.put("/stories/:id", storiesAPI.updateStory);
@@ -52,7 +51,6 @@ router.delete("/stories/:id", storiesAPI.deleteStory);
 
 //articles routes
 router.get("/articles", articlesAPI.getArticles);
-router.get("/articles/search", articlesAPI.searchArticles);
 router.get("/articles/page", articlesAPI.getArticlesPage);
 router.get("/articles/:id", articlesAPI.getArticle);
 router.post("/articles", articlesAPI.addArticle);
@@ -67,8 +65,8 @@ router.get("/members/:id", adminAPI.getMember);
 
 //projects routes
 router.get("/projects", projectsAPI.getProjects);
+router.get("/projects/statistics", projectsAPI.projectStatistics);
 router.get("/projects/names", projectsAPI.getProjectsNames);
-router.get("/projects/search", projectsAPI.searchProjects);
 router.get("/projectslocations", projectsAPI.getProjectsLocations);
 router.get("/projects/page", projectsAPI.getProjectsPage);
 router.get("/projects/:id", projectsAPI.getProject);

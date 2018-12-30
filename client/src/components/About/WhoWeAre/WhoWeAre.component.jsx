@@ -27,16 +27,13 @@ export default class WhoWeAre extends Component {
             and deep collaboration.
           </Typography>
 
-          <div className="grid-2">
-            <Paper className="margin-20">
-              <Typography
-                variant="h6"
-                className="upper color-1 bg-2 padding-20"
-              >
+          <div className="grid-2 margin-20">
+            <Paper className="padding-20">
+              <Typography variant="h6" className="upper color-4">
                 <i className="start-icon fas fa-users-cog" />
                 Operating Team
               </Typography>
-              <Typography variant="body1" className="padding-20">
+              <Typography variant="body1" className="">
                 RIN Members represent the full capital continuum: foundations
                 and philanthropists, impact, institutional, and commercial
                 investors--as well as international finance institutions,
@@ -45,15 +42,12 @@ export default class WhoWeAre extends Component {
                 and deep collaboration.
               </Typography>
             </Paper>
-            <Paper className="margin-20">
-              <Typography
-                variant="h6"
-                className="upper color-1 bg-2 padding-20"
-              >
+            <Paper className="padding-20">
+              <Typography variant="h6" className="upper color-4">
                 <i className="start-icon fas fa-user-friends" />
                 Key Partners
               </Typography>
-              <Typography variant="body1" className="padding-20">
+              <Typography variant="body1" className="">
                 Systems entrepreneurs John Kluge (Alight Fund & Toilet Hackers)
                 and Tim Docking (IBM & Millennium Challenge Corporation) lead
                 the RIN with support from the Global Development Incubator
@@ -64,26 +58,26 @@ export default class WhoWeAre extends Component {
               </Typography>
             </Paper>
           </div>
-          <Typography variant="h4" className="color-2">
+          <Typography variant="h4" className="color-2 text-center">
             <i className="start-icon fas fa-users" />
             Meet The Team
           </Typography>
-          <div className="grid-4">
-            <Team {...this.props} imgHeight={200} info={TeamInfo} />
+          <div className="grid-5">
+            <Team {...this.props} info={TeamInfo} />
           </div>
         </section>
         <section>
-          <Typography variant="h4" className="color-2">
+          <Typography variant="h4" className="color-2 text-center">
             <i className="start-icon fas fa-user-friends" />
             Guided by a world-class Steering Committee.
           </Typography>
-          <Typography variant="body1">
+          <Typography variant="subtitle1" className="text-center color-3">
             We're proud to draw on the expertise of a Steering Committee made up
             of members who come from diverse backgrounds but share a commitment
             to creating long-term solutions to global forced migration.
           </Typography>
-          <div className="grid-4">
-            <Team {...this.props} imgHeight={200} info={SteeringInfo} />
+          <div className="grid-6">
+            <Team {...this.props} info={SteeringInfo} />
           </div>
         </section>
       </div>

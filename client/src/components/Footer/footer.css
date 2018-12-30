@@ -1,9 +1,14 @@
 footer {
-  margin-top: 120px;
-  background: var(--color-4);
+  margin-top: 100px;
+  margin-bottom: 0;
+}
+.footer-grid {
+  background: var(--color-1);
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   padding-left: 100px;
+  border-top: 1px solid #ccc;
+  background: #ddd;
 }
 
 .footer-col {
@@ -25,7 +30,7 @@ footer {
 }
 
 .footer-contact-links li {
-  color: var(--color-2);
+  color: var(--color-3);
   width: 100%;
   padding-top: 10px;
 }
@@ -35,15 +40,38 @@ footer {
 }
 
 .footer-contact-links a {
-  color: var(--color-2);
+  color: var(--color-3);
   font-size: 0.8rem;
   padding: 6px;
 }
 
 .footer-contact-links li:hover a,
 .footer-contact-links li:hover i {
-  color: var(--color-1);
+  color: var(--color-2);
   text-decoration: underline;
+}
+
+.fa-angle-double-right {
+  color: #aaa;
+}
+
+.footer-link {
+  padding-left: 0 !important;
+}
+
+.footer-bottom {
+  background: var(--color-2);
+  padding: 15px 20px;
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.footer-bottom h6 {
+  line-height: 40px;
 }
 
 @media (max-width: 768px) {

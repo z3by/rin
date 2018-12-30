@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
 import Axios from "axios";
 import "./ArticleInfo.css";
 import draftToHtml from "draftjs-to-html";
 import renderHTML from "react-render-html";
+import Footer from "../../Footer/Footer.component";
 
 export default class ArticleInfo extends Component {
   constructor(props) {
@@ -31,11 +32,24 @@ export default class ArticleInfo extends Component {
     });
   };
 
+  goTop = () => {
+    document.querySelector(".header-img").scrollIntoView({
+      behavior: "smooth"
+    });
+  };
+
+  goDown = () => {
+    document.body.scrollBy({
+      top: window.innerHeight - document.body.scrollTop,
+      behavior: "smooth"
+    });
+  };
+
   render() {
     const article = this.state.articleData;
     const { articleText } = this.state;
     return (
-      <Paper style={{ margin: 0, position: "relative" }}>
+      <div style={{ margin: 0, position: "relative" }}>
         <div
           className="header-img"
           style={{
@@ -60,9 +74,15 @@ export default class ArticleInfo extends Component {
           >
             {article.subtitle}
           </Typography>
+          <div className="go-down" onClick={this.goDown}>
+            <IconButton onClick={this.goDown}>
+              <i className="fas fa-arrow-down color-1" />
+            </IconButton>
+          </div>
         </div>
         <div className="container">{renderHTML(articleText)}</div>
-      </Paper>
+        <Footer />
+      </div>
     );
   }
 }

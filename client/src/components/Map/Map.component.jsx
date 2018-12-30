@@ -199,6 +199,7 @@ export default class Map extends Component {
                 lng={location.lng}
                 lat={location.lat}
                 key={key}
+                zoom={this.state.zoom}
                 location={location}
                 project={this.state.hoveredProject}
                 onHover={this.getProject}
