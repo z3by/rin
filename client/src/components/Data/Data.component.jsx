@@ -6,6 +6,7 @@ import { Route } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
 import DataCharts from "./DataCharts/DataCharts.component";
 import Researches from "./Researches/Researches.component";
+import Footer from "../Footer/Footer.component";
 
 export default class Data extends Component {
   constructor(props) {
@@ -95,6 +96,7 @@ export default class Data extends Component {
           <Route exact path="/data" render={(props) => <DataCharts {...props} body={sectionInfo.body} />} />
           <Route path="/data/researches" component={Researches} />
         </div>
+        <Footer />
       </div>
     );
   }

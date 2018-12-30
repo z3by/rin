@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./News.css";
 import IconButton from "@material-ui/core/IconButton";
 import Links from "./Links/Links.component";
-
+import Footer from "../Footer/Footer.component";
 export default class News extends Component {
   constructor() {
     super();
@@ -45,6 +45,7 @@ export default class News extends Component {
         <div className="container">
           <Links />
         </div>
+        <Footer />
       </div>
     );
   }
