@@ -20,6 +20,7 @@ module.exports.getSdg = (req, res) => {
     });
 };
 
+
 module.exports.addSdg = (req, res) => {
   let data = req.body;
   db.Sdg.create(data)

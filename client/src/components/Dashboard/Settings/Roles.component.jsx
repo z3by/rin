@@ -35,6 +35,13 @@ export default class Roles extends Component {
   render() {
     return (
       <div className="container">
+        <Typography
+          variant="h4"
+          className="text-center"
+          style={{ display: !this.state.roles.length ? "block" : "none" }}
+        >
+          No Roles Yet
+        </Typography>
         {this.state.roles.map((role, i) => {
           return (
             <Card style={{ margin: 5 }} key={i} className="role-card">
@@ -44,7 +51,6 @@ export default class Roles extends Component {
                 </Typography>
               </CardContent>
               <CardActions className="role-card-actions">
-              
                 <Link to={`/dashboard/updaterole/${role.id}`}>
                   <IconButton>
                     <i
@@ -74,8 +80,12 @@ export default class Roles extends Component {
           );
         })}
         <Link to="/dashboard/addrole">
-          <Fab  aria-label="Add" style={{backgroundColor: 'var(--color-2)'}} className="fab-add-btn">
-            <AddIcon style={{ color: 'var(--color-1)' }}/>
+          <Fab
+            aria-label="Add"
+            style={{ backgroundColor: "var(--color-2)" }}
+            className="fab-add-btn"
+          >
+            <AddIcon style={{ color: "var(--color-1)" }} />
           </Fab>
         </Link>
       </div>
