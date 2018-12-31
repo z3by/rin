@@ -8,3 +8,14 @@
   bottom: 30px !important;
   right: 30px !important;
 }
+
+.perm-checkboxes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+@media (max-width: 768px) {
+  .perm-checkboxes {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}

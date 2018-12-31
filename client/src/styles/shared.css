@@ -122,6 +122,11 @@ section {
   padding: 10px 30px;
   color: var(--color-2);
   cursor: pointer;
+  margin: 20px auto;
+}
+
+.btn i {
+  margin: 0 10px;
 }
 
 .btn:hover {
@@ -671,6 +676,10 @@ option:hover {
 }
 .margin-20 {
   margin: 20px;
+}
+
+.my-50 {
+  margin: 50px auto;
 }
 
 .start-icon {

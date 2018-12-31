@@ -17,9 +17,9 @@ export default class Form extends Component {
           style={{ width: "80%", position: "relative", left: "10%" }}
         >
           {this.props.children}
-          <Button
+          <button
             type="submit"
-            className="form-sbumit-button"
+            className="btn w-100"
             disabled={this.props.adding}
           >
             <div
@@ -34,7 +34,7 @@ export default class Form extends Component {
               src="http://portal.paaet.edu.kw/DBPublic/img/loading2.gif"
               alt=""
             />
-          </Button>
+          </button>
         </form>
       </Paper>
     );
