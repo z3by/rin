@@ -3,6 +3,9 @@ import Form from "../../general-components/Form/Form.component";
 import TextField from "@material-ui/core/TextField";
 import Axios from "axios";
 import Typography from "@material-ui/core/Typography";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import { Link } from "react-router-dom";
 
 export default class RoleForm extends Component {
   constructor(props) {
@@ -11,13 +14,24 @@ export default class RoleForm extends Component {
     this.state = {
       adding: false,
       updating: false,
-      role: {},
-      uploading: {}
+      role: {
+        name: ""
+      },
+      uploading: {},
+      checkedPermissions: [],
+      permissions: []
     };
   }
   componentDidMount() {
     this.checkIfDataIsPassed();
+    this.fetchPermissions();
   }
+
+  fetchPermissions = () => {
+    Axios.get("/api/permissions").then(result => {
+      this.setState({ permissions: result.data });
+    });
+  };
 
   checkIfDataIsPassed = () => {
     if (!!this.props.match.params.id) {
@@ -33,6 +47,7 @@ export default class RoleForm extends Component {
           role: {
             ...result.data[0]
           },
+          checkedPermissions: result.data[0].permissions,
           adding: true
         },
         () => {
@@ -58,6 +73,8 @@ export default class RoleForm extends Component {
 
   onFormSubmit = e => {
     e.preventDefault();
+    this.state.role.permissions = this.state.checkedPermissions;
+
     if (this.state.updating) {
       this.updateRole();
     } else {
@@ -90,7 +107,18 @@ export default class RoleForm extends Component {
     alert(msg);
   };
 
-
+  onCheckBoxChecked = e => {
+    const rolePermissions = this.state.checkedPermissions;
+    if (rolePermissions.includes(e.target.value)) {
+      const index = rolePermissions.indexOf(e.target.value);
+      rolePermissions.splice(index, 1);
+    } else {
+      rolePermissions.push(e.target.value);
+    }
+    this.setState({
+      checkedPermissions: rolePermissions
+    });
+  };
 
   render() {
     return (
@@ -116,7 +144,27 @@ export default class RoleForm extends Component {
             error={!this.checkIfFieldIsValid("name")}
             onChange={this.onChange}
           />
-         
+          <Typography variant="h6">What this role can do?...</Typography>
+          <div className="perm-checkboxes my-50">
+            {this.state.permissions.map((perm, i) => {
+              return (
+                <FormControlLabel
+                  key={i}
+                  control={
+                    <Checkbox
+                      checked={(() => {
+                        this.state.checkedPermissions.includes(perm.id);
+                      })()}
+                      onChange={this.onCheckBoxChecked}
+                      value={perm.id}
+                      color="primary"
+                    />
+                  }
+                  label={perm.name}
+                />
+              );
+            })}
+          </div>
         </Form>
       </div>
     );
