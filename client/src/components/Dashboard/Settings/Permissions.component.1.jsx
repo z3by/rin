@@ -35,6 +35,13 @@ export default class Permissions extends Component {
   render() {
     return (
       <div className="container">
+        <Typography
+          variant="h4"
+          className="text-center"
+          style={{ display: !this.state.permissions.length ? "block" : "none" }}
+        >
+          No Permissions Yet
+        </Typography>
         {this.state.permissions.map((permission, i) => {
           return (
             <Card style={{ margin: 5 }} key={i} className="permission-card">
@@ -73,8 +80,12 @@ export default class Permissions extends Component {
           );
         })}
         <Link to="/dashboard/addpermission">
-          <Fab  aria-label="Add" style={{backgroundColor: 'var(--color-2)'}} className="fab-add-btn">
-            <AddIcon style={{ color: 'var(--color-1)' }}/>
+          <Fab
+            aria-label="Add"
+            style={{ backgroundColor: "var(--color-2)" }}
+            className="fab-add-btn"
+          >
+            <AddIcon style={{ color: "var(--color-1)" }} />
           </Fab>
         </Link>
       </div>
