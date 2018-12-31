@@ -11,8 +11,8 @@ const greatPlaceStyle = {
   top: -K_HEIGHT / 2,
 
   border: "5px solid var(--color-2)",
-  borderRadius: K_HEIGHT,
-  backgroundColor: "white",
+  borderRadius: "50%",
+  backgroundColor: "var(--color-2)",
   padding: 4
 };
 

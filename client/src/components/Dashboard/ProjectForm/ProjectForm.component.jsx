@@ -287,32 +287,121 @@ export default class ProjectForm extends Component {
         <Typography variant="h5" style={{ marginTop: 50 }}>
           Add the project info here Please...
         </Typography>
-        <TextField
-          className="full-width-input"
-          label="Project Name"
-          InputLabelProps={{
-            shrink: true
-          }}
-          name="name"
-          variant="outlined"
-          required
-          value={this.state.project.name}
-          error={!this.checkIfFieldIsValid("name")}
-          onChange={this.onChange}
-        />
-        <TextField
-          className="full-width-input"
-          value={this.state.project.organization}
-          InputLabelProps={{
-            shrink: true
-          }}
-          variant="outlined"
-          required
-          error={!this.checkIfFieldIsValid("organization")}
-          label="Organization Name"
-          onChange={this.onChange}
-          name="organization"
-        />
+        <div className="grid-2">
+          <TextField
+            className="full-width-input"
+            label="Project Name"
+            InputLabelProps={{
+              shrink: true
+            }}
+            name="name"
+            variant="outlined"
+            required
+            value={this.state.project.name}
+            error={!this.checkIfFieldIsValid("name")}
+            onChange={this.onChange}
+          />
+          <TextField
+            className="full-width-input"
+            value={this.state.project.organization}
+            InputLabelProps={{
+              shrink: true
+            }}
+            variant="outlined"
+            required
+            error={!this.checkIfFieldIsValid("organization")}
+            label="Organization Name"
+            onChange={this.onChange}
+            name="organization"
+          />
+        </div>
+
+        <div className="grid-2">
+          <TextField
+            value={this.state.project.investmentSize}
+            className="full-width-input"
+            inputProps={{
+              min: 0
+            }}
+            error={!this.checkIfFieldIsValid("investmentSize")}
+            label="Investment Size By US Dollar $"
+            InputLabelProps={{
+              shrink: true
+            }}
+            onChange={this.onChange}
+            variant="outlined"
+            name="investmentSize"
+            type="number"
+            required
+          />
+          <TextField
+            className="full-width-input"
+            label="Starting Year"
+            type="date"
+            variant="outlined"
+            defaultValue={this.state.project.year}
+            value={this.state.project.year}
+            required
+            name="year"
+            InputLabelProps={{
+              shrink: true
+            }}
+            onChange={this.onChange}
+          />
+        </div>
+        <div className="grid-2">
+          <TextField
+            select
+            label="Sector"
+            error={!this.checkIfFieldIsValid("sector")}
+            required
+            className="full-width-input"
+            InputLabelProps={{
+              shrink: this.state.project.sectorId ? true : false
+            }}
+            name="sectorId"
+            value={this.state.project.sectorId}
+            onChange={this.onChange}
+            helperText="Please select the project sector"
+            margin="normal"
+          >
+            {this.state.allSectors.map(option => (
+              <MenuItem
+                key={option.id}
+                value={option.id}
+                style={{ textTransform: "capitalize" }}
+              >
+                {option.name}
+              </MenuItem>
+            ))}
+          </TextField>
+
+          <TextField
+            select
+            label="Refugee Investment Type"
+            error={!this.checkIfFieldIsValid("refugeeInvestmentType")}
+            required
+            InputLabelProps={{
+              shrink: this.state.project.refugeeInvestmentTypeId ? true : false
+            }}
+            className="full-width-input"
+            name="refugeeInvestmentTypeId"
+            value={this.state.project.refugeeInvestmentTypeId}
+            onChange={this.onChange}
+            helperText="Please select the refugee investment type"
+            margin="normal"
+          >
+            {this.state.allRefugeeInvestmentTypes.map(option => (
+              <MenuItem
+                key={option.id}
+                value={option.id}
+                style={{ textTransform: "capitalize" }}
+              >
+                {option.name}
+              </MenuItem>
+            ))}
+          </TextField>
+        </div>
         <div className="flex">
           <AutoComplete
             suggestions={this.state.allFounders}
@@ -346,40 +435,24 @@ export default class ProjectForm extends Component {
             not There?
           </Link>
         </div>
-        <TextField
-          value={this.state.project.investmentSize}
-          className="full-width-input"
-          inputProps={{
-            min: 0
+        <AutoComplete
+          suggestions={this.state.allCountries}
+          label="Countries"
+          handleChange={value => {
+            this.setChoosenFields("countries", value);
           }}
-          error={!this.checkIfFieldIsValid("investmentSize")}
-          label="Investment Size By US Dollar $"
-          InputLabelProps={{
-            shrink: true
-          }}
-          onChange={this.onChange}
-          variant="outlined"
-          name="investmentSize"
-          type="number"
-          required
         />
-        <TextField
-          className="full-width-input"
-          label="Starting Year"
-          type="date"
-          variant="outlined"
-          defaultValue={this.state.project.year}
-          value={this.state.project.year}
-          required
-          name="year"
-          InputLabelProps={{
-            shrink: true
+
+        <AutoComplete
+          suggestions={this.state.allSdgs}
+          label="SDGs"
+          handleChange={value => {
+            this.setChoosenFields("sdgs", value);
           }}
-          onChange={this.onChange}
         />
 
         <TextField
-          className="full-width-input"
+          className="full-width-input text-area"
           label="Impact"
           helperText="max 1000 character"
           name="impact"
@@ -397,7 +470,7 @@ export default class ProjectForm extends Component {
         />
 
         <TextField
-          className="full-width-input"
+          className="full-width-input text-area"
           label="Investment Thesis"
           name="thesis"
           helperText="max 1000 character"
@@ -414,7 +487,7 @@ export default class ProjectForm extends Component {
           variant="outlined"
         />
         <TextField
-          className="full-width-input"
+          className="full-width-input text-area"
           label="Project Description"
           inputProps={{ maxLength: 1000 }}
           name="structure"
@@ -430,72 +503,6 @@ export default class ProjectForm extends Component {
           rowsMax="6"
           variant="outlined"
         />
-        <TextField
-          select
-          label="Sector"
-          error={!this.checkIfFieldIsValid("sector")}
-          required
-          className="full-width-input"
-          InputLabelProps={{
-            shrink: this.state.project.sectorId ? true : false
-          }}
-          name="sectorId"
-          value={this.state.project.sectorId}
-          onChange={this.onChange}
-          helperText="Please select the project sector"
-          margin="normal"
-        >
-          {this.state.allSectors.map(option => (
-            <MenuItem
-              key={option.id}
-              value={option.id}
-              style={{ textTransform: "capitalize" }}
-            >
-              {option.name}
-            </MenuItem>
-          ))}
-        </TextField>
-
-        <TextField
-          select
-          label="Refugee Investment Type"
-          error={!this.checkIfFieldIsValid("refugeeInvestmentType")}
-          required
-          InputLabelProps={{
-            shrink: this.state.project.refugeeInvestmentTypeId ? true : false
-          }}
-          className="full-width-input"
-          name="refugeeInvestmentTypeId"
-          value={this.state.project.refugeeInvestmentTypeId}
-          onChange={this.onChange}
-          helperText="Please select the refugee investment type"
-          margin="normal"
-        >
-          {this.state.allRefugeeInvestmentTypes.map(option => (
-            <MenuItem
-              key={option.id}
-              value={option.id}
-              style={{ textTransform: "capitalize" }}
-            >
-              {option.name}
-            </MenuItem>
-          ))}
-        </TextField>
-        <AutoComplete
-          suggestions={this.state.allCountries}
-          label="Countries"
-          handleChange={value => {
-            this.setChoosenFields("countries", value);
-          }}
-        />
-
-        <AutoComplete
-          suggestions={this.state.allSdgs}
-          label="SDGs"
-          handleChange={value => {
-            this.setChoosenFields("sdgs", value);
-          }}
-        />
 
         <div className="contact-section">
           <div className="input-text-group">
@@ -508,7 +515,7 @@ export default class ProjectForm extends Component {
               value={this.state.contact.phone1}
               type="tel"
               InputLabelProps={{
-                shrink: true
+                shrink: !!this.state.contact.phone1
               }}
               onChange={this.onContactChange}
             />
@@ -522,7 +529,7 @@ export default class ProjectForm extends Component {
               name="phone2"
               value={this.state.contact.phone2}
               InputLabelProps={{
-                shrink: true
+                shrink: !!this.state.contact.phone2
               }}
               onChange={this.onContactChange}
             />
@@ -536,7 +543,7 @@ export default class ProjectForm extends Component {
               name="email1"
               type="email"
               InputLabelProps={{
-                shrink: true
+                shrink: false
               }}
               required
               onChange={this.onContactChange}
@@ -551,7 +558,7 @@ export default class ProjectForm extends Component {
               value={this.state.contact.email2}
               type="email"
               InputLabelProps={{
-                shrink: true
+                shrink: !!this.state.contact.email2
               }}
               onChange={this.onContactChange}
             />
@@ -565,7 +572,7 @@ export default class ProjectForm extends Component {
               name="website"
               type="url"
               InputLabelProps={{
-                shrink: true
+                shrink: !!this.state.contact.website
               }}
               onChange={this.onContactChange}
             />
@@ -579,7 +586,7 @@ export default class ProjectForm extends Component {
               value={this.state.contact.facebook}
               type="url"
               InputLabelProps={{
-                shrink: true
+                shrink: !!this.state.contact.facebook
               }}
               onChange={this.onContactChange}
             />
@@ -593,7 +600,7 @@ export default class ProjectForm extends Component {
               name="twitter"
               type="url"
               InputLabelProps={{
-                shrink: true
+                shrink: !!this.state.contact.twitter
               }}
               onChange={this.onContactChange}
             />
@@ -607,7 +614,7 @@ export default class ProjectForm extends Component {
               value={this.state.contact.instagram}
               type="url"
               InputLabelProps={{
-                shrink: true
+                shrink: !!this.state.contact.instagram
               }}
               onChange={this.onContactChange}
             />
@@ -620,7 +627,7 @@ export default class ProjectForm extends Component {
               value={this.state.contact.fax}
               name="fax"
               InputLabelProps={{
-                shrink: true
+                shrink: !!this.state.contact.fax
               }}
               onChange={this.onContactChange}
             />
@@ -633,7 +640,7 @@ export default class ProjectForm extends Component {
               value={this.state.contact.address}
               name="address"
               InputLabelProps={{
-                shrink: true
+                shrink: !!this.state.contact.address
               }}
               onChange={this.onContactChange}
             />
