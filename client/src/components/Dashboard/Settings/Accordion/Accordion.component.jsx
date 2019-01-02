@@ -55,9 +55,9 @@ class ControlledExpansionPanels extends React.Component {
             <Link to="/dashboard/roles" className="btn">
               Roles
             </Link>
-            <Link to="/dashboard/permissions" className="btn">
+            {/* <Link to="/dashboard/permissions" className="btn">
               Permissions
-            </Link>
+            </Link> */}
           </ExpansionPanelDetails>
         </ExpansionPanel>
       </div>
