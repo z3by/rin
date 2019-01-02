@@ -1,23 +1,23 @@
 "use strict";
 const routes = [
+  "projects",
   "stories",
   "blog",
-  "projects",
-  "library",
-  "founders",
-  "sectors",
+  "users",
+  "researches",
+  "news",
   "roles",
-  "users"
 ];
 
 let permissions = [];
 routes.forEach(route => { 
   permissions = [
     ...permissions,
-    'can add new ' + route,
+    'can see ' + route,
+    'can create new ' + route,
     'can update ' + route,
     'can delete ' + route,
-    'can see ' + route,
+    'can approve ' + route + ' creation',
   ]
 })
 
@@ -36,5 +36,7 @@ module.exports = {
     return queryInterface.bulkInsert("permissions", permissionsRecords, {});
   },
 
-  down: (queryInterface, Sequelize) => {}
+  down: (queryInterface, Sequelize) => {
+    return queryInterface.bulkDelete("permissions", null, {});
+  }
 };
