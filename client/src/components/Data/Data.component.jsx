@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import DataCharts from "./DataCharts/DataCharts.component";
 import Researches from "./Researches/Researches.component";
 import Footer from "../Footer/Footer.component";
+import SocialLinks from "../Landing/socialLinks.component";
 
 export default class Data extends Component {
   constructor(props) {
@@ -55,6 +56,7 @@ export default class Data extends Component {
           overflowY: "scroll"
         }}
       >
+        <SocialLinks />
         <header>
           <div className="banner-full">
             <Typography variant="h1" className="main-font upper color-2">
