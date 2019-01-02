@@ -1,6 +1,7 @@
 .blog {
   background: var(--color-1);
   height: 100vh;
+  position: relative;
 }
 
 .blog .banner-full {

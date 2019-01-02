@@ -5,6 +5,7 @@ import Axios from "axios";
 import { Link } from "react-router-dom";
 import IconButton from "@material-ui/core/IconButton";
 import Footer from "../Footer/Footer.component";
+import SocialLinks from "../Landing/socialLinks.component";
 
 class Stories extends Component {
   constructor(props) {
@@ -44,8 +45,10 @@ class Stories extends Component {
     const storiesInfo = stories.slice(0, 9).map((story, id) => {
       return <Story story={story} key={id} index={id} />;
     });
-    return <React.Fragment>
+    return (
+      <React.Fragment>
         <div className="stories fadeInFast">
+          <SocialLinks />
           <header>
             <div className="header">
               <video src="/videos/camp.mp4" autoPlay muted loop />
@@ -75,7 +78,8 @@ class Stories extends Component {
           </div>
         </div>
         <Footer />
-      </React.Fragment>;
+      </React.Fragment>
+    );
   }
 }
 

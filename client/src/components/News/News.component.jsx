@@ -3,6 +3,9 @@ import "./News.css";
 import IconButton from "@material-ui/core/IconButton";
 import Links from "./Links/Links.component";
 import Footer from "../Footer/Footer.component";
+import SocialLinks from "../Landing/socialLinks.component";
+
+
 export default class News extends Component {
   constructor() {
     super();
@@ -28,6 +31,7 @@ export default class News extends Component {
   render() {
     return (
       <div className="news fadeInFast">
+        <SocialLinks />
         <header>
           <div className="banner-full">
             <h1>news</h1>
