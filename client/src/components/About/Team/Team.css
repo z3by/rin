@@ -39,9 +39,16 @@
   display: block;
 }
 
+
+@media (max-width: 1440px) {
+  .member-card {
+    height: 260px !important;
+  }
+}
+
 @media (max-width: 1024px) {
   .member-card {
-    height: 400px !important;
+    height: 300px !important;
   }
 }
 
