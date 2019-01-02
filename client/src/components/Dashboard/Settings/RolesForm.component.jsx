@@ -19,7 +19,8 @@ export default class RoleForm extends Component {
       },
       uploading: {},
       checkedPermissions: {},
-      permissions: []
+      permissions: [],
+      allChecked: false
     };
   }
   componentDidMount() {
@@ -43,20 +44,23 @@ export default class RoleForm extends Component {
   fetchRoleInfo = id => {
     Axios.get("/api/roles/" + id).then(result => {
       const checkedPermissions = {};
-      result.data[0].permissions.forEach(perm => { 
-        checkedPermissions[perm.id] = true  
-      })
+      result.data[0].permissions.forEach(perm => {
+        checkedPermissions[perm.id] = true;
+      });
+      const allSelected = Object.keys(this.state.checkedPermissions).length === this.state.permissions.length 
       this.setState(
         {
           role: {
             ...result.data[0]
           },
           adding: true,
-          checkedPermissions
-          
+          checkedPermissions,
+          allChecked: allSelected
         },
         () => {
-          this.setState({ adding: false });
+          this.setState({
+            adding: false,
+            });
         }
       );
     });
@@ -78,26 +82,29 @@ export default class RoleForm extends Component {
 
   onFormSubmit = e => {
     e.preventDefault();
-    const checkedPermissions = this.state.checkedPermissions; 
-    const permissionIds = []
+    const checkedPermissions = this.state.checkedPermissions;
+    const permissionIds = [];
     for (const perm in checkedPermissions) {
       if (checkedPermissions.hasOwnProperty(perm)) {
-        permissionIds.push(Number(perm))        
+        permissionIds.push(Number(perm));
       }
     }
-    this.setState({
-      role: {
-        id: this.state.role.id,
-        name: this.state.role.name,
-        permissions: permissionIds
+    this.setState(
+      {
+        role: {
+          id: this.state.role.id,
+          name: this.state.role.name,
+          permissions: permissionIds
+        }
+      },
+      () => {
+        if (this.state.updating) {
+          this.updateRole();
+        } else {
+          this.createRole();
+        }
       }
-    }, () => { 
-      if (this.state.updating) {
-        this.updateRole();
-      } else {
-        this.createRole();
-      } 
-    })
+    );
   };
 
   updateRole = () => {
@@ -128,12 +135,26 @@ export default class RoleForm extends Component {
   onCheckBoxChecked = e => {
     const rolePermissions = this.state.checkedPermissions;
     if (!!rolePermissions[e.target.value]) {
-      delete rolePermissions[e.target.value]
+      delete rolePermissions[e.target.value];
     } else {
-      rolePermissions[e.target.value] = true
+      rolePermissions[e.target.value] = true;
     }
     this.setState({
       checkedPermissions: rolePermissions
+    });
+  };
+
+  onSelectAll = () => {
+    this.setState({ allChecked: !this.state.allChecked }, () => {
+      const checkedPermissions = {}
+      this.state.permissions.forEach(perm => {
+        checkedPermissions[perm.id] = true;
+      });
+      if (this.state.allChecked) {
+        this.setState({ checkedPermissions: checkedPermissions });
+      } else {
+        this.setState({ checkedPermissions: [] });
+      }
     });
   };
 
@@ -162,6 +183,19 @@ export default class RoleForm extends Component {
             onChange={this.onChange}
           />
           <Typography variant="h6">What this role can do?...</Typography>
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={(() => {
+                  return this.state.allChecked;
+                })()}
+                onChange={this.onSelectAll}
+                value={""}
+                color="primary"
+              />
+            }
+            label={this.state.allChecked ? "unselect all ?": "select all ?"}
+          />
           <div className="perm-checkboxes my-50">
             {this.state.permissions.map((perm, i) => {
               return (
@@ -170,7 +204,7 @@ export default class RoleForm extends Component {
                   control={
                     <Checkbox
                       checked={(() => {
-                        return !!this.state.checkedPermissions[perm.id]
+                        return !!this.state.checkedPermissions[perm.id];
                       })()}
                       onChange={this.onCheckBoxChecked}
                       value={perm.id}
