@@ -1,6 +1,6 @@
 import React from "react";
 import "./WhyRefugees.css";
-import { Typography, Paper } from "@material-ui/core";
+import { Typography, div } from "@material-ui/core";
 
 export default props => {
   return (
@@ -13,13 +13,13 @@ export default props => {
         Bridging the gap between the untapped potential of refugees and the
         capital markets.
       </Typography>
-      <Paper className="margin-20 padding-20">
+      <div className="margin-20 padding-20">
         <img
           src="/imgs/banners/8120063305_1b6cd86e1a_o.jpg"
           alt=""
           className="banner-img"
         />
-        <Typography variant="body1">
+        <Typography varian className="body-paragraph"t="body1">
           Today, nearly 70 million people have been forcibly displaced worldwide
           – 22 million of whom are refugees – the highest number in human
           history. Modern refugee crises are characterized by irregular, forced
@@ -29,14 +29,14 @@ export default props => {
           integration have not kept up with these evolving trends and are both
           under-resourced and broken.
         </Typography>
-      </Paper>
-      <Paper className="margin-20 padding-20">
+      </div>
+      <div className="margin-20 padding-20">
         <img
           src="/imgs/banners/15235731346_17138ddcae_o.jpg"
           alt=""
           className="banner-img"
         />
-        <Typography variant="body1">
+        <Typography varian className="body-paragraph"t="body1">
           The resulting dilemma represents the defining social crisis of our
           time and requires urgent, scalable, and economically sustainable
           solutions. While an increasing number of humanitarian efforts strive
@@ -47,14 +47,14 @@ export default props => {
           landscape in forced migration settings remains highly fragmented:
           Bankable deals are few and far between.
         </Typography>
-      </Paper>
-      <Paper className="margin-20 padding-20">
+      </div>
+      <div className="margin-20 padding-20">
         <img
           src="/imgs/banners/41266974685_502f1a640a_o.jpg"
           alt=""
           className="banner-img"
         />
-        <Typography variant="body1">
+        <Typography variant="body1" className="body-paragraph">
           We see both an enormous need and opportunity to increase deal flow by
           working with groups from all sides – investors, governments, donors,
           host and refugee populations – to improve our understanding of how to
@@ -65,7 +65,7 @@ export default props => {
           capital that spurs growth, creates jobs, and leads to social and
           economic prosperity.
         </Typography>
-      </Paper>
+      </div>
       <p className="p-theme-1" />
     </div>
   );
