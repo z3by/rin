@@ -28,7 +28,7 @@ export default class WhoWeAre extends Component {
           </Typography>
 
           <div className="grid-2 margin-20">
-            <Paper className="padding-20">
+            <div className="card-col">
               <Typography variant="h6" className="upper color-4">
                 <i className="start-icon fas fa-users-cog" />
                 Operating Team
@@ -41,8 +41,8 @@ export default class WhoWeAre extends Component {
                 commitment to courageous action, innovative economic solutions,
                 and deep collaboration.
               </Typography>
-            </Paper>
-            <Paper className="padding-20">
+            </div>
+            <div className="card-col">
               <Typography variant="h6" className="upper color-4">
                 <i className="start-icon fas fa-user-friends" />
                 Key Partners
@@ -56,19 +56,21 @@ export default class WhoWeAre extends Component {
                 Executive Director Andrew Stern leads the organization’s
                 strategic and operational support for the RIN.
               </Typography>
-            </Paper>
+            </div>
           </div>
-          <Typography variant="h4" className="color-2 text-center">
-            <i className="start-icon fas fa-users" />
+        </section>
+        <section>
+        <Typography variant="h4" className="color-4 text-center">
+            <i className="start-icon color-2 fas fa-users" />
             Meet The Team
           </Typography>
           <div className="grid-5">
             <Team {...this.props} info={TeamInfo} />
           </div>
-        </section>
+        </section>  
         <section>
-          <Typography variant="h4" className="color-2 text-center">
-            <i className="start-icon fas fa-user-friends" />
+          <Typography variant="h4" className="color-4 text-center">
+            <i className="start-icon color-2 fas fa-user-friends" />
             Guided by a world-class Steering Committee.
           </Typography>
           <Typography variant="subtitle1" className="text-center color-3">
