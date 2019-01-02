@@ -41,6 +41,18 @@
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
 }
+.hero-title {
+  z-index: 10;
+  font-family: var(--main-font) !important;
+  font-weight: 900 !important;
+}
+
+.hero-subtitle {
+  z-index: 10;
+  font-weight: 100 !important;
+}
+
+
 
 @-webkit-keyframes growLine {
   from {
