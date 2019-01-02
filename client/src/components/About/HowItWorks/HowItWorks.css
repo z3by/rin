@@ -1,8 +1,8 @@
 .p-heading {
-  height: 300px;
   position: relative;
   background-color: #222;
   margin: 20px 0;
+  min-height: 300px;
 }
 
 .p-heading-image {
@@ -18,10 +18,10 @@
 
 .p-heading-text {
   color: var(--color-1) !important;
-  font-family: var(--main-font);
-  width: 70%;
-  position: relative;
-  z-index: 3;
-  top: 30%;
-  left: 10%;
+  width: 100%;
+  position: absolute;
+  z-index: 10;
+  top: 40% !important;
+  text-align: center;
+  font-weight: 600 !important;
 }
