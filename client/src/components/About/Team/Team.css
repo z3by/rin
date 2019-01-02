@@ -22,7 +22,7 @@
 }
 
 .member-card:hover .member-img {
-  width: 110%;
+  width: 100%;
   opacity: 0;
   display: none;
 }
