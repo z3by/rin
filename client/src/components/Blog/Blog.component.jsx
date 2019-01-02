@@ -9,7 +9,6 @@ import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
 import SocialLinks from "../Landing/socialLinks.component";
 
-
 export default class Blog extends Component {
   constructor() {
     super();
@@ -67,9 +66,12 @@ export default class Blog extends Component {
         <SocialLinks />
         <header>
           <div className="banner-full">
-            <h1>blog</h1>
-            <div className="line" />
-            <h3>read the RIN latest articles</h3>
+            <Typography variant="h1" className="hero-title upper color-2">
+              blog
+            </Typography>
+            <Typography variant="h5" className="hero-subtitle color-1">
+              read the RIN latest articles
+            </Typography>
             <div className="go-down" onClick={this.goDown}>
               <IconButton>
                 <i className="fas fa-arrow-down color-1" />
