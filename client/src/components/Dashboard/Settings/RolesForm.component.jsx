@@ -5,7 +5,6 @@ import Axios from "axios";
 import Typography from "@material-ui/core/Typography";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import { Link } from "react-router-dom";
 
 export default class RoleForm extends Component {
   constructor(props) {
@@ -15,10 +14,11 @@ export default class RoleForm extends Component {
       adding: false,
       updating: false,
       role: {
-        name: ""
+        name: "",
+        permissions: []
       },
       uploading: {},
-      checkedPermissions: [],
+      checkedPermissions: {},
       permissions: []
     };
   }
@@ -42,13 +42,18 @@ export default class RoleForm extends Component {
 
   fetchRoleInfo = id => {
     Axios.get("/api/roles/" + id).then(result => {
+      const checkedPermissions = {};
+      result.data[0].permissions.forEach(perm => { 
+        checkedPermissions[perm.id] = true  
+      })
       this.setState(
         {
           role: {
             ...result.data[0]
           },
-          checkedPermissions: result.data[0].permissions,
-          adding: true
+          adding: true,
+          checkedPermissions
+          
         },
         () => {
           this.setState({ adding: false });
@@ -73,13 +78,26 @@ export default class RoleForm extends Component {
 
   onFormSubmit = e => {
     e.preventDefault();
-    this.state.role.permissions = this.state.checkedPermissions;
-
-    if (this.state.updating) {
-      this.updateRole();
-    } else {
-      this.createRole();
+    const checkedPermissions = this.state.checkedPermissions; 
+    const permissionIds = []
+    for (const perm in checkedPermissions) {
+      if (checkedPermissions.hasOwnProperty(perm)) {
+        permissionIds.push(Number(perm))        
+      }
     }
+    this.setState({
+      role: {
+        id: this.state.role.id,
+        name: this.state.role.name,
+        permissions: permissionIds
+      }
+    }, () => { 
+      if (this.state.updating) {
+        this.updateRole();
+      } else {
+        this.createRole();
+      } 
+    })
   };
 
   updateRole = () => {
@@ -109,11 +127,10 @@ export default class RoleForm extends Component {
 
   onCheckBoxChecked = e => {
     const rolePermissions = this.state.checkedPermissions;
-    if (rolePermissions.includes(e.target.value)) {
-      const index = rolePermissions.indexOf(e.target.value);
-      rolePermissions.splice(index, 1);
+    if (!!rolePermissions[e.target.value]) {
+      delete rolePermissions[e.target.value]
     } else {
-      rolePermissions.push(e.target.value);
+      rolePermissions[e.target.value] = true
     }
     this.setState({
       checkedPermissions: rolePermissions
@@ -153,7 +170,7 @@ export default class RoleForm extends Component {
                   control={
                     <Checkbox
                       checked={(() => {
-                        this.state.checkedPermissions.includes(perm.id);
+                        return !!this.state.checkedPermissions[perm.id]
                       })()}
                       onChange={this.onCheckBoxChecked}
                       value={perm.id}
