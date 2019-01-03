@@ -41,10 +41,13 @@ function SimpleTable(props) {
                 <TableCell align="right">{row.email}</TableCell>
                 <TableCell align="right">
                   <a href={"mailto:" + row.email}>
-                    <IconButton>
-                      <i className="fas fa-envelope"></i>
+                    <IconButton style={{height: 50, width: 50}}>
+                      <i className="fas fa-envelope" style={{color: 'royalblue'}}/>
                     </IconButton>
                   </a>
+                  <IconButton style={{ height: 50, width: 50 }} onClick={() => { props.deleteEmail(row.id) }}>
+                    <i className="fas fa-trash-alt" style={{color: 'crimson'}} />
+                  </IconButton>
                 </TableCell>
               </TableRow>
             );

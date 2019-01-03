@@ -20,6 +20,12 @@ export default class MailList extends Component {
     });
   };
 
+  deleteEmail = (emailId) => {
+    Axios.delete('/api/maillist/' + emailId).then(result => { 
+      this.fetchEmails()
+    })    
+  }
+
   render() {
     const emailsStr = this.state.emails.map(mail => { 
       return mail.email
@@ -29,7 +35,7 @@ export default class MailList extends Component {
         <a href={"mailto:" + emailsStr}>
           <button className="btn">Send Email To All</button>
         </a>
-        <MailsTableComponent rows={this.state.emails} />
+        <MailsTableComponent deleteEmail={this.deleteEmail} rows={this.state.emails} />
       </div>
     );
   }
