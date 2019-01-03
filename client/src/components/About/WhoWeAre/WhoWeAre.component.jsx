@@ -3,7 +3,7 @@ import "./WhoWeAre.css";
 import Team from "../Team/Team.component";
 import TeamInfo from "../team.json";
 import SteeringInfo from "../steering.json";
-import { Typography, Paper } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 
 export default class WhoWeAre extends Component {
   constructor(props) {
