@@ -48,7 +48,7 @@ class ControlledExpansionPanels extends React.Component {
         >
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
             <Typography className={classes.heading}>
-              <i className="fas fa-user acc-icon" /> Users Settings
+              <i className="fas fa-users acc-icon" /> Users Settings
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
@@ -60,6 +60,7 @@ class ControlledExpansionPanels extends React.Component {
             </Link> */}
           </ExpansionPanelDetails>
         </ExpansionPanel>
+
       </div>
     );
   }

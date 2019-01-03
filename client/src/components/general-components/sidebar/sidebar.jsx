@@ -86,6 +86,14 @@ class Sidebar extends React.Component {
               <ListItemText className="upper">news</ListItemText>
             </ListItem>
           </Link>
+          <Link to="/dashboard/mail-list">
+            <ListItem button key={"mail-list"} className="padding-20">
+              <ListItemIcon className="color-2" style={{ margin: 0, width: 30 }}>
+                <i className="fas fa-envelope" />
+              </ListItemIcon>
+              <ListItemText className="upper">NewsLetter</ListItemText>
+            </ListItem>
+          </Link>
         </List>
       </div>
     );

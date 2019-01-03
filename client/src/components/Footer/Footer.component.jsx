@@ -124,6 +124,9 @@ export default class Footer extends Component {
                   margin: "0",
                   
                 }}
+                InputProps={{
+                  type: "email"
+                }}
                 onChange={this.handleChange}
                 type="email"
                 value={this.state.added ? "" : this.state.email}
@@ -143,6 +146,7 @@ export default class Footer extends Component {
                   Subscribe{" "}
                 </span>
                 <img
+                  alt=""
                   style={{
                     height: "30px",
                     mixBlendMode: "multiply",

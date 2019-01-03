@@ -23,6 +23,7 @@ import RoleForm from "./Settings/RolesForm.component";
 import Permissions from "./Settings/Permissions.component.1";
 import PermissionsForm from "./Settings/PermissionsForm.component";
 import SearchResult from "./SearchResult/SearchResult.compoentn";
+import MailList from "../About/MailList/MailList.component";
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -82,6 +83,7 @@ export default class Dashboard extends Component {
           <Route path="/dashboard" exact component={DashboardHome} />
           <Route path="/dashboard/settings" exact component={Settings} />
           <Route path="/dashboard/search/:keyword" exact component={SearchResult} />
+          <Route path="/dashboard/mail-list" exact component={MailList} />
           <Route path="/dashboard/roles" component={Roles} />
           <Route path="/dashboard/addrole" component={RoleForm} />
           <Route path="/dashboard/updaterole/:id" component={RoleForm} />
