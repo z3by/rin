@@ -238,7 +238,7 @@ class Navbar extends React.Component {
                             onClick={this.handleSearchResultClick}
                         >
                           <span
-                            className="color-2"
+                            className="color-2 capitalize"
                             style={{ paddingRight: 10, fontWeight: "bold" }}
                           >
                             {suggestion.section}

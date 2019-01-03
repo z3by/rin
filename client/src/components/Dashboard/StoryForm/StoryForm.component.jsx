@@ -4,6 +4,7 @@ import AutoComplete from "../../general-components/AutoComplete/SingleAutoComple
 import TextField from "@material-ui/core/TextField";
 import Axios from "axios";
 import Typography from "@material-ui/core/Typography";
+import Avatar from "@material-ui/core/Avatar";
 import MyEditor from "../../general-components/MyEditor/MyEditor.component";
 import { EditorState, convertToRaw, ContentState } from "draft-js";
 import htmlToDraft from "html-to-draftjs";
@@ -19,6 +20,7 @@ export default class StoryForm extends Component {
     this.state = {
       adding: false,
       updating: false,
+      uploading: {},
       editorState: EditorState.createEmpty(),
       enteredChars: 0,
       story: {},
@@ -246,29 +248,32 @@ export default class StoryForm extends Component {
           </Typography>
 
           <div className="img-upload-group">
-            <div
+            <Avatar
               className="img-upload-preveiw"
-              style={{
-                height: 40,
-                width: 40,
-                marginRight: 10,
-                backgroundImage: "url(" + this.state.story.img + ")"
-              }}
+              src={
+                this.state.uploading.img
+                  ? "/imgs/loading.gif"
+                  : this.state.story.img
+                  ? this.state.story.img
+                  : "https://beedie.sfu.ca/corporate-governance-blog/wp-content/themes/newsroom13/img/placeholder.png"
+              }
             />
 
             <TextField
               style={{ marginTop: 0 }}
-              className=""
+              label="upload good image for your story"
+              className="full-width-input"
               name="img"
               InputLabelProps={{
                 shrink: true
               }}
+              variant="filled"
+              helperText="max size 1.mb"
               type="file"
               accept="image/*"
               required={this.state.updating ? false : true}
               onChange={this.uploadImage}
             />
-            <Typography variant="overline">max size 1.mb</Typography>
           </div>
           <MyEditor
             editorState={this.state.editorState}

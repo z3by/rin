@@ -39,6 +39,13 @@ export default class Dashboard extends Component {
       }
     });
   }
+  componentDidMount() { 
+    document.querySelector('.navbar').style.display = 'none'
+  }
+  componentWillUnmount() { 
+    document.querySelector('.navbar').style.display = 'block'
+
+  }
 
   toggleDrawer = () => {
     this.setState({
