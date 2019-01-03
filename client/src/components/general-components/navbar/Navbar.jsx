@@ -129,8 +129,8 @@ class Navbar extends React.Component {
     if (e.target.value.length < 3) {
       return this.setState({ suggestions: [] });
     }
-    Axios.get("/api/search", {
-      params: { inputValue: e.target.value }
+    Axios.get("/api/dashboardsearch", {
+      params: { input: e.target.value }
     })
       .then(result => {
         this.setState({ suggestions: result.data });
@@ -138,6 +138,10 @@ class Navbar extends React.Component {
       .catch(err => {
         console.log(err);
       });
+  };
+
+  handleSearchResultClick = e => {
+    console.log(e);
   };
 
   render() {
@@ -229,7 +233,19 @@ class Navbar extends React.Component {
                 >
                   <MenuList>
                     {this.state.suggestions.map((suggestion, i) => {
-                      return <MenuItem key={i}>{suggestion.label}</MenuItem>;
+                      return (
+                        <MenuItem key={i}
+                            onClick={this.handleSearchResultClick}
+                        >
+                          <span
+                            className="color-2"
+                            style={{ paddingRight: 10, fontWeight: "bold" }}
+                          >
+                            {suggestion.section}
+                          </span>
+                          | {suggestion.name}
+                        </MenuItem>
+                      );
                     })}
                   </MenuList>
                 </Paper>
