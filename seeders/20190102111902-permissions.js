@@ -3,21 +3,14 @@ const routes = [
   "projects",
   "stories",
   "blog",
-  "users",
   "researches",
-  "news",
-  "roles",
 ];
 
 let permissions = [];
 routes.forEach(route => { 
   permissions = [
     ...permissions,
-    'can see ' + route,
     'can create new ' + route,
-    'can update ' + route,
-    'can delete ' + route,
-    'can approve ' + route + ' creation',
   ]
 })
 
