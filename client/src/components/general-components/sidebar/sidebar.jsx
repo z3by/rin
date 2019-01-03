@@ -31,56 +31,56 @@ class Sidebar extends React.Component {
       <div className={classes.list}>
         <List>
           <Link to="/dashboard">
-            <ListItem button key={"home"} style={{ padding: "7px 20px" }}>
-              <ListItemIcon style={{ margin: 0, width: 30 }}>
+            <ListItem button key={"home"} className="padding-20">
+              <ListItemIcon className="color-2" style={{ margin: 0, width: 30 }}>
                 <i className="fas fa-home" />
               </ListItemIcon>
               <ListItemText className="upper">Home</ListItemText>
             </ListItem>
           </Link>
           <Link to="/dashboard/projects">
-            <ListItem button key={"projects"} style={{ padding: "7px 20px" }}>
-              <ListItemIcon style={{ margin: 0, width: 30 }}>
+            <ListItem button key={"projects"} className="padding-20">
+              <ListItemIcon className="color-2" style={{ margin: 0, width: 30 }}>
                 <i className="fas fa-project-diagram" />
               </ListItemIcon>
               <ListItemText className="upper">Projects</ListItemText>
             </ListItem>
           </Link>
           <Link to="/dashboard/stories">
-            <ListItem button key={"stories"} style={{ padding: "7px 20px" }}>
-              <ListItemIcon style={{ margin: 0, width: 30 }}>
+            <ListItem button key={"stories"} className="padding-20">
+              <ListItemIcon className="color-2" style={{ margin: 0, width: 30 }}>
                 <i className="fas fa-bookmark" />
               </ListItemIcon>
               <ListItemText className="upper">Stories</ListItemText>
             </ListItem>
           </Link>
           <Link to="/dashboard/articles">
-            <ListItem button key={"blog"} style={{ padding: "7px 20px" }}>
-              <ListItemIcon style={{ margin: 0, width: 30 }}>
+            <ListItem button key={"blog"} className="padding-20">
+              <ListItemIcon className="color-2" style={{ margin: 0, width: 30 }}>
                 <i className="fab fa-blogger-b" />
               </ListItemIcon>
               <ListItemText className="upper">Blog</ListItemText>
             </ListItem>
           </Link>
           <Link to="/dashboard/users">
-            <ListItem button key={"users"} style={{ padding: "7px 20px" }}>
-              <ListItemIcon style={{ margin: 0, width: 30 }}>
+            <ListItem button key={"users"} className="padding-20">
+              <ListItemIcon className="color-2" style={{ margin: 0, width: 30 }}>
                 <i className="fas fa-users" />
               </ListItemIcon>
               <ListItemText className="upper">Users</ListItemText>
             </ListItem>
           </Link>
           <Link to="/dashboard/researches">
-            <ListItem button key={"researches"} style={{ padding: "7px 20px" }}>
-              <ListItemIcon style={{ margin: 0, width: 30 }}>
+            <ListItem button key={"researches"} className="padding-20">
+              <ListItemIcon className="color-2" style={{ margin: 0, width: 30 }}>
                 <i className="fas fa-search" />
               </ListItemIcon>
               <ListItemText className="upper">Researches</ListItemText>
             </ListItem>
           </Link>
           <Link to="/dashboard/news">
-            <ListItem button key={"news"} style={{ padding: "7px 20px" }}>
-              <ListItemIcon style={{ margin: 0, width: 30 }}>
+            <ListItem button key={"news"} className="padding-20">
+              <ListItemIcon className="color-2" style={{ margin: 0, width: 30 }}>
                 <i className="fas fa-newspaper" />
               </ListItemIcon>
               <ListItemText className="upper">news</ListItemText>
