@@ -3,6 +3,7 @@ import "./Landing.css";
 import CountUp from "react-countup";
 import IconButton from "@material-ui/core/IconButton";
 import SocialLinks from "./socialLinks.component";
+import Logo from "./Logo.component";
 
 export default class Landing extends Component {
   constructor(props) {
@@ -194,6 +195,7 @@ export default class Landing extends Component {
   render() {
     return (
       <div className="landing-main">
+        <Logo />
         <div
           className="wait-screen"
           style={{

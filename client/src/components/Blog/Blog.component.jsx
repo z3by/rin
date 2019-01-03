@@ -8,6 +8,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
 import SocialLinks from "../Landing/socialLinks.component";
+import Logo from "../Landing/Logo.component";
 
 export default class Blog extends Component {
   constructor() {
@@ -64,6 +65,7 @@ export default class Blog extends Component {
         }}
       >
         <SocialLinks />
+        <Logo />
         <header>
           <div className="banner-full">
             <Typography variant="h1" className="hero-title upper color-2">

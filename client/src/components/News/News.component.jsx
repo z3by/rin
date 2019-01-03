@@ -4,6 +4,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Links from "./Links/Links.component";
 import Footer from "../Footer/Footer.component";
 import SocialLinks from "../Landing/socialLinks.component";
+import Logo from "../Landing/Logo.component";
 import Typography from "@material-ui/core/Typography";
 
 export default class News extends Component {
@@ -32,6 +33,7 @@ export default class News extends Component {
     return (
       <div className="news fadeInFast">
         <SocialLinks />
+        <Logo />
         <header>
           <div className="banner-full">
             <Typography variant="h1" className="hero-title upper color-2">

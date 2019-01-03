@@ -1,5 +1,6 @@
 module.exports = {
   scrollwheel: false,
+  fullscreenControl: false,
   minZoom: 2,
   styles: [
     {

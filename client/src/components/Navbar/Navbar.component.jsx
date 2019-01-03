@@ -21,6 +21,13 @@ export default class Navbar extends Component {
   //start counter
   startCounter = () => {};
 
+  scrollDown = () => {
+    document.body.scrollBy({
+      top: window.innerHeight - document.body.scrollTop,
+      behavior: "smooth"
+    });
+  };
+
   onMouseMove = e => {
     const mousePosition = e.clientX;
     const mousePosition2 = e.clientY;
@@ -46,21 +53,9 @@ export default class Navbar extends Component {
     this.scrollDown();
   };
 
-  scrollDown = () => {
-    document.body.scrollBy({
-      top: window.innerHeight - document.body.scrollTop,
-      behavior: "smooth"
-    });
-  };
-
   render() {
     return (
       <div>
-        <div className="logo">
-          <Link className="navbar-link" to={"/"}>
-            <img src="/imgs/logo.png" alt="" className="logo-img" />
-          </Link>
-        </div>
         <nav className={`navbar ${this.state.collapsed ? "collapsed" : ""}`}>
           <ul className="navbar-middle">
             <li>

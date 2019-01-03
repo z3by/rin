@@ -8,6 +8,8 @@ import Spectrum from "./Spectrum/Spectrum.component";
 import { mapApi } from "../../config/map.config";
 import Axios from "axios";
 import { Link } from "react-router-dom";
+import SocialLinks from "../Landing/socialLinks.component";
+import Logo from "../Landing/Logo.component";
 
 export default class Map extends Component {
   state = {
@@ -145,6 +147,8 @@ export default class Map extends Component {
   render() {
     return (
       <div style={{ height: "100vh", width: "100%" }} className="map">
+        <SocialLinks />
+        <Logo />
         <div className="spectrum-info" hidden={this.state.isIndicatorHidden}>
           hover over the spectrum to filter projects by sector
         </div>

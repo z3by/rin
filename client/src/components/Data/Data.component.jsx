@@ -8,6 +8,7 @@ import DataCharts from "./DataCharts/DataCharts.component";
 import Researches from "./Researches/Researches.component";
 import Footer from "../Footer/Footer.component";
 import SocialLinks from "../Landing/socialLinks.component";
+import Logo from "../Landing/Logo.component";
 
 export default class Data extends Component {
   constructor(props) {
@@ -58,6 +59,7 @@ export default class Data extends Component {
         }}
       >
         <SocialLinks />
+        <Logo />
         <header>
           <div className="banner-full">
             <Typography variant="h1" className="hero-title upper color-2">

@@ -12,6 +12,9 @@ import {
   FormControl,
   InputLabel
 } from "@material-ui/core";
+import SocialLinks from "../Landing/socialLinks.component";
+import Logo from "../Landing/Logo.component";
+
 
 const SignupForm = props => {
   return (
@@ -137,6 +140,8 @@ export default class MemberLogin extends Component {
   render() {
     return (
       <div className="members-login-bg">
+        <SocialLinks />
+        <Logo />
         <Card className="box">
           <div className="box-header bg-2 text-center">
             <i className="fas fa-user box-header-icon" />

@@ -7,6 +7,8 @@ import { Route } from "react-router-dom";
 import IconButton from "@material-ui/core/IconButton";
 import { Typography } from "@material-ui/core";
 import Footer from "../Footer/Footer.component";
+import SocialLinks from "../Landing/socialLinks.component";
+import Logo from "../Landing/Logo.component";
 
 export default class About extends Component {
   constructor() {
@@ -42,9 +44,18 @@ export default class About extends Component {
     document.querySelector(".read-more-popup").style.display = "none";
   };
 
+  scrollDown = () => {
+    document.body.scrollBy({
+      top: window.innerHeight - document.body.scrollTop,
+      behavior: "smooth"
+    });
+  };
+  
   render() {
     return (
       <div className="about fadeInFast">
+        <SocialLinks />
+        <Logo />
         <div className="read-more-popup" onClick={this.closePopup}>
           <div className="read-more-wrapper">
             <img src="" alt="" className="read-more-img" />
@@ -59,7 +70,7 @@ export default class About extends Component {
 
         <header className="header">
           <Typography variant="h1" className="hero-title upper color-2">
-            About
+            About Us
           </Typography>
           <ul className="header-nav">
             <li>

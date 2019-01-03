@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import IconButton from "@material-ui/core/IconButton";
 import Footer from "../Footer/Footer.component";
 import SocialLinks from "../Landing/socialLinks.component";
+import Logo from "../Landing/Logo.component";
 import { Typography } from "@material-ui/core";
 
 class Stories extends Component {
@@ -49,6 +50,7 @@ class Stories extends Component {
     return (
       <React.Fragment>
         <div className="stories fadeInFast">
+          <Logo />
           <SocialLinks />
           <header>
             <div className="header">

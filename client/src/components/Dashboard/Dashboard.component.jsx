@@ -32,15 +32,6 @@ export default class Dashboard extends Component {
     };
   }
 
-  componentDidMount() {
-    document.querySelector(".navbar").style.display = "none";
-    document.querySelector(".logo").style.display = "none";
-    this.fetchReqCount();
-  }
-  componentWillUnmount() {
-    document.querySelector(".navbar").style.display = "block";
-    document.querySelector(".logo").style.display = "block";
-  }
   componentWillMount() {
     Axios.get("/users/isadmin").then(res => {
       if (res.data === false) {
