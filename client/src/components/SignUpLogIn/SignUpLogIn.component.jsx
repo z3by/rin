@@ -15,11 +15,11 @@ import {
 import SocialLinks from "../Landing/socialLinks.component";
 import Logo from "../Landing/Logo.component";
 
-
 const SignupForm = props => {
   return (
     <CardContent className="box-form">
       <TextField
+        onChange={props.handleOnChange}
         className="box-input color-3"
         label="Email"
         InputLabelProps={{ shrink: true }}
@@ -27,9 +27,10 @@ const SignupForm = props => {
         name="email"
         type="email"
         required
-        value={"hello"}
+        value={props.userInfo.email}
       />
       <TextField
+        onChange={props.handleOnChange}
         className="box-input color-3"
         label="First Name"
         InputLabelProps={{ shrink: true }}
@@ -37,19 +38,21 @@ const SignupForm = props => {
         name="firstName"
         type="text"
         required
-        value={"hello"}
+        value={props.userInfo.firstName}
       />
       <TextField
+        onChange={props.handleOnChange}
         className="box-input color-3"
         label="Last Name"
         InputLabelProps={{ shrink: true }}
         variant="outlined"
         name="lastName"
         type="text"
+        value={props.userInfo.lastName}
         required
-        value={"hello"}
       />
       <TextField
+        onChange={props.handleOnChange}
         className="box-input color-3"
         label="Organization Name"
         InputLabelProps={{ shrink: true }}
@@ -57,9 +60,10 @@ const SignupForm = props => {
         name="organizationName"
         type="text"
         required
-        value={"hello"}
+        value={props.userInfo.organizationName}
       />
       <TextField
+        onChange={props.handleOnChange}
         className="box-input color-3"
         label="Password"
         type="password"
@@ -67,9 +71,10 @@ const SignupForm = props => {
         name="password"
         variant="outlined"
         required
-        value={"hello"}
+        value={props.userInfo.password}
       />
       <TextField
+        onChange={props.handleOnChange}
         className="box-input color-3"
         label="Confirm Password"
         type="password"
@@ -77,12 +82,12 @@ const SignupForm = props => {
         name="password2"
         variant="outlined"
         required
-        value={"hello"}
+        value={props.userInfo.password2}
       />
       <FormControl className="box-input">
         <InputLabel htmlFor="role">User Role</InputLabel>
         <Select
-          value={1}
+          value={props.userInfo.userRole}
           onChange={this.handleChange}
           inputProps={{ name: "role", id: "role" }}
         >
@@ -102,6 +107,7 @@ const LoginForm = props => {
   return (
     <CardContent className="box-form">
       <TextField
+        onChange={props.handleOnChange}
         className="box-input color-3"
         label="Email"
         InputLabelProps={{ shrink: true }}
@@ -109,9 +115,10 @@ const LoginForm = props => {
         type="email"
         variant="outlined"
         required
-        value={"hello"}
+        value={props.userInfo.email}
       />
       <TextField
+        onChange={props.handleOnChange}
         className="box-input color-3"
         label="Password"
         type="password"
@@ -119,7 +126,7 @@ const LoginForm = props => {
         name="password"
         variant="outlined"
         required
-        value={"hello"}
+        value={props.userInfo.password}
       />
     </CardContent>
   );
@@ -129,21 +136,41 @@ export default class MemberLogin extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loginCard: true
+      loginCard: true,
+      userInfo: {}
     };
   }
 
+
+  handleLogin = () => { 
+    console.log(this.state.userInfo);
+  }
+
+
+  handleSingUp = () => { 
+    console.log(this.state.userInfo);    
+  }
   toggleForm = () => {
     this.setState({ loginCard: !this.state.loginCard });
   };
 
+  handleChange = e => {
+    this.setState({
+      userInfo: {
+        ...this.state.userInfo,
+        [e.target.name]: e.target.value
+      }
+    });
+  };
+
   render() {
     return (
-      <div className="members-login-bg">
+      <div className="members-login">
+        <div className="bg-members" />
         <SocialLinks />
         <Logo />
         <Card className="box">
-          <div className="box-header bg-2 text-center">
+          <div className="box-header text-center">
             <i className="fas fa-user box-header-icon" />
             <Typography
               variant="h6"
@@ -161,12 +188,24 @@ export default class MemberLogin extends Component {
             </Typography>
           </div>
           {this.state.loginCard ? (
-            <LoginForm toggleForm={this.toggleForm} />
+            <LoginForm
+              handleOnChange={this.handleChange}
+              userInfo={this.state.userInfo}
+              toggleForm={this.toggleForm}
+            />
           ) : (
-            <SignupForm toggleForm={this.toggleForm} />
+            <SignupForm
+              handleOnChange={this.handleChange}
+              userInfo={this.state.userInfo}
+              toggleForm={this.toggleForm}
+            />
           )}
           <CardActions className="card-actions">
-            <Button className="box-btn">Sign Up</Button>
+            {this.state.loginCard ? (
+              <Button className="box-btn" onClick={this.handleLogin}>Login</Button>
+            ) : (
+              <Button className="box-btn" onClick={this.handleSingUp}>Sign Up</Button>
+            )}
             <div className="flex justify-content-between w-100">
               <a
                 onClick={this.toggleForm}

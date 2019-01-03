@@ -1,8 +1,5 @@
-.members-login-bg {
+.members-login {
   height: 100vh;
-  background: url(/imgs/members.jpeg);
-  background-size: cover;
-  background-position-y: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -10,8 +7,22 @@
   -ms-flex-align: center;
   align-items: center;
 }
+
+.bg-members {
+  height: 100vh;
+  width: 100vw;
+  background: url(/imgs/bridge.jpg);
+  background-position-y: 40%;
+  background-size: cover;
+  position: absolute;
+  z-index: 0;
+  -webkit-filter: contrast(10%);
+  filter: contrast(80%) brightness(70%);
+}
 .box {
   width: 30%;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.95) !important;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -19,6 +30,16 @@
   -webkit-transition: all 1s cubic-bezier(0.215, 0.61, 0.355, 1);
   transition: all 1s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
+
+.box:hover {
+  -webkit-box-shadow: 0 0 50px rgba(0, 0, 0, 0.3) !important;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.3) !important;
+}
+.box-header {
+  background: var(--color-2);
+  padding: 0 0 30px 0;
+}
+
 .box-form {
   padding: 30px 10% 0 10% !important;
 }
@@ -40,7 +61,7 @@
 }
 
 .card-actions {
-  padding: 0px 10% 30px 10% !important; 
+  padding: 0px 10% 30px 10% !important;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
