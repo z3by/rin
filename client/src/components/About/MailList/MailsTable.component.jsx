@@ -1,26 +1,24 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+import React from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
+import { IconButton } from "@material-ui/core";
 
 const styles = theme => ({
   root: {
-    width: '100%',
+    width: "100%",
     marginTop: theme.spacing.unit * 3,
-    overflowX: 'auto',
+    overflowX: "auto"
   },
   table: {
-    minWidth: 700,
-  },
+    minWidth: 700
+  }
 });
-
-
-
 
 function SimpleTable(props) {
   const { classes } = props;
@@ -32,6 +30,7 @@ function SimpleTable(props) {
           <TableRow>
             <TableCell align="right">ID</TableCell>
             <TableCell align="right">Email</TableCell>
+            <TableCell align="right">Actions</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -40,6 +39,13 @@ function SimpleTable(props) {
               <TableRow key={row.id}>
                 <TableCell align="right">{row.id}</TableCell>
                 <TableCell align="right">{row.email}</TableCell>
+                <TableCell align="right">
+                  <a href={"mailto:" + row.email}>
+                    <IconButton>
+                      <i className="fas fa-envelope"></i>
+                    </IconButton>
+                  </a>
+                </TableCell>
               </TableRow>
             );
           })}
@@ -50,7 +56,7 @@ function SimpleTable(props) {
 }
 
 SimpleTable.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(SimpleTable);
