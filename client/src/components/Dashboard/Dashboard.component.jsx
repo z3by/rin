@@ -22,6 +22,7 @@ import Roles from "./Settings/Roles.component";
 import RoleForm from "./Settings/RolesForm.component";
 import Permissions from "./Settings/Permissions.component.1";
 import PermissionsForm from "./Settings/PermissionsForm.component";
+import SearchResult from "./SearchResult/SearchResult.compoentn";
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -67,7 +68,7 @@ export default class Dashboard extends Component {
 
   render() {
     return (
-      <div className="admin-dashboard fadeInFast">
+      <div className="admin-dashboard">
         <Sidebar
           toggleDrawer={this.toggleDrawer}
           toggled={this.state.sidebarToggled}
@@ -80,6 +81,7 @@ export default class Dashboard extends Component {
         <main>
           <Route path="/dashboard" exact component={DashboardHome} />
           <Route path="/dashboard/settings" exact component={Settings} />
+          <Route path="/dashboard/search/:keyword" exact component={SearchResult} />
           <Route path="/dashboard/roles" component={Roles} />
           <Route path="/dashboard/addrole" component={RoleForm} />
           <Route path="/dashboard/updaterole/:id" component={RoleForm} />

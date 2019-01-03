@@ -8,7 +8,6 @@ import InputBase from "@material-ui/core/InputBase";
 import Badge from "@material-ui/core/Badge";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import MenuList from "@material-ui/core/MenuList";
 import { fade } from "@material-ui/core/styles/colorManipulator";
 import { withStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -17,8 +16,6 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import { Link } from "react-router-dom";
-import Axios from "axios";
-import { Paper } from "@material-ui/core";
 
 const styles = theme => ({
   root: {
@@ -59,6 +56,7 @@ const styles = theme => ({
     pointerEvents: "none",
     display: "flex",
     alignItems: "center",
+    cursor: 'pointer',
     justifyContent: "center"
   },
   inputRoot: {
@@ -96,7 +94,7 @@ class Navbar extends React.Component {
     this.state = {
       anchorEl: null,
       mobileMoreAnchorEl: null,
-      currentTab: "",
+      searchInput: '',
       suggestions: []
     };
   }
@@ -120,28 +118,16 @@ class Navbar extends React.Component {
   };
 
   handleOnChange = e => {
-    let path = this.props.history.location.pathname.split("/");
-    const current = path[path.length - 1];
-    this.setState({ currentTab: current });
+    this.setState({searchInput: e.target.value})
   };
 
   handleSearch = e => {
-    if (e.target.value.length < 3) {
-      return this.setState({ suggestions: [] });
+    if (e.key === 'Enter') { 
+      this.props.history.push('/dashboard/searching')
+      setTimeout(() => {
+        this.props.history.push('/dashboard/search/'+ this.state.searchInput)
+      }, 100);
     }
-    Axios.get("/api/dashboardsearch", {
-      params: { input: e.target.value }
-    })
-      .then(result => {
-        this.setState({ suggestions: result.data });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
-
-  handleSearchResultClick = e => {
-    console.log(e);
   };
 
   render() {
@@ -221,42 +207,13 @@ class Navbar extends React.Component {
             </Link>
             <div className="search-group">
               <div className={classes.search}>
-                <Paper
-                  style={{
-                    position: "absolute",
-                    width: "100%",
-                    top: "100%",
-                    maxHeight: 300,
-                    overflowY: "scroll",
-                    display: this.state.suggestions.length ? "block" : "none"
-                  }}
-                >
-                  <MenuList>
-                    {this.state.suggestions.map((suggestion, i) => {
-                      return (
-                        <MenuItem key={i}
-                            onClick={this.handleSearchResultClick}
-                        >
-                          <span
-                            className="color-2 capitalize"
-                            style={{ paddingRight: 10, fontWeight: "bold" }}
-                          >
-                            {suggestion.section}
-                          </span>
-                          | {suggestion.name}
-                        </MenuItem>
-                      );
-                    })}
-                  </MenuList>
-                </Paper>
-                <div className={classes.searchIcon}>
+                <div className={classes.searchIcon} onClick={this.handleSearch}>
                   <SearchIcon />
                 </div>
 
                 <InputBase
                   placeholder={"Search..."}
                   onChange={this.handleOnChange}
-                  onBlur={() => this.setState({ suggestions: [] })}
                   onKeyUp={this.handleSearch}
                   classes={{
                     root: classes.inputRoot,
