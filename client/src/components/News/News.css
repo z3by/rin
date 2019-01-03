@@ -31,6 +31,7 @@ ul.cards {
   margin: 0 auto;
 }
 
+
 @media (max-width: 768px) {
   ul.cards {
     grid-template-columns: 1fr 1fr;
@@ -42,3 +43,4 @@ ul.cards {
     grid-template-columns: 1fr;
   }
 }
+

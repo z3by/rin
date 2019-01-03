@@ -42,6 +42,7 @@ export default class News extends Component {
             <Typography variant="h5" className="hero-subtitle color-1">
               RIN press and other latest resources around refugee investment
             </Typography>
+
             <div className="go-down" onClick={this.goDown}>
               <IconButton>
                 <i className="fas fa-arrow-down color-1" />
@@ -50,6 +51,7 @@ export default class News extends Component {
           </div>
         </header>
         <div className="container">
+          
           <Links />
         </div>
         <Footer />

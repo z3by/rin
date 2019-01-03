@@ -671,6 +671,11 @@ option:hover {
   text-align: center;
 }
 
+.text-right {
+  text-align: right;
+}
+
+
 .padding-20 {
   padding: 20px;
 }
