@@ -31,6 +31,11 @@ export default class Landing extends Component {
       this.setState({ loading: false });
     }, 2000);
   }
+  componentWillUnmount() { 
+    window.onkeydown = null;
+    window.onwheel = null;
+    window.onmousemove = null;
+  }
 
   // bind the events to the local functions.
   bindEvents = () => {
