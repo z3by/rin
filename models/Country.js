@@ -5,8 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       name: DataTypes.STRING,
       flag: DataTypes.STRING,
-      alpha3Code: DataTypes.STRING,
-       
+      alpha3Code: DataTypes.STRING
     },
     {
       tableName: "countries"

@@ -14,6 +14,9 @@ module.exports = {
       alpha3Code: {
         type: Sequelize.STRING
       },
+      flag: {
+        type: Sequelize.STRING
+      },
       projectId: {
         type: Sequelize.INTEGER,
         references: {

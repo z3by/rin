@@ -429,7 +429,7 @@ export default class ProjectForm extends Component {
 
           <Link
             className="color-2-link"
-            to="/addfounder"
+            to="/addinvestor"
             style={{ paddingTop: 38, paddingLeft: 10 }}
           >
             not There?
