@@ -34,7 +34,8 @@ export default class Data extends Component {
   };
 
   goDown = () => {
-    document.querySelector(".container").scrollIntoView({
+    document.querySelector(".data").scrollBy({
+      top: window.innerHeight - document.body.scrollTop,
       behavior: "smooth"
     });
   };
@@ -42,10 +43,7 @@ export default class Data extends Component {
   // navigate to specific route
   navigateTO = route => {
     this.props.history.push(route);
-    document.body.scrollBy({
-      top: window.innerHeight - document.body.scrollTop,
-      behavior: "smooth"
-    });
+    this.goDown();
   };
 
   render() {

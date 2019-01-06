@@ -44,13 +44,6 @@ export default class About extends Component {
     document.querySelector(".read-more-popup").style.display = "none";
   };
 
-  scrollDown = () => {
-    document.body.scrollBy({
-      top: window.innerHeight - document.body.scrollTop,
-      behavior: "smooth"
-    });
-  };
-  
   render() {
     return (
       <div className="about fadeInFast">
