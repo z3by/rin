@@ -2,9 +2,10 @@
 
 const countriesData = require("../data/countries.json");
 const filterData = countriesData.map(country => {
+  
   return {
     name: country.name,
-    flag: country.flag,
+    alpha3Code: country.alpha3Code,
     createdAt: new Date(),
     UpdatedAt: new Date()
   };
