@@ -5,7 +5,7 @@ footer {
 .footer-grid {
   background: var(--color-1);
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   padding-left: 100px;
   border-top: 1px solid #ccc;
   background: #ddd;
@@ -17,7 +17,7 @@ footer {
 }
 
 .footer-col-title {
-  font-weight: 100 !important;
+  font-weight: 500 !important;
   font-size: 1rem !important;
   text-align: left;
 }

@@ -663,6 +663,9 @@ option:hover {
   font-size: 0.9rem;
 }
 
+.mr-10 {
+  margin-right: 10px;
+}
 .w-100 {
   width: 100%;
 }
