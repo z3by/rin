@@ -237,7 +237,7 @@ export default class DataCharts extends Component {
 
         this.setState({ isLoadingDmographicsData: false }, () => {
           res.data.forEach(oneData => {
-            labels.push(oneData.location_name);
+            labels.push(oneData.location_name.split(" ")[0]);
             femaleValueData.push(oneData.female_total_value);
             maleValueData.push(oneData.male_total_value);
           });
@@ -299,7 +299,7 @@ export default class DataCharts extends Component {
     });
     return (
       <div>
-        <section style={{ margin: "20px 0" }}>{body}</section>
+        <section>{body}</section>
         <div className="asylum-seekers-chart">
           <Typography variant="h5" className="text-center">
             UNHCR Statistics of Asylum Seekers from Syria in{" "}
@@ -344,7 +344,7 @@ export default class DataCharts extends Component {
             </VisibilitySensor>
           </div>
         </div>
-        <section style={{ margin: "20px 0" }} className="resettlement-chart">
+        <section className="resettlement-chart">
           <Typography variant="h5" className="text-center">
             UNHCR Statistics of Resettlement (2010 - 2018)
           </Typography>
@@ -371,7 +371,7 @@ export default class DataCharts extends Component {
             </VisibilitySensor>
           </div>
         </section>
-        <section style={{ margin: "20px 0" }} className="demographics-chart">
+        <section className="demographics-chart">
           <Typography variant="h5" className="text-center">
             UNHCR Statistics of Demographics in {demographicsSelectedCountry} (
             {demographicsSelectedYear})

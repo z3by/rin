@@ -45,14 +45,14 @@
   z-index: 10;
   font-family: var(--main-font) !important;
   font-weight: 900 !important;
+  padding: auto 30px !important;
 }
 
 .hero-subtitle {
   z-index: 10;
+  padding: auto 30px !important;
   font-weight: 100 !important;
 }
-
-
 
 @-webkit-keyframes growLine {
   from {
@@ -240,5 +240,8 @@
   .center-stories img {
     position: absolute;
     height: 50px;
+  }
+  .hero-subtitle {
+    text-align: center;
   }
 }

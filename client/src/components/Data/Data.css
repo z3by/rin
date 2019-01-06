@@ -1,7 +1,7 @@
 .data {
   background: var(--color-1);
   height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .data .banner-full {
@@ -56,7 +56,9 @@ iframe {
   left: 47%;
 }
 
-.asylum-seekers-chart, .resettlement-chart, .demographics-chart {
+.asylum-seekers-chart,
+.resettlement-chart,
+.demographics-chart {
   height: 100vh;
 }
 

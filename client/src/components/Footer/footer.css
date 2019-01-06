@@ -75,14 +75,20 @@ footer {
 }
 
 @media (max-width: 768px) {
-  footer {
+  .footer-grid {
     grid-template-columns: repeat(2, 1fr);
     padding-left: 0;
+  }
+  .footer-bottom {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
 }
 
 @media (max-width: 500px) {
-  footer {
-    grid-template-columns: 1fr;
+  .footer-grid {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
