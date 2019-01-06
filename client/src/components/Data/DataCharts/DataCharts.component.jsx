@@ -11,6 +11,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import Typography from "@material-ui/core/Typography";
+import { Paper } from "@material-ui/core";
 
 /*The structure of any chart data object is as the following:
   somethingData: {
@@ -298,27 +299,26 @@ export default class DataCharts extends Component {
     });
     return (
       <div>
-        <div>{body}</div>
+        <section style={{ margin: "20px 0" }}>{body}</section>
         <div className="asylum-seekers-chart">
-          <Typography variant="h4" className="chart-heading color-2">
+          <Typography variant="h5" className="text-center">
             UNHCR Statistics of Asylum Seekers from Syria in{" "}
             {this.state.asylumSeekersSelectedYear}
           </Typography>
-          <FormControl
-            style={{ width: "20%" }}
-            className="chart-select-control"
-          >
-            <InputLabel htmlFor="year-select">select year</InputLabel>
-            <Select
-              onChange={this.getAsylumSeekersDataByYear}
-              value={this.state.asylumSeekersSelectedYear}
-              inputProps={{
-                id: "year-select"
-              }}
-            >
-              {allYears}
-            </Select>
-          </FormControl>
+          <Paper className="padding-20 margin-20">
+            <FormControl style={{ width: "50%" }}>
+              <InputLabel htmlFor="year-select">select year</InputLabel>
+              <Select
+                onChange={this.getAsylumSeekersDataByYear}
+                value={this.state.asylumSeekersSelectedYear}
+                inputProps={{
+                  id: "year-select"
+                }}
+              >
+                {allYears}
+              </Select>
+            </FormControl>
+          </Paper>
           <div className="chart-preloader">
             <CircularProgress
               className="preloader"
@@ -344,8 +344,8 @@ export default class DataCharts extends Component {
             </VisibilitySensor>
           </div>
         </div>
-        <div className="resettlement-chart">
-          <Typography variant="h4" className="chart-heading color-2">
+        <section style={{ margin: "20px 0" }} className="resettlement-chart">
+          <Typography variant="h5" className="text-center">
             UNHCR Statistics of Resettlement (2010 - 2018)
           </Typography>
           <div className="chart-preloader">
@@ -370,36 +370,38 @@ export default class DataCharts extends Component {
               )}
             </VisibilitySensor>
           </div>
-        </div>
-        <div className="demographics-chart">
-          <Typography variant="h4" className="chart-heading color-2">
+        </section>
+        <section style={{ margin: "20px 0" }} className="demographics-chart">
+          <Typography variant="h5" className="text-center">
             UNHCR Statistics of Demographics in {demographicsSelectedCountry} (
             {demographicsSelectedYear})
           </Typography>
-          <FormControl style={{ width: "20%" }} id="year-select-control">
-            <InputLabel htmlFor="year-select">select year</InputLabel>
-            <Select
-              onChange={this.getDemographicsData}
-              value={this.state.demographicsSelectedYear}
-              inputProps={{
-                id: "year-select"
-              }}
-            >
-              >{allYears}
-            </Select>
-          </FormControl>
-          <FormControl style={{ width: "40%" }} id="country-select-control">
-            <InputLabel htmlFor="country-select">select country</InputLabel>
-            <Select
-              onChange={this.getDemographicsData}
-              value={this.state.demographicsSelectedCountry}
-              inputProps={{
-                id: "country-select"
-              }}
-            >
-              >{countries}
-            </Select>
-          </FormControl>
+          <Paper className="margin-20 padding-20">
+            <FormControl style={{ width: "45%", marginRight: 20 }} id="">
+              <InputLabel htmlFor="year-select">select year</InputLabel>
+              <Select
+                onChange={this.getDemographicsData}
+                value={this.state.demographicsSelectedYear}
+                inputProps={{
+                  id: "year-select"
+                }}
+              >
+                >{allYears}
+              </Select>
+            </FormControl>
+            <FormControl style={{ width: "45%" }} id="">
+              <InputLabel htmlFor="country-select">select country</InputLabel>
+              <Select
+                onChange={this.getDemographicsData}
+                value={this.state.demographicsSelectedCountry}
+                inputProps={{
+                  id: "country-select"
+                }}
+              >
+                >{countries}
+              </Select>
+            </FormControl>
+          </Paper>
           <div className="chart-preloader">
             <CircularProgress
               className="preloader"
@@ -422,7 +424,7 @@ export default class DataCharts extends Component {
               )}
             </VisibilitySensor>
           </div>
-        </div>
+        </section>
       </div>
     );
   }
