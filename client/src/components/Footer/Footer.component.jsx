@@ -11,7 +11,8 @@ export default class Footer extends Component {
     added: false
   };
 
-  subscribeToNewsLetter = () => {
+  subscribeToNewsLetter = (e) => {
+    e.preventDefault()
     if (this.state.email.length < 5) {
       return;
     }
@@ -121,32 +122,41 @@ export default class Footer extends Component {
               >
                 subscribe to our newsletter
               </Typography>
-              <TextField
-                style={{
-                  marginTop: "20px"
-                }}
-                InputProps={{
-                  type: "email"
-                }}
-                onChange={this.handleChange}
-                type="email"
-                value={this.state.added ? "" : this.state.email}
-                placeholder={"your email..."}
-              />
-              <Button
-                style={{
-                  margin: "20px 10px",
-                  height: "35px",
-                  borderRadius: "100px",
-                  background: "var(--color-2)"
-                }}
-                onClick={this.subscribeToNewsLetter}
-              >
-                <span style={{ display: !this.state.added ? "block" : "none" }}>
-                  Subscribe
-                </span>
-                <i className="fas fa-check" style={{ display: this.state.added ? "block" : "none" }}></i>
-              </Button>
+              <form onSubmit={this.subscribeToNewsLetter}>
+                <TextField
+                  style={{
+                    marginTop: "20px"
+                  }}
+                  InputProps={{
+                    type: "email"
+                  }}
+                  onChange={this.handleChange}
+                  type="email"
+                  pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
+                  required
+                  value={this.state.added ? "" : this.state.email}
+                  placeholder={"your email..."}
+                />
+                <Button
+                  style={{
+                    margin: "20px 10px",
+                    height: "35px",
+                    borderRadius: "100px",
+                    background: "var(--color-2)"
+                  }}
+                  type="submit"
+                >
+                  <span
+                    style={{ display: !this.state.added ? "block" : "none" }}
+                  >
+                    Subscribe
+                  </span>
+                  <i
+                    className="fas fa-check"
+                    style={{ display: this.state.added ? "block" : "none" }}
+                  />
+                </Button>
+              </form>
             </div>
           </div>
         </div>
